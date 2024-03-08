@@ -1,6 +1,6 @@
 import * as styles from './index.css.ts';
 
-import Game from '@/components/Game.tsx';
+import Game from '@/components/Game.tsx'
 
 const Example = () => {
   return (
