@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 
-import { config } from '@/scene/game-config';
+import { config } from '@/game/config.ts';
 
-const ExampleScene = () => {
+const Game = () => {
   useEffect(() => {
     const game = new Phaser.Game(config);
 
@@ -14,4 +14,4 @@ const ExampleScene = () => {
   return <div id='game-container' />;
 };
 
-export default ExampleScene;
+export default Game;

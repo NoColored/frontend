@@ -1,4 +1,4 @@
-import Sample from '@/scene/example-scene/Sample.ts';
+import Sample from '@/game/scene/Sample.ts';
 
 export const config: Phaser.Types.Core.GameConfig = {
   type: Phaser.AUTO,
@@ -9,6 +9,7 @@ export const config: Phaser.Types.Core.GameConfig = {
     default: 'arcade',
     arcade: {
       gravity: { x: 0, y: 200 },
+      debug: true,
     },
   },
   scene: [Sample],
