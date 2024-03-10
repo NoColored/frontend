@@ -1,10 +1,10 @@
 import { globalFontFace, style } from '@vanilla-extract/css';
 
 // 글꼴 이름을 정확한 이름으로 변경
-const dnfFont = 'DNFBitBitv2';
-const numPixel = 'PixelAEBold';
-const loadingMain = 'DOSPilgiMedium';
-const numLoading = 'Chonkly';
+export const dnfFont = 'DNFBitBitv2';
+export const numPixel = 'PixelAEBold';
+export const loadingMain = 'DOSPilgiMedium';
+export const numLoading = 'Chonkly';
 
 // 웹에서 호스팅되는 글꼴에 대한 정의
 globalFontFace(dnfFont, {
