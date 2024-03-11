@@ -1,12 +1,12 @@
 import { style } from '@vanilla-extract/css';
 
-export const exampleStyle = style({
+export const HomeClassNameTest1Style = style({
   color: 'red',
   fontSize: 20,
   fontWeight: 'bold',
 });
 
-export const testStyle = style({
+export const HomeClassNameTest2Style = style({
   color: 'blue',
   fontSize: 48,
 });
