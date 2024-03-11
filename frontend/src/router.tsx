@@ -1,18 +1,17 @@
 import { createBrowserRouter } from 'react-router-dom';
+
 import Example from '@/pages/example/index.tsx';
 import Home from '@/pages/home/index.tsx';
-
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Home/>,
+    element: <Home />,
   },
   {
     path: '/example',
-    element: <Example />
+    element: <Example />,
   },
-
 ]);
 
 export default router;
