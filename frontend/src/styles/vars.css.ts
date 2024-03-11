@@ -11,12 +11,10 @@ export const vars = createGlobalTheme(':root', {
   /* paddings, margins 대신 space 사용 */
   space: {
     none: '0',
-    '0.5x': '4px',
-    '1x': '8px',
-    '2x': '16px',
-    '3x': '24px',
-    '4x': '32px',
-    '5x': '40px',
+    '1x': '4px',
+    '2x': '8px',
+    '3x': '12px',
+    '4x': '16px',
   },
   display: {
     flex: 'flex',
@@ -78,14 +76,9 @@ export const vars = createGlobalTheme(':root', {
   },
 
   borderRadius: {
-    '0x': '0px',
-    '1x': '8px',
-    '2x': '16px',
-    '3x': '24px',
-    '4x': '32px',
-    '5x': '40px',
-    top: '32px 32px 0 0',
-    full: '9999px', // 원을 만들 때 사용
+    '1x': '4px',
+    '2x': '8px',
+    full: '50%', // 원을 만들 때 사용
   },
 
   fontFamily: {
@@ -96,12 +89,13 @@ export const vars = createGlobalTheme(':root', {
   },
 
   fontSize: {
-    '1x': '8px',
-    '1.5x': '12px',
-    '2x': '16px',
-    '3x': '24px',
-    '4x': '32px',
-    '5x': '40px',
+    '0.5x': '8px',
+    '0.75x': '12px',
+    '1x': '16px',
+    '1.25x': '20px',
+    '1.5x': '24px',
+    '2x': '32px',
+    '5x': '80px',
   },
 
   fontWeight: {
