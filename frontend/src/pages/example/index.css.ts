@@ -5,3 +5,8 @@ export const exampleStyle = style({
   fontSize: 20,
   fontWeight: 'bold',
 });
+
+export const testStyle = style({
+  color: 'blue',
+  fontSize: 48,
+});
