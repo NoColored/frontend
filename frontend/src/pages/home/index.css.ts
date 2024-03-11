@@ -1,12 +1,21 @@
-import { style } from '@vanilla-extract/css';
+import { recipe } from '@vanilla-extract/recipes';
 
-export const HomeClassNameTest1Style = style({
-  color: 'red',
-  fontSize: 20,
-  fontWeight: 'bold',
-});
+import { sprinkles } from '@/styles/sprinkles.css.ts';
 
-export const HomeClassNameTest2Style = style({
-  color: 'blue',
-  fontSize: 48,
+export const fontStyle = recipe({
+  variants: {
+    fontType: {
+      textFont: sprinkles({ fontFamily: 'textFont' }),
+      numFont: sprinkles({ fontFamily: 'numFont' }),
+      loadingTextFont: sprinkles({ fontFamily: 'loadingTextFont' }),
+      loadingNumFont: sprinkles({ fontFamily: 'loadingNumFont' }),
+    },
+    color: {
+      red: sprinkles({ color: 'red' }),
+      yellow: sprinkles({ color: 'yellow' }),
+      green: sprinkles({ color: 'green' }),
+      blue: sprinkles({ color: 'blue' }),
+      pink: sprinkles({ color: 'pink' }),
+    },
+  },
 });
