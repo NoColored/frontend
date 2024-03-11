@@ -1,12 +1,12 @@
 import * as styles from './index.css.ts';
 
-import ExampleScene from '@/scene/example-scene/index.tsx'
+import Game from '@/components/Game.tsx'
 
 const Example = () => {
   return (
     <div>
       <div className={styles.exampleStyle}>Example</div>
-      <ExampleScene />
+      <Game />
     </div>
   );
 };

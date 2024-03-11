@@ -10,5 +10,12 @@ export const fontStyle = recipe({
       loadingTextFont: sprinkles({ fontFamily: 'loadingTextFont' }),
       loadingNumFont: sprinkles({ fontFamily: 'loadingNumFont' }),
     },
+    color: {
+      red: sprinkles({ color: 'red' }),
+      yellow: sprinkles({ color: 'yellow' }),
+      green: sprinkles({ color: 'green' }),
+      blue: sprinkles({ color: 'blue' }),
+      pink: sprinkles({ color: 'pink' }),
+    },
   },
 });
