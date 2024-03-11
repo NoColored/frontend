@@ -3,9 +3,12 @@ import { calc } from '@vanilla-extract/css-utils';
 
 import { vars } from '@/styles/vars.css.ts';
 
-globalStyle('html, body', {
+globalStyle('*', {
   margin: 0,
   padding: 0,
+});
+
+globalStyle('html, body', {
   height: '100vh',
   width: '100vw',
 });
