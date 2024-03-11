@@ -1,10 +1,10 @@
 import { createGlobalTheme } from '@vanilla-extract/css';
 
 import {
-  mainFont,
-  numFont,
-  loadingTextFont,
   loadingNumFont,
+  loadingTextFont,
+  numFont,
+  textFont,
 } from '@/styles/font.css.ts';
 
 export const vars = createGlobalTheme(':root', {
@@ -89,7 +89,7 @@ export const vars = createGlobalTheme(':root', {
   },
 
   fontFamily: {
-    body: mainFont,
+    textFont,
     numFont,
     loadingTextFont,
     loadingNumFont,
