@@ -61,18 +61,7 @@ export const vars = createGlobalTheme(':root', {
     gray300: '#979797',
     gray500: '#727272',
     gray700: '#605F5F',
-
-    // 이하 기타 색들
-    lightGray: '#CDCDCD',
-    whitesmoke: '#f1f1f1',
-    babyBlue: '#BFCDE5',
-    emerald: '#74cf9c',
-    purple: '#cf8abc',
-    oatmeal: '#fdf5e4',
-    brown: '#453216',
-    strongRed: '#E8635C',
-    lightBlue: '#8AAEF9',
-    lavender: '#BBA4DA',
+    background: 'rgba(255, 255, 255, 0.8)',
   },
 
   borderRadius: {

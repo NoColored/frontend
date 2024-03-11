@@ -1,6 +1,8 @@
 import { globalStyle } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
 
+import { vars } from '@/styles/vars.css.ts';
+
 globalStyle('html, body', {
   margin: 0,
   padding: 0,
@@ -32,6 +34,7 @@ globalStyle('#root', {
       borderRadius: '8px',
       margin: `${calc('100vh').subtract('431px').divide(2).toString()} auto`,
       overflow: 'hidden',
+      backgroundColor: vars.colors.background,
     },
   },
 });
