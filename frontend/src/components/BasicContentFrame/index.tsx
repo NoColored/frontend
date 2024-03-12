@@ -7,10 +7,10 @@ import SettingNavigationButton from '@/components/SettingNavigationButton/index.
 
 interface Props {
   children: ReactNode;
-  backButtonLable?: string;
+  backButtonLabel?: string;
 }
 
-const BasicContentFrame = ({ children, backButtonLable }: Props) => {
+const BasicContentFrame = ({ children, backButtonLabel }: Props) => {
   return (
     <>
       <div className={style.iconButtons}>
@@ -29,9 +29,9 @@ const BasicContentFrame = ({ children, backButtonLable }: Props) => {
       </div>
       <div className={style.frame}>
         <main className={style.main}>
-          {backButtonLable && (
+          {backButtonLabel && (
             <div className={style.navigation}>
-              <SettingNavigationButton label={backButtonLable} />
+              <SettingNavigationButton label={backButtonLabel} />
             </div>
           )}
           {children}

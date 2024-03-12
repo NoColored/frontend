@@ -4,7 +4,7 @@ import BasicContentFrame from '@/components/BasicContentFrame/index.tsx';
 
 const Home = () => {
   return (
-    <BasicContentFrame backButtonLable='뒤로'>
+    <BasicContentFrame backButtonLabel='뒤로'>
       <div>
         <div
           className={styles.fontStyle({ fontType: 'textFont', color: 'red' })}
