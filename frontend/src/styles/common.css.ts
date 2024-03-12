@@ -31,10 +31,12 @@ export const borderOptions = recipe({
   variants: {
     // border color
     color: {
-      red: sprinkles({ borderColor: 'red' }),
-      yellow: sprinkles({ borderColor: 'yellow' }),
-      green: sprinkles({ borderColor: 'green' }),
-      blue: sprinkles({ borderColor: 'blue' }),
+      red: sprinkles({ borderColor: 'redDark' }),
+      yellow: sprinkles({ borderColor: 'yellowDark' }),
+      green: sprinkles({ borderColor: 'greenDark' }),
+      blue: sprinkles({ borderColor: 'blueDark' }),
+      pink: sprinkles({ borderColor: 'pinkDark' }),
+      navy: sprinkles({ borderColor: 'navyDark' }),
     },
 
     // border width
