@@ -3,14 +3,16 @@ import { ReactNode } from 'react';
 import * as style from './index.css.ts';
 
 import SettingIconButton from '@/components/SettingIconButton/index.tsx';
+import SettingNavigationButton from '@/components/SettingNavigationButton/index.tsx';
 
 interface Props {
   children: ReactNode;
+  backButtonLable?: string;
 }
 
-const BasicContentFrame = ({ children }: Props) => {
+const BasicContentFrame = ({ children, backButtonLable }: Props) => {
   return (
-    <div className={style.frame}>
+    <>
       <div className={style.iconButtons}>
         <SettingIconButton
           src='src/assets/ui/icon/button/icon-button-information-h50w50.png'
@@ -25,8 +27,17 @@ const BasicContentFrame = ({ children }: Props) => {
           alt='setting'
         />
       </div>
-      <main className={style.main}>{children}</main>
-    </div>
+      <div className={style.frame}>
+        <main className={style.main}>
+          {backButtonLable && (
+            <div className={style.navigation}>
+              <SettingNavigationButton label={backButtonLable} />
+            </div>
+          )}
+          {children}
+        </main>
+      </div>
+    </>
   );
 };
 
