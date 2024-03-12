@@ -11,6 +11,7 @@ export const vars = createGlobalTheme(':root', {
   /* paddings, margins 대신 space 사용 */
   space: {
     none: '0',
+    '0.5x': '2px',
     '1x': '4px',
     '2x': '8px',
     '3x': '12px',
@@ -64,9 +65,12 @@ export const vars = createGlobalTheme(':root', {
     navy: '#201D35',
     navyDark: '#413F53',
     gray: '#808080',
+    gray100: '#ebebeb',
+    gray200: '#dddddd',
     gray300: '#979797',
     gray500: '#727272',
     gray700: '#605F5F',
+    background: 'rgba(255, 255, 255, 0.8)',
   },
 
   // shadow사용법 확인하기
