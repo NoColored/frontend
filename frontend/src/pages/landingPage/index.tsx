@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router-dom';
+
 import {
   buttonWrapper,
   clickText,
@@ -8,6 +10,7 @@ import {
 } from '@/pages/landingPage/index.css.ts';
 
 const LandingPage = () => {
+  const navigate = useNavigate();
   const landingLogo: string =
     '/public/images/landing-logo-whiteborder-h800w1280.png';
   return (
@@ -15,10 +18,22 @@ const LandingPage = () => {
       <div className={etcWrapper}>
         <img src={landingLogo} alt='로고로고' style={{ width: '50%' }} />
         <div className={buttonWrapper}>
-          <button className={guestButton} type='submit'>
+          <button
+            className={guestButton}
+            type='submit'
+            onClick={() => {
+              navigate('/');
+            }}
+          >
             GUEST
           </button>
-          <button className={logInButton} type='submit'>
+          <button
+            className={logInButton}
+            type='submit'
+            onClick={() => {
+              navigate('/');
+            }}
+          >
             LOG IN
           </button>
         </div>
