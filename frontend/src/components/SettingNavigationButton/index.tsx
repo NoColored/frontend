@@ -6,7 +6,11 @@ interface Props {
 
 const SettingNavigationButton = ({ label }: Props) => {
   const text = `< ${label}`;
-  return <button className={style.button}>{text}</button>;
+  return (
+    <button type='button' className={style.button}>
+      {text}
+    </button>
+  );
 };
 
 export default SettingNavigationButton;
