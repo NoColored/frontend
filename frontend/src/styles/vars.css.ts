@@ -8,6 +8,10 @@ import {
 } from '@/styles/font.css.ts';
 
 export const vars = createGlobalTheme(':root', {
+  size: {
+    full: '100%',
+  },
+
   /* paddings, margins 대신 space 사용 */
   space: {
     none: '0',
