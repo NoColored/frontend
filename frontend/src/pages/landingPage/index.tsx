@@ -1,18 +1,28 @@
-import { etcWrapper, landingWrapper } from '@/pages/landingPage/index.css.ts';
+import {
+  buttonWrapper,
+  clickText,
+  etcWrapper,
+  guestButton,
+  landingWrapper,
+  logInButton,
+} from '@/pages/landingPage/index.css.ts';
 
 const LandingPage = () => {
-  const landingBackground: string =
-    'url(/public/images/landing-background-animation-h490w950.gif)';
   const landingLogo: string =
     '/public/images/landing-logo-whiteborder-h800w1280.png';
   return (
-    <div
-      className={landingWrapper}
-      style={{ backgroundImage: landingBackground }}
-    >
+    <div className={landingWrapper}>
       <div className={etcWrapper}>
-        <img src={landingLogo} alt='로고로고' style={{ width: '45%' }} />
-        {/* <div className={buttonWrapper}>/!* <Button></Button> *!/</div> */}
+        <img src={landingLogo} alt='로고로고' style={{ width: '50%' }} />
+        <div className={buttonWrapper}>
+          <button className={guestButton} type='submit'>
+            GUEST
+          </button>
+          <button className={logInButton} type='submit'>
+            LOG IN
+          </button>
+        </div>
+        <span className={clickText}>click to start!</span>
       </div>
     </div>
   );
