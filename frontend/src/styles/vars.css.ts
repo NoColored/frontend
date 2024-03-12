@@ -22,6 +22,12 @@ export const vars = createGlobalTheme(':root', {
     inlineBlock: 'inline-block',
     inline: 'inline',
   },
+  position: {
+    relative: 'relative',
+    absolute: 'absolute',
+    absoluteTop: 'absolute',
+  },
+
   justifyContent: {
     flexStart: 'flex-start',
     center: 'center',
@@ -61,24 +67,28 @@ export const vars = createGlobalTheme(':root', {
     gray300: '#979797',
     gray500: '#727272',
     gray700: '#605F5F',
+  },
 
-    // 이하 기타 색들
-    lightGray: '#CDCDCD',
-    whitesmoke: '#f1f1f1',
-    babyBlue: '#BFCDE5',
-    emerald: '#74cf9c',
-    purple: '#cf8abc',
-    oatmeal: '#fdf5e4',
-    brown: '#453216',
-    strongRed: '#E8635C',
-    lightBlue: '#8AAEF9',
-    lavender: '#BBA4DA',
+  // shadow사용법 확인하기
+  shadow: {
+    colorButtonShadow: '0 5 0 0',
+  },
+
+  borderStyle: {
+    solid: 'solid',
+    none: 'none',
   },
 
   borderRadius: {
     '1x': '4px',
     '2x': '8px',
     full: '50%', // 원을 만들 때 사용
+  },
+  borderWidth: {
+    '1x': '1px',
+    '2x': '2px',
+    '3x': '3px',
+    '5x': '5px',
   },
 
   fontFamily: {
