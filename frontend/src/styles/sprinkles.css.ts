@@ -66,10 +66,19 @@ const borderProperties = defineProperties({
   },
 });
 
-const shadowProperties = defineProperties({
+const sizeProperties = defineProperties({
   properties: {
-    boxShadow: vars.shadow,
-    boxShadowColors: vars.colors,
+    width: vars.size,
+    height: vars.size,
+  },
+  shorthands: {
+    size: ['width', 'height'],
+  },
+});
+
+const zIndexProperties = defineProperties({
+  properties: {
+    zIndex: vars.zIndex,
   },
 });
 
@@ -79,5 +88,7 @@ export const sprinkles = createSprinkles(
   spaceProperties,
   colorProperties,
   fontProperties,
-  shadowProperties,
+
+  sizeProperties,
+  zIndexProperties,
 );
