@@ -1,12 +1,24 @@
 import { style } from '@vanilla-extract/css';
 
-export const exampleStyle = style({
-  color: 'red',
-  fontSize: 20,
-  fontWeight: 'bold',
-});
+import * as styleOptions from '@/styles/common.css.ts';
+import { sprinkles } from '@/styles/sprinkles.css.ts';
 
-export const testStyle = style({
-  color: 'blue',
-  fontSize: 48,
-});
+export const testForRecipe = style([
+  styleOptions.displayStyleOptions({
+    option: 'center',
+  }),
+  styleOptions.borderOptions({
+    color: 'red',
+    width: 'extraThick',
+  }),
+  sprinkles({
+    fontFamily: 'textFont',
+    fontSize: '2x',
+    paddingX: '2x',
+  }),
+  {
+    // 임시로 값 설정
+    width: '300px',
+    height: '100px',
+  },
+]);
