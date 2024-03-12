@@ -23,6 +23,12 @@ export const vars = createGlobalTheme(':root', {
     inlineBlock: 'inline-block',
     inline: 'inline',
   },
+  position: {
+    relative: 'relative',
+    absolute: 'absolute',
+    absoluteTop: 'absolute',
+  },
+
   justifyContent: {
     flexStart: 'flex-start',
     center: 'center',
@@ -67,10 +73,26 @@ export const vars = createGlobalTheme(':root', {
     background: 'rgba(255, 255, 255, 0.8)',
   },
 
+  // shadow사용법 확인하기
+  shadow: {
+    colorButtonShadow: '0 5 0 0',
+  },
+
+  borderStyle: {
+    solid: 'solid',
+    none: 'none',
+  },
+
   borderRadius: {
     '1x': '4px',
     '2x': '8px',
     full: '50%', // 원을 만들 때 사용
+  },
+  borderWidth: {
+    '1x': '1px',
+    '2x': '2px',
+    '3x': '3px',
+    '5x': '5px',
   },
 
   fontFamily: {
