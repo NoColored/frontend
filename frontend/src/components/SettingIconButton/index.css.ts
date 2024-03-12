@@ -1,6 +1,6 @@
 import { style } from '@vanilla-extract/css';
 
-import { flexOptions } from '@/styles/common.css.ts';
+import { borderOptions, flexOptions } from '@/styles/common.css.ts';
 import { sprinkles } from '@/styles/sprinkles.css.ts';
 import { vars } from '@/styles/vars.css.ts';
 
@@ -9,6 +9,7 @@ const IMG_SIZE = '20px';
 
 export const button = style([
   flexOptions({ option: 'center' }),
+  borderOptions({ color: 'black', width: '1x' }),
   sprinkles({
     borderRadius: 'full',
     backgroundColor: 'white',
@@ -17,7 +18,6 @@ export const button = style([
   {
     width: `${BUTTON_SIZE}`,
     height: `${BUTTON_SIZE}`,
-    border: '1px solid black',
 
     ':hover': {
       cursor: 'pointer',
