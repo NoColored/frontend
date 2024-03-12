@@ -13,6 +13,11 @@ const displayProperties = defineProperties({
 });
 
 const colorProperties = defineProperties({
+  conditions: {
+    default: { selector: '' },
+    active: { selector: '&:active' },
+  },
+  defaultCondition: 'default',
   properties: {
     color: vars.colors,
     backgroundColor: vars.colors,
@@ -61,10 +66,18 @@ const borderProperties = defineProperties({
   },
 });
 
+const shadowProperties = defineProperties({
+  properties: {
+    boxShadow: vars.shadow,
+    boxShadowColors: vars.colors,
+  },
+});
+
 export const sprinkles = createSprinkles(
   displayProperties,
   borderProperties,
   spaceProperties,
   colorProperties,
   fontProperties,
+  shadowProperties,
 );

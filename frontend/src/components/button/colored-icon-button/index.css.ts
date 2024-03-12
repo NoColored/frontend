@@ -1,3 +1,4 @@
+import { style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
 
 import { sprinkles } from '@/styles/sprinkles.css.ts';
@@ -23,3 +24,5 @@ export const coloredIconButton = recipe({
     },
   },
 });
+
+export const tempButton = style([sprinkles({ borderStyle: 'none' })]);

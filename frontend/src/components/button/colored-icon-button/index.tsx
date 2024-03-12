@@ -1,4 +1,6 @@
-import * as styles from './index.css.ts';
+// import * as styles from './index.css.ts';
+
+import { coloredButtonStyleCss } from '@/components/button/coloredButtonStyle.css.ts';
 
 interface ColoredIconButtonProps {
   icon: string;
@@ -10,7 +12,7 @@ const ColoredIconButton = ({ text, icon, onClick }: ColoredIconButtonProps) => {
   return (
     <button
       type='button'
-      className={styles.coloredIconButton({ color: 'red' })}
+      className={coloredButtonStyleCss({ colors: 'red' })}
       onClick={onClick}
     >
       <div>
