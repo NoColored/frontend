@@ -1,7 +1,5 @@
 import { recipe } from '@vanilla-extract/recipes';
 
-import { colorAndShadowColorSet } from '@/components/button/colored-icon-button/colorSet.ts';
-
 import { sprinkles } from '@/styles/sprinkles.css.ts';
 
 const coloredIconButtonBase = sprinkles({
@@ -10,25 +8,6 @@ const coloredIconButtonBase = sprinkles({
   justifyContent: 'center',
   flexDirection: 'column',
 });
-
-const coloredIconButtonColors: ('red' | 'green' | 'blue' | 'pink')[] = [
-  'red',
-  'green',
-  'blue',
-  'pink',
-];
-
-const coloredIconButtonColorVariants = coloredIconButtonColors.flatMap(
-  (color) => [
-    {
-      variants: {},
-      style: {
-        colorStyle: colorAndShadowColorSet[color].color,
-        shadowColor: colorAndShadowColorSet[color].shadowColor,
-      },
-    },
-  ],
-);
 
 export const coloredIconButton = recipe({
   base: coloredIconButtonBase,
