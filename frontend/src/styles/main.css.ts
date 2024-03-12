@@ -6,6 +6,7 @@ import { vars } from '@/styles/vars.css.ts';
 globalStyle('*', {
   margin: 0,
   padding: 0,
+  boxSizing: 'border-box',
 });
 
 globalStyle('html, body', {
@@ -29,14 +30,16 @@ globalStyle('#root', {
   width: '100%',
   aspectRatio: '33 / 19',
   display: 'block',
+  backgroundImage:
+    'url(images/background/background-white-small-h450w873.webp)',
 
   '@media': {
     'screen and (min-width: 748px)': {
       width: '748px',
-      border: '2px solid black',
+      border: '1px solid black',
       borderRadius: '8px',
       margin: `${calc('100vh').subtract('431px').divide(2).toString()} auto`,
-      overflow: 'hidden',
+      backgroundImage: 'none',
       backgroundColor: vars.colors.background,
     },
   },
