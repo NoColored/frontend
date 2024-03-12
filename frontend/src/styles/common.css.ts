@@ -1,13 +1,10 @@
 // 공통으로 사용해야되는 스타일 정의 파일
 
-// border - color & px
-// px -> 1,2,3,5
-
 import { recipe } from '@vanilla-extract/recipes';
 
 import { sprinkles } from '@/styles/sprinkles.css.ts';
 
-export const displayStyleOptions = recipe({
+export const flexOptions = recipe({
   base: sprinkles({ display: 'flex' }),
   variants: {
     // 기본적인 option 묶어서 사용 (추가 가능)
@@ -26,15 +23,6 @@ export const displayStyleOptions = recipe({
         flexDirection: 'row',
       }),
     },
-    // position을 사용하고 싶을때 추가
-    position: {
-      relative: sprinkles({
-        position: 'relative',
-      }),
-      absolute: sprinkles({
-        position: 'absolute',
-      }),
-    },
   },
 });
 
@@ -51,10 +39,10 @@ export const borderOptions = recipe({
 
     // border width
     width: {
-      thin: sprinkles({ borderWidth: 'thin' }),
-      medium: sprinkles({ borderWidth: 'medium' }),
-      thick: sprinkles({ borderWidth: 'thick' }),
-      extraThick: sprinkles({ borderWidth: 'extraThick' }),
+      '1x': sprinkles({ borderWidth: '1x' }),
+      '2x': sprinkles({ borderWidth: '2x' }),
+      '3x': sprinkles({ borderWidth: '3x' }),
+      '5x': sprinkles({ borderWidth: '5x' }),
     },
   },
 });

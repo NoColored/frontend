@@ -4,12 +4,12 @@ import * as styleOptions from '@/styles/common.css.ts';
 import { sprinkles } from '@/styles/sprinkles.css.ts';
 
 export const testForRecipe = style([
-  styleOptions.displayStyleOptions({
+  styleOptions.flexOptions({
     option: 'center',
   }),
   styleOptions.borderOptions({
     color: 'red',
-    width: 'extraThick',
+    width: '1x',
   }),
   sprinkles({
     fontFamily: 'textFont',

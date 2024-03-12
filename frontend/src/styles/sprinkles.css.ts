@@ -19,9 +19,10 @@ const colorProperties = defineProperties({
   },
 });
 
-const textProperties = defineProperties({
+const fontProperties = defineProperties({
   properties: {
     fontFamily: vars.fontFamily,
+    fontWeight: vars.fontWeight,
     fontSize: vars.fontSize,
   },
 });
@@ -65,5 +66,5 @@ export const sprinkles = createSprinkles(
   borderProperties,
   spaceProperties,
   colorProperties,
-  textProperties,
+  fontProperties,
 );

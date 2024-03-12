@@ -85,10 +85,10 @@ export const vars = createGlobalTheme(':root', {
     full: '50%', // 원을 만들 때 사용
   },
   borderWidth: {
-    thin: '1px',
-    medium: '2px',
-    thick: '3px',
-    extraThick: '5px',
+    '1x': '1px',
+    '2x': '2px',
+    '3x': '3px',
+    '5x': '5px',
   },
 
   fontFamily: {
