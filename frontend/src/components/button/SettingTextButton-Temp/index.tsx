@@ -1,7 +1,6 @@
 import { ReactNode } from 'react';
 
 import * as styles from './index.css.ts';
-import { settingButton } from './index.css.ts';
 
 interface Props {
   children: ReactNode;
@@ -17,7 +16,7 @@ const SettingTextButton = ({
   return (
     <button
       type='button'
-      className={settingButton({ size, colorStyle })}
+      className={styles.settingButton({ size, colorStyle })}
       onClick={onClick}
     >
       {children}
