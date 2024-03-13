@@ -8,20 +8,25 @@ import { vars } from '@/styles/vars.css.ts';
 export const frame = style([
   sprinkles({
     padding: '4x',
-    position: 'relative',
+    position: 'fixed',
   }),
   {
     height: `${calc('100%').subtract('32px')}`,
-    aspectRatio: '33 /19',
+    aspectRatio: '33 / 19',
     boxSizing: 'content-box',
     margin: '0 auto',
+    left: '50%',
+    transform: 'translateX(-50%)',
 
     '@media': {
       'screen and (min-height: 463px)': {
         borderRadius: vars.borderRadius['2x'],
         border: '1px solid black',
-        height: '100%',
         boxSizing: 'border-box',
+        height: '431px',
+        top: '50%',
+        transform: 'translate(-50%, -50%)',
+        backgroundColor: vars.colors.background,
       },
     },
   },
