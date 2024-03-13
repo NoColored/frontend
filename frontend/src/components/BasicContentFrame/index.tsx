@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-import * as style from './index.css.ts';
+import * as styles from './index.css.ts';
 
 import SettingIconButton from '@/components/SettingIconButton/index.tsx';
 import SettingNavigationButton from '@/components/SettingNavigationButton/index.tsx';
@@ -13,7 +13,7 @@ interface Props {
 const BasicContentFrame = ({ children, backButtonLabel }: Props) => {
   return (
     <>
-      <div className={style.iconButtons}>
+      <div className={styles.iconButtons}>
         <SettingIconButton
           src='src/assets/ui/icon/button/icon-button-information-h50w50.png'
           alt='info'
@@ -27,10 +27,10 @@ const BasicContentFrame = ({ children, backButtonLabel }: Props) => {
           alt='setting'
         />
       </div>
-      <div className={style.frame}>
-        <main className={style.main}>
+      <div className={styles.frame}>
+        <main className={styles.main}>
           {backButtonLabel && (
-            <div className={style.navigation}>
+            <div className={styles.navigation}>
               <SettingNavigationButton label={backButtonLabel} />
             </div>
           )}

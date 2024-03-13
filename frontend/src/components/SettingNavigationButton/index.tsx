@@ -1,4 +1,4 @@
-import * as style from './index.css.ts';
+import * as styles from './index.css.ts';
 
 interface Props {
   label: string;
@@ -7,7 +7,7 @@ interface Props {
 const SettingNavigationButton = ({ label }: Props) => {
   const text = `< ${label}`;
   return (
-    <button type='button' className={style.button}>
+    <button type='button' className={styles.button}>
       {text}
     </button>
   );
