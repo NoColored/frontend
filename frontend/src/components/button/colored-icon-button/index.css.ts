@@ -1,28 +1,61 @@
 import { style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
 
-import { sprinkles } from '@/styles/sprinkles.css.ts';
+import {
+  ICON_COLOR_VALUES,
+  ColorButtonColors,
+} from '@/components/button/ButtonTypes.ts';
 
-const coloredIconButtonBase = sprinkles({
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  flexDirection: 'column',
+import { flexOptions } from '@/styles/common.css.ts';
+import { sprinkles } from '@/styles/sprinkles.css.ts';
+import { vars } from '@/styles/vars.css.ts';
+
+const colorVariants: {
+  [colorItem in ColorButtonColors['color']]: ReturnType<typeof style>;
+} = {
+  red: '',
+  yellow: '',
+  green: '',
+  blue: '',
+  pink: '',
+  navy: '',
+};
+
+ICON_COLOR_VALUES.forEach((colorItem) => {
+  const darkColor = `${colorItem}Dark`;
+  colorVariants[colorItem] = style([
+    sprinkles({
+      backgroundColor: colorItem,
+      borderColor: darkColor as keyof typeof vars.colors,
+      borderWidth: '2x',
+    }),
+    {
+      ':active': {
+        backgroundColor: vars.colors[darkColor as keyof typeof vars.colors],
+      },
+    },
+  ]);
 });
 
-export const coloredIconButton = recipe({
-  base: coloredIconButtonBase,
+const baseStyle = style([
+  flexOptions({
+    option: 'columnCenter',
+  }),
+  sprinkles({
+    color: 'white',
+    fontFamily: 'textFont',
+    borderStyle: 'solid',
+    borderRadius: '2x',
+    borderWidth: '2x',
+  }),
+  {
+    transition: 'all 0.2s',
+  },
+]);
+
+export const coloredIconButtonStyle = recipe({
+  base: baseStyle,
   variants: {
-    color: {
-      red: sprinkles({ backgroundColor: 'red' }),
-      yellow: sprinkles({ backgroundColor: 'yellow' }),
-      green: sprinkles({ backgroundColor: 'green' }),
-      blue: sprinkles({ backgroundColor: 'blue' }),
-      pink: sprinkles({ backgroundColor: 'pink' }),
-      navy: sprinkles({ backgroundColor: 'navy' }),
-      gray: sprinkles({ backgroundColor: 'gray' }),
-    },
+    color: colorVariants,
   },
 });
-
-export const tempButton = style([sprinkles({ borderStyle: 'none' })]);
