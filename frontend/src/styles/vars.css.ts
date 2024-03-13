@@ -96,6 +96,7 @@ export const vars = createGlobalTheme(':root', {
     '1x': '1px',
     '2x': '2px',
     '3x': '3px',
+    '4x': '4px',
     '5x': '5px',
   },
 
