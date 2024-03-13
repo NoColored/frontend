@@ -1,6 +1,7 @@
 import ColoredIconButton from '@/components/button/colored-icon-button/index.tsx';
 // import Game from '@/components/Game.tsx';
 
+import ColoredButton from '@/components/button/coloredButton/index.tsx';
 import InputTextBox from '@/components/inputBox/inputTextBox/index.tsx';
 
 import groupIcon from '@/assets/ui/icon/button/icon-button-collection-h50w50.png';
@@ -10,6 +11,21 @@ const Example = () => {
   return (
     <div>
       <div>테스트버튼</div>
+      <ColoredButton color='red' size='small' text='Ready' onClick={() => {}} />
+      <div>테스트버튼</div>
+      <ColoredButton
+        color='navy'
+        size='medium'
+        text='Ready'
+        onClick={() => {}}
+      />
+      <div>테스트버튼</div>
+      <ColoredButton
+        color='gray300'
+        size='large'
+        text='Ready'
+        onClick={() => {}}
+      />
       <ColoredIconButton
         color='red'
         icon={testIcon}
