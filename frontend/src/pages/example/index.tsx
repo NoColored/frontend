@@ -1,4 +1,4 @@
-import ColoredButton from '@/components/button/coloredButton';
+import ColoredButton from '@/components/button/ColoredButton-Temp/index.tsx';
 import ColoredIconButton from '@/components/button/ColoredIconButton/index.tsx';
 // import Game from '@/components/Game.tsx';
 
