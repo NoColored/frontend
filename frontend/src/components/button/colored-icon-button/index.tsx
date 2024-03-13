@@ -5,7 +5,7 @@ interface ColoredIconButtonProps {
   text: string;
   color: string;
   size: 'medium' | 'large' | 'xlarge';
-  onClick?: () => void;
+  onClick: () => void;
 }
 
 const ColoredIconButton = ({

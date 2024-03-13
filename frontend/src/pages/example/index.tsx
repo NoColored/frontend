@@ -13,6 +13,7 @@ const Example = () => {
         icon={testIcon}
         size='large'
         text='READY'
+        onClick={() => {}}
       />
       <div>테스트버튼</div>
       <ColoredIconButton
@@ -20,6 +21,7 @@ const Example = () => {
         icon={testIcon}
         size='medium'
         text='미디엄임'
+        onClick={() => {}}
       />
       <div>테스트버튼</div>
       <ColoredIconButton
@@ -27,6 +29,7 @@ const Example = () => {
         icon={groupIcon}
         size='xlarge'
         text='엑스라지임'
+        onClick={() => {}}
       />
       {/* <Game /> */}
     </div>
