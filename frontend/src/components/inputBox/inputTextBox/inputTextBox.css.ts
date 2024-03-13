@@ -9,7 +9,7 @@ const inputTextBoxBase = style([
   sprinkles({
     fontFamily: 'textFont',
     borderRadius: '2x',
-    borderWidth: '5x',
+    borderWidth: '4x',
     borderColor: 'gray700',
     color: 'white',
   }),
