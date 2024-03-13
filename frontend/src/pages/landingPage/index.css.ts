@@ -16,19 +16,28 @@ export const landingBox = style([
   },
 ]);
 
-export const logoBox = style([flexOptions({ option: 'columnCenter' })]);
+export const logoBox = style([
+  flexOptions({ option: 'columnCenter' }),
+  { width: '100%', height: '90%' },
+]);
 
 export const buttonBox = style([
   flexOptions({ option: 'center' }),
   sprinkles({ justifyContent: 'spaceAround' }),
   {
-    width: '40%',
+    width: '55%',
   },
 ]);
 
-export const clickText = style({
-  fontSize: '16pt',
-  fontWeight: 'bold',
-  color: 'grey',
-  textShadow: '-2px 0 white, 0 2px white, 2px 0 white, 0 -2px white',
-});
+export const clickText = style([
+  sprinkles({
+    fontSize: '1x',
+    fontWeight: 'normal',
+    fontFamily: 'textFont',
+    color: 'gray300',
+    marginTop: '3x',
+  }),
+  {
+    textShadow: '-2px 0 white, 0 2px white, 2px 0 white, 0 -2px white',
+  },
+]);

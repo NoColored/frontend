@@ -1,3 +1,8 @@
+import { useNavigate } from 'react-router-dom';
+
+import BasicContentFrame from '@/components/BasicContentFrame';
+import ColoredButton from '@/components/button/coloredButton/index.tsx';
+
 import {
   buttonBox,
   clickText,
@@ -5,16 +10,30 @@ import {
 } from '@/pages/landingPage/index.css.ts';
 
 const LogoBox = () => {
+  const navigate = useNavigate();
   const landingLogo: string =
     '/public/images/landing-logo-whiteborder-h800w1280.png';
   return (
-    <div className={logoBox}>
-      <img src={landingLogo} alt='로고로고' style={{ width: '50%' }} />
-      <div className={buttonBox}>
-        비회원/회원 로그인 버튼 추가하기 - 공통 컴포넌트
+    <BasicContentFrame>
+      <div className={logoBox}>
+        <img src={landingLogo} alt='로고로고' style={{ width: '50%' }} />
+        <div className={buttonBox}>
+          <ColoredButton
+            text='GUEST'
+            color='gray300'
+            size='large'
+            onClick={() => navigate('/')}
+          />
+          <ColoredButton
+            text='LOG IN'
+            color='pink'
+            size='large'
+            onClick={() => navigate('/')}
+          />
+        </div>
+        <span className={clickText}>click to start!</span>
       </div>
-      <span className={clickText}>click to start!</span>
-    </div>
+    </BasicContentFrame>
   );
 };
 
