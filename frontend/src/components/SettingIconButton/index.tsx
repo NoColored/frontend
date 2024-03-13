@@ -1,4 +1,4 @@
-import * as style from './index.css.ts';
+import * as styles from './index.css.ts';
 
 interface Props {
   src: string;
@@ -7,8 +7,8 @@ interface Props {
 }
 const SettingIconButton = ({ src, alt }: Props) => {
   return (
-    <button type='button' className={style.button}>
-      <img src={src} alt={alt} className={style.img} />
+    <button type='button' className={styles.button}>
+      <img src={src} alt={alt} className={styles.img} />
     </button>
   );
 };

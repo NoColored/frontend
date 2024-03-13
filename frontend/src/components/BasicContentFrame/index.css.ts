@@ -2,6 +2,7 @@ import { style } from '@vanilla-extract/css';
 
 import { borderOptions } from '@/styles/common.css.ts';
 import { sprinkles } from '@/styles/sprinkles.css.ts';
+import { vars } from '@/styles/vars.css.ts';
 
 export const frame = style([
   sprinkles({
@@ -10,8 +11,12 @@ export const frame = style([
     size: 'full',
   }),
   {
+    overflow: 'hidden',
+
     '@media': {
       'screen and (min-width: 748px)': {
+        borderRadius: vars.borderRadius['2x'],
+        border: '1px solid black',
         width: '748px',
         height: '431px',
       },
@@ -41,17 +46,35 @@ export const iconButtons = style([
 export const main = style([
   borderOptions({ color: 'black', width: '1x' }),
   sprinkles({
+    position: 'relative',
     borderRadius: '2x',
     backgroundColor: 'background',
     padding: '4x',
     size: 'full',
   }),
   {
+    overflow: 'hidden',
+
     '@media': {
       'screen and (min-width: 748px)': {
+        overflow: 'visible',
         border: 'none',
         backgroundColor: 'none',
         padding: '0',
+      },
+    },
+  },
+]);
+
+export const navigation = style([
+  {
+    position: 'absolute',
+    top: '0',
+    left: '0',
+    '@media': {
+      'screen and (min-width: 748px)': {
+        top: '-16px',
+        left: '-16px',
       },
     },
   },
