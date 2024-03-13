@@ -22,7 +22,8 @@ const colorVariants: {
 };
 
 Object.values(ICON_COLORED_BUTTON_VALUES).forEach((colorItem) => {
-  const darkColor = ICON_COLORED_BUTTON_DARK_VALUES[colorItem];
+  const darkColor: ICON_COLORED_BUTTON_DARK_VALUES =
+    ICON_COLORED_BUTTON_DARK_VALUES[colorItem];
   colorVariants[colorItem] = style([
     sprinkles({
       backgroundColor: colorItem,
