@@ -90,6 +90,7 @@ export const vars = createGlobalTheme(':root', {
   borderRadius: {
     '1x': '4px',
     '2x': '8px',
+    '4x': '16px',
     full: '50%', // 원을 만들 때 사용
   },
   borderWidth: {

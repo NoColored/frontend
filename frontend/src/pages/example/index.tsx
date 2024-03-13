@@ -1,10 +1,12 @@
-import ColoredIconButton from '@/components/button/colored-icon-button/index.tsx';
+import ColoredIconButton from '@/components/button/ColoredIconButton/index.tsx';
 // import Game from '@/components/Game.tsx';
 
-import InputTextBox from '@/components/inputBox/inputTextBox/index.tsx';
+import InputTextBox from '@/components/InputTextBox/index.tsx';
+import ColoredTextBox from '@/components/textbox/ColoredTextBox/index.tsx';
 
 import groupIcon from '@/assets/ui/icon/button/icon-button-collection-h50w50.png';
 import testIcon from '@/assets/ui/icon/shape/icon-shape-white-big-player0-h48w48.png';
+import testIcon2 from '@/assets/ui/icon/shape/icon-shape-white-big-player3-h48w48.png';
 
 const Example = () => {
   return (
@@ -48,6 +50,10 @@ const Example = () => {
         size='large'
         onChange={(e) => console.log(e.target.value)}
       />
+      <div>텍스트 컴포넌트</div>
+      <ColoredTextBox text='READY' color='green' />
+      <ColoredTextBox icon={testIcon} text='방장' color='pink' />
+      <ColoredTextBox icon={testIcon2} text='아이콘입니다' color='black' />
       {/* <Game /> */}
     </div>
   );
