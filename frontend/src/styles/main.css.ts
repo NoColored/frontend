@@ -12,6 +12,10 @@ globalStyle('*', {
   fontFamily: vars.fontFamily.textFont,
 });
 
+globalStyle('button:hover', {
+  cursor: 'pointer',
+});
+
 globalStyle('html, body', {
   height: '100vh',
   width: '100vw',
