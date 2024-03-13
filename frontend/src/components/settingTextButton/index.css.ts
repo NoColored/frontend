@@ -73,6 +73,20 @@ export const buttonVariants = {
         color: 'black',
       }),
     ]),
+    realDark: style([
+      sprinkles({
+        backgroundColor: 'black',
+        color: 'white',
+      }),
+      {
+        ':hover': {
+          backgroundColor: 'gray',
+        },
+        ':active': {
+          backgroundColor: vars.colors.gray700,
+        },
+      },
+    ]),
   },
 };
 
