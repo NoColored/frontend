@@ -18,63 +18,65 @@ COLOR.forEach((colorItem) => {
   colorVariants[colorItem] = style([
     sprinkles({
       backgroundColor: colorItem,
-      borderColor: darkColor,
     }),
     {
+      boxShadow: `0 6px ${vars.colors[darkColor]}`,
       ':active': {
-        backgroundColor: vars.colors[darkColor as keyof typeof vars.colors],
+        transform: 'translateY(4px)',
+        boxShadow: `0 2px ${vars.colors[darkColor]}`,
       },
     },
   ]);
 });
 
 const sizeVariants = {
-  medium: style([
+  small: style([
     sprinkles({
-      fontSize: '1.5x',
+      fontSize: '1.25x',
+      padding: '2x',
     }),
     {
-      width: '163px',
-      height: '96px',
-      paddingTop: '4x',
+      width: '96px',
+      height: '36px',
+    },
+  ]),
+  medium: style([
+    sprinkles({
+      fontSize: '1.25x',
+      padding: '4x',
+    }),
+    {
+      width: '130px',
+      height: '44px',
     },
   ]),
   large: style([
     sprinkles({
       fontSize: '2x',
+      padding: '4x',
     }),
     {
-      width: '190px',
-      height: '96px',
-    },
-  ]),
-  xlarge: style([
-    sprinkles({
-      paddingTop: '2x',
-      fontSize: '2x',
-    }),
-    {
-      width: '292px',
-      height: '120px',
+      width: '192px',
+      height: '64px',
     },
   ]),
 };
 
-export const coloredIconButtonStyle = recipe({
+export const coloredButtonStyle = recipe({
   base: style([
     flexOptions({
       option: 'columnCenter',
     }),
     sprinkles({
+      borderRadius: '2x',
+      borderStyle: 'none',
       color: 'white',
       fontFamily: 'textFont',
-      borderStyle: 'solid',
-      borderRadius: '2x',
-      borderWidth: '4x',
-      paddingBottom: '2x',
+      position: 'relative',
     }),
     {
-      transition: 'all 0.2s',
+      lineHeight: '16px',
+      transition: 'transform 0.2s, box-shadow 0.2s',
     },
   ]),
   variants: {
@@ -82,21 +84,6 @@ export const coloredIconButtonStyle = recipe({
     size: sizeVariants,
   },
 });
-
-// 여기서부터 버튼 내부 스타일
-
-export const iconStyle = style([
-  flexOptions({
-    option: 'center',
-  }),
-  sprinkles({
-    position: 'relative',
-  }),
-  {
-    height: '40px',
-    width: '40px',
-  },
-]);
 
 export const textStyle = style([
   flexOptions({
