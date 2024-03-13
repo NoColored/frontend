@@ -1,8 +1,10 @@
 import * as styles from './index.css.ts';
 
+import BasicContentFrame from '@/components/BasicContentFrame/index.tsx';
+
 const Home = () => {
   return (
-    <div>
+    <BasicContentFrame backButtonLabel='뒤로'>
       <div>
         <div
           className={styles.fontStyle({ fontType: 'textFont', color: 'red' })}
@@ -31,7 +33,7 @@ const Home = () => {
           This is text with the Chonkly font. 0123456789
         </div>
       </div>
-    </div>
+    </BasicContentFrame>
   );
 };
 
