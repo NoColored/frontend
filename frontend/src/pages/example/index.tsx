@@ -1,3 +1,4 @@
+import ColoredButton from '@/components/button/coloredButton';
 import ColoredIconButton from '@/components/button/ColoredIconButton/index.tsx';
 // import Game from '@/components/Game.tsx';
 
@@ -12,6 +13,21 @@ const Example = () => {
   return (
     <div>
       <div>테스트버튼</div>
+      <ColoredButton color='red' size='small' text='Ready' onClick={() => {}} />
+      <div>테스트버튼</div>
+      <ColoredButton
+        color='navy'
+        size='medium'
+        text='Ready'
+        onClick={() => {}}
+      />
+      <div>테스트버튼</div>
+      <ColoredButton
+        color='gray300'
+        size='large'
+        text='Ready'
+        onClick={() => {}}
+      />
       <ColoredIconButton
         color='red'
         icon={testIcon}
