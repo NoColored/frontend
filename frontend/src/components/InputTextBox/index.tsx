@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { inputTextBox } from '@/components/inputBox/inputTextBox/inputTextBox.css.ts';
+import { inputTextBox } from '@/components/InputTextBox/index.css.ts';
 
 interface Props {
   placeholder: string;
