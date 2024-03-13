@@ -13,9 +13,9 @@ export const button = style([
   {
     borderBottom: '1px solid black',
     borderRight: '1px solid black',
+    borderTopLeftRadius: vars.borderRadius['2x'],
 
     ':hover': {
-      cursor: 'pointer',
       backgroundColor: vars.colors.gray100,
     },
 

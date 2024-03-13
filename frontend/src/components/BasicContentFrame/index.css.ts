@@ -1,80 +1,42 @@
 import { style } from '@vanilla-extract/css';
 
-import { borderOptions } from '@/styles/common.css.ts';
 import { sprinkles } from '@/styles/sprinkles.css.ts';
 import { vars } from '@/styles/vars.css.ts';
 
-export const frame = style([
+export const MAX_FRAME_HEIGHT = '431px';
+
+export const basicFrame = style([
   sprinkles({
-    padding: '4x',
-    position: 'relative',
-    size: 'full',
+    position: 'fixed',
   }),
   {
-    overflow: 'hidden',
+    left: '50%',
+    transform: 'translateX(-50%)',
 
     '@media': {
-      'screen and (min-width: 748px)': {
+      'screen and (min-height: 463px)': {
+        height: MAX_FRAME_HEIGHT,
+        aspectRatio: '33 / 19',
+        backgroundColor: vars.colors.background,
         borderRadius: vars.borderRadius['2x'],
         border: '1px solid black',
-        width: '748px',
-        height: '431px',
+        top: '50%',
+        transform: 'translate(-50%, -50%)',
       },
     },
   },
 ]);
 
-export const iconButtons = style([
-  sprinkles({
-    display: 'flex',
-    position: 'absolute',
-    zIndex: 'z-1',
-  }),
-  {
-    right: '24px',
-    top: '8px',
-
-    '@media': {
-      'screen and (min-width: 748px)': {
-        top: '-8px',
-        right: '8px',
-      },
-    },
-  },
-]);
-
-export const main = style([
-  borderOptions({ color: 'black', width: '1x' }),
-  sprinkles({
-    position: 'relative',
-    borderRadius: '2x',
-    backgroundColor: 'background',
-    padding: '4x',
-    size: 'full',
-  }),
+export const frame = style([
+  basicFrame,
   {
     overflow: 'hidden',
 
     '@media': {
-      'screen and (min-width: 748px)': {
-        overflow: 'visible',
-        border: 'none',
-        backgroundColor: 'none',
-        padding: '0',
-      },
-    },
-  },
-]);
-
-export const navigation = style([
-  {
-    position: 'absolute',
-    top: '0',
-    left: '0',
-    '@media': {
-      'screen and (min-width: 748px)': {
-        top: '-16px',
-        left: '-16px',
+      'screen and (max-height: 463px)': {
+        height: '100%',
+        width: '100%',
+        backgroundColor: 'black',
       },
     },
   },

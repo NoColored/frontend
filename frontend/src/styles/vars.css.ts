@@ -30,7 +30,7 @@ export const vars = createGlobalTheme(':root', {
   position: {
     relative: 'relative',
     absolute: 'absolute',
-    absoluteTop: 'absolute',
+    fixed: 'fixed',
   },
 
   justifyContent: {

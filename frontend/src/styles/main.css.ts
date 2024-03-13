@@ -1,5 +1,4 @@
 import { globalStyle } from '@vanilla-extract/css';
-import { calc } from '@vanilla-extract/css-utils';
 
 import { vars } from '@/styles/vars.css.ts';
 
@@ -12,37 +11,25 @@ globalStyle('*', {
   fontFamily: vars.fontFamily.textFont,
 });
 
-globalStyle('html, body', {
+globalStyle('button:hover', {
+  cursor: 'pointer',
+});
+
+globalStyle('html, body, #root', {
   height: '100vh',
   width: '100vw',
 });
 
 globalStyle('body', {
-  backgroundColor: 'black',
-  display: 'inline',
-
-  '@media': {
-    'screen and (min-width: 748px)': {
-      backgroundImage:
-        'url(images/background/background-white-large-h991w1922.webp)',
-    },
-  },
-});
-
-globalStyle('#root', {
-  position: 'relative',
-  width: '100%',
-  aspectRatio: '33 / 19',
-  display: 'block',
+  backgroundRepeat: 'no-repeat',
+  backgroundPosition: 'center',
   backgroundImage:
     'url(images/background/background-white-small-h450w873.webp)',
 
   '@media': {
-    'screen and (min-width: 748px)': {
-      width: '748px',
-      margin: `${calc('100vh').subtract('431px').divide(2).toString()} auto`,
-      backgroundImage: 'none',
-      backgroundColor: vars.colors.background,
+    'screen and (min-height: 463px)': {
+      backgroundImage:
+        'url(images/background/background-white-large-h991w1922.webp)',
     },
   },
 });
