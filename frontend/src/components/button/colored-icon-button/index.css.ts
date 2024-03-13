@@ -1,29 +1,20 @@
 import { style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
 
-import {
-  ICON_COLORED_BUTTON_VALUES,
-  ICON_COLORED_BUTTON_DARK_VALUES,
-} from '@/components/button/coloredButton-data.ts';
+import { COLOR, COLOR_DARK } from '@/components/button/coloredButton-data.ts';
 
 import { flexOptions } from '@/styles/common.css.ts';
 import { sprinkles } from '@/styles/sprinkles.css.ts';
 import { vars } from '@/styles/vars.css.ts';
 
 const colorVariants: {
-  [colorItem in ICON_COLORED_BUTTON_VALUES | string]: ReturnType<typeof style>;
+  [colorItem: string]: ReturnType<typeof style>;
 } = {
-  red: '',
-  yellow: '',
-  green: '',
-  blue: '',
-  pink: '',
-  navy: '',
+  '': style([]),
 };
 
-Object.values(ICON_COLORED_BUTTON_VALUES).forEach((colorItem) => {
-  const darkColor: ICON_COLORED_BUTTON_DARK_VALUES =
-    ICON_COLORED_BUTTON_DARK_VALUES[colorItem];
+COLOR.forEach((colorItem) => {
+  const darkColor: COLOR_DARK = COLOR_DARK[colorItem];
   colorVariants[colorItem] = style([
     sprinkles({
       backgroundColor: colorItem,
@@ -79,7 +70,7 @@ export const coloredIconButtonStyle = recipe({
       fontFamily: 'textFont',
       borderStyle: 'solid',
       borderRadius: '2x',
-      borderWidth: '3x',
+      borderWidth: '4x',
       paddingBottom: '2x',
     }),
     {

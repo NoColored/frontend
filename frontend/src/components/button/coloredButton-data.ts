@@ -1,17 +1,19 @@
-export enum ICON_COLORED_BUTTON_VALUES {
-  'red' = 'red',
-  'yellow' = 'yellow',
-  'green' = 'green',
-  'blue' = 'blue',
-  'pink' = 'pink',
-  'navy' = 'navy',
-}
+export const COLOR = [
+  'red',
+  'yellow',
+  'green',
+  'blue',
+  'pink',
+  'navy',
+  'gray300',
+] as const;
 
-export enum ICON_COLORED_BUTTON_DARK_VALUES {
+export enum COLOR_DARK {
   red = 'redDark',
   yellow = 'yellowDark',
   green = 'greenDark',
   blue = 'blueDark',
   pink = 'pinkDark',
   navy = 'navyDark',
+  gray300 = 'gray500',
 }
