@@ -6,7 +6,10 @@ import { vars } from '@/styles/vars.css.ts';
 globalStyle('*', {
   margin: 0,
   padding: 0,
+  border: 0,
   boxSizing: 'border-box',
+  lineHeight: '16px',
+  fontFamily: vars.fontFamily.textFont,
 });
 
 globalStyle('html, body', {
@@ -27,6 +30,7 @@ globalStyle('body', {
 });
 
 globalStyle('#root', {
+  position: 'relative',
   width: '100%',
   aspectRatio: '33 / 19',
   display: 'block',
@@ -36,8 +40,6 @@ globalStyle('#root', {
   '@media': {
     'screen and (min-width: 748px)': {
       width: '748px',
-      border: '1px solid black',
-      borderRadius: '8px',
       margin: `${calc('100vh').subtract('431px').divide(2).toString()} auto`,
       backgroundImage: 'none',
       backgroundColor: vars.colors.background,
