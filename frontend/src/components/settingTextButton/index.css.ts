@@ -3,6 +3,7 @@ import { recipe } from '@vanilla-extract/recipes';
 
 import { borderOptions } from '@/styles/common.css.ts';
 import { sprinkles } from '@/styles/sprinkles.css.ts';
+import { vars } from '@/styles/vars.css.ts';
 
 export const button = style([
   borderOptions({ color: 'black', width: '2x' }),
@@ -11,6 +12,16 @@ export const button = style([
     backgroundColor: 'white',
     fontFamily: 'textFont',
   }),
+  {
+    ':hover': {
+      cursor: 'pointer',
+      backgroundColor: vars.colors.gray100,
+    },
+
+    ':active': {
+      backgroundColor: vars.colors.gray200,
+    },
+  },
 ]);
 
 export const buttonVariants = {
@@ -42,13 +53,6 @@ export const buttonVariants = {
         borderColor: 'black',
         backgroundColor: 'white',
         color: 'black',
-      }),
-    ]),
-    navy: style([
-      sprinkles({
-        borderColor: 'navyDark',
-        backgroundColor: 'navy',
-        color: 'white',
       }),
     ]),
     gray: style([
