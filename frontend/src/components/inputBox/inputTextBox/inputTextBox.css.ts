@@ -1,7 +1,6 @@
 import { style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
 
-import { flexOptions } from '@/styles/common.css.ts';
 import { sprinkles } from '@/styles/sprinkles.css.ts';
 import { vars } from '@/styles/vars.css.ts';
 
@@ -65,15 +64,3 @@ export const inputTextBox = recipe({
   base: inputTextBoxBase,
   variants: inputTextBoxVariants,
 });
-
-// <div className={inputTextBoxWrapper}>
-export const inputTextBoxWrapper = style([
-  flexOptions({ option: 'center' }),
-  sprinkles({
-    flexDirection: 'column',
-  }),
-  {
-    padding: '3x',
-    gap: '5px',
-  },
-]);
