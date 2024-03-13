@@ -20,7 +20,6 @@ export const button = style([
     height: `${BUTTON_SIZE}`,
 
     ':hover': {
-      cursor: 'pointer',
       backgroundColor: vars.colors.gray100,
     },
 
