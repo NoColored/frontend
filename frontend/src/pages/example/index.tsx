@@ -2,8 +2,8 @@ import ColoredButton from '@/components/button/coloredButton';
 import ColoredIconButton from '@/components/button/ColoredIconButton/index.tsx';
 // import Game from '@/components/Game.tsx';
 
-import InputTextBox from '@/components/InputTextBox';
-import ColoredTextBox from '@/components/textbox/ColoredTextBox';
+import InputTextBox from '@/components/InputTextBox/index.tsx';
+import ColoredTextBox from '@/components/textbox/ColoredTextBox/index.tsx';
 
 import groupIcon from '@/assets/ui/icon/button/icon-button-collection-h50w50.png';
 import testIcon from '@/assets/ui/icon/shape/icon-shape-white-big-player0-h48w48.png';

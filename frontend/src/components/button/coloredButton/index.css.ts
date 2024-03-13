@@ -72,13 +72,11 @@ export const coloredButtonStyle = recipe({
       borderStyle: 'none',
       color: 'white',
       fontFamily: 'textFont',
+      position: 'relative',
     }),
     {
-      textAlign: 'center',
-      position: 'relative',
-      transition: 'transform 0.2s, box-shadow 0.2s',
-      cursor: 'pointer',
       lineHeight: '16px',
+      transition: 'transform 0.2s, box-shadow 0.2s',
     },
   ]),
   variants: {
