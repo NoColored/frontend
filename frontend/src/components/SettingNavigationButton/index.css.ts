@@ -13,6 +13,7 @@ export const button = style([
   {
     borderBottom: '1px solid black',
     borderRight: '1px solid black',
+    borderTopLeftRadius: vars.borderRadius['2x'],
 
     ':hover': {
       backgroundColor: vars.colors.gray100,

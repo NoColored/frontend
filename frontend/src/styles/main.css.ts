@@ -3,6 +3,9 @@ import { calc } from '@vanilla-extract/css-utils';
 
 import { vars } from '@/styles/vars.css.ts';
 
+const HEIGHT = '431px';
+const WIDTH = '748px';
+
 globalStyle('*', {
   margin: 0,
   padding: 0,
@@ -22,11 +25,14 @@ globalStyle('html, body', {
 });
 
 globalStyle('body', {
-  backgroundColor: 'black',
+  backgroundRepeat: 'no-repeat',
+  backgroundPosition: 'center',
+  backgroundImage:
+    'url(images/background/background-white-small-h450w873.webp)',
   display: 'inline',
 
   '@media': {
-    'screen and (min-width: 748px)': {
+    'screen and (min-height: 463px)': {
       backgroundImage:
         'url(images/background/background-white-large-h991w1922.webp)',
     },
@@ -36,16 +42,14 @@ globalStyle('body', {
 globalStyle('#root', {
   position: 'relative',
   width: '100%',
-  aspectRatio: '33 / 19',
-  display: 'block',
-  backgroundImage:
-    'url(images/background/background-white-small-h450w873.webp)',
+  height: '100%',
 
   '@media': {
-    'screen and (min-width: 748px)': {
-      width: '748px',
-      margin: `${calc('100vh').subtract('431px').divide(2).toString()} auto`,
-      backgroundImage: 'none',
+    'screen and (min-height: 463px)': {
+      width: WIDTH,
+      height: HEIGHT,
+      padding: 0,
+      margin: `${calc('100vh').subtract(HEIGHT).divide(2).toString()} auto`,
       backgroundColor: vars.colors.background,
     },
   },

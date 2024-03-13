@@ -1,4 +1,5 @@
 import { style } from '@vanilla-extract/css';
+import { calc } from '@vanilla-extract/css-utils';
 
 import { borderOptions } from '@/styles/common.css.ts';
 import { sprinkles } from '@/styles/sprinkles.css.ts';
@@ -8,17 +9,19 @@ export const frame = style([
   sprinkles({
     padding: '4x',
     position: 'relative',
-    size: 'full',
   }),
   {
-    overflow: 'hidden',
+    height: `${calc('100%').subtract('32px')}`,
+    aspectRatio: '33 /19',
+    boxSizing: 'content-box',
+    margin: '0 auto',
 
     '@media': {
-      'screen and (min-width: 748px)': {
+      'screen and (min-height: 463px)': {
         borderRadius: vars.borderRadius['2x'],
         border: '1px solid black',
-        width: '748px',
-        height: '431px',
+        height: '100%',
+        boxSizing: 'border-box',
       },
     },
   },
@@ -35,7 +38,7 @@ export const iconButtons = style([
     top: '8px',
 
     '@media': {
-      'screen and (min-width: 748px)': {
+      'screen and (min-height: 463px)': {
         top: '-8px',
         right: '8px',
       },
@@ -53,13 +56,13 @@ export const main = style([
     size: 'full',
   }),
   {
-    overflow: 'hidden',
+    height: '100%',
+    aspectRatio: '33 / 19',
 
     '@media': {
-      'screen and (min-width: 748px)': {
-        overflow: 'visible',
+      'screen and (min-height: 463px)': {
         border: 'none',
-        backgroundColor: 'none',
+        backgroundColor: 'transparent',
         padding: '0',
       },
     },
@@ -72,7 +75,7 @@ export const navigation = style([
     top: '0',
     left: '0',
     '@media': {
-      'screen and (min-width: 748px)': {
+      'screen and (min-height: 463px)': {
         top: '-16px',
         left: '-16px',
       },

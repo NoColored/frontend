@@ -12,7 +12,7 @@ interface Props {
 
 const BasicContentFrame = ({ children, backButtonLabel }: Props) => {
   return (
-    <>
+    <div className={styles.frame}>
       <div className={styles.iconButtons}>
         <SettingIconButton
           src='src/assets/ui/icon/button/icon-button-information-h50w50.png'
@@ -27,17 +27,15 @@ const BasicContentFrame = ({ children, backButtonLabel }: Props) => {
           alt='setting'
         />
       </div>
-      <div className={styles.frame}>
-        <main className={styles.main}>
-          {backButtonLabel && (
-            <div className={styles.navigation}>
-              <SettingNavigationButton label={backButtonLabel} />
-            </div>
-          )}
-          {children}
-        </main>
-      </div>
-    </>
+      <main className={styles.main}>
+        {backButtonLabel && (
+          <div className={styles.navigation}>
+            <SettingNavigationButton label={backButtonLabel} />
+          </div>
+        )}
+        {children}
+      </main>
+    </div>
   );
 };
 
