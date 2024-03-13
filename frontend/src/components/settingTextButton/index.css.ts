@@ -14,7 +14,6 @@ export const button = style([
   }),
   {
     ':hover': {
-      cursor: 'pointer',
       backgroundColor: vars.colors.gray100,
     },
 

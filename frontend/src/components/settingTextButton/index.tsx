@@ -5,7 +5,7 @@ import { settingButton } from './index.css.ts';
 
 interface Props {
   children: ReactNode;
-  onClick?: () => void;
+  onClick: () => void;
 }
 
 const SettingTextButton = ({
