@@ -1,11 +1,10 @@
 import * as styles from './index.css.ts';
 
-import { ColorButtonColors } from '@/components/button/ButtonTypes.ts';
-
 interface ColoredIconButtonProps {
   icon: string;
   text: string;
-  color: ColorButtonColors['color'];
+  color: string;
+  size: 'medium' | 'large' | 'xlarge';
   onClick?: () => void;
 }
 
@@ -13,16 +12,17 @@ const ColoredIconButton = ({
   text,
   icon,
   color,
+  size,
   onClick,
 }: ColoredIconButtonProps) => {
   return (
     <button
       type='button'
-      className={styles.coloredIconButtonStyle({ color })}
+      className={styles.coloredIconButtonStyle({ color, size })}
       onClick={onClick}
     >
-      <img src={icon} alt={text} />
-      {text}
+      <img className={styles.iconStyle} src={icon} alt={text} />
+      <span className={styles.textStyle}>{text}</span>
     </button>
   );
 };
