@@ -1,5 +1,4 @@
-import * as styles from './index.css.ts';
-import { ImageBoxVariantsProps, settingBox } from './index.css.ts';
+import { image, ImageBoxVariantsProps, settingBox } from './index.css.ts';
 
 interface Props {
   src: string;
@@ -12,10 +11,18 @@ const RoundCornerImageBox = ({
   size,
   colorStyle,
   borderLine,
+  backgroundStyle,
 }: Props & ImageBoxVariantsProps) => {
   return (
-    <div className={settingBox({ size, colorStyle, borderLine })}>
-      <img src={src} alt={alt} className={styles.img} />
+    <div
+      className={settingBox({
+        size,
+        colorStyle,
+        borderLine,
+        backgroundStyle,
+      })}
+    >
+      <img src={src} alt={alt} className={image} />
     </div>
   );
 };

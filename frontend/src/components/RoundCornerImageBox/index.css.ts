@@ -1,14 +1,17 @@
 import { style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
 
-import { borderOptions } from '@/styles/common.css.ts';
+import { borderOptions, flexOptions } from '@/styles/common.css.ts';
 import { sprinkles } from '@/styles/sprinkles.css.ts';
 
 export const imageBox = style([
-  borderOptions({ width: '2x' }),
+  flexOptions({ option: 'center' }),
   sprinkles({
     borderRadius: '2x',
   }),
+  {
+    overflow: 'hidden',
+  },
 ]);
 
 const imageBoxVariants = {
@@ -30,8 +33,12 @@ const imageBoxVariants = {
     green: style([sprinkles({ borderColor: 'green' })]),
   },
   borderLine: {
-    none: style({ borderStyle: 'none' }),
-    display: style({ borderStyle: 'solid' }),
+    none: { borderStyle: 'none' },
+    display: { borderStyle: 'solid' },
+  },
+  backgroundStyle: {
+    none: { backgroundColor: 'none' },
+    white: { backgroundColor: 'white' },
   },
 };
 
@@ -44,9 +51,14 @@ export interface ImageBoxVariantsProps {
   size: keyof typeof imageBoxVariants.size;
   colorStyle: keyof typeof imageBoxVariants.colorStyle;
   borderLine: keyof typeof imageBoxVariants.borderLine;
+  backgroundStyle: keyof typeof imageBoxVariants.backgroundStyle;
 }
 
-export const img = style({
-  objectFit: 'contain',
-  width: '96px',
-});
+export const image = style([
+  {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+    objectPosition: 'center',
+  },
+]);
