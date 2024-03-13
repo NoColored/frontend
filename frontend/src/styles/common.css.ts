@@ -18,6 +18,11 @@ export const flexOptions = recipe({
       column: sprinkles({
         flexDirection: 'column',
       }),
+      columnCenter: sprinkles({
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }),
       // row 정렬
       row: sprinkles({
         flexDirection: 'row',
