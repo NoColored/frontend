@@ -33,9 +33,6 @@ const imageBoxVariants = {
     none: style({ borderStyle: 'none' }),
     display: style({ borderStyle: 'solid' }),
   },
-  backgrounds: {
-    white: style([sprinkles({ backgroundColor: 'white' })]),
-  },
 };
 
 export const settingBox = recipe({
@@ -51,5 +48,5 @@ export interface ImageBoxVariantsProps {
 
 export const img = style({
   objectFit: 'contain',
-  height: '96px',
+  width: '96px',
 });
