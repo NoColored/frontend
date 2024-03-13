@@ -1,62 +1,83 @@
 import { style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
 
-import { textFont } from '@/styles/font.css.ts';
-import { vars } from '@/styles/vars.css.ts';
+import { borderOptions } from '@/styles/common.css.ts';
+import { sprinkles } from '@/styles/sprinkles.css.ts';
 
-const settingButtonBase = style({
-  boxSizing: 'border-box',
-  backgroundColor: 'white',
-  border: '2.5px solid black',
-  fontFamily: textFont,
-  fontWeight: vars.fontWeight.normal,
-  borderRadius: vars.borderRadius['2x'],
-  height: 48,
-  margin: 'auto',
-  textDecorationLine: 'none',
-});
+export const button = style([
+  borderOptions({ color: 'black', width: '2x' }),
+  sprinkles({
+    borderRadius: '2x',
+    backgroundColor: 'white',
+    fontFamily: 'textFont',
+  }),
+]);
 
-const settingButtonVariants = {
+export const buttonVariants = {
   size: {
-    small: {
-      fontSize: '16px',
-      height: '24px',
-      width: '60px',
-      margin: '5px',
-    },
-    large: {
-      fontSize: '28px',
-      height: '48px',
-      width: '250px',
-      margin: '10px',
-    },
+    small: style([
+      sprinkles({
+        fontSize: '1x',
+        margin: '1x',
+      }),
+      {
+        height: '28px',
+        width: '60px',
+      },
+    ]),
+    large: style([
+      sprinkles({
+        fontSize: '1.5x',
+        margin: '3x',
+      }),
+      {
+        height: '48px',
+        width: '250px',
+      },
+    ]),
   },
   colorStyle: {
-    black: { color: vars.colors.black },
-    navy: { color: vars.colors.white },
-    red: { borderColor: vars.colors.red, color: vars.colors.red },
-    gray: { borderColor: vars.colors.gray300, color: vars.colors.gray300 },
-  },
-  fill: {
-    white: {
-      backgroundColor: vars.colors.white,
-    },
-    gray: {
-      backgroundColor: vars.colors.gray,
-    },
-    navy: {
-      backgroundColor: vars.colors.navy,
-    },
+    black: style([
+      sprinkles({
+        borderColor: 'black',
+        backgroundColor: 'white',
+        color: 'black',
+      }),
+    ]),
+    navy: style([
+      sprinkles({
+        borderColor: 'navyDark',
+        backgroundColor: 'navy',
+        color: 'white',
+      }),
+    ]),
+    gray: style([
+      sprinkles({
+        borderColor: 'gray300',
+        color: 'gray300',
+      }),
+    ]),
+    red: style([
+      sprinkles({
+        borderColor: 'red',
+        color: 'red',
+      }),
+    ]),
+    dark: style([
+      sprinkles({
+        borderColor: 'black',
+        backgroundColor: 'gray',
+        color: 'black',
+      }),
+    ]),
   },
 };
 
 export const settingButton = recipe({
-  base: settingButtonBase,
-  variants: settingButtonVariants,
+  base: button,
+  variants: buttonVariants,
 });
-
-export interface SettingButtonVariantsProps {
-  size: keyof typeof settingButtonVariants.size;
-  colorStyle: keyof typeof settingButtonVariants.colorStyle;
-  fill: keyof typeof settingButtonVariants.fill;
+export interface ButtonVariantsProps {
+  size: keyof typeof buttonVariants.size;
+  colorStyle: keyof typeof buttonVariants.colorStyle;
 }
