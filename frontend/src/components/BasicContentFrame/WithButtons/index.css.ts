@@ -1,32 +1,25 @@
 import { style } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
 
+import * as styles from '@/components/BasicContentFrame/index.css.ts';
+
 import { borderOptions } from '@/styles/common.css.ts';
 import { sprinkles } from '@/styles/sprinkles.css.ts';
-import { vars } from '@/styles/vars.css.ts';
 
 export const frame = style([
+  styles.basicFrame,
   sprinkles({
     padding: '4x',
-    position: 'fixed',
   }),
   {
     height: `${calc('100%').subtract('32px')}`,
     aspectRatio: '33 / 19',
     boxSizing: 'content-box',
-    margin: '0 auto',
-    left: '50%',
-    transform: 'translateX(-50%)',
 
     '@media': {
       'screen and (min-height: 463px)': {
-        borderRadius: vars.borderRadius['2x'],
-        border: '1px solid black',
         boxSizing: 'border-box',
-        height: '431px',
-        top: '50%',
-        transform: 'translate(-50%, -50%)',
-        backgroundColor: vars.colors.background,
+        height: styles.MAX_FRAME_HEIGHT,
       },
     },
   },
