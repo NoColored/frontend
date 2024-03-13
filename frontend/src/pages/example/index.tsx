@@ -1,12 +1,37 @@
-import * as styles from './index.css.ts';
+import ColoredIconButton from '@/components/button/colored-icon-button/index.tsx';
+// import Game from '@/components/Game.tsx';
 
-import Game from '@/components/Game.tsx';
+import groupIcon from '@/assets/ui/icon/button/icon-button-collection-h50w50.png';
+import testIcon from '@/assets/ui/icon/shape/icon-shape-white-big-player0-h48w48.png';
 
 const Example = () => {
   return (
     <div>
-      <div className={styles.testForRecipe}>howToUseRecipe</div>
-      <Game />
+      <div>테스트버튼</div>
+      <ColoredIconButton
+        color='red'
+        icon={testIcon}
+        size='large'
+        text='READY'
+        onClick={() => {}}
+      />
+      <div>테스트버튼</div>
+      <ColoredIconButton
+        color='pink'
+        icon={testIcon}
+        size='medium'
+        text='미디엄임'
+        onClick={() => {}}
+      />
+      <div>테스트버튼</div>
+      <ColoredIconButton
+        color='navy'
+        icon={groupIcon}
+        size='xlarge'
+        text='엑스라지임'
+        onClick={() => {}}
+      />
+      {/* <Game /> */}
     </div>
   );
 };
