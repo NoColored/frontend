@@ -7,12 +7,13 @@ export const landingBox = style([
   flexOptions({ option: 'center' }),
   sprinkles({ borderRadius: '1x' }),
   {
-    width: '100%',
+    // width: '100%',
     height: '100%',
     margin: 'auto',
     backgroundImage:
       'url(/public/images/landing-background-animation-h490w950.gif)',
     backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
   },
 ]);
 
