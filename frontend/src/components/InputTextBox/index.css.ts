@@ -1,15 +1,13 @@
 import { style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
 
+import { borderOptions } from '@/styles/common.css.ts';
 import { sprinkles } from '@/styles/sprinkles.css.ts';
 import { vars } from '@/styles/vars.css.ts';
 
 const inputTextBoxBase = style([
   sprinkles({
-    fontFamily: 'textFont',
     borderRadius: '2x',
-    borderWidth: '4x',
-    borderColor: 'gray700',
     color: 'white',
   }),
   {
@@ -23,28 +21,31 @@ const inputTextBoxBase = style([
 const inputTextBoxVariants = {
   size: {
     small: style([
+      borderOptions({ color: 'gray500', width: '3x' }),
       sprinkles({
         fontSize: '1x',
+        backgroundColor: 'gray500',
       }),
       {
         textAlign: 'center',
         width: '360px',
         height: '40px',
-        backgroundColor: 'gray',
       },
     ]),
     medium: style([
+      borderOptions({ color: 'gray300', width: '3x' }),
       sprinkles({
         fontSize: '1.5x',
         paddingX: '4x',
+        backgroundColor: 'gray300',
       }),
       {
         width: '400px',
         height: '48px',
-        backgroundColor: 'gray',
       },
     ]),
     large: style([
+      borderOptions({ color: 'navy', width: '5x' }),
       sprinkles({
         fontSize: '2x',
         paddingX: '4x',
@@ -54,7 +55,6 @@ const inputTextBoxVariants = {
       {
         width: '400px',
         height: '64px',
-        border: 'none',
       },
     ]),
   },
