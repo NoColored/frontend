@@ -20,7 +20,7 @@ const LabeledTextBox = ({
       </div>
       <div
         className={styles.textStyle({
-          textPosition: 'title',
+          textPosition: 'content',
           color: contentColor,
         })}
       >

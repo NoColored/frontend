@@ -32,7 +32,7 @@ export const textStyle = recipe({
       label: sprinkles({
         fontSize: '0.5x',
       }),
-      title: sprinkles({
+      content: sprinkles({
         fontSize: '1x',
       }),
     },
