@@ -1,7 +1,7 @@
 import { style } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
 
-import * as data from '@/components/BasicContentFrame/frame-data.ts';
+import * as constants from '@/components/BasicContentFrame/constants.ts';
 import { basicFrame } from '@/components/BasicContentFrame/index.css.ts';
 
 import { borderOptions } from '@/styles/common.css.ts';
@@ -13,7 +13,7 @@ export const frame = style([
     padding: '4x',
   }),
   {
-    minHeight: data.MIN_FRAME_HEIGHT_WITH_PADDING,
+    minHeight: constants.MIN_FRAME_HEIGHT_WITH_PADDING,
     height: `${calc('100%').subtract('32px')}`,
     aspectRatio: '33 / 19',
     boxSizing: 'content-box',
@@ -21,7 +21,7 @@ export const frame = style([
     '@media': {
       'screen and (min-height: 463px)': {
         boxSizing: 'border-box',
-        height: data.MAX_FRAME_HEIGHT,
+        height: constants.MAX_FRAME_HEIGHT,
       },
     },
   },
