@@ -1,1 +1,1 @@
-export const textboxColor = ['white'] as const;
+export const TEXTBOX_COLOR = ['white'] as const;
