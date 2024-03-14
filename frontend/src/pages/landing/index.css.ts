@@ -22,7 +22,19 @@ export const logoBox = style([
   { width: '100%', height: '90%' },
 ]);
 
-export const buttonBox = style([flexOptions({ option: 'row' })]);
+export const loginBox = style([
+  flexOptions({ option: 'columnCenter' }),
+  { width: '100%', height: '90%' },
+]);
+
+export const inputBox = style([flexOptions({ option: 'columnCenter' })]);
+
+export const buttonBox = style([
+  flexOptions({ option: 'row' }),
+  sprinkles({
+    marginY: '2x',
+  }),
+]);
 
 export const clickText = style([
   sprinkles({
