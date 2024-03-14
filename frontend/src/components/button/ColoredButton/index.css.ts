@@ -1,7 +1,10 @@
 import { style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
 
-import { COLOR, COLOR_DARK } from '@/components/button/constants.ts';
+import {
+  COLOREDICONBUTTON_COLOR,
+  COLOREDICONBUTTON_COLOR_DARK,
+} from '@/components/button/constants.ts';
 
 import { flexOptions } from '@/styles/common.css.ts';
 import { sprinkles } from '@/styles/sprinkles.css.ts';
@@ -13,8 +16,9 @@ const colorVariants: {
   '': style([]),
 };
 
-COLOR.forEach((colorItem) => {
-  const darkColor: COLOR_DARK = COLOR_DARK[colorItem];
+COLOREDICONBUTTON_COLOR.forEach((colorItem) => {
+  const darkColor: COLOREDICONBUTTON_COLOR_DARK =
+    COLOREDICONBUTTON_COLOR_DARK[colorItem];
   colorVariants[colorItem] = style([
     sprinkles({
       backgroundColor: colorItem,
