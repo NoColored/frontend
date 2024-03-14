@@ -28,7 +28,7 @@ const BLINK_EFFECT = keyframes({
   '50%': { opacity: 0 },
 });
 
-export const clickText = style([
+export const clickMessage = style([
   sprinkles({
     fontSize: '1x',
     fontWeight: 'accent',
@@ -46,4 +46,20 @@ export const logoImage = style([
   {
     height: constants.LOGOIMAGE_HEIGHT,
   },
+]);
+
+export const logInFailMessageWrapper = style([
+  sprinkles({
+    marginY: '8x',
+  }),
+  {
+    textAlign: 'center',
+  },
+]);
+
+export const logInFailMessage = style([
+  sprinkles({
+    fontSize: '1.5x',
+    marginY: '2x',
+  }),
 ]);
