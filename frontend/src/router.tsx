@@ -2,7 +2,7 @@ import { createBrowserRouter } from 'react-router-dom';
 
 import Example from '@/pages/example/index.tsx';
 import Home from '@/pages/home/index.tsx';
-import LandingPage from '@/pages/landingPage/index.tsx';
+import LandingPage from '@/pages/LandingPage/index.tsx';
 
 const router = createBrowserRouter([
   {

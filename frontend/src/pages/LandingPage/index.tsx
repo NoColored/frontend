@@ -1,7 +1,7 @@
 import BasicContentFrame from '@/components/BasicContentFrame/index.tsx';
 
-import { landingBox } from '@/pages/landingPage/index.css.ts';
-import LogoBox from '@/pages/landingPage/logoBox.tsx';
+import { landingBox } from '@/pages/LandingPage/index.css.ts';
+import LogoBox from '@/pages/LandingPage/logoBox.tsx';
 
 const LandingPage = () => {
   return (

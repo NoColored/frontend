@@ -6,7 +6,7 @@ import {
   buttonBox,
   clickText,
   logoBox,
-} from '@/pages/landingPage/index.css.ts';
+} from '@/pages/LandingPage/index.css.ts';
 
 const LogoBox = () => {
   const navigate = useNavigate();
