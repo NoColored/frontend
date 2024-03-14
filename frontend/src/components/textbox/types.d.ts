@@ -1,8 +1,14 @@
-import { textboxColor } from './constants.ts';
+import * as constants from './constants.ts';
 
-interface labeledtextboxProps {
-  titleColor?: (typeof textboxColor)[number];
-  labelColor?: (typeof textboxColor)[number];
+export interface labeledtextboxProps {
+  titleColor?: (typeof constants.TEXTBOX_COLOR)[number];
+  labelColor?: (typeof constants.TEXTBOX_COLOR)[number];
   titleText: string;
   labelText: string;
+}
+
+export interface coloredTextBoxProps {
+  color: (typeof constants.BACKGROUND_COLOR)[number];
+  text: string;
+  icon?: string;
 }
