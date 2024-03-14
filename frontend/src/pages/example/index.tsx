@@ -7,14 +7,14 @@ import ColoredTextBox from '@/components/textbox/ColoredTextBox/index.tsx';
 import LabeledTextBox from '@/components/textbox/LabeledTextBox/index.tsx';
 import type {
   ColoredTextBoxProps,
-  LabeledtextboxProps,
+  LabeledTextboxProps,
 } from '@/components/textbox/types';
 
 import groupIcon from '@/assets/ui/icon/button/icon-button-collection-h50w50.png';
 import testIcon from '@/assets/ui/icon/shape/icon-shape-white-big-player0-h48w48.png';
 
 const Example = () => {
-  const labeledTextExampleProps: LabeledtextboxProps = {
+  const labeledTextExampleProps: LabeledTextboxProps = {
     labelColor: 'white',
     titleText: '닉네임입니다아마두요',
     labelText: '칭호입니다. 아마도요',
