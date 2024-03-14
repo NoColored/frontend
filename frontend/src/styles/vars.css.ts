@@ -10,6 +10,7 @@ import {
 export const vars = createGlobalTheme(':root', {
   size: {
     full: '100%',
+    auto: 'auto',
   },
 
   /* paddings, margins 대신 space 사용 */

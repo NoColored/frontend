@@ -1,13 +1,13 @@
 import * as styles from './index.css.ts';
 
-import type { LabeledtextboxProps } from '@/components/textbox/types.d.ts';
+import type { LabeledTextboxProps } from '@/components/textbox/types.d.ts';
 
 const LabeledTextBox = ({
   labelColor,
   titleColor,
   labelText,
   titleText,
-}: LabeledtextboxProps) => {
+}: LabeledTextboxProps) => {
   return (
     <div>
       <div
