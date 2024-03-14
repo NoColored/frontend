@@ -1,7 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
 
 import Example from '@/pages/example/index.tsx';
-import LandingPage from '@/pages/landing/index.tsx';
+import Landing from '@/pages/landing/index.tsx';
 import LandingLayout from '@/pages/landing/layout.tsx';
 
 const router = createBrowserRouter([
@@ -11,7 +11,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <LandingPage />,
+        element: <Landing />,
       },
     ],
   },

@@ -1,33 +1,30 @@
-import { useNavigate } from 'react-router-dom';
+import * as styles from './index.css.ts';
 
 import ColoredButton from '@/components/button/ColoredButton/index.tsx';
 
-import { buttonBox, clickText, logoBox } from '@/pages/landing/index.css.ts';
-
-const LandingPage = () => {
-  const navigate = useNavigate();
+const Landing = () => {
   const landingLogo: string =
     '/public/images/landing-logo-whiteborder-h800w1280.png';
   return (
-    <div className={logoBox}>
+    <div className={styles.logoBox}>
       <img src={landingLogo} alt='로고로고' style={{ width: '50%' }} />
-      <div className={buttonBox}>
+      <div className={styles.buttonBox}>
         <ColoredButton
           text='GUEST'
           color='gray300'
           size='large'
-          onClick={() => navigate('/')}
+          onClick={() => {}}
         />
         <ColoredButton
           text='LOG IN'
           color='pink'
           size='large'
-          onClick={() => navigate('/')}
+          onClick={() => {}}
         />
       </div>
-      <span className={clickText}>click to start!</span>
+      <span className={styles.clickText}>click to start!</span>
     </div>
   );
 };
 
-export default LandingPage;
+export default Landing;
