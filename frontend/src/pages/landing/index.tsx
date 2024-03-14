@@ -14,8 +14,12 @@ const Landing = () => {
   const landingLogo: string =
     '/public/images/landing-logo-whiteborder-h800w1280.png';
   return (
-    <div className={styles.contentBox}>
-      <img className={styles.logoImage} src={landingLogo} alt='로고로고' />
+    <div className={styles.contentWrapper}>
+      <img
+        className={styles.logoImage}
+        src={landingLogo}
+        alt='NoColored Logo'
+      />
       <div className={styles.buttonBox}>
         <ColoredButton
           text='GUEST'
