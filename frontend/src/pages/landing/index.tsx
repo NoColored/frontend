@@ -20,7 +20,7 @@ const Landing = () => {
         src={landingLogo}
         alt='NoColored Logo'
       />
-      <div className={styles.buttonBox}>
+      <div className={styles.buttonWrapper}>
         <ColoredButton
           text='GUEST'
           color='gray300'

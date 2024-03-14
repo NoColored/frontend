@@ -1,6 +1,6 @@
-import { style } from '@vanilla-extract/css';
+import { keyframes, style } from '@vanilla-extract/css';
 
-import { BLINK_EFFECT } from '@/components/textbox/constants.ts';
+import * as constants from '@/pages/landing/constants.ts';
 
 import { flexOptions } from '@/styles/common.css.ts';
 import { sprinkles } from '@/styles/sprinkles.css.ts';
@@ -17,12 +17,16 @@ export const landingWrapper = style([
 ]);
 
 export const contentWrapper = style([flexOptions({ option: 'columnCenter' })]);
-export const buttonBox = style([
+export const buttonWrapper = style([
   flexOptions({ option: 'row' }),
   sprinkles({
     marginY: '2x',
   }),
 ]);
+
+const BLINK_EFFECT = keyframes({
+  '50%': { opacity: 0 },
+});
 
 export const clickText = style([
   sprinkles({
@@ -40,6 +44,6 @@ export const clickText = style([
 
 export const logoImage = style([
   {
-    height: '160px',
+    height: constants.LOGOIMAGE_HEIGHT,
   },
 ]);

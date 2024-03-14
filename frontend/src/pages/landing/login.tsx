@@ -9,7 +9,7 @@ const LogIn = () => {
       {/* onChange 임시 이벤트 익명 함수로 설정 했습니다. */}
       <InputTextBox placeholder='아이디' size='large' onChange={() => {}} />
       <InputTextBox placeholder='비밀번호' size='large' onChange={() => {}} />
-      <div className={styles.buttonBox}>
+      <div className={styles.buttonWrapper}>
         <ColoredButton
           text='SIGN UP'
           color='blue'
