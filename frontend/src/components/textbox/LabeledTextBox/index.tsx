@@ -1,6 +1,6 @@
 import * as styles from './index.css.ts';
 
-import type { labeledtextboxProps } from '@/components/textbox/textbox.d.ts';
+import type { labeledtextboxProps } from '@/components/textbox/types.d.ts';
 
 interface Props {
   props: labeledtextboxProps;

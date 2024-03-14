@@ -1,4 +1,4 @@
-import { textboxColor } from './textbox-data.ts';
+import { textboxColor } from './constants.ts';
 
 interface labeledtextboxProps {
   titleColor?: (typeof textboxColor)[number];

@@ -1,7 +1,7 @@
 import { style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
 
-import { textboxColor } from '@/components/textbox/textbox-data.ts';
+import { textboxColor } from '@/components/textbox/constants.ts';
 
 import { sprinkles } from '@/styles/sprinkles.css.ts';
 
