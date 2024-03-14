@@ -1,29 +1,19 @@
-import { image, ImageBoxVariantsProps, settingBox } from './index.css.ts';
-
-interface Props {
-  src: string;
-  alt: string;
-}
+import type { RoundCornerImageBoxProps } from './types.d.ts';
 
 const RoundCornerImageBox = ({
-  src,
   alt,
+  imgSrc,
+  tier,
   size,
-  colorStyle,
-  borderLine,
-  backgroundStyle,
-}: Props & ImageBoxVariantsProps) => {
-  return (
+}: RoundCornerImageBoxProps) => {
+  return tier ? (
+    <div>tier</div>
+  ) : (
     <div
-      className={settingBox({
-        size,
-        colorStyle,
-        borderLine,
-        backgroundStyle,
-      })}
-    >
-      <img src={src} alt={alt} className={image} />
-    </div>
+      style={{
+        backgroundImage: `url(${imgSrc})`,
+      }}
+    />
   );
 };
 
