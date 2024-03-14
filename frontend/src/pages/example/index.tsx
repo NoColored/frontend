@@ -72,7 +72,7 @@ const Example = () => {
       <div>
         <LabeledTextBox
           labelText='라벨이에용'
-          titleText='타이틀이에용닉네임들어가죠'
+          contentText='타이틀이에용닉네임들어가죠'
           labelColor='white'
         />
       </div>
