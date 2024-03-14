@@ -20,4 +20,4 @@ export const modal = style([
   },
 ]);
 
-export const content = style([flexOptions({ option: 'column' })]);
+export const content = style([flexOptions({ option: 'columnCenter' })]);

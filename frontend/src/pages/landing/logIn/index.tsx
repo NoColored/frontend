@@ -1,9 +1,18 @@
-import * as styles from './index.css.ts';
+import * as styles from '../index.css.ts';
 
 import ColoredButton from '@/components/button/ColoredButton/index.tsx';
 import InputTextBox from '@/components/InputTextBox/index.tsx';
 
+import useModal from '@/hooks/useModal.tsx';
+
+import SignUp from '@/pages/landing/logIn/SignUp.tsx';
+
 const LogIn = () => {
+  const { Modal, openModal, closeModal } = useModal();
+  const signUpClickEvent = () => {
+    openModal();
+  };
+
   return (
     <div className={styles.contentWrapper}>
       {/* onChange 임시 이벤트 익명 함수로 설정 했습니다. */}
@@ -14,7 +23,7 @@ const LogIn = () => {
           text='SIGN UP'
           color='blue'
           size='large'
-          onClick={() => {}}
+          onClick={signUpClickEvent}
         />
         <ColoredButton
           text='LOG IN'
@@ -23,6 +32,9 @@ const LogIn = () => {
           onClick={() => {}}
         />
       </div>
+      <Modal>
+        <SignUp closeModal={closeModal} />
+      </Modal>
     </div>
   );
 };
