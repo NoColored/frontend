@@ -6,24 +6,24 @@ import InputTextBox from '@/components/InputTextBox/index.tsx';
 import ColoredTextBox from '@/components/textbox/ColoredTextBox/index.tsx';
 import LabeledTextBox from '@/components/textbox/LabeledTextBox/index.tsx';
 import type {
-  coloredTextBoxProps,
-  labeledtextboxProps,
+  ColoredTextBoxProps,
+  LabeledtextboxProps,
 } from '@/components/textbox/types';
 
 import groupIcon from '@/assets/ui/icon/button/icon-button-collection-h50w50.png';
 import testIcon from '@/assets/ui/icon/shape/icon-shape-white-big-player0-h48w48.png';
 
 const Example = () => {
-  const labeledTextExampleProps: labeledtextboxProps = {
+  const labeledTextExampleProps: LabeledtextboxProps = {
     labelColor: 'white',
     titleText: '닉네임입니다아마두요',
     labelText: '칭호입니다. 아마도요',
   };
-  const coloredTextBoxProps: coloredTextBoxProps = {
+  const coloredTextBoxProps: ColoredTextBoxProps = {
     color: 'red',
     text: 'READY',
   };
-  const coloredTextBoxProps2: coloredTextBoxProps = {
+  const coloredTextBoxProps2: ColoredTextBoxProps = {
     color: 'blue',
     text: 'READY',
     icon: testIcon,

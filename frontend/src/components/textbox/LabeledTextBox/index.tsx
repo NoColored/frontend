@@ -1,29 +1,30 @@
 import * as styles from './index.css.ts';
 
-import type { labeledtextboxProps } from '@/components/textbox/types.d.ts';
+import type { LabeledtextboxProps } from '@/components/textbox/types.d.ts';
 
-interface Props {
-  props: labeledtextboxProps;
-}
-
-const LabeledTextBox = ({ props }: Props) => {
+const LabeledTextBox = ({
+  labelColor,
+  titleColor,
+  labelText,
+  titleText,
+}: LabeledtextboxProps) => {
   return (
     <div>
       <div
         className={styles.textStyle({
           textPosition: 'label',
-          color: props.labelColor,
+          color: labelColor,
         })}
       >
-        {props.labelText}
+        {labelText}
       </div>
       <div
         className={styles.textStyle({
           textPosition: 'title',
-          color: props.titleColor,
+          color: titleColor,
         })}
       >
-        {props.titleText}
+        {titleText}
       </div>
     </div>
   );
