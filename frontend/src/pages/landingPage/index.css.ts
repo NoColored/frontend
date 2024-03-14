@@ -33,12 +33,12 @@ export const buttonBox = style([
 export const clickText = style([
   sprinkles({
     fontSize: '1x',
-    fontWeight: 'normal',
+    fontWeight: 'accent',
     fontFamily: 'textFont',
-    color: 'gray300',
-    marginTop: '3x',
+    color: 'black',
+    marginTop: '4x',
   }),
   {
-    textShadow: '-2px 0 white, 0 2px white, 2px 0 white, 0 -2px white',
+    textShadow: '-4px 0 white, 0 4px white, 4px 0 white, 0 -4px white',
   },
 ]);

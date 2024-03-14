@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 
-import ColoredButton from '@/components/button/coloredButton/index.tsx';
+import ColoredButton from '@/components/button/ColoredButton-Temp/index.tsx';
 
 import {
   buttonBox,
