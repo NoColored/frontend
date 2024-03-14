@@ -14,12 +14,14 @@ export const vars = createGlobalTheme(':root', {
 
   /* paddings, margins 대신 space 사용 */
   space: {
+    auto: 'auto',
     none: '0',
     '0.5x': '2px',
     '1x': '4px',
     '2x': '8px',
     '3x': '12px',
     '4x': '16px',
+    '8x': '32px',
   },
   display: {
     flex: 'flex',

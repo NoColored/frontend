@@ -1,7 +1,7 @@
 import { style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
 
-import { COLOR, COLOR_DARK } from '@/components/button/coloredButton-data.ts';
+import { COLOR, COLOR_DARK } from '@/components/button/constants.ts';
 
 import { flexOptions } from '@/styles/common.css.ts';
 import { sprinkles } from '@/styles/sprinkles.css.ts';
