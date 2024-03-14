@@ -1,6 +1,8 @@
 import { style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
 
+import * as constants from './constants.ts';
+
 import { borderOptions } from '@/styles/common.css.ts';
 import { sprinkles } from '@/styles/sprinkles.css.ts';
 import { vars } from '@/styles/vars.css.ts';
@@ -28,8 +30,8 @@ const inputTextBoxVariants = {
       }),
       {
         textAlign: 'center',
-        width: '360px',
-        height: '40px',
+        width: `${constants.INPUT_SMALL.width}px`,
+        height: `${constants.INPUT_SMALL.height}px`,
       },
     ]),
     medium: style([
@@ -40,8 +42,8 @@ const inputTextBoxVariants = {
         backgroundColor: 'gray300',
       }),
       {
-        width: '400px',
-        height: '48px',
+        width: `${constants.INPUT_MEDIUM.width}px`,
+        height: `${constants.INPUT_MEDIUM.height}px`,
       },
     ]),
     large: style([
@@ -53,8 +55,8 @@ const inputTextBoxVariants = {
         backgroundColor: 'navy',
       }),
       {
-        width: '400px',
-        height: '64px',
+        width: `${constants.INPUT_LARGE.width}px`,
+        height: `${constants.INPUT_LARGE.height}px`,
       },
     ]),
   },
