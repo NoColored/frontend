@@ -38,6 +38,7 @@ const sizeVariants = {
     sprinkles({
       fontSize: '1.25x',
       padding: '2x',
+      marginX: '2x',
     }),
     {
       width: '96px',
