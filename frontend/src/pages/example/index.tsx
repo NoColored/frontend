@@ -4,12 +4,19 @@ import ColoredIconButton from '@/components/button/ColoredIconButton/index.tsx';
 
 import InputTextBox from '@/components/InputTextBox/index.tsx';
 import ColoredTextBox from '@/components/textbox/ColoredTextBox/index.tsx';
+import LabeledTextBox from '@/components/textbox/LabeledTextBox/index.tsx';
+import type { labeledtextboxProps } from '@/components/textbox/textbox';
 
 import groupIcon from '@/assets/ui/icon/button/icon-button-collection-h50w50.png';
 import testIcon from '@/assets/ui/icon/shape/icon-shape-white-big-player0-h48w48.png';
 import testIcon2 from '@/assets/ui/icon/shape/icon-shape-white-big-player3-h48w48.png';
 
 const Example = () => {
+  const labeledTextExampleProps: labeledtextboxProps = {
+    labelColor: 'white',
+    titleText: '닉네임입니다아마두요',
+    labelText: '칭호입니다. 아마도요',
+  };
   return (
     <div>
       <div>테스트버튼</div>
@@ -71,6 +78,9 @@ const Example = () => {
       <ColoredTextBox icon={testIcon} text='방장' color='pink' />
       <ColoredTextBox icon={testIcon2} text='아이콘입니다' color='black' />
       {/* <Game /> */}
+      <div>
+        <LabeledTextBox props={labeledTextExampleProps} />
+      </div>
     </div>
   );
 };
