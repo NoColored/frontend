@@ -48,7 +48,8 @@ const inputTextBoxVariants = {
       sprinkles({
         fontSize: '2x',
         paddingX: '4x',
-        backgroundColor: 'black',
+        marginY: '2x',
+        backgroundColor: 'navy',
       }),
       {
         width: '400px',
