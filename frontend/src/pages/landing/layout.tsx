@@ -9,6 +9,7 @@ const LandingLayout = () => {
     <BasicContentFrame>
       <div className={styles.landingBox}>
         <Outlet />
+        <span className={styles.clickText}>click to start!</span>
       </div>
     </BasicContentFrame>
   );

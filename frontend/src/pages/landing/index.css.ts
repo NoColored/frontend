@@ -4,7 +4,7 @@ import { flexOptions } from '@/styles/common.css.ts';
 import { sprinkles } from '@/styles/sprinkles.css.ts';
 
 export const landingBox = style([
-  flexOptions({ option: 'center' }),
+  flexOptions({ option: 'columnCenter' }),
   sprinkles({ borderRadius: '1x' }),
   {
     // width: '100%',
@@ -19,7 +19,7 @@ export const landingBox = style([
 
 export const contentBox = style([
   flexOptions({ option: 'columnCenter' }),
-  { height: '90%' },
+  // { height: '90%' },
 ]);
 export const buttonBox = style([
   flexOptions({ option: 'row' }),
@@ -48,6 +48,6 @@ export const clickText = style([
 
 export const logoImage = style([
   {
-    width: '50%',
+    height: '160px',
   },
 ]);

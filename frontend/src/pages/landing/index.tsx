@@ -30,7 +30,6 @@ const Landing = () => {
           onClick={clickLogIn}
         />
       </div>
-      <span className={styles.clickText}>click to start!</span>
     </div>
   );
 };
