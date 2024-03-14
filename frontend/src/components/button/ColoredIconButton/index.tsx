@@ -1,12 +1,6 @@
 import * as styles from './index.css.ts';
 
-interface ColoredIconButtonProps {
-  icon: string;
-  text: string;
-  color: string;
-  size: 'medium' | 'large' | 'xlarge';
-  onClick: () => void;
-}
+import type { ColoredIconButtonProps } from '@/components/button/types';
 
 const ColoredIconButton = ({
   text,

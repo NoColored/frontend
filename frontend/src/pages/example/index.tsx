@@ -5,29 +5,11 @@ import ColoredIconButton from '@/components/button/ColoredIconButton/index.tsx';
 import InputTextBox from '@/components/InputTextBox/index.tsx';
 import ColoredTextBox from '@/components/textbox/ColoredTextBox/index.tsx';
 import LabeledTextBox from '@/components/textbox/LabeledTextBox/index.tsx';
-import type {
-  ColoredTextBoxProps,
-  LabeledTextboxProps,
-} from '@/components/textbox/types';
 
 import groupIcon from '@/assets/ui/icon/button/icon-button-collection-h50w50.png';
 import testIcon from '@/assets/ui/icon/shape/icon-shape-white-big-player0-h48w48.png';
 
 const Example = () => {
-  const labeledTextExampleProps: LabeledTextboxProps = {
-    labelColor: 'white',
-    titleText: '닉네임입니다아마두요',
-    labelText: '칭호입니다. 아마도요',
-  };
-  const coloredTextBoxProps: ColoredTextBoxProps = {
-    color: 'red',
-    text: 'READY',
-  };
-  const coloredTextBoxProps2: ColoredTextBoxProps = {
-    color: 'blue',
-    text: 'READY',
-    icon: testIcon,
-  };
   return (
     <div>
       <div>테스트버튼</div>
@@ -85,11 +67,14 @@ const Example = () => {
         onChange={(e) => console.log(e.target.value)}
       />
       <div>텍스트 컴포넌트</div>
-      <ColoredTextBox props={coloredTextBoxProps} />
-      <ColoredTextBox props={coloredTextBoxProps2} />
+      <ColoredTextBox text='text' color='red' icon={testIcon} />
       {/* <Game /> */}
       <div>
-        <LabeledTextBox props={labeledTextExampleProps} />
+        <LabeledTextBox
+          labelText='라벨이에용'
+          titleText='타이틀이에용닉네임들어가죠'
+          labelColor='white'
+        />
       </div>
     </div>
   );
