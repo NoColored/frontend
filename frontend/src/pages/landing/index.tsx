@@ -1,14 +1,10 @@
 import { useNavigate } from 'react-router-dom';
 
-import ColoredButton from '@/components/button/ColoredButton-Temp/index.tsx';
+import ColoredButton from '@/components/button/ColoredButton/index.tsx';
 
-import {
-  buttonBox,
-  clickText,
-  logoBox,
-} from '@/pages/LandingPage/index.css.ts';
+import { buttonBox, clickText, logoBox } from '@/pages/landing/index.css.ts';
 
-const LogoBox = () => {
+const LandingPage = () => {
   const navigate = useNavigate();
   const landingLogo: string =
     '/public/images/landing-logo-whiteborder-h800w1280.png';
@@ -34,4 +30,4 @@ const LogoBox = () => {
   );
 };
 
-export default LogoBox;
+export default LandingPage;

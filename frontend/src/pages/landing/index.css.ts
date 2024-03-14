@@ -22,13 +22,7 @@ export const logoBox = style([
   { width: '100%', height: '90%' },
 ]);
 
-export const buttonBox = style([
-  flexOptions({ option: 'center' }),
-  sprinkles({ justifyContent: 'spaceAround' }),
-  {
-    width: '55%',
-  },
-]);
+export const buttonBox = style([flexOptions({ option: 'row' })]);
 
 export const clickText = style([
   sprinkles({
