@@ -1,5 +1,7 @@
 import { style } from '@vanilla-extract/css';
 
+import * as constants from './constants.ts';
+
 import { flexOptions } from '@/styles/common.css.ts';
 import { sprinkles } from '@/styles/sprinkles.css.ts';
 
@@ -35,7 +37,7 @@ export const loadingNumFont = style([
     fontFamily: 'loadingNumFont',
   }),
   {
-    width: '120px',
+    width: constants.LOADING_NUM_WIDTH,
   },
 ]);
 
@@ -45,7 +47,4 @@ export const loadingMessage = style([
     textSize: '1x',
     fontFamily: 'loadingTextFont',
   }),
-  {
-    lineHeight: '24px',
-  },
 ]);
