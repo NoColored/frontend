@@ -1,8 +1,10 @@
+import RoundCornerImageBox from '../../components/imagebox/RoundCornerImageBox';
+
 import ColoredButton from '@/components/button/ColoredButton/index.tsx';
 import ColoredIconButton from '@/components/button/ColoredIconButton/index.tsx';
 // import Game from '@/components/Game.tsx';
 
-import RoundCornerImageBox from '@/components/RoundCornerImageBox';
+import TierBox from '@/components/imagebox/TierIconBox';
 import ColoredTextBox from '@/components/textbox/ColoredTextBox/index.tsx';
 import InputTextBox from '@/components/textbox/InputTextBox/index.tsx';
 import LabeledTextBox from '@/components/textbox/LabeledTextBox/index.tsx';
@@ -81,12 +83,6 @@ const Example = () => {
         />
       </div>
       <RoundCornerImageBox
-        size='small'
-        tier='bronze'
-        borderColor='pink'
-        borderSize='5x'
-      />
-      <RoundCornerImageBox
         children={<div>children</div>}
         size='large'
         imgSrc='src/assets/character/default-butterfly/character-default-butterfly-blue-h240w240.png'
@@ -99,6 +95,7 @@ const Example = () => {
         borderSize='5x'
         backgroundColor='white'
       />
+      <TierBox tier='colored' size='xlarge' />
     </div>
   );
 };
