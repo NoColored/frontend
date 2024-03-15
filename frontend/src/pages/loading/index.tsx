@@ -4,11 +4,17 @@ import * as styles from './index.css.ts';
 
 import BasicContentFrame from '@/components/BasicContentFrame/index.tsx';
 
-import { LOADING_MESSAGE } from '@/pages/loading/constants.ts';
+import {
+  LOADING_IMAGE,
+  LOADING_MESSAGE,
+  LOADING_TOP,
+} from '@/pages/loading/constants.ts';
 
 const Loading = () => {
-  const [messageId, setMessageId] = useState<string>();
-  const [message, setMessage] = useState<string>();
+  const [messageId, setMessageId] = useState<string>('000');
+  const [message, setMessage] = useState<string>(
+    '노칼라랜드에 오신 것을 환영합니다.',
+  );
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -23,8 +29,8 @@ const Loading = () => {
   return (
     <BasicContentFrame>
       <div className={styles.loadingWrapper}>
-        <div className={styles.loadingNumFont}>Loading...</div>
-        <img src='/ui/loading/loading-animation-h100w100.gif' alt='loading' />
+        <div className={styles.loadingNumFont}>{LOADING_TOP}</div>
+        <img src={LOADING_IMAGE} alt='loading' />
         <div className={styles.loadingMessageWrapper}>
           <div className={styles.loadingNumFont}>#{messageId}</div>
           <div className={styles.loadingMessage}>{message}</div>
