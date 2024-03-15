@@ -29,6 +29,10 @@ const fontProperties = defineProperties({
     fontFamily: vars.fontFamily,
     fontWeight: vars.fontWeight,
     fontSize: vars.fontSize,
+    lineHeight: vars.fontSize,
+  },
+  shorthands: {
+    textSize: ['fontSize', 'lineHeight'],
   },
 });
 
