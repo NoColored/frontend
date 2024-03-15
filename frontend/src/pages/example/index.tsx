@@ -2,8 +2,8 @@ import ColoredButton from '@/components/button/ColoredButton/index.tsx';
 import ColoredIconButton from '@/components/button/ColoredIconButton/index.tsx';
 // import Game from '@/components/Game.tsx';
 
-import InputTextBox from '@/components/InputTextBox/index.tsx';
 import ColoredTextBox from '@/components/textbox/ColoredTextBox/index.tsx';
+import InputTextBox from '@/components/textbox/InputTextBox/index.tsx';
 import LabeledTextBox from '@/components/textbox/LabeledTextBox/index.tsx';
 
 import groupIcon from '@/assets/ui/icon/button/icon-button-collection-h50w50.png';
@@ -53,16 +53,19 @@ const Example = () => {
       />
       <InputTextBox
         placeholder='전부 모달 창에 사용'
+        type='text'
         size='small'
         onChange={(e) => console.log(e.target.value)}
       />
       <InputTextBox
         placeholder='회원가입 모달 창에 사용'
         size='medium'
+        type='text'
         onChange={(e) => console.log(e.target.value)}
       />
       <InputTextBox
         placeholder='Login, PW 사용'
+        type='password'
         size='large'
         onChange={(e) => console.log(e.target.value)}
       />
