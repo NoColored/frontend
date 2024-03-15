@@ -15,6 +15,10 @@ globalStyle('button:hover', {
   cursor: 'pointer',
 });
 
+globalStyle('input:focus', {
+  outline: 'none',
+});
+
 globalStyle('html, body, #root', {
   height: '100vh',
   width: '100vw',
