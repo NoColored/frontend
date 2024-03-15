@@ -1,21 +1,33 @@
+import { useEffect, useState } from 'react';
+
 import * as styles from './index.css.ts';
 
 import BasicContentFrame from '@/components/BasicContentFrame/index.tsx';
 
+import { LOADING_MESSAGE } from '@/pages/loading/constants.ts';
+
 const Loading = () => {
-  const imageSrc = '/assets/ui/loading/loading-animation-h100w100.gif';
+  const [messageId, setMessageId] = useState<string>();
+  const [message, setMessage] = useState<string>();
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const random = Math.floor(Math.random() * LOADING_MESSAGE.length);
+      setMessageId(LOADING_MESSAGE[random].messageId);
+      setMessage(LOADING_MESSAGE[random].message);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  });
 
   return (
     <BasicContentFrame>
       <div className={styles.loadingWrapper}>
-        <div>Loading...</div>
-        <img src={imageSrc} alt='loading' />
+        <div className={styles.loadingNumFont}>Loading...</div>
+        <img src='/ui/loading/loading-animation-h100w100.gif' alt='loading' />
         <div className={styles.loadingMessageWrapper}>
-          <div>#27</div>
-          <div className={styles.loadingMessage}>
-            안녕하세요 이 아저씨들아 이거 잘 되는지 확인해보고 나 좀 쉬고
-            쇼ㅣㅍ다 이제 이거 좀 늘려야겠다
-          </div>
+          <div className={styles.loadingNumFont}>#{messageId}</div>
+          <div className={styles.loadingMessage}>{message}</div>
         </div>
       </div>
     </BasicContentFrame>
