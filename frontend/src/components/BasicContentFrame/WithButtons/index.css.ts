@@ -4,7 +4,7 @@ import { calc } from '@vanilla-extract/css-utils';
 import * as constants from '@/components/BasicContentFrame/constants.ts';
 import { basicFrame } from '@/components/BasicContentFrame/index.css.ts';
 
-import { borderOptions } from '@/styles/common.css.ts';
+import { borderDarkOptions } from '@/styles/common.css.ts';
 import { sprinkles } from '@/styles/sprinkles.css.ts';
 
 export const frame = style([
@@ -47,7 +47,7 @@ export const iconButtons = style([
 ]);
 
 export const main = style([
-  borderOptions({ color: 'black', width: '1x' }),
+  borderDarkOptions({ color: 'black', width: '1x' }),
   sprinkles({
     position: 'relative',
     borderRadius: '2x',

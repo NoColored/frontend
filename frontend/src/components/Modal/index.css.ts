@@ -2,7 +2,7 @@ import { style } from '@vanilla-extract/css';
 
 import * as constants from './constants.ts';
 
-import { borderOptions, flexOptions } from '@/styles/common.css.ts';
+import { borderDarkOptions, flexOptions } from '@/styles/common.css.ts';
 import { sprinkles } from '@/styles/sprinkles.css.ts';
 
 export const modal = style([
@@ -11,7 +11,7 @@ export const modal = style([
     padding: '8x',
     borderRadius: '2x',
   }),
-  borderOptions({ width: '1x', color: 'black' }),
+  borderDarkOptions({ width: '1x', color: 'black' }),
   {
     minHeight: constants.MIN_MODAL_HEIGHT,
     width: constants.MODAL_WIDTH,

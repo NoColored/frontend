@@ -8,7 +8,7 @@ export const testForRecipe = style([
   styleOptions.flexOptions({
     option: 'center',
   }),
-  styleOptions.borderOptions({
+  styleOptions.borderDarkOptions({
     color: 'red',
     width: '5x',
   }),
