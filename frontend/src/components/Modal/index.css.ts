@@ -14,10 +14,9 @@ export const modal = style([
   borderOptions({ width: '1x', color: 'black' }),
   {
     minHeight: constants.MIN_MODAL_HEIGHT,
-    minWidth: constants.MIN_MODAL_WIDTH,
+    width: constants.MODAL_WIDTH,
     maxHeight: constants.MAX_MODAL_HEIGHT,
-    maxWidth: constants.MAX_MODAL_WIDTH,
   },
 ]);
 
-export const content = style([flexOptions({ option: 'column' })]);
+export const content = style([flexOptions({ option: 'columnCenter' })]);
