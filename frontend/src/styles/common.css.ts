@@ -43,6 +43,8 @@ export const borderOptions = recipe({
       pink: sprinkles({ borderColor: 'pinkDark' }),
       navy: sprinkles({ borderColor: 'navyDark' }),
       black: sprinkles({ borderColor: 'black' }),
+      gray300: sprinkles({ borderColor: 'gray500' }),
+      gray500: sprinkles({ borderColor: 'gray700' }),
     },
 
     // border width

@@ -70,7 +70,7 @@ export const vars = createGlobalTheme(':root', {
     pink: '#EB4180',
     pinkDark: '#B13161',
     navy: '#201D35',
-    navyDark: '#413F53',
+    navyDark: '#141221',
     gray: '#808080',
     gray100: '#ebebeb',
     gray200: '#dddddd',
