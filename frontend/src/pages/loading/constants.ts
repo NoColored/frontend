@@ -251,3 +251,12 @@ export const LOADING_MESSAGE = [
       '울창한 시겜숲에서는 앙칼진 마녀가 아직도 쿠키를 굽고 있다고 합니다.',
   },
 ];
+
+export const LOADING_TOP = 'Loading...';
+
+export const LOADING_IMAGE =
+  'src/assets/ui/loading/loading-animation-h100w100.gif';
+
+export const LOADING_MESSAGE_DELAY = 3000;
+
+export const LOADING_NUM_WIDTH = '120px';

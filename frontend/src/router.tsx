@@ -4,6 +4,7 @@ import Example from '@/pages/example/index.tsx';
 import Landing from '@/pages/landing/index.tsx';
 import LandingLayout from '@/pages/landing/layout.tsx';
 import LogIn from '@/pages/landing/logIn/index.tsx';
+import Loading from '@/pages/loading/index.tsx';
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
         element: <LogIn />,
       },
     ],
+  },
+  {
+    path: '/loading',
+    element: <Loading />,
   },
   {
     path: '/example',
