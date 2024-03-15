@@ -20,6 +20,7 @@ export const loadingMessageWrapper = style([
   flexOptions({ option: 'row' }),
   sprinkles({
     justifyContent: 'spaceAround',
+    alignItems: 'center',
     marginY: '4x',
   }),
   {
@@ -29,10 +30,13 @@ export const loadingMessageWrapper = style([
 
 export const loadingNumFont = style([
   sprinkles({
-    marginX: '4x',
+    marginX: '2x',
     textSize: '1.5x',
     fontFamily: 'loadingNumFont',
   }),
+  {
+    width: '120px',
+  },
 ]);
 
 export const loadingMessage = style([
