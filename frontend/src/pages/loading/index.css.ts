@@ -10,7 +10,6 @@ export const loadingWrapper = style([
     width: 'full',
     height: 'full',
     color: 'white',
-    fontFamily: 'loadingNumFont',
   }),
   {
     justifyContent: 'space-evenly',
@@ -24,13 +23,22 @@ export const loadingMessageWrapper = style([
     marginY: '4x',
   }),
   {
-    width: '70%',
+    width: '75%',
   },
+]);
+
+export const loadingNumFont = style([
+  sprinkles({
+    marginX: '4x',
+    textSize: '1.5x',
+    fontFamily: 'loadingNumFont',
+  }),
 ]);
 
 export const loadingMessage = style([
   sprinkles({
-    marginX: '8x',
+    marginX: '4x',
+    textSize: '1x',
     fontFamily: 'loadingTextFont',
   }),
   {
