@@ -1,4 +1,4 @@
-export const COLOREDBUTTON_COLOR = [
+export const COLOR = [
   'red',
   'yellow',
   'green',
@@ -8,7 +8,7 @@ export const COLOREDBUTTON_COLOR = [
   'gray300',
 ] as const;
 
-export const COLOREDBUTTON_COLOR_DARK = {
+export const COLOR_DARK = {
   red: 'redDark',
   yellow: 'yellowDark',
   green: 'greenDark',
@@ -18,7 +18,7 @@ export const COLOREDBUTTON_COLOR_DARK = {
   gray300: 'gray500',
 } as const;
 
-export const COLOREDBUTTON_SIZE_PIXEL = {
+export const SIZE_PIXEL = {
   small: {
     width: '96px',
     height: '36px',

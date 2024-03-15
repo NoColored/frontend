@@ -8,13 +8,11 @@ import { sprinkles } from '@/styles/sprinkles.css.ts';
 import { vars } from '@/styles/vars.css.ts';
 
 const colorVariants: {
-  [colorItem in (typeof constants.COLOREDBUTTON_COLOR)[number]]?: ReturnType<
-    typeof style
-  >;
+  [colorItem in (typeof constants.COLOR)[number]]?: ReturnType<typeof style>;
 } = {};
 
-constants.COLOREDBUTTON_COLOR.forEach((colorItem) => {
-  const darkColor = constants.COLOREDBUTTON_COLOR_DARK[colorItem];
+constants.COLOR.forEach((colorItem) => {
+  const darkColor = constants.COLOR_DARK[colorItem];
   colorVariants[colorItem] = style([
     sprinkles({
       backgroundColor: colorItem,
@@ -37,8 +35,8 @@ const sizeVariants = {
       marginX: '2x',
     }),
     {
-      width: constants.COLOREDBUTTON_SIZE_PIXEL.small.width,
-      height: constants.COLOREDBUTTON_SIZE_PIXEL.small.height,
+      width: constants.SIZE_PIXEL.small.width,
+      height: constants.SIZE_PIXEL.small.height,
     },
   ]),
   medium: style([
@@ -47,8 +45,8 @@ const sizeVariants = {
       padding: '4x',
     }),
     {
-      width: constants.COLOREDBUTTON_SIZE_PIXEL.medium.width,
-      height: constants.COLOREDBUTTON_SIZE_PIXEL.medium.height,
+      width: constants.SIZE_PIXEL.medium.width,
+      height: constants.SIZE_PIXEL.medium.height,
     },
   ]),
   large: style([
@@ -57,8 +55,8 @@ const sizeVariants = {
       padding: '4x',
     }),
     {
-      width: constants.COLOREDBUTTON_SIZE_PIXEL.large.width,
-      height: constants.COLOREDBUTTON_SIZE_PIXEL.large.height,
+      width: constants.SIZE_PIXEL.large.width,
+      height: constants.SIZE_PIXEL.large.height,
     },
   ]),
 };
