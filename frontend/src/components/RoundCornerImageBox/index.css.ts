@@ -4,8 +4,8 @@ import { recipe } from '@vanilla-extract/recipes';
 import { borderOptions, flexOptions } from '@/styles/common.css.ts';
 import { sprinkles } from '@/styles/sprinkles.css.ts';
 
-export const imageBox = style([
-  flexOptions({ option: 'center' }),
+
+const imageBoxBase = style([
   sprinkles({
     borderRadius: '2x',
   }),
@@ -13,6 +13,24 @@ export const imageBox = style([
     overflow: 'hidden',
   },
 ]);
+
+const sizeVariants = {
+
+}
+
+export const roundCornerImageBox = recipe({
+  base: imageBoxBase,
+  variants: {
+    size:
+    tier:
+    borderSize:
+    borderColor:
+    backgroundColor:
+  }
+})
+
+
+
 
 const imageBoxVariants = {
   size: {

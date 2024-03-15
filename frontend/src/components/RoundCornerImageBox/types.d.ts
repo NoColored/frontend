@@ -1,11 +1,13 @@
-import * as constants from '@/components/RoundCornerImageBox/constants.ts';
-import { TIER_RANGE } from '@/components/RoundCornerImageBox/constants.ts';
+import React from 'react';
 
-interface RoundCornerImageBoxProps {
+import * as constants from '@/components/RoundCornerImageBox/constants.ts';
+
+export interface RoundCornerImageBoxProps {
+  children?: React.ReactNode;
   size: (typeof constants.ROUNDCORNER_IMAGEBOX_SIZE)[number];
   imgSrc?: string;
-  alt?: string;
   tier?: (typeof constants.TIER_RANGE)[number];
-  borderColor?: string;
-  backgroundColor?: string;
+  borderSize?: (typeof constants.BORDER_WEIGHT)[number];
+  borderColor?: (typeof constants.BORDER_COLOR)[number];
+  backgroundColor?: (typeof constants.BACKGROUND_COLOR)[number];
 }

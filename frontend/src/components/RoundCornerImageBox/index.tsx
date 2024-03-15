@@ -1,19 +1,25 @@
 import type { RoundCornerImageBoxProps } from './types.d.ts';
 
 const RoundCornerImageBox = ({
-  alt,
+  children,
   imgSrc,
   tier,
   size,
+  borderColor,
+  backgroundColor,
 }: RoundCornerImageBoxProps) => {
-  return tier ? (
-    <div>tier</div>
-  ) : (
-    <div
-      style={{
-        backgroundImage: `url(${imgSrc})`,
-      }}
-    />
+  return (
+    <div>
+      tier ? (<div>tier</div>
+      ) : (
+      <div
+        style={{
+          backgroundImage: `url(${imgSrc})`,
+        }}
+      />
+      );
+      {children}
+    </div>
   );
 };
 
