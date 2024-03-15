@@ -54,7 +54,6 @@ const sizeVariants = {
     sprinkles({
       fontSize: '2x',
       padding: '4x',
-      marginX: '2x',
     }),
     {
       width: '192px',
@@ -74,6 +73,8 @@ export const coloredButtonStyle = recipe({
       color: 'white',
       fontFamily: 'textFont',
       position: 'relative',
+      marginX: '2x',
+      marginY: '2x',
     }),
     {
       lineHeight: '16px',
