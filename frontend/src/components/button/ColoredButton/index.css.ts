@@ -1,29 +1,27 @@
 import { style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
 
-import * as constants from '@/components/button/constants.ts';
+import * as constants from '@/components/button/ColoredButton/constants.ts';
 
 import { flexOptions } from '@/styles/common.css.ts';
 import { sprinkles } from '@/styles/sprinkles.css.ts';
 import { vars } from '@/styles/vars.css.ts';
 
 const colorVariants: {
-  [colorItem: string]: ReturnType<typeof style>;
-} = {
-  '': style([]),
-};
+  [colorItem in (typeof constants.COLOR)[number]]?: ReturnType<typeof style>;
+} = {};
 
-constants.COLOREDICONBUTTON_COLOR.forEach((colorItem) => {
-  const darkColor = constants.COLOREDICONBUTTON_COLOR_DARK[colorItem];
+constants.COLOR.forEach((colorItem) => {
+  const darkColor = constants.COLOR_DARK[colorItem];
   colorVariants[colorItem] = style([
     sprinkles({
       backgroundColor: colorItem,
     }),
     {
-      boxShadow: `0 6px ${vars.colors[darkColor]}`,
+      boxShadow: `0 6px ${vars.colors[darkColor as keyof typeof vars.colors]}`,
       ':active': {
         transform: 'translateY(4px)',
-        boxShadow: `0 2px ${vars.colors[darkColor]}`,
+        boxShadow: `0 2px ${vars.colors[darkColor as keyof typeof vars.colors]}`,
       },
     },
   ]);
@@ -37,8 +35,8 @@ const sizeVariants = {
       marginX: '2x',
     }),
     {
-      width: '96px',
-      height: '36px',
+      width: constants.SIZE_PIXEL.small.width,
+      height: constants.SIZE_PIXEL.small.height,
     },
   ]),
   medium: style([
@@ -47,8 +45,8 @@ const sizeVariants = {
       padding: '4x',
     }),
     {
-      width: '130px',
-      height: '44px',
+      width: constants.SIZE_PIXEL.medium.width,
+      height: constants.SIZE_PIXEL.medium.height,
     },
   ]),
   large: style([
@@ -57,8 +55,8 @@ const sizeVariants = {
       padding: '4x',
     }),
     {
-      width: '192px',
-      height: '64px',
+      width: constants.SIZE_PIXEL.large.width,
+      height: constants.SIZE_PIXEL.large.height,
     },
   ]),
 };
@@ -94,7 +92,7 @@ export const textStyle = style([
   }),
   sprinkles({ position: 'relative' }),
   {
-    height: '100%',
-    width: '100%',
+    height: 'full',
+    width: 'full',
   },
 ]);
