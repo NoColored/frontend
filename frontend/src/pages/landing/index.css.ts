@@ -9,8 +9,7 @@ export const landingWrapper = style([
   flexOptions({ option: 'columnCenter' }),
   sprinkles({ borderRadius: '1x', height: 'full', margin: 'auto' }),
   {
-    backgroundImage:
-      'url(/public/images/landing-background-animation-h490w950.gif)',
+    backgroundImage: 'url(/images/landing-background-animation-h490w950.gif)',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
   },

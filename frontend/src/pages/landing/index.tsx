@@ -11,8 +11,7 @@ const Landing = () => {
     navigate('/login');
   };
 
-  const landingLogo: string =
-    '/public/images/landing-logo-whiteborder-h800w1280.png';
+  const landingLogo: string = '/images/landing-logo-whiteborder-h800w1280.png';
   return (
     <div className={styles.contentWrapper}>
       <img
