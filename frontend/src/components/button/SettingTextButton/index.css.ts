@@ -35,6 +35,16 @@ export const buttonVariants = {
         width: '60px',
       },
     ]),
+    medium: style([
+      sprinkles({
+        fontSize: '1.5x',
+        margin: '1x',
+      }),
+      {
+        height: '36px',
+        width: '210px',
+      },
+    ]),
     large: style([
       sprinkles({
         fontSize: '1.5x',
