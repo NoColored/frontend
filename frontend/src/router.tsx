@@ -5,6 +5,7 @@ import Landing from '@/pages/landing/index.tsx';
 import LandingLayout from '@/pages/landing/layout.tsx';
 import LogIn from '@/pages/landing/logIn/index.tsx';
 import Loading from '@/pages/loading/index.tsx';
+import Ranking from '@/pages/ranking/index.tsx';
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
   {
     path: '/example',
     element: <Example />,
+  },
+  {
+    path: '/ranking',
+    element: <Ranking />,
   },
 ]);
 
