@@ -27,6 +27,11 @@ export const flexOptions = recipe({
       row: sprinkles({
         flexDirection: 'row',
       }),
+      rowCenter: sprinkles({
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }),
     },
   },
 });
