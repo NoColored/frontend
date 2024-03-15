@@ -1,7 +1,7 @@
 import * as styles from './index.css.ts';
 
 import BasicContentFrame from '@/components/BasicContentFrame';
-import SettingTextButton from '@/components/settingTextButton';
+import SettingTextButton from '@/components/button/SettingTextButton-Temp';
 
 import Achievement from '@/pages/mypage/Achievement.tsx';
 import Skin from '@/pages/mypage/Skin.tsx';

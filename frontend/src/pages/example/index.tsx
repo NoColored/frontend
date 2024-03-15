@@ -1,13 +1,13 @@
-import ColoredButton from '@/components/button/ColoredButton-Temp/index.tsx';
+import ColoredButton from '@/components/button/ColoredButton/index.tsx';
 import ColoredIconButton from '@/components/button/ColoredIconButton/index.tsx';
 // import Game from '@/components/Game.tsx';
 
 import InputTextBox from '@/components/InputTextBox/index.tsx';
 import ColoredTextBox from '@/components/textbox/ColoredTextBox/index.tsx';
+import LabeledTextBox from '@/components/textbox/LabeledTextBox/index.tsx';
 
 import groupIcon from '@/assets/ui/icon/button/icon-button-collection-h50w50.png';
 import testIcon from '@/assets/ui/icon/shape/icon-shape-white-big-player0-h48w48.png';
-import testIcon2 from '@/assets/ui/icon/shape/icon-shape-white-big-player3-h48w48.png';
 
 const Example = () => {
   return (
@@ -67,10 +67,15 @@ const Example = () => {
         onChange={(e) => console.log(e.target.value)}
       />
       <div>텍스트 컴포넌트</div>
-      <ColoredTextBox text='READY' color='green' />
-      <ColoredTextBox icon={testIcon} text='방장' color='pink' />
-      <ColoredTextBox icon={testIcon2} text='아이콘입니다' color='black' />
+      <ColoredTextBox text='text' color='red' icon={testIcon} />
       {/* <Game /> */}
+      <div>
+        <LabeledTextBox
+          labelText='라벨이에용'
+          titleText='타이틀이에용닉네임들어가죠'
+          labelColor='white'
+        />
+      </div>
     </div>
   );
 };

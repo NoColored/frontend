@@ -1,3 +1,5 @@
+export const TEXTBOX_COLOR = ['white'] as const;
+
 export const BACKGROUND_COLOR = [
   'red',
   'yellow',

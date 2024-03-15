@@ -1,18 +1,18 @@
 import { style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
 
-import { BACKGROUND_COLOR } from '@/components/textbox/ColoredTextBox/coloredText-data.ts.tsx';
+import * as constants from '@/components/textbox/constants.ts';
 
 import { flexOptions } from '@/styles/common.css.ts';
 import { sprinkles } from '@/styles/sprinkles.css.ts';
 
 const colorVariants: {
-  [colorItem: string]: ReturnType<typeof style>;
-} = {
-  '': style([]),
-};
+  [colorItem in (typeof constants.BACKGROUND_COLOR)[number]]?: ReturnType<
+    typeof style
+  >;
+} = {};
 
-BACKGROUND_COLOR.forEach((colorItem) => {
+constants.BACKGROUND_COLOR.forEach((colorItem) => {
   colorVariants[colorItem] = style([
     sprinkles({
       backgroundColor: colorItem,

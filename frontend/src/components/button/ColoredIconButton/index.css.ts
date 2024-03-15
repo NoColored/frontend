@@ -1,20 +1,20 @@
 import { style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
 
-import { COLOR, COLOR_DARK } from '@/components/button/coloredButton-data.ts';
+import * as constants from '@/components/button/constants.ts';
 
 import { flexOptions } from '@/styles/common.css.ts';
 import { sprinkles } from '@/styles/sprinkles.css.ts';
 import { vars } from '@/styles/vars.css.ts';
 
 const colorVariants: {
-  [colorItem: string]: ReturnType<typeof style>;
-} = {
-  '': style([]),
-};
+  [colorItem in (typeof constants.COLOREDICONBUTTON_COLOR)[number]]?: ReturnType<
+    typeof style
+  >;
+} = {};
 
-COLOR.forEach((colorItem) => {
-  const darkColor: COLOR_DARK = COLOR_DARK[colorItem];
+constants.COLOREDICONBUTTON_COLOR.forEach((colorItem) => {
+  const darkColor = constants.COLOREDICONBUTTON_COLOR_DARK[colorItem];
   colorVariants[colorItem] = style([
     sprinkles({
       backgroundColor: colorItem,
@@ -34,8 +34,8 @@ const sizeVariants = {
       fontSize: '1.5x',
     }),
     {
-      width: '163px',
-      height: '96px',
+      width: constants.COLOREDICONBUTTON_SIZE_PIXEL.medium.width,
+      height: constants.COLOREDICONBUTTON_SIZE_PIXEL.medium.height,
       paddingTop: '4x',
     },
   ]),
@@ -44,8 +44,8 @@ const sizeVariants = {
       fontSize: '2x',
     }),
     {
-      width: '190px',
-      height: '96px',
+      width: constants.COLOREDICONBUTTON_SIZE_PIXEL.large.width,
+      height: constants.COLOREDICONBUTTON_SIZE_PIXEL.large.height,
     },
   ]),
   xlarge: style([
@@ -54,8 +54,8 @@ const sizeVariants = {
       fontSize: '2x',
     }),
     {
-      width: '292px',
-      height: '120px',
+      width: constants.COLOREDICONBUTTON_SIZE_PIXEL.xlarge.width,
+      height: constants.COLOREDICONBUTTON_SIZE_PIXEL.xlarge.height,
     },
   ]),
 };
@@ -93,8 +93,8 @@ export const iconStyle = style([
     position: 'relative',
   }),
   {
-    height: '40px',
-    width: '40px',
+    height: constants.COLOREDICONBUTTON_ICON_SIZE,
+    width: constants.COLOREDICONBUTTON_ICON_SIZE,
   },
 ]);
 
@@ -102,9 +102,9 @@ export const textStyle = style([
   flexOptions({
     option: 'center',
   }),
-  sprinkles({ position: 'relative' }),
-  {
-    height: '100%',
-    width: '100%',
-  },
+  sprinkles({
+    position: 'relative',
+    height: 'full',
+    width: 'full',
+  }),
 ]);

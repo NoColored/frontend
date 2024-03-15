@@ -10,16 +10,19 @@ import {
 export const vars = createGlobalTheme(':root', {
   size: {
     full: '100%',
+    auto: 'auto',
   },
 
   /* paddings, margins 대신 space 사용 */
   space: {
+    auto: 'auto',
     none: '0',
     '0.5x': '2px',
     '1x': '4px',
     '2x': '8px',
     '3x': '12px',
     '4x': '16px',
+    '8x': '32px',
   },
   display: {
     flex: 'flex',
@@ -67,7 +70,7 @@ export const vars = createGlobalTheme(':root', {
     pink: '#EB4180',
     pinkDark: '#B13161',
     navy: '#201D35',
-    navyDark: '#413F53',
+    navyDark: '#141221',
     gray: '#808080',
     gray100: '#ebebeb',
     gray200: '#dddddd',
