@@ -2,6 +2,7 @@ import ColoredButton from '@/components/button/ColoredButton/index.tsx';
 import ColoredIconButton from '@/components/button/ColoredIconButton/index.tsx';
 // import Game from '@/components/Game.tsx';
 
+import RoundCornerImageBox from '@/components/RoundCornerImageBox';
 import ColoredTextBox from '@/components/textbox/ColoredTextBox/index.tsx';
 import InputTextBox from '@/components/textbox/InputTextBox/index.tsx';
 import LabeledTextBox from '@/components/textbox/LabeledTextBox/index.tsx';
@@ -79,6 +80,25 @@ const Example = () => {
           labelColor='white'
         />
       </div>
+      <RoundCornerImageBox
+        size='small'
+        tier='bronze'
+        borderColor='pink'
+        borderSize='5x'
+      />
+      <RoundCornerImageBox
+        children={<div>children</div>}
+        size='large'
+        imgSrc='src/assets/character/default-butterfly/character-default-butterfly-blue-h240w240.png'
+        borderColor='pink'
+      />
+      <RoundCornerImageBox
+        size='full'
+        imgSrc='src/assets/character/default-butterfly/character-default-butterfly-blue-h240w240.png'
+        borderColor='pink'
+        borderSize='5x'
+        backgroundColor='white'
+      />
     </div>
   );
 };
