@@ -28,12 +28,12 @@ globalStyle('body', {
   backgroundRepeat: 'no-repeat',
   backgroundPosition: 'center',
   backgroundImage:
-    'url(images/background/background-white-small-h450w873.webp)',
+    'url(/images/background/background-white-small-h450w873.webp)',
 
   '@media': {
     'screen and (min-height: 463px)': {
       backgroundImage:
-        'url(images/background/background-white-large-h991w1922.webp)',
+        'url(/images/background/background-white-large-h991w1922.webp)',
     },
   },
 });
