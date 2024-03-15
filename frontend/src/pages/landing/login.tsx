@@ -1,7 +1,7 @@
 import * as styles from './index.css.ts';
 
 import ColoredButton from '@/components/button/ColoredButton/index.tsx';
-import InputTextBox from '@/components/InputTextBox/index.tsx';
+import InputTextBox from '@/components/textbox/InputTextBox/index.tsx';
 
 const LogIn = () => {
   return (
