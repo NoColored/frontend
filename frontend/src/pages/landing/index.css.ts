@@ -61,4 +61,7 @@ export const logInFailMessage = style([
     fontSize: '1.5x',
     marginY: '2x',
   }),
+  {
+    lineHeight: '32px',
+  },
 ]);
