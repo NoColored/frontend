@@ -31,7 +31,7 @@ export const flexOptions = recipe({
   },
 });
 
-export const borderOptions = recipe({
+export const borderDarkOptions = recipe({
   base: sprinkles({ borderStyle: 'solid' }),
   variants: {
     // border color
@@ -45,6 +45,32 @@ export const borderOptions = recipe({
       black: sprinkles({ borderColor: 'black' }),
       gray300: sprinkles({ borderColor: 'gray500' }),
       gray500: sprinkles({ borderColor: 'gray700' }),
+    },
+
+    // border width
+    width: {
+      '1x': sprinkles({ borderWidth: '1x' }),
+      '2x': sprinkles({ borderWidth: '2x' }),
+      '3x': sprinkles({ borderWidth: '3x' }),
+      '5x': sprinkles({ borderWidth: '5x' }),
+    },
+  },
+});
+
+export const borderLightOptions = recipe({
+  base: sprinkles({ borderStyle: 'solid' }),
+  variants: {
+    // border color
+    color: {
+      red: sprinkles({ borderColor: 'red' }),
+      yellow: sprinkles({ borderColor: 'yellow' }),
+      green: sprinkles({ borderColor: 'green' }),
+      blue: sprinkles({ borderColor: 'blue' }),
+      pink: sprinkles({ borderColor: 'pink' }),
+      navy: sprinkles({ borderColor: 'navy' }),
+      black: sprinkles({ borderColor: 'black' }),
+      gray300: sprinkles({ borderColor: 'gray300' }),
+      gray500: sprinkles({ borderColor: 'gray500' }),
     },
 
     // border width

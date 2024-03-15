@@ -1,7 +1,10 @@
+import RoundCornerImageBox from '../../components/imagebox/RoundCornerImageBox';
+
 import ColoredButton from '@/components/button/ColoredButton/index.tsx';
 import ColoredIconButton from '@/components/button/ColoredIconButton/index.tsx';
 // import Game from '@/components/Game.tsx';
 
+import TierBox from '@/components/imagebox/TierIconBox';
 import ColoredTextBox from '@/components/textbox/ColoredTextBox/index.tsx';
 import InputTextBox from '@/components/textbox/InputTextBox/index.tsx';
 import LabeledTextBox from '@/components/textbox/LabeledTextBox/index.tsx';
@@ -75,10 +78,24 @@ const Example = () => {
       <div>
         <LabeledTextBox
           labelText='라벨이에용'
-          titleText='타이틀이에용닉네임들어가죠'
+          contentText='타이틀이에용닉네임들어가죠'
           labelColor='white'
         />
       </div>
+      <RoundCornerImageBox
+        children={<div>children</div>}
+        size='large'
+        imgSrc='src/assets/character/default-butterfly/character-default-butterfly-blue-h240w240.png'
+        borderColor='pink'
+      />
+      <RoundCornerImageBox
+        size='full'
+        imgSrc='src/assets/character/default-butterfly/character-default-butterfly-blue-h240w240.png'
+        borderColor='pink'
+        borderSize='5x'
+        backgroundColor='white'
+      />
+      <TierBox tier='colored' size='xlarge' />
     </div>
   );
 };

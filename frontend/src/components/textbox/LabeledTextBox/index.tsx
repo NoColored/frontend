@@ -4,9 +4,9 @@ import type { LabeledTextboxProps } from '@/components/textbox/types.d.ts';
 
 const LabeledTextBox = ({
   labelColor,
-  titleColor,
+  contentColor,
   labelText,
-  titleText,
+  contentText,
 }: LabeledTextboxProps) => {
   return (
     <div>
@@ -20,11 +20,11 @@ const LabeledTextBox = ({
       </div>
       <div
         className={styles.textStyle({
-          textPosition: 'title',
-          color: titleColor,
+          textPosition: 'content',
+          color: contentColor,
         })}
       >
-        {titleText}
+        {contentText}
       </div>
     </div>
   );
