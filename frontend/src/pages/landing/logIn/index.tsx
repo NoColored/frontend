@@ -1,15 +1,42 @@
+import { useState } from 'react';
+
 import ColoredButton from '@/components/button/ColoredButton/index';
 import InputTextBox from '@/components/textbox/InputTextBox/index';
 
 import useModal from '@/hooks/useModal';
 
 import * as styles from '@/pages/landing/index.css';
+import LogInFail from '@/pages/landing/logIn/LogInFail';
+// import { requestLogIn } from '@/pages/landing/logIn/requestLogIn';
 import SignUp from '@/pages/landing/logIn/SignUp';
 
 const LogIn = () => {
+  const [userId, setUserId] = useState<string>();
+  const [userPassword, setUserPassword] = useState<string>();
+  const [isClicked, setIsClicked] = useState(false);
+
   const { Modal, openModal, closeModal } = useModal();
+
+  const inputIdChangeEvent = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setUserId(e.target.value);
+  };
+
+  const inputPasswordChangeEvent = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setUserPassword(e.target.value);
+  };
+
   const signUpClickEvent = () => {
     openModal();
+    setIsClicked(true);
+  };
+
+  const logInClickEvent = () => {
+    if (userId && userPassword) {
+      // requestLogIn(userId, userPassword);
+    } else {
+      openModal();
+      setIsClicked(false);
+    }
   };
 
   return (
@@ -19,13 +46,13 @@ const LogIn = () => {
         type='text'
         placeholder='아이디'
         size='large'
-        onChange={() => {}}
+        onChange={inputIdChangeEvent}
       />
       <InputTextBox
         type='password'
         placeholder='비밀번호'
         size='large'
-        onChange={() => {}}
+        onChange={inputPasswordChangeEvent}
       />
       <div className={styles.buttonWrapper}>
         <ColoredButton
@@ -38,12 +65,18 @@ const LogIn = () => {
           text='LOG IN'
           color='pink'
           size='large'
-          onClick={() => {}}
+          onClick={logInClickEvent}
         />
       </div>
-      <Modal>
-        <SignUp closeModal={closeModal} />
-      </Modal>
+      {isClicked ? (
+        <Modal>
+          <SignUp closeModal={closeModal} />
+        </Modal>
+      ) : (
+        <Modal>
+          <LogInFail closeModal={closeModal} />
+        </Modal>
+      )}
     </div>
   );
 };
