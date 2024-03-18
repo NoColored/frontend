@@ -30,7 +30,7 @@ export const coloredTextBoxStyle = recipe({
       fontSize: '1x',
       color: 'white',
       borderRadius: '4x',
-      paddingX: '3x',
+      paddingX: '2x',
       paddingY: '2x',
     }),
     {
@@ -41,6 +41,14 @@ export const coloredTextBoxStyle = recipe({
   ],
   variants: {
     color: colorVariants,
+    inImageBox: {
+      true: {
+        position: 'absolute',
+        top: '5%',
+        left: '50%',
+        transform: 'translateX(-50%)',
+      },
+    },
   },
 });
 
