@@ -1,4 +1,4 @@
-import ColoredButton from '@/components/button/ColoredButton/index.tsx';
+import ColoredButton from '@/components/button/ColoredButton/index';
 
 interface Props {
   onClose: () => void;

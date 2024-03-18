@@ -1,26 +1,20 @@
-import RoundCornerImageBox from '../../components/imagebox/RoundCornerImageBox';
-
-import ColoredButton from '@/components/button/ColoredButton/index.tsx';
-import ColoredIconButton from '@/components/button/ColoredIconButton/index.tsx';
+import ColoredButton from '@/components/button/ColoredButton/index';
+import ColoredIconButton from '@/components/button/ColoredIconButton/index';
+import RoundCornerImageBox from '@/components/imagebox/RoundCornerImageBox';
 // import Game from '@/components/Game.tsx';
-
 import TierBox from '@/components/imagebox/TierIconBox';
 import PlayerInfoBox from '@/components/PlayerInfoBox';
-import ColoredTextBox from '@/components/textbox/ColoredTextBox/index.tsx';
-import InputTextBox from '@/components/textbox/InputTextBox/index.tsx';
-import LabeledTextBox from '@/components/textbox/LabeledTextBox/index.tsx';
+import ColoredTextBox from '@/components/textbox/ColoredTextBox/index';
+import InputTextBox from '@/components/textbox/InputTextBox/index';
+import LabeledTextBox from '@/components/textbox/LabeledTextBox/index';
 
+import characterSheet from '@/assets/character/default-butterfly/character-default-butterfly-blue-h240w240.png';
 import groupIcon from '@/assets/ui/icon/button/icon-button-collection-h50w50.png';
 import testIcon from '@/assets/ui/icon/shape/icon-shape-white-big-player0-h48w48.png';
 
 const Example = () => {
   return (
     <div>
-      <PlayerInfoBox
-        label='칭호가들어가는데요아마열네'
-        nickname='아룸다운코뿔소'
-        imgSrc='src/assets/character/default-butterfly/character-default-butterfly-blue-h240w240.png'
-      />
       <div>테스트버튼</div>
       <ColoredButton color='red' size='small' text='Ready' onClick={() => {}} />
       <div>테스트버튼</div>
@@ -89,17 +83,24 @@ const Example = () => {
         />
       </div>
       <RoundCornerImageBox
-        children={<div>children</div>}
         size='large'
         imgSrc='src/assets/character/default-butterfly/character-default-butterfly-blue-h240w240.png'
         borderColor='pink'
-      />
+        borderSize='5x'
+      >
+        <ColoredTextBox color='pink' text='착용중' inImageBox />
+      </RoundCornerImageBox>
       <RoundCornerImageBox
         size='full'
         imgSrc='src/assets/character/default-butterfly/character-default-butterfly-blue-h240w240.png'
         borderColor='pink'
         borderSize='5x'
         backgroundColor='white'
+      />
+      <PlayerInfoBox
+        label='칭호가들어가요'
+        nickname='닉네임이예쁘다'
+        imgSrc={characterSheet}
       />
       <TierBox tier='colored' size='xlarge' />
     </div>

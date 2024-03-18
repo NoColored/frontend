@@ -1,10 +1,10 @@
 import { style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
 
-import * as constants from '@/components/textbox/constants.ts';
+import * as constants from '@/components/textbox/constants';
 
-import { flexOptions } from '@/styles/common.css.ts';
-import { sprinkles } from '@/styles/sprinkles.css.ts';
+import { flexOptions } from '@/styles/common.css';
+import { sprinkles } from '@/styles/sprinkles.css';
 
 const colorVariants: {
   [colorItem in (typeof constants.BACKGROUND_COLOR)[number]]?: ReturnType<
@@ -30,7 +30,7 @@ export const coloredTextBoxStyle = recipe({
       fontSize: '1x',
       color: 'white',
       borderRadius: '4x',
-      paddingX: '3x',
+      paddingX: '2x',
       paddingY: '2x',
     }),
     {
@@ -41,6 +41,14 @@ export const coloredTextBoxStyle = recipe({
   ],
   variants: {
     color: colorVariants,
+    inImageBox: {
+      true: {
+        position: 'absolute',
+        top: '5%',
+        left: '50%',
+        transform: 'translateX(-50%)',
+      },
+    },
   },
 });
 

@@ -1,6 +1,6 @@
-import * as styles from './index.css.ts';
+import * as styles from './index.css';
 
-import BasicContentFrame from '@/components/BasicContentFrame/WithButtons/index.tsx';
+import BasicContentFrame from '@/components/BasicContentFrame/WithButtons/index';
 
 const Home = () => {
   return (

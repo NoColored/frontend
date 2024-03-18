@@ -1,7 +1,7 @@
 import { style } from '@vanilla-extract/css';
 
-import { sprinkles } from '@/styles/sprinkles.css.ts';
-import { vars } from '@/styles/vars.css.ts';
+import { sprinkles } from '@/styles/sprinkles.css';
+import { vars } from '@/styles/vars.css';
 
 export const button = style([
   sprinkles({

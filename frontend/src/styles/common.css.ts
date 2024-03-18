@@ -2,7 +2,7 @@
 
 import { recipe } from '@vanilla-extract/recipes';
 
-import { sprinkles } from '@/styles/sprinkles.css.ts';
+import { sprinkles } from '@/styles/sprinkles.css';
 
 export const flexOptions = recipe({
   base: sprinkles({ display: 'flex' }),

@@ -1,14 +1,14 @@
 import { ReactNode, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import * as styles from './index.css.ts';
+import * as styles from './index.css';
 
-import SettingIconButton from '@/components/button/SettingIconButton/index.tsx';
-import SettingNavigationButton from '@/components/button/SettingNavigationButton/index.tsx';
-import Index from '@/components/Modal/informationModal/index.tsx';
-import Setting from '@/components/Modal/settingModal/index.tsx';
+import SettingIconButton from '@/components/button/SettingIconButton/index';
+import SettingNavigationButton from '@/components/button/SettingNavigationButton/index';
+import Index from '@/components/Modal/informationModal/index';
+import Setting from '@/components/Modal/settingModal/index';
 
-import useModal from '@/hooks/useModal.tsx';
+import useModal from '@/hooks/useModal';
 
 interface Props {
   children: ReactNode;

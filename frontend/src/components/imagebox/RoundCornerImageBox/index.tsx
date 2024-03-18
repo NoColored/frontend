@@ -1,6 +1,6 @@
-import * as styles from './index.css.ts';
+import * as styles from './index.css';
 
-import type { RoundCornerImageBoxProps } from '../types.d.ts';
+import type { RoundCornerImageBoxProps } from '../types.d';
 
 const RoundCornerImageBox = ({
   children,
@@ -11,18 +11,18 @@ const RoundCornerImageBox = ({
   backgroundColor,
 }: RoundCornerImageBoxProps) => {
   return (
-    <div>
-      <div
-        style={{
-          backgroundImage: `url(${imgSrc})`,
-        }}
-        className={styles.roundCornerImageBox({
-          size,
-          borderColor,
-          borderSize,
-          backgroundColor,
-        })}
-      />
+    <div
+      id='roundCornerImageBox'
+      style={{
+        backgroundImage: `url(${imgSrc})`,
+      }}
+      className={styles.roundCornerImageBox({
+        size,
+        borderColor,
+        borderSize,
+        backgroundColor,
+      })}
+    >
       {children}
     </div>
   );

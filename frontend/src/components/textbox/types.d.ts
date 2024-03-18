@@ -1,4 +1,4 @@
-import * as constants from './constants.ts';
+import * as constants from './constants';
 
 export interface LabeledTextboxProps {
   contentColor?: (typeof constants.TEXTBOX_COLOR)[number];
@@ -11,4 +11,5 @@ export interface ColoredTextBoxProps {
   color: (typeof constants.BACKGROUND_COLOR)[number];
   text: string;
   icon?: string;
+  inImageBox?: boolean;
 }

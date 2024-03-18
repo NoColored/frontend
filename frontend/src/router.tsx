@@ -1,11 +1,11 @@
 import { createBrowserRouter } from 'react-router-dom';
 
-import Example from '@/pages/example/index.tsx';
-import Home from '@/pages/home/index.tsx';
-import Landing from '@/pages/landing/index.tsx';
-import LandingLayout from '@/pages/landing/layout.tsx';
-import LogIn from '@/pages/landing/logIn/index.tsx';
-import Loading from '@/pages/loading/index.tsx';
+import Example from '@/pages/example/index';
+import Home from '@/pages/home/index';
+import Landing from '@/pages/landing/index';
+import LandingLayout from '@/pages/landing/layout';
+import LogIn from '@/pages/landing/logIn/index';
+import Loading from '@/pages/loading/index';
 
 const router = createBrowserRouter([
   {

@@ -1,4 +1,4 @@
-import Sample from '@/game/scene/Sample.ts';
+import Sample from '@/game/scene/Sample';
 
 export const config: Phaser.Types.Core.GameConfig = {
   type: Phaser.AUTO,

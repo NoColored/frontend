@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 
-import * as styles from './index.css.ts';
+import * as styles from './index.css';
 
-import BasicContentFrame from '@/components/BasicContentFrame/index.tsx';
+import BasicContentFrame from '@/components/BasicContentFrame/index';
 
-import * as constants from '@/pages/loading/constants.ts';
+import * as constants from '@/pages/loading/constants';
 
 const Loading = () => {
   const [messageId, setMessageId] = useState<string>('');

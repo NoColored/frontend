@@ -1,7 +1,7 @@
 import { style } from '@vanilla-extract/css';
 
-import { flexOptions } from '@/styles/common.css.ts';
-import { sprinkles } from '@/styles/sprinkles.css.ts';
+import { flexOptions } from '@/styles/common.css';
+import { sprinkles } from '@/styles/sprinkles.css';
 
 export const text = style([
   flexOptions({ option: 'center' }),

@@ -1,7 +1,7 @@
 import { style } from '@vanilla-extract/css';
 
-import * as styleOptions from '@/styles/common.css.ts';
-import { sprinkles } from '@/styles/sprinkles.css.ts';
+import * as styleOptions from '@/styles/common.css';
+import { sprinkles } from '@/styles/sprinkles.css';
 
 export const testForRecipe = style([
   // 임의 설정한 option들을 배열에 등록

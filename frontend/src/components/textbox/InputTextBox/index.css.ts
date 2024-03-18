@@ -1,11 +1,11 @@
 import { style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
 
-import * as constants from './constants.ts';
+import * as constants from './constants';
 
-import { borderDarkOptions } from '@/styles/common.css.ts';
-import { sprinkles } from '@/styles/sprinkles.css.ts';
-import { vars } from '@/styles/vars.css.ts';
+import { borderDarkOptions } from '@/styles/common.css';
+import { sprinkles } from '@/styles/sprinkles.css';
+import { vars } from '@/styles/vars.css';
 
 const inputTextBoxBase = style([
   sprinkles({

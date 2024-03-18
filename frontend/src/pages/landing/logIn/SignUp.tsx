@@ -1,11 +1,12 @@
-import ColoredButton from '@/components/button/ColoredButton/index.tsx';
-import InputTextBox from '@/components/textbox/InputTextBox/index.tsx';
+import ColoredButton from '@/components/button/ColoredButton/index';
+import InputTextBox from '@/components/textbox/InputTextBox/index';
 
-import { buttonWrapper } from '@/pages/landing/index.css.ts';
+import { buttonWrapper } from '@/pages/landing/index.css';
 
 interface Props {
   closeModal: () => void;
 }
+
 const SignUp = ({ closeModal }: Props) => {
   return (
     <>

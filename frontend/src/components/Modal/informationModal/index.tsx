@@ -1,12 +1,12 @@
 import { useState } from 'react';
 
-import * as styles from './index.css.ts';
+import * as styles from './index.css';
 
-import ColoredButton from '@/components/button/ColoredButton/index.tsx';
-import SettingTextButton from '@/components/button/SettingTextButton/index.tsx';
-import GameInfo from '@/components/Modal/informationModal/gameInfo.tsx';
-import ItemInfo from '@/components/Modal/informationModal/itemInfo.tsx';
-import TierInfo from '@/components/Modal/informationModal/tierInfo.tsx';
+import ColoredButton from '@/components/button/ColoredButton/index';
+import SettingTextButton from '@/components/button/SettingTextButton/index';
+import GameInfo from '@/components/Modal/informationModal/gameInfo';
+import ItemInfo from '@/components/Modal/informationModal/itemInfo';
+import TierInfo from '@/components/Modal/informationModal/tierInfo';
 
 interface Props {
   onClose: () => void;
