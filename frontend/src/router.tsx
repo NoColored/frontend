@@ -1,6 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
 
 import Example from '@/pages/example/index';
+import Home from '@/pages/home';
 import Landing from '@/pages/landing/index';
 import LandingLayout from '@/pages/landing/layout';
 import LogIn from '@/pages/landing/logIn/index';
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
   {
     path: '/ranking',
     element: <Ranking />,
+  },
+  {
+    path: '/home',
+    element: <Home />,
   },
 ]);
 
