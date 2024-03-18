@@ -7,7 +7,7 @@ import useModal from '@/hooks/useModal';
 
 import * as styles from '@/pages/landing/index.css';
 import LogInFail from '@/pages/landing/logIn/LogInFail';
-// import { requestLogIn } from '@/pages/landing/logIn/requestLogIn';
+import { requestLogIn } from '@/pages/landing/logIn/requestLogIn';
 import SignUp from '@/pages/landing/logIn/SignUp';
 
 const LogIn = () => {
@@ -31,9 +31,10 @@ const LogIn = () => {
   };
 
   const logInClickEvent = () => {
-    if (userId && userPassword) {
-      // requestLogIn(userId, userPassword);
-    } else {
+    const check = requestLogIn(userId, userPassword);
+
+    // userId 와 userPassword null 여부는 백에서도 체크
+    if (!userId || !userPassword || !check) {
       openModal();
       setIsClicked(false);
     }
