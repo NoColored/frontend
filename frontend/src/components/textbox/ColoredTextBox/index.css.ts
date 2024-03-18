@@ -30,8 +30,6 @@ export const coloredTextBoxStyle = recipe({
       fontSize: '1x',
       color: 'white',
       borderRadius: '4x',
-      paddingX: '2x',
-      paddingY: '2x',
     }),
     {
       width: 'fit-content',
@@ -40,15 +38,30 @@ export const coloredTextBoxStyle = recipe({
     },
   ],
   variants: {
-    color: colorVariants,
-    inImageBox: {
-      true: {
-        position: 'absolute',
-        top: '5%',
-        left: '50%',
-        transform: 'translateX(-50%)',
-      },
+    size: {
+      small: sprinkles({
+        textSize: '0.75x',
+        paddingY: '1x',
+        paddingX: '2x',
+      }),
+      medium: style([
+        sprinkles({
+          textSize: '1x',
+          paddingY: '1x',
+          paddingX: '3x',
+        }),
+        {
+          '@media': {
+            'screen and (max-height: 380px)': {
+              fontSize: '12px',
+              lineHeight: '12px',
+              padding: '4px 8px',
+            },
+          },
+        },
+      ]),
     },
+    color: colorVariants,
   },
 });
 
@@ -62,5 +75,12 @@ export const iconStyle = style([
   {
     width: '16px',
     height: '16px',
+
+    '@media': {
+      'screen and (max-height: 380px)': {
+        width: '12px',
+        height: '12px',
+      },
+    },
   },
 ]);
