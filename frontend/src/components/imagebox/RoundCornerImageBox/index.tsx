@@ -11,18 +11,18 @@ const RoundCornerImageBox = ({
   backgroundColor,
 }: RoundCornerImageBoxProps) => {
   return (
-    <div>
-      <div
-        style={{
-          backgroundImage: `url(${imgSrc})`,
-        }}
-        className={styles.roundCornerImageBox({
-          size,
-          borderColor,
-          borderSize,
-          backgroundColor,
-        })}
-      />
+    <div
+      id='roundCornerImageBox'
+      style={{
+        backgroundImage: `url(${imgSrc})`,
+      }}
+      className={styles.roundCornerImageBox({
+        size,
+        borderColor,
+        borderSize,
+        backgroundColor,
+      })}
+    >
       {children}
     </div>
   );
