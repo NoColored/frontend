@@ -1,17 +1,14 @@
-import * as type from './ColoredButton/constants';
 import * as constants from './constants';
 
-interface ColoredIconButtonProps {
-  text: string;
-  icon: string;
-  color: (typeof constants.COLOREDICONBUTTON_COLOR)[number];
-  size: (typeof constants.COLOREDICONBUTTON_SIZE)[number];
-  onClick: () => void;
-}
+type colorType = (typeof constants.BUTTON_COLOR)[number];
 
-interface ColoredButtonProps {
+type coloredButtonSizeType = (typeof constants.COLORED_BUTTON_SIZE)[number];
+
+type coloredIconButtonSizeType =
+  (typeof constants.COLORED_ICON_BUTTON_SIZE)[number];
+
+interface ColorButtonProps {
   text: string;
-  color: (typeof type.COLOR)[number];
-  size: (typeof type.SIZE)[number];
+  color: colorType;
   onClick: () => void;
 }

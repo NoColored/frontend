@@ -1,4 +1,4 @@
-export const COLOREDICONBUTTON_COLOR = [
+export const BUTTON_COLOR = [
   'red',
   'yellow',
   'green',
@@ -8,7 +8,7 @@ export const COLOREDICONBUTTON_COLOR = [
   'gray300',
 ] as const;
 
-export const COLOREDICONBUTTON_COLOR_DARK = {
+export const BUTTON_COLOR_DARK = {
   red: 'redDark',
   yellow: 'yellowDark',
   green: 'greenDark',
@@ -18,7 +18,7 @@ export const COLOREDICONBUTTON_COLOR_DARK = {
   gray300: 'gray500',
 } as const;
 
-export const COLOREDICONBUTTON_SIZE = ['medium', 'large', 'xlarge'] as const;
+export const COLORED_ICON_BUTTON_SIZE = ['medium', 'large', 'xlarge'] as const;
 
 export const COLOREDICONBUTTON_SIZE_PIXEL = {
   medium: {
@@ -35,4 +35,21 @@ export const COLOREDICONBUTTON_SIZE_PIXEL = {
   },
 } as const;
 
-export const COLOREDICONBUTTON_ICON_SIZE = '40px';
+export const COLORED_ICON_BUTTON_ICON_SIZE = '40px';
+
+export const COLORED_BUTTON_SIZE = ['small', 'medium', 'large'] as const;
+
+export const COLORED_BUTTON_SIZE_PIXEL = {
+  small: {
+    width: '96px',
+    height: '36px',
+  },
+  medium: {
+    width: '130px',
+    height: '44px',
+  },
+  large: {
+    width: '192px',
+    height: '64px',
+  },
+} as const;

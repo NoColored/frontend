@@ -8,13 +8,13 @@ import { sprinkles } from '@/styles/sprinkles.css';
 import { vars } from '@/styles/vars.css';
 
 const colorVariants: {
-  [colorItem in (typeof constants.COLOREDICONBUTTON_COLOR)[number]]?: ReturnType<
+  [colorItem in (typeof constants.BUTTON_COLOR)[number]]?: ReturnType<
     typeof style
   >;
 } = {};
 
-constants.COLOREDICONBUTTON_COLOR.forEach((colorItem) => {
-  const darkColor = constants.COLOREDICONBUTTON_COLOR_DARK[colorItem];
+constants.BUTTON_COLOR.forEach((colorItem) => {
+  const darkColor = constants.BUTTON_COLOR_DARK[colorItem];
   colorVariants[colorItem] = style([
     sprinkles({
       backgroundColor: colorItem,
@@ -93,8 +93,8 @@ export const iconStyle = style([
     position: 'relative',
   }),
   {
-    height: constants.COLOREDICONBUTTON_ICON_SIZE,
-    width: constants.COLOREDICONBUTTON_ICON_SIZE,
+    height: constants.COLORED_ICON_BUTTON_ICON_SIZE,
+    width: constants.COLORED_ICON_BUTTON_ICON_SIZE,
   },
 ]);
 

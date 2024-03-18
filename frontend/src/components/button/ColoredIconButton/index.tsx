@@ -1,14 +1,16 @@
 import * as styles from './index.css';
 
-import type { ColoredIconButtonProps } from '@/components/button/types';
+import type {
+  ColorButtonProps,
+  coloredIconButtonSizeType,
+} from '@/components/button/types';
 
-const ColoredIconButton = ({
-  text,
-  icon,
-  color,
-  size,
-  onClick,
-}: ColoredIconButtonProps) => {
+interface Props extends ColorButtonProps {
+  icon: string;
+  size: coloredIconButtonSizeType;
+}
+
+const ColoredIconButton = ({ text, icon, color, size, onClick }: Props) => {
   return (
     <button
       type='button'
