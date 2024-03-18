@@ -8,6 +8,7 @@ export interface LabeledTextboxProps {
 }
 
 export interface ColoredTextBoxProps {
+  size: 'small' | 'medium';
   color: (typeof constants.BACKGROUND_COLOR)[number];
   text: string;
   icon?: string;
