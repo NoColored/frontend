@@ -1,4 +1,4 @@
-import * as styles from './index.css.ts';
+import * as styles from './index.css';
 
 import type { ColoredButtonProps } from '@/components/button/types';
 

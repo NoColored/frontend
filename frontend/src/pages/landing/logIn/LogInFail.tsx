@@ -1,8 +1,8 @@
-import * as styles from '../index.css.ts';
+import * as styles from '../index.css';
 
-import ColoredButton from '@/components/button/ColoredButton/index.tsx';
+import ColoredButton from '@/components/button/ColoredButton/index';
 
-import * as constants from '@/pages/landing/logIn/constants.ts';
+import * as constants from '@/pages/landing/logIn/constants';
 
 interface Props {
   closeModal: () => void;

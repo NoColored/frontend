@@ -1,9 +1,9 @@
 import { keyframes, style } from '@vanilla-extract/css';
 
-import * as constants from '@/pages/landing/constants.ts';
+import * as constants from '@/pages/landing/constants';
 
-import { flexOptions } from '@/styles/common.css.ts';
-import { sprinkles } from '@/styles/sprinkles.css.ts';
+import { flexOptions } from '@/styles/common.css';
+import { sprinkles } from '@/styles/sprinkles.css';
 
 export const landingWrapper = style([
   flexOptions({ option: 'columnCenter' }),

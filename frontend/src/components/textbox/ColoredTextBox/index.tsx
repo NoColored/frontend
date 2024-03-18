@@ -1,4 +1,4 @@
-import * as styles from './index.css.ts';
+import * as styles from './index.css';
 
 import type { ColoredTextBoxProps } from '@/components/textbox/types.d.ts';
 

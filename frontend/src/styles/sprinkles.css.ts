@@ -1,6 +1,6 @@
-import { defineProperties, createSprinkles } from '@vanilla-extract/sprinkles';
+import { createSprinkles, defineProperties } from '@vanilla-extract/sprinkles';
 
-import { vars } from './vars.css.ts';
+import { vars } from './vars.css';
 
 const displayProperties = defineProperties({
   properties: {

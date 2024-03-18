@@ -1,6 +1,6 @@
 import React from 'react';
 
-import * as styles from './index.css.ts';
+import * as styles from './index.css';
 
 interface Props {
   src: string;
