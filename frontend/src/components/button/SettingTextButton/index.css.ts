@@ -1,9 +1,9 @@
 import { style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
 
-import { borderDarkOptions } from '@/styles/common.css.ts';
-import { sprinkles } from '@/styles/sprinkles.css.ts';
-import { vars } from '@/styles/vars.css.ts';
+import { borderDarkOptions } from '@/styles/common.css';
+import { sprinkles } from '@/styles/sprinkles.css';
+import { vars } from '@/styles/vars.css';
 
 export const button = style([
   borderDarkOptions({ color: 'black', width: '2x' }),
@@ -33,6 +33,16 @@ export const buttonVariants = {
       {
         height: '28px',
         width: '60px',
+      },
+    ]),
+    medium: style([
+      sprinkles({
+        fontSize: '1.5x',
+        margin: '1x',
+      }),
+      {
+        height: '36px',
+        width: '210px',
       },
     ]),
     large: style([

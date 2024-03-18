@@ -1,6 +1,4 @@
-import * as constants from './constants.ts';
-
-interface PlayerInfoBoxProps {
+export interface PlayerInfoBoxProps {
   label: string;
   nickname: string;
 

@@ -1,11 +1,10 @@
-import * as styles from '@/pages/landing/index.css.ts';
+import ColoredButton from '@/components/button/ColoredButton/index';
+import InputTextBox from '@/components/textbox/InputTextBox/index';
 
-import ColoredButton from '@/components/button/ColoredButton/index.tsx';
-import InputTextBox from '@/components/textbox/InputTextBox/index.tsx';
+import useModal from '@/hooks/useModal';
 
-import useModal from '@/hooks/useModal.tsx';
-
-import SignUp from '@/pages/landing/logIn/SignUp.tsx';
+import * as styles from '@/pages/landing/index.css';
+import SignUp from '@/pages/landing/logIn/SignUp';
 
 const LogIn = () => {
   const { Modal, openModal, closeModal } = useModal();

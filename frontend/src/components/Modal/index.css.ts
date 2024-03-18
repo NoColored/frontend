@@ -1,9 +1,9 @@
 import { style } from '@vanilla-extract/css';
 
-import * as constants from './constants.ts';
+import * as constants from './constants';
 
-import { borderDarkOptions, flexOptions } from '@/styles/common.css.ts';
-import { sprinkles } from '@/styles/sprinkles.css.ts';
+import { borderDarkOptions, flexOptions } from '@/styles/common.css';
+import { sprinkles } from '@/styles/sprinkles.css';
 
 export const modal = style([
   sprinkles({

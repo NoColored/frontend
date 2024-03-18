@@ -1,10 +1,10 @@
 import { style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
 
-import * as constants from '../constants.ts';
+import * as constants from '../constants';
 
-import { borderLightOptions } from '@/styles/common.css.ts';
-import { sprinkles } from '@/styles/sprinkles.css.ts';
+import { borderLightOptions } from '@/styles/common.css';
+import { sprinkles } from '@/styles/sprinkles.css';
 
 const imageBoxBase = style([
   sprinkles({

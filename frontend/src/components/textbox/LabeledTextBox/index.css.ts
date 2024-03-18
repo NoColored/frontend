@@ -1,9 +1,9 @@
 import { style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
 
-import * as constants from '@/components/textbox/constants.ts';
+import * as constants from '@/components/textbox/constants';
 
-import { sprinkles } from '@/styles/sprinkles.css.ts';
+import { sprinkles } from '@/styles/sprinkles.css';
 
 // 선택지를 위한 객체 선언
 const colorVariants: {
