@@ -1,11 +1,12 @@
 import { createBrowserRouter } from 'react-router-dom';
 
 import Example from '@/pages/example/index';
-import Home from '@/pages/home/index';
+import Home from '@/pages/home';
 import Landing from '@/pages/landing/index';
 import LandingLayout from '@/pages/landing/layout';
 import LogIn from '@/pages/landing/logIn/index';
 import Loading from '@/pages/loading/index';
+import Ranking from '@/pages/ranking';
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
   {
     path: '/example',
     element: <Example />,
+  },
+  {
+    path: '/ranking',
+    element: <Ranking />,
   },
   {
     path: '/home',
