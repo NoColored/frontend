@@ -14,21 +14,21 @@ const MainInfo = ({ onNavigate }: Props) => {
       </div>
       <div className={styles.boxWrapper}>
         <SettingTextButton
-          onClick={() => onNavigate(ViewType.GameInfo)}
+          onClick={() => onNavigate(ViewType.gameInfo)}
           size='medium'
           colorStyle='black'
         >
           게임 방식
         </SettingTextButton>
         <SettingTextButton
-          onClick={() => onNavigate(ViewType.ItemInfo)}
+          onClick={() => onNavigate(ViewType.itemInfo)}
           size='medium'
           colorStyle='black'
         >
           아이템
         </SettingTextButton>
         <SettingTextButton
-          onClick={() => onNavigate(ViewType.TierInfo)}
+          onClick={() => onNavigate(ViewType.tierInfo)}
           size='medium'
           colorStyle='black'
         >

@@ -1,11 +1,11 @@
 export enum ModalType {
-  Info = 'info',
-  Setting = 'setting',
+  info,
+  setting,
 }
 
 export enum ViewType {
-  Main = 'main',
-  ItemInfo = 'itemInfo',
-  GameInfo = 'gameInfo',
-  TierInfo = 'tierInfo',
+  main,
+  itemInfo,
+  gameInfo,
+  tierInfo,
 }

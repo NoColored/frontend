@@ -12,16 +12,16 @@ interface Props {
 }
 
 const Index = ({ onClose }: Props) => {
-  const [currentView, setCurrentView] = useState<ViewType>(ViewType.Main);
+  const [currentView, setCurrentView] = useState<ViewType>(ViewType.main);
 
   return (
     <div>
-      {currentView === ViewType.Main && (
+      {currentView === ViewType.main && (
         <MainInfo onNavigate={setCurrentView} />
       )}
-      {currentView === ViewType.GameInfo && <GameInfo />}
-      {currentView === ViewType.ItemInfo && <ItemInfo />}
-      {currentView === ViewType.TierInfo && <TierInfo />}
+      {currentView === ViewType.gameInfo && <GameInfo />}
+      {currentView === ViewType.itemInfo && <ItemInfo />}
+      {currentView === ViewType.tierInfo && <TierInfo />}
       <div className={styles.buttonWrapper}>
         <ColoredButton
           text='닫기'
