@@ -9,6 +9,7 @@ import Index from '@/components/Modal/informationModal/index';
 import Setting from '@/components/Modal/settingModal/index';
 
 import useModal from '@/hooks/useModal';
+import { ModalType } from '@/components/Modal/informationModal/constants';
 
 interface Props {
   children: ReactNode;
@@ -20,7 +21,7 @@ const BasicContentFrame = ({ children, backButtonLabel }: Props) => {
   const [modalType, setModalType] = useState('');
   const navigate = useNavigate();
 
-  const typeModal = (type: string) => {
+  const selectModalType = (type: string) => {
     setModalType(type);
     openModal();
   };
@@ -31,7 +32,7 @@ const BasicContentFrame = ({ children, backButtonLabel }: Props) => {
         <SettingIconButton
           src='/src/assets/ui/icon/button/icon-button-information-h50w50.png'
           alt='info'
-          onClick={() => typeModal('info')}
+          onClick={() => selectModalType(ModalType.Info)}
         />
         <SettingIconButton
           src='/src/assets/ui/icon/button/icon-button-home-h50w50.png'
@@ -41,7 +42,7 @@ const BasicContentFrame = ({ children, backButtonLabel }: Props) => {
         <SettingIconButton
           src='/src/assets/ui/icon/button/icon-button-setting-h50w50.png'
           alt='setting'
-          onClick={() => typeModal('setting')}
+          onClick={() => selectModalType(ModalType.Setting)}
         />
       </div>
       <main className={styles.main}>
@@ -51,8 +52,8 @@ const BasicContentFrame = ({ children, backButtonLabel }: Props) => {
           </div>
         )}
         <Modal>
-          {modalType === 'info' && <Index onClose={closeModal} />}
-          {modalType === 'setting' && <Setting onClose={closeModal} />}
+          {modalType === ModalType.Info && <Index onClose={closeModal} />}
+          {modalType === ModalType.Setting && <Setting onClose={closeModal} />}
         </Modal>
         {children}
       </main>
