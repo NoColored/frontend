@@ -1,7 +1,6 @@
-import RoundCornerImageBox from '../../components/imagebox/RoundCornerImageBox';
-
 import ColoredButton from '@/components/button/ColoredButton/index';
 import ColoredIconButton from '@/components/button/ColoredIconButton/index';
+import RoundCornerImageBox from '@/components/imagebox/RoundCornerImageBox';
 // import Game from '@/components/Game.tsx';
 import TierBox from '@/components/imagebox/TierIconBox';
 import ColoredTextBox from '@/components/textbox/ColoredTextBox/index';
@@ -82,11 +81,13 @@ const Example = () => {
         />
       </div>
       <RoundCornerImageBox
-        children={<div>children</div>}
         size='large'
         imgSrc='src/assets/character/default-butterfly/character-default-butterfly-blue-h240w240.png'
         borderColor='pink'
-      />
+        borderSize='5x'
+      >
+        <ColoredTextBox color='pink' text='착용중' inImageBox />
+      </RoundCornerImageBox>
       <RoundCornerImageBox
         size='full'
         imgSrc='src/assets/character/default-butterfly/character-default-butterfly-blue-h240w240.png'

@@ -9,6 +9,7 @@ import { sprinkles } from '@/styles/sprinkles.css';
 const imageBoxBase = style([
   sprinkles({
     borderRadius: '2x',
+    position: 'relative',
   }),
   {
     overflow: 'hidden',
@@ -17,6 +18,7 @@ const imageBoxBase = style([
     backgroundClip: 'border-box',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
+    boxSizing: 'border-box',
   },
 ]);
 

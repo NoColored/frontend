@@ -11,4 +11,5 @@ export interface ColoredTextBoxProps {
   color: (typeof constants.BACKGROUND_COLOR)[number];
   text: string;
   icon?: string;
+  inImageBox?: boolean;
 }
