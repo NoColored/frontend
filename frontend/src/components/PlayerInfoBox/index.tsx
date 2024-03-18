@@ -1,3 +1,11 @@
+// const PlayerInfoBox = ({ label, nickname, imgSrc }: PlayerInfoBoxProps) => {
+//   return (
+//     <div className={styles.playerInfoWrapper}>
+//       <RoundCornerImageBox size='small' imgSrc={imgSrc} />
+//       <LabeledTextBox contentText={nickname} labelText={label} />
+//     </div>
+//   );
+// };
 import * as styles from './index.css';
 
 import RoundCornerImageBox from '@/components/imagebox/RoundCornerImageBox';

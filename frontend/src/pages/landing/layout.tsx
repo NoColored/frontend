@@ -1,8 +1,8 @@
 import { Outlet } from 'react-router-dom';
 
-import * as styles from './index.css.ts';
+import * as styles from './index.css';
 
-import BasicContentFrame from '@/components/BasicContentFrame/index.tsx';
+import BasicContentFrame from '@/components/BasicContentFrame/index';
 
 const LandingLayout = () => {
   return (

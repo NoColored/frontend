@@ -1,11 +1,11 @@
 import { style } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
 
-import * as constants from '@/components/BasicContentFrame/constants.ts';
-import { basicFrame } from '@/components/BasicContentFrame/index.css.ts';
+import * as constants from '@/components/BasicContentFrame/constants';
+import { basicFrame } from '@/components/BasicContentFrame/index.css';
 
-import { borderDarkOptions } from '@/styles/common.css.ts';
-import { sprinkles } from '@/styles/sprinkles.css.ts';
+import { borderDarkOptions } from '@/styles/common.css';
+import { sprinkles } from '@/styles/sprinkles.css';
 
 export const frame = style([
   basicFrame,

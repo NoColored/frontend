@@ -1,6 +1,6 @@
-import * as styles from './index.css.ts';
+import * as styles from './index.css';
 
-import type { LabeledTextboxProps } from '@/components/textbox/types.d.ts';
+import type { LabeledTextboxProps } from '@/components/textbox/types.d';
 
 const LabeledTextBox = ({
   labelColor,

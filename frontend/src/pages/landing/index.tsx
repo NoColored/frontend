@@ -1,8 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 
-import * as styles from './index.css.ts';
+import * as styles from './index.css';
 
-import ColoredButton from '@/components/button/ColoredButton/index.tsx';
+import ColoredButton from '@/components/button/ColoredButton/index';
 
 const Landing = () => {
   const navigate = useNavigate();

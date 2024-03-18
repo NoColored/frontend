@@ -1,5 +1,5 @@
-import * as type from './ColoredButton/constants.ts';
-import * as constants from './constants.ts';
+import * as type from './ColoredButton/constants';
+import * as constants from './constants';
 
 interface ColoredIconButtonProps {
   text: string;

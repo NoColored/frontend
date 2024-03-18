@@ -5,7 +5,7 @@ import {
   loadingTextFont,
   numFont,
   textFont,
-} from '@/styles/font.css.ts';
+} from '@/styles/font.css';
 
 export const vars = createGlobalTheme(':root', {
   size: {
