@@ -5,23 +5,23 @@ import MainInfo from '@/components/Modal/informationModal/mainInfo';
 import GameInfo from '@/components/Modal/informationModal/gameInfo';
 import ItemInfo from '@/components/Modal/informationModal/itemInfo';
 import TierInfo from '@/components/Modal/informationModal/tierInfo';
-import { ViewType } from '@/components/Modal/informationModal/constants';
+import { InfoType } from '@/components/Modal/informationModal/constants';
 
 interface Props {
   onClose: () => void;
 }
 
 const Index = ({ onClose }: Props) => {
-  const [currentView, setCurrentView] = useState<ViewType>(ViewType.main);
+  const [currentView, setCurrentView] = useState<InfoType>(InfoType.main);
 
   return (
     <div>
-      {currentView === ViewType.main && (
+      {currentView === InfoType.main && (
         <MainInfo onNavigate={setCurrentView} />
       )}
-      {currentView === ViewType.gameInfo && <GameInfo />}
-      {currentView === ViewType.itemInfo && <ItemInfo />}
-      {currentView === ViewType.tierInfo && <TierInfo />}
+      {currentView === InfoType.game && <GameInfo />}
+      {currentView === InfoType.item && <ItemInfo />}
+      {currentView === InfoType.tier && <TierInfo />}
       <div className={styles.buttonWrapper}>
         <ColoredButton
           text='닫기'

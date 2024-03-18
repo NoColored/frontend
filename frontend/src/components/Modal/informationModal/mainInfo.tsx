@@ -1,9 +1,9 @@
 import * as styles from './index.css';
 import SettingTextButton from '@/components/button/SettingTextButton/index';
-import { ViewType } from '@/components/Modal/informationModal/constants';
+import { InfoType } from '@/components/Modal/informationModal/constants';
 
 interface Props {
-  onNavigate: (view: ViewType) => void;
+  onNavigate: (view: InfoType) => void;
 }
 
 const MainInfo = ({ onNavigate }: Props) => {
@@ -14,21 +14,21 @@ const MainInfo = ({ onNavigate }: Props) => {
       </div>
       <div className={styles.boxWrapper}>
         <SettingTextButton
-          onClick={() => onNavigate(ViewType.gameInfo)}
+          onClick={() => onNavigate(InfoType.game)}
           size='medium'
           colorStyle='black'
         >
           게임 방식
         </SettingTextButton>
         <SettingTextButton
-          onClick={() => onNavigate(ViewType.itemInfo)}
+          onClick={() => onNavigate(InfoType.item)}
           size='medium'
           colorStyle='black'
         >
           아이템
         </SettingTextButton>
         <SettingTextButton
-          onClick={() => onNavigate(ViewType.tierInfo)}
+          onClick={() => onNavigate(InfoType.tier)}
           size='medium'
           colorStyle='black'
         >

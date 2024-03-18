@@ -3,9 +3,9 @@ export enum ModalType {
   setting,
 }
 
-export enum ViewType {
+export enum InfoType {
   main,
-  itemInfo,
-  gameInfo,
-  tierInfo,
+  item,
+  game,
+  tier,
 }
