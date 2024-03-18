@@ -2,6 +2,7 @@ import { style } from '@vanilla-extract/css';
 
 import { flexOptions } from '@/styles/common.css';
 import { sprinkles } from '@/styles/sprinkles.css';
+import { IMG_SIZE } from './constants';
 
 export const boxWrapper = style([flexOptions({ option: 'columnCenter' })]);
 
@@ -25,20 +26,27 @@ export const infoText = style([
 
 export const mapBackground = style([
   flexOptions({ option: 'center' }),
+  sprinkles({
+    marginBottom: '1x',
+  }),
   {
-    width: '320px',
-    height: '160px',
-    marginBottom: '8px',
+    width: IMG_SIZE.background.width,
+    height: IMG_SIZE.background.height,
+    maxHeight: '100%',
   },
 ]);
 
-export const imageStyle = style({
-  maxWidth: '100%',
-  maxHeight: '100%',
-  marginBottom: '8px',
-});
+export const imageStyle = style([
+  sprinkles({
+    marginBottom: '1x',
+  }),
+  {
+    maxWidth: '100%',
+    maxHeight: '100%',
+  },
+]);
 
 export const buttonStyle = style({
-  width: '34px',
-  height: '25px',
+  width: IMG_SIZE.button.width,
+  height: IMG_SIZE.button.height,
 });
