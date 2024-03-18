@@ -1,13 +1,20 @@
 import * as styles from './index.css';
 
-import type { LabeledTextboxProps } from '@/components/textbox/types.d';
+import type { textColorType } from '@/components/textbox/types';
+
+interface Props {
+  contentColor?: textColorType;
+  labelColor?: textColorType;
+  contentText: string;
+  labelText: string;
+}
 
 const LabeledTextBox = ({
   labelColor,
   contentColor,
   labelText,
   contentText,
-}: LabeledTextboxProps) => {
+}: Props) => {
   return (
     <div>
       <div

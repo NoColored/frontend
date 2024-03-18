@@ -1,16 +1,7 @@
 import * as constants from './constants';
 
-export interface LabeledTextboxProps {
-  contentColor?: (typeof constants.TEXTBOX_COLOR)[number];
-  labelColor?: (typeof constants.TEXTBOX_COLOR)[number];
-  contentText: string;
-  labelText: string;
-}
+type textColorType = (typeof constants.TEXTBOX_COLOR)[number];
 
-export interface ColoredTextBoxProps {
-  size: 'small' | 'medium';
-  color: (typeof constants.BACKGROUND_COLOR)[number];
-  text: string;
-  icon?: string;
-  inImageBox?: boolean;
-}
+type backgroundColorType = (typeof constants.BACKGROUND_COLOR)[number];
+
+type textSizeType = (typeof constants.TEXTBOX_SIZE)[number];
