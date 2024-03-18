@@ -1,10 +1,3 @@
-import * as rankConstants from '@/components/imagebox/TierBox/constants';
+import * as rankConstants from '@/components/imagebox/constants';
 
-interface RankingItemBoxProps {
-  rank: number;
-  imgSrc: string;
-  label: string;
-  nickname: string;
-  tier: ;
-  score: number;
-}
+type tierRange = (typeof rankConstants.TIER_RANGE)[number];
