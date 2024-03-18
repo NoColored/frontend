@@ -1,6 +1,6 @@
 import { globalStyle } from '@vanilla-extract/css';
 
-import { vars } from '@/styles/vars.css.ts';
+import { vars } from '@/styles/vars.css';
 
 globalStyle('*', {
   margin: 0,

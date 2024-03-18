@@ -1,9 +1,10 @@
 import { useNavigate } from 'react-router-dom';
 
-import * as styles from './index.css.ts';
+import * as constants from './constanats';
+import * as styles from './index.css';
 
-import BasicContentFrame from '@/components/BasicContentFrame/index.tsx';
-import ColoredButton from '@/components/button/ColoredButton/index.tsx';
+import BasicContentFrame from '@/components/BasicContentFrame/index';
+import ColoredButton from '@/components/button/ColoredButton/index';
 
 const HandleError = () => {
   const navigate = useNavigate();
@@ -16,7 +17,7 @@ const HandleError = () => {
     <BasicContentFrame>
       <div className={styles.errorWrapper}>
         <pre className={styles.errorMessage}>
-          에러가 발생했습니다. 메인화면으로 돌아가시겠습니까?
+          {constants.SERVER_ERROR_MESSAGE}
         </pre>
         <ColoredButton
           text='확인'

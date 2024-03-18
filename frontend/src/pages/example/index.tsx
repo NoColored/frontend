@@ -1,13 +1,12 @@
 import RoundCornerImageBox from '../../components/imagebox/RoundCornerImageBox';
 
-import ColoredButton from '@/components/button/ColoredButton/index.tsx';
-import ColoredIconButton from '@/components/button/ColoredIconButton/index.tsx';
+import ColoredButton from '@/components/button/ColoredButton/index';
+import ColoredIconButton from '@/components/button/ColoredIconButton/index';
 // import Game from '@/components/Game.tsx';
-
 import TierBox from '@/components/imagebox/TierIconBox';
-import ColoredTextBox from '@/components/textbox/ColoredTextBox/index.tsx';
-import InputTextBox from '@/components/textbox/InputTextBox/index.tsx';
-import LabeledTextBox from '@/components/textbox/LabeledTextBox/index.tsx';
+import ColoredTextBox from '@/components/textbox/ColoredTextBox/index';
+import InputTextBox from '@/components/textbox/InputTextBox/index';
+import LabeledTextBox from '@/components/textbox/LabeledTextBox/index';
 
 import groupIcon from '@/assets/ui/icon/button/icon-button-collection-h50w50.png';
 import testIcon from '@/assets/ui/icon/shape/icon-shape-white-big-player0-h48w48.png';

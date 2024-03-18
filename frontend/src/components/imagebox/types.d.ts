@@ -1,6 +1,6 @@
 import React from 'react';
 
-import * as constants from '@/components/imagebox/constants.ts';
+import * as constants from '@/components/imagebox/constants';
 
 export interface RoundCornerImageBoxProps {
   children?: React.ReactNode;

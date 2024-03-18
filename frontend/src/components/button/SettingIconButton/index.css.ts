@@ -1,8 +1,8 @@
 import { style } from '@vanilla-extract/css';
 
-import { borderDarkOptions, flexOptions } from '@/styles/common.css.ts';
-import { sprinkles } from '@/styles/sprinkles.css.ts';
-import { vars } from '@/styles/vars.css.ts';
+import { borderDarkOptions, flexOptions } from '@/styles/common.css';
+import { sprinkles } from '@/styles/sprinkles.css';
+import { vars } from '@/styles/vars.css';
 
 const BUTTON_SIZE = '24px';
 const IMG_SIZE = '20px';

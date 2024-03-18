@@ -1,7 +1,7 @@
 import { style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
 
-import * as constants from '@/components/imagebox/constants.ts';
+import * as constants from '@/components/imagebox/constants';
 
 const tierBoxBase = style([
   {

@@ -1,9 +1,9 @@
 import { ReactNode } from 'react';
 
-import * as styles from './index.css.ts';
+import * as styles from './index.css';
 
-import SettingIconButton from '@/components/button/SettingIconButton/index.tsx';
-import SettingNavigationButton from '@/components/button/SettingNavigationButton/index.tsx';
+import SettingIconButton from '@/components/button/SettingIconButton/index';
+import SettingNavigationButton from '@/components/button/SettingNavigationButton/index';
 
 interface Props {
   children: ReactNode;

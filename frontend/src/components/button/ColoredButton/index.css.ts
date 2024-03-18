@@ -1,11 +1,11 @@
 import { style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
 
-import * as constants from '@/components/button/ColoredButton/constants.ts';
+import * as constants from '@/components/button/ColoredButton/constants';
 
-import { flexOptions } from '@/styles/common.css.ts';
-import { sprinkles } from '@/styles/sprinkles.css.ts';
-import { vars } from '@/styles/vars.css.ts';
+import { flexOptions } from '@/styles/common.css';
+import { sprinkles } from '@/styles/sprinkles.css';
+import { vars } from '@/styles/vars.css';
 
 const colorVariants: {
   [colorItem in (typeof constants.COLOR)[number]]?: ReturnType<typeof style>;
