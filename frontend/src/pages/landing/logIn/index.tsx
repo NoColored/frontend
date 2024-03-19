@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import ColoredButton from '@/components/button/ColoredButton/index';
 import InputTextBox from '@/components/textbox/InputTextBox/index';
@@ -11,9 +12,11 @@ import { requestLogIn } from '@/pages/landing/logIn/requestLogIn';
 import SignUp from '@/pages/landing/logIn/SignUp';
 
 const LogIn = () => {
-  const [userId, setUserId] = useState<string>();
-  const [userPassword, setUserPassword] = useState<string>();
+  const [userId, setUserId] = useState<string>('');
+  const [userPassword, setUserPassword] = useState<string>('');
   const [isClicked, setIsClicked] = useState(false);
+
+  const navigate = useNavigate();
 
   const { Modal, openModal, closeModal } = useModal();
 
@@ -37,6 +40,8 @@ const LogIn = () => {
     if (!userId || !userPassword || !check) {
       openModal();
       setIsClicked(false);
+    } else {
+      navigate('/');
     }
   };
 
@@ -47,12 +52,14 @@ const LogIn = () => {
         type='text'
         placeholder='아이디'
         size='large'
+        value={userId}
         onChange={handleIdChange}
       />
       <InputTextBox
         type='password'
         placeholder='비밀번호'
         size='large'
+        value={userPassword}
         onChange={handlePasswordChange}
       />
       <div className={styles.buttonWrapper}>
