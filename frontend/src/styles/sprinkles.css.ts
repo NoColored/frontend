@@ -64,6 +64,9 @@ const borderProperties = defineProperties({
     borderWidth: vars.borderWidth,
     borderRadius: vars.borderRadius,
     borderColor: vars.colors,
+    outlineStyle: vars.borderStyle,
+    outlineWidth: vars.borderWidth,
+    outlineColor: vars.colors,
   },
   shorthands: {
     border: ['borderWidth', 'borderRadius', 'borderColor'],

@@ -6,6 +6,7 @@ import Landing from '@/pages/landing/index';
 import LandingLayout from '@/pages/landing/layout';
 import LogIn from '@/pages/landing/logIn/index';
 import Loading from '@/pages/loading/index';
+import Lobby from '@/pages/play/lobby/index';
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,15 @@ const router = createBrowserRouter([
   {
     path: '/loading',
     element: <Loading />,
+  },
+  {
+    path: 'play',
+    children: [
+      {
+        path: 'lobby',
+        element: <Lobby />,
+      },
+    ],
   },
   {
     path: '/example',

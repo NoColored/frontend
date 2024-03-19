@@ -19,6 +19,7 @@ export const vars = createGlobalTheme(':root', {
     none: '0',
     '0.5x': '2px',
     '1x': '4px',
+    '1.5x': '6px',
     '2x': '8px',
     '3x': '12px',
     '4x': '16px',
