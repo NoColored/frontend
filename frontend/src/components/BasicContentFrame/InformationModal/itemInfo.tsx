@@ -1,13 +1,17 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import * as styles from './index.css';
-import { ITEMS } from '@/components/Modal/InformationModal/constants';
-import RoundCornerImageBox from '@/components/imagebox/RoundCornerImageBox';
+import { ITEMS } from './constants';
+
 import SettingNavigationButton from '@/components/button/SettingNavigationButton';
+import RoundCornerImageBox from '@/components/imagebox/RoundCornerImageBox';
 
 const ItemInfo = () => {
   const [idx, setIdx] = useState(0);
 
   const imgUrl = `/src/assets/items/item-${ITEMS[idx].name}-h32w32.png`;
+  const navigate = useNavigate();
 
   const showPreviousItem = () => {
     setIdx((prevIndex) => Math.max(prevIndex - 1, 0));
@@ -19,7 +23,7 @@ const ItemInfo = () => {
 
   return (
     <div>
-      <SettingNavigationButton label='뒤로' />
+      <SettingNavigationButton label='뒤로' onClick={() => navigate(-1)} />
       <div className={styles.text}>아이템</div>
       <div className={styles.boxWrapper}>
         <div className={styles.textMargin}>{ITEMS[idx].title}</div>
