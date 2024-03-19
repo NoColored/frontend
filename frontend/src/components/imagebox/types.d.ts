@@ -1,18 +1,16 @@
 import React from 'react';
 
 import * as constants from '@/components/imagebox/constants';
+import { IMAGEBOX_SIZE } from '@/components/imagebox/constants';
 
-export interface RoundCornerImageBoxProps {
-  children?: React.ReactNode;
-  imgSrc?: string;
+// imagebox
 
-  size: (typeof constants.IMAGEBOX_SIZE)[number];
-  borderSize?: (typeof constants.BORDER_WEIGHT)[number];
-  borderColor?: (typeof constants.COLOR)[number];
-  backgroundColor?: (typeof constants.BACKGROUND_COLOR)[number];
-}
+type imageboxSizeType = keyof typeof IMAGEBOX_SIZE;
+type imageboxBorderColorType = (typeof constants.BORDER_COLOR)[number];
+type immageboxBorderWeightType = (typeof constants.BORDER_WEIGHT)[number];
+type imageboxBackgroundColorType = (typeof constants.BACKGROUND_COLOR)[number];
 
-export interface TierBoxProps {
-  tier: (typeof constants.TIER_RANGE)[number];
-  size: (typeof constants.IMAGEBOX_SIZE)[number];
-}
+// tier
+
+type tierType = (typeof constants.TIER_RANGE)[number];
+type tierSizeType = keyof typeof constants.IMAGEBOX_SIZE;

@@ -16,7 +16,11 @@ const PlayerInfoBox = ({ label, nickname, imgSrc }: PlayerInfoBoxProps) => {
   return (
     <div className={styles.playerInfoWrapper}>
       <div className={styles.imageboxWrapper}>
-        <RoundCornerImageBox size='small' imgSrc={imgSrc} />
+        <RoundCornerImageBox
+          size='small'
+          imgSrc={imgSrc}
+          backgroundColor='white'
+        />
       </div>
       <LabeledTextBox contentText={nickname} labelText={label} />
     </div>
