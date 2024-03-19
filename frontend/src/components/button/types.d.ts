@@ -2,10 +2,10 @@ import * as constants from './constants';
 
 type colorType = (typeof constants.BUTTON_COLOR)[number];
 
-type coloredButtonSizeType = (typeof constants.COLORED_BUTTON_SIZE)[number];
+type coloredButtonSizeType = keyof typeof constants.COLORED_BUTTON_SIZE_PIXEL;
 
 type coloredIconButtonSizeType =
-  (typeof constants.COLORED_ICON_BUTTON_SIZE)[number];
+  keyof typeof constants.COLOREDICONBUTTON_SIZE_PIXEL;
 
 interface ColorButtonProps {
   text: string;

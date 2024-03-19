@@ -2,31 +2,30 @@ import { style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
 
 import * as constants from '@/components/button/constants';
+import type { colorType } from '@/components/button/types';
 
 import { flexOptions } from '@/styles/common.css';
 import { sprinkles } from '@/styles/sprinkles.css';
 import { vars } from '@/styles/vars.css';
 
-const colorVariants: {
-  [colorItem in (typeof constants.BUTTON_COLOR)[number]]?: ReturnType<
-    typeof style
-  >;
-} = {};
-
-constants.BUTTON_COLOR.forEach((colorItem) => {
-  const darkColor = constants.BUTTON_COLOR_DARK[colorItem];
-  colorVariants[colorItem] = style([
-    sprinkles({
-      backgroundColor: colorItem,
-      borderColor: darkColor,
-    }),
-    {
-      ':active': {
-        backgroundColor: vars.colors[darkColor as keyof typeof vars.colors],
+const colorVariants = constants.BUTTON_COLOR.reduce(
+  (variants, color) => {
+    const darkColor = constants.BUTTON_COLOR_DARK[color];
+    variants[color] = style([
+      sprinkles({
+        backgroundColor: color,
+        borderColor: darkColor,
+      }),
+      {
+        ':active': {
+          backgroundColor: vars.colors[darkColor as keyof typeof vars.colors],
+        },
       },
-    },
-  ]);
-});
+    ]);
+    return variants;
+  },
+  {} as Record<colorType, ReturnType<typeof style>>,
+);
 
 const sizeVariants = {
   medium: style([
