@@ -9,6 +9,7 @@ import LogIn from '@/pages/landing/logIn/index';
 import Loading from '@/pages/loading/index';
 import Lobby from '@/pages/play/lobby/index';
 import Ranking from '@/pages/ranking';
+import Result from '@/pages/result';
 
 const router = createBrowserRouter([
   {
@@ -53,6 +54,10 @@ const router = createBrowserRouter([
   {
     path: '/home',
     element: <Home />,
+  },
+  {
+    path: '/result',
+    element: <Result />,
   },
 ]);
 
