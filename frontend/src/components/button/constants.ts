@@ -23,7 +23,7 @@ export const COLORED_ICON_BUTTON_SIZE = ['medium', 'large', 'xlarge'] as const;
 export const COLOREDICONBUTTON_SIZE_PIXEL = {
   medium: {
     width: '163px',
-    height: '96px',
+    height: '88px',
   },
   large: {
     width: '190px',
