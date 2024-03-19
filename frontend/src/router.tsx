@@ -1,6 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
 
 import Example from '@/pages/example/index';
+import Home from '@/pages/home';
 import HandleError from '@/pages/handleError';
 import Landing from '@/pages/landing/index';
 import LandingLayout from '@/pages/landing/layout';
@@ -33,6 +34,14 @@ const router = createBrowserRouter([
   {
     path: '/*',
     element: <HandleError />,
+  },
+  {
+    path: '/ranking',
+    element: <Ranking />,
+  },
+  {
+    path: '/home',
+    element: <Home />,
   },
 ]);
 

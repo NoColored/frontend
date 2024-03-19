@@ -12,7 +12,6 @@ const RoundCornerImageBox = ({
 }: RoundCornerImageBoxProps) => {
   return (
     <div
-      id='roundCornerImageBox'
       style={{
         backgroundImage: `url(${imgSrc})`,
       }}

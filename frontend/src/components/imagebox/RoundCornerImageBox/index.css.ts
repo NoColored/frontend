@@ -3,13 +3,15 @@ import { recipe } from '@vanilla-extract/recipes';
 
 import * as constants from '../constants';
 
-import { borderLightOptions } from '@/styles/common.css';
+import { borderLightOptions, flexOptions } from '@/styles/common.css';
 import { sprinkles } from '@/styles/sprinkles.css';
 
 const imageBoxBase = style([
+  flexOptions({ option: 'column' }),
   sprinkles({
     borderRadius: '2x',
-    position: 'relative',
+    paddingY: '2x',
+    alignItems: 'center',
   }),
   {
     overflow: 'hidden',
@@ -18,7 +20,6 @@ const imageBoxBase = style([
     backgroundClip: 'border-box',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
-    boxSizing: 'border-box',
   },
 ]);
 

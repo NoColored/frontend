@@ -37,3 +37,7 @@ globalStyle('body', {
     },
   },
 });
+
+globalStyle('*::-webkit-scrollbar', {
+  display: 'none',
+});
