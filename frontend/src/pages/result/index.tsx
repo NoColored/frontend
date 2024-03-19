@@ -49,7 +49,7 @@ const Result = () => {
   return (
     <BasicContentFrame>
       <div className={styles.gameResultWrapper}>
-        <div className={styles.resultTextWrapper}>Game Result!</div>
+        <div className={styles.resultTextWrapper}>GAME RESULT!</div>
 
         {resultExample.map((item) => (
           <div>

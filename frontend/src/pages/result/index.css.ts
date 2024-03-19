@@ -18,7 +18,7 @@ export const gameResultWrapper = style([
 export const resultTextWrapper = style([
   sprinkles({
     marginY: '4x',
-    fontFamily: 'textFont',
+    fontFamily: 'numFont',
   }),
   {
     height: constants.RESULTTEXT_HEIGHT,
