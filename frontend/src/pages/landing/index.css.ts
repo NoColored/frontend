@@ -1,16 +1,15 @@
 import { keyframes, style } from '@vanilla-extract/css';
 
-import * as constants from '@/pages/landing/constants.ts';
+import * as constants from '@/pages/landing/constants';
 
-import { flexOptions } from '@/styles/common.css.ts';
-import { sprinkles } from '@/styles/sprinkles.css.ts';
+import { flexOptions } from '@/styles/common.css';
+import { sprinkles } from '@/styles/sprinkles.css';
 
 export const landingWrapper = style([
   flexOptions({ option: 'columnCenter' }),
   sprinkles({ borderRadius: '1x', height: 'full', margin: 'auto' }),
   {
-    backgroundImage:
-      'url(/public/images/landing-background-animation-h490w950.gif)',
+    backgroundImage: 'url(/images/landing-background-animation-h490w950.gif)',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
   },
@@ -28,7 +27,7 @@ const BLINK_EFFECT = keyframes({
   '50%': { opacity: 0 },
 });
 
-export const clickText = style([
+export const clickMessage = style([
   sprinkles({
     fontSize: '1x',
     fontWeight: 'accent',
@@ -45,5 +44,24 @@ export const clickText = style([
 export const logoImage = style([
   {
     height: constants.LOGOIMAGE_HEIGHT,
+  },
+]);
+
+export const logInFailMessageWrapper = style([
+  sprinkles({
+    marginY: '8x',
+  }),
+  {
+    textAlign: 'center',
+  },
+]);
+
+export const logInFailMessage = style([
+  sprinkles({
+    fontSize: '1.5x',
+    marginY: '2x',
+  }),
+  {
+    lineHeight: '32px',
   },
 ]);

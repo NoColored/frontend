@@ -1,6 +1,6 @@
-import { defineProperties, createSprinkles } from '@vanilla-extract/sprinkles';
+import { createSprinkles, defineProperties } from '@vanilla-extract/sprinkles';
 
-import { vars } from './vars.css.ts';
+import { vars } from './vars.css';
 
 const displayProperties = defineProperties({
   properties: {
@@ -29,6 +29,10 @@ const fontProperties = defineProperties({
     fontFamily: vars.fontFamily,
     fontWeight: vars.fontWeight,
     fontSize: vars.fontSize,
+    lineHeight: vars.fontSize,
+  },
+  shorthands: {
+    textSize: ['fontSize', 'lineHeight'],
   },
 });
 

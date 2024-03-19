@@ -1,7 +1,7 @@
 import { ReactNode, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 
-import * as styles from './index.css.ts';
+import * as styles from './index.css';
 
 interface Props {
   children: ReactNode;

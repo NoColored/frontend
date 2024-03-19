@@ -1,9 +1,9 @@
 import { style } from '@vanilla-extract/css';
 
-import * as constants from './constants.ts';
+import * as constants from './constants';
 
-import { borderOptions, flexOptions } from '@/styles/common.css.ts';
-import { sprinkles } from '@/styles/sprinkles.css.ts';
+import { borderDarkOptions, flexOptions } from '@/styles/common.css';
+import { sprinkles } from '@/styles/sprinkles.css';
 
 export const modal = style([
   sprinkles({
@@ -11,13 +11,12 @@ export const modal = style([
     padding: '8x',
     borderRadius: '2x',
   }),
-  borderOptions({ width: '1x', color: 'black' }),
+  borderDarkOptions({ width: '1x', color: 'black' }),
   {
     minHeight: constants.MIN_MODAL_HEIGHT,
-    minWidth: constants.MIN_MODAL_WIDTH,
+    width: constants.MODAL_WIDTH,
     maxHeight: constants.MAX_MODAL_HEIGHT,
-    maxWidth: constants.MAX_MODAL_WIDTH,
   },
 ]);
 
-export const content = style([flexOptions({ option: 'column' })]);
+export const content = style([flexOptions({ option: 'columnCenter' })]);

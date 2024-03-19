@@ -1,8 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 
-import * as styles from './index.css.ts';
+import * as styles from './index.css';
 
-import ColoredButton from '@/components/button/ColoredButton/index.tsx';
+import ColoredButton from '@/components/button/ColoredButton/index';
 
 const Landing = () => {
   const navigate = useNavigate();
@@ -11,8 +11,7 @@ const Landing = () => {
     navigate('/login');
   };
 
-  const landingLogo: string =
-    '/public/images/landing-logo-whiteborder-h800w1280.png';
+  const landingLogo: string = '/images/landing-logo-whiteborder-h800w1280.png';
   return (
     <div className={styles.contentWrapper}>
       <img

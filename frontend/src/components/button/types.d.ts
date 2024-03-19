@@ -1,9 +1,14 @@
-import * as constants from './constants.ts';
+import * as constants from './constants';
 
-interface ColoredIconButtonProps {
+type colorType = (typeof constants.BUTTON_COLOR)[number];
+
+type coloredButtonSizeType = keyof typeof constants.COLORED_BUTTON_SIZE_PIXEL;
+
+type coloredIconButtonSizeType =
+  keyof typeof constants.COLOREDICONBUTTON_SIZE_PIXEL;
+
+interface ColorButtonProps {
   text: string;
-  icon: string;
-  color: (typeof constants.COLOREDICONBUTTON_COLOR)[number];
-  size: (typeof constants.COLOREDICONBUTTON_SIZE)[number];
+  color: colorType;
   onClick: () => void;
 }

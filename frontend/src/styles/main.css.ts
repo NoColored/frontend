@@ -1,6 +1,6 @@
 import { globalStyle } from '@vanilla-extract/css';
 
-import { vars } from '@/styles/vars.css.ts';
+import { vars } from '@/styles/vars.css';
 
 globalStyle('*', {
   margin: 0,
@@ -36,4 +36,8 @@ globalStyle('body', {
         'url(/images/background/background-white-large-h991w1922.webp)',
     },
   },
+});
+
+globalStyle('*::-webkit-scrollbar', {
+  display: 'none',
 });

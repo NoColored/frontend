@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-import { config } from '@/game/config.ts';
+import { config } from '@/game/config';
 
 const Game = () => {
   useEffect(() => {

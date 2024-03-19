@@ -1,10 +1,10 @@
 import { style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
 
-import * as constants from '@/components/textbox/constants.ts';
+import * as constants from '@/components/textbox/constants';
 
-import { flexOptions } from '@/styles/common.css.ts';
-import { sprinkles } from '@/styles/sprinkles.css.ts';
+import { flexOptions } from '@/styles/common.css';
+import { sprinkles } from '@/styles/sprinkles.css';
 
 const colorVariants: {
   [colorItem in (typeof constants.BACKGROUND_COLOR)[number]]?: ReturnType<
@@ -30,8 +30,6 @@ export const coloredTextBoxStyle = recipe({
       fontSize: '1x',
       color: 'white',
       borderRadius: '4x',
-      paddingX: '3x',
-      paddingY: '2x',
     }),
     {
       width: 'fit-content',
@@ -40,6 +38,29 @@ export const coloredTextBoxStyle = recipe({
     },
   ],
   variants: {
+    size: {
+      small: sprinkles({
+        textSize: '0.75x',
+        paddingY: '1x',
+        paddingX: '2x',
+      }),
+      medium: style([
+        sprinkles({
+          textSize: '1x',
+          paddingY: '1x',
+          paddingX: '3x',
+        }),
+        {
+          '@media': {
+            'screen and (max-height: 380px)': {
+              fontSize: '12px',
+              lineHeight: '12px',
+              padding: '4px 8px',
+            },
+          },
+        },
+      ]),
+    },
     color: colorVariants,
   },
 });
@@ -54,5 +75,12 @@ export const iconStyle = style([
   {
     width: '16px',
     height: '16px',
+
+    '@media': {
+      'screen and (max-height: 380px)': {
+        width: '12px',
+        height: '12px',
+      },
+    },
   },
 ]);

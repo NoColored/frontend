@@ -1,11 +1,11 @@
 import { style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
 
-import * as constants from './constants.ts';
+import * as constants from './constants';
 
-import { borderOptions } from '@/styles/common.css.ts';
-import { sprinkles } from '@/styles/sprinkles.css.ts';
-import { vars } from '@/styles/vars.css.ts';
+import { borderDarkOptions } from '@/styles/common.css';
+import { sprinkles } from '@/styles/sprinkles.css';
+import { vars } from '@/styles/vars.css';
 
 const inputTextBoxBase = style([
   sprinkles({
@@ -23,7 +23,7 @@ const inputTextBoxBase = style([
 const inputTextBoxVariants = {
   size: {
     small: style([
-      borderOptions({ color: 'gray500', width: '3x' }),
+      borderDarkOptions({ color: 'gray500', width: '3x' }),
       sprinkles({
         fontSize: '1x',
         backgroundColor: 'gray500',
@@ -35,10 +35,11 @@ const inputTextBoxVariants = {
       },
     ]),
     medium: style([
-      borderOptions({ color: 'gray300', width: '3x' }),
+      borderDarkOptions({ color: 'gray300', width: '3x' }),
       sprinkles({
         fontSize: '1.5x',
         paddingX: '4x',
+        marginY: '1x',
         backgroundColor: 'gray300',
       }),
       {
@@ -47,7 +48,7 @@ const inputTextBoxVariants = {
       },
     ]),
     large: style([
-      borderOptions({ color: 'navy', width: '5x' }),
+      borderDarkOptions({ color: 'navy', width: '5x' }),
       sprinkles({
         fontSize: '2x',
         paddingX: '4x',

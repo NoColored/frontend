@@ -1,6 +1,6 @@
 import { ReactNode, useState } from 'react';
 
-import ModalComponent from '@/components/Modal/index.tsx';
+import ModalComponent from '@/components/Modal/index';
 
 interface Props {
   children: ReactNode;

@@ -7,6 +7,7 @@ export const INPUT_LARGE = {
 export const INPUT_MEDIUM = {
   height: 48,
   width: 400,
+  margin: 4,
 };
 
 export const INPUT_SMALL = {
