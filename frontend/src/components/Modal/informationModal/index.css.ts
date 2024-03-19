@@ -33,6 +33,15 @@ export const infoText = style([
   }),
 ]);
 
+export const textMargin = style([
+  sprinkles({
+    margin: '3x',
+  }),
+  {
+    textAlign: 'center',
+  },
+]);
+
 export const mapBackground = style([
   flexOptions({ option: 'center' }),
   sprinkles({
@@ -74,5 +83,16 @@ export const highTierStyle = style([
   flexOptions({ option: 'center' }),
   {
     justifyContent: 'space-evenly',
+  },
+]);
+
+export const buttonBorderStyle = style([
+  sprinkles({
+    borderRadius: '4x',
+    borderWidth: '5x',
+    borderColor: 'black',
+  }),
+  {
+    margin: '3px',
   },
 ]);
