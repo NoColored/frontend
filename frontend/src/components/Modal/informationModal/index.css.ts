@@ -1,6 +1,6 @@
 import { style } from '@vanilla-extract/css';
 
-import { IMG_SIZE } from './constants';
+import * as constants from './constants';
 
 import { flexOptions } from '@/styles/common.css';
 import { sprinkles } from '@/styles/sprinkles.css';
@@ -39,8 +39,8 @@ export const mapBackground = style([
     marginBottom: '1x',
   }),
   {
-    width: IMG_SIZE.background.width,
-    height: IMG_SIZE.background.height,
+    width: constants.IMG_SIZE.background.width,
+    height: constants.IMG_SIZE.background.height,
     maxHeight: '100%',
   },
 ]);
@@ -56,11 +56,11 @@ export const imageStyle = style([
 ]);
 
 export const buttonStyle = style({
-  width: IMG_SIZE.button.width,
-  height: IMG_SIZE.button.height,
+  width: constants.IMG_SIZE.button.width,
+  height: constants.IMG_SIZE.button.height,
 });
 
-export const tierStyle1 = style([
+export const lowTierStyle = style([
   flexOptions({ option: 'center' }),
   sprinkles({
     marginBottom: '1x',
@@ -70,7 +70,7 @@ export const tierStyle1 = style([
   },
 ]);
 
-export const tierStyle2 = style([
+export const highTierStyle = style([
   flexOptions({ option: 'center' }),
   {
     justifyContent: 'space-evenly',
