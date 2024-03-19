@@ -19,6 +19,7 @@ export const vars = createGlobalTheme(':root', {
     none: '0',
     '0.5x': '2px',
     '1x': '4px',
+    '1.5x': '6px',
     '2x': '8px',
     '3x': '12px',
     '4x': '16px',
@@ -118,7 +119,7 @@ export const vars = createGlobalTheme(':root', {
     '1.25x': '20px',
     '1.5x': '24px',
     '2x': '32px',
-    '5x': '80px',
+    '3x': '48px',
   },
 
   fontWeight: {
