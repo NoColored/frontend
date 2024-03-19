@@ -11,6 +11,8 @@ import Setting from '@/components/Modal/settingModal/index';
 
 import useModal from '@/hooks/useModal';
 
+import testIcon from '@/assets/ui/icon/button/icon-button-information-h50w50.png';
+
 interface Props {
   children: ReactNode;
   backButtonLabel?: string;
@@ -30,7 +32,7 @@ const BasicContentFrame = ({ children, backButtonLabel }: Props) => {
     <div className={styles.frame}>
       <div className={styles.iconButtons}>
         <SettingIconButton
-          src={`url('@/assets/ui/icon/button/icon-button-information-h50w50.png')`}
+          src={testIcon}
           alt='info'
           onClick={() => selectModalType(ModalType.info)}
         />
