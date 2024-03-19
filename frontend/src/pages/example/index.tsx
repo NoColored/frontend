@@ -73,7 +73,7 @@ const Example = () => {
         onChange={(e) => console.log(e.target.value)}
       />
       <div>텍스트 컴포넌트</div>
-      <ColoredTextBox text='text' color='red' icon={testIcon} />
+      <ColoredTextBox text='text' color='red' icon={testIcon} size='medium' />
       {/* <Game /> */}
       <div>
         <LabeledTextBox
@@ -88,7 +88,7 @@ const Example = () => {
         borderColor='pink'
         borderSize='5x'
       >
-        <ColoredTextBox color='pink' text='착용중' inImageBox />
+        <ColoredTextBox color='pink' text='착용중' size='small' />
       </RoundCornerImageBox>
       <RoundCornerImageBox
         size='full'
