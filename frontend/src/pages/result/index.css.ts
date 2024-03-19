@@ -9,20 +9,31 @@ import { sprinkles } from '@/styles/sprinkles.css';
 export const gameResultWrapper = style([
   flexOptions({ option: 'columnCenter' }),
   sprinkles({
-    width: 'full',
-    height: 'full',
     justifyContent: 'spaceAround',
   }),
+  {
+    width: '100%',
+    height: '100%',
+  },
 ]);
 
 export const resultTextWrapper = style([
   sprinkles({
-    marginY: '4x',
+    marginTop: '4x',
     fontFamily: 'numFont',
+    color: 'white',
   }),
   {
     height: constants.RESULTTEXT_HEIGHT,
     fontSize: constants.RESULTTEXT_SIZE,
+    textShadow: constants.RESULTTEXT_BORDER,
+    '@media': {
+      'screen and (max-height: 365px)': {
+        marginTop: constants.MEDIA_RESULTTEXT_MARGIN_TOP,
+        marginBottom: constants.MEDIA_RESULTTEXT_MARGIN_HEIGHT,
+        fontSize: constants.MEDIA_RESULTTEXT_SIZE,
+      },
+    },
   },
 ]);
 
@@ -51,6 +62,13 @@ export const resultInfoBox = recipe({
       width: constants.RANKINGINFOBOX_WIDTH,
       boxSizing: 'border-box',
       overflow: 'hidden',
+      '@media': {
+        'screen and (max-height: 400px)': {
+          height: constants.MEDIA_RANKINGINFOBOX_HEIGHT,
+          width: constants.MEDIA_RANKINGINFOBOX_WIDTH,
+          marginBottom: constants.MEDIA_RANKINGINFOBOX_MARGIN,
+        },
+      },
     },
   ],
   variants: {
@@ -59,13 +77,21 @@ export const resultInfoBox = recipe({
         sprinkles({
           color: 'white',
           fontSize: '2x',
-          marginY: '1x',
+          marginTop: '0.5x',
+          marginBottom: '2x',
         }),
         {
           paddingLeft: '5%',
           paddingRight: '5%',
           height: constants.FIRSTRANKINGINFOBOX_HEIGHT,
           width: constants.FIRSTRANKINGINFOBOX_WIDTH,
+          '@media': {
+            'screen and (max-height: 400px)': {
+              height: constants.MEDIA_FIRSTRANKINGINFOBOX_HEIGHT,
+              width: constants.MEDIA_FIRSTRANKINGINFOBOX_WIDTH,
+              marginBottom: constants.MEDIA_FIRSTRANKINGINFOBOX_MARGIN,
+            },
+          },
         },
       ],
     },

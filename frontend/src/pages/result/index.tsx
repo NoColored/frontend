@@ -1,3 +1,4 @@
+import * as constants from './constants';
 import * as styles from './index.css';
 
 import BasicContentFrame from '@/components/BasicContentFrame/WithButtons';
@@ -49,7 +50,7 @@ const Result = () => {
   return (
     <BasicContentFrame>
       <div className={styles.gameResultWrapper}>
-        <div className={styles.resultTextWrapper}>GAME RESULT!</div>
+        <div className={styles.resultTextWrapper}>{constants.RESULTTEXT}</div>
 
         {resultExample.map((item) => (
           <div>

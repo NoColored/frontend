@@ -1,11 +1,34 @@
 export const FIRSTRANKINGINFOBOX_HEIGHT = '60px';
 
-export const FIRSTRANKINGINFOBOX_WIDTH = '450px';
+export const FIRSTRANKINGINFOBOX_WIDTH = '460px';
 
-export const RANKINGINFOBOX_HEIGHT = '48px';
+export const MEDIA_FIRSTRANKINGINFOBOX_HEIGHT = '46px';
 
-export const RANKINGINFOBOX_WIDTH = '420px';
+export const MEDIA_FIRSTRANKINGINFOBOX_WIDTH = '430px';
+
+export const MEDIA_FIRSTRANKINGINFOBOX_MARGIN = '1px';
+
+export const RANKINGINFOBOX_HEIGHT = '52px';
+
+export const RANKINGINFOBOX_WIDTH = '430px';
+
+export const MEDIA_RANKINGINFOBOX_HEIGHT = '46px';
+
+export const MEDIA_RANKINGINFOBOX_WIDTH = '400px';
+
+export const MEDIA_RANKINGINFOBOX_MARGIN = '0.5px';
 
 export const RESULTTEXT_HEIGHT = '36px';
 
-export const RESULTTEXT_SIZE = '40px';
+export const RESULTTEXT_SIZE = '44px';
+
+export const RESULTTEXT_BORDER =
+  '-3px 0 black, 0 3px black, 3px 0 black, 0 -3px black';
+
+export const RESULTTEXT = 'GAME RESULT!';
+
+export const MEDIA_RESULTTEXT_SIZE = '28px';
+
+export const MEDIA_RESULTTEXT_MARGIN_TOP = '16px';
+
+export const MEDIA_RESULTTEXT_MARGIN_HEIGHT = '4px';
