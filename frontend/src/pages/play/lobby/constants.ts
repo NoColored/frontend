@@ -5,17 +5,17 @@ import { vars } from '@/styles/vars.css';
 export const PLAYER_COLORS = ['pink', 'green', 'yellow', 'blue'] as const;
 
 export const PLAYER_ICON = {
-  pink: '/src/assets/ui/icon/shape/icon-shape-white-small-player0-h16w16.png',
-  green: '/src/assets/ui/icon/shape/icon-shape-white-small-player1-h16w16.png',
-  yellow: '/src/assets/ui/icon/shape/icon-shape-white-small-player2-h16w16.png',
-  blue: '/src/assets/ui/icon/shape/icon-shape-white-small-player3-h16w16.png',
+  pink: 'src/assets/ui/icon/shape/icon-shape-white-small-player0-h16w16.png',
+  green: 'src/assets/ui/icon/shape/icon-shape-white-small-player1-h16w16.png',
+  yellow: 'src/assets/ui/icon/shape/icon-shape-white-small-player2-h16w16.png',
+  blue: 'src/assets/ui/icon/shape/icon-shape-white-small-player3-h16w16.png',
 };
 
 export const PLAYER_ICON_LARGE = {
-  pink: '/src/assets/ui/icon/shape/icon-shape-white-big-player0-h48w48.png',
-  green: '/src/assets/ui/icon/shape/icon-shape-white-big-player1-h48w48.png',
-  yellow: '/src/assets/ui/icon/shape/icon-shape-white-big-player2-h48w48.png',
-  blue: '/src/assets/ui/icon/shape/icon-shape-white-big-player3-h48w48.png',
+  pink: 'src/assets/ui/icon/shape/icon-shape-white-big-player0-h48w48.png',
+  green: 'src/assets/ui/icon/shape/icon-shape-white-big-player1-h48w48.png',
+  yellow: 'src/assets/ui/icon/shape/icon-shape-white-big-player2-h48w48.png',
+  blue: 'src/assets/ui/icon/shape/icon-shape-white-big-player3-h48w48.png',
 };
 
 export const TITLE_MARGIN_BOTTOM = '1x';
