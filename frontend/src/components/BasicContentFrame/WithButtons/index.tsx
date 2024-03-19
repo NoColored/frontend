@@ -1,15 +1,13 @@
-import { ReactNode, useState } from 'react';
+import { ReactNode } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import * as styles from './index.css';
 
 import SettingIconButton from '@/components/button/SettingIconButton/index';
 import SettingNavigationButton from '@/components/button/SettingNavigationButton/index';
-import Index from '@/components/Modal/informationModal/index';
-import Setting from '@/components/Modal/settingModal/index';
+import Index from '@/components/Modal/InformationModal/index';
 
 import useModal from '@/hooks/useModal';
-import { ModalType } from '@/components/Modal/informationModal/constants';
 
 interface Props {
   children: ReactNode;
@@ -18,13 +16,7 @@ interface Props {
 
 const BasicContentFrame = ({ children, backButtonLabel }: Props) => {
   const { Modal, openModal, closeModal } = useModal();
-  const [modalType, setModalType] = useState<ModalType>(0);
   const navigate = useNavigate();
-
-  const selectModalType = (type: ModalType) => {
-    setModalType(type);
-    openModal();
-  };
 
   return (
     <div className={styles.frame}>
@@ -32,7 +24,7 @@ const BasicContentFrame = ({ children, backButtonLabel }: Props) => {
         <SettingIconButton
           src='/src/assets/ui/icon/button/icon-button-information-h50w50.png'
           alt='info'
-          onClick={() => selectModalType(ModalType.info)}
+          onClick={() => openModal()}
         />
         <SettingIconButton
           src='/src/assets/ui/icon/button/icon-button-home-h50w50.png'
@@ -42,7 +34,7 @@ const BasicContentFrame = ({ children, backButtonLabel }: Props) => {
         <SettingIconButton
           src='/src/assets/ui/icon/button/icon-button-setting-h50w50.png'
           alt='setting'
-          onClick={() => selectModalType(ModalType.setting)}
+          onClick={() => navigate('/settings')}
         />
       </div>
       <main className={styles.main}>
@@ -51,10 +43,7 @@ const BasicContentFrame = ({ children, backButtonLabel }: Props) => {
             <SettingNavigationButton label={backButtonLabel} />
           </div>
         )}
-        <Modal>
-          {modalType === ModalType.info && <Index onClose={closeModal} />}
-          {modalType === ModalType.setting && <Setting onClose={closeModal} />}
-        </Modal>
+        <Modal>{<Index onClose={closeModal} />}</Modal>
         {children}
       </main>
     </div>

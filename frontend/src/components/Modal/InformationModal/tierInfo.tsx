@@ -1,9 +1,9 @@
 import TierBox from '@/components/imagebox/TierIconBox';
-import * as styles from '@/components/Modal/informationModal/index.css';
+import * as styles from '@/components/Modal/InformationModal/index.css';
 
 import { LOW_TIER_INFO, HIGH_TIER_INFO } from '@/components/imagebox/constants';
 import SettingNavigationButton from '@/components/button/SettingNavigationButton';
-import { TierBoxProps } from '@/components/imagebox/types';
+import { tierType } from '@/components/imagebox/types';
 
 const TierInfo = () => {
   return (
@@ -14,7 +14,7 @@ const TierInfo = () => {
         {Object.entries(LOW_TIER_INFO).map(([tier, { description, score }]) => (
           <div key={tier} className={styles.tierWrapper}>
             <div className={styles.boxWrapper}>
-              <TierBox size='small' tier={tier as TierBoxProps['tier']} />
+              <TierBox size='small' tier={tier as tierType} />
               <div>{description}</div>
               <div>{score}</div>
             </div>
@@ -26,7 +26,7 @@ const TierInfo = () => {
           ([tier, { description, score }]) => (
             <div key={tier} className={styles.tierWrapper}>
               <div className={styles.boxWrapper}>
-                <TierBox size='small' tier={tier as TierBoxProps['tier']} />
+                <TierBox size='small' tier={tier as tierType} />
                 <div>{description}</div>
                 <div>{score}</div>
               </div>

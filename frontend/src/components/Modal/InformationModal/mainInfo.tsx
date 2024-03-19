@@ -2,11 +2,12 @@ import * as styles from './index.css';
 
 import ColoredButton from '@/components/button/ColoredButton';
 import SettingTextButton from '@/components/button/SettingTextButton/index';
-import { InfoType } from '@/components/Modal/informationModal/constants';
+import { INFO_TYPE } from '@/components/Modal/InformationModal/constants';
+import { viewProps } from '@/components/Modal/InformationModal/types';
 
 interface Props {
   onClose: () => void;
-  onNavigate: (view: InfoType) => void;
+  onNavigate: (view: viewProps['now']) => void;
 }
 
 const MainInfo = ({ onClose, onNavigate }: Props) => {
@@ -17,21 +18,21 @@ const MainInfo = ({ onClose, onNavigate }: Props) => {
       </div>
       <div className={styles.boxWrapper}>
         <SettingTextButton
-          onClick={() => onNavigate(InfoType.game)}
+          onClick={() => onNavigate(INFO_TYPE.game)}
           size='medium'
           colorStyle='black'
         >
           게임 방식
         </SettingTextButton>
         <SettingTextButton
-          onClick={() => onNavigate(InfoType.item)}
+          onClick={() => onNavigate(INFO_TYPE.item)}
           size='medium'
           colorStyle='black'
         >
           아이템
         </SettingTextButton>
         <SettingTextButton
-          onClick={() => onNavigate(InfoType.tier)}
+          onClick={() => onNavigate(INFO_TYPE.tier)}
           size='medium'
           colorStyle='black'
         >

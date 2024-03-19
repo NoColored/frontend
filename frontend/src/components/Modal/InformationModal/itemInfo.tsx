@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import * as styles from './index.css';
-import { ITEMS } from '@/components/Modal/informationModal/constants';
+import { ITEMS } from '@/components/Modal/InformationModal/constants';
 import RoundCornerImageBox from '@/components/imagebox/RoundCornerImageBox';
 import SettingNavigationButton from '@/components/button/SettingNavigationButton';
 
