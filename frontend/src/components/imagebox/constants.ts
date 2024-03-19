@@ -1,13 +1,4 @@
-export const IMAGEBOX_SIZE = [
-  'xsmall',
-  'small',
-  'medium',
-  'large',
-  'xlarge',
-  'full',
-] as const;
-
-export const IMAGEBOX_SIZE_PIXEL = {
+export const IMAGEBOX_SIZE = {
   xsmall: '32px',
   small: '48px',
   medium: '96px',

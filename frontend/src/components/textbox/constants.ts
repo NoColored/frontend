@@ -10,3 +10,5 @@ export const BACKGROUND_COLOR = [
   'gray300',
   'black',
 ] as const;
+
+export const TEXTBOX_SIZE = ['small', 'medium'] as const;
