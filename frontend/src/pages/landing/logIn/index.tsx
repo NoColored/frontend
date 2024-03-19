@@ -17,20 +17,20 @@ const LogIn = () => {
 
   const { Modal, openModal, closeModal } = useModal();
 
-  const inputIdChangeEvent = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleIdChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUserId(e.target.value);
   };
 
-  const inputPasswordChangeEvent = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUserPassword(e.target.value);
   };
 
-  const signUpClickEvent = () => {
+  const handleSignUpClick = () => {
     openModal();
     setIsClicked(true);
   };
 
-  const logInClickEvent = () => {
+  const handleLogInClick = () => {
     const check = requestLogIn(userId, userPassword);
 
     // userId 와 userPassword null 여부는 백에서도 체크
@@ -47,37 +47,35 @@ const LogIn = () => {
         type='text'
         placeholder='아이디'
         size='large'
-        onChange={inputIdChangeEvent}
+        onChange={handleIdChange}
       />
       <InputTextBox
         type='password'
         placeholder='비밀번호'
         size='large'
-        onChange={inputPasswordChangeEvent}
+        onChange={handlePasswordChange}
       />
       <div className={styles.buttonWrapper}>
         <ColoredButton
           text='SIGN UP'
           color='blue'
           size='large'
-          onClick={signUpClickEvent}
+          onClick={handleSignUpClick}
         />
         <ColoredButton
           text='LOG IN'
           color='pink'
           size='large'
-          onClick={logInClickEvent}
+          onClick={handleLogInClick}
         />
       </div>
-      {isClicked ? (
-        <Modal>
+      <Modal>
+        {isClicked ? (
           <SignUp closeModal={closeModal} />
-        </Modal>
-      ) : (
-        <Modal>
+        ) : (
           <LogInFail closeModal={closeModal} />
-        </Modal>
-      )}
+        )}
+      </Modal>
     </div>
   );
 };
