@@ -30,27 +30,41 @@ const colorVariants = constants.BUTTON_COLOR.reduce(
 const sizeVariants = {
   medium: style([
     sprinkles({
-      fontSize: '1.5x',
+      textSize: '1.5x',
     }),
     {
       width: constants.COLOREDICONBUTTON_SIZE_PIXEL.medium.width,
       height: constants.COLOREDICONBUTTON_SIZE_PIXEL.medium.height,
       paddingTop: '4x',
+
+      '@media': {
+        'screen and (max-height: 380px)': {
+          height: '80px',
+        },
+      },
     },
   ]),
   large: style([
     sprinkles({
-      fontSize: '2x',
+      textSize: '2x',
+      width: 'full',
     }),
     {
-      width: constants.COLOREDICONBUTTON_SIZE_PIXEL.large.width,
       height: constants.COLOREDICONBUTTON_SIZE_PIXEL.large.height,
+
+      '@media': {
+        'screen and (max-height: 380px)': {
+          fontSize: '20px',
+          lineHeight: '20px',
+          height: '68px',
+        },
+      },
     },
   ]),
   xlarge: style([
     sprinkles({
       paddingTop: '2x',
-      fontSize: '2x',
+      textSize: '3x',
     }),
     {
       width: constants.COLOREDICONBUTTON_SIZE_PIXEL.xlarge.width,
@@ -71,6 +85,8 @@ export const coloredIconButtonStyle = recipe({
       borderRadius: '2x',
       borderWidth: '4x',
       paddingBottom: '2x',
+      paddingRight: '1x',
+      paddingLeft: '1x',
     }),
     {
       transition: 'all 0.2s',
@@ -94,6 +110,13 @@ export const iconStyle = style([
   {
     height: constants.COLORED_ICON_BUTTON_ICON_SIZE,
     width: constants.COLORED_ICON_BUTTON_ICON_SIZE,
+
+    '@media': {
+      'screen and (max-height: 380px)': {
+        height: '32px',
+        width: '32px',
+      },
+    },
   },
 ]);
 
