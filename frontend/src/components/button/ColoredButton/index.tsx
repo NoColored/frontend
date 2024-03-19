@@ -1,8 +1,14 @@
 import * as styles from './index.css';
 
-import type { ColoredButtonProps } from '@/components/button/types';
+import type {
+  ColorButtonProps,
+  coloredButtonSizeType,
+} from '@/components/button/types';
 
-const ColoredButton = ({ text, color, size, onClick }: ColoredButtonProps) => {
+interface Props extends ColorButtonProps {
+  size: coloredButtonSizeType;
+}
+const ColoredButton = ({ text, color, size, onClick }: Props) => {
   return (
     <button
       type='button'

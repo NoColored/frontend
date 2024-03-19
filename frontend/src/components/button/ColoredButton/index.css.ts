@@ -1,31 +1,32 @@
 import { style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
 
-import * as constants from '@/components/button/ColoredButton/constants';
+import * as constants from '@/components/button/constants';
+import type { colorType } from '@/components/button/types';
 
 import { flexOptions } from '@/styles/common.css';
 import { sprinkles } from '@/styles/sprinkles.css';
 import { vars } from '@/styles/vars.css';
 
-const colorVariants: {
-  [colorItem in (typeof constants.COLOR)[number]]?: ReturnType<typeof style>;
-} = {};
-
-constants.COLOR.forEach((colorItem) => {
-  const darkColor = constants.COLOR_DARK[colorItem];
-  colorVariants[colorItem] = style([
-    sprinkles({
-      backgroundColor: colorItem,
-    }),
-    {
-      boxShadow: `0 6px ${vars.colors[darkColor as keyof typeof vars.colors]}`,
-      ':active': {
-        transform: 'translateY(4px)',
-        boxShadow: `0 2px ${vars.colors[darkColor as keyof typeof vars.colors]}`,
+const colorVariants = constants.BUTTON_COLOR.reduce(
+  (variants, color) => {
+    const darkColor = constants.BUTTON_COLOR_DARK[color];
+    variants[color] = style([
+      sprinkles({
+        backgroundColor: color,
+      }),
+      {
+        boxShadow: `0 6px ${vars.colors[darkColor]}`,
+        ':active': {
+          transform: 'translateY(4px)',
+          boxShadow: `0 2px ${vars.colors[darkColor]}`,
+        },
       },
-    },
-  ]);
-});
+    ]);
+    return variants;
+  },
+  {} as Record<colorType, ReturnType<typeof style>>,
+);
 
 const sizeVariants = {
   small: style([
@@ -35,8 +36,8 @@ const sizeVariants = {
       marginX: '2x',
     }),
     {
-      width: constants.SIZE_PIXEL.small.width,
-      height: constants.SIZE_PIXEL.small.height,
+      width: constants.COLORED_BUTTON_SIZE_PIXEL.small.width,
+      height: constants.COLORED_BUTTON_SIZE_PIXEL.small.height,
     },
   ]),
   medium: style([
@@ -45,8 +46,8 @@ const sizeVariants = {
       padding: '4x',
     }),
     {
-      width: constants.SIZE_PIXEL.medium.width,
-      height: constants.SIZE_PIXEL.medium.height,
+      width: constants.COLORED_BUTTON_SIZE_PIXEL.medium.width,
+      height: constants.COLORED_BUTTON_SIZE_PIXEL.medium.height,
     },
   ]),
   large: style([
@@ -55,8 +56,8 @@ const sizeVariants = {
       padding: '4x',
     }),
     {
-      width: constants.SIZE_PIXEL.large.width,
-      height: constants.SIZE_PIXEL.large.height,
+      width: constants.COLORED_BUTTON_SIZE_PIXEL.large.width,
+      height: constants.COLORED_BUTTON_SIZE_PIXEL.large.height,
     },
   ]),
 };

@@ -2,6 +2,7 @@ import { style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
 
 import * as constants from '@/components/imagebox/constants';
+import type { tierSizeType } from '@/components/imagebox/types';
 
 const tierBoxBase = style([
   {
@@ -25,17 +26,18 @@ constants.TIER_RANGE.forEach((tier) => {
   });
 });
 
-const sizeVariants: {
-  [size in (typeof constants.IMAGEBOX_SIZE)[number]]?: ReturnType<typeof style>;
-} = {};
-
-constants.IMAGEBOX_SIZE.forEach((size) => {
-  sizeVariants[size] = style([
-    {
-      height: constants.IMAGEBOX_SIZE_PIXEL[size],
-    },
-  ]);
-});
+const sizeVariants = Object.keys(constants.IMAGEBOX_SIZE).reduce(
+  (variants, sizeKey) => {
+    const size = sizeKey as tierSizeType;
+    variants[size] = style([
+      {
+        height: constants.IMAGEBOX_SIZE[size],
+      },
+    ]);
+    return variants;
+  },
+  {} as Record<tierSizeType, ReturnType<typeof style>>,
+);
 
 export const tierBox = recipe({
   base: tierBoxBase,

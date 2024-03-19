@@ -1,6 +1,23 @@
+import React from 'react';
+
 import * as styles from './index.css';
 
-import type { RoundCornerImageBoxProps } from '../types.d';
+import type {
+  imageboxBackgroundColorType,
+  imageboxBorderColorType,
+  imageboxSizeType,
+  immageboxBorderWeightType,
+} from '@/components/imagebox/types';
+
+export interface Props {
+  children?: React.ReactNode;
+  imgSrc?: string;
+
+  size: imageboxSizeType;
+  borderSize?: immageboxBorderWeightType;
+  borderColor?: imageboxBorderColorType;
+  backgroundColor?: imageboxBackgroundColorType;
+}
 
 const RoundCornerImageBox = ({
   children,
@@ -9,7 +26,7 @@ const RoundCornerImageBox = ({
   borderSize,
   borderColor,
   backgroundColor,
-}: RoundCornerImageBoxProps) => {
+}: Props) => {
   return (
     <div
       style={{
