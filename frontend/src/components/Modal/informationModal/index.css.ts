@@ -1,18 +1,27 @@
 import { style } from '@vanilla-extract/css';
 
+import * as constants from './constants';
+
 import { flexOptions } from '@/styles/common.css';
 import { sprinkles } from '@/styles/sprinkles.css';
-import { IMG_SIZE } from './constants';
+import { vars } from '@/styles/vars.css';
 
 export const boxWrapper = style([flexOptions({ option: 'columnCenter' })]);
 
 export const buttonWrapper = style([flexOptions({ option: 'center' })]);
 
+export const tierWrapper = style([
+  flexOptions({ option: 'center' }),
+  {
+    padding: vars.space['1x'],
+  },
+]);
+
 export const text = style([
   flexOptions({ option: 'center' }),
   sprinkles({
     textSize: '2x',
-    paddingBottom: '4x',
+    paddingBottom: '2x',
   }),
 ]);
 
@@ -30,8 +39,8 @@ export const mapBackground = style([
     marginBottom: '1x',
   }),
   {
-    width: IMG_SIZE.background.width,
-    height: IMG_SIZE.background.height,
+    width: constants.IMG_SIZE.background.width,
+    height: constants.IMG_SIZE.background.height,
     maxHeight: '100%',
   },
 ]);
@@ -47,6 +56,23 @@ export const imageStyle = style([
 ]);
 
 export const buttonStyle = style({
-  width: IMG_SIZE.button.width,
-  height: IMG_SIZE.button.height,
+  width: constants.IMG_SIZE.button.width,
+  height: constants.IMG_SIZE.button.height,
 });
+
+export const lowTierStyle = style([
+  flexOptions({ option: 'center' }),
+  sprinkles({
+    marginBottom: '1x',
+  }),
+  {
+    justifyContent: 'space-around',
+  },
+]);
+
+export const highTierStyle = style([
+  flexOptions({ option: 'center' }),
+  {
+    justifyContent: 'space-evenly',
+  },
+]);
