@@ -1,18 +1,15 @@
-import { useNavigate } from 'react-router-dom';
-
 import * as styles from './index.css';
 
 import { LOW_TIER_INFO, HIGH_TIER_INFO } from '@/components/imagebox/constants';
 import SettingNavigationButton from '@/components/button/SettingNavigationButton';
 import { tierType } from '@/components/imagebox/types';
 import TierBox from '@/components/imagebox/TierIconBox';
+import { indexProps } from './types';
 
-const TierInfo = () => {
-  const navigate = useNavigate();
-
+const TierInfo = ({ onBack }: indexProps) => {
   return (
     <div>
-      <SettingNavigationButton label='뒤로' onClick={() => navigate(-1)} />
+      <SettingNavigationButton label='뒤로' onClick={onBack} />
       <div className={styles.text}>티어</div>
       <div className={styles.lowTierStyle}>
         {Object.entries(LOW_TIER_INFO).map(([tier, { description, score }]) => (

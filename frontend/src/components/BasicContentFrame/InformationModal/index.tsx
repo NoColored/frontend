@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { Props } from './types';
+import { indexProps } from './types';
 
 import GameInfo from '@/components/BasicContentFrame/InformationModal/gameInfo';
 import { INFO_TYPE } from '@/components/BasicContentFrame/InformationModal/constants';
@@ -9,19 +9,23 @@ import TierInfo from '@/components/BasicContentFrame/InformationModal/tierInfo';
 import { viewProps } from '@/components/BasicContentFrame/InformationModal/types';
 import MainInfo from '@/components/BasicContentFrame/InformationModal/mainInfo';
 
-const Index = ({ onClose }: Props) => {
+const Index = ({ onClose }: indexProps) => {
   const [currentView, setCurrentView] = useState<viewProps['now']>(
     INFO_TYPE.main,
   );
+
+  const handleBack = () => {
+    setCurrentView(INFO_TYPE.main);
+  };
 
   return (
     <div>
       {currentView === INFO_TYPE.main && (
         <MainInfo onClose={onClose} onNavigate={setCurrentView} />
       )}
-      {currentView === INFO_TYPE.game && <GameInfo />}
-      {currentView === INFO_TYPE.item && <ItemInfo />}
-      {currentView === INFO_TYPE.tier && <TierInfo />}
+      {currentView === INFO_TYPE.game && <GameInfo onBack={handleBack} />}
+      {currentView === INFO_TYPE.item && <ItemInfo onBack={handleBack} />}
+      {currentView === INFO_TYPE.tier && <TierInfo onBack={handleBack} />}
     </div>
   );
 };

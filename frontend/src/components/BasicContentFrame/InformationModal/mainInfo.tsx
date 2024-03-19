@@ -3,14 +3,9 @@ import * as styles from './index.css';
 import ColoredButton from '@/components/button/ColoredButton';
 import SettingTextButton from '@/components/button/SettingTextButton/index';
 import { INFO_TYPE } from './constants';
-import { viewProps } from './types';
+import { mainProps } from '@/components/BasicContentFrame/InformationModal/types';
 
-interface Props {
-  onClose: () => void;
-  onNavigate: (view: viewProps['now']) => void;
-}
-
-const MainInfo = ({ onClose, onNavigate }: Props) => {
+const MainInfo = ({ onClose = () => {}, onNavigate }: mainProps) => {
   return (
     <div>
       <div className={styles.text}>

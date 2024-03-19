@@ -1,16 +1,13 @@
-import { useNavigate } from 'react-router-dom';
-
 import * as styles from './index.css';
 
 import { IMAGE_URL } from '@/components/BasicContentFrame/InformationModal/constants';
 import SettingNavigationButton from '@/components/button/SettingNavigationButton';
+import { indexProps } from './types';
 
-const GameInfo = () => {
-  const navigate = useNavigate();
-
+const GameInfo = ({ onBack }: indexProps) => {
   return (
     <div>
-      <SettingNavigationButton label='뒤로' onClick={() => navigate(-1)} />
+      <SettingNavigationButton label='뒤로' onClick={onBack} />
       <div className={styles.boxWrapper}>
         <div className={styles.text}>
           <div> 게임 방식</div>
