@@ -1,36 +1,31 @@
 import * as styles from './index.css';
 
 import BasicContentFrame from '@/components/BasicContentFrame/WithButtons/index';
+import ColoredIconButton from '@/components/button/ColoredIconButton';
 
 const Home = () => {
   return (
-    <BasicContentFrame backButtonLabel='뒤로'>
-      <div>
-        <div
-          className={styles.fontStyle({ fontType: 'textFont', color: 'red' })}
-        >
-          This is text with the DNFBitBitv2 font. 전체적인 기본 폰트에요
-        </div>
-        <div
-          className={styles.fontStyle({ fontType: 'numFont', color: 'yellow' })}
-        >
-          This is text with the PixelAEBold font. 0123456789
-        </div>
-        <div
-          className={styles.fontStyle({
-            fontType: 'loadingTextFont',
-            color: 'blue',
-          })}
-        >
-          This is text with the DOSPilgiMedium font. 로딩화면에 쓰여요
-        </div>
-        <div
-          className={styles.fontStyle({
-            fontType: 'loadingNumFont',
-            color: 'pink',
-          })}
-        >
-          This is text with the Chonkly font. 0123456789
+    <BasicContentFrame>
+      <div className={styles.LeftSideWrapper}>
+        <div>경험치 바</div>
+        <div className={styles.LeftAndCharacterWrapper}>
+          <div className={styles.LeftButtonsWrapper}>
+            <ColoredIconButton
+              icon='/images/ui/icon/button/icon-button-collection-h50w50.png'
+              size='medium'
+              text='Collection'
+              color='blue'
+              onClick={() => {}}
+            />
+            <ColoredIconButton
+              icon='/images/ui/icon/button/icon-button-ranking-h50w50.png'
+              size='medium'
+              text='Ranking'
+              color='green'
+              onClick={() => {}}
+            />
+          </div>
+          <div>캐릭터요</div>
         </div>
       </div>
     </BasicContentFrame>
