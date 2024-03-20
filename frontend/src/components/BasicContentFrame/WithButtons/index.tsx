@@ -13,11 +13,11 @@ import {
 } from '@/components/BasicContentFrame/constants';
 
 import useModal from '@/hooks/useModal';
-import Settings from '@/components/BasicContentFrame/SettingModal';
+import Settings from '@/components/BasicContentFrame/WithButtons/SettingModal/index';
 
 const BasicContentFrame = ({ children, backButtonLabel }: Props) => {
   const { Modal, openModal, closeModal } = useModal();
-  const [modalType, setModalType] = useState<ModalType>(0);
+  const [modalType, setModalType] = useState<ModalType>();
   const navigate = useNavigate();
 
   const selectModalType = (type: ModalType) => {

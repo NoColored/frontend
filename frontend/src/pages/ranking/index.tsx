@@ -7,7 +7,7 @@ import RankingItemBox, {
   RankingItemBoxProps,
 } from '@/pages/ranking/RankingItemBox';
 
-import TESTCHARACTER from '@/assets/character/default-magichat/character-default-magichat-blue-h240w240.png';
+import TESTCHARACTER from ' /character/default-magichat/character-default-magichat-blue-h240w240.png';
 
 // 받아와서 map으로 돌려줘야됨
 const rankingExample: RankingItemBoxProps[] = [

@@ -2,11 +2,11 @@ import { useState } from 'react';
 
 import { indexProps, viewProps } from './types';
 
-import GameInfo from '@/components/BasicContentFrame/WithButtons/InformationModal/gameInfo';
+import GameInfo from '@/components/BasicContentFrame/WithButtons/InformationModal/GameInfo';
 import { INFO_TYPE } from '@/components/BasicContentFrame/WithButtons/InformationModal/constants';
-import ItemInfo from '@/components/BasicContentFrame/WithButtons/InformationModal/itemInfo';
-import TierInfo from '@/components/BasicContentFrame/WithButtons/InformationModal/tierInfo';
-import MainInfo from '@/components/BasicContentFrame/WithButtons/InformationModal/mainInfo';
+import ItemInfo from '@/components/BasicContentFrame/WithButtons/InformationModal/ItemInfo';
+import TierInfo from '@/components/BasicContentFrame/WithButtons/InformationModal/TierInfo';
+import MainInfo from '@/components/BasicContentFrame/WithButtons/InformationModal/MainInfo';
 
 const Index = ({ onClose }: indexProps) => {
   const [currentView, setCurrentView] = useState<viewProps['now']>(
