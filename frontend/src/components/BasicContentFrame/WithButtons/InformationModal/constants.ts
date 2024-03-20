@@ -11,9 +11,9 @@ export enum InfoType {
 }
 
 export enum ImageUrl {
-  map = '/src/assets/map/background/foodmap-controller.png',
-  move = '/src/assets/ui/controller/icon-controller-change.svg',
-  jump = '/src/assets/ui/controller/icon-controller-jump.svg',
+  map = '/images/map/background/foodmap-controller.png',
+  move = '/images/ui/controller/icon-controller-change.svg',
+  jump = '/images/ui/controller/icon-controller-jump.svg',
 }
 
 export const IMG_SIZE = {

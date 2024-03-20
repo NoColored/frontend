@@ -22,7 +22,7 @@ const tierVariants: {
 
 constants.TIER_RANGE.forEach((tier) => {
   tierVariants[tier] = style({
-    backgroundImage: `url('@/assets/ui/icon/tier/icon-tier-${tier}.svg')`,
+    backgroundImage: `url('/images/ui/icon/tier/icon-tier-${tier}.svg')`,
   });
 });
 

@@ -16,7 +16,7 @@ const Character = ({ color }: Props) => {
     <div className={styles.character({ color })}>
       <RoundCornerImageBox
         size='full'
-        imgSrc='/src/assets/character/default-none/character-default-none-blue-h240w240.png'
+        imgSrc='/images/character/default-none/character-default-none-blue-h240w240.png'
         backgroundColor='white'
       >
         <ColoredTextBox

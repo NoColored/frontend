@@ -7,13 +7,12 @@ import RankingItemBox, {
   RankingItemBoxProps,
 } from '@/pages/ranking/RankingItemBox';
 
-import TESTCHARACTER from '@/assets/character/default-magichat/character-default-magichat-blue-h240w240.png';
-
 // 받아와서 map으로 돌려줘야됨
 const rankingExample: RankingItemBoxProps[] = [
   {
     rank: 1,
-    imgSrc: TESTCHARACTER,
+    imgSrc:
+      '/images/character/default-magichat/character-default-magichat-blue-h240w240.png',
     label: '칭호인데요제발요칭호라고요열네자?',
     nickname: '닉네임은아홉글자일',
     tier: 'diamond',
@@ -21,7 +20,8 @@ const rankingExample: RankingItemBoxProps[] = [
   },
   {
     rank: 2,
-    imgSrc: TESTCHARACTER,
+    imgSrc:
+      '/images/character/default-magichat/character-default-magichat-blue-h240w240.png',
     label: '칭호인데요제발요칭호라고요열네자?',
     nickname: '닉네임은아홉글자일',
     tier: 'diamond',
@@ -29,7 +29,8 @@ const rankingExample: RankingItemBoxProps[] = [
   },
   {
     rank: 3,
-    imgSrc: TESTCHARACTER,
+    imgSrc:
+      '/images/character/default-magichat/character-default-magichat-blue-h240w240.png',
     label: '칭호인데요제발요칭호라고요열네자?',
     nickname: '닉네임은아홉글자일',
     tier: 'diamond',
@@ -37,7 +38,8 @@ const rankingExample: RankingItemBoxProps[] = [
   },
   {
     rank: 4,
-    imgSrc: TESTCHARACTER,
+    imgSrc:
+      '/images/character/default-magichat/character-default-magichat-blue-h240w240.png',
     label: '칭호인데요제발요칭호라고요열네자?',
     nickname: '닉네임은아홉글자일',
     tier: 'diamond',
@@ -45,7 +47,8 @@ const rankingExample: RankingItemBoxProps[] = [
   },
   {
     rank: 5,
-    imgSrc: TESTCHARACTER,
+    imgSrc:
+      '/images/character/default-magichat/character-default-magichat-blue-h240w240.png',
     label: '칭호인데요제발요칭호라고요열네자?',
     nickname: '닉네임은아홉글자일',
     tier: 'diamond',
@@ -53,7 +56,8 @@ const rankingExample: RankingItemBoxProps[] = [
   },
   {
     rank: 650,
-    imgSrc: TESTCHARACTER,
+    imgSrc:
+      '/images/character/default-magichat/character-default-magichat-blue-h240w240.png',
     label: '칭호인데요제발요칭호라고요열네자?',
     nickname: '닉네임은아홉글자일',
     tier: 'diamond',
@@ -61,7 +65,8 @@ const rankingExample: RankingItemBoxProps[] = [
   },
   {
     rank: 7777,
-    imgSrc: TESTCHARACTER,
+    imgSrc:
+      '/images/character/default-magichat/character-default-magichat-blue-h240w240.png',
     label: '칭호인데요제발요칭호라고요열네자?',
     nickname: '닉네임은아홉글자일',
     tier: 'diamond',
@@ -69,7 +74,8 @@ const rankingExample: RankingItemBoxProps[] = [
   },
   {
     rank: 90,
-    imgSrc: TESTCHARACTER,
+    imgSrc:
+      '/images/character/default-magichat/character-default-magichat-blue-h240w240.png',
     label: '칭호인데요제발요칭호라고요열네자?',
     nickname: '닉네임은아홉글자일',
     tier: 'diamond',
@@ -102,7 +108,9 @@ const Ranking = () => {
         </div>
         <RankingItemBox
           rank={10000}
-          imgSrc={TESTCHARACTER}
+          imgSrc={
+            '/images/character/default-magichat/character-default-magichat-blue-h240w240.png'
+          }
           label='내칭호가들어가는데요'
           nickname='수원왕갈비통닭임'
           tier='origin'
