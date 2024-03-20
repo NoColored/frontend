@@ -1,12 +1,11 @@
 import { useState } from 'react';
 
 import * as styles from './index.css';
+import { indexProps } from './types';
 
-import { ITEMS } from '@/components/BasicContentFrame/WithButtons/InformationModal/constants';
+import { ITEMS } from '@/components/BasicContentFrame/WithButtons/InfoButton/constants';
 import SettingNavigationButton from '@/components/button/SettingNavigationButton';
 import RoundCornerImageBox from '@/components/imagebox/RoundCornerImageBox';
-
-import { indexProps } from './types';
 
 const ItemInfo = ({ onBack }: indexProps) => {
   const [idx, setIdx] = useState(0);
@@ -22,8 +21,12 @@ const ItemInfo = ({ onBack }: indexProps) => {
   };
 
   return (
-    <div>
-      <SettingNavigationButton label='뒤로' onClick={onBack} />
+    <>
+      <SettingNavigationButton
+        label='뒤로'
+        onClick={onBack}
+        position='leftTop'
+      />
       <div className={styles.text}>아이템</div>
       <div className={styles.boxWrapper}>
         <div className={styles.textMargin}>{ITEMS[idx].title}</div>
@@ -54,7 +57,7 @@ const ItemInfo = ({ onBack }: indexProps) => {
           다음
         </button>
       </div>
-    </div>
+    </>
   );
 };
 
