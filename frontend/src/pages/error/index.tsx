@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 
-import * as constants from './constanats';
+import * as constants from './constants';
 import * as styles from './index.css';
 
 import BasicContentFrame from '@/components/BasicContentFrame/index';

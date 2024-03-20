@@ -1,8 +1,10 @@
 import { useState } from 'react';
+
 import * as styles from './index.css';
-import { ITEMS } from '@/components/Modal/informationModal/constants';
-import RoundCornerImageBox from '@/components/imagebox/RoundCornerImageBox';
+
+import { ITEMS } from '@/components/BasicContentFrame/WithButtons/InformationModal/constants';
 import SettingNavigationButton from '@/components/button/SettingNavigationButton';
+import RoundCornerImageBox from '@/components/imagebox/RoundCornerImageBox';
 
 const ItemInfo = () => {
   const [idx, setIdx] = useState(0);

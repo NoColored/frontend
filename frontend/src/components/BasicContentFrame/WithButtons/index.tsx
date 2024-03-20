@@ -3,11 +3,11 @@ import { useNavigate } from 'react-router-dom';
 
 import * as styles from './index.css';
 
+import { ModalType } from '@/components/BasicContentFrame/WithButtons/InformationModal/constants';
+import Index from '@/components/BasicContentFrame/WithButtons/InformationModal/index';
+import Setting from '@/components/BasicContentFrame/WithButtons/SettingModal/index';
 import SettingIconButton from '@/components/button/SettingIconButton/index';
 import SettingNavigationButton from '@/components/button/SettingNavigationButton/index';
-import { ModalType } from '@/components/Modal/informationModal/constants';
-import Index from '@/components/Modal/informationModal/index';
-import Setting from '@/components/Modal/settingModal/index';
 
 import useModal from '@/hooks/useModal';
 

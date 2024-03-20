@@ -1,7 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
 
 import Example from '@/pages/example/index';
-import HandleError from '@/pages/handleError';
 import Home from '@/pages/home';
 import Landing from '@/pages/landing/index';
 import LandingLayout from '@/pages/landing/layout';
@@ -10,6 +9,8 @@ import Loading from '@/pages/loading/index';
 import Lobby from '@/pages/play/lobby/index';
 import Ranking from '@/pages/ranking';
 import Result from '@/pages/result';
+
+import HandleError from 'pages/error';
 
 const router = createBrowserRouter([
   {

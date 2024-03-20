@@ -1,4 +1,4 @@
-import ColoredButton from '@/components/button/ColoredButton/index';
+import ColoredButton from '@/components/button/ColoredButton';
 
 interface Props {
   onClose: () => void;
