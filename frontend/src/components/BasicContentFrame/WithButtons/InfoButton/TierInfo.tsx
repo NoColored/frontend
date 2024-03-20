@@ -1,6 +1,6 @@
 import { indexProps } from './types';
 
-import * as styles from '@/components/BasicContentFrame/WithButtons/InformationModal/index.css';
+import * as styles from '@/components/BasicContentFrame/WithButtons/InfoButton/index.css';
 import SettingNavigationButton from '@/components/button/SettingNavigationButton';
 import { LOW_TIER_INFO, HIGH_TIER_INFO } from '@/components/imagebox/constants';
 import TierBox from '@/components/imagebox/TierIconBox';

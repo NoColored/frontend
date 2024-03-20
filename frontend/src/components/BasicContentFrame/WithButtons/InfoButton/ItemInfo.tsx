@@ -3,7 +3,7 @@ import { useState } from 'react';
 import * as styles from './index.css';
 import { indexProps } from './types';
 
-import { ITEMS } from '@/components/BasicContentFrame/WithButtons/InformationModal/constants';
+import { ITEMS } from '@/components/BasicContentFrame/WithButtons/InfoButton/constants';
 import SettingNavigationButton from '@/components/button/SettingNavigationButton';
 import RoundCornerImageBox from '@/components/imagebox/RoundCornerImageBox';
 

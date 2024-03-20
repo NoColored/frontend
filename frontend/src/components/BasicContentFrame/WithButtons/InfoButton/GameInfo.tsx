@@ -1,7 +1,7 @@
 import * as styles from './index.css';
 import { indexProps } from './types';
 
-import { IMAGE_URL } from '@/components/BasicContentFrame/WithButtons/InformationModal/constants';
+import { IMAGE_URL } from '@/components/BasicContentFrame/WithButtons/InfoButton/constants';
 import SettingNavigationButton from '@/components/button/SettingNavigationButton';
 
 const GameInfo = ({ onBack }: indexProps) => {

@@ -1,6 +1,6 @@
 import * as styles from './index.css';
 
-import type { infoType } from '@/components/BasicContentFrame/WithButtons/InformationModal/types';
+import type { infoType } from '@/components/BasicContentFrame/WithButtons/InfoButton/types';
 import ColoredButton from '@/components/button/ColoredButton';
 import SettingTextButton from '@/components/button/SettingTextButton';
 
