@@ -39,7 +39,7 @@ export const partyListWrapper = style([
   }),
 ]);
 
-export const partyItemWrapper = style([
+export const lobbyItemWrapper = style([
   sprinkles({
     borderRadius: '2x',
     margin: '1x',

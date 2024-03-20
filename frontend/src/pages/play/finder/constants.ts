@@ -35,3 +35,6 @@ export const MAPS = [
     mapName: '푸디',
   },
 ] as const;
+
+export const MAPS_WRAPPER_HEIGHT = '110px';
+export const MAP_ITEM_HEIGHT = '100px';

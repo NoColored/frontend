@@ -84,7 +84,7 @@ export const createLobbyMapWrapper = style([
   flexOptions({ option: 'row' }),
   {
     alignItems: 'center',
-    height: '110px',
+    height: constants.MAPS_WRAPPER_HEIGHT,
   },
   sprinkles({
     borderRadius: '2x',
@@ -95,7 +95,6 @@ export const createLobbyMapWrapper = style([
 ]);
 
 export const createLobbyMapPartWrapper = style([
-  sprinkles({}),
   {
     padding: '5vh',
   },
@@ -109,6 +108,6 @@ export const mapItemWrapper = style([
     padding: '2x',
   }),
   {
-    height: '100px',
+    height: constants.MAP_ITEM_HEIGHT,
   },
 ]);
