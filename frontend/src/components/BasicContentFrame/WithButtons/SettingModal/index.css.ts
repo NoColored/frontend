@@ -2,6 +2,7 @@ import { style } from '@vanilla-extract/css';
 import { sprinkles } from '@/styles/sprinkles.css';
 import { flexOptions } from '@/styles/common.css';
 import { vars } from '@/styles/vars.css';
+import { AUDIO_SIZE } from '@/components/BasicContentFrame/WithButtons/SettingModal/constants';
 
 export const boxWrapper = style([flexOptions({ option: 'columnCenter' })]);
 
@@ -26,15 +27,15 @@ export const title = style([
 export const audioBox = style([
   sprinkles({
     position: 'relative',
+    backgroundColor: 'white',
+    borderRadius: '2x',
   }),
   {
     boxSizing: 'border-box',
-    width: '434px',
-    height: '72px',
-    top: '17px',
-    background: vars.colors.white,
     border: `2px solid ${vars.colors.gray700}`,
-    borderRadius: vars.borderRadius['2x'],
+    width: AUDIO_SIZE.box.width,
+    height: AUDIO_SIZE.box.height,
+    top: AUDIO_SIZE.box.top,
   },
 ]);
 
@@ -46,16 +47,16 @@ export const audioText = style([
     backgroundColor: 'white',
   }),
   {
-    top: -17,
-    left: 30,
+    top: AUDIO_SIZE.text.top,
+    left: AUDIO_SIZE.text.left,
   },
 ]);
 
 export const audioContentWrapper = style([
   flexOptions({ option: 'columnCenter' }),
-  {
-    height: '100%',
-  },
+  sprinkles({
+    height: 'full',
+  }),
 ]);
 
 export const audioButtonWrapper = style([flexOptions({ option: 'rowCenter' })]);
@@ -68,9 +69,9 @@ export const textXMargin = style([
 
 export const underButtonWrapper = style([
   flexOptions({ option: 'rowCenter' }),
-  {
-    marginTop: '16px',
-  },
+  sprinkles({
+    marginTop: '4x',
+  }),
 ]);
 
 export const inputBoxYMargin = style([
