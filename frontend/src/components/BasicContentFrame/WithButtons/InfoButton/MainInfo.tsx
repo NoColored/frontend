@@ -1,8 +1,8 @@
 import * as styles from './index.css';
 
+import type { infoType } from '@/components/BasicContentFrame/WithButtons/InfoButton/types';
 import ColoredButton from '@/components/button/ColoredButton';
 import SettingTextButton from '@/components/button/SettingTextButton';
-import type { infoType } from '@/components/BasicContentFrame/WithButtons/InformationModal/types';
 
 interface mainProps {
   onClose?: () => void;
@@ -11,7 +11,7 @@ interface mainProps {
 
 const MainInfo = ({ onClose = () => {}, onNavigate }: mainProps) => {
   return (
-    <div>
+    <>
       <div className={styles.text}>
         <div> 게임 정보</div>
       </div>
@@ -46,7 +46,7 @@ const MainInfo = ({ onClose = () => {}, onNavigate }: mainProps) => {
           onClick={onClose}
         />
       </div>
-    </div>
+    </>
   );
 };
 
