@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import * as styles from './index.css';
+import SearchLobby from './Modal/SearchLobby/index';
 
 import BasicContentFrame from '@/components/BasicContentFrame/WithButtons';
 import ColoredButton from '@/components/button/ColoredButton';
@@ -72,12 +73,7 @@ const Finder = () => {
       <div className={styles.contentWrapper}>
         <div className={styles.topButtonsWrapper}>
           <span className={styles.rightButtonsWrapper}>
-            <ColoredButton
-              size='xsmall'
-              text='코드입력'
-              color='green'
-              onClick={() => {}}
-            />
+            <SearchLobby />
             <ColoredButton
               size='xsmall'
               text='방만들기'
