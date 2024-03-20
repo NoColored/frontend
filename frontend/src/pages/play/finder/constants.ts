@@ -18,7 +18,20 @@ export const FAIL_MESSAGE_MODAL = {
     subMessage: '비밀번호를 한 번 더 확인해주세요',
   },
   ENTER: {
-    message: '컬러랜드에서는\n5인 이상 거리두기 수칙을 준수합니다',
+    message: '노컬러랜드는 5인 이상\n거리두기 수칙을 준수합니다',
     subMessage: '플레이 가능 인원을 초과하였습니다',
   },
 } as const;
+
+export const MAPS = [
+  {
+    mapType: 'basic',
+    imgSrc: '/images/map/background/basicmap.png',
+    mapName: '베이직',
+  },
+  {
+    mapType: 'food',
+    imgSrc: '/images/map/background/foodmap.png',
+    mapName: '푸디',
+  },
+] as const;

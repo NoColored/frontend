@@ -34,7 +34,19 @@ const LobbyItem = ({ imgSrc, lobbyTitle, playerCount }: Props) => {
         </div>
       </div>
       <Modal>
-        {isMessage ? (
+        {playerCount === 4 ? (
+          <div
+            className={`${modalStyles.modalWrapper} ${modalStyles.messageModalWrapper}`}
+          >
+            <MessageModalContent failed='ENTER' />
+            <ColoredButton
+              size='small'
+              text='거리두기'
+              color='yellow'
+              onClick={closeModal}
+            />
+          </div>
+        ) : isMessage ? (
           <div
             className={`${modalStyles.modalWrapper} ${modalStyles.messageModalWrapper}`}
           >

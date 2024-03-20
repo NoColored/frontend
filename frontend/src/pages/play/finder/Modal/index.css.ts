@@ -64,3 +64,51 @@ export const messageText = recipe({
     },
   },
 });
+
+export const createLobbyTextGrid = style([
+  {
+    display: 'grid',
+    gridTemplateColumns: '65% 30%',
+    gap: '5%',
+  },
+]);
+
+export const createLobbyText = style([
+  sprinkles({
+    textSize: '0.75x',
+    marginY: '1x',
+  }),
+]);
+
+export const createLobbyMapWrapper = style([
+  flexOptions({ option: 'row' }),
+  {
+    alignItems: 'center',
+    height: '110px',
+  },
+  sprinkles({
+    borderRadius: '2x',
+    borderStyle: 'solid',
+    borderColor: 'black',
+    borderWidth: '3x',
+  }),
+]);
+
+export const createLobbyMapPartWrapper = style([
+  sprinkles({}),
+  {
+    padding: '5vh',
+  },
+]);
+export const mapItemWrapper = style([
+  sprinkles({
+    display: 'block',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'spaceAround',
+    padding: '2x',
+  }),
+  {
+    height: '100px',
+  },
+]);

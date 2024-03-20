@@ -8,12 +8,13 @@ import ColoredButton from '@/components/button/ColoredButton';
 import SettingTextButton from '@/components/button/SettingTextButton';
 
 import LobbyItem from '@/pages/play/finder/LobbyItem';
+import CreateLobby from '@/pages/play/finder/Modal/CreateLobby';
 
 const Finder = () => {
   const exampleData = [
     {
       lobbyTitle: '로비이름최대아글',
-      playerCount: 1,
+      playerCount: 4,
       imgSrc: '/images/map/background/foodmap.png',
     },
     {
@@ -74,12 +75,7 @@ const Finder = () => {
         <div className={styles.topButtonsWrapper}>
           <span className={styles.rightButtonsWrapper}>
             <SearchLobby />
-            <ColoredButton
-              size='xsmall'
-              text='방만들기'
-              color='red'
-              onClick={() => {}}
-            />
+            <CreateLobby />
           </span>
           <ColoredButton
             size='xsmall'
