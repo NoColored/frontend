@@ -12,7 +12,6 @@ import type {
 export interface Props {
   children?: React.ReactNode;
   imgSrc?: string;
-
   size: imageboxSizeType;
   borderSize?: immageboxBorderWeightType;
   borderColor?: imageboxBorderColorType;

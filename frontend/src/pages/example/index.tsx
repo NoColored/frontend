@@ -89,7 +89,7 @@ const Example = () => {
         borderColor='pink'
         borderSize='5x'
       >
-        <ColoredTextBox color='pink' text='착용중' size='small' />
+        <ColoredTextBox color='pink' text='착용중' size='medium' />
       </RoundCornerImageBox>
       <RoundCornerImageBox
         size='full'
