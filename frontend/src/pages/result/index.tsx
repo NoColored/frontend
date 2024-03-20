@@ -8,14 +8,13 @@ import ResultInfoBox, {
   ResultInfoBoxProps,
 } from '@/pages/result/ResultInfoBox';
 
-import TESTCHARACTER from '@/assets/character/default-magichat/character-default-magichat-blue-h240w240.png';
-
 const Result = () => {
   // test data 입니다. 이것은 추후에 수정되어야 함.
   const resultExample: ResultInfoBoxProps[] = [
     {
       rank: 1,
-      imgSrc: TESTCHARACTER,
+      imgSrc:
+        'images/character/default-magichat/character-default-magichat-blue-h240w240.png',
       label: '칭호인데요제발요칭호라고요열네자?',
       nickname: '닉네임은아홉글자일',
       colorStyle: 'pink',
@@ -23,7 +22,8 @@ const Result = () => {
     },
     {
       rank: 2,
-      imgSrc: TESTCHARACTER,
+      imgSrc:
+        'images/character/default-magichat/character-default-magichat-blue-h240w240.png',
       label: '칭호인데요제발요칭호라고요열네자?',
       nickname: '닉네임은아홉글자일',
       colorStyle: 'yellow',
@@ -31,7 +31,8 @@ const Result = () => {
     },
     {
       rank: 3,
-      imgSrc: TESTCHARACTER,
+      imgSrc:
+        'images/character/default-magichat/character-default-magichat-blue-h240w240.png',
       label: '칭호인데요제발요칭호라고요열네자?',
       nickname: '닉네임은아홉글자일',
       colorStyle: 'green',
@@ -39,7 +40,8 @@ const Result = () => {
     },
     {
       rank: 4,
-      imgSrc: TESTCHARACTER,
+      imgSrc:
+        'images/character/default-magichat/character-default-magichat-blue-h240w240.png',
       label: '칭호인데요제발요칭호라고요열네자?',
       nickname: '닉네임은아홉글자일',
       colorStyle: 'blue',

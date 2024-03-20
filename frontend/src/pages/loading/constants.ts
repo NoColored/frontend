@@ -255,7 +255,7 @@ export const LOADING_MESSAGE = [
 export const LOADING_TOP = 'Loading...';
 
 export const LOADING_IMAGE =
-  'src/assets/ui/loading/loading-animation-h100w100.gif';
+  '/images/ui/loading/loading-animation-h100w100.gif';
 
 export const LOADING_MESSAGE_DELAY = 3000;
 
