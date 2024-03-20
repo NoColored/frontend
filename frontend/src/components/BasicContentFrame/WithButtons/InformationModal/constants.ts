@@ -1,15 +1,20 @@
-export const INFO_TYPE = {
-  main: 'main',
-  item: 'item',
-  game: 'game',
-  tier: 'tier',
-} as const;
+export enum ModalType {
+  info,
+  setting,
+}
 
-export const IMAGE_URL = {
-  map: '/src/assets/map/background/foodmap-controller.png',
-  move: '/src/assets/ui/controller/icon-controller-change.svg',
-  jump: '/src/assets/ui/controller/icon-controller-jump.svg',
-} as const;
+export enum InfoType {
+  main,
+  item,
+  game,
+  tier,
+}
+
+export enum ImageUrl {
+  map = '/images/map/background/foodmap-controller.png',
+  move = '/images/ui/controller/icon-controller-change.svg',
+  jump = '/images/ui/controller/icon-controller-jump.svg',
+}
 
 export const IMG_SIZE = {
   background: {

@@ -1,4 +1,6 @@
 // 최상단 Props 정의 (info, settings)
+import { InfoType } from '@/components/BasicContentFrame/WithButtons/InformationModal/constants';
+
 export interface indexProps {
   onClose?: () => void;
   onBack: () => void;
@@ -12,5 +14,5 @@ export interface viewProps {
 // info Modal Props 정의 (main, item, tier)
 export interface mainProps {
   onClose?: () => void;
-  onNavigate: (view: viewProps['now']) => void;
+  onNavigate: (view: InfoType) => void;
 }

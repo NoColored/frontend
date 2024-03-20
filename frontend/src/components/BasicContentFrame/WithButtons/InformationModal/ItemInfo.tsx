@@ -11,7 +11,7 @@ import { indexProps } from './types';
 const ItemInfo = ({ onBack }: indexProps) => {
   const [idx, setIdx] = useState(0);
 
-  const imgUrl = `/src/assets/items/item-${ITEMS[idx].name}-h32w32.png`;
+  const imgUrl = `/images/items/item-${ITEMS[idx].name}-h32w32.png`;
 
   const showPreviousItem = () => {
     setIdx((prevIndex) => Math.max(prevIndex - 1, 0));
