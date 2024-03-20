@@ -1,10 +1,10 @@
 import { useState } from 'react';
 
-import { InfoType } from '@/components/Modal/informationModal/constants';
-import GameInfo from '@/components/Modal/informationModal/gameInfo';
-import ItemInfo from '@/components/Modal/informationModal/itemInfo';
-import MainInfo from '@/components/Modal/informationModal/mainInfo';
-import TierInfo from '@/components/Modal/informationModal/tierInfo';
+import { InfoType } from '@/components/BasicContentFrame/WithButtons/InformationModal/constants';
+import GameInfo from '@/components/BasicContentFrame/WithButtons/InformationModal/GameInfo';
+import ItemInfo from '@/components/BasicContentFrame/WithButtons/InformationModal/ItemInfo';
+import MainInfo from '@/components/BasicContentFrame/WithButtons/InformationModal/MainInfo';
+import TierInfo from '@/components/BasicContentFrame/WithButtons/InformationModal/TierInfo';
 
 interface Props {
   onClose: () => void;

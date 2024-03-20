@@ -1,6 +1,6 @@
+import { ImageUrl } from '@/components/BasicContentFrame/WithButtons/InformationModal/constants';
+import * as styles from '@/components/BasicContentFrame/WithButtons/InformationModal/index.css';
 import SettingNavigationButton from '@/components/button/SettingNavigationButton';
-import { ImageUrl } from '@/components/Modal/informationModal/constants';
-import * as styles from '@/components/Modal/informationModal/index.css';
 
 const GameInfo = () => {
   return (
@@ -23,7 +23,7 @@ const GameInfo = () => {
               alt='moveButton'
               src={ImageUrl.move}
             />
-            <div> : 좌/우 전환 </div>
+            <div> : 좌/우 전환</div>
           </div>
           <div className={styles.buttonWrapper}>
             <img
@@ -31,7 +31,7 @@ const GameInfo = () => {
               alt='moveButton'
               src={ImageUrl.jump}
             />
-            <div> : 점프 </div>
+            <div> : 점프</div>
           </div>
         </div>
       </div>

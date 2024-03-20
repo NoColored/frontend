@@ -1,6 +1,6 @@
+import * as styles from '@/components/BasicContentFrame/WithButtons/InformationModal/index.css';
 import SettingNavigationButton from '@/components/button/SettingNavigationButton';
 import { LOW_TIER_INFO, HIGH_TIER_INFO } from '@/components/imagebox/constants';
-import * as styles from '@/components/Modal/informationModal/index.css';
 
 const TierInfo = () => {
   return (

@@ -1,8 +1,8 @@
 import * as styles from './index.css';
 
+import { InfoType } from '@/components/BasicContentFrame/WithButtons/InformationModal/constants';
 import ColoredButton from '@/components/button/ColoredButton';
-import SettingTextButton from '@/components/button/SettingTextButton/index';
-import { InfoType } from '@/components/Modal/informationModal/constants';
+import SettingTextButton from '@/components/button/SettingTextButton';
 
 interface Props {
   onClose: () => void;
