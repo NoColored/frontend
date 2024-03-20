@@ -1,13 +1,22 @@
 import * as styles from './index.css';
+import { indexProps } from './types';
 
 import { IMAGE_URL } from '@/components/BasicContentFrame/WithButtons/InformationModal/constants';
 import SettingNavigationButton from '@/components/button/SettingNavigationButton';
-import { indexProps } from './types';
 
 const GameInfo = ({ onBack }: indexProps) => {
   return (
-    <div>
-      <SettingNavigationButton label='뒤로' onClick={onBack} />
+    <>
+      <SettingNavigationButton
+        label='뒤로'
+        onClick={onBack}
+        position='leftTop'
+      />
+      <SettingNavigationButton
+        label='닫기'
+        onClick={() => {}}
+        position='rightTop'
+      />
       <div className={styles.boxWrapper}>
         <div className={styles.text}>
           <div> 게임 방식</div>
@@ -41,7 +50,7 @@ const GameInfo = ({ onBack }: indexProps) => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

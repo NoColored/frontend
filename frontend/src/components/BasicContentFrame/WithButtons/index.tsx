@@ -3,13 +3,13 @@ import { useNavigate } from 'react-router-dom';
 
 import * as styles from './index.css';
 
+import { ModalType, Props } from '@/components/BasicContentFrame/constants';
+import Index from '@/components/BasicContentFrame/WithButtons/InformationModal/index';
+import Settings from '@/components/BasicContentFrame/WithButtons/SettingModal/index';
 import SettingIconButton from '@/components/button/SettingIconButton/index';
 import SettingNavigationButton from '@/components/button/SettingNavigationButton/index';
-import Index from '@/components/BasicContentFrame/WithButtons/InformationModal/index';
-import { ModalType, Props } from '@/components/BasicContentFrame/constants';
 
 import useModal from '@/hooks/useModal';
-import Settings from '@/components/BasicContentFrame/WithButtons/SettingModal/index';
 
 const BasicContentFrame = ({ children, backButtonLabel }: Props) => {
   const { Modal, openModal, closeModal } = useModal();
@@ -46,6 +46,7 @@ const BasicContentFrame = ({ children, backButtonLabel }: Props) => {
             <SettingNavigationButton
               label={backButtonLabel}
               onClick={() => navigate(-1)}
+              position='leftTop'
             />
           </div>
         )}
