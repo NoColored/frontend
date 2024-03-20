@@ -48,11 +48,11 @@ export const buttonVariants = {
     large: style([
       sprinkles({
         fontSize: '1.5x',
-        margin: '3x',
+        margin: '1x',
       }),
       {
         height: '48px',
-        width: '250px',
+        width: '200px',
       },
     ]),
   },

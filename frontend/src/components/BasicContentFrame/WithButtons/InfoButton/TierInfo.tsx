@@ -6,13 +6,18 @@ import { LOW_TIER_INFO, HIGH_TIER_INFO } from '@/components/imagebox/constants';
 import TierBox from '@/components/imagebox/TierIconBox';
 import { tierType } from '@/components/imagebox/types';
 
-const TierInfo = ({ onBack }: indexProps) => {
+const TierInfo = ({ onBack, onClose }: indexProps) => {
   return (
     <>
       <SettingNavigationButton
         label='뒤로'
         onClick={onBack}
         position='leftTop'
+      />
+      <SettingNavigationButton
+        label='닫기'
+        onClick={onClose}
+        position='rightTop'
       />
       <div className={styles.text}>티어</div>
       <div className={styles.lowTierStyle}>

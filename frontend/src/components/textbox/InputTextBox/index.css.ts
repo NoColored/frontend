@@ -27,6 +27,7 @@ const inputTextBoxVariants = {
       sprinkles({
         fontSize: '1x',
         backgroundColor: 'gray500',
+        marginY: '2x',
       }),
       {
         textAlign: 'center',
