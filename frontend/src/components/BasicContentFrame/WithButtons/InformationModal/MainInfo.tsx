@@ -1,9 +1,13 @@
 import * as styles from './index.css';
 
-import { InfoType } from '@/components/BasicContentFrame/WithButtons/InformationModal/constants';
 import ColoredButton from '@/components/button/ColoredButton';
 import SettingTextButton from '@/components/button/SettingTextButton';
-import { mainProps } from '@/components/BasicContentFrame/WithButtons/InformationModal/types';
+import type { infoType } from '@/components/BasicContentFrame/WithButtons/InformationModal/types';
+
+interface mainProps {
+  onClose?: () => void;
+  onNavigate: (view: infoType) => void;
+}
 
 const MainInfo = ({ onClose = () => {}, onNavigate }: mainProps) => {
   return (
@@ -13,21 +17,21 @@ const MainInfo = ({ onClose = () => {}, onNavigate }: mainProps) => {
       </div>
       <div className={styles.boxWrapper}>
         <SettingTextButton
-          onClick={() => onNavigate(InfoType.game)}
+          onClick={() => onNavigate('game')}
           size='medium'
           colorStyle='black'
         >
           게임 방식
         </SettingTextButton>
         <SettingTextButton
-          onClick={() => onNavigate(InfoType.item)}
+          onClick={() => onNavigate('item')}
           size='medium'
           colorStyle='black'
         >
           아이템
         </SettingTextButton>
         <SettingTextButton
-          onClick={() => onNavigate(InfoType.tier)}
+          onClick={() => onNavigate('tier')}
           size='medium'
           colorStyle='black'
         >

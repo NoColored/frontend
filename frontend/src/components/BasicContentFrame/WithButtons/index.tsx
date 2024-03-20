@@ -6,11 +6,7 @@ import * as styles from './index.css';
 import SettingIconButton from '@/components/button/SettingIconButton/index';
 import SettingNavigationButton from '@/components/button/SettingNavigationButton/index';
 import Index from '@/components/BasicContentFrame/WithButtons/InformationModal/index';
-import {
-  MODAL_TYPE,
-  ModalType,
-  Props,
-} from '@/components/BasicContentFrame/constants';
+import { ModalType, Props } from '@/components/BasicContentFrame/constants';
 
 import useModal from '@/hooks/useModal';
 import Settings from '@/components/BasicContentFrame/WithButtons/SettingModal/index';
@@ -31,7 +27,7 @@ const BasicContentFrame = ({ children, backButtonLabel }: Props) => {
         <SettingIconButton
           src='images/ui/icon/button/icon-button-information-h50w50.png'
           alt='info'
-          onClick={() => selectModalType(MODAL_TYPE.info)}
+          onClick={() => selectModalType('info')}
         />
         <SettingIconButton
           src='/images/ui/icon/button/icon-button-home-h50w50.png'
@@ -41,7 +37,7 @@ const BasicContentFrame = ({ children, backButtonLabel }: Props) => {
         <SettingIconButton
           src='/images/ui/icon/button/icon-button-setting-h50w50.png'
           alt='setting'
-          onClick={() => selectModalType(MODAL_TYPE.settings)}
+          onClick={() => selectModalType('settings')}
         />
       </div>
       <main className={styles.main}>
@@ -54,12 +50,10 @@ const BasicContentFrame = ({ children, backButtonLabel }: Props) => {
           </div>
         )}
         <Modal>
-          {modalType === MODAL_TYPE.info && (
+          {modalType === 'info' && (
             <Index onClose={closeModal} onBack={() => {}} />
           )}
-          {modalType === MODAL_TYPE.settings && (
-            <Settings onClose={closeModal} />
-          )}
+          {modalType === 'settings' && <Settings onClose={closeModal} />}
         </Modal>
         {children}
       </main>

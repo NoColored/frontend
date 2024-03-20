@@ -1,6 +1,6 @@
 import * as styles from './index.css';
 
-import { ImageUrl } from '@/components/BasicContentFrame/WithButtons/InformationModal/constants';
+import { IMAGE_URL } from '@/components/BasicContentFrame/WithButtons/InformationModal/constants';
 import SettingNavigationButton from '@/components/button/SettingNavigationButton';
 import { indexProps } from './types';
 
@@ -16,14 +16,18 @@ const GameInfo = ({ onBack }: indexProps) => {
           <div> 맵 하단에 있는 버튼을 클릭하면 조작할 수 있어요!</div>
         </div>
         <div className={styles.mapBackground}>
-          <img className={styles.imageStyle} alt='foodMap' src={ImageUrl.map} />
+          <img
+            className={styles.imageStyle}
+            alt='foodMap'
+            src={IMAGE_URL.map}
+          />
         </div>
         <div className={styles.buttonWrapper}>
           <div className={styles.buttonWrapper}>
             <img
               className={styles.buttonStyle}
               alt='moveButton'
-              src={ImageUrl.move}
+              src={IMAGE_URL.move}
             />
             <div> : 좌/우 전환</div>
           </div>
@@ -31,7 +35,7 @@ const GameInfo = ({ onBack }: indexProps) => {
             <img
               className={styles.buttonStyle}
               alt='moveButton'
-              src={ImageUrl.jump}
+              src={IMAGE_URL.jump}
             />
             <div> : 점프</div>
           </div>
