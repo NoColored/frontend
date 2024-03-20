@@ -8,6 +8,7 @@ import LandingLayout from '@/pages/landing/layout';
 import LogIn from '@/pages/landing/logIn/index';
 import Loading from '@/pages/loading/index';
 import Lobby from '@/pages/play/lobby/index';
+import Mode from '@/pages/play/mode';
 import Ranking from '@/pages/ranking';
 import Result from '@/pages/result';
 
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
   {
     path: 'play',
     children: [
+      {
+        index: true,
+        element: <Mode />,
+      },
       {
         path: 'lobby',
         element: <Lobby />,
