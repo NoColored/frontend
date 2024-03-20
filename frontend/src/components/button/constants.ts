@@ -29,7 +29,7 @@ export const COLOREDICONBUTTON_SIZE_PIXEL = {
   },
   xlarge: {
     width: '292px',
-    height: '120px',
+    height: '140px',
   },
 } as const;
 

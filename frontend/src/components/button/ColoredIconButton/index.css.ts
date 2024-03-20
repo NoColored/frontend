@@ -65,9 +65,9 @@ const sizeVariants = {
     sprinkles({
       paddingTop: '2x',
       textSize: '3x',
+      width: 'full',
     }),
     {
-      width: constants.COLOREDICONBUTTON_SIZE_PIXEL.xlarge.width,
       height: constants.COLOREDICONBUTTON_SIZE_PIXEL.xlarge.height,
     },
   ]),
