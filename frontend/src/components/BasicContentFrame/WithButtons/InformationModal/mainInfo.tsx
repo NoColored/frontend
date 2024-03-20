@@ -1,9 +1,9 @@
 import * as styles from './index.css';
 
 import ColoredButton from '@/components/button/ColoredButton';
-import SettingTextButton from '@/components/button/SettingTextButton/index';
+import SettingTextButton from '@/components/button/SettingTextButton';
 import { INFO_TYPE } from './constants';
-import { mainProps } from '@/components/BasicContentFrame/InformationModal/types';
+import { mainProps } from '@/components/BasicContentFrame/WithButtons/InformationModal/types';
 
 const MainInfo = ({ onClose = () => {}, onNavigate }: mainProps) => {
   return (

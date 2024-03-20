@@ -1,6 +1,6 @@
 import * as styles from './index.css';
 
-import { IMAGE_URL } from '@/components/BasicContentFrame/InformationModal/constants';
+import { IMAGE_URL } from '@/components/BasicContentFrame/WithButtons/InformationModal/constants';
 import SettingNavigationButton from '@/components/button/SettingNavigationButton';
 import { indexProps } from './types';
 

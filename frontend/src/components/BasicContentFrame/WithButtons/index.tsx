@@ -5,7 +5,7 @@ import * as styles from './index.css';
 
 import SettingIconButton from '@/components/button/SettingIconButton/index';
 import SettingNavigationButton from '@/components/button/SettingNavigationButton/index';
-import Index from '@/components/BasicContentFrame/InformationModal/index';
+import Index from '@/components/BasicContentFrame/WithButtons/InformationModal/index';
 import {
   MODAL_TYPE,
   ModalType,
@@ -54,7 +54,9 @@ const BasicContentFrame = ({ children, backButtonLabel }: Props) => {
           </div>
         )}
         <Modal>
-          {modalType === MODAL_TYPE.info && <Index onClose={closeModal} />}
+          {modalType === MODAL_TYPE.info && (
+            <Index onClose={closeModal} onBack={() => {}} />
+          )}
           {modalType === MODAL_TYPE.settings && (
             <Settings onClose={closeModal} />
           )}
