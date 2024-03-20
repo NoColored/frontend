@@ -30,7 +30,7 @@ const BasicContentFrame = ({ children, backButtonLabel }: Props) => {
     <div className={styles.frame}>
       <div className={styles.iconButtons}>
         <SettingIconButton
-          src='images/ui/icon/button/icon-button-information-h50w50.png'
+          src='/images/ui/icon/button/icon-button-information-h50w50.png'
           alt='info'
           onClick={() => selectModalType(ModalType.info)}
         />
