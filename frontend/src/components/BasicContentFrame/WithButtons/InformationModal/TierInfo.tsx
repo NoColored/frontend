@@ -1,4 +1,10 @@
+<<<<<<<< HEAD:frontend/src/components/BasicContentFrame/WithButtons/InformationModal/tierInfo.tsx
 import * as styles from './index.css';
+========
+import * as styles from '@/components/BasicContentFrame/WithButtons/InformationModal/index.css';
+import SettingNavigationButton from '@/components/button/SettingNavigationButton';
+import { LOW_TIER_INFO, HIGH_TIER_INFO } from '@/components/imagebox/constants';
+>>>>>>>> 5aba0f926a2dc51b411ca9217bfde070c9cc1553:frontend/src/components/BasicContentFrame/WithButtons/InformationModal/TierInfo.tsx
 
 import { LOW_TIER_INFO, HIGH_TIER_INFO } from '@/components/imagebox/constants';
 import SettingNavigationButton from '@/components/button/SettingNavigationButton';

@@ -1,4 +1,10 @@
+<<<<<<<< HEAD:frontend/src/components/BasicContentFrame/WithButtons/InformationModal/gameInfo.tsx
 import * as styles from './index.css';
+========
+import { ImageUrl } from '@/components/BasicContentFrame/WithButtons/InformationModal/constants';
+import * as styles from '@/components/BasicContentFrame/WithButtons/InformationModal/index.css';
+import SettingNavigationButton from '@/components/button/SettingNavigationButton';
+>>>>>>>> 5aba0f926a2dc51b411ca9217bfde070c9cc1553:frontend/src/components/BasicContentFrame/WithButtons/InformationModal/GameInfo.tsx
 
 import { IMAGE_URL } from '@/components/BasicContentFrame/WithButtons/InformationModal/constants';
 import SettingNavigationButton from '@/components/button/SettingNavigationButton';
@@ -29,7 +35,7 @@ const GameInfo = ({ onBack }: indexProps) => {
               alt='moveButton'
               src={IMAGE_URL.move}
             />
-            <div> : 좌/우 전환 </div>
+            <div> : 좌/우 전환</div>
           </div>
           <div className={styles.buttonWrapper}>
             <img
@@ -37,7 +43,7 @@ const GameInfo = ({ onBack }: indexProps) => {
               alt='moveButton'
               src={IMAGE_URL.jump}
             />
-            <div> : 점프 </div>
+            <div> : 점프</div>
           </div>
         </div>
       </div>

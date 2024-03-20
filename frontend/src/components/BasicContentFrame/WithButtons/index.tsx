@@ -17,7 +17,7 @@ import Settings from '@/components/BasicContentFrame/SettingModal';
 
 const BasicContentFrame = ({ children, backButtonLabel }: Props) => {
   const { Modal, openModal, closeModal } = useModal();
-  const [modalType, setModalType] = useState<ModalType>();
+  const [modalType, setModalType] = useState<ModalType>(0);
   const navigate = useNavigate();
 
   const selectModalType = (type: ModalType) => {

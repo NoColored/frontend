@@ -1,4 +1,13 @@
 import { useState } from 'react';
+<<<<<<<< HEAD:frontend/src/components/BasicContentFrame/WithButtons/InformationModal/itemInfo.tsx
+========
+
+import * as styles from './index.css';
+
+import { ITEMS } from '@/components/BasicContentFrame/WithButtons/InformationModal/constants';
+import SettingNavigationButton from '@/components/button/SettingNavigationButton';
+import RoundCornerImageBox from '@/components/imagebox/RoundCornerImageBox';
+>>>>>>>> 5aba0f926a2dc51b411ca9217bfde070c9cc1553:frontend/src/components/BasicContentFrame/WithButtons/InformationModal/ItemInfo.tsx
 
 import * as styles from './index.css';
 import { ITEMS } from './constants';
