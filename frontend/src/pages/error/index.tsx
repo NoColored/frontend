@@ -6,7 +6,7 @@ import * as styles from './index.css';
 import BasicContentFrame from '@/components/BasicContentFrame/index';
 import ColoredButton from '@/components/button/ColoredButton/index';
 
-const HandleError = () => {
+const Error = () => {
   const navigate = useNavigate();
 
   const goBack = () => {
@@ -30,4 +30,4 @@ const HandleError = () => {
   );
 };
 
-export default HandleError;
+export default Error;
