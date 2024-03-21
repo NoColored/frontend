@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router-dom';
+
 import * as styles from './index.css';
 import SignupBanner from './SignupBanner';
 
@@ -8,6 +10,17 @@ import type { tierType } from '@/components/imagebox/types';
 import UserDashboard from '@/pages/home/UserDashboard';
 
 const Home = () => {
+  const navigate = useNavigate();
+  const goCollection = () => {
+    navigate('/collection');
+  };
+  const goRanking = () => {
+    navigate('/ranking');
+  };
+  const goPlay = () => {
+    navigate('/play');
+  };
+
   const UserInfoTemp = {
     title: '칭호는무엇일까요우',
     nickname: '테스트중인노컬러드',
@@ -40,14 +53,14 @@ const Home = () => {
               size='medium'
               text='Collection'
               color='blue'
-              onClick={() => {}}
+              onClick={goCollection}
             />
             <ColoredIconButton
               icon='/images/ui/icon/button/icon-button-ranking-h50w50.png'
               size='medium'
               text='Ranking'
               color='green'
-              onClick={() => {}}
+              onClick={goRanking}
             />
           </div>
 
@@ -66,10 +79,11 @@ const Home = () => {
             size='medium'
             text='Play'
             color='red'
-            onClick={() => {}}
+            onClick={goPlay}
           />
         </div>
       </div>
+      {/* guest여부따라 visible/unvisible보내면 됨 */}
       <SignupBanner />
     </BasicContentFrame>
   );
