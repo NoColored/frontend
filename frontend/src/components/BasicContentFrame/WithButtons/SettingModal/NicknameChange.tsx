@@ -2,9 +2,9 @@ import InputTextBox from '@/components/textbox/InputTextBox';
 import ColoredButton from '@/components/button/ColoredButton';
 
 import * as styles from './index.css';
-import { indexProps } from '@/components/BasicContentFrame/WithButtons/InfoButton/types';
+import { settingsProps } from '@/components/BasicContentFrame/WithButtons/InfoButton/types';
 
-const NicknameChange = ({ onClose }: indexProps) => {
+const NicknameChange = ({ onClose }: settingsProps) => {
   return (
     <div className={styles.boxWrapper}>
       <div className={styles.text}>이름을 바꿔도 과거로부터</div>

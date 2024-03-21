@@ -1,8 +1,8 @@
 import * as styles from '@/components/BasicContentFrame/WithButtons/SettingModal/index.css';
 import ColoredButton from '@/components/button/ColoredButton';
-import { indexProps } from '@/components/BasicContentFrame/WithButtons/InfoButton/types';
+import { settingsProps } from '@/components/BasicContentFrame/WithButtons/InfoButton/types';
 
-const Logout = ({ onClose }: indexProps) => {
+const Logout = ({ onClose }: settingsProps) => {
   return (
     <div className={styles.boxWrapper}>
       <div className={styles.text}>로그아웃 하시겠습니까?</div>
