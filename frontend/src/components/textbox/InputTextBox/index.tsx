@@ -4,7 +4,7 @@ import { inputTextBox } from '@/components/textbox/InputTextBox/index.css';
 
 interface Props {
   placeholder: string;
-  size: 'small' | 'medium' | 'large';
+  size: 'widthFull' | 'small' | 'medium' | 'large';
   type: 'text' | 'number' | 'password';
   value?: string | number;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
