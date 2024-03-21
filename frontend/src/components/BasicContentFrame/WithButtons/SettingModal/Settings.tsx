@@ -12,8 +12,8 @@ const Settings = ({ onClose }: indexProps) => {
   return (
     <div className={styles.boxWrapper}>
       <div className={styles.title}>설정</div>
-      <fieldset>
-        <legend>오디오</legend>
+      <fieldset className={styles.fieldSetBorder}>
+        <legend className={styles.legendText}>오디오</legend>
         <div className={styles.audioContentWrapper}>
           <div className={styles.audioButtonWrapper}>
             <div className={styles.textXMargin}>배경음</div>

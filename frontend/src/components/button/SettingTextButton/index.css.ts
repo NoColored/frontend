@@ -5,7 +5,7 @@ import { borderDarkOptions } from '@/styles/common.css';
 import { sprinkles } from '@/styles/sprinkles.css';
 import { vars } from '@/styles/vars.css';
 
-import * as constants from '/constants';
+import * as constants from './constants';
 
 export const button = style([
   borderDarkOptions({ color: 'black', width: '2x' }),

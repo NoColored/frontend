@@ -10,6 +10,7 @@ export const INPUT_TEXT_BOX_SIZE = {
   large: {
     width: '480px',
     height: '64px',
+    margin: 8,
   },
 } as const;
 
