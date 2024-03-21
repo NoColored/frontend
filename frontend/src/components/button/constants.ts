@@ -36,6 +36,10 @@ export const COLOREDICONBUTTON_SIZE_PIXEL = {
 export const COLORED_ICON_BUTTON_ICON_SIZE = '40px';
 
 export const COLORED_BUTTON_SIZE_PIXEL = {
+  xsmall: {
+    width: '64px',
+    height: '24px',
+  },
   small: {
     width: '96px',
     height: '36px',

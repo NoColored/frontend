@@ -29,6 +29,17 @@ const colorVariants = constants.BUTTON_COLOR.reduce(
 );
 
 const sizeVariants = {
+  xsmall: style([
+    sprinkles({
+      textSize: '0.75x',
+      padding: '1x',
+      marginX: '1x',
+    }),
+    {
+      width: constants.COLORED_BUTTON_SIZE_PIXEL.xsmall.width,
+      height: constants.COLORED_BUTTON_SIZE_PIXEL.xsmall.height,
+    },
+  ]),
   small: style([
     sprinkles({
       fontSize: '1.25x',
