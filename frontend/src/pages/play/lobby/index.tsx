@@ -2,7 +2,7 @@ import * as styles from './index.css';
 
 import BasicContentFrame from '@/components/BasicContentFrame/WithButtons/index';
 
-import Index from '@/pages/play/lobby/Players/Index';
+import Players from '@/pages/play/lobby/Players';
 
 const Lobby = () => {
   return (
@@ -14,7 +14,7 @@ const Lobby = () => {
         </div>
         <div className={styles.lobbyInfo}>
           <div className={styles.lobbyTitle}>방제목최대9글자</div>
-          <Index />
+          <Players />
         </div>
       </div>
     </BasicContentFrame>
