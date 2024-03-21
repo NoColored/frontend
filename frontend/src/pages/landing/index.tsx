@@ -18,6 +18,8 @@ const Landing = () => {
     if (data) {
       setUser(data);
       navigate('/home');
+      // 추후 수정 요망
+      console.log(user);
     } else {
       console.log('Guest 로그인 실패');
       navigate('/*');
