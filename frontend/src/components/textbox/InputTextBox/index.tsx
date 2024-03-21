@@ -2,10 +2,15 @@ import React from 'react';
 
 import { inputTextBox } from '@/components/textbox/InputTextBox/index.css';
 
+import {
+  inputSizeType,
+  inputType,
+} from '@/components/textbox/InputTextBox/types';
+
 interface Props {
   placeholder: string;
-  size: 'widthFull' | 'small' | 'medium' | 'large';
-  type: 'text' | 'number' | 'password';
+  size: inputSizeType;
+  type: inputType;
   value?: string | number;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }

@@ -4,7 +4,7 @@ import { indexProps } from './types';
 import { IMAGE_URL } from '@/components/BasicContentFrame/WithButtons/InfoButton/constants';
 import SettingNavigationButton from '@/components/button/SettingNavigationButton';
 
-const GameInfo = ({ onBack }: indexProps) => {
+const GameInfo = ({ onBack, onClose }: indexProps) => {
   return (
     <>
       <SettingNavigationButton
@@ -14,7 +14,7 @@ const GameInfo = ({ onBack }: indexProps) => {
       />
       <SettingNavigationButton
         label='닫기'
-        onClick={() => {}}
+        onClick={onClose}
         position='rightTop'
       />
       <div className={styles.boxWrapper}>

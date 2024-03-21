@@ -4,11 +4,20 @@ import * as styles from './index.css';
 import BasicContentFrame from '@/components/BasicContentFrame/WithButtons';
 import ColoredButton from '@/components/button/ColoredButton';
 
+import useModal from '@/hooks/useModal';
+
 import ResultInfoBox, {
   ResultInfoBoxProps,
 } from '@/pages/result/ResultInfoBox';
+import TierUpgrade from '@/pages/result/TierUpgrade';
 
 const Result = () => {
+  const { Modal, openModal, closeModal } = useModal();
+
+  const handleClickButtons = () => {
+    openModal();
+  };
+
   // test data 입니다. 이것은 추후에 수정되어야 함.
   const resultExample: ResultInfoBoxProps[] = [
     {
@@ -83,7 +92,7 @@ const Result = () => {
             text='나가기'
             color='gray300'
             size='small'
-            onClick={() => {}}
+            onClick={handleClickButtons}
           />
           <ColoredButton
             text='더하기'
@@ -93,6 +102,9 @@ const Result = () => {
           />
         </div>
       </div>
+      <Modal>
+        <TierUpgrade closeModal={closeModal} />
+      </Modal>
     </BasicContentFrame>
   );
 };

@@ -16,13 +16,13 @@ const ModalContent = ({ onClose }: indexProps) => {
   };
 
   if (currentView === 'game') {
-    return <GameInfo onBack={handleBack} />;
+    return <GameInfo onBack={handleBack} onClose={onClose} />;
   }
   if (currentView === 'item') {
-    return <ItemInfo onBack={handleBack} />;
+    return <ItemInfo onBack={handleBack} onClose={onClose} />;
   }
   if (currentView === 'tier') {
-    return <TierInfo onBack={handleBack} />;
+    return <TierInfo onBack={handleBack} onClose={onClose} />;
   }
   return <MainInfo onClose={onClose} onNavigate={setCurrentView} />;
 };
