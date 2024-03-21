@@ -2,7 +2,6 @@ import * as styles from '@/components/BasicContentFrame/WithButtons/SettingModal
 import SettingTextButton from '@/components/button/SettingTextButton';
 import ColoredButton from '@/components/button/ColoredButton';
 import { indexProps } from '@/components/BasicContentFrame/WithButtons/InfoButton/types';
-import GuestUser from '@/components/BasicContentFrame/WithButtons/SettingModal/GuestUser';
 
 import useAudioSetting from '@/hooks/useAudioSetting';
 import LoginUser from '@/components/BasicContentFrame/WithButtons/SettingModal/LoginUser';
