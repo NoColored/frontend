@@ -16,43 +16,40 @@ const ModalContent = ({ map, closeModal }: Props) => {
   const [isSelected, setIsSelected] = useState(map);
 
   return (
-    <div>
+    <>
       <div className={styles.createLobbyTextGrid}>
-        <div>
-          <div className={styles.createLobbyText}>방 제목</div>
-          <InputTextBox
-            placeholder='몇글자가능할까요?'
-            size='widthFull'
-            type='text'
-            onChange={() => {}}
-          />
-        </div>
-        <div>
-          <div className={styles.createLobbyText}>비밀번호</div>
-          <InputTextBox
-            placeholder='숫자4자리'
-            size='widthFull'
-            type='text'
-            onChange={() => {}}
-          />
-        </div>
+        <div className={styles.createLobbyText}>방 제목</div>
+        <div className={styles.createLobbyText}>비밀번호</div>
+        <InputTextBox
+          placeholder='몇글자가능할까요?'
+          size='widthFull'
+          type='text'
+          onChange={() => {}}
+        />
+
+        <InputTextBox
+          placeholder='숫자4자리'
+          size='widthFull'
+          type='text'
+          onChange={() => {}}
+        />
       </div>
-      <div className={styles.createLobbyMapPartWrapper}>
-        <div className={styles.createLobbyText}>맵</div>
-        <div className={styles.createLobbyMapWrapper}>
-          {constants.MAPS.map((item) => (
-            <MapItem
-              key={item.imgSrc}
-              mapName={item.mapName}
-              imgSrc={item.imgSrc}
-              isSelected={isSelected === item.mapType}
-              onClick={() => {
-                setIsSelected(item.mapType);
-              }}
-            />
-          ))}
-        </div>
-      </div>
+
+      <fieldset className={styles.createLobbyMapPartWrapper}>
+        <legend className={styles.createLobbyText}>맵</legend>
+        {constants.MAPS.map((item) => (
+          <MapItem
+            key={item.imgSrc}
+            mapName={item.mapName}
+            imgSrc={item.imgSrc}
+            isSelected={isSelected === item.mapType}
+            onClick={() => {
+              setIsSelected(item.mapType);
+            }}
+          />
+        ))}
+      </fieldset>
+
       <div className={styles.modalTwoButtonWrapper}>
         <ColoredButton
           size='xsmall'
@@ -68,7 +65,7 @@ const ModalContent = ({ map, closeModal }: Props) => {
           onClick={() => {}}
         />
       </div>
-    </div>
+    </>
   );
 };
 
