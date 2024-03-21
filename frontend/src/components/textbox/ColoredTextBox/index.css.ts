@@ -41,8 +41,8 @@ export const coloredTextBoxStyle = recipe({
     size: {
       small: sprinkles({
         textSize: '0.75x',
-        paddingY: '1x',
-        paddingX: '2x',
+        paddingY: '1.5x',
+        paddingX: '3x',
       }),
       medium: style([
         sprinkles({
