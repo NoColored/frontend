@@ -31,7 +31,7 @@ const inputTextBoxVariants = {
       {
         textAlign: 'center',
         width: `100%`,
-        height: `${constants.INPUT_SMALL.height}px`,
+        height: constants.INPUT_SMALL.height,
       },
     ]),
     small: style([
@@ -43,7 +43,7 @@ const inputTextBoxVariants = {
       {
         textAlign: 'center',
         width: `${constants.INPUT_SMALL.width}px`,
-        height: `${constants.INPUT_SMALL.height}px`,
+        height: constants.INPUT_SMALL.height,
       },
     ]),
     medium: style([

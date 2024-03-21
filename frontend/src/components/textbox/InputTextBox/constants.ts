@@ -11,6 +11,6 @@ export const INPUT_MEDIUM = {
 } as const;
 
 export const INPUT_SMALL = {
-  height: 40,
+  height: '40px',
   width: 360,
 } as const;
