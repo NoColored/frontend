@@ -22,6 +22,18 @@ const inputTextBoxBase = style([
 
 const inputTextBoxVariants = {
   size: {
+    widthFull: style([
+      borderDarkOptions({ color: 'gray500', width: '3x' }),
+      sprinkles({
+        fontSize: '1x',
+        backgroundColor: 'gray500',
+      }),
+      {
+        textAlign: 'center',
+        width: `100%`,
+        height: `${constants.INPUT_SMALL.height}px`,
+      },
+    ]),
     small: style([
       borderDarkOptions({ color: 'gray500', width: '3x' }),
       sprinkles({

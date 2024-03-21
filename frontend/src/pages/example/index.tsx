@@ -8,10 +8,6 @@ import ColoredTextBox from '@/components/textbox/ColoredTextBox/index';
 import InputTextBox from '@/components/textbox/InputTextBox/index';
 import LabeledTextBox from '@/components/textbox/LabeledTextBox/index';
 
-import characterSheet from '@/assets/character/default-butterfly/character-default-butterfly-blue-h240w240.png';
-import groupIcon from '@/assets/ui/icon/button/icon-button-collection-h50w50.png';
-import testIcon from '@/assets/ui/icon/shape/icon-shape-white-big-player0-h48w48.png';
-
 const Example = () => {
   return (
     <div>
@@ -33,7 +29,7 @@ const Example = () => {
       />
       <ColoredIconButton
         color='red'
-        icon={testIcon}
+        icon='/images/ui/icon/shape/icon-shape-white-big-player0-h48w48.png'
         size='large'
         text='READY'
         onClick={() => {}}
@@ -41,7 +37,7 @@ const Example = () => {
       <div>테스트버튼</div>
       <ColoredIconButton
         color='pink'
-        icon={testIcon}
+        icon='/images/ui/icon/shape/icon-shape-white-big-player0-h48w48.png'
         size='medium'
         text='미디엄임'
         onClick={() => {}}
@@ -49,7 +45,7 @@ const Example = () => {
       <div>테스트버튼</div>
       <ColoredIconButton
         color='navy'
-        icon={groupIcon}
+        icon='/images/ui/icon/button/icon-button-collection-h50w50.png'
         size='xlarge'
         text='엑스라지임'
         onClick={() => {}}
@@ -73,7 +69,12 @@ const Example = () => {
         onChange={(e) => console.log(e.target.value)}
       />
       <div>텍스트 컴포넌트</div>
-      <ColoredTextBox text='text' color='red' icon={testIcon} />
+      <ColoredTextBox
+        text='text'
+        color='red'
+        icon='/images/ui/icon/shape/icon-shape-white-big-player0-h48w48.png'
+        size='medium'
+      />
       {/* <Game /> */}
       <div>
         <LabeledTextBox
@@ -84,15 +85,15 @@ const Example = () => {
       </div>
       <RoundCornerImageBox
         size='large'
-        imgSrc='src/assets/character/default-butterfly/character-default-butterfly-blue-h240w240.png'
+        imgSrc='images/character/default-butterfly/character-default-butterfly-blue-h240w240.png'
         borderColor='pink'
         borderSize='5x'
       >
-        <ColoredTextBox color='pink' text='착용중' inImageBox />
+        <ColoredTextBox color='pink' text='착용중' size='medium' />
       </RoundCornerImageBox>
       <RoundCornerImageBox
         size='full'
-        imgSrc='src/assets/character/default-butterfly/character-default-butterfly-blue-h240w240.png'
+        imgSrc='images/character/default-butterfly/character-default-butterfly-blue-h240w240.png'
         borderColor='pink'
         borderSize='5x'
         backgroundColor='white'
@@ -100,7 +101,7 @@ const Example = () => {
       <PlayerInfoBox
         label='칭호가들어가요'
         nickname='닉네임이예쁘다'
-        imgSrc={characterSheet}
+        imgSrc='/images/character/default-butterfly/character-default-butterfly-blue-h240w240.png'
       />
       <TierBox tier='colored' size='xlarge' />
     </div>

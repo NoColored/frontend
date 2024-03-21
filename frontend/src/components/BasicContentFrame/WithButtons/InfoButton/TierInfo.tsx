@@ -1,20 +1,25 @@
-import TierBox from '@/components/imagebox/TierIconBox';
-import * as styles from '@/components/Modal/informationModal/index.css';
+import { indexProps } from './types';
 
-import { LOW_TIER_INFO, HIGH_TIER_INFO } from '@/components/imagebox/constants';
+import * as styles from '@/components/BasicContentFrame/WithButtons/InfoButton/index.css';
 import SettingNavigationButton from '@/components/button/SettingNavigationButton';
-import { TierBoxProps } from '@/components/imagebox/types';
+import { LOW_TIER_INFO, HIGH_TIER_INFO } from '@/components/imagebox/constants';
+import TierBox from '@/components/imagebox/TierIconBox';
+import { tierType } from '@/components/imagebox/types';
 
-const TierInfo = () => {
+const TierInfo = ({ onBack }: indexProps) => {
   return (
-    <div>
-      <SettingNavigationButton label='뒤로' />
+    <>
+      <SettingNavigationButton
+        label='뒤로'
+        onClick={onBack}
+        position='leftTop'
+      />
       <div className={styles.text}>티어</div>
       <div className={styles.lowTierStyle}>
         {Object.entries(LOW_TIER_INFO).map(([tier, { description, score }]) => (
           <div key={tier} className={styles.tierWrapper}>
             <div className={styles.boxWrapper}>
-              <TierBox size='small' tier={tier as TierBoxProps['tier']} />
+              <TierBox size='small' tier={tier as tierType} />
               <div>{description}</div>
               <div>{score}</div>
             </div>
@@ -26,7 +31,7 @@ const TierInfo = () => {
           ([tier, { description, score }]) => (
             <div key={tier} className={styles.tierWrapper}>
               <div className={styles.boxWrapper}>
-                <TierBox size='small' tier={tier as TierBoxProps['tier']} />
+                <TierBox size='small' tier={tier as tierType} />
                 <div>{description}</div>
                 <div>{score}</div>
               </div>
@@ -34,7 +39,7 @@ const TierInfo = () => {
           ),
         )}
       </div>
-    </div>
+    </>
   );
 };
 

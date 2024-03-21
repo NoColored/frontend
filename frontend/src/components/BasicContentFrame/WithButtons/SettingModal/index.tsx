@@ -1,10 +1,10 @@
-import ColoredButton from '@/components/button/ColoredButton/index';
+import ColoredButton from '@/components/button/ColoredButton';
 
 interface Props {
   onClose: () => void;
 }
 
-const Setting = ({ onClose }: Props) => {
+const Settings = ({ onClose }: Props) => {
   return (
     <div>
       <h2> Hello World</h2>
@@ -13,4 +13,4 @@ const Setting = ({ onClose }: Props) => {
   );
 };
 
-export default Setting;
+export default Settings;

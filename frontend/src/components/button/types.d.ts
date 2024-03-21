@@ -1,17 +1,18 @@
-import * as type from './ColoredButton/constants';
 import * as constants from './constants';
 
-interface ColoredIconButtonProps {
-  text: string;
-  icon: string;
-  color: (typeof constants.COLOREDICONBUTTON_COLOR)[number];
-  size: (typeof constants.COLOREDICONBUTTON_SIZE)[number];
-  onClick: () => void;
-}
+import * as styles from '@/components/button/SettingNavigationButton/index.css';
 
-interface ColoredButtonProps {
+type colorType = (typeof constants.BUTTON_COLOR)[number];
+
+type coloredButtonSizeType = keyof typeof constants.COLORED_BUTTON_SIZE_PIXEL;
+
+type coloredIconButtonSizeType =
+  keyof typeof constants.COLOREDICONBUTTON_SIZE_PIXEL;
+
+type positionType = keyof typeof styles.positionVariants;
+
+interface ColorButtonProps {
   text: string;
-  color: (typeof type.COLOR)[number];
-  size: (typeof type.SIZE)[number];
+  color: colorType;
   onClick: () => void;
 }

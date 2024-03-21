@@ -10,6 +10,7 @@ export const modal = style([
     margin: 'auto',
     padding: '8x',
     borderRadius: '2x',
+    position: 'relative',
   }),
   borderDarkOptions({ width: '1x', color: 'black' }),
   {

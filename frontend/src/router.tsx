@@ -1,13 +1,17 @@
 import { createBrowserRouter } from 'react-router-dom';
 
+import Error from '@/pages/error';
 import Example from '@/pages/example/index';
-import HandleError from '@/pages/handleError';
 import Home from '@/pages/home';
 import Landing from '@/pages/landing/index';
 import LandingLayout from '@/pages/landing/layout';
 import LogIn from '@/pages/landing/logIn/index';
 import Loading from '@/pages/loading/index';
+import Finder from '@/pages/play/finder';
+import Lobby from '@/pages/play/lobby/index';
+import Mode from '@/pages/play/mode';
 import Ranking from '@/pages/ranking';
+import Result from '@/pages/result';
 
 const router = createBrowserRouter([
   {
@@ -29,12 +33,29 @@ const router = createBrowserRouter([
     element: <Loading />,
   },
   {
+    path: 'play',
+    children: [
+      {
+        index: true,
+        element: <Mode />,
+      },
+      {
+        path: 'lobby',
+        element: <Lobby />,
+      },
+      {
+        path: 'finder',
+        element: <Finder />,
+      },
+    ],
+  },
+  {
     path: '/example',
     element: <Example />,
   },
   {
     path: '/*',
-    element: <HandleError />,
+    element: <Error />,
   },
   {
     path: '/ranking',
@@ -44,6 +65,10 @@ const router = createBrowserRouter([
   {
     path: '/home',
     element: <Home />,
+  },
+  {
+    path: '/result',
+    element: <Result />,
   },
 ]);
 

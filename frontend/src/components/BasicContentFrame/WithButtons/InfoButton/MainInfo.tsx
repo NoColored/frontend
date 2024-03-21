@@ -1,37 +1,37 @@
 import * as styles from './index.css';
 
+import type { infoType } from '@/components/BasicContentFrame/WithButtons/InfoButton/types';
 import ColoredButton from '@/components/button/ColoredButton';
-import SettingTextButton from '@/components/button/SettingTextButton/index';
-import { InfoType } from '@/components/Modal/informationModal/constants';
+import SettingTextButton from '@/components/button/SettingTextButton';
 
-interface Props {
-  onClose: () => void;
-  onNavigate: (view: InfoType) => void;
+interface mainProps {
+  onClose?: () => void;
+  onNavigate: (view: infoType) => void;
 }
 
-const MainInfo = ({ onClose, onNavigate }: Props) => {
+const MainInfo = ({ onClose = () => {}, onNavigate }: mainProps) => {
   return (
-    <div>
+    <>
       <div className={styles.text}>
         <div> 게임 정보</div>
       </div>
       <div className={styles.boxWrapper}>
         <SettingTextButton
-          onClick={() => onNavigate(InfoType.game)}
+          onClick={() => onNavigate('game')}
           size='medium'
           colorStyle='black'
         >
           게임 방식
         </SettingTextButton>
         <SettingTextButton
-          onClick={() => onNavigate(InfoType.item)}
+          onClick={() => onNavigate('item')}
           size='medium'
           colorStyle='black'
         >
           아이템
         </SettingTextButton>
         <SettingTextButton
-          onClick={() => onNavigate(InfoType.tier)}
+          onClick={() => onNavigate('tier')}
           size='medium'
           colorStyle='black'
         >
@@ -46,7 +46,7 @@ const MainInfo = ({ onClose, onNavigate }: Props) => {
           onClick={onClose}
         />
       </div>
-    </div>
+    </>
   );
 };
 

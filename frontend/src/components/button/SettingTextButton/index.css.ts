@@ -25,6 +25,16 @@ export const button = style([
 
 export const buttonVariants = {
   size: {
+    xsmall: style([
+      sprinkles({
+        fontSize: '1x',
+        margin: '1x',
+      }),
+      {
+        width: '28px',
+        height: '28px',
+      },
+    ]),
     small: style([
       sprinkles({
         fontSize: '1x',

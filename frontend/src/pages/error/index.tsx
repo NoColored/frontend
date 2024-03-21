@@ -1,12 +1,12 @@
 import { useNavigate } from 'react-router-dom';
 
-import * as constants from './constanats';
+import * as constants from './constants';
 import * as styles from './index.css';
 
 import BasicContentFrame from '@/components/BasicContentFrame/index';
 import ColoredButton from '@/components/button/ColoredButton/index';
 
-const HandleError = () => {
+const Error = () => {
   const navigate = useNavigate();
 
   const goBack = () => {
@@ -30,4 +30,4 @@ const HandleError = () => {
   );
 };
 
-export default HandleError;
+export default Error;

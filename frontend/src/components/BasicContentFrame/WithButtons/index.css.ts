@@ -71,6 +71,7 @@ export const main = style([
 
 export const navigation = style([
   {
+    width: '100%',
     position: 'absolute',
     top: '0',
     left: '0',

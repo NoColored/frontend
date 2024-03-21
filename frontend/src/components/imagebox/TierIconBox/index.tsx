@@ -1,8 +1,13 @@
 import * as styles from './index.css';
 
-import { TierBoxProps } from '@/components/imagebox/types';
+import type { tierSizeType, tierType } from '@/components/imagebox/types';
 
-const TierBox = ({ tier, size }: TierBoxProps) => {
+interface Props {
+  tier: tierType;
+  size: tierSizeType;
+}
+
+const TierBox = ({ tier, size }: Props) => {
   return <div className={styles.tierBox({ tier, size })} />;
 };
 
