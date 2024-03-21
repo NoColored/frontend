@@ -1,8 +1,13 @@
 import { atom } from 'recoil';
 
-import { user } from '@/types/auth';
+import { User } from '@/types/auth';
 
-export const userState = atom<user | null>({
-  key: 'userState',
+export const userState = atom<User | null>({
+  key: 'loginUser',
   default: null,
+});
+
+export const accessTokenState = atom({
+  key: 'accessToken',
+  default: '',
 });
