@@ -1,13 +1,17 @@
 import { style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
 
+import { MODAL_INNER_WIDTH } from '@/components/Modal/constants';
+import { INPUT_TEXT_BOX_SIZE } from '@/components/textbox/InputTextBox/constants';
+
 import * as constants from '@/pages/play/finder/constants';
 
-import { flexOptions } from '@/styles/common.css';
+import { borderLightOptions, flexOptions } from '@/styles/common.css';
 import { sprinkles } from '@/styles/sprinkles.css';
+import { vars } from '@/styles/vars.css';
 
 export const modalWrapper = style({
-  width: constants.MODAL_WRAPPER_WIDTH,
+  width: MODAL_INNER_WIDTH,
   height: constants.MODAL_WRAPPER_HEIGHT,
 });
 
@@ -68,44 +72,32 @@ export const messageText = recipe({
 export const createLobbyTextGrid = style([
   {
     display: 'grid',
-    gridTemplateColumns: '65% 30%',
-    gap: '5%',
+    gridTemplateColumns: '65% 1fr',
+    gridTemplateRows: `${vars.fontSize[constants.CREATE_MODAL_FONT_SIZE]} ${INPUT_TEXT_BOX_SIZE.small.height}`,
+    rowGap: '4px',
+    columnGap: '12px',
   },
 ]);
 
 export const createLobbyText = style([
   sprinkles({
-    textSize: '0.75x',
-    marginY: '1x',
-  }),
-]);
-
-export const createLobbyMapWrapper = style([
-  flexOptions({ option: 'row' }),
-  {
-    alignItems: 'center',
-    height: constants.MAPS_WRAPPER_HEIGHT,
-  },
-  sprinkles({
-    borderRadius: '2x',
-    borderStyle: 'solid',
-    borderColor: 'black',
-    borderWidth: '3x',
+    paddingX: constants.CREATE_MODAL_FONT_SIZE,
   }),
 ]);
 
 export const createLobbyMapPartWrapper = style([
-  {
-    padding: '5vh',
-  },
+  flexOptions({ option: 'row' }),
+  borderLightOptions({ color: 'black', width: '2x' }),
+  sprinkles({
+    borderRadius: '2x',
+    padding: '4x',
+    marginY: '4x',
+    width: 'full',
+  }),
 ]);
 export const mapItemWrapper = style([
   sprinkles({
-    display: 'block',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'spaceAround',
-    padding: '2x',
+    margin: '2x',
   }),
   {
     height: constants.MAP_ITEM_HEIGHT,
