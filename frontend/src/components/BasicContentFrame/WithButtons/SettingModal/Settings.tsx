@@ -1,36 +1,40 @@
 import * as styles from '@/components/BasicContentFrame/WithButtons/SettingModal/index.css';
 import SettingTextButton from '@/components/button/SettingTextButton';
-import LoginUser from '@/components/BasicContentFrame/WithButtons/SettingModal/LoginUser';
 import ColoredButton from '@/components/button/ColoredButton';
 import { indexProps } from '@/components/BasicContentFrame/WithButtons/InfoButton/types';
+import GuestUser from '@/components/BasicContentFrame/WithButtons/SettingModal/GuestUser';
+
+import useAudioSetting from '@/hooks/useAudioSetting';
+import LoginUser from '@/components/BasicContentFrame/WithButtons/SettingModal/LoginUser';
 
 const Settings = ({ onClose }: indexProps) => {
+  const { backgroundSound, effectSound, saveSettings } = useAudioSetting();
   return (
     <div className={styles.boxWrapper}>
       <div className={styles.title}>설정</div>
-      <div className={styles.audioBox}>
-        <div className={styles.audioText}>오디오</div>
+      <fieldset>
+        <legend>오디오</legend>
         <div className={styles.audioContentWrapper}>
           <div className={styles.audioButtonWrapper}>
             <div className={styles.textXMargin}>배경음</div>
             <SettingTextButton
-              onClick={() => {}}
+              onClick={() => saveSettings(!backgroundSound, effectSound)}
               size='small'
               colorStyle='black'
             >
-              ON
+              {backgroundSound ? 'ON' : 'OFF'}
             </SettingTextButton>
             <div className={styles.textXMargin}>효과음</div>
             <SettingTextButton
-              onClick={() => {}}
+              onClick={() => saveSettings(backgroundSound, !effectSound)}
               size='small'
               colorStyle='black'
             >
-              ON
+              {effectSound ? 'ON' : 'OFF'}
             </SettingTextButton>
           </div>
         </div>
-      </div>
+      </fieldset>
       <LoginUser />
       <ColoredButton text='닫기' color='green' size='small' onClick={onClose} />
     </div>

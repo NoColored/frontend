@@ -12,7 +12,7 @@ const GuestUser = () => {
         <SettingTextButton onClick={openModal} size='large' colorStyle='black'>
           회원 전환
         </SettingTextButton>
-        <SettingTextButton onClick={openModal} size='large' colorStyle='black'>
+        <SettingTextButton onClick={openModal} size='large' colorStyle='red'>
           회원 전환
         </SettingTextButton>
       </div>
@@ -20,7 +20,7 @@ const GuestUser = () => {
         <SettingTextButton onClick={openModal} size='large' colorStyle='black'>
           회원 전환
         </SettingTextButton>
-        <SettingTextButton onClick={openModal} size='large' colorStyle='black'>
+        <SettingTextButton onClick={openModal} size='large' colorStyle='gray'>
           회원 전환
         </SettingTextButton>
       </div>

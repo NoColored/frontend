@@ -23,8 +23,7 @@ export const title = style([
     paddingBottom: '2x',
   }),
 ]);
-
-export const audioBox = style([
+style([
   sprinkles({
     position: 'relative',
     backgroundColor: 'white',
@@ -39,7 +38,27 @@ export const audioBox = style([
   },
 ]);
 
-export const audioText = style([
+export const fieldSetBorder = style([
+  sprinkles({
+    borderRadius: '2x',
+    padding: '4x',
+  }),
+  {
+    border: `3px solid ${vars.colors.gray700}`,
+  },
+]);
+
+export const legendText = style([
+  sprinkles({
+    marginLeft: '2x',
+    paddingX: '2x',
+    position: 'relative',
+  }),
+  {
+    textAlign: 'left',
+  },
+]);
+style([
   sprinkles({
     position: 'absolute',
     borderRadius: '4x',
@@ -71,11 +90,5 @@ export const underButtonWrapper = style([
   flexOptions({ option: 'rowCenter' }),
   sprinkles({
     marginTop: '4x',
-  }),
-]);
-
-export const inputBoxYMargin = style([
-  sprinkles({
-    marginY: '4x',
   }),
 ]);
