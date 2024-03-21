@@ -7,7 +7,7 @@ import { vars } from '@/styles/vars.css';
 
 export const basicFrame = style([
   sprinkles({
-    position: 'fixed',
+    position: 'absolute',
   }),
   {
     left: '50%',
