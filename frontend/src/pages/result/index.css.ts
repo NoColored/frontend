@@ -115,14 +115,14 @@ export const resultInfoBox = recipe({
   },
 });
 
-export const tierModalWrapper = style([
+export const modalWrapper = style([
   flexOptions({ option: 'columnCenter' }),
   sprinkles({
     width: 'full',
     height: 'full',
   }),
 ]);
-export const tierRibbonWrapper = style([
+export const ribbonWrapper = style([
   flexOptions({ option: 'center' }),
   sprinkles({
     position: 'relative',
@@ -139,7 +139,15 @@ export const tierRibbon = style([
 ]);
 
 export const tierRibbonImage = style({ width: '36%' });
-export const tierDiamond = style([flexOptions({ option: 'center' })]);
+export const diamond = style([
+  flexOptions({ option: 'center' }),
+  sprinkles({ marginTop: '1x' }),
+]);
+
+export const rewardBox = style([
+  flexOptions({ option: 'center' }),
+  sprinkles({ marginBottom: '4x' }),
+]);
 
 export const tierDiamondImage = style([
   {
@@ -149,9 +157,33 @@ export const tierDiamondImage = style([
 
 export const tierUpgradeWrapper = style([
   flexOptions({ option: 'rowCenter' }),
-  sprinkles({ marginY: '4x' }),
+  sprinkles({ marginTop: '4x', marginBottom: '1x' }),
+  { width: '24%' },
 ]);
 
-export const tierModalMessage = style([
-  sprinkles({ marginTop: '1x', marginBottom: '2x' }),
+export const modalMessage = style([
+  sprinkles({ marginTop: '2x', marginBottom: '1x', fontSize: '1.25x' }),
 ]);
+
+export const rewardRibbon = style([
+  flexOptions({ option: 'center' }),
+  sprinkles({
+    position: 'absolute',
+    width: 'full',
+    marginBottom: '4x',
+  }),
+]);
+
+export const rewardListWrapper = style([
+  flexOptions({ option: 'row' }),
+  sprinkles({
+    marginTop: '4x',
+    marginBottom: '1.5x',
+    justifyContent: 'spaceAround',
+  }),
+  {
+    width: '85%',
+  },
+]);
+
+export const rewardBoxImage = style([{ width: '32%' }]);
