@@ -29,13 +29,17 @@ export const COLOREDICONBUTTON_SIZE_PIXEL = {
   },
   xlarge: {
     width: '292px',
-    height: '120px',
+    height: '140px',
   },
 } as const;
 
 export const COLORED_ICON_BUTTON_ICON_SIZE = '40px';
 
 export const COLORED_BUTTON_SIZE_PIXEL = {
+  xsmall: {
+    width: '64px',
+    height: '24px',
+  },
   small: {
     width: '96px',
     height: '36px',

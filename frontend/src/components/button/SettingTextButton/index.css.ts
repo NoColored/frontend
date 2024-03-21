@@ -5,6 +5,8 @@ import { borderDarkOptions } from '@/styles/common.css';
 import { sprinkles } from '@/styles/sprinkles.css';
 import { vars } from '@/styles/vars.css';
 
+import * as constants from './constants';
+
 export const button = style([
   borderDarkOptions({ color: 'black', width: '2x' }),
   sprinkles({
@@ -25,14 +27,24 @@ export const button = style([
 
 export const buttonVariants = {
   size: {
+    xsmall: style([
+      sprinkles({
+        fontSize: '1x',
+        margin: '1x',
+      }),
+      {
+        width: '28px',
+        height: '28px',
+      },
+    ]),
     small: style([
       sprinkles({
         fontSize: '1x',
         margin: '1x',
       }),
       {
-        height: '28px',
-        width: '60px',
+        height: constants.SETTING_TEXT_BUTTON.small.height,
+        width: constants.SETTING_TEXT_BUTTON.small.width,
       },
     ]),
     medium: style([
@@ -41,18 +53,18 @@ export const buttonVariants = {
         margin: '1x',
       }),
       {
-        height: '36px',
-        width: '210px',
+        height: constants.SETTING_TEXT_BUTTON.medium.height,
+        width: constants.SETTING_TEXT_BUTTON.medium.width,
       },
     ]),
     large: style([
       sprinkles({
         fontSize: '1.5x',
-        margin: '3x',
+        margin: '1x',
       }),
       {
-        height: '48px',
-        width: '250px',
+        height: constants.SETTING_TEXT_BUTTON.large.height,
+        width: constants.SETTING_TEXT_BUTTON.large.width,
       },
     ]),
   },

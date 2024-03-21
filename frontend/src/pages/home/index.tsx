@@ -1,38 +1,90 @@
+import { useNavigate } from 'react-router-dom';
+
 import * as styles from './index.css';
+import SignupBanner from './SignupBanner';
 
 import BasicContentFrame from '@/components/BasicContentFrame/WithButtons/index';
+import ColoredIconButton from '@/components/button/ColoredIconButton';
+import type { tierType } from '@/components/imagebox/types';
+
+import UserDashboard from '@/pages/home/UserDashboard';
 
 const Home = () => {
+  const navigate = useNavigate();
+  const goCollection = () => {
+    navigate('/collection');
+  };
+  const goRanking = () => {
+    navigate('/ranking');
+  };
+  const goPlay = () => {
+    navigate('/play');
+  };
+
+  const UserInfoTemp = {
+    title: '칭호는무엇일까요우',
+    nickname: '테스트중인노컬러드',
+    level: 15,
+    cp: 2000,
+    maxCp: 3000,
+    tier: 'diamond' as tierType,
+    rankScore: 999,
+    skinSrc:
+      '/images/character/google-none/character-google-none-green-h240w240.png',
+  };
+
   return (
-    <BasicContentFrame backButtonLabel='뒤로'>
-      <div>
-        <div
-          className={styles.fontStyle({ fontType: 'textFont', color: 'red' })}
-        >
-          This is text with the DNFBitBitv2 font. 전체적인 기본 폰트에요
+    <BasicContentFrame>
+      <div className={styles.fullWrapper}>
+        <div className={styles.TopContentsWrapper}>
+          <UserDashboard
+            nickname={UserInfoTemp.nickname}
+            level={UserInfoTemp.level}
+            cp={UserInfoTemp.cp}
+            maxCp={UserInfoTemp.maxCp}
+            tier={UserInfoTemp.tier}
+            rankScore={UserInfoTemp.rankScore}
+          />
         </div>
-        <div
-          className={styles.fontStyle({ fontType: 'numFont', color: 'yellow' })}
-        >
-          This is text with the PixelAEBold font. 0123456789
-        </div>
-        <div
-          className={styles.fontStyle({
-            fontType: 'loadingTextFont',
-            color: 'blue',
-          })}
-        >
-          This is text with the DOSPilgiMedium font. 로딩화면에 쓰여요
-        </div>
-        <div
-          className={styles.fontStyle({
-            fontType: 'loadingNumFont',
-            color: 'pink',
-          })}
-        >
-          This is text with the Chonkly font. 0123456789
+        <div className={styles.BottomContentsWrapper}>
+          <div className={styles.LeftButtonsWrapper}>
+            <ColoredIconButton
+              icon='/images/ui/icon/button/icon-button-collection-h50w50.png'
+              size='medium'
+              text='Collection'
+              color='blue'
+              onClick={goCollection}
+            />
+            <ColoredIconButton
+              icon='/images/ui/icon/button/icon-button-ranking-h50w50.png'
+              size='medium'
+              text='Ranking'
+              color='green'
+              onClick={goRanking}
+            />
+          </div>
+
+          <div
+            style={{
+              backgroundImage: `url(${UserInfoTemp.skinSrc})`,
+            }}
+            className={styles.CharacterBox}
+          >
+            <span
+              className={styles.titleText}
+            >{`< ${UserInfoTemp.title} >`}</span>
+          </div>
+          <ColoredIconButton
+            icon='/images/ui/icon/button/icon-button-ranking-h50w50.png'
+            size='medium'
+            text='Play'
+            color='red'
+            onClick={goPlay}
+          />
         </div>
       </div>
+      {/* guest여부따라 visible/unvisible보내면 됨 */}
+      <SignupBanner />
     </BasicContentFrame>
   );
 };

@@ -22,7 +22,7 @@ const inputTextBoxBase = style([
 
 const inputTextBoxVariants = {
   size: {
-    small: style([
+    widthFull: style([
       borderDarkOptions({ color: 'gray500', width: '3x' }),
       sprinkles({
         fontSize: '1x',
@@ -30,8 +30,21 @@ const inputTextBoxVariants = {
       }),
       {
         textAlign: 'center',
-        width: `${constants.INPUT_SMALL.width}px`,
-        height: `${constants.INPUT_SMALL.height}px`,
+        width: `100%`,
+        height: constants.INPUT_TEXT_BOX_SIZE.small.height,
+      },
+    ]),
+    small: style([
+      borderDarkOptions({ color: 'gray500', width: '3x' }),
+      sprinkles({
+        fontSize: '1x',
+        backgroundColor: 'gray500',
+        marginY: '2x',
+      }),
+      {
+        textAlign: 'center',
+        width: constants.INPUT_TEXT_BOX_SIZE.small.width,
+        height: constants.INPUT_TEXT_BOX_SIZE.small.height,
       },
     ]),
     medium: style([
@@ -43,8 +56,8 @@ const inputTextBoxVariants = {
         backgroundColor: 'gray300',
       }),
       {
-        width: `${constants.INPUT_MEDIUM.width}px`,
-        height: `${constants.INPUT_MEDIUM.height}px`,
+        width: constants.INPUT_TEXT_BOX_SIZE.medium.width,
+        height: constants.INPUT_TEXT_BOX_SIZE.medium.height,
       },
     ]),
     large: style([
@@ -56,8 +69,8 @@ const inputTextBoxVariants = {
         backgroundColor: 'navy',
       }),
       {
-        width: `${constants.INPUT_LARGE.width}px`,
-        height: `${constants.INPUT_LARGE.height}px`,
+        width: constants.INPUT_TEXT_BOX_SIZE.large.width,
+        height: constants.INPUT_TEXT_BOX_SIZE.large.height,
       },
     ]),
   },
