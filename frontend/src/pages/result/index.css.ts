@@ -114,3 +114,44 @@ export const resultInfoBox = recipe({
     },
   },
 });
+
+export const tierModalWrapper = style([
+  flexOptions({ option: 'columnCenter' }),
+  sprinkles({
+    width: 'full',
+    height: 'full',
+  }),
+]);
+export const tierRibbonWrapper = style([
+  flexOptions({ option: 'center' }),
+  sprinkles({
+    position: 'relative',
+    width: 'full',
+  }),
+]);
+
+export const tierRibbon = style([
+  flexOptions({ option: 'center' }),
+  sprinkles({
+    position: 'absolute',
+    width: 'full',
+  }),
+]);
+
+export const tierRibbonImage = style({ width: '36%' });
+export const tierDiamond = style([flexOptions({ option: 'center' })]);
+
+export const tierDiamondImage = style([
+  {
+    width: '43%',
+  },
+]);
+
+export const tierUpgradeWrapper = style([
+  flexOptions({ option: 'rowCenter' }),
+  sprinkles({ marginY: '4x' }),
+]);
+
+export const tierModalMessage = style([
+  sprinkles({ marginTop: '1x', marginBottom: '2x' }),
+]);
