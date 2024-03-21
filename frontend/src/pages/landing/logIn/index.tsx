@@ -1,15 +1,22 @@
+import { useState } from 'react';
+
 import ColoredButton from '@/components/button/ColoredButton/index';
 import InputTextBox from '@/components/textbox/InputTextBox/index';
 
 import useModal from '@/hooks/useModal';
 
 import * as styles from '@/pages/landing/index.css';
+import LogInFail from '@/pages/landing/logIn/LogInFail';
 import SignUp from '@/pages/landing/logIn/SignUp';
 
 const LogIn = () => {
+  const [isClicked, setIsClicked] = useState(false);
+
   const { Modal, openModal, closeModal } = useModal();
-  const signUpClickEvent = () => {
+
+  const handleSignUpClick = () => {
     openModal();
+    setIsClicked(true);
   };
 
   return (
@@ -32,7 +39,7 @@ const LogIn = () => {
           text='SIGN UP'
           color='blue'
           size='large'
-          onClick={signUpClickEvent}
+          onClick={handleSignUpClick}
         />
         <ColoredButton
           text='LOG IN'
@@ -42,7 +49,11 @@ const LogIn = () => {
         />
       </div>
       <Modal>
-        <SignUp closeModal={closeModal} />
+        {isClicked ? (
+          <SignUp closeModal={closeModal} />
+        ) : (
+          <LogInFail closeModal={closeModal} />
+        )}
       </Modal>
     </div>
   );

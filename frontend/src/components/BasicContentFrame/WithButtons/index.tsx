@@ -4,11 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import * as styles from './index.css';
 
 import InfoButton from '@/components/BasicContentFrame/WithButtons/InfoButton';
-import Settings from '@/components/BasicContentFrame/WithButtons/SettingModal/index';
 import SettingIconButton from '@/components/button/SettingIconButton/index';
 import SettingNavigationButton from '@/components/button/SettingNavigationButton/index';
-
-import useModal from '@/hooks/useModal';
+import SettingButton from '@/components/BasicContentFrame/WithButtons/SettingModal/index';
 
 interface Props {
   children: ReactNode;
@@ -16,7 +14,6 @@ interface Props {
 }
 
 const BasicContentFrame = ({ children, backButtonLabel }: Props) => {
-  const { Modal, openModal, closeModal } = useModal();
   const navigate = useNavigate();
 
   return (
@@ -29,11 +26,7 @@ const BasicContentFrame = ({ children, backButtonLabel }: Props) => {
           alt='home'
           onClick={() => navigate('/home')}
         />
-        <SettingIconButton
-          src='/images/ui/icon/button/icon-button-setting-h50w50.png'
-          alt='setting'
-          onClick={openModal}
-        />
+        <SettingButton />
       </div>
       <main className={styles.main}>
         {backButtonLabel && (
@@ -45,9 +38,7 @@ const BasicContentFrame = ({ children, backButtonLabel }: Props) => {
             />
           </div>
         )}
-        <Modal>
-          <Settings onClose={closeModal} />
-        </Modal>
+
         {children}
       </main>
     </div>

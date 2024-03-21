@@ -7,7 +7,7 @@ import { ITEMS } from '@/components/BasicContentFrame/WithButtons/InfoButton/con
 import SettingNavigationButton from '@/components/button/SettingNavigationButton';
 import RoundCornerImageBox from '@/components/imagebox/RoundCornerImageBox';
 
-const ItemInfo = ({ onBack }: indexProps) => {
+const ItemInfo = ({ onBack, onClose }: indexProps) => {
   const [idx, setIdx] = useState(0);
 
   const imgUrl = `/images/items/item-${ITEMS[idx].name}-h32w32.png`;
@@ -26,6 +26,11 @@ const ItemInfo = ({ onBack }: indexProps) => {
         label='뒤로'
         onClick={onBack}
         position='leftTop'
+      />
+      <SettingNavigationButton
+        label='닫기'
+        onClick={onClose}
+        position='rightTop'
       />
       <div className={styles.text}>아이템</div>
       <div className={styles.boxWrapper}>
