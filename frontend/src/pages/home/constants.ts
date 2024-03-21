@@ -2,11 +2,14 @@ import { calc } from '@vanilla-extract/css-utils';
 
 export const BUTTON_GAP = '8px';
 
-export const CHARACTER_SIZE_HEGITH = '240px';
+export const CHARACTER_SIZE_HEGITH = {
+  MAX: '240px',
+  MIN: '180px',
+};
 
 export const TOP_CONTENTS_WRAPPER_HEIGHT_MAX = calc.subtract(
   '100%',
-  CHARACTER_SIZE_HEGITH,
+  CHARACTER_SIZE_HEGITH.MAX,
 );
 
 export const TOP_CONTENTS_WRAPPER_HEIGHT_MIN = '80px';

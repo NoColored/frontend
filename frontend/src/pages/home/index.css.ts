@@ -40,9 +40,9 @@ export const CharacterBox = style([
     backgroundSize: 'cover',
     backgroundPosition: 'center',
 
-    maxWidth: constants.CHARACTER_SIZE_HEGITH,
+    maxWidth: constants.CHARACTER_SIZE_HEGITH.MAX,
     flexGrow: 1,
-    minWidth: '180px',
+    minWidth: constants.CHARACTER_SIZE_HEGITH.MIN,
   },
 ]);
 
@@ -55,7 +55,7 @@ export const BottomContentsWrapper = style([
   }),
   {
     height: constants.BOTTOM_CONTENTS_WRAPPER_HEIGHT,
-    maxHeight: constants.CHARACTER_SIZE_HEGITH,
+    maxHeight: constants.CHARACTER_SIZE_HEGITH.MAX,
   },
 ]);
 
