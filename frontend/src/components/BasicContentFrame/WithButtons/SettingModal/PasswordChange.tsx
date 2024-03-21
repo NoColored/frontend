@@ -1,9 +1,9 @@
 import * as styles from '@/components/BasicContentFrame/WithButtons/SettingModal/index.css';
 import InputTextBox from '@/components/textbox/InputTextBox';
 import ColoredButton from '@/components/button/ColoredButton';
-import { indexProps } from '@/components/BasicContentFrame/WithButtons/InfoButton/types';
+import { settingsProps } from '@/components/BasicContentFrame/WithButtons/InfoButton/types';
 
-const PasswordChange = ({ onClose }: indexProps) => {
+const PasswordChange = ({ onClose }: settingsProps) => {
   return (
     <div className={styles.boxWrapper}>
       <div className={styles.text}>혹시 생일로 바꾸시는거 아니죠?</div>

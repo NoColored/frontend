@@ -1,9 +1,9 @@
 import * as styles from '@/components/BasicContentFrame/WithButtons/SettingModal/index.css';
 import InputTextBox from '@/components/textbox/InputTextBox';
 import ColoredButton from '@/components/button/ColoredButton';
-import { indexProps } from '@/components/BasicContentFrame/WithButtons/InfoButton/types';
+import { settingsProps } from '@/components/BasicContentFrame/WithButtons/InfoButton/types';
 
-const SignOut = ({ onClose }: indexProps) => {
+const SignOut = ({ onClose }: settingsProps) => {
   return (
     <div className={styles.boxWrapper}>
       <div className={styles.text}>버튼을 잘못 누르셨네요!</div>
