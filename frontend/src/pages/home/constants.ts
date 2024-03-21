@@ -1,12 +1,28 @@
 import { calc } from '@vanilla-extract/css-utils';
 
-import * as buttonConstants from '@/components/button/constants';
-
 export const BUTTON_GAP = '8px';
 
-export const CHARACTER_SIZE_HEGITH = calc.subtract(
+export const CHARACTER_SIZE_HEGITH = '240px';
+
+export const TOP_CONTENTS_WRAPPER_HEIGHT_MAX = calc.subtract(
   '100%',
-  buttonConstants.COLOREDICONBUTTON_SIZE_PIXEL.medium.width,
+  CHARACTER_SIZE_HEGITH,
 );
 
-export const CHARACTER_SIZE_MAX = '240px';
+export const TOP_CONTENTS_WRAPPER_HEIGHT_MIN = '80px';
+
+export const BOTTOM_CONTENTS_WRAPPER_HEIGHT = calc.subtract(
+  '100%',
+  TOP_CONTENTS_WRAPPER_HEIGHT_MAX,
+);
+
+export const SIGNUP_BANNER_IMAGE =
+  '/images/character/default-sunglass/character-default-sunglass-yellow-h240w240.png';
+
+export const SIGNUP_BANNER_TEXT = '★스킨★\n받는 법은?';
+export const SIGNUP_BANNER = {
+  HEIGHT: '50%',
+  MIN_HEIGHT: '150px',
+  RIGHT: '10px',
+  TOP: '10px',
+};
