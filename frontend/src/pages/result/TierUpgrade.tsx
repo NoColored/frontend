@@ -9,19 +9,19 @@ interface Props {
 
 const TierUpgrade = ({ closeModal }: Props) => {
   return (
-    <div className={styles.tierModalWrapper}>
-      <div className={styles.tierRibbonWrapper}>
+    <div className={styles.modalWrapper}>
+      <div className={styles.ribbonWrapper}>
         <div className={styles.tierRibbon}>
           <img
             className={styles.tierRibbonImage}
-            src={constants.TIER_MODAL_RIBBON}
+            src={constants.MODAL_RIBBON}
             alt='Tier Ribbon'
           />
         </div>
-        <div className={styles.tierDiamond}>
+        <div className={styles.diamond}>
           <img
             className={styles.tierDiamondImage}
-            src={constants.TIER_MODAL_DIAMOND}
+            src={constants.MODAL_DIAMOND}
             alt='Tier Diamond'
           />
         </div>
@@ -32,14 +32,14 @@ const TierUpgrade = ({ closeModal }: Props) => {
           src='public/images/ui/icon/tier/icon-tier-bronze.svg'
           alt='previous tier'
         />
-        <img src={constants.TIER_MODAL_ARROW} alt='arrow' />
+        <img src={constants.MODAL_ARROW} alt='arrow' />
         <img
           src='public/images/ui/icon/tier/icon-tier-silver.svg'
           alt='temp tier'
         />
       </div>
-      <span className={styles.tierModalMessage}>
-        Origin에 한 발자국 더 나아갔습니다!{' '}
+      <span className={styles.modalMessage}>
+        {constants.TIER_UPGRADE_MESSAGE}
       </span>
       <ColoredButton
         size='small'

@@ -9,7 +9,8 @@ import useModal from '@/hooks/useModal';
 import ResultInfoBox, {
   ResultInfoBoxProps,
 } from '@/pages/result/ResultInfoBox';
-import TierUpgrade from '@/pages/result/TierUpgrade';
+import Rewards from '@/pages/result/Rewards';
+// import TierUpgrade from '@/pages/result/TierUpgrade';
 
 const Result = () => {
   const { Modal, openModal, closeModal } = useModal();
@@ -102,8 +103,12 @@ const Result = () => {
           />
         </div>
       </div>
+      {/* 이 아래 부분은 모달 선언 부분으로 데이터를 받아 온 후 로직을 새로 짜야 합니다. */}
+      {/* <Modal> */}
+      {/*  <TierUpgrade closeModal={closeModal} /> */}
+      {/* </Modal> */}
       <Modal>
-        <TierUpgrade closeModal={closeModal} />
+        <Rewards closeModal={closeModal} />
       </Modal>
     </BasicContentFrame>
   );
