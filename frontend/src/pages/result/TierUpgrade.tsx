@@ -39,7 +39,7 @@ const TierUpgrade = ({ closeModal }: Props) => {
         />
       </div>
       <span className={styles.modalMessage}>
-        Origin에 한 발자국 더 나아갔습니다!{' '}
+        {constants.TIER_UPGRADE_MESSAGE}
       </span>
       <ColoredButton
         size='small'

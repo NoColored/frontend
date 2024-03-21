@@ -45,4 +45,6 @@ export const MODAL_ARROW =
 export const MODAL_REWARDBOX =
   'public/images/ui/result/ui-result-reward-h108w108.gif';
 
+export const TIER_UPGRADE_MESSAGE = 'Origin에 한 발자국 더 나아갔습니다!';
+
 export const REWARD_MESSAGE = '잃어버린 색을 찾았습니다!';
