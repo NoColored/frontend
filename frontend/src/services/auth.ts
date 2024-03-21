@@ -1,11 +1,13 @@
-import { authResponse } from '@/types/auth';
+import { user } from '@/types/auth';
 
 import { api } from '@/services/index';
 
 export const getGuestLogin = async () => {
   try {
-    return await api.get<authResponse>(false, '/user/guest');
+    const response = await api.get<user>(false, '/user/guest');
+    return response.data;
   } catch (e) {
     console.log(e);
+    return null;
   }
 };

@@ -1,10 +1,12 @@
-export interface authResponse {
-  exp: number | null;
-  level: number | null;
+export interface user {
+  exp: number;
+  guest: boolean;
+  level: number;
   nickName: string;
-  skinId: number | null;
-  tier: string | null;
-  titleId: number | null;
+  rating: number;
+  skin: string;
+  tier: string;
+  title: string;
   token: string;
   userCode: string;
 }

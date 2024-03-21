@@ -7,20 +7,20 @@ import ColoredButton from '@/components/button/ColoredButton/index';
 
 import { getGuestLogin } from '@/services/auth';
 
-import { tokenState, nickNameState, userCodeState } from '@/states/auth';
+import { userState } from '@/states/auth';
 
 const Landing = () => {
   const navigate = useNavigate();
-  const [token, setToken] = useRecoilState(tokenState);
-  const [nickName, setNickName] = useRecoilState(nickNameState);
-  const [userCode, setUserCode] = useRecoilState(userCodeState);
+  const [user, setUser] = useRecoilState(userState);
 
   const clickGuestLogin = async () => {
-    const guest = await getGuestLogin();
-    if (guest) {
-      setToken(guest.data.token);
-      setNickName(guest.data.nickName);
-      setUserCode(guest.data.userCode);
+    const data = await getGuestLogin();
+    if (data) {
+      setUser(data);
+      navigate('/home');
+    } else {
+      console.log('Guest 로그인 실패');
+      navigate('/*');
     }
   };
 

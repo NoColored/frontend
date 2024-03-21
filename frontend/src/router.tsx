@@ -61,7 +61,6 @@ const router = createBrowserRouter([
     path: '/ranking',
     element: <Ranking />,
   },
-
   {
     path: '/home',
     element: <Home />,
