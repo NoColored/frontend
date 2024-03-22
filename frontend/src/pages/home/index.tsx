@@ -8,6 +8,7 @@ import BasicContentFrame from '@/components/BasicContentFrame/WithButtons/index'
 import ColoredIconButton from '@/components/button/ColoredIconButton';
 import type { tierType } from '@/components/imagebox/types';
 
+import Error from '@/pages/error';
 import UserDashboard from '@/pages/home/UserDashboard';
 
 import { userState } from '@/states/auth';
@@ -23,10 +24,6 @@ const Home = () => {
   };
   const goPlay = () => {
     navigate('/play');
-  };
-
-  const goError = () => {
-    navigate('/*');
   };
 
   if (User) {
@@ -82,7 +79,7 @@ const Home = () => {
       </BasicContentFrame>
     );
   }
-  return { goError };
+  return <Error />;
 };
 
 export default Home;
