@@ -35,7 +35,7 @@ const Home = () => {
               level={User.level}
               cp={User.exp}
               maxCp={User.exp}
-              tier={User.tier}
+              tier={User.tier as tierType}
               rankScore={User.rating}
             />
           </div>
@@ -59,13 +59,11 @@ const Home = () => {
 
             <div
               style={{
-                backgroundImage: `url(${UserInfoTemp.skinSrc})`,
+                backgroundImage: `url(${User.skin})`,
               }}
               className={styles.CharacterBox}
             >
-              <span
-                className={styles.titleText}
-              >{`< ${UserInfoTemp.title} >`}</span>
+              <span className={styles.titleText}>{`< ${User.title} >`}</span>
             </div>
             <ColoredIconButton
               icon='/images/ui/icon/button/icon-button-ranking-h50w50.png'
