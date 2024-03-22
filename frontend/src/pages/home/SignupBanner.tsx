@@ -5,7 +5,11 @@ import ColoredButton from '@/components/button/ColoredButton';
 import useModal from '@/hooks/useModal';
 import SignUp from '@/pages/landing/logIn/SignUp';
 
-const SignupBanner = () => {
+interface userCheckProps {
+  isGuest: boolean;
+}
+
+const SignupBanner = ({ isGuest }: userCheckProps) => {
   const { Modal, openModal, closeModal } = useModal();
 
   return (
@@ -26,7 +30,7 @@ const SignupBanner = () => {
         onClick={openModal}
       />
       <Modal>
-        <SignUp closeModal={closeModal} />
+        <SignUp closeModal={closeModal} isGuest={isGuest} />
       </Modal>
     </div>
   );

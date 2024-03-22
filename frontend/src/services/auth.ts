@@ -53,7 +53,7 @@ export const getIdCheck = async (id: string) => {
 
 export const postGuestSignUp = async (signUpInfo: SignUpInfo) => {
   try {
-    const response = await api.post<User, SignUpInfo>(
+    const response = await api.post<string, SignUpInfo>(
       true,
       '/user/guest',
       signUpInfo,
@@ -66,7 +66,7 @@ export const postGuestSignUp = async (signUpInfo: SignUpInfo) => {
 
 export const postSignUp = async (signUpInfo: SignUpInfo) => {
   try {
-    await api.post<User, SignUpInfo>(false, '/user/signup', signUpInfo);
+    await api.post<string, SignUpInfo>(false, '/user/signup', signUpInfo);
     return true;
   } catch (e) {
     return false;

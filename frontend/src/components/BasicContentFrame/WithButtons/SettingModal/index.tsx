@@ -2,7 +2,11 @@ import SettingIconButton from '@/components/button/SettingIconButton';
 import Settings from '@/components/BasicContentFrame/WithButtons/SettingModal/Settings';
 import useModal from '@/hooks/useModal';
 
-const SettingButton = () => {
+interface userCheckProps {
+  isGuest: boolean;
+}
+
+const SettingButton = ({ isGuest }: userCheckProps) => {
   const { Modal, openModal, closeModal } = useModal();
 
   return (
@@ -13,7 +17,7 @@ const SettingButton = () => {
         onClick={openModal}
       />
       <Modal>
-        <Settings onClose={closeModal} onBack={() => {}} />
+        <Settings onClose={closeModal} onBack={() => {}} isGuest={isGuest} />
       </Modal>
     </>
   );

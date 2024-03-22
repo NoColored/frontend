@@ -4,16 +4,19 @@ import InputTextBox from '@/components/textbox/InputTextBox/index';
 import { buttonWrapper } from '@/pages/landing/index.css';
 import React, { useState } from 'react';
 import { SignUpInfo } from '@/types/auth';
-import { checkSignUpInfo, useSignUp } from '@/utils/useSignUp';
+import { checkSignUpInfo } from '@/utils/useSignUp';
+import * as constants from '@/pages/landing/logIn/constants';
+import { getIdCheck, postGuestSignUp, postSignUp } from '@/services/auth';
+import { useNavigate } from 'react-router-dom';
 
 interface Props {
   closeModal: () => void;
+  isGuest: boolean;
 }
 
-const SignUp = ({ closeModal }: Props) => {
-  const { signUp } = useSignUp();
-  const welcome = '환영합니다. 어쩌면 진짜 Origin';
-  const [errorMessage, setErrorMessage] = useState(welcome);
+const SignUp = ({ closeModal, isGuest }: Props) => {
+  const navigate = useNavigate();
+  const [errorMessage, setErrorMessage] = useState(constants.WELCOME_MESSAGE);
   const [signUpInfo, setSignUpInfo] = useState<SignUpInfo>({
     id: '',
     password: '',
@@ -31,13 +34,23 @@ const SignUp = ({ closeModal }: Props) => {
   };
 
   const clickSignUp = async () => {
-    const errorInfo = checkSignUpInfo(signUpInfo);
-    if (errorInfo.length >= 1) {
-      setErrorMessage(errorInfo);
+    const checkId = await getIdCheck(signUpInfo.id);
+    if (checkId) {
+      setErrorMessage(constants.SAME_ID_MESSAGE);
+      return;
     } else {
-      const success = await signUp(signUpInfo);
-      if (success) closeModal();
-      else setErrorMessage('중복된 ID!! 진짜 당신은 누구죠?');
+      const errorInfo = checkSignUpInfo(signUpInfo);
+      if (errorInfo.length >= 1) {
+        setErrorMessage(errorInfo);
+      } else {
+        if (isGuest) {
+          await postGuestSignUp(signUpInfo);
+          closeModal();
+          navigate('/home');
+        } else {
+          await postSignUp(signUpInfo);
+        }
+      }
     }
   };
 
@@ -70,14 +83,14 @@ const SignUp = ({ closeModal }: Props) => {
       <InputTextBox
         name='nickname'
         type='text'
-        placeholder='닉네임 (최소 6 ~ 20자)'
+        placeholder='닉네임 (최소 2 ~ 9자)'
         size='medium'
         value={signUpInfo.nickname}
         onChange={handleChange}
       />
       <div
         style={{
-          color: errorMessage === welcome ? 'blue' : 'red',
+          color: errorMessage === constants.WELCOME_MESSAGE ? 'blue' : 'red',
         }}
       >
         {errorMessage}

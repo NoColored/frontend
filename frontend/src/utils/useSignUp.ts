@@ -1,30 +1,5 @@
-import { useRecoilState } from 'recoil';
-import { userState } from '@/states/auth';
-import { getIdCheck, postGuestSignUp, postSignUp } from '@/services/auth';
 import { SignUpInfo } from '@/types/auth';
-
-export const useSignUp = () => {
-  const [user, setUser] = useRecoilState(userState);
-
-  const signUp = async (signUpInfo: SignUpInfo) => {
-    const idCheck = await getIdCheck(signUpInfo.id);
-    if (!idCheck) {
-      if (user?.guest) {
-        const guestData = await postGuestSignUp(signUpInfo);
-        if (guestData) {
-          // 여기를 home API로 추후에 변경
-          setUser(guestData);
-          return true;
-        }
-      } else {
-        await postSignUp(signUpInfo);
-        return true;
-      }
-    }
-    return false;
-  };
-  return { signUp };
-};
+import * as constants from '@/pages/landing/logIn/constants';
 
 export const checkSignUpInfo = (signUpInfo: SignUpInfo) => {
   const { id, password, passwordConfirm, nickname } = signUpInfo;
@@ -35,11 +10,11 @@ export const checkSignUpInfo = (signUpInfo: SignUpInfo) => {
     passwordConfirm.trim() === '' ||
     nickname.trim() === ''
   ) {
-    return '당신의 역사가 비어있네요? 수상합니다.';
+    return constants.BLANK_MESSAGE;
   }
 
   if (password !== passwordConfirm) {
-    return '암호가 일치하지 않습니다.';
+    return constants.NOT_SAME_PASSWORD_MESSAGE;
   }
 
   if (
@@ -47,10 +22,10 @@ export const checkSignUpInfo = (signUpInfo: SignUpInfo) => {
     id.length > 20 ||
     password.length < 6 ||
     password.length > 20 ||
-    nickname.length < 6 ||
-    nickname.length > 20
+    nickname.length < 2 ||
+    nickname.length > 9
   ) {
-    return '당신의 정보가 너무 짧거나, 너무 길거나.';
+    return constants.INVALID_INPUT_MESSAGE;
   }
 
   return '';
