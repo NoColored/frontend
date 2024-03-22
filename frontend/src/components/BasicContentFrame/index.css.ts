@@ -20,7 +20,7 @@ export const basicFrame = style([
         aspectRatio: '33 / 19',
         backgroundColor: vars.colors.background,
         borderRadius: vars.borderRadius['2x'],
-        border: '1px solid black',
+        outline: '1px solid black',
         top: '50%',
         transform: 'translate(-50%, -50%)',
       },

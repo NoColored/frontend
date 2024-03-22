@@ -1,7 +1,6 @@
 import ColoredButton from '@/components/button/ColoredButton/index';
 import ColoredIconButton from '@/components/button/ColoredIconButton/index';
 import RoundCornerImageBox from '@/components/imagebox/RoundCornerImageBox';
-// import Game from '@/components/Game.tsx';
 import TierBox from '@/components/imagebox/TierIconBox';
 import PlayerInfoBox from '@/components/PlayerInfoBox';
 import ColoredTextBox from '@/components/textbox/ColoredTextBox/index';
