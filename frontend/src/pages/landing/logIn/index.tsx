@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useSetRecoilState } from 'recoil';
 
 import type { LogInInfo } from '@/types/auth';
@@ -23,6 +24,9 @@ const LogIn = () => {
     password: '',
   });
   const setUser = useSetRecoilState(userState);
+
+  const navigate = useNavigate();
+
   const { Modal, openModal, closeModal } = useModal();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -40,6 +44,7 @@ const LogIn = () => {
       openModal();
     } else {
       setUser(data);
+      navigate('/');
     }
   };
 

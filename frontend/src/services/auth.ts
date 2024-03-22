@@ -20,7 +20,7 @@ export const postMemberLogin = async (logInInfo: LogInInfo) => {
       `/user/login`,
       logInInfo,
     );
-    if (response.status >= 200 && response.status < 300) {
+    if (response.status === 200) {
       localStorage.setItem('token', response.data.token);
       return response.data;
     }
