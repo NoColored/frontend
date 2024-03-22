@@ -21,13 +21,13 @@ const Home = () => {
 
   // 이 부분 고민 중... 더 효율적일 수 있을지
   const getUserInfo = async () => {
-    const data = await getUser();
-    if (data) {
-      setUser(data);
+    const isSucceed = await getUser();
+    if (isSucceed) {
+      setUser(isSucceed);
       console.log(user);
     } else {
       navigate('/*');
-      console.log(data);
+      console.log(isSucceed);
     }
   };
 
