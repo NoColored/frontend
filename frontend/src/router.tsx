@@ -2,16 +2,19 @@ import { createBrowserRouter } from 'react-router-dom';
 
 import Error from '@/pages/error';
 import Example from '@/pages/example/index';
-import Home from '@/pages/home';
+import Home from '@/pages/home/index';
 import Landing from '@/pages/landing/index';
 import LandingLayout from '@/pages/landing/layout';
 import LogIn from '@/pages/landing/logIn/index';
 import Loading from '@/pages/loading/index';
 import Finder from '@/pages/play/finder';
+import Game from '@/pages/play/game';
 import Lobby from '@/pages/play/lobby/index';
 import Mode from '@/pages/play/mode';
 import Ranking from '@/pages/ranking';
 import Result from '@/pages/result';
+
+import { getUser } from '@/services/auth';
 
 const router = createBrowserRouter([
   {
@@ -47,6 +50,10 @@ const router = createBrowserRouter([
         path: 'finder',
         element: <Finder />,
       },
+      {
+        path: 'game',
+        element: <Game />,
+      },
     ],
   },
   {
@@ -64,6 +71,7 @@ const router = createBrowserRouter([
   {
     path: '/home',
     element: <Home />,
+    loader: getUser,
   },
   {
     path: '/result',

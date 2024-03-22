@@ -4,9 +4,9 @@ import { api } from '@/services/index';
 
 export const getGuestLogin = async () => {
   try {
-    const response = await api.get<User>(false, '/user/guest');
-    localStorage.setItem('token', response.data.token);
-    return response.data;
+    const response = await api.get<string>(false, '/user/guest');
+    localStorage.setItem('token', response.data);
+    return true;
   } catch (e) {
     console.log(e);
     return null;
@@ -15,17 +15,27 @@ export const getGuestLogin = async () => {
 
 export const postMemberLogin = async (logInInfo: LogInInfo) => {
   try {
-    const response = await api.post<User, LogInInfo>(
+    const response = await api.post<string, LogInInfo>(
       false,
       `/user/login`,
       logInInfo,
     );
     if (response.status === 200) {
-      localStorage.setItem('token', response.data.token);
-      return response.data;
+      localStorage.setItem('token', response.data);
+      return true;
     }
     console.log(response.data);
     return false;
+  } catch (e) {
+    console.log(e);
+    return null;
+  }
+};
+
+export const getUser = async () => {
+  try {
+    const response = await api.get<User>(true, `/user`);
+    return response.data;
   } catch (e) {
     console.log(e);
     return null;

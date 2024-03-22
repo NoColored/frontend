@@ -1,5 +1,6 @@
 export interface User {
   exp: number;
+  expRequire: number;
   guest: boolean;
   level: number;
   nickName: string;
