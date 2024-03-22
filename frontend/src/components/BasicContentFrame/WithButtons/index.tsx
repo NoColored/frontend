@@ -11,22 +11,22 @@ import SettingButton from '@/components/BasicContentFrame/WithButtons/SettingMod
 interface Props {
   children: ReactNode;
   backButtonLabel?: string;
+  isGuest: boolean;
 }
 
-const BasicContentFrame = ({ children, backButtonLabel }: Props) => {
+const BasicContentFrame = ({ children, backButtonLabel, isGuest }: Props) => {
   const navigate = useNavigate();
 
   return (
     <div className={styles.frame}>
       <div className={styles.iconButtons}>
         <InfoButton />
-
         <SettingIconButton
           src='/images/ui/icon/button/icon-button-home-h50w50.png'
           alt='home'
           onClick={() => navigate('/home')}
         />
-        <SettingButton />
+        <SettingButton isGuest={isGuest} />
       </div>
       <main className={styles.main}>
         {backButtonLabel && (

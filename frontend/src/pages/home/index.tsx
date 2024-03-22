@@ -15,6 +15,8 @@ import UserDashboard from '@/pages/home/UserDashboard';
 const Home = () => {
   const user = useLoaderData() as User;
 
+  console.log(user);
+
   const navigate = useNavigate();
 
   const goCollection = () => {
@@ -31,7 +33,7 @@ const Home = () => {
     return <Error />;
   }
   return (
-    <BasicContentFrame>
+    <BasicContentFrame isGuest={user.guest}>
       <div className={styles.fullWrapper}>
         <div className={styles.TopContentsWrapper}>
           <UserDashboard
@@ -78,7 +80,7 @@ const Home = () => {
           />
         </div>
       </div>
-      {user.guest && <SignupBanner />}
+      {user.guest && <SignupBanner isGuest={user.guest} />}
     </BasicContentFrame>
   );
 };
