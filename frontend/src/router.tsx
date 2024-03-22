@@ -14,6 +14,8 @@ import Mode from '@/pages/play/mode';
 import Ranking from '@/pages/ranking';
 import Result from '@/pages/result';
 
+import { getUser } from '@/services/auth';
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -69,6 +71,7 @@ const router = createBrowserRouter([
   {
     path: '/home',
     element: <Home />,
+    loader: getUser,
   },
   {
     path: '/result',

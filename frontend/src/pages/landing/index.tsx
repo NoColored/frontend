@@ -10,8 +10,8 @@ const Landing = () => {
   const navigate = useNavigate();
 
   const clickGuestLogin = async () => {
-    const data = await getGuestLogin();
-    if (data) {
+    const isSuccess = await getGuestLogin();
+    if (isSuccess) {
       navigate('/home');
     } else {
       console.log('Guest 로그인 실패');
