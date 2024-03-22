@@ -17,7 +17,7 @@ const SignUp = ({ closeModal }: Props) => {
   const [signUpInfo, setSignUpInfo] = useState<SignUpInfo>({
     id: '',
     password: '',
-    passwordCheck: '',
+    passwordConfirm: '',
     nickname: '',
   });
 
@@ -30,7 +30,6 @@ const SignUp = ({ closeModal }: Props) => {
   };
 
   const clickSignUp = async () => {
-    //현재 하드 코딩
     const idCheck = await getIdCheck(signUpInfo.id);
     if (!idCheck) {
       if (user?.guest) {
@@ -63,11 +62,11 @@ const SignUp = ({ closeModal }: Props) => {
         onChange={handleChange}
       />
       <InputTextBox
-        name='passwordCheck'
+        name='passwordConfirm'
         type='password'
         placeholder='비밀번호 확인'
         size='medium'
-        value={signUpInfo.passwordCheck}
+        value={signUpInfo.passwordConfirm}
         onChange={handleChange}
       />
       <InputTextBox

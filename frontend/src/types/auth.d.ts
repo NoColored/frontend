@@ -14,6 +14,6 @@ export interface User {
 export interface SignUpInfo {
   id: string;
   password: string;
-  passwordCheck: string;
+  passwordConfirm: string;
   nickname: string;
 }
