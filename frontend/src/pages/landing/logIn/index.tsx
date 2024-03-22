@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useSetRecoilState } from 'recoil';
 
 import type { LogInInfo } from '@/types/auth';
 
@@ -15,16 +14,12 @@ import SignUp from '@/pages/landing/logIn/SignUp';
 
 import { postMemberLogin } from '@/services/auth';
 
-import { userState } from '@/states/auth';
-
 const LogIn = () => {
   const [isClicked, setIsClicked] = useState(false);
   const [logInInfo, setLogInInfo] = useState<LogInInfo>({
     id: '',
     password: '',
   });
-  const setUser = useSetRecoilState(userState);
-
   const navigate = useNavigate();
 
   const { Modal, openModal, closeModal } = useModal();
@@ -43,8 +38,7 @@ const LogIn = () => {
       setIsClicked(false);
       openModal();
     } else {
-      setUser(data);
-      navigate('/');
+      navigate('/home');
     }
   };
 
