@@ -8,7 +8,7 @@ import { sprinkles } from '@/styles/sprinkles.css';
 export const modal = style([
   sprinkles({
     margin: 'auto',
-    padding: '8x',
+    padding: constants.MODAL_PADDING,
     borderRadius: '2x',
     position: 'relative',
   }),
@@ -20,4 +20,7 @@ export const modal = style([
   },
 ]);
 
-export const content = style([flexOptions({ option: 'columnCenter' })]);
+export const content = style([
+  flexOptions({ option: 'columnCenter' }),
+  { width: constants.MODAL_INNER_WIDTH },
+]);

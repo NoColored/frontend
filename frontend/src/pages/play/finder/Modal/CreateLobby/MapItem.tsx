@@ -21,7 +21,7 @@ const MapItem = ({ mapName, imgSrc, isSelected, onClick }: Props) => {
       >
         <ColoredTextBox
           size='small'
-          color={isSelected ? 'yellow' : 'black'}
+          color={isSelected ? 'yellow' : 'navy'}
           text={mapName}
         />
       </RoundCornerImageBox>
