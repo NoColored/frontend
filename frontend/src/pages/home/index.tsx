@@ -25,6 +25,10 @@ const Home = () => {
     navigate('/play');
   };
 
+  const goError = () => {
+    navigate('/*');
+  };
+
   if (User) {
     return (
       <BasicContentFrame>
@@ -78,6 +82,7 @@ const Home = () => {
       </BasicContentFrame>
     );
   }
+  return { goError };
 };
 
 export default Home;
