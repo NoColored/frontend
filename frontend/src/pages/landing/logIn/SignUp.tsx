@@ -2,18 +2,18 @@ import ColoredButton from '@/components/button/ColoredButton/index';
 import InputTextBox from '@/components/textbox/InputTextBox/index';
 
 import { buttonWrapper } from '@/pages/landing/index.css';
-import { useRecoilValue } from 'recoil';
-import { userState } from '@/states/auth';
-import { getIdCheck, postGuestSignUp, postSignUp } from '@/services/auth';
 import React, { useState } from 'react';
 import { SignUpInfo } from '@/types/auth';
+import { checkSignUpInfo, useSignUp } from '@/utils/useSignUp';
 
 interface Props {
   closeModal: () => void;
 }
 
 const SignUp = ({ closeModal }: Props) => {
-  const user = useRecoilValue(userState);
+  const { signUp } = useSignUp();
+  const welcome = '환영합니다. 어쩌면 진짜 Origin';
+  const [errorMessage, setErrorMessage] = useState(welcome);
   const [signUpInfo, setSignUpInfo] = useState<SignUpInfo>({
     id: '',
     password: '',
@@ -27,19 +27,17 @@ const SignUp = ({ closeModal }: Props) => {
       ...info,
       [name]: value,
     }));
+    setErrorMessage('');
   };
 
   const clickSignUp = async () => {
-    const idCheck = await getIdCheck(signUpInfo.id);
-    if (!idCheck) {
-      if (user?.guest) {
-        console.log(user?.guest);
-        await postGuestSignUp(signUpInfo);
-      } else {
-        await postSignUp(signUpInfo);
-      }
+    const errorInfo = checkSignUpInfo(signUpInfo);
+    if (errorInfo.length >= 1) {
+      setErrorMessage(errorInfo);
     } else {
-      alert('아이디 중복'); // 후에 SignUp 모달에 뜨는 것으로 변경
+      const success = await signUp(signUpInfo);
+      if (success) closeModal();
+      else setErrorMessage('중복된 ID!! 진짜 당신은 누구죠?');
     }
   };
 
@@ -48,7 +46,7 @@ const SignUp = ({ closeModal }: Props) => {
       <InputTextBox
         name='id'
         type='text'
-        placeholder='아이디'
+        placeholder='아이디 (최소 6 ~ 20자)'
         size='medium'
         value={signUpInfo.id}
         onChange={handleChange}
@@ -56,7 +54,7 @@ const SignUp = ({ closeModal }: Props) => {
       <InputTextBox
         name='password'
         type='password'
-        placeholder='비밀번호 (숫자 6자리)'
+        placeholder='비밀번호 (최소 6 ~ 20자)'
         size='medium'
         value={signUpInfo.password}
         onChange={handleChange}
@@ -72,11 +70,18 @@ const SignUp = ({ closeModal }: Props) => {
       <InputTextBox
         name='nickname'
         type='text'
-        placeholder='닉네임'
+        placeholder='닉네임 (최소 6 ~ 20자)'
         size='medium'
         value={signUpInfo.nickname}
         onChange={handleChange}
       />
+      <div
+        style={{
+          color: errorMessage === welcome ? 'blue' : 'red',
+        }}
+      >
+        {errorMessage}
+      </div>
       <div className={buttonWrapper}>
         <ColoredButton
           text='취소'

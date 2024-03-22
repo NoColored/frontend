@@ -20,7 +20,6 @@ const BasicContentFrame = ({ children, backButtonLabel }: Props) => {
     <div className={styles.frame}>
       <div className={styles.iconButtons}>
         <InfoButton />
-
         <SettingIconButton
           src='/images/ui/icon/button/icon-button-home-h50w50.png'
           alt='home'

@@ -5,9 +5,16 @@ import ColoredButton from '@/components/button/ColoredButton';
 import SettingTextButton from '@/components/button/SettingTextButton';
 
 import { useAudioSetting } from '@/hooks/useAudioSetting';
+import { useRecoilValue } from 'recoil';
+import { userState } from '@/states/auth';
+import GuestUser from '@/components/BasicContentFrame/WithButtons/SettingModal/GuestUser';
 
 const Settings = ({ onClose }: indexProps) => {
+  const user = useRecoilValue(userState);
   const { backgroundSound, effectSound, saveSettings } = useAudioSetting();
+
+  console.log(user);
+
   return (
     <div className={styles.boxWrapper}>
       <div className={styles.title}>설정</div>
@@ -34,7 +41,7 @@ const Settings = ({ onClose }: indexProps) => {
           </div>
         </div>
       </fieldset>
-      <LoginUser />
+      {user?.guest ? <GuestUser /> : <LoginUser />}
       <ColoredButton text='닫기' color='green' size='small' onClick={onClose} />
     </div>
   );

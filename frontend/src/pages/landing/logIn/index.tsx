@@ -15,8 +15,10 @@ import SignUp from '@/pages/landing/logIn/SignUp';
 import { postMemberLogin } from '@/services/auth';
 
 import { userState } from '@/states/auth';
+import { useNavigate } from 'react-router-dom';
 
 const LogIn = () => {
+  const navigate = useNavigate();
   const [isClicked, setIsClicked] = useState(false);
   const [logInInfo, setLogInInfo] = useState<LogInInfo>({
     id: '',
@@ -40,6 +42,7 @@ const LogIn = () => {
       openModal();
     } else {
       setUser(data);
+      navigate('/home');
     }
   };
 
