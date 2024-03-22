@@ -1,16 +1,22 @@
-import { useNavigate } from 'react-router-dom';
+import { useLoaderData, useNavigate } from 'react-router-dom';
 
 import * as styles from './index.css';
 import SignupBanner from './SignupBanner';
+
+import type { User } from '@/types/auth';
 
 import BasicContentFrame from '@/components/BasicContentFrame/WithButtons/index';
 import ColoredIconButton from '@/components/button/ColoredIconButton';
 import type { tierType } from '@/components/imagebox/types';
 
+import Error from '@/pages/error';
 import UserDashboard from '@/pages/home/UserDashboard';
 
 const Home = () => {
+  const user = useLoaderData() as User;
+
   const navigate = useNavigate();
+
   const goCollection = () => {
     navigate('/collection');
   };
@@ -21,29 +27,20 @@ const Home = () => {
     navigate('/play');
   };
 
-  const UserInfoTemp = {
-    title: '칭호는무엇일까요우',
-    nickname: '테스트중인노컬러드',
-    level: 15,
-    cp: 2000,
-    maxCp: 3000,
-    tier: 'diamond' as tierType,
-    rankScore: 999,
-    skinSrc:
-      '/images/character/google-none/character-google-none-green-h240w240.png',
-  };
-
+  if (!user) {
+    return <Error />;
+  }
   return (
     <BasicContentFrame>
       <div className={styles.fullWrapper}>
         <div className={styles.TopContentsWrapper}>
           <UserDashboard
-            nickname={UserInfoTemp.nickname}
-            level={UserInfoTemp.level}
-            cp={UserInfoTemp.cp}
-            maxCp={UserInfoTemp.maxCp}
-            tier={UserInfoTemp.tier}
-            rankScore={UserInfoTemp.rankScore}
+            nickname={user.nickName}
+            level={user.level}
+            cp={user.exp}
+            maxCp={user.exp}
+            tier={user.tier as tierType}
+            rankScore={user.rating}
           />
         </div>
         <div className={styles.BottomContentsWrapper}>
@@ -66,13 +63,11 @@ const Home = () => {
 
           <div
             style={{
-              backgroundImage: `url(${UserInfoTemp.skinSrc})`,
+              backgroundImage: `url(${user.skin})`,
             }}
             className={styles.CharacterBox}
           >
-            <span
-              className={styles.titleText}
-            >{`< ${UserInfoTemp.title} >`}</span>
+            <span className={styles.titleText}>{`< ${user.title} >`}</span>
           </div>
           <ColoredIconButton
             icon='/images/ui/icon/button/icon-button-ranking-h50w50.png'
@@ -83,8 +78,7 @@ const Home = () => {
           />
         </div>
       </div>
-      {/* guest여부따라 visible/unvisible보내면 됨 */}
-      <SignupBanner />
+      {user.guest && <SignupBanner />}
     </BasicContentFrame>
   );
 };

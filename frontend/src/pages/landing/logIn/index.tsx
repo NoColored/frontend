@@ -1,4 +1,7 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+import type { LogInInfo } from '@/types/auth';
 
 import ColoredButton from '@/components/button/ColoredButton/index';
 import InputTextBox from '@/components/textbox/InputTextBox/index';
@@ -9,30 +12,59 @@ import * as styles from '@/pages/landing/index.css';
 import LogInFail from '@/pages/landing/logIn/LogInFail';
 import SignUp from '@/pages/landing/logIn/SignUp';
 
+import { postMemberLogin } from '@/services/auth';
+
 const LogIn = () => {
   const [isClicked, setIsClicked] = useState(false);
+  const [logInInfo, setLogInInfo] = useState<LogInInfo>({
+    id: '',
+    password: '',
+  });
+  const navigate = useNavigate();
 
   const { Modal, openModal, closeModal } = useModal();
 
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    setLogInInfo((info) => ({
+      ...info,
+      [name]: value,
+    }));
+  };
+
+  const handleLogInClick = async () => {
+    const data = await postMemberLogin(logInInfo);
+    if (!data) {
+      setIsClicked(false);
+      openModal();
+    } else {
+      navigate('/home');
+    }
+  };
+
   const handleSignUpClick = () => {
-    openModal();
     setIsClicked(true);
+    openModal();
   };
 
   return (
     <div className={styles.contentWrapper}>
       {/* onChange 임시 이벤트 익명 함수로 설정 했습니다. */}
       <InputTextBox
+        name='id'
         type='text'
         placeholder='아이디'
         size='large'
-        onChange={() => {}}
+        value={logInInfo.id}
+        onChange={handleChange}
       />
       <InputTextBox
+        name='password'
         type='password'
         placeholder='비밀번호'
         size='large'
-        onChange={() => {}}
+        value={logInInfo.password}
+        onChange={handleChange}
       />
       <div className={styles.buttonWrapper}>
         <ColoredButton
@@ -45,7 +77,7 @@ const LogIn = () => {
           text='LOG IN'
           color='pink'
           size='large'
-          onClick={() => {}}
+          onClick={handleLogInClick}
         />
       </div>
       <Modal>

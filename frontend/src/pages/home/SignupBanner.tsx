@@ -2,8 +2,12 @@ import * as constants from './constants';
 import * as styles from './index.css';
 
 import ColoredButton from '@/components/button/ColoredButton';
+import useModal from '@/hooks/useModal';
+import SignUp from '@/pages/landing/logIn/SignUp';
 
 const SignupBanner = () => {
+  const { Modal, openModal, closeModal } = useModal();
+
   return (
     <div className={styles.SignupBannerBox}>
       <div
@@ -19,8 +23,11 @@ const SignupBanner = () => {
         size='xsmall'
         text='바로가입'
         color='yellow'
-        onClick={() => {}}
+        onClick={openModal}
       />
+      <Modal>
+        <SignUp closeModal={closeModal} />
+      </Modal>
     </div>
   );
 };
