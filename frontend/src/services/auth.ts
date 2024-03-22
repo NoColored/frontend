@@ -1,4 +1,4 @@
-import type { SignUpInfo, User } from '@/types/auth';
+import type { LogInInfo, SignUpInfo, User } from '@/types/auth';
 
 import { api } from '@/services/index';
 
@@ -7,6 +7,25 @@ export const getGuestLogin = async () => {
     const response = await api.get<User>(false, '/user/guest');
     localStorage.setItem('token', response.data.token);
     return response.data;
+  } catch (e) {
+    console.log(e);
+    return null;
+  }
+};
+
+export const postMemberLogin = async (logInInfo: LogInInfo) => {
+  try {
+    const response = await api.post<User, LogInInfo>(
+      false,
+      `/user/login`,
+      logInInfo,
+    );
+    if (response.status >= 200 && response.status < 300) {
+      localStorage.setItem('token', response.data.token);
+      return response.data;
+    }
+    console.log(response.data);
+    return false;
   } catch (e) {
     console.log(e);
     return null;
