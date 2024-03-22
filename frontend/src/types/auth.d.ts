@@ -10,3 +10,10 @@ export interface User {
   token: string;
   userCode: string;
 }
+
+export interface SignUpInfo {
+  id: string;
+  password: string;
+  passwordConfirm: string;
+  nickname: string;
+}
