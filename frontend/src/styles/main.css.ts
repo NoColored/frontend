@@ -41,3 +41,14 @@ globalStyle('body', {
 globalStyle('*::-webkit-scrollbar', {
   display: 'none',
 });
+
+globalStyle('canvas', {
+  height: '100%',
+  width: '100%',
+});
+
+globalStyle('#game-container', {
+  margin: '0 auto',
+  height: '100%',
+  aspectRatio: '33 / 19',
+});
