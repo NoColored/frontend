@@ -3,7 +3,7 @@ export interface User {
   expRequire: number;
   guest: boolean;
   level: number;
-  nickName: string;
+  nickname: string;
   rating: number;
   skin: string;
   tier: string;
@@ -22,4 +22,30 @@ export interface SignUpInfo {
   password: string;
   passwordConfirm: string;
   nickname: string;
+}
+
+export interface RoomInfo {
+  roomTitle: string;
+  roomCode: string;
+  roomPassword: string;
+  masterIndex?: number;
+  mapId: number;
+  userNumber?: number;
+}
+
+export interface PlayerInfo {
+  userIndex: number;
+  player?: User;
+  isReady: boolean;
+}
+
+export interface RankInfo {
+  refreshTime: string;
+  player: {
+    rank: number;
+    userCode: string;
+    userNickname: string;
+    userSkinId: string;
+    userTitle: number;
+  }[];
 }
