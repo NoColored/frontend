@@ -1,5 +1,7 @@
 import { useEffect } from 'react';
 
+import BasicContentFrame from '@/components/BasicContentFrame';
+
 import { config } from '@/game/config';
 
 const Game = () => {
@@ -11,7 +13,11 @@ const Game = () => {
     };
   }, []);
 
-  return <div id='game-container' />;
+  return (
+    <BasicContentFrame>
+      <div id='game-container' />
+    </BasicContentFrame>
+  );
 };
 
 export default Game;
