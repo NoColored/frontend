@@ -1,10 +1,10 @@
-import * as styles from '@/components/BasicContentFrame/WithButtons/SettingModal/index.css';
-import SettingTextButton from '@/components/button/SettingTextButton';
-import ColoredButton from '@/components/button/ColoredButton';
 import { indexProps } from '@/components/BasicContentFrame/WithButtons/InfoButton/types';
-
-import useAudioSetting from '@/hooks/useAudioSetting';
+import * as styles from '@/components/BasicContentFrame/WithButtons/SettingModal/index.css';
 import LoginUser from '@/components/BasicContentFrame/WithButtons/SettingModal/LoginUser';
+import ColoredButton from '@/components/button/ColoredButton';
+import SettingTextButton from '@/components/button/SettingTextButton';
+
+import { useAudioSetting } from '@/hooks/useAudioSetting';
 
 const Settings = ({ onClose }: indexProps) => {
   const { backgroundSound, effectSound, saveSettings } = useAudioSetting();
