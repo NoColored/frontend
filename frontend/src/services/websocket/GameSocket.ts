@@ -3,8 +3,8 @@ import { Socket } from '@/services/websocket/Socket';
 export class GameSocket extends Socket {
   private messageQueue: ArrayBuffer[];
 
-  constructor(url: string, token: string | null) {
-    super(url, token);
+  constructor() {
+    super();
     this.messageQueue = [];
   }
 

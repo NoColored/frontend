@@ -1,10 +1,12 @@
-import React, { SetStateAction } from 'react';
+import { Dispatch, SetStateAction } from 'react';
+
+import { WEBSOCKET_URL } from '@/services/constants';
 
 export class Socket {
   protected webSocket: WebSocket;
 
-  constructor(url: string, token: string | null) {
-    this.webSocket = new WebSocket(url);
+  constructor() {
+    this.webSocket = new WebSocket(WEBSOCKET_URL);
 
     this.webSocket.onopen = () => {
       this.webSocket.onmessage = (event) => {
@@ -15,14 +17,14 @@ export class Socket {
 
       const action = JSON.stringify({
         action: 'token',
-        data: token,
+        data: localStorage.getItem('token'),
       });
       console.log(action);
       this.webSocket.send(action);
     };
   }
 
-  getMessage<T>(setStateAction: React.Dispatch<SetStateAction<T>>) {
+  getMessage<T>(setStateAction: Dispatch<SetStateAction<T>>) {
     this.webSocket.onmessage = (event) => {
       const message = JSON.parse(event.data) as T;
       setStateAction(message);
