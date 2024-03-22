@@ -23,29 +23,3 @@ export interface SignUpInfo {
   passwordConfirm: string;
   nickname: string;
 }
-
-export interface RoomInfo {
-  roomTitle: string;
-  roomCode: string;
-  roomPassword: string;
-  masterIndex?: number;
-  mapId: number;
-  userNumber?: number;
-}
-
-export interface PlayerInfo {
-  userIndex: number;
-  player?: User;
-  isReady: boolean;
-}
-
-export interface RankInfo {
-  refreshTime: string;
-  player: {
-    rank: number;
-    userCode: string;
-    userNickname: string;
-    userSkinId: string;
-    userTitle: number;
-  }[];
-}
