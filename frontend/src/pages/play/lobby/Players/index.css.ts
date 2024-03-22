@@ -33,7 +33,7 @@ export const characterWrapper = style([
 export const infoAndButtonWrapper = style([
   flexOptions({ option: 'column' }),
   sprinkles({
-    margin: '2x',
+    margin: '1x',
     width: 'full',
   }),
   {
@@ -53,7 +53,7 @@ const playerInfo = style([
   sprinkles({
     marginBottom: '1x',
     width: 'full',
-    borderRadius: '1x',
+    borderRadius: '2x',
   }),
   {
     height: constants.PLAYER_INFO_HEIGHT('default'),

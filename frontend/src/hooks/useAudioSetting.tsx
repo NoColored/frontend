@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 interface AudioSettings {
   backgroundSound: boolean;
@@ -6,21 +6,13 @@ interface AudioSettings {
   saveSettings: (bgSound: boolean, efSound: boolean) => void;
 }
 
-const UseAudioSetting = (): AudioSettings => {
-  const [backgroundSound, setBackgroundSound] = useState(true);
-  const [effectSound, setEffectSound] = useState(true);
+export const useAudioSetting = (): AudioSettings => {
+  const savedBackgroundSound =
+    localStorage.getItem('backgroundSound') === 'true';
+  const savedEffectSound = localStorage.getItem('effectSound') === 'true';
 
-  useEffect(() => {
-    const bgSound = localStorage.getItem('backgroundSound');
-    const efSound = localStorage.getItem('effectSound');
-
-    if (bgSound !== null) {
-      setBackgroundSound(bgSound === 'true');
-    }
-    if (efSound !== null) {
-      setEffectSound(efSound === 'true');
-    }
-  }, []);
+  const [backgroundSound, setBackgroundSound] = useState(savedBackgroundSound);
+  const [effectSound, setEffectSound] = useState(savedEffectSound);
 
   const saveSettings = (bgSound: boolean, efSound: boolean) => {
     localStorage.setItem('backgroundSound', bgSound.toString());
@@ -31,5 +23,3 @@ const UseAudioSetting = (): AudioSettings => {
 
   return { backgroundSound, effectSound, saveSettings };
 };
-
-export default UseAudioSetting;
