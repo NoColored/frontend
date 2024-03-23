@@ -1,17 +1,22 @@
 import { useState } from 'react';
 
+import { Socket } from '@/services/websocket/Socket';
+
 import { useWebSocketStore } from '@/states/websocket';
 
-export const useWebSocket = <T>(initialValue: T): T => {
-  const [data, setData] = useState<T>(initialValue);
+export const useWebSocket = () => {
+  const [message, setMessage] = useState<WebSocketMessage<actionType>>(
+    {} as WebSocketMessage<actionType>,
+  );
 
-  const { webSocket, connectWebSocket } = useWebSocketStore();
+  const client = useWebSocketStore((state) => state.webSocket) as Socket;
 
-  if (!webSocket) {
-    connectWebSocket();
+  if (!client.isConnected()) {
+    client.connect();
   }
 
-  webSocket?.getMessage(setData);
+  client.onMessage(setMessage);
+  console.log(message);
 
-  return data;
+  return message;
 };

@@ -3,13 +3,9 @@ import { create } from 'zustand';
 import { GameSocket } from '@/services/websocket/GameSocket';
 
 interface WebsocketStore {
-  webSocket: GameSocket | null;
-  connectWebSocket: () => void;
+  webSocket: GameSocket;
 }
 
-export const useWebSocketStore = create<WebsocketStore>((set) => ({
-  webSocket: null,
-  connectWebSocket: () => {
-    set({ webSocket: new GameSocket() });
-  },
+export const useWebSocketStore = create<WebsocketStore>(() => ({
+  webSocket: new GameSocket(),
 }));
