@@ -4,17 +4,16 @@ import { useNavigate } from 'react-router-dom';
 import * as styles from './index.css';
 
 import InfoButton from '@/components/BasicContentFrame/WithButtons/InfoButton';
+import SettingButton from '@/components/BasicContentFrame/WithButtons/SettingButton/index';
 import SettingIconButton from '@/components/button/SettingIconButton/index';
 import SettingNavigationButton from '@/components/button/SettingNavigationButton/index';
-import SettingButton from '@/components/BasicContentFrame/WithButtons/SettingModal/index';
 
 interface Props {
   children: ReactNode;
   backButtonLabel?: string;
-  isGuest: boolean;
 }
 
-const BasicContentFrame = ({ children, backButtonLabel, isGuest }: Props) => {
+const BasicContentFrame = ({ children, backButtonLabel }: Props) => {
   const navigate = useNavigate();
 
   return (
@@ -26,7 +25,7 @@ const BasicContentFrame = ({ children, backButtonLabel, isGuest }: Props) => {
           alt='home'
           onClick={() => navigate('/home')}
         />
-        <SettingButton isGuest={isGuest} />
+        <SettingButton />
       </div>
       <main className={styles.main}>
         {backButtonLabel && (

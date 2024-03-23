@@ -47,6 +47,10 @@ const spaceProperties = defineProperties({
     marginRight: vars.space,
     marginTop: vars.space,
     marginBottom: vars.space,
+
+    gap: vars.space,
+    rowGap: vars.space,
+    columnGap: vars.space,
   },
   shorthands: {
     padding: ['paddingTop', 'paddingRight', 'paddingBottom', 'paddingLeft'],

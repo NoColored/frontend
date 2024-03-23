@@ -3,7 +3,6 @@ import { INFO_TYPE } from '@/components/BasicContentFrame/WithButtons/InfoButton
 export interface indexProps {
   onClose: () => void;
   onBack: () => void;
-  isGuest?: boolean;
 }
 
 export interface settingsProps {

@@ -13,6 +13,7 @@ import Lobby from '@/pages/play/lobby/index';
 import Mode from '@/pages/play/mode';
 import Ranking from '@/pages/ranking';
 import Result from '@/pages/result';
+import Settings from '@/pages/settings';
 
 import { getUser } from '@/services/auth';
 
@@ -76,6 +77,10 @@ const router = createBrowserRouter([
   {
     path: '/result',
     element: <Result />,
+  },
+  {
+    path: '/settings',
+    element: <Settings />,
   },
 ]);
 
