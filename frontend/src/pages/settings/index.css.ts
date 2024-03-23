@@ -1,8 +1,10 @@
 import { style } from '@vanilla-extract/css';
-import { sprinkles } from '@/styles/sprinkles.css';
+
+import { AUDIO_SIZE } from '@/pages/settings/constants';
+
 import { flexOptions } from '@/styles/common.css';
+import { sprinkles } from '@/styles/sprinkles.css';
 import { vars } from '@/styles/vars.css';
-import { AUDIO_SIZE } from '@/components/BasicContentFrame/WithButtons/SettingModal/constants';
 
 export const boxWrapper = style([flexOptions({ option: 'columnCenter' })]);
 

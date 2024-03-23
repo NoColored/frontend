@@ -1,12 +1,15 @@
-import * as styles from '@/components/BasicContentFrame/WithButtons/SettingModal/index.css';
-import SettingTextButton from '@/components/button/SettingTextButton';
 import { useState } from 'react';
-import { settingType } from '@/components/BasicContentFrame/WithButtons/SettingModal/types';
-import NicknameChange from '@/components/BasicContentFrame/WithButtons/SettingModal/NicknameChange';
-import PasswordChange from '@/components/BasicContentFrame/WithButtons/SettingModal/PasswordChange';
-import Logout from '@/components/BasicContentFrame/WithButtons/SettingModal/Logout';
-import SignOut from '@/components/BasicContentFrame/WithButtons/SettingModal/SignOut';
+
+import * as styles from './index.css';
+
+import SettingTextButton from '@/components/button/SettingTextButton';
 import Modal from '@/components/Modal';
+
+import Logout from '@/pages/settings/Logout';
+import NicknameChange from '@/pages/settings/NicknameChange';
+import PasswordChange from '@/pages/settings/PasswordChange';
+import SignOut from '@/pages/settings/SignOut';
+import type { settingType } from '@/pages/settings/types';
 
 const LoginUser = () => {
   const [view, setView] = useState<settingType>(null);
@@ -54,7 +57,7 @@ const LoginUser = () => {
         </SettingTextButton>
       </div>
       {view && (
-        <Modal isOpen={true} onClose={handleCloseModal}>
+        <Modal isOpen onClose={handleCloseModal}>
           {view === 'nickname' && <NicknameChange onClose={handleCloseModal} />}
           {view === 'logout' && <Logout onClose={handleCloseModal} />}
           {view === 'pwdchange' && (

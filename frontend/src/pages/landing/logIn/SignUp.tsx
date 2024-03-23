@@ -1,13 +1,17 @@
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+import { SignUpInfo } from '@/types/auth';
+
 import ColoredButton from '@/components/button/ColoredButton/index';
 import InputTextBox from '@/components/textbox/InputTextBox/index';
 
 import { buttonWrapper } from '@/pages/landing/index.css';
-import React, { useState } from 'react';
-import { SignUpInfo } from '@/types/auth';
-import { checkSignUpInfo } from '@/utils/useSignUp';
 import * as constants from '@/pages/landing/logIn/constants';
+
 import { getIdCheck, postGuestSignUp, postSignUp } from '@/services/auth';
-import { useNavigate } from 'react-router-dom';
+
+import { checkSignUpInfo } from '@/utils/useSignUp';
 
 interface Props {
   closeModal: () => void;
@@ -37,19 +41,16 @@ const SignUp = ({ closeModal, isGuest }: Props) => {
     const checkId = await getIdCheck(signUpInfo.id);
     if (checkId) {
       setErrorMessage(constants.SAME_ID_MESSAGE);
-      return;
     } else {
       const errorInfo = checkSignUpInfo(signUpInfo);
       if (errorInfo.length >= 1) {
         setErrorMessage(errorInfo);
+      } else if (isGuest) {
+        await postGuestSignUp(signUpInfo);
+        closeModal();
+        navigate('/home');
       } else {
-        if (isGuest) {
-          await postGuestSignUp(signUpInfo);
-          closeModal();
-          navigate('/home');
-        } else {
-          await postSignUp(signUpInfo);
-        }
+        await postSignUp(signUpInfo);
       }
     }
   };

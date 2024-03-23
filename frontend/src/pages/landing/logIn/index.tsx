@@ -82,7 +82,7 @@ const LogIn = () => {
       </div>
       <Modal>
         {isClicked ? (
-          <SignUp closeModal={closeModal} />
+          <SignUp closeModal={closeModal} isGuest={false} />
         ) : (
           <LogInFail closeModal={closeModal} />
         )}

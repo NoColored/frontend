@@ -1,6 +1,9 @@
-import * as styles from '@/components/BasicContentFrame/WithButtons/SettingModal/index.css';
+import * as styles from './index.css';
+
 import SettingTextButton from '@/components/button/SettingTextButton';
+
 import useModal from '@/hooks/useModal';
+
 import SignUp from '@/pages/landing/logIn/SignUp';
 
 const GuestUser = () => {
@@ -25,7 +28,7 @@ const GuestUser = () => {
         </SettingTextButton>
       </div>
       <Modal>
-        <SignUp closeModal={closeModal} />
+        <SignUp closeModal={closeModal} isGuest />
       </Modal>
     </div>
   );

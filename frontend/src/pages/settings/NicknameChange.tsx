@@ -1,8 +1,8 @@
-import InputTextBox from '@/components/textbox/InputTextBox';
-import ColoredButton from '@/components/button/ColoredButton';
-
 import * as styles from './index.css';
+
 import { settingsProps } from '@/components/BasicContentFrame/WithButtons/InfoButton/types';
+import ColoredButton from '@/components/button/ColoredButton';
+import InputTextBox from '@/components/textbox/InputTextBox';
 
 const NicknameChange = ({ onClose }: settingsProps) => {
   return (
