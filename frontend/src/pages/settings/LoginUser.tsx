@@ -23,39 +23,39 @@ const LoginUser = () => {
   };
 
   return (
-    <div className={styles.underButtonWrapper}>
-      <div>
-        <SettingTextButton
-          onClick={() => handleOpenModal('nickname')}
-          size='large'
-          colorStyle='black'
-        >
-          닉네임 변경
-        </SettingTextButton>
-        <SettingTextButton
-          onClick={() => handleOpenModal('logout')}
-          size='large'
-          colorStyle='red'
-        >
-          로그아웃
-        </SettingTextButton>
-      </div>
-      <div>
-        <SettingTextButton
-          onClick={() => handleOpenModal('pwdchange')}
-          size='large'
-          colorStyle='black'
-        >
-          비밀번호 변경
-        </SettingTextButton>
-        <SettingTextButton
-          onClick={() => handleOpenModal('signout')}
-          size='large'
-          colorStyle='gray'
-        >
-          회원 탈퇴
-        </SettingTextButton>
-      </div>
+    <div className={styles.settingButtonWrapper}>
+      <SettingTextButton
+        onClick={() => handleOpenModal('nickname')}
+        size='large'
+        colorStyle='black'
+      >
+        닉네임 변경
+      </SettingTextButton>
+
+      <SettingTextButton
+        onClick={() => handleOpenModal('pwdchange')}
+        size='large'
+        colorStyle='black'
+      >
+        비밀번호 변경
+      </SettingTextButton>
+
+      <SettingTextButton
+        onClick={() => handleOpenModal('logout')}
+        size='large'
+        colorStyle='red'
+      >
+        로그아웃
+      </SettingTextButton>
+
+      <SettingTextButton
+        onClick={() => handleOpenModal('signout')}
+        size='large'
+        colorStyle='gray'
+      >
+        회원 탈퇴
+      </SettingTextButton>
+
       {view && (
         <Modal isOpen onClose={handleCloseModal}>
           {view === 'nickname' && <NicknameChange onClose={handleCloseModal} />}

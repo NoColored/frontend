@@ -88,9 +88,14 @@ export const textXMargin = style([
   }),
 ]);
 
-export const underButtonWrapper = style([
-  flexOptions({ option: 'rowCenter' }),
+export const settingButtonWrapper = style([
   sprinkles({
+    display: 'grid',
+    columnGap: '2x',
     marginTop: '4x',
   }),
+  {
+    gridTemplateColumns: '1fr 1fr',
+    gridTemplateRows: '1fr 1fr',
+  },
 ]);
