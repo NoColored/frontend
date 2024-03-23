@@ -1,31 +1,39 @@
-import React, { SetStateAction } from 'react';
+import { Dispatch, SetStateAction } from 'react';
+
+import { WEBSOCKET_URL } from '@/services/constants';
 
 export class Socket {
   protected webSocket: WebSocket;
 
-  constructor(url: string, token: string | null) {
-    this.webSocket = new WebSocket(url);
+  constructor() {
+    this.webSocket = { readyState: 3 } as WebSocket;
+  }
+
+  connect() {
+    this.webSocket = new WebSocket(WEBSOCKET_URL);
 
     this.webSocket.onopen = () => {
-      this.webSocket.onmessage = (event) => {
-        const connection = event.data;
-        console.log(connection);
-        // TODO: token 관련 에러처리
-      };
-
-      const action = JSON.stringify({
-        action: 'token',
-        data: token,
-      });
-      console.log(action);
-      this.webSocket.send(action);
+      this.sendToken();
     };
   }
 
-  getMessage<T>(setStateAction: React.Dispatch<SetStateAction<T>>) {
+  isConnected() {
+    return this.webSocket.readyState === this.webSocket.OPEN;
+  }
+
+  onMessage(
+    setMessage: Dispatch<SetStateAction<WebSocketMessage<actionType>>>,
+  ) {
     this.webSocket.onmessage = (event) => {
-      const message = JSON.parse(event.data) as T;
-      setStateAction(message);
+      setMessage(JSON.parse(event.data));
     };
+  }
+
+  private sendToken() {
+    const token = JSON.stringify({
+      action: 'token',
+      data: localStorage.getItem('token'),
+    });
+    this.webSocket.send(token);
   }
 }
