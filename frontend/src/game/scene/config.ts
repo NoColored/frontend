@@ -3,8 +3,8 @@ import Sample from '@/game/scene/Sample';
 export const config: Phaser.Types.Core.GameConfig = {
   type: Phaser.AUTO,
   parent: 'game-container',
-  width: 800,
-  height: 600,
+  width: 594,
+  height: 342,
   physics: {
     default: 'arcade',
     arcade: {
