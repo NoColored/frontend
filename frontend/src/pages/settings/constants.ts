@@ -1,3 +1,5 @@
+import type { settingTextButtonColorType } from '@/components/button/types';
+
 export const SETTING_TYPE = [
   'nickname',
   'logout',
@@ -17,3 +19,10 @@ export const AUDIO_SIZE = {
     left: 30,
   },
 } as const;
+
+export const SETTING_TEXT_BUTTON_COLORS = [
+  'black',
+  'black',
+  'red',
+  'gray',
+] as settingTextButtonColorType[];

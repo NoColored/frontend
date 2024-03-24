@@ -1,6 +1,7 @@
-import * as styles from '@/components/BasicContentFrame/WithButtons/SettingModal/index.css';
-import ColoredButton from '@/components/button/ColoredButton';
+import * as styles from './index.css';
+
 import { settingsProps } from '@/components/BasicContentFrame/WithButtons/InfoButton/types';
+import ColoredButton from '@/components/button/ColoredButton';
 
 const Logout = ({ onClose }: settingsProps) => {
   return (

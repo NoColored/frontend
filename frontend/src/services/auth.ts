@@ -47,27 +47,40 @@ export const getIdCheck = async (id: string) => {
     const response = await api.get<boolean>(false, `/user/${id}`);
     return response.data; // 중복이 안되면 false. true면 오류
   } catch (e) {
-    console.log(e);
     return false; // null 보다는 예외 처리를 위해 false로 변경
   }
 };
 
 export const postGuestSignUp = async (signUpInfo: SignUpInfo) => {
   try {
-    await api.post<User, SignUpInfo>(true, '/user/guest', signUpInfo);
+    const response = await api.post<string, SignUpInfo>(
+      true,
+      '/user/guest',
+      signUpInfo,
+    );
+    return response.data;
   } catch (e) {
-    console.log(e);
+    return false;
   }
 };
 
 export const postSignUp = async (signUpInfo: SignUpInfo) => {
   try {
-    const tf = await api.post<User, SignUpInfo>(
-      false,
-      '/user/signup',
-      signUpInfo,
+    await api.post<string, SignUpInfo>(false, '/user/signup', signUpInfo);
+    return true;
+  } catch (e) {
+    return false;
+  }
+};
+
+export const patchNicknameChange = async (nickname: string) => {
+  try {
+    const response = await api.patch<boolean, string>(
+      true,
+      '/user/nickname',
+      nickname,
     );
-    console.log(tf);
+    console.log(response);
   } catch (e) {
     console.log(e);
   }
