@@ -1,8 +1,10 @@
 import { style } from '@vanilla-extract/css';
-import { sprinkles } from '@/styles/sprinkles.css';
+
+import { AUDIO_SIZE } from '@/pages/settings/constants';
+
 import { flexOptions } from '@/styles/common.css';
+import { sprinkles } from '@/styles/sprinkles.css';
 import { vars } from '@/styles/vars.css';
-import { AUDIO_SIZE } from '@/components/BasicContentFrame/WithButtons/SettingModal/constants';
 
 export const boxWrapper = style([flexOptions({ option: 'columnCenter' })]);
 
@@ -86,9 +88,14 @@ export const textXMargin = style([
   }),
 ]);
 
-export const underButtonWrapper = style([
-  flexOptions({ option: 'rowCenter' }),
+export const settingButtonWrapper = style([
   sprinkles({
+    display: 'grid',
+    columnGap: '2x',
     marginTop: '4x',
   }),
+  {
+    gridTemplateColumns: '1fr 1fr',
+    gridTemplateRows: '1fr 1fr',
+  },
 ]);

@@ -12,8 +12,16 @@ import type { tierType } from '@/components/imagebox/types';
 import Error from '@/pages/error';
 import UserDashboard from '@/pages/home/UserDashboard';
 
+import { useUserStateStore } from '@/states/user';
+
 const Home = () => {
   const user = useLoaderData() as User;
+  console.log(user);
+
+  const setGuest = useUserStateStore((state) => state.setGuest);
+  if (user.guest) {
+    setGuest();
+  }
 
   const navigate = useNavigate();
 
@@ -78,7 +86,7 @@ const Home = () => {
           />
         </div>
       </div>
-      {user.guest && <SignupBanner />}
+      {user.guest && <SignupBanner isGuest={user.guest} />}
     </BasicContentFrame>
   );
 };

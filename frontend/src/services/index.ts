@@ -1,8 +1,10 @@
 import axios, { AxiosResponse } from 'axios';
 
+import { API_URL } from '@/services/constants';
+
 const $axios = (requiredToken: boolean) => {
   const client = axios.create({
-    baseURL: 'http://nocolored.store/api',
+    baseURL: API_URL,
     headers: {
       'Content-Type': 'application/json',
     },
