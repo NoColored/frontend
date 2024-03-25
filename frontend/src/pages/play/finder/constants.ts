@@ -1,5 +1,7 @@
 import { calc } from '@vanilla-extract/css-utils';
 
+import type { Map } from './types';
+
 export const FINDER_WRAPPER_HEIGHT = calc.subtract(
   calc.subtract(calc.subtract('100%', '48px'), '16px'),
   '32px',
@@ -24,18 +26,19 @@ export const FAIL_MESSAGE_MODAL = {
   },
 } as const;
 
-export const MAPS = [
+export const MAPS: Map[] = [
   {
-    mapType: 'basic',
+    mapId: 0,
     imgSrc: '/images/map/background/basicmap.png',
     mapName: '베이직',
   },
   {
-    mapType: 'food',
+    mapId: 1,
     imgSrc: '/images/map/background/foodmap.png',
     mapName: '푸디',
   },
 ] as const;
 
 export const MAPS_WRAPPER_HEIGHT = '110px';
+
 export const MAP_ITEM_HEIGHT = '100px';

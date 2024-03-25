@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import * as styles from './index.css';
 import SearchLobby from './Modal/SearchLobby/index';
 
-import type { RoomListInfo } from '@/types/play';
+import type { RoomListItem } from '@/types/play';
 
 import BasicContentFrame from '@/components/BasicContentFrame/WithButtons';
 import ColoredButton from '@/components/button/ColoredButton';
@@ -15,77 +15,72 @@ import CreateLobby from '@/pages/play/finder/Modal/CreateLobby';
 import { getRoomList } from '@/services/finder';
 
 const Finder = () => {
-  const [roomList, setRoomList] = useState<RoomListInfo>();
-
-  const list = async () => {
-    const data = await getRoomList();
-    if (data) {
-      setRoomList(data);
-      console.log(roomList);
-    } else {
-      console.log('방 정보를 가져오는 데 실패했습니다.');
-    }
-  };
-
-  list();
-
   const exampleData = [
     {
-      lobbyTitle: '로비이름최대아글',
-      playerCount: 4,
-      imgSrc: '/images/map/background/foodmap.png',
+      roomTitle: '로비이름최대아글',
+      userNumber: 4,
+      mapId: 0,
+      roomCode: '',
     },
     {
-      lobbyTitle: '로비이름최대아홉글',
-      playerCount: 1,
-      imgSrc: '/images/map/background/foodmap.png',
+      roomTitle: '로비이름최대아홉글',
+      userNumber: 1,
+      mapId: 0,
+      roomCode: '',
     },
     {
-      lobbyTitle: '로비이름최',
-      playerCount: 1,
-      imgSrc: '/images/map/background/foodmap.png',
+      roomTitle: '로비이름최',
+      userNumber: 1,
+      mapId: 1,
+      roomCode: '',
     },
     {
-      lobbyTitle: '로비이름최대아',
-      playerCount: 2,
-      imgSrc: '/images/map/background/foodmap.png',
+      roomTitle: '로비이름최대아',
+      userNumber: 2,
+      mapId: 1,
+      roomCode: '',
     },
     {
-      lobbyTitle: '로비이름아홉글',
-      playerCount: 1,
-      imgSrc: '/images/map/background/foodmap.png',
+      roomTitle: '로비이름아홉글',
+      userNumber: 1,
+      mapId: 0,
+      roomCode: '',
     },
     {
-      lobbyTitle: '로비이대아홉글',
-      playerCount: 1,
-      imgSrc: '/images/map/background/foodmap.png',
+      roomTitle: '로비이대아홉글',
+      userNumber: 1,
+      mapId: 1,
+      roomCode: '',
     },
   ];
+  const [roomList, setRoomList] = useState<RoomListItem[]>(exampleData);
 
   const [index, setIndex] = useState<number>(1);
 
-  // 최대페이지 값 설정하기
   const [maxIndex, setMaxIndex] = useState<number>(1);
 
-  const [data] = useState<
-    {
-      lobbyTitle: string;
-      playerCount: number;
-      imgSrc: string;
-    }[]
-  >(exampleData); // [
   const addIndex = () => {
     setIndex(index + 1);
   };
+
   const subIndex = () => {
     setIndex(index - 1);
   };
 
   useEffect(() => {
     setMaxIndex(1);
-    // 이부분은 서버에서 데이터 받아오는 부분으로 대체해야함
-    // 구조는 짜기 나름
-  }, []);
+    const list = async () => {
+      const data = await getRoomList(0);
+      if (data) {
+        setRoomList(data);
+        console.log(roomList);
+      } else {
+        console.log('방 정보를 가져오는 데 실패했습니다.');
+      }
+    };
+
+    list();
+  }, [roomList]);
 
   return (
     <BasicContentFrame>
@@ -103,13 +98,13 @@ const Finder = () => {
           />
         </div>
         <div className={styles.partyListWrapper}>
-          {roomList?.map((item) => (
+          {roomList.map((item) => (
             <LobbyItem
               // key도 바꿔줘야됨
               key={`${item.roomTitle}-${index}`}
-              lobbyTitle={item.roomTitle}
-              playerCount={item.userNumber}
-              imgSrc={item.mapId}
+              roomTitle={item.roomTitle}
+              userNumber={item.userNumber}
+              mapId={item.mapId}
             />
           ))}
         </div>
@@ -117,7 +112,7 @@ const Finder = () => {
           <SettingTextButton
             size='xsmall'
             colorStyle={index === 1 ? 'gray' : 'black'}
-            onClick={index === 1 ? () => {} : addIndex}
+            onClick={index === 1 ? () => {} : subIndex}
           >
             {`<`}
           </SettingTextButton>
@@ -131,7 +126,7 @@ const Finder = () => {
           <SettingTextButton
             size='xsmall'
             colorStyle={index === maxIndex ? 'gray' : 'black'}
-            onClick={index === maxIndex ? () => {} : subIndex}
+            onClick={index === maxIndex ? () => {} : addIndex}
           >
             {`>`}
           </SettingTextButton>
