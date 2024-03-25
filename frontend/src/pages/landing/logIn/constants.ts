@@ -10,3 +10,13 @@ export const BLANK_MESSAGE = '당신의 역사가 비어있네요? 수상합니�
 export const NOT_SAME_PASSWORD_MESSAGE = '암호가 일치하지 않습니다.';
 
 export const INVALID_INPUT_MESSAGE = '당신의 정보가 너무 짧거나, 너무 길거나.';
+
+export const INVALID_NICKNAME_MESSAGE = 'Origin 께서 허락하지 못한 이름입니다.';
+
+export const INVALID_PASSWORD_LENGTH_MESSAGE =
+  '비밀번호는 숫자 6자리여야 합니다.';
+
+export const INVALID_PASSWORD_MESSAGE = '경고! 현재 PASSWORD와 다릅니다!!';
+
+export const INVALID_SIGN_OUT_MESSAGE =
+  'Origin 의 허락 없이 삭제는 불가능합니다.';

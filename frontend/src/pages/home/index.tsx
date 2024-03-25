@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useLoaderData, useNavigate } from 'react-router-dom';
 
 import * as styles from './index.css';
@@ -17,11 +18,13 @@ import { useUserStateStore } from '@/states/user';
 const Home = () => {
   const user = useLoaderData() as User;
   console.log(user);
-
   const setGuest = useUserStateStore((state) => state.setGuest);
-  if (user.guest) {
-    setGuest();
-  }
+
+  useEffect(() => {
+    if (user?.guest) {
+      setGuest();
+    }
+  }, [user?.guest, setGuest]);
 
   const navigate = useNavigate();
 
@@ -43,7 +46,7 @@ const Home = () => {
       <div className={styles.fullWrapper}>
         <div className={styles.TopContentsWrapper}>
           <UserDashboard
-            nickname={user.nickName}
+            nickname={user.nickname}
             level={user.level}
             cp={user.exp}
             maxCp={user.exp}

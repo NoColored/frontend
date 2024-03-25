@@ -1,6 +1,13 @@
-import type { LogInInfo, SignUpInfo, User } from '@/types/auth';
+import {
+  LogInInfo,
+  NicknameInfo,
+  PasswordInfo,
+  SignUpInfo,
+  User,
+} from '@/types/auth';
 
 import { api } from '@/services/index';
+import { useUserStateStore } from '@/states/user';
 
 export const getGuestLogin = async () => {
   try {
@@ -44,24 +51,22 @@ export const getUser = async () => {
 
 export const getIdCheck = async (id: string) => {
   try {
-    const response = await api.get<boolean>(false, `/user/${id}`);
+    const response = await api.get<boolean>(false, `/user/dup/${id}`);
     return response.data; // 중복이 안되면 false. true면 오류
   } catch (e) {
-    return false; // null 보다는 예외 처리를 위해 false로 변경
+    return false;
   }
 };
 
 export const postGuestSignUp = async (signUpInfo: SignUpInfo) => {
-  try {
-    const response = await api.post<string, SignUpInfo>(
-      true,
-      '/user/guest',
-      signUpInfo,
-    );
-    return response.data;
-  } catch (e) {
-    return false;
-  }
+  await api
+    .post<string, SignUpInfo>(true, '/user/guest', signUpInfo)
+    .then(() => {
+      useUserStateStore.getState().setMember(); // 회원 상태로 변경
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 };
 
 export const postSignUp = async (signUpInfo: SignUpInfo) => {
@@ -75,13 +80,63 @@ export const postSignUp = async (signUpInfo: SignUpInfo) => {
 
 export const patchNicknameChange = async (nickname: string) => {
   try {
-    const response = await api.patch<boolean, string>(
+    const changeNickname: NicknameInfo = {
+      nickname,
+    };
+
+    const response = await api.patch<string, NicknameInfo>(
       true,
       '/user/nickname',
-      nickname,
+      changeNickname,
     );
     console.log(response);
   } catch (e) {
     console.log(e);
   }
+};
+
+export const patchPasswordChange = async (
+  prePassword: string,
+  newPassword: string,
+) => {
+  try {
+    const changePassword: PasswordInfo = {
+      prePassword,
+      newPassword,
+    };
+
+    await api.patch<string, PasswordInfo>(
+      true,
+      '/user/password',
+      changePassword,
+    );
+    return true;
+  } catch (e) {
+    return false;
+  }
+};
+
+export const postConfirmPassword = async (password: string) => {
+  try {
+    const response = await api.post<boolean, { password: string }>(
+      true,
+      '/user/confirm',
+      { password },
+    );
+    console.log(response.data);
+    return response.data;
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+export const deleteUserInfo = async () => {
+  await api
+    .delete<string>(true, '/user')
+    .then(() => {
+      window.location.href = '/';
+    })
+    .catch((e) => {
+      console.log(e);
+    });
 };

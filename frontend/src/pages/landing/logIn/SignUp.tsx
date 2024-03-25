@@ -41,17 +41,21 @@ const SignUp = ({ closeModal, isGuest }: Props) => {
     const checkId = await getIdCheck(signUpInfo.id);
     if (checkId) {
       setErrorMessage(constants.SAME_ID_MESSAGE);
+      return;
+    }
+    const errorInfo = checkSignUpInfo(signUpInfo);
+    if (errorInfo.length >= 1) {
+      setErrorMessage(errorInfo);
+      return;
+    }
+
+    if (isGuest) {
+      await postGuestSignUp(signUpInfo);
+      closeModal();
+      navigate('/home');
     } else {
-      const errorInfo = checkSignUpInfo(signUpInfo);
-      if (errorInfo.length >= 1) {
-        setErrorMessage(errorInfo);
-      } else if (isGuest) {
-        await postGuestSignUp(signUpInfo);
-        closeModal();
-        navigate('/home');
-      } else {
-        await postSignUp(signUpInfo);
-      }
+      await postSignUp(signUpInfo);
+      closeModal();
     }
   };
 

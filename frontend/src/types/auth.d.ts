@@ -3,7 +3,7 @@ export interface User {
   expRequire: number;
   guest: boolean;
   level: number;
-  nickName: string;
+  nickname: string;
   rating: number;
   skin: string;
   tier: string;
@@ -22,4 +22,13 @@ export interface SignUpInfo {
   password: string;
   passwordConfirm: string;
   nickname: string;
+}
+
+export interface NicknameInfo {
+  nickname: string;
+}
+
+export interface PasswordInfo {
+  prePassword: string;
+  newPassword: string;
 }
