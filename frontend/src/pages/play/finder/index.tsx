@@ -17,7 +17,6 @@ import { getRoomList } from '@/services/finder';
 const Finder = () => {
   const [roomList, setRoomList] = useState<RoomListInfo>();
 
-  // 이거 데이터 제대로 안 받아와져서 곤란티비임. 내일 백엔드랑 이야기 해보기. {offest}에 대해
   const list = async () => {
     const data = await getRoomList();
     if (data) {
@@ -104,13 +103,13 @@ const Finder = () => {
           />
         </div>
         <div className={styles.partyListWrapper}>
-          {data.map((item) => (
+          {roomList?.map((item) => (
             <LobbyItem
               // key도 바꿔줘야됨
-              key={`${item.lobbyTitle}-${index}`}
-              lobbyTitle={item.lobbyTitle}
-              playerCount={item.playerCount}
-              imgSrc={item.imgSrc}
+              key={`${item.roomTitle}-${index}`}
+              lobbyTitle={item.roomTitle}
+              playerCount={item.userNumber}
+              imgSrc={item.mapId}
             />
           ))}
         </div>
