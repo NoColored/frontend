@@ -1,15 +1,17 @@
-import { createBrowserRouter } from 'react-router-dom';
+import { createBrowserRouter, Navigate } from 'react-router-dom';
+
+import { ROUTE } from './constants';
 
 import Error from '@/pages/error';
-import Example from '@/pages/example/index';
-import Home from '@/pages/home/index';
-import Landing from '@/pages/landing/index';
+import Example from '@/pages/example';
+import Home from '@/pages/home';
+import Landing from '@/pages/landing';
 import LandingLayout from '@/pages/landing/layout';
-import LogIn from '@/pages/landing/logIn/index';
-import Loading from '@/pages/loading/index';
+import LogIn from '@/pages/landing/logIn';
+import Loading from '@/pages/loading';
 import Finder from '@/pages/play/finder';
 import Game from '@/pages/play/game';
-import Lobby from '@/pages/play/lobby/index';
+import Lobby from '@/pages/play/lobby';
 import Mode from '@/pages/play/mode';
 import Ranking from '@/pages/ranking';
 import Result from '@/pages/result';
@@ -63,7 +65,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/*',
-    element: <Error />,
+    element: <Navigate to={`${ROUTE.error}/404`} replace />,
   },
   {
     path: '/ranking',
@@ -81,6 +83,10 @@ const router = createBrowserRouter([
   {
     path: '/settings',
     element: <Settings />,
+  },
+  {
+    path: '/error/:code',
+    element: <Error />,
   },
 ]);
 
