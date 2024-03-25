@@ -13,20 +13,19 @@ import * as styles from '@/pages/play/finder/Modal/index.css';
 import { postCreateRoom } from '@/services/finder';
 
 interface Props {
-  map: string; // TODO: mapType으로 변경
+  mapType: string;
   closeModal: () => void;
 }
 
-const ModalContent = ({ map, closeModal }: Props) => {
-  const [isSelected, setIsSelected] = useState(map);
+const ModalContent = ({ mapType, closeModal }: Props) => {
+  const navigate = useNavigate();
+  const [isSelected, setIsSelected] = useState(mapType);
   const [createRoomInfo, setCreateRoomInfo] = useState<RoomRequest>({
     roomTitle: '',
     roomPassword: '',
     mapId: 0,
   });
-  const navigate = useNavigate();
 
-  // map 을 어떻게 설정해서 api 요청에 담아서 보낼지 생각해봐야겠다.
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     setCreateRoomInfo((info) => ({

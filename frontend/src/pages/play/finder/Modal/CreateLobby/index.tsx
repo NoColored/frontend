@@ -16,7 +16,7 @@ const CreateLobby = () => {
         onClick={openModal}
       />
       <Modal>
-        <ModalContent map='basic' closeModal={closeModal} />
+        <ModalContent mapType='basic' closeModal={closeModal} />
       </Modal>
     </>
   );
