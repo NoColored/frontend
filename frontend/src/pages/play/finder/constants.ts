@@ -26,11 +26,13 @@ export const FAIL_MESSAGE_MODAL = {
 
 export const MAPS = [
   {
+    mapId: 0,
     mapType: 'basic',
     imgSrc: '/images/map/background/basicmap.png',
     mapName: '베이직',
   },
   {
+    mapId: 1,
     mapType: 'food',
     imgSrc: '/images/map/background/foodmap.png',
     mapName: '푸디',
