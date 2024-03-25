@@ -11,19 +11,26 @@ import SettingNavigationButton from '@/components/button/SettingNavigationButton
 interface Props {
   children: ReactNode;
   backButtonLabel?: string;
-  onBeforeBackButtonClick?: () => void;
+  onBeforeButtonClick?: () => void;
 }
 
 const BasicContentFrame = ({
   children,
   backButtonLabel,
-  onBeforeBackButtonClick,
+  onBeforeButtonClick,
 }: Props) => {
   const navigate = useNavigate();
 
+  const handleHomeButtonClick = () => {
+    if (onBeforeButtonClick) {
+      onBeforeButtonClick();
+    }
+    navigate('/home', { replace: true });
+  };
+
   const handleBackButtonClick = () => {
-    if (onBeforeBackButtonClick) {
-      onBeforeBackButtonClick();
+    if (onBeforeButtonClick) {
+      onBeforeButtonClick();
     }
     navigate(-1);
   };
@@ -35,7 +42,7 @@ const BasicContentFrame = ({
         <SettingIconButton
           src='/images/ui/icon/button/icon-button-home-h50w50.png'
           alt='home'
-          onClick={handleBackButtonClick}
+          onClick={handleHomeButtonClick}
         />
         <SettingButton />
       </div>
@@ -44,7 +51,7 @@ const BasicContentFrame = ({
           <div className={styles.navigation}>
             <SettingNavigationButton
               label={backButtonLabel}
-              onClick={() => navigate(-1)}
+              onClick={handleBackButtonClick}
               position='leftTop'
             />
           </div>
