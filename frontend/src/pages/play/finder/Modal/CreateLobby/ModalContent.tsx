@@ -13,13 +13,13 @@ import * as styles from '@/pages/play/finder/Modal/index.css';
 import { postCreateRoom } from '@/services/finder';
 
 interface Props {
-  mapType: string;
+  defaultMapId: number;
   closeModal: () => void;
 }
 
-const ModalContent = ({ mapType, closeModal }: Props) => {
+const ModalContent = ({ defaultMapId, closeModal }: Props) => {
   const navigate = useNavigate();
-  const [isSelected, setIsSelected] = useState(mapType);
+  const [isSelected, setIsSelected] = useState(defaultMapId);
   const [createRoomInfo, setCreateRoomInfo] = useState<RoomRequest>({
     roomTitle: '',
     roomPassword: '',
@@ -35,16 +35,10 @@ const ModalContent = ({ mapType, closeModal }: Props) => {
   };
 
   const handleClickCreateButton = async () => {
-    const selectedMap = constants.MAPS.find(
-      (item) => item.mapType === isSelected,
-    );
-
-    if (selectedMap)
-      setCreateRoomInfo((info) => ({
-        ...info,
-        mapId: selectedMap.mapId,
-      }));
-    else console.log('맵 정보를 불러오는 데 실패했습니다.');
+    setCreateRoomInfo((info) => ({
+      ...info,
+      mapId: isSelected,
+    }));
 
     const data = await postCreateRoom(createRoomInfo);
     if (data) {
@@ -84,12 +78,12 @@ const ModalContent = ({ mapType, closeModal }: Props) => {
         <legend className={styles.createLobbyText}>맵</legend>
         {constants.MAPS.map((item) => (
           <MapItem
-            key={item.imgSrc}
+            key={item.mapId}
             mapName={item.mapName}
             imgSrc={item.imgSrc}
-            isSelected={isSelected === item.mapType}
+            isSelected={isSelected === item.mapId}
             onClick={() => {
-              setIsSelected(item.mapType);
+              setIsSelected(item.mapId);
             }}
           />
         ))}
