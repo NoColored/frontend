@@ -54,7 +54,7 @@ const ModalContent = ({ defaultMapId, closeModal }: Props) => {
           placeholder='몇글자가능할까요?'
           size='widthFull'
           type='text'
-          value={createRoomInfo?.roomTitle}
+          value={createRoomInfo.roomTitle}
           onChange={handleChange}
         />
 
@@ -63,7 +63,7 @@ const ModalContent = ({ defaultMapId, closeModal }: Props) => {
           placeholder='숫자4자리'
           size='widthFull'
           type='text'
-          value={createRoomInfo?.roomPassword}
+          value={createRoomInfo.roomPassword}
           onChange={handleChange}
         />
       </div>
