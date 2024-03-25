@@ -85,7 +85,7 @@ const router = createBrowserRouter([
     element: <Settings />,
   },
   {
-    path: '/error/:code',
+    path: `${ROUTE.error}/:code`,
     element: <Error />,
   },
 ]);
