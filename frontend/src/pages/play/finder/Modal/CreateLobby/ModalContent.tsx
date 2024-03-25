@@ -48,7 +48,8 @@ const ModalContent = ({ map, closeModal }: Props) => {
     else console.log('맵 정보를 불러오는 데 실패했습니다.');
 
     const data = await postCreateRoom(createRoomInfo);
-    navigate('/lobby', { state: data });
+    const uuid = data?.roomUuid;
+    navigate(`/play/lobby/${uuid}`, { state: data });
     console.log(data);
     closeModal();
   };

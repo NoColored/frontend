@@ -21,7 +21,7 @@ export interface RoomInfo {
   readyState: boolean[];
   players: {
     userCode: string;
-    nickname: string;
+    nickName: string;
     tier: string;
     skin: string;
     title: string;
