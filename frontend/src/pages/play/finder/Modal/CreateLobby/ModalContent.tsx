@@ -1,4 +1,6 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
+
+import type { RoomRequest } from '@/types/play';
 
 import ColoredButton from '@/components/button/ColoredButton';
 import InputTextBox from '@/components/textbox/InputTextBox';
@@ -14,6 +16,20 @@ interface Props {
 
 const ModalContent = ({ map, closeModal }: Props) => {
   const [isSelected, setIsSelected] = useState(map);
+  const [roomInfo, setRoomInfo] = useState<RoomRequest>({
+    roomTitle: '',
+    roomPassword: '',
+    mapId: 0,
+  });
+
+  // map 을 어떻게 설정해서 api 요청에 담아서 보낼지 생각해봐야겠다.
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    setRoomInfo((info) => ({
+      ...info,
+      [name]: value,
+    }));
+  };
 
   return (
     <>
@@ -21,17 +37,21 @@ const ModalContent = ({ map, closeModal }: Props) => {
         <div className={styles.createLobbyText}>방 제목</div>
         <div className={styles.createLobbyText}>비밀번호</div>
         <InputTextBox
+          name='roomTitle'
           placeholder='몇글자가능할까요?'
           size='widthFull'
           type='text'
-          onChange={() => {}}
+          value={roomInfo?.roomTitle}
+          onChange={handleChange}
         />
 
         <InputTextBox
+          name='roomPassword'
           placeholder='숫자4자리'
           size='widthFull'
           type='text'
-          onChange={() => {}}
+          value={roomInfo?.roomPassword}
+          onChange={handleChange}
         />
       </div>
 

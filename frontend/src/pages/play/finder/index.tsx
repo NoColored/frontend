@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react';
 import * as styles from './index.css';
 import SearchLobby from './Modal/SearchLobby/index';
 
+import type { RoomListInfo } from '@/types/play';
+
 import BasicContentFrame from '@/components/BasicContentFrame/WithButtons';
 import ColoredButton from '@/components/button/ColoredButton';
 import SettingTextButton from '@/components/button/SettingTextButton';
@@ -10,7 +12,24 @@ import SettingTextButton from '@/components/button/SettingTextButton';
 import LobbyItem from '@/pages/play/finder/LobbyItem';
 import CreateLobby from '@/pages/play/finder/Modal/CreateLobby';
 
+import { getRoomList } from '@/services/finder';
+
 const Finder = () => {
+  const [roomList, setRoomList] = useState<RoomListInfo>();
+
+  // 이거 데이터 제대로 안 받아와져서 곤란티비임. 내일 백엔드랑 이야기 해보기. {offest}에 대해
+  const list = async () => {
+    const data = await getRoomList();
+    if (data) {
+      setRoomList(data);
+      console.log(roomList);
+    } else {
+      console.log('방 정보를 가져오는 데 실패했습니다.');
+    }
+  };
+
+  list();
+
   const exampleData = [
     {
       lobbyTitle: '로비이름최대아글',
