@@ -1,16 +1,29 @@
-import type { User } from '@/types/auth';
-
-export interface RoomInfo {
+export interface RoomRequest {
   roomTitle: string;
-  roomCode: string;
   roomPassword: string;
-  masterIndex?: number;
   mapId: number;
-  userNumber?: number;
 }
 
-export interface PlayerInfo {
-  userIndex: number;
-  player?: User;
-  isReady: boolean;
+export interface RoomListInfo {
+  roomTitle: string;
+  roomCode: string;
+  mapId: number;
+  userNumber: number;
+}
+
+export interface RoomInfo {
+  roomUuid: string;
+  roomTitle: string;
+  roomCodeString: string;
+  roomPassword: string;
+  masterIndex: number;
+  mapId: number;
+  readyState: boolean[];
+  players: {
+    userCode: string;
+    nickname: string;
+    tier: string;
+    skin: string;
+    title: string;
+  }[];
 }
