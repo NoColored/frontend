@@ -17,7 +17,7 @@ const SettingButton = () => {
         <div className={styles.text}>설정 변경</div>
       </button>
       <Modal>
-        <ModalContent map='food' closeModal={closeModal} />
+        <ModalContent mapType='food' closeModal={closeModal} />
       </Modal>
     </>
   );
