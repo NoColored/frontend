@@ -4,7 +4,7 @@ import { api } from '@/services/index';
 
 export const getRoomList = async () => {
   try {
-    const response = await api.get<RoomListInfo>(true, 'play/friendly/`{1}`');
+    const response = await api.get<RoomListInfo>(true, `play/friendly/list/{}`);
     return response.data;
   } catch (error) {
     console.log(error);
