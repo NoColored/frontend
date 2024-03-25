@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import type { RoomRequest } from '@/types/play';
+import type { CreateRoom } from '@/types/play';
 
 import ColoredButton from '@/components/button/ColoredButton';
 import InputTextBox from '@/components/textbox/InputTextBox';
@@ -19,11 +19,10 @@ interface Props {
 
 const ModalContent = ({ defaultMapId, closeModal }: Props) => {
   const navigate = useNavigate();
-  const [isSelected, setIsSelected] = useState(defaultMapId);
-  const [createRoomInfo, setCreateRoomInfo] = useState<RoomRequest>({
+  const [createRoomInfo, setCreateRoomInfo] = useState<CreateRoom>({
     roomTitle: '',
     roomPassword: '',
-    mapId: 0,
+    mapId: defaultMapId,
   });
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -35,15 +34,10 @@ const ModalContent = ({ defaultMapId, closeModal }: Props) => {
   };
 
   const handleClickCreateButton = async () => {
-    setCreateRoomInfo((info) => ({
-      ...info,
-      mapId: isSelected,
-    }));
-
-    const data = await postCreateRoom(createRoomInfo);
-    if (data) {
-      navigate(`/play/lobby/${data.roomUuid}`, { state: data });
-      console.log(data);
+    const lobbyInfo = await postCreateRoom(createRoomInfo);
+    if (lobbyInfo) {
+      navigate(`/play/lobby/${lobbyInfo.roomUuid}`, { state: lobbyInfo });
+      console.log(lobbyInfo);
       closeModal();
     } else {
       console.log('생성된 방 정보를 가져오는 데 실패했습니다.');
@@ -81,9 +75,12 @@ const ModalContent = ({ defaultMapId, closeModal }: Props) => {
             key={item.mapId}
             mapName={item.mapName}
             imgSrc={item.imgSrc}
-            isSelected={isSelected === item.mapId}
+            isSelected={item.mapId === createRoomInfo.mapId}
             onClick={() => {
-              setIsSelected(item.mapId);
+              setCreateRoomInfo((prev) => ({
+                ...prev,
+                mapId: item.mapId,
+              }));
             }}
           />
         ))}

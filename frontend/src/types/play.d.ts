@@ -1,29 +1,32 @@
-export interface RoomRequest {
+interface Player {
+  userCode: string;
+  nickName: string;
+  tier: string;
+  skin: string;
+  title: string;
+}
+
+interface Room {
   roomTitle: string;
-  roomPassword: string;
   mapId: number;
 }
 
-export interface RoomListInfo {
-  roomTitle: string;
+export interface CreateRoom extends Room {
+  roomPassword: string;
+}
+
+interface CodeRoom extends Room {
   roomCode: string;
-  mapId: number;
+  roomPassword?: string;
+}
+
+interface RoomListItem extends CodeRoom {
   userNumber: number;
 }
 
-export interface RoomInfo {
+interface Lobby extends CodeRoom {
   roomUuid: string;
-  roomTitle: string;
-  roomCodeString: string;
-  roomPassword: string;
   masterIndex: number;
-  mapId: number;
   readyState: boolean[];
-  players: {
-    userCode: string;
-    nickName: string;
-    tier: string;
-    skin: string;
-    title: string;
-  }[];
+  players: Player[];
 }
