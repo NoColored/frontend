@@ -13,6 +13,9 @@ const Error = () => {
   const code = useParams().code as errorCode;
 
   const goBack = () => {
+    if (code === '500') {
+      navigate(-1);
+    }
     navigate('/');
   };
 
