@@ -1,9 +1,11 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { Socket } from '@/services/websocket/Socket';
 
 import { useWebSocketStore } from '@/states/websocket';
+
+import { ROUTE } from '@/router/constants';
 
 export const useWebSocket = () => {
   const navigate = useNavigate();
@@ -15,12 +17,16 @@ export const useWebSocket = () => {
   if (!client.isConnected()) {
     client.connect();
   }
-  client.onMessage(setMessage);
-  console.log(message);
 
-  if (message.action === 'invalidToken') {
-    navigate('/error/401', { replace: true });
-  }
+  useEffect(() => {
+    client.onMessage(setMessage);
+  }, []);
+
+  useEffect(() => {
+    if (message.action === 'invalidToken') {
+      navigate(`${ROUTE.error}/401`, { replace: true });
+    }
+  }, [message]);
 
   return message;
 };
