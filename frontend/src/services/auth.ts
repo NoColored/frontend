@@ -32,8 +32,8 @@ export const postMemberLogin = async (logInInfo: LogInInfo) => {
       localStorage.setItem('token', response.data);
       return true;
     }
-    if (response.status === 406) {
-      redirect('/error/406');
+    if (response.status === 401) {
+      redirect('/error/401');
       return false;
     }
     console.log(response.data);
