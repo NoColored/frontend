@@ -1,4 +1,5 @@
 export const ROUTE = {
   error: '/error',
-  collection: 'collection',
+  finder: '/play/finder',
+  game: '/play/game',
 };

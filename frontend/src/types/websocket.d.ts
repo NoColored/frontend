@@ -4,8 +4,9 @@ interface ActionDataTypeMap {
   invalidToken: null;
   loginFailed: null;
 
-  // game
+  // matching
   matching: string;
+  matchingCancel: null;
 }
 
 type actionType = keyof ActionDataTypeMap;

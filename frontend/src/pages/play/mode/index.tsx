@@ -1,12 +1,19 @@
+import { useNavigate } from 'react-router-dom';
+
 import * as constants from './constants';
 import * as styles from './index.css';
 
 import BasicContentFrame from '@/components/BasicContentFrame/WithButtons';
 import ColoredIconButton from '@/components/button/ColoredIconButton';
 
+import MatchingButton from '@/pages/play/mode/MatchingButton';
 import RankingItemBox from '@/pages/ranking/RankingItemBox';
 
+import { ROUTE } from '@/router/constants';
+
 const Mode = () => {
+  const navigate = useNavigate();
+
   return (
     <BasicContentFrame backButtonLabel='뒤로'>
       <div className={styles.wrapper}>
@@ -15,15 +22,11 @@ const Mode = () => {
           size='xlarge'
           text={constants.FRIENDLY.label}
           color={constants.FRIENDLY.color}
-          onClick={() => {}}
+          onClick={() => {
+            navigate(`${ROUTE.finder}`);
+          }}
         />
-        <ColoredIconButton
-          icon={constants.RANKING.icon}
-          size='xlarge'
-          text={constants.RANKING.label}
-          color={constants.RANKING.color}
-          onClick={() => {}}
-        />
+        <MatchingButton />
         <div className={styles.myRank}>
           <RankingItemBox
             rank={10000}
