@@ -1,4 +1,16 @@
 export const ROUTE = {
-  error: '/error',
+  main: '/',
+  login: 'login',
+  loading: 'loading',
+  play: '/play',
+  finder: '/play/finder',
+  game: '/play/game',
+  lobby: '/play/lobby',
+  ranking: 'ranking',
   collection: 'collection',
+  home: '/home',
+  result: 'result',
+  setting: 'settings',
+  example: 'example',
+  error: '/error',
 };

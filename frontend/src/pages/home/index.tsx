@@ -17,14 +17,12 @@ import { useUserStateStore } from '@/states/user';
 
 const Home = () => {
   const user = useLoaderData() as User;
+  const { setUser } = useUserStateStore();
   console.log(user);
-  const setGuest = useUserStateStore((state) => state.setGuest);
 
   useEffect(() => {
-    if (user.guest) {
-      setGuest();
-    }
-  }, [user.guest, setGuest]);
+    setUser(user);
+  }, [user]);
 
   const navigate = useNavigate();
 

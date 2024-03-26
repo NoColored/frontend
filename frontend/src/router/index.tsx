@@ -22,7 +22,7 @@ import Collection from '@/pages/collection';
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: `${ROUTE.main}`,
     element: <LandingLayout />,
     children: [
       {
@@ -30,38 +30,38 @@ const router = createBrowserRouter([
         element: <Landing />,
       },
       {
-        path: 'login',
+        path: `${ROUTE.login}`,
         element: <LogIn />,
       },
     ],
   },
   {
-    path: '/loading',
+    path: `${ROUTE.loading}`,
     element: <Loading />,
   },
   {
-    path: 'play',
+    path: `${ROUTE.play}`,
     children: [
       {
         index: true,
         element: <Mode />,
       },
       {
-        path: 'lobby',
+        path: `${ROUTE.lobby}`,
         element: <Lobby />,
       },
       {
-        path: 'finder',
+        path: `${ROUTE.finder}`,
         element: <Finder />,
       },
       {
-        path: 'game',
+        path: `${ROUTE.game}`,
         element: <Game />,
       },
     ],
   },
   {
-    path: '/example',
+    path: `${ROUTE.example}`,
     element: <Example />,
   },
   {
@@ -69,20 +69,20 @@ const router = createBrowserRouter([
     element: <Navigate to={`${ROUTE.error}/404`} replace />,
   },
   {
-    path: '/ranking',
+    path: `${ROUTE.ranking}`,
     element: <Ranking />,
   },
   {
-    path: '/home',
+    path: `${ROUTE.home}`,
     element: <Home />,
     loader: getUser,
   },
   {
-    path: '/result',
+    path: `${ROUTE.result}`,
     element: <Result />,
   },
   {
-    path: '/settings',
+    path: `${ROUTE.setting}`,
     element: <Settings />,
   },
   {

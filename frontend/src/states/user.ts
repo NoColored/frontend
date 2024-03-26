@@ -1,17 +1,14 @@
 import { create } from 'zustand';
+import { User } from '@/types/auth';
 
 interface UserState {
-  isGuest: boolean;
-  setGuest: () => void;
-  setMember: () => void;
+  user: User | null;
+  setUser: (user: User) => void;
 }
 
 export const useUserStateStore = create<UserState>((set) => ({
-  isGuest: false,
-  setGuest: () => {
-    set({ isGuest: true });
-  },
-  setMember: () => {
-    set({ isGuest: false });
+  user: null,
+  setUser: (user: User) => {
+    set({ user });
   },
 }));
