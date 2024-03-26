@@ -1,9 +1,10 @@
-interface Player {
-  rank: number;
-  userCode: string;
-  userNickname: string;
-  userSkinId: string;
-  userTitle: number;
+export interface Player {
+  rank: string;
+  nickname: string;
+  skin: string;
+  label: string;
+  rating: number;
+  tier: string;
 }
 
 export interface RankInfo {

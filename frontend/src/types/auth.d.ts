@@ -7,7 +7,7 @@ export interface User {
   rating: number;
   skin: string;
   tier: string;
-  title: string;
+  label: string;
   token: string;
   userCode: string;
   rank: string;

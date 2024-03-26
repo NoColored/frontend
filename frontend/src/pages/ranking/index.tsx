@@ -1,99 +1,57 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import * as styles from './index.css';
 
-import { RankInfo } from '@/types/rank';
+import type { User } from '@/types/auth';
+import type { Player } from '@/types/rank';
 
 import BasicContentFrame from '@/components/BasicContentFrame/WithButtons/index';
+import type { tierType } from '@/components/imagebox/types';
 
-// props는 임시로 임포트
-import RankingItemBox, {
-  RankingItemBoxProps,
-} from '@/pages/ranking/RankingItemBox';
+import RankingItemBox from '@/pages/ranking/RankingItemBox';
 
 import { getUser } from '@/services/auth';
-
-// 받아와서 map으로 돌려줘야됨
-const rankingExample: RankingItemBoxProps[] = [
-  {
-    rank: 1,
-    imgSrc:
-      '/images/character/default-magichat/character-default-magichat-blue-h240w240.png',
-    label: '칭호인데요제발요칭호라고요열네자?',
-    nickname: '닉네임은아홉글자일',
-    tier: 'diamond',
-    score: 9999,
-  },
-  {
-    rank: 2,
-    imgSrc:
-      '/images/character/default-magichat/character-default-magichat-blue-h240w240.png',
-    label: '칭호인데요제발요칭호라고요열네자?',
-    nickname: '닉네임은아홉글자일',
-    tier: 'diamond',
-    score: 9999,
-  },
-  {
-    rank: 3,
-    imgSrc:
-      '/images/character/default-magichat/character-default-magichat-blue-h240w240.png',
-    label: '칭호인데요제발요칭호라고요열네자?',
-    nickname: '닉네임은아홉글자일',
-    tier: 'diamond',
-    score: 9999,
-  },
-  {
-    rank: 4,
-    imgSrc:
-      '/images/character/default-magichat/character-default-magichat-blue-h240w240.png',
-    label: '칭호인데요제발요칭호라고요열네자?',
-    nickname: '닉네임은아홉글자일',
-    tier: 'diamond',
-    score: 9999,
-  },
-  {
-    rank: 5,
-    imgSrc:
-      '/images/character/default-magichat/character-default-magichat-blue-h240w240.png',
-    label: '칭호인데요제발요칭호라고요열네자?',
-    nickname: '닉네임은아홉글자일',
-    tier: 'diamond',
-    score: 9999,
-  },
-  {
-    rank: 650,
-    imgSrc:
-      '/images/character/default-magichat/character-default-magichat-blue-h240w240.png',
-    label: '칭호인데요제발요칭호라고요열네자?',
-    nickname: '닉네임은아홉글자일',
-    tier: 'diamond',
-    score: 9999,
-  },
-  {
-    rank: 7777,
-    imgSrc:
-      '/images/character/default-magichat/character-default-magichat-blue-h240w240.png',
-    label: '칭호인데요제발요칭호라고요열네자?',
-    nickname: '닉네임은아홉글자일',
-    tier: 'diamond',
-    score: 9999,
-  },
-  {
-    rank: 90,
-    imgSrc:
-      '/images/character/default-magichat/character-default-magichat-blue-h240w240.png',
-    label: '칭호인데요제발요칭호라고요열네자?',
-    nickname: '닉네임은아홉글자일',
-    tier: 'diamond',
-    score: 9999,
-  },
-];
-const [rankList, setRankList] = useState<RankInfo[]>([]);
-const myRank = await getUser();
-
-// guest일때는 isguest가 true일때 랭킹이 안보이도록 값에다 설정해주면 될듯 'string'으로 처리됨.
+import { getRankList } from '@/services/rank';
 
 const Ranking = () => {
+  const [rankList, setRankList] = useState<Player[]>([]);
+  const [myRank, setMyRank] = useState<User>();
+  const [refreshTime, setRefreshTime] = useState<string>();
+
+  const getRankingInfo = async () => {
+    const rankData = await getRankList();
+    if (rankData) {
+      setRefreshTime(rankData.refreshTime);
+      setRankList(rankData.players);
+    } else {
+      console.log('랭킹 정보를 불러오는 데 실패했습니다.');
+    }
+  };
+
+  const getMyRank = async () => {
+    const myData = await getUser();
+    if (myData && !myData.guest) {
+      setMyRank(myData);
+    } else {
+      console.log(
+        '나의 랭킹 정보를 불러오는 데 실패했습니다. 회원 로그인 했는지 체크해주세요.',
+      );
+    }
+  };
+
+  useEffect(() => {
+    getRankingInfo();
+    getMyRank();
+
+    if (refreshTime) {
+      const timer = setTimeout(() => {
+        getRankingInfo();
+      }, refreshTime);
+
+      return () => clearTimeout(timer);
+    }
+  }, [refreshTime]);
+
   return (
     <BasicContentFrame backButtonLabel='뒤로'>
       <div className={styles.rankingFullWrapper}>
@@ -102,25 +60,25 @@ const Ranking = () => {
         </div>
 
         <div className={styles.rankingWrapper}>
-          {rankingExample.map((item) => (
+          {rankList.map((item) => (
             <RankingItemBox
               key={item.rank}
               rank={item.rank}
-              imgSrc={item.imgSrc}
+              imgSrc={item.skin}
               label={item.label}
               nickname={item.nickname}
-              tier={item.tier}
-              score={item.score}
+              tier={item.tier as tierType}
+              score={item.rating}
             />
           ))}
         </div>
         {myRank && (
           <RankingItemBox
-            rank={myRank.rank}
+            rank={myRank.guest ? myRank.rank : '?????'}
             imgSrc={myRank.skin}
-            label={myRank.title}
+            label={myRank.label}
             nickname={myRank.nickname}
-            tier={myRank.tier}
+            tier={myRank.tier as tierType}
             score={myRank.rating}
             myRank
           />
