@@ -20,7 +20,9 @@ interface Props {
 
 const SignUp = ({ closeModal, isGuest }: Props) => {
   const navigate = useNavigate();
-  const [errorMessage, setErrorMessage] = useState(constants.WELCOME_MESSAGE);
+  const [errorMessage, setErrorMessage] = useState(
+    constants.ERROR_MESSAGE.welcome,
+  );
   const [signUpInfo, setSignUpInfo] = useState<SignUpInfo>({
     id: '',
     password: '',
@@ -40,7 +42,7 @@ const SignUp = ({ closeModal, isGuest }: Props) => {
   const clickSignUp = async () => {
     const checkId = await getIdCheck(signUpInfo.id);
     if (checkId) {
-      setErrorMessage(constants.SAME_ID_MESSAGE);
+      setErrorMessage(constants.ERROR_MESSAGE.sameId);
       return;
     }
     const errorInfo = checkSignUpInfo(signUpInfo);
@@ -52,8 +54,10 @@ const SignUp = ({ closeModal, isGuest }: Props) => {
     if (isGuest) {
       await postGuestSignUp(signUpInfo);
       closeModal();
-      navigate('/home');
-    } else {
+      return navigate('/home');
+    }
+
+    if (!isGuest) {
       await postSignUp(signUpInfo);
       closeModal();
     }
@@ -95,7 +99,8 @@ const SignUp = ({ closeModal, isGuest }: Props) => {
       />
       <div
         style={{
-          color: errorMessage === constants.WELCOME_MESSAGE ? 'blue' : 'red',
+          color:
+            errorMessage === constants.ERROR_MESSAGE.welcome ? 'blue' : 'red',
         }}
       >
         {errorMessage}

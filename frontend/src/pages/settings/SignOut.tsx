@@ -18,24 +18,17 @@ const SignOut = ({ onClose }: settingsProps) => {
   };
 
   const confirmPassword = async () => {
-    try {
-      const tf = await postConfirmPassword(password);
-      if (tf) {
-        setCheck(true);
-      } else {
-        setErrorMessage(constants.INVALID_SIGN_OUT_MESSAGE);
-      }
-    } catch (e) {
-      console.log(e);
+    const confirmPassword = await postConfirmPassword(password);
+    if (confirmPassword) {
+      setCheck(true);
+    }
+    if (!confirmPassword) {
+      setErrorMessage(constants.ERROR_MESSAGE.inValidSignOut);
     }
   };
 
   const deleteMyInfo = async () => {
-    try {
-      await deleteUserInfo();
-    } catch (e) {
-      console.log(e);
-    }
+    await deleteUserInfo();
   };
 
   if (check) {

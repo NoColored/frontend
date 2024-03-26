@@ -7,8 +7,10 @@ import ColoredButton from '@/components/button/ColoredButton';
 import InputTextBox from '@/components/textbox/InputTextBox';
 import { patchNicknameChange } from '@/services/auth';
 import * as constants from '@/pages/landing/logIn/constants';
+import { useNavigate } from 'react-router-dom';
 
 const NicknameChange = ({ onClose }: settingsProps) => {
+  const navigate = useNavigate();
   const [nickname, setNickname] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -17,11 +19,14 @@ const NicknameChange = ({ onClose }: settingsProps) => {
   };
 
   const nicknameChange = async () => {
-    if (nickname.length >= 2 && nickname.length <= 9) {
-      await patchNicknameChange(nickname);
+    if (nickname.length < 2 || nickname.length > 9) {
+      setErrorMessage(constants.ERROR_MESSAGE.inValidNickname);
+      return;
+    }
+    const confirmNickname = await patchNicknameChange(nickname);
+    if (confirmNickname) {
       onClose();
-    } else {
-      setErrorMessage(constants.INVALID_NICKNAME_MESSAGE);
+      navigate('/home');
     }
   };
 

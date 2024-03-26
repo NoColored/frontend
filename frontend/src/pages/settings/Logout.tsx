@@ -2,11 +2,14 @@ import * as styles from './index.css';
 
 import { settingsProps } from '@/components/BasicContentFrame/WithButtons/InfoButton/types';
 import ColoredButton from '@/components/button/ColoredButton';
+import { useNavigate } from 'react-router-dom';
 
 const Logout = ({ onClose }: settingsProps) => {
+  const navigate = useNavigate();
+
   const removeToken = () => {
     window.localStorage.removeItem('token');
-    window.location.href = '/';
+    navigate('/');
   };
 
   return (

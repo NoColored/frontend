@@ -18,6 +18,7 @@ import Result from '@/pages/result';
 import Settings from '@/pages/settings';
 
 import { getUser } from '@/services/auth';
+import Collection from '@/pages/collection';
 
 const router = createBrowserRouter([
   {
@@ -87,6 +88,10 @@ const router = createBrowserRouter([
   {
     path: `${ROUTE.error}/:code`,
     element: <Error />,
+  },
+  {
+    path: `/${ROUTE.collection}`,
+    element: <Collection />,
   },
 ]);
 

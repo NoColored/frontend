@@ -88,13 +88,12 @@ export const patchNicknameChange = async (nickname: string) => {
     const changeNickname: NicknameInfo = {
       nickname,
     };
-
-    const response = await api.patch<string, NicknameInfo>(
+    await api.patch<string, NicknameInfo>(
       true,
       '/user/nickname',
       changeNickname,
     );
-    console.log(response);
+    return true;
   } catch (e) {
     console.log(e);
   }

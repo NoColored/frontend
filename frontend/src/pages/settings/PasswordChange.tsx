@@ -23,19 +23,15 @@ const PasswordChange = ({ onClose }: settingsProps) => {
 
   const passwordChangeClick = async () => {
     if (password.length !== 6 || newPassword.length !== 6) {
-      setErrorMessage(constants.INVALID_PASSWORD_LENGTH_MESSAGE);
+      setErrorMessage(constants.ERROR_MESSAGE.inValidPasswordLength);
       return;
     }
-    try {
-      const tf = await patchPasswordChange(password, newPassword);
-      if (!tf) {
-        setErrorMessage(constants.INVALID_PASSWORD_MESSAGE);
-        return;
-      }
-      onClose();
-    } catch (e) {
-      console.log(e);
+    const validPassword = await patchPasswordChange(password, newPassword);
+    if (!validPassword) {
+      setErrorMessage(constants.ERROR_MESSAGE.inValidPassword);
+      return;
     }
+    onClose();
   };
 
   return (
