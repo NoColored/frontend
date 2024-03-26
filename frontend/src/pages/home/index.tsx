@@ -21,10 +21,10 @@ const Home = () => {
   const setGuest = useUserStateStore((state) => state.setGuest);
 
   useEffect(() => {
-    if (user?.guest) {
+    if (user.guest) {
       setGuest();
     }
-  }, [user?.guest, setGuest]);
+  }, [user.guest, setGuest]);
 
   const navigate = useNavigate();
 

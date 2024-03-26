@@ -8,6 +8,7 @@ import {
 
 import { api } from '@/services/index';
 import { useUserStateStore } from '@/states/user';
+import { redirect } from 'react-router-dom';
 
 export const getGuestLogin = async () => {
   try {
@@ -31,11 +32,15 @@ export const postMemberLogin = async (logInInfo: LogInInfo) => {
       localStorage.setItem('token', response.data);
       return true;
     }
+    if (response.status === 406) {
+      redirect('/error/406');
+      return false;
+    }
     console.log(response.data);
     return false;
   } catch (e) {
     console.log(e);
-    return null;
+    return false;
   }
 };
 
