@@ -10,6 +10,7 @@ export interface User {
   title: string;
   token: string;
   userCode: string;
+  rank: string;
 }
 
 export interface LogInInfo {

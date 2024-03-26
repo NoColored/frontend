@@ -1,4 +1,8 @@
+import { useState } from 'react';
+
 import * as styles from './index.css';
+
+import { RankInfo } from '@/types/rank';
 
 import BasicContentFrame from '@/components/BasicContentFrame/WithButtons/index';
 
@@ -6,6 +10,8 @@ import BasicContentFrame from '@/components/BasicContentFrame/WithButtons/index'
 import RankingItemBox, {
   RankingItemBoxProps,
 } from '@/pages/ranking/RankingItemBox';
+
+import { getUser } from '@/services/auth';
 
 // 받아와서 map으로 돌려줘야됨
 const rankingExample: RankingItemBoxProps[] = [
@@ -82,6 +88,8 @@ const rankingExample: RankingItemBoxProps[] = [
     score: 9999,
   },
 ];
+const [rankList, setRankList] = useState<RankInfo[]>([]);
+const myRank = await getUser();
 
 // guest일때는 isguest가 true일때 랭킹이 안보이도록 값에다 설정해주면 될듯 'string'으로 처리됨.
 
@@ -106,17 +114,17 @@ const Ranking = () => {
             />
           ))}
         </div>
-        <RankingItemBox
-          rank={10000}
-          imgSrc={
-            '/images/character/default-magichat/character-default-magichat-blue-h240w240.png'
-          }
-          label='내칭호가들어가는데요'
-          nickname='수원왕갈비통닭임'
-          tier='origin'
-          score={129}
-          myRank
-        />
+        {myRank && (
+          <RankingItemBox
+            rank={myRank.rank}
+            imgSrc={myRank.skin}
+            label={myRank.title}
+            nickname={myRank.nickname}
+            tier={myRank.tier}
+            score={myRank.rating}
+            myRank
+          />
+        )}
       </div>
     </BasicContentFrame>
   );
