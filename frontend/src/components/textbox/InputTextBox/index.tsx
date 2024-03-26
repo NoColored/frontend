@@ -1,19 +1,33 @@
 import React from 'react';
 
-import { inputTextBox } from '@/components/textbox/InputTextBox/index.css.ts';
+import { inputTextBox } from '@/components/textbox/InputTextBox/index.css';
+
+import {
+  inputSizeType,
+  inputType,
+} from '@/components/textbox/InputTextBox/types';
 
 interface Props {
+  name?: string;
   placeholder: string;
-  size: 'small' | 'medium' | 'large';
-  type: 'text' | 'number' | 'password';
+  size: inputSizeType;
+  type: inputType;
   value?: string | number;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const InputTextBox = ({ placeholder, size, type, value, onChange }: Props) => {
+const InputTextBox = ({
+  name,
+  placeholder,
+  size,
+  type,
+  value,
+  onChange,
+}: Props) => {
   const sizeName = inputTextBox({ size });
   return (
     <input
+      name={name}
       type={type}
       className={sizeName}
       placeholder={placeholder}

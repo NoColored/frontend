@@ -2,7 +2,7 @@
 
 import { recipe } from '@vanilla-extract/recipes';
 
-import { sprinkles } from '@/styles/sprinkles.css.ts';
+import { sprinkles } from '@/styles/sprinkles.css';
 
 export const flexOptions = recipe({
   base: sprinkles({ display: 'flex' }),
@@ -27,11 +27,16 @@ export const flexOptions = recipe({
       row: sprinkles({
         flexDirection: 'row',
       }),
+      rowCenter: sprinkles({
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }),
     },
   },
 });
 
-export const borderOptions = recipe({
+export const borderDarkOptions = recipe({
   base: sprinkles({ borderStyle: 'solid' }),
   variants: {
     // border color
@@ -45,6 +50,32 @@ export const borderOptions = recipe({
       black: sprinkles({ borderColor: 'black' }),
       gray300: sprinkles({ borderColor: 'gray500' }),
       gray500: sprinkles({ borderColor: 'gray700' }),
+    },
+
+    // border width
+    width: {
+      '1x': sprinkles({ borderWidth: '1x' }),
+      '2x': sprinkles({ borderWidth: '2x' }),
+      '3x': sprinkles({ borderWidth: '3x' }),
+      '5x': sprinkles({ borderWidth: '5x' }),
+    },
+  },
+});
+
+export const borderLightOptions = recipe({
+  base: sprinkles({ borderStyle: 'solid' }),
+  variants: {
+    // border color
+    color: {
+      red: sprinkles({ borderColor: 'red' }),
+      yellow: sprinkles({ borderColor: 'yellow' }),
+      green: sprinkles({ borderColor: 'green' }),
+      blue: sprinkles({ borderColor: 'blue' }),
+      pink: sprinkles({ borderColor: 'pink' }),
+      navy: sprinkles({ borderColor: 'navy' }),
+      black: sprinkles({ borderColor: 'black' }),
+      gray300: sprinkles({ borderColor: 'gray300' }),
+      gray500: sprinkles({ borderColor: 'gray500' }),
     },
 
     // border width

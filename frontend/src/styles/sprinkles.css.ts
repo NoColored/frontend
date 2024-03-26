@@ -1,6 +1,6 @@
-import { defineProperties, createSprinkles } from '@vanilla-extract/sprinkles';
+import { createSprinkles, defineProperties } from '@vanilla-extract/sprinkles';
 
-import { vars } from './vars.css.ts';
+import { vars } from './vars.css';
 
 const displayProperties = defineProperties({
   properties: {
@@ -29,6 +29,10 @@ const fontProperties = defineProperties({
     fontFamily: vars.fontFamily,
     fontWeight: vars.fontWeight,
     fontSize: vars.fontSize,
+    lineHeight: vars.fontSize,
+  },
+  shorthands: {
+    textSize: ['fontSize', 'lineHeight'],
   },
 });
 
@@ -43,6 +47,10 @@ const spaceProperties = defineProperties({
     marginRight: vars.space,
     marginTop: vars.space,
     marginBottom: vars.space,
+
+    gap: vars.space,
+    rowGap: vars.space,
+    columnGap: vars.space,
   },
   shorthands: {
     padding: ['paddingTop', 'paddingRight', 'paddingBottom', 'paddingLeft'],
@@ -60,6 +68,9 @@ const borderProperties = defineProperties({
     borderWidth: vars.borderWidth,
     borderRadius: vars.borderRadius,
     borderColor: vars.colors,
+    outlineStyle: vars.borderStyle,
+    outlineWidth: vars.borderWidth,
+    outlineColor: vars.colors,
   },
   shorthands: {
     border: ['borderWidth', 'borderRadius', 'borderColor'],

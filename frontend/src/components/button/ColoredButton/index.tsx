@@ -1,12 +1,13 @@
-import * as styles from './index.css.ts';
+import * as styles from './index.css';
 
-interface Props {
-  text: string;
-  color: string;
-  size: 'small' | 'medium' | 'large';
-  onClick: () => void;
+import type {
+  ColorButtonProps,
+  coloredButtonSizeType,
+} from '@/components/button/types';
+
+interface Props extends ColorButtonProps {
+  size: coloredButtonSizeType;
 }
-
 const ColoredButton = ({ text, color, size, onClick }: Props) => {
   return (
     <button

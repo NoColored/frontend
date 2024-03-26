@@ -1,6 +1,6 @@
 import { globalStyle } from '@vanilla-extract/css';
 
-import { vars } from '@/styles/vars.css.ts';
+import { vars } from '@/styles/vars.css';
 
 globalStyle('*', {
   margin: 0,
@@ -36,4 +36,19 @@ globalStyle('body', {
         'url(/images/background/background-white-large-h991w1922.webp)',
     },
   },
+});
+
+globalStyle('*::-webkit-scrollbar', {
+  display: 'none',
+});
+
+globalStyle('canvas', {
+  height: '100%',
+  width: '100%',
+});
+
+globalStyle('#game-container', {
+  margin: '0 auto',
+  height: '100%',
+  aspectRatio: '33 / 19',
 });

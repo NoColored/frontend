@@ -1,12 +1,16 @@
 import { style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
 
-import { borderOptions } from '@/styles/common.css.ts';
-import { sprinkles } from '@/styles/sprinkles.css.ts';
-import { vars } from '@/styles/vars.css.ts';
+import * as constants from './constants';
+
+import type { settingTextButtonColorType } from '@/components/button/types';
+
+import { borderDarkOptions } from '@/styles/common.css';
+import { sprinkles } from '@/styles/sprinkles.css';
+import { vars } from '@/styles/vars.css';
 
 export const button = style([
-  borderOptions({ color: 'black', width: '2x' }),
+  borderDarkOptions({ color: 'black', width: '2x' }),
   sprinkles({
     borderRadius: '2x',
     backgroundColor: 'white',
@@ -25,24 +29,44 @@ export const button = style([
 
 export const buttonVariants = {
   size: {
+    xsmall: style([
+      sprinkles({
+        fontSize: '1x',
+        margin: '1x',
+      }),
+      {
+        width: '28px',
+        height: '28px',
+      },
+    ]),
     small: style([
       sprinkles({
         fontSize: '1x',
         margin: '1x',
       }),
       {
-        height: '28px',
-        width: '60px',
+        height: constants.SETTING_TEXT_BUTTON.small.height,
+        width: constants.SETTING_TEXT_BUTTON.small.width,
+      },
+    ]),
+    medium: style([
+      sprinkles({
+        fontSize: '1.5x',
+        margin: '1x',
+      }),
+      {
+        height: constants.SETTING_TEXT_BUTTON.medium.height,
+        width: constants.SETTING_TEXT_BUTTON.medium.width,
       },
     ]),
     large: style([
       sprinkles({
         fontSize: '1.5x',
-        margin: '3x',
+        margin: '1x',
       }),
       {
-        height: '48px',
-        width: '250px',
+        height: constants.SETTING_TEXT_BUTTON.large.height,
+        width: constants.SETTING_TEXT_BUTTON.large.width,
       },
     ]),
   },
@@ -94,7 +118,8 @@ export const settingButton = recipe({
   base: button,
   variants: buttonVariants,
 });
+
 export interface ButtonVariantsProps {
   size: keyof typeof buttonVariants.size;
-  colorStyle: keyof typeof buttonVariants.colorStyle;
+  colorStyle: settingTextButtonColorType;
 }

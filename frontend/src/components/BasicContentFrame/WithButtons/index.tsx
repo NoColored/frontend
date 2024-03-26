@@ -1,38 +1,62 @@
 import { ReactNode } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-import * as styles from './index.css.ts';
+import * as styles from './index.css';
 
-import SettingIconButton from '@/components/button/SettingIconButton/index.tsx';
-import SettingNavigationButton from '@/components/button/SettingNavigationButton/index.tsx';
+import InfoButton from '@/components/BasicContentFrame/WithButtons/InfoButton';
+import SettingButton from '@/components/BasicContentFrame/WithButtons/SettingButton/index';
+import SettingIconButton from '@/components/button/SettingIconButton/index';
+import SettingNavigationButton from '@/components/button/SettingNavigationButton/index';
 
 interface Props {
   children: ReactNode;
   backButtonLabel?: string;
+  onBeforeButtonClick?: () => void;
 }
 
-const BasicContentFrame = ({ children, backButtonLabel }: Props) => {
+const BasicContentFrame = ({
+  children,
+  backButtonLabel,
+  onBeforeButtonClick,
+}: Props) => {
+  const navigate = useNavigate();
+
+  const handleHomeButtonClick = () => {
+    if (onBeforeButtonClick) {
+      onBeforeButtonClick();
+    }
+    navigate('/home', { replace: true });
+  };
+
+  const handleBackButtonClick = () => {
+    if (onBeforeButtonClick) {
+      onBeforeButtonClick();
+    }
+    navigate(-1);
+  };
+
   return (
     <div className={styles.frame}>
       <div className={styles.iconButtons}>
+        <InfoButton />
         <SettingIconButton
-          src='/src/assets/ui/icon/button/icon-button-information-h50w50.png'
-          alt='info'
-        />
-        <SettingIconButton
-          src='/src/assets/ui/icon/button/icon-button-home-h50w50.png'
+          src='/images/ui/icon/button/icon-button-home-h50w50.png'
           alt='home'
+          onClick={handleHomeButtonClick}
         />
-        <SettingIconButton
-          src='/src/assets/ui/icon/button/icon-button-setting-h50w50.png'
-          alt='setting'
-        />
+        <SettingButton />
       </div>
       <main className={styles.main}>
         {backButtonLabel && (
           <div className={styles.navigation}>
-            <SettingNavigationButton label={backButtonLabel} />
+            <SettingNavigationButton
+              label={backButtonLabel}
+              onClick={handleBackButtonClick}
+              position='leftTop'
+            />
           </div>
         )}
+
         {children}
       </main>
     </div>

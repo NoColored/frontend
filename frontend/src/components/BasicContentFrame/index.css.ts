@@ -1,13 +1,13 @@
 import { style } from '@vanilla-extract/css';
 
-import * as constants from './constants.ts';
+import * as constants from './constants';
 
-import { sprinkles } from '@/styles/sprinkles.css.ts';
-import { vars } from '@/styles/vars.css.ts';
+import { sprinkles } from '@/styles/sprinkles.css';
+import { vars } from '@/styles/vars.css';
 
 export const basicFrame = style([
   sprinkles({
-    position: 'fixed',
+    position: 'absolute',
   }),
   {
     left: '50%',
@@ -20,7 +20,7 @@ export const basicFrame = style([
         aspectRatio: '33 / 19',
         backgroundColor: vars.colors.background,
         borderRadius: vars.borderRadius['2x'],
-        border: '1px solid black',
+        outline: '1px solid black',
         top: '50%',
         transform: 'translate(-50%, -50%)',
       },
