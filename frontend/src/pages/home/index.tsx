@@ -43,7 +43,7 @@ const Home = () => {
       <div className={styles.fullWrapper}>
         <div className={styles.TopContentsWrapper}>
           <UserDashboard
-            nickname={user.nickName}
+            nickname={user.nickname}
             level={user.level}
             cp={user.exp}
             maxCp={user.exp}

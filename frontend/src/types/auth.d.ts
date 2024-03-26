@@ -3,7 +3,7 @@ export interface User {
   expRequire: number;
   guest: boolean;
   level: number;
-  nickName: string;
+  nickname: string;
   rating: number;
   skin: string;
   tier: string;
