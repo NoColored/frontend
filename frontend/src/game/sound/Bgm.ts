@@ -1,18 +1,12 @@
 import Phaser from 'phaser';
 
-export class BgmManager {
-  private scene: Phaser.Scene;
+export class BgmManager extends Phaser.Sound.BaseSound {
   private backgroundMusic: Phaser.Sound.BaseSound;
 
-  constructor(scene: Phaser.Scene) {
-    this.scene = scene;
-  }
+  constructor(scene: Phaser.Scene, key: string, loop: boolean = true) {
+    super(scene.sound, key);
 
-  public addBackgroundMusic(key: string, loop: boolean = true): void {
-    if (this.backgroundMusic) {
-      this.backgroundMusic.stop();
-    }
-    this.backgroundMusic = this.scene.sound.add(key, { loop }).setVolume(0.3);
+    this.backgroundMusic = scene.sound.add(key, { loop, volume: 0.4 });
     this.backgroundMusic.play();
   }
 
