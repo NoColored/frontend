@@ -13,6 +13,4 @@ export const ROUTE = {
   setting: 'settings',
   example: 'example',
   error: '/error',
-  finder: '/play/finder',
-  game: '/play/game',
 };
