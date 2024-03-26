@@ -19,6 +19,8 @@ import Settings from '@/pages/settings';
 
 import { getUser } from '@/services/auth';
 import Collection from '@/pages/collection';
+import Label from '@/pages/collection/Label';
+import Achievement from '@/pages/collection/Achievement';
 
 const router = createBrowserRouter([
   {
@@ -86,12 +88,25 @@ const router = createBrowserRouter([
     element: <Settings />,
   },
   {
-    path: `${ROUTE.error}/:code`,
-    element: <Error />,
+    path: `${ROUTE.collection}`,
+    children: [
+      {
+        index: true,
+        element: <Collection />,
+      },
+      {
+        path: `${ROUTE.label}`,
+        element: <Label />,
+      },
+      {
+        path: `${ROUTE.achievement}`,
+        element: <Achievement />,
+      },
+    ],
   },
   {
-    path: `/${ROUTE.collection}`,
-    element: <Collection />,
+    path: `${ROUTE.error}/:code`,
+    element: <Error />,
   },
 ]);
 

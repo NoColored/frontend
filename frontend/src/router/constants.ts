@@ -8,6 +8,8 @@ export const ROUTE = {
   lobby: '/play/lobby',
   ranking: 'ranking',
   collection: 'collection',
+  label: 'label',
+  achievement: 'achievement',
   home: '/home',
   result: 'result',
   setting: 'settings',

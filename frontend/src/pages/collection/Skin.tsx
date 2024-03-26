@@ -1,5 +1,5 @@
 const Skin = () => {
-  return <div>Hello World</div>;
+  return <div>HEllo WOrld</div>;
 };
 
 export default Skin;

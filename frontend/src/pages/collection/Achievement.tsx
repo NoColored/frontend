@@ -1,5 +1,5 @@
 const Achievement = () => {
-  return <div>Hello world!</div>;
+  return <div></div>;
 };
 
 export default Achievement;
