@@ -25,7 +25,7 @@ export const useWebSocket = (
         return;
       }
       handleWebSocketMessage(message);
-    }, []);
+    });
 
     return () => {
       client.unmount();
