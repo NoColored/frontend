@@ -24,7 +24,7 @@ const ModalContent = ({ defaultMapId, closeModal }: Props) => {
     roomPassword: '',
     mapId: defaultMapId,
   });
-  const [isDone, setIsDone] = useState<boolean>(true);
+  const [isValidInfo, setIsValidInfo] = useState<boolean>(true);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -37,17 +37,15 @@ const ModalContent = ({ defaultMapId, closeModal }: Props) => {
   };
 
   const handleClickCreateButton = async () => {
-    if (createRoomInfo.roomTitle && createRoomInfo.roomPassword.length === 4) {
-      const roomId = await postCreateRoom(createRoomInfo);
-      if (roomId) {
-        navigate(`/play/lobby/${roomId}`);
-        console.log(roomId);
-        closeModal();
-      } else {
-        console.log('생성된 방 정보를 가져오는 데 실패했습니다.');
-      }
-    } else {
-      setIsDone(false);
+    if (!createRoomInfo.roomTitle || createRoomInfo.roomPassword.length !== 4) {
+      setIsValidInfo(false);
+      return;
+    }
+
+    const roomId = await postCreateRoom(createRoomInfo);
+    if (roomId) {
+      navigate(`/play/lobby/${roomId}`);
+      closeModal();
     }
   };
 
@@ -107,7 +105,7 @@ const ModalContent = ({ defaultMapId, closeModal }: Props) => {
           onClick={handleClickCreateButton}
         />
       </div>
-      {!isDone && (
+      {!isValidInfo && (
         <div className={styles.alertMessage}>{constants.ALERT_MESSAGE}</div>
       )}
     </>

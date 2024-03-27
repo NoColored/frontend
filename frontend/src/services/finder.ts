@@ -16,15 +16,13 @@ export const getRoomList = async (offset: number) => {
 };
 
 export const postCreateRoom = async (roomRequest: CreateRoom) => {
-  try {
-    const response = await api.post<string, CreateRoom>(
-      true,
-      'play/friendly',
-      roomRequest,
-    );
-    return response.data;
-  } catch (error) {
-    console.log(error);
-    return null;
-  }
+  return await api
+    .post<string, CreateRoom>(true, 'play/friendly', roomRequest)
+    .then((res) => {
+      return res.data;
+    })
+    .catch((error) => {
+      console.log(error);
+      return '';
+    });
 };

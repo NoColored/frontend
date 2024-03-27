@@ -72,7 +72,7 @@ const Finder = () => {
         <div className={styles.partyListWrapper}>
           {currentItems.map((item) => (
             <LobbyItem
-              key={`${item.roomCode}`}
+              key={item.roomCode}
               roomTitle={item.roomTitle}
               userNumber={item.userNumber}
               mapId={item.mapId}
