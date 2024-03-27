@@ -16,14 +16,15 @@ import { getRankList } from '@/services/rank';
 const Ranking = () => {
   const [rankList, setRankList] = useState<Player[]>([]);
   const [myRank, setMyRank] = useState<User>();
-  const [refreshTime, setRefreshTime] = useState<string>();
+  const [refreshTime, setRefreshTime] = useState<Date>();
 
   const getRankingInfo = async () => {
     const rankData = await getRankList();
     if (rankData) {
-      setRefreshTime(rankData.refreshTime);
+      setRefreshTime(new Date(rankData.refreshTime));
       setRankList(rankData.players);
     } else {
+      console.log(refreshTime);
       console.log('랭킹 정보를 불러오는 데 실패했습니다.');
     }
   };
@@ -43,14 +44,17 @@ const Ranking = () => {
     getRankingInfo();
     getMyRank();
 
+    const now = new Date();
+
     if (refreshTime) {
+      const timeout = refreshTime.getTime() - now.getTime();
       const timer = setTimeout(() => {
         getRankingInfo();
-      }, refreshTime);
+      }, timeout);
 
       return () => clearTimeout(timer);
     }
-  }, [refreshTime]);
+  }, []);
 
   return (
     <BasicContentFrame backButtonLabel='뒤로'>
