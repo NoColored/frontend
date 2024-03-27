@@ -111,38 +111,22 @@ export default class GameScene extends Phaser.Scene {
     // object
 
     // 임시로
-    const tempPlayerData: characterInfo = {
-      x: 100,
-      y: 100,
-      velX: 180,
+    const initialPlayerData: characterInfo = {
+      x: 300,
+      y: 10,
+      velX: -1,
       velY: 0,
     };
 
     // 캐릭터 배열 생성
     for (let i = 0; i < constants.CHARACTER_COUNT; i++) {
-      tempPlayerData.x += i * 25;
-      tempPlayerData.velX *= -1;
       this.characters[i] = new Character(
         this,
-        'player1',
+        'npc',
         physicsMapInst,
-        tempPlayerData,
+        initialPlayerData,
       );
     }
-
-    //  temp
-    // 10000ms(10초) 후에 실행될 함수를 예약합니다.
-    this.time.delayedCall(3000, () => {
-      // 여기에 원하는 로직을 작성합니다.
-      console.log('10초가 지났습니다!');
-      // 예를 들어, 플레이어
-      this.characters[0].setSkinState('npc');
-      this.characters[0].changePosition(100, 6, -180);
-      this.characters[1].setSkinState('npc');
-      this.characters[1].changePosition(150, 200, -180);
-      this.characters[2].setSkinState('npc');
-      this.characters[2].changePosition(100, 100, 180);
-    });
   }
 
   // 1
@@ -165,6 +149,7 @@ export default class GameScene extends Phaser.Scene {
         data[index].characterInfo.x,
         data[index].characterInfo.y,
         data[index].characterInfo.velX,
+        data[index].characterInfo.velY,
       );
     });
   }
@@ -242,10 +227,16 @@ export default class GameScene extends Phaser.Scene {
       const messageType: number = view.getUint8(0);
       this.upDateFrame(messageType, view);
     }
+
     return null;
   };
 
   update() {
+    // socket 데이터 다 처리
     this.getSocketData();
+    // 처리가 다 된 상태에서 character보이는 것 변경
+    this.characters.forEach((character) => {
+      character.playAnims();
+    });
   }
 }

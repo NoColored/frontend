@@ -2,8 +2,10 @@ import { characterInfo } from '@/types/ingame';
 
 export class Character extends Phaser.Physics.Arcade.Sprite {
   private currentSkin: string;
+  private direction: 'left' | 'right' | 0;
 
-  private velX: number;
+  private dirChanged: boolean;
+  private skinChanged: boolean;
 
   constructor(
     scene: Phaser.Scene,
@@ -20,19 +22,24 @@ export class Character extends Phaser.Physics.Arcade.Sprite {
     scene.physics.add.existing(this);
     scene.physics.add.collider(this, physicsMap);
 
+    // 기본 값 설정
     this.currentSkin = '';
-    this.velX = 0;
+    this.direction = 0;
+    this.dirChanged = false;
+    this.skinChanged = false;
 
     this.setSkinState(texture);
     this.changePosition(
       characterInfoData.x,
       characterInfoData.y,
       characterInfoData.velX,
+      characterInfoData.velY,
     );
+    this.stopAnims();
     scene.add.existing(this);
   }
 
-  // 애니메이션 설정
+  // 애니메이션 생성
   createAnimations(texture: string) {
     const leftKey = `walk-left-${texture}`;
     const rightKey = `walk-right-${texture}`;
@@ -57,21 +64,31 @@ export class Character extends Phaser.Physics.Arcade.Sprite {
     });
   }
 
-  changeDir(velX: number) {
-    if (this.velX === velX) return;
-    this.velX = velX;
+  changeDir(velocityX: number) {
+    if (velocityX < 0 && this.direction !== 'left') {
+      this.direction = 'left';
+      this.dirChanged = true;
+    } else if (velocityX > 0 && this.direction !== 'right') {
+      this.direction = 'right';
+      this.dirChanged = true;
+    } else if (velocityX === 0 && this.direction !== 0) {
+      this.direction = 0;
+      this.dirChanged = true;
+    }
   }
 
-  changeAnims() {
-    const direction = this.velX > 0 ? 'right' : 'left';
-    const animKey = `walk-${direction}-${this.currentSkin}`;
+  playAnims() {
+    if (!this.skinChanged && !this.dirChanged) {
+      return;
+    }
+    this.skinChanged = false;
+    this.dirChanged = false;
+    const animKey = `walk-${this.direction}-${this.currentSkin}`;
+    if (this.direction === 0) {
+      this.anims.stop();
+      return;
+    }
     this.play(animKey, true);
-  }
-
-  setSkinState(skin: string) {
-    if (this.currentSkin === skin) return;
-    this.currentSkin = skin;
-    this.createAnimations(skin);
   }
 
   // 아이템 등으로 인한 멈춤일때
@@ -79,14 +96,21 @@ export class Character extends Phaser.Physics.Arcade.Sprite {
     this.anims.stop();
   }
 
-  replayAnims() {
-    this.changeAnims();
+  setSkinState(skin: string) {
+    if (this.currentSkin === skin) return;
+    this.currentSkin = skin;
+    this.skinChanged = true;
+    this.createAnimations(skin);
   }
 
-  changePosition(x: number, y: number, velX: number) {
+  changePosition(x: number, y: number, velX: number, velY: number) {
+    // 정보값 변경
     this.setX(x);
     this.setY(y);
+    this.setVelocityX(velX);
+    this.setVelocityY(velY);
+
+    // 방향 변경
     this.changeDir(velX);
-    this.changeAnims();
   }
 }
