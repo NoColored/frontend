@@ -76,7 +76,7 @@ const SignUp = ({ closeModal, isGuest }: Props) => {
       <InputTextBox
         name='password'
         type='password'
-        placeholder='비밀번호 (최소 6 ~ 20자)'
+        placeholder='비밀번호 (숫자 6자)'
         size='medium'
         value={signUpInfo.password}
         onChange={handleChange}

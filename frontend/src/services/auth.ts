@@ -17,7 +17,7 @@ export const getGuestLogin = async () => {
     return true;
   } catch (e) {
     console.log(e);
-    return null;
+    return false;
   }
 };
 
@@ -50,7 +50,7 @@ export const getUser = async () => {
     return response.data;
   } catch (e) {
     console.log(e);
-    return null;
+    return false;
   }
 };
 
@@ -67,7 +67,7 @@ export const postGuestSignUp = async (signUpInfo: SignUpInfo) => {
   await api
     .post<string, SignUpInfo>(true, '/user/guest', signUpInfo)
     .then(() => {
-      useUserStateStore.getState().setMember(); // 회원 상태로 변경
+      useUserStateStore.getState();
     })
     .catch((error) => {
       console.log(error);
@@ -95,7 +95,7 @@ export const patchNicknameChange = async (nickname: string) => {
     );
     return true;
   } catch (e) {
-    console.log(e);
+    return false;
   }
 };
 
@@ -130,7 +130,7 @@ export const postConfirmPassword = async (password: string) => {
     console.log(response.data);
     return response.data;
   } catch (e) {
-    console.log(e);
+    return false;
   }
 };
 
