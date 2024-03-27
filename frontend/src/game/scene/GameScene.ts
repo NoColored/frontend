@@ -39,6 +39,7 @@ export default class GameScene extends Phaser.Scene {
     this.gameData = null;
     const { webSocket } = useWebSocketStore.getState();
     this.socket = webSocket;
+    this.socket.useMessageQueue();
     this.charactersNowSkin = new Array(constants.CHARACTER_COUNT).fill(false);
     this.loadingManager = new LoadingUtils(this);
   }
@@ -147,38 +148,51 @@ export default class GameScene extends Phaser.Scene {
 
   private gameStartUpdate() {
     this.gameState = 'playing';
+    return 1;
   }
 
   // 1
   private userCharacterIndexUpdate(view: DataView) {
-    const data = userCharacterIndex(view);
+    const data = userCharacterIndex(view, this.p + 1);
     this.characters[data].setSkinState(this.gameData?.skins[data] ?? 'npc');
+    return 2;
   }
 
   private timeLeftUpdate(view: DataView) {
-    const data = timeLeft(view);
+    const data = timeLeft(view, this.p + 1);
     // 화면에 남은 시간 노출 필요
     this.gameData;
     data;
+    return 2;
+  }
+
+  private countDownUpdate(view: DataView) {
+    const data = timeLeft(view, this.p + 1);
+    // 화면에 남은 시간 노출 필요
+    this.gameData;
+    data;
+    return 2;
   }
 
   private characterInfoListUpdate(view: DataView) {
-    const data = characterInfoList(view);
+    const [data, length] = characterInfoList(view, this.p + 1);
     this.characters.forEach((character, index) => {
       character.changePosition(data[index].characterInfo);
     });
+    return length;
   }
 
   private currentScoreUpdate(view: DataView) {
-    const data = currentScore(view);
+    const [data, length] = currentScore(view, this.p + 1);
     //  현재 점수 update 설정하기
     this.gameData;
     data;
+    return length;
   }
 
   // 알고리즘 생각해보기
   private showRealSkinUpdate(view: DataView) {
-    const data = showRealSkin(view);
+    const [data, length] = showRealSkin(view, this.p + 1);
     this.charactersPrevSkin = [...this.charactersNowSkin];
     this.charactersNowSkin.fill(false);
     // 지금 받은 데이터로 업데이트
@@ -194,58 +208,64 @@ export default class GameScene extends Phaser.Scene {
         this.characters[index].setSkinState('npc');
       }
     });
+    return length;
   }
 
   private effectUpdate(view: DataView) {
-    const data = effectList(view);
+    const [data, length] = effectList(view, this.p + 1);
     // 이펙트 처리
     this.gameData;
     data;
+    return length;
   }
 
-  upDateFrame(messageType: number, view: DataView): void {
+  upDateFrame(messageType: number, view: DataView): number {
     switch (messageType) {
       case constants.GAMESOCKET_MESSAGE_TYPE.get('GAME_START'):
-        this.gameStartUpdate();
-        break;
+        return this.gameStartUpdate();
       case constants.GAMESOCKET_MESSAGE_TYPE.get('USER_CHARACTER_INDEX'):
-        this.userCharacterIndexUpdate(view);
-        break;
+        return this.userCharacterIndexUpdate(view);
       case constants.GAMESOCKET_MESSAGE_TYPE.get('TIME_LEFT'):
-        this.timeLeftUpdate(view);
-        break;
+        return this.timeLeftUpdate(view);
+      case constants.GAMESOCKET_MESSAGE_TYPE.get('COUNTDOWN'):
+        return this.countDownUpdate(view);
       case constants.GAMESOCKET_MESSAGE_TYPE.get('CHARACTER_INFO_LIST'):
-        this.characterInfoListUpdate(view);
-        break;
+        return this.characterInfoListUpdate(view);
       case constants.GAMESOCKET_MESSAGE_TYPE.get('CURRENT_SCORE'):
-        this.currentScoreUpdate(view);
-        break;
+        return this.currentScoreUpdate(view);
       case constants.GAMESOCKET_MESSAGE_TYPE.get('SHOW_REAL_SKIN'):
-        this.showRealSkinUpdate(view);
-        break;
+        return this.showRealSkinUpdate(view);
       case constants.GAMESOCKET_MESSAGE_TYPE.get('EFFECT'):
-        this.effectUpdate(view);
-        break;
+        return this.effectUpdate(view);
 
       default:
         console.log('messageError');
-        break;
+        return 2;
     }
   }
+
+  private p: number = 0;
 
   getSocketData = () => {
     if (!this.socket) return null;
 
+    console.log('socket', this.socket.isMessageEmpty());
     while (!this.socket.isMessageEmpty()) {
       const message = this.socket.pollMessage();
       if (!message) {
         return null;
       }
+      console.log('message', message);
       const view = new DataView(message);
-      const messageType: number = view.getUint8(0);
-      this.upDateFrame(messageType, view);
+      this.p = 0;
+      while (this.p < view.byteLength) {
+        console.log('p', this.p);
+        const messageType = view.getUint8(this.p);
+        console.log('messageType', messageType);
+        const length = this.upDateFrame(messageType, view);
+        this.p += length;
+      }
     }
-
     return null;
   };
 
