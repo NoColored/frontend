@@ -13,12 +13,14 @@ import { postEnterRoom } from '@/services/finder';
 interface Props {
   closeModal: () => void;
   isMessage: () => void;
-  key: string;
+  room: CodeRoom;
 }
 
-const PasswordModal = ({ key, closeModal, isMessage }: Props) => {
+const PasswordModal = ({ room, closeModal, isMessage }: Props) => {
   const [roomInfo, setRoomInfo] = useState<CodeRoom>({
-    roomCode: key,
+    roomCode: room.roomCode,
+    roomTitle: room.roomTitle,
+    mapId: room.mapId,
     roomPassword: '',
   });
   const navigate = useNavigate();
@@ -32,9 +34,9 @@ const PasswordModal = ({ key, closeModal, isMessage }: Props) => {
   const handleClickButton = async () => {
     isMessage();
 
-    const roomUuid = await postEnterRoom(roomInfo);
-    if (roomUuid) {
-      navigate(`/play/lobby/${roomUuid}`, { state: roomUuid });
+    const roomId = await postEnterRoom(roomInfo);
+    if (roomId) {
+      navigate(`/play/lobby/${roomId}`);
       closeModal();
     } else {
       console.log('방 정보가 없습니다.');

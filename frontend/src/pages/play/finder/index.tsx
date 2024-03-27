@@ -74,6 +74,7 @@ const Finder = () => {
             <LobbyItem
               // key도 바꿔줘야됨
               key={`${item.roomCode}`}
+              roomCode={item.roomCode}
               roomTitle={item.roomTitle}
               userNumber={item.userNumber}
               mapId={item.mapId}

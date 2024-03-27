@@ -2,6 +2,8 @@ import { useState } from 'react';
 
 import * as constants from './constants';
 
+import { CodeRoom } from '@/types/play';
+
 import ColoredButton from '@/components/button/ColoredButton';
 import RoundCornerImageBox from '@/components/imagebox/RoundCornerImageBox';
 
@@ -16,11 +18,13 @@ interface Props {
   mapId: number;
   roomTitle: string;
   userNumber: number;
+  roomCode: string;
 }
 
-const LobbyItem = ({ key, mapId, roomTitle, userNumber }: Props) => {
+const LobbyItem = ({ roomCode, mapId, roomTitle, userNumber }: Props) => {
   const { Modal, openModal, closeModal } = useModal();
   const [isMessage, setIsMessage] = useState(false);
+  const roomInfo: CodeRoom = { roomCode, roomTitle, mapId };
 
   const getImgSrc = () => {
     const mapItem = constants.MAPS.find((item) => item.mapId === mapId);
@@ -64,7 +68,7 @@ const LobbyItem = ({ key, mapId, roomTitle, userNumber }: Props) => {
         isMessage={() => {
           setIsMessage(true);
         }}
-        key={key}
+        room={roomInfo}
       />
     );
   };
