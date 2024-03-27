@@ -14,7 +14,7 @@ export class PhysicsMap extends Phaser.Physics.Arcade.StaticGroup {
     super(world, scene);
     this.tile = transparentTile;
     this.createPhysicsMap(data);
-    scene.physics.add.staticGroup(this);
+    scene.physics.add.staticGroup(this).setDepth(1);
   }
 
   createPhysicsMap(data: number[][]) {

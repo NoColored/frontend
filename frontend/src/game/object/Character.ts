@@ -29,14 +29,9 @@ export class Character extends Phaser.Physics.Arcade.Sprite {
     this.skinChanged = false;
 
     this.setSkinState(texture);
-    this.changePosition(
-      characterInfoData.x,
-      characterInfoData.y,
-      characterInfoData.velX,
-      characterInfoData.velY,
-    );
+    this.changePosition(characterInfoData);
     this.stopAnims();
-    scene.add.existing(this);
+    scene.add.existing(this).setDepth(2);
   }
 
   // 애니메이션 생성
@@ -103,14 +98,14 @@ export class Character extends Phaser.Physics.Arcade.Sprite {
     this.createAnimations(skin);
   }
 
-  changePosition(x: number, y: number, velX: number, velY: number) {
+  changePosition(characterData: characterInfo) {
     // 정보값 변경
-    this.setX(x);
-    this.setY(y);
-    this.setVelocityX(velX);
-    this.setVelocityY(velY);
+    this.setX(characterData.x);
+    this.setY(characterData.y);
+    this.setVelocityX(characterData.velX);
+    this.setVelocityY(characterData.velY);
 
     // 방향 변경
-    this.changeDir(velX);
+    this.changeDir(characterData.velX);
   }
 }

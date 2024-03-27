@@ -20,6 +20,7 @@ import { Background } from '@/game/map/Background';
 import { Map } from '@/game/map/Map';
 import { PhysicsMap } from '@/game/map/PhysicsMap';
 import { Character } from '@/game/object/Character';
+import LoadingUtils from '@/game/scene/LoadingUtils';
 import { BgmManager } from '@/game/sound/Bgm';
 
 export default class GameScene extends Phaser.Scene {
@@ -28,14 +29,18 @@ export default class GameScene extends Phaser.Scene {
   private socket: GameSocket;
   private charactersPrevSkin: boolean[] = [];
   private charactersNowSkin: boolean[] = [];
+  private gameState: 'loading' | 'ready' | 'countDown' | 'playing' | 'end' =
+    'loading';
+  private loadingManager;
 
   constructor() {
-    super();
+    super({ key: 'GameScene' });
 
     this.gameData = null;
     const { webSocket } = useWebSocketStore.getState();
     this.socket = webSocket;
     this.charactersNowSkin = new Array(constants.CHARACTER_COUNT).fill(false);
+    this.loadingManager = new LoadingUtils(this);
   }
 
   private setGameReady = async () => {
@@ -68,6 +73,7 @@ export default class GameScene extends Phaser.Scene {
   };
 
   preload() {
+    this.loadingManager.createLoadingScreen();
     this.setGameReady();
     // Map 투명 타일
     // this.load.image('tileTransparent', '/images/map/transparent-tile.png');
@@ -108,9 +114,9 @@ export default class GameScene extends Phaser.Scene {
       'tileTransparent',
     );
 
-    // object
+    this.gameState = 'ready';
 
-    // 임시로
+    // character
     const initialPlayerData: characterInfo = {
       x: 300,
       y: 10,
@@ -127,6 +133,20 @@ export default class GameScene extends Phaser.Scene {
         initialPlayerData,
       );
     }
+
+    //  임시
+    this.time.addEvent({
+      delay: 2000, // 3000밀리초 후에 실행
+      callback: () => {
+        this.gameState = 'countDown';
+      }, // 실행할 콜백 함수
+      callbackScope: this, // 콜백 함수의 this 컨텍스트
+      loop: false, // 이벤트를 반복할지 여부 (false면 한 번만 실행)
+    });
+  }
+
+  private gameStartUpdate() {
+    this.gameState = 'playing';
   }
 
   // 1
@@ -145,12 +165,7 @@ export default class GameScene extends Phaser.Scene {
   private characterInfoListUpdate(view: DataView) {
     const data = characterInfoList(view);
     this.characters.forEach((character, index) => {
-      character.changePosition(
-        data[index].characterInfo.x,
-        data[index].characterInfo.y,
-        data[index].characterInfo.velX,
-        data[index].characterInfo.velY,
-      );
+      character.changePosition(data[index].characterInfo);
     });
   }
 
@@ -190,6 +205,9 @@ export default class GameScene extends Phaser.Scene {
 
   upDateFrame(messageType: number, view: DataView): void {
     switch (messageType) {
+      case constants.GAMESOCKET_MESSAGE_TYPE.get('GAME_START'):
+        this.gameStartUpdate();
+        break;
       case constants.GAMESOCKET_MESSAGE_TYPE.get('USER_CHARACTER_INDEX'):
         this.userCharacterIndexUpdate(view);
         break;
@@ -234,6 +252,12 @@ export default class GameScene extends Phaser.Scene {
   update() {
     // socket 데이터 다 처리
     this.getSocketData();
+    if (this.gameState === 'countDown') {
+      this.loadingManager.destroyLoadingScreen();
+    }
+    if (this.gameState === 'end') {
+      return;
+    }
     // 처리가 다 된 상태에서 character보이는 것 변경
     this.characters.forEach((character) => {
       character.playAnims();

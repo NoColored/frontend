@@ -6,6 +6,7 @@ export const MAP_TYPE_MATCH = new Map([
 ]);
 
 export const GAMESOCKET_MESSAGE_TYPE: Map<string, number> = new Map([
+  ['GAME_START', 0],
   ['USER_CHARACTER_INDEX', 1],
   ['TIME_LEFT', 2],
   ['CHARACTER_INFO_LIST', 100],
@@ -13,6 +14,15 @@ export const GAMESOCKET_MESSAGE_TYPE: Map<string, number> = new Map([
   ['SHOW_REAL_SKIN', 102],
   ['EFFECT', 103],
 ]);
+
+export const INGAME_DEPTH = {
+  PHYSICS_MAP: 1,
+  MAP: 1,
+  BACKGROUND: 0,
+
+  LOADING_BACKGROUND: 500,
+  LOADING_SPRITE: 501,
+} as const;
 
 export const CHARACTER_COUNT = 10;
 

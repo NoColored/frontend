@@ -1,4 +1,5 @@
 import GameScene from '@/game/scene/GameScene';
+import LoadPreLoadingScene from '@/game/scene/LoadPreLoadingScene';
 
 export const config: Phaser.Types.Core.GameConfig = {
   type: Phaser.AUTO,
@@ -12,5 +13,5 @@ export const config: Phaser.Types.Core.GameConfig = {
       debug: true,
     },
   },
-  scene: [GameScene],
+  scene: [LoadPreLoadingScene, GameScene],
 };

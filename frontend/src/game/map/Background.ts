@@ -1,11 +1,11 @@
 import Phaser from 'phaser';
 
-export class Background extends Phaser.GameObjects.Image {
+import * as constants from '@/game/constants';
 
+export class Background extends Phaser.GameObjects.Image {
   constructor(scene: Phaser.Scene, mapId: string) {
     super(scene, 0, 0, mapId);
     this.setOrigin(0, 0);
-    scene.add.existing(this);
-
+    scene.add.existing(this).setDepth(constants.INGAME_DEPTH.BACKGROUND);
   }
 }
