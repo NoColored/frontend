@@ -7,7 +7,6 @@ import {
 } from '@/types/auth';
 
 import { api } from '@/services/index';
-import { useUserStateStore } from '@/states/user';
 import { redirect } from 'react-router-dom';
 
 export const getGuestLogin = async () => {
@@ -63,11 +62,14 @@ export const getIdCheck = async (id: string) => {
   }
 };
 
-export const postGuestSignUp = async (signUpInfo: SignUpInfo) => {
+export const postGuestSignUp = async (
+  signUpInfo: SignUpInfo,
+  onSuccessSignUp: () => void,
+) => {
   await api
     .post<string, SignUpInfo>(true, '/user/guest', signUpInfo)
     .then(() => {
-      useUserStateStore.getState();
+      onSuccessSignUp();
     })
     .catch((error) => {
       console.log(error);

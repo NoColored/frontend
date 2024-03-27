@@ -12,13 +12,14 @@ import * as constants from '@/pages/landing/logIn/constants';
 import { getIdCheck, postGuestSignUp, postSignUp } from '@/services/auth';
 
 import { checkSignUpInfo } from '@/utils/useSignUp';
+import { useUserStateStore } from '@/states/user';
 
 interface Props {
   closeModal: () => void;
-  isGuest: boolean;
 }
 
-const SignUp = ({ closeModal, isGuest }: Props) => {
+const SignUp = ({ closeModal }: Props) => {
+  const { isGuest } = useUserStateStore.getState();
   const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = useState(
     constants.ERROR_MESSAGE.welcome,
@@ -39,6 +40,11 @@ const SignUp = ({ closeModal, isGuest }: Props) => {
     setErrorMessage('');
   };
 
+  const onSucessSignUp = () => {
+    // closeModal();
+    navigate('/home');
+  };
+
   const clickSignUp = async () => {
     const checkId = await getIdCheck(signUpInfo.id);
     if (checkId) {
@@ -52,9 +58,9 @@ const SignUp = ({ closeModal, isGuest }: Props) => {
     }
 
     if (isGuest) {
-      await postGuestSignUp(signUpInfo);
-      closeModal();
-      return navigate('/home');
+      await postGuestSignUp(signUpInfo, onSucessSignUp);
+
+      return;
     }
 
     if (!isGuest) {
