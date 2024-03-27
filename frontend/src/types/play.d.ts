@@ -7,8 +7,8 @@ interface Player {
 }
 
 interface Room {
-  roomTitle: string;
-  mapId: number;
+  roomTitle?: string;
+  mapId?: number;
 }
 
 export interface CreateRoom extends Room {

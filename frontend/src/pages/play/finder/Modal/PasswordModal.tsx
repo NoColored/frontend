@@ -1,22 +1,44 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+import type { CodeRoom } from '@/types/play';
 
 import ColoredButton from '@/components/button/ColoredButton';
 import InputTextBox from '@/components/textbox/InputTextBox';
 
 import * as styles from '@/pages/play/finder/Modal/index.css';
 
+import { postEnterRoom } from '@/services/finder';
+
 interface Props {
-  buttonLeft: () => void;
-  buttonRight: () => void;
+  closeModal: () => void;
+  isMessage: () => void;
+  key: string;
 }
 
-const PasswordModal = ({ buttonLeft, buttonRight }: Props) => {
-  const [roomPassword, setRoomPassword] = useState<string>('');
+const PasswordModal = ({ key, closeModal, isMessage }: Props) => {
+  const [roomInfo, setRoomInfo] = useState<CodeRoom>({
+    roomCode: key,
+    roomPassword: '',
+  });
+  const navigate = useNavigate();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     if (name === 'roomPassword' && value.length > 4) return;
-    setRoomPassword(value);
+    setRoomInfo((info) => ({ ...info, [name]: value }));
+  };
+
+  const handleClickButton = async () => {
+    isMessage();
+
+    const roomUuid = await postEnterRoom(roomInfo);
+    if (roomUuid) {
+      navigate(`/play/lobby/${roomUuid}`, { state: roomUuid });
+      closeModal();
+    } else {
+      console.log('방 정보가 없습니다.');
+    }
   };
 
   return (
@@ -29,7 +51,7 @@ const PasswordModal = ({ buttonLeft, buttonRight }: Props) => {
           placeholder='비밀번호 4자리를 입력하세요'
           size='small'
           type='text'
-          value={roomPassword}
+          value={roomInfo?.roomPassword}
           onChange={handleChange}
         />
         <div className={styles.modalTwoButtonWrapper}>
@@ -37,13 +59,13 @@ const PasswordModal = ({ buttonLeft, buttonRight }: Props) => {
             size='small'
             text='취소'
             color='navy'
-            onClick={buttonLeft}
+            onClick={closeModal}
           />
           <ColoredButton
             size='small'
             text='확인'
             color='green'
-            onClick={buttonRight}
+            onClick={handleClickButton}
           />
         </div>
       </div>

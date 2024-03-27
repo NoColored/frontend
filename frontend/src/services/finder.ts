@@ -1,4 +1,4 @@
-import type { Lobby, CreateRoom, RoomListItem } from '@/types/play';
+import type { Lobby, CreateRoom, RoomListItem, CodeRoom } from '@/types/play';
 
 import { api } from '@/services/index';
 
@@ -21,6 +21,20 @@ export const postCreateRoom = async (roomRequest: CreateRoom) => {
       true,
       'play/friendly',
       roomRequest,
+    );
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+};
+
+export const postEnterRoom = async (roomInfo: CodeRoom) => {
+  try {
+    const response = await api.post<string, CodeRoom>(
+      true,
+      'play/friendly/enter',
+      roomInfo,
     );
     return response.data;
   } catch (error) {

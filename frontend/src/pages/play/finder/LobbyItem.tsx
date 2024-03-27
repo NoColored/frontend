@@ -18,7 +18,7 @@ interface Props {
   userNumber: number;
 }
 
-const LobbyItem = ({ mapId, roomTitle, userNumber }: Props) => {
+const LobbyItem = ({ key, mapId, roomTitle, userNumber }: Props) => {
   const { Modal, openModal, closeModal } = useModal();
   const [isMessage, setIsMessage] = useState(false);
 
@@ -60,10 +60,11 @@ const LobbyItem = ({ mapId, roomTitle, userNumber }: Props) => {
     }
     return (
       <PasswordModal
-        buttonLeft={closeModal}
-        buttonRight={() => {
+        closeModal={closeModal}
+        isMessage={() => {
           setIsMessage(true);
         }}
+        key={key}
       />
     );
   };
