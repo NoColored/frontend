@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { useLoaderData, useNavigate } from 'react-router-dom';
 
 import * as styles from './index.css';
@@ -17,14 +16,19 @@ import { useUserStateStore } from '@/states/user';
 
 const Home = () => {
   const user = useLoaderData() as User;
-  const { setUser } = useUserStateStore();
-  console.log(user);
-
-  useEffect(() => {
-    setUser(user);
-  }, [user]);
-
   const navigate = useNavigate();
+  const { isGuest, setGuest, setMember } = useUserStateStore.getState();
+
+  const checkGuest = () => {
+    if (user.guest === isGuest) return;
+    if (user.guest) {
+      setGuest();
+    } else {
+      setMember();
+    }
+  };
+
+  checkGuest();
 
   const goCollection = () => {
     navigate('/collection');
@@ -39,6 +43,7 @@ const Home = () => {
   if (!user) {
     return <Error />;
   }
+
   return (
     <BasicContentFrame>
       <div className={styles.fullWrapper}>
@@ -87,7 +92,7 @@ const Home = () => {
           />
         </div>
       </div>
-      {user.guest && <SignupBanner isGuest={user.guest} />}
+      {user.guest && <SignupBanner />}
     </BasicContentFrame>
   );
 };
