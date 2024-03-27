@@ -91,7 +91,7 @@ export const createLobbyMapPartWrapper = style([
   sprinkles({
     borderRadius: '2x',
     padding: '4x',
-    marginY: '4x',
+    marginY: '2x',
     width: 'full',
   }),
 ]);
@@ -102,4 +102,8 @@ export const mapItemWrapper = style([
   {
     height: constants.MAP_ITEM_HEIGHT,
   },
+]);
+
+export const alertMessage = style([
+  sprinkles({ fontSize: '0.75x', marginTop: '1.5x', color: 'red' }),
 ]);

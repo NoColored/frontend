@@ -11,8 +11,9 @@ import * as constants from '@/pages/landing/logIn/constants';
 
 import { getIdCheck, postGuestSignUp, postSignUp } from '@/services/auth';
 
-import { checkSignUpInfo } from '@/utils/useSignUp';
 import { useUserStateStore } from '@/states/user';
+
+import { checkSignUpInfo } from '@/utils/useSignUp';
 
 interface Props {
   closeModal: () => void;
@@ -40,11 +41,6 @@ const SignUp = ({ closeModal }: Props) => {
     setErrorMessage('');
   };
 
-  const onSucessSignUp = () => {
-    // closeModal();
-    navigate('/home');
-  };
-
   const clickSignUp = async () => {
     const checkId = await getIdCheck(signUpInfo.id);
     if (checkId) {
@@ -58,7 +54,10 @@ const SignUp = ({ closeModal }: Props) => {
     }
 
     if (isGuest) {
-      await postGuestSignUp(signUpInfo, onSucessSignUp);
+      await postGuestSignUp(signUpInfo).then(() => {
+        closeModal();
+        navigate('/home');
+      });
 
       return;
     }

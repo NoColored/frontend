@@ -19,16 +19,14 @@ const Home = () => {
   const navigate = useNavigate();
   const { isGuest, setGuest, setMember } = useUserStateStore.getState();
 
-  const checkGuest = () => {
+  (() => {
     if (user.guest === isGuest) return;
     if (user.guest) {
       setGuest();
     } else {
       setMember();
     }
-  };
-
-  checkGuest();
+  })();
 
   const goCollection = () => {
     navigate('/collection');
@@ -81,7 +79,7 @@ const Home = () => {
             }}
             className={styles.CharacterBox}
           >
-            <span className={styles.titleText}>{`< ${user.title} >`}</span>
+            <span className={styles.titleText}>{`< ${user.label} >`}</span>
           </div>
           <ColoredIconButton
             icon='/images/ui/icon/button/icon-button-ranking-h50w50.png'
