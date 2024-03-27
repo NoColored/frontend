@@ -44,6 +44,7 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Mode />,
+        loader: getUser,
       },
       {
         path: 'lobby/:roomId',
