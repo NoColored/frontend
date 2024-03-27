@@ -1,5 +1,3 @@
-import { useEffect, useState } from 'react';
-
 import * as styles from './index.css';
 
 import type { User } from '@/types/auth';

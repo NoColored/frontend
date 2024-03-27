@@ -1,20 +1,48 @@
+import React, { useState } from 'react';
+
 import * as styles from './index.css';
 
 import { settingsProps } from '@/components/BasicContentFrame/WithButtons/InfoButton/types';
 import ColoredButton from '@/components/button/ColoredButton';
 import InputTextBox from '@/components/textbox/InputTextBox';
+import { patchNicknameChange } from '@/services/auth';
+import * as constants from '@/pages/landing/logIn/constants';
+import { useNavigate } from 'react-router-dom';
 
 const NicknameChange = ({ onClose }: settingsProps) => {
+  const navigate = useNavigate();
+  const [nickname, setNickname] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const typeNickname = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setNickname(e.target.value);
+  };
+
+  const nicknameChange = async () => {
+    if (nickname.length < 2 || nickname.length > 9) {
+      setErrorMessage(constants.ERROR_MESSAGE.inValidNickname);
+      return;
+    }
+    const confirmNickname = await patchNicknameChange(nickname);
+    if (confirmNickname) {
+      onClose();
+      navigate('/home');
+    }
+  };
+
   return (
-    <div className={styles.boxWrapper}>
+    <div className={styles.centerBoxWrapper}>
       <div className={styles.text}>이름을 바꿔도 과거로부터</div>
       <div className={styles.text}>도망칠 수는 없지만 말이죠..</div>
       <InputTextBox
-        placeholder='수정할 닉네임을 입력하세요'
+        name='nickname'
+        placeholder='수정할 닉네임을 입력하세요 (2~9자리)'
         size='small'
         type='text'
-        onChange={() => {}}
+        value={nickname}
+        onChange={typeNickname}
       />
+      <div style={{ color: 'red' }}>{errorMessage}</div>
       <div className={styles.buttonWrapper}>
         <ColoredButton
           size='small'
@@ -26,7 +54,7 @@ const NicknameChange = ({ onClose }: settingsProps) => {
           size='small'
           text='확인'
           color='green'
-          onClick={() => {}}
+          onClick={nicknameChange}
         />
       </div>
     </div>

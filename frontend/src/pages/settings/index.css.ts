@@ -1,12 +1,23 @@
 import { style } from '@vanilla-extract/css';
 
-import { AUDIO_SIZE } from '@/pages/settings/constants';
+import { AUDIO_SIZE, CENTER_PLACE } from '@/pages/settings/constants';
 
 import { flexOptions } from '@/styles/common.css';
 import { sprinkles } from '@/styles/sprinkles.css';
 import { vars } from '@/styles/vars.css';
 
 export const boxWrapper = style([flexOptions({ option: 'columnCenter' })]);
+
+export const centerBoxWrapper = style([
+  flexOptions({ option: 'columnCenter' }),
+  {
+    position: 'fixed',
+    top: CENTER_PLACE.top,
+    left: CENTER_PLACE.left,
+    width: CENTER_PLACE.width,
+    height: CENTER_PLACE.height,
+  },
+]);
 
 export const buttonWrapper = style([flexOptions({ option: 'center' })]);
 

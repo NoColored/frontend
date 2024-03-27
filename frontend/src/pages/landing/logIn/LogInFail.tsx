@@ -13,7 +13,7 @@ const LogInFail = ({ closeModal }: Props) => {
     <>
       <div className={styles.logInFailMessageWrapper}>
         <pre className={styles.logInFailMessage}>
-          {constants.LOGIN_FAIL_MESSAGE}
+          {constants.ERROR_MESSAGE.loginFail}
         </pre>
       </div>
       <div className={styles.buttonWrapper}>

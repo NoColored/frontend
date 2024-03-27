@@ -44,9 +44,10 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Mode />,
+        loader: getUser,
       },
       {
-        path: 'lobby',
+        path: 'lobby/:roomId',
         element: <Lobby />,
       },
       {

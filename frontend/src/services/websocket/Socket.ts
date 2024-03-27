@@ -18,7 +18,10 @@ export class Socket {
   }
 
   isConnected() {
-    return this.webSocket.readyState === this.webSocket.OPEN;
+    return (
+      this.webSocket.readyState === this.webSocket.CONNECTING ||
+      this.webSocket.readyState === this.webSocket.OPEN
+    );
   }
 
   onMessage(

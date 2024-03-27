@@ -6,11 +6,10 @@ export interface User {
   nickname: string;
   rating: number;
   skin: string;
-  tier: string;
+  tier: tierRange;
   label: string;
-  token: string;
+  rank: number;
   userCode: string;
-  rank: string;
 }
 
 export interface LogInInfo {
@@ -23,4 +22,13 @@ export interface SignUpInfo {
   password: string;
   passwordConfirm: string;
   nickname: string;
+}
+
+export interface NicknameInfo {
+  nickname: string;
+}
+
+export interface PasswordInfo {
+  prePassword: string;
+  newPassword: string;
 }

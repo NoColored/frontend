@@ -13,7 +13,7 @@ const Settings = () => {
 
   return (
     <BasicContentFrame backButtonLabel='뒤로'>
-      <div className={styles.boxWrapper}>
+      <div className={styles.centerBoxWrapper}>
         <div className={styles.title}>설정</div>
         <AudioSetting />
         {isGuest ? <GuestUser /> : <LoginUser />}
