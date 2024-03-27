@@ -1,8 +1,4 @@
-import { useState } from 'react';
-
 import * as constants from './constants';
-
-import { CodeRoom } from '@/types/play';
 
 import ColoredButton from '@/components/button/ColoredButton';
 import RoundCornerImageBox from '@/components/imagebox/RoundCornerImageBox';
@@ -15,16 +11,14 @@ import MessageModalContent from '@/pages/play/finder/Modal/MessageModalContent';
 import PasswordModal from '@/pages/play/finder/Modal/PasswordModal';
 
 interface Props {
+  userNumber: number;
   mapId: number;
   roomTitle: string;
-  userNumber: number;
   roomCode: string;
 }
 
-const LobbyItem = ({ roomCode, mapId, roomTitle, userNumber }: Props) => {
+const LobbyItem = ({ mapId, roomTitle, roomCode, userNumber }: Props) => {
   const { Modal, openModal, closeModal } = useModal();
-  const [isMessage, setIsMessage] = useState(false);
-  const roomInfo: CodeRoom = { roomCode, roomTitle, mapId };
 
   const getImgSrc = () => {
     const mapItem = constants.MAPS.find((item) => item.mapId === mapId);
@@ -47,30 +41,7 @@ const LobbyItem = ({ roomCode, mapId, roomTitle, userNumber }: Props) => {
         </div>
       );
     }
-    if (isMessage) {
-      return (
-        <div
-          className={`${modalStyles.modalWrapper} ${modalStyles.messageModalWrapper}`}
-        >
-          <MessageModalContent failed='PASSWORD' />
-          <ColoredButton
-            size='small'
-            text='재시도'
-            color='green'
-            onClick={() => setIsMessage(false)}
-          />
-        </div>
-      );
-    }
-    return (
-      <PasswordModal
-        closeModal={closeModal}
-        isMessage={() => {
-          setIsMessage(true);
-        }}
-        room={roomInfo}
-      />
-    );
+    return <PasswordModal closeModal={closeModal} roomCode={roomCode} />;
   };
 
   return (
@@ -79,7 +50,7 @@ const LobbyItem = ({ roomCode, mapId, roomTitle, userNumber }: Props) => {
         tabIndex={0}
         role='button'
         className={styles.lobbyItemWrapper}
-        onClick={openModal}
+        onClick={() => openModal()}
       >
         <RoundCornerImageBox size='full' imgSrc={getImgSrc()} />
         <div className={styles.textsWrapper}>

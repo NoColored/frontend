@@ -31,7 +31,7 @@ const Finder = () => {
   };
 
   useEffect(() => {
-    if (roomList.length !== 0) {
+    if (roomList.length != 0) {
       setMaxIndex(Math.ceil(roomList.length / itemPerPage));
     } else {
       setMaxIndex(1);
@@ -72,8 +72,7 @@ const Finder = () => {
         <div className={styles.partyListWrapper}>
           {currentItems.map((item) => (
             <LobbyItem
-              // key도 바꿔줘야됨
-              key={`${item.roomCode}`}
+              key={item.roomCode}
               roomCode={item.roomCode}
               roomTitle={item.roomTitle}
               userNumber={item.userNumber}

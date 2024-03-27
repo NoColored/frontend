@@ -1,27 +1,26 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import type { CodeRoom } from '@/types/play';
+import type { RequestEnterRoom } from '@/types/play';
 
 import ColoredButton from '@/components/button/ColoredButton';
 import InputTextBox from '@/components/textbox/InputTextBox';
 
+import * as constants from '@/pages/play/finder/constants';
 import * as styles from '@/pages/play/finder/Modal/index.css';
 
 import { postEnterRoom } from '@/services/finder';
 
 interface Props {
   closeModal: () => void;
-  isMessage: () => void;
-  room: CodeRoom;
+  roomCode: string;
 }
 
-const PasswordModal = ({ room, closeModal, isMessage }: Props) => {
+const PasswordModal = ({ roomCode, closeModal }: Props) => {
   const navigate = useNavigate();
-  const [roomInfo, setRoomInfo] = useState<CodeRoom>({
-    roomCode: room.roomCode,
-    roomTitle: room.roomTitle,
-    mapId: room.mapId,
+  const [isValid, setIsValid] = useState(true);
+  const [roomInfo, setRoomInfo] = useState<RequestEnterRoom>({
+    roomCode,
     roomPassword: '',
   });
 
@@ -33,10 +32,13 @@ const PasswordModal = ({ room, closeModal, isMessage }: Props) => {
 
   const handleClickButton = async () => {
     const roomId = await postEnterRoom(roomInfo);
-    if (!roomId) {
-      isMessage();
+    if (!roomId || roomInfo.roomPassword.length !== 4) {
+      setIsValid(false);
+      console.log('비밀번호가 틀렸다.');
+    } else {
+      setIsValid(true);
+      navigate(`/play/lobby/${roomId}`);
     }
-    navigate(`/play/lobby/${roomId}`);
   };
 
   return (
@@ -66,6 +68,11 @@ const PasswordModal = ({ room, closeModal, isMessage }: Props) => {
             onClick={handleClickButton}
           />
         </div>
+        {!isValid && (
+          <div className={styles.alertMessage}>
+            {constants.INVALID_PASSWORD}
+          </div>
+        )}
       </div>
     </div>
   );
