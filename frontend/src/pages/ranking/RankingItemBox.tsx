@@ -14,9 +14,11 @@ const RankingItemBox = ({ user, myRank }: RankingItemBoxProps) => {
   const rankTextWrapper =
     user.rank < 1000 ? styles.rankTextWrapper : styles.rankLongTextWrapper;
 
+  const rank = user.guest ? '??' : `${user.rank}`;
+
   return (
     <div className={styles.rankingItemBox({ myRank })}>
-      <span className={rankTextWrapper}>{user.rank}</span>
+      <span className={rankTextWrapper}>{rank}</span>
 
       <span className={styles.playerInfoBoxFixWidthWrapper}>
         <PlayerInfoBox
