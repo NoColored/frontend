@@ -70,7 +70,7 @@ const PasswordModal = ({ roomCode, closeModal }: Props) => {
         </div>
         {!isValid && (
           <div className={styles.alertMessage}>
-            {constants.INVALID_PASSWORD}
+            {constants.INVALID_INPUTVALUE}
           </div>
         )}
       </div>
