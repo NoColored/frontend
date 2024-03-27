@@ -75,7 +75,7 @@ const Home = () => {
             }}
             className={styles.CharacterBox}
           >
-            <span className={styles.titleText}>{`< ${user.title} >`}</span>
+            <span className={styles.titleText}>{`< ${user.label} >`}</span>
           </div>
           <ColoredIconButton
             icon='/images/ui/icon/button/icon-button-ranking-h50w50.png'

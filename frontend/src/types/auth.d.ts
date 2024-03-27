@@ -1,3 +1,5 @@
+import type { tierRange } from '@/pages/ranking/types';
+
 export interface User {
   exp: number;
   expRequire: number;
@@ -6,9 +8,9 @@ export interface User {
   nickname: string;
   rating: number;
   skin: string;
-  tier: string;
-  title: string;
-  token: string;
+  tier: tierRange;
+  label: string;
+  rank: number;
   userCode: string;
 }
 
