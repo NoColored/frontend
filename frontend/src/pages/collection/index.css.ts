@@ -1,7 +1,9 @@
 import { style } from '@vanilla-extract/css';
-import { sprinkles } from '@/styles/sprinkles.css';
-import { flexOptions } from '@/styles/common.css';
+
 import * as constants from '@/pages/home/constants';
+
+import { flexOptions } from '@/styles/common.css';
+import { sprinkles } from '@/styles/sprinkles.css';
 
 export const componentWrapper = style([
   flexOptions({ option: 'rowCenter' }),
@@ -70,3 +72,8 @@ export const imageBoxWrapper = style([
     gap: '8px',
   },
 ]);
+
+export const disabled = style({
+  pointerEvents: 'none', // 클릭 이벤트 무시
+  filter: 'blur(8px)', // 블러 효과 적용
+});
