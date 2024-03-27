@@ -22,3 +22,5 @@ export const RANKINGWRAPPER_HEIGHT = calc.subtract(
 );
 
 export const RANKTEXT_WARRAPER_WIDTH = '63px';
+
+export const THIRTY_MINUTES = 1800000;

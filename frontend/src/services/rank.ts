@@ -3,11 +3,13 @@ import type { RankInfo } from '@/types/rank';
 import { api } from '@/services/index';
 
 export const getRankList = async () => {
-  try {
-    const response = await api.get<RankInfo>(true, 'rank/list');
-    return response.data;
-  } catch (error) {
-    console.log(error);
-    return null;
-  }
+  return await api
+    .get<RankInfo>(true, 'rank/list')
+    .then((res) => {
+      return res.data;
+    })
+    .catch((error) => {
+      console.log(error);
+      return '';
+    });
 };

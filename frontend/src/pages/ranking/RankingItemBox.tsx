@@ -1,6 +1,6 @@
 import * as styles from './index.css';
 
-import { User } from '@/types/auth';
+import type { User } from '@/types/auth';
 
 import TierBox from '@/components/imagebox/TierIconBox';
 import PlayerInfoBox from '@/components/PlayerInfoBox';

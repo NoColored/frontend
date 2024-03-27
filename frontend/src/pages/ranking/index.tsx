@@ -1,10 +1,10 @@
+import { useEffect, useState } from 'react';
+
 import * as styles from './index.css';
 
 import type { User } from '@/types/auth';
-import type { Player } from '@/types/rank';
 
 import BasicContentFrame from '@/components/BasicContentFrame/WithButtons/index';
-import type { tierType } from '@/components/imagebox/types';
 
 import RankingItemBox from '@/pages/ranking/RankingItemBox';
 
@@ -12,44 +12,40 @@ import { getUser } from '@/services/auth';
 import { getRankList } from '@/services/rank';
 
 const Ranking = () => {
-  const [rankList, setRankList] = useState<Player[]>([]);
+  const [rankList, setRankList] = useState<User[]>([]);
   const [myRank, setMyRank] = useState<User>();
   const [refreshTime, setRefreshTime] = useState<Date>();
 
   const getRankingInfo = async () => {
     const rankData = await getRankList();
-    if (rankData) {
+    if (typeof rankData !== 'string') {
       setRefreshTime(new Date(rankData.refreshTime));
-      setRankList(rankData.players);
-    } else {
-      console.log(refreshTime);
-      console.log('랭킹 정보를 불러오는 데 실패했습니다.');
+      setRankList(rankData.players || []);
     }
   };
 
   const getMyRank = async () => {
     const myData = await getUser();
-    if (myData && !myData.guest) {
+    if (myData) {
       setMyRank(myData);
-    } else {
-      console.log(
-        '나의 랭킹 정보를 불러오는 데 실패했습니다. 회원 로그인 했는지 체크해주세요.',
-      );
     }
   };
 
+  // refreshTime에 대해 백엔드 측에서 원만하게 해결이 된다면 okay, 수정할 필요는 없음.
+  // 기본 delay 시간은 5분으로 설정함.
   useEffect(() => {
     getRankingInfo();
     getMyRank();
 
-    const now = new Date();
-
     if (refreshTime) {
-      const timeout = refreshTime.getTime() - now.getTime();
+      const currentTime = new Date().getTime();
+      let delay = refreshTime.getTime() - currentTime;
+      delay = delay > 0 ? delay : 5 * 60 * 1000;
+
       const timer = setTimeout(() => {
         getRankingInfo();
-      }, timeout);
-
+        getMyRank();
+      }, delay);
       return () => clearTimeout(timer);
     }
   }, []);
@@ -63,28 +59,10 @@ const Ranking = () => {
 
         <div className={styles.rankingWrapper}>
           {rankList.map((item) => (
-            <RankingItemBox
-              key={item.rank}
-              rank={item.rank}
-              imgSrc={item.skin}
-              label={item.label}
-              nickname={item.nickname}
-              tier={item.tier as tierType}
-              score={item.rating}
-            />
+            <RankingItemBox key={item.rank} user={item} />
           ))}
         </div>
-        {myRank && (
-          <RankingItemBox
-            rank={myRank.guest ? myRank.rank : '?????'}
-            imgSrc={myRank.skin}
-            label={myRank.label}
-            nickname={myRank.nickname}
-            tier={myRank.tier as tierType}
-            score={myRank.rating}
-            myRank
-          />
-        )}
+        {myRank && <RankingItemBox user={myRank} myRank />}
       </div>
     </BasicContentFrame>
   );
