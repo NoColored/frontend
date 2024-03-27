@@ -10,11 +10,11 @@ export const checkSignUpInfo = (signUpInfo: SignUpInfo) => {
     passwordConfirm.trim() === '' ||
     nickname.trim() === ''
   ) {
-    return constants.BLANK_MESSAGE;
+    return constants.ERROR_MESSAGE.blank;
   }
 
   if (password !== passwordConfirm) {
-    return constants.NOT_SAME_PASSWORD_MESSAGE;
+    return constants.ERROR_MESSAGE.notSamePassword;
   }
 
   if (
@@ -25,7 +25,7 @@ export const checkSignUpInfo = (signUpInfo: SignUpInfo) => {
     nickname.length < 2 ||
     nickname.length > 9
   ) {
-    return constants.INVALID_INPUT_MESSAGE;
+    return constants.ERROR_MESSAGE.invalidInput;
   }
 
   return '';

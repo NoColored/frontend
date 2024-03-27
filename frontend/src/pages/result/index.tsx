@@ -66,7 +66,7 @@ const Result = () => {
 
         {resultExample.map((item) => (
           <div>
-            {item.rank == 1 ? (
+            {item.rank === 1 ? (
               <ResultInfoBox
                 rank={item.rank}
                 imgSrc={item.imgSrc}

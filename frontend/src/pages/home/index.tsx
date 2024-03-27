@@ -16,14 +16,17 @@ import { useUserStateStore } from '@/states/user';
 
 const Home = () => {
   const user = useLoaderData() as User;
-  console.log(user);
-
-  const setGuest = useUserStateStore((state) => state.setGuest);
-  if (user.guest) {
-    setGuest();
-  }
-
   const navigate = useNavigate();
+  const { isGuest, setGuest, setMember } = useUserStateStore.getState();
+
+  (() => {
+    if (user.guest === isGuest) return;
+    if (user.guest) {
+      setGuest();
+    } else {
+      setMember();
+    }
+  })();
 
   const goCollection = () => {
     navigate('/collection');
@@ -38,12 +41,13 @@ const Home = () => {
   if (!user) {
     return <Error />;
   }
+
   return (
     <BasicContentFrame>
       <div className={styles.fullWrapper}>
         <div className={styles.TopContentsWrapper}>
           <UserDashboard
-            nickname={user.nickName}
+            nickname={user.nickname}
             level={user.level}
             cp={user.exp}
             maxCp={user.exp}
@@ -75,7 +79,7 @@ const Home = () => {
             }}
             className={styles.CharacterBox}
           >
-            <span className={styles.titleText}>{`< ${user.title} >`}</span>
+            <span className={styles.titleText}>{`< ${user.label} >`}</span>
           </div>
           <ColoredIconButton
             icon='/images/ui/icon/button/icon-button-ranking-h50w50.png'
@@ -86,7 +90,7 @@ const Home = () => {
           />
         </div>
       </div>
-      {user.guest && <SignupBanner isGuest={user.guest} />}
+      {user.guest && <SignupBanner />}
     </BasicContentFrame>
   );
 };
