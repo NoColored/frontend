@@ -79,13 +79,12 @@ export class Character extends Phaser.Physics.Arcade.Sprite {
   }
 
   replayAnims() {
-    this.changeDir(this.velX);
+    this.changeAnims();
   }
 
   changePosition(x: number, y: number, velX: number) {
     this.setX(x);
     this.setY(y);
-    this.velX = velX;
     this.changeDir(velX);
     this.changeAnims();
   }
