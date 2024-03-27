@@ -11,16 +11,20 @@ import * as constants from '@/pages/landing/logIn/constants';
 
 import { getIdCheck, postGuestSignUp, postSignUp } from '@/services/auth';
 
+import { useUserStateStore } from '@/states/user';
+
 import { checkSignUpInfo } from '@/utils/useSignUp';
 
 interface Props {
   closeModal: () => void;
-  isGuest: boolean;
 }
 
-const SignUp = ({ closeModal, isGuest }: Props) => {
+const SignUp = ({ closeModal }: Props) => {
+  const { isGuest } = useUserStateStore.getState();
   const navigate = useNavigate();
-  const [errorMessage, setErrorMessage] = useState(constants.WELCOME_MESSAGE);
+  const [errorMessage, setErrorMessage] = useState(
+    constants.ERROR_MESSAGE.welcome,
+  );
   const [signUpInfo, setSignUpInfo] = useState<SignUpInfo>({
     id: '',
     password: '',
@@ -40,18 +44,27 @@ const SignUp = ({ closeModal, isGuest }: Props) => {
   const clickSignUp = async () => {
     const checkId = await getIdCheck(signUpInfo.id);
     if (checkId) {
-      setErrorMessage(constants.SAME_ID_MESSAGE);
-    } else {
-      const errorInfo = checkSignUpInfo(signUpInfo);
-      if (errorInfo.length >= 1) {
-        setErrorMessage(errorInfo);
-      } else if (isGuest) {
-        await postGuestSignUp(signUpInfo);
+      setErrorMessage(constants.ERROR_MESSAGE.sameId);
+      return;
+    }
+    const errorInfo = checkSignUpInfo(signUpInfo);
+    if (errorInfo.length >= 1) {
+      setErrorMessage(errorInfo);
+      return;
+    }
+
+    if (isGuest) {
+      await postGuestSignUp(signUpInfo).then(() => {
         closeModal();
         navigate('/home');
-      } else {
-        await postSignUp(signUpInfo);
-      }
+      });
+
+      return;
+    }
+
+    if (!isGuest) {
+      await postSignUp(signUpInfo);
+      closeModal();
     }
   };
 
@@ -68,7 +81,7 @@ const SignUp = ({ closeModal, isGuest }: Props) => {
       <InputTextBox
         name='password'
         type='password'
-        placeholder='비밀번호 (최소 6 ~ 20자)'
+        placeholder='비밀번호 (숫자 6자)'
         size='medium'
         value={signUpInfo.password}
         onChange={handleChange}
@@ -91,7 +104,8 @@ const SignUp = ({ closeModal, isGuest }: Props) => {
       />
       <div
         style={{
-          color: errorMessage === constants.WELCOME_MESSAGE ? 'blue' : 'red',
+          color:
+            errorMessage === constants.ERROR_MESSAGE.welcome ? 'blue' : 'red',
         }}
       >
         {errorMessage}
