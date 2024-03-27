@@ -16,6 +16,7 @@ import { useUserStateStore } from '@/states/user';
 
 const Home = () => {
   const user = useLoaderData() as User;
+  console.log(user);
   const navigate = useNavigate();
   const { isGuest, setGuest, setMember } = useUserStateStore.getState();
 

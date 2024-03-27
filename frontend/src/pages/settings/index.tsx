@@ -9,8 +9,7 @@ import LoginUser from '@/pages/settings/LoginUser';
 import { useUserStateStore } from '@/states/user';
 
 const Settings = () => {
-  const user = useUserStateStore((state) => state.user);
-  const isGuest = user ? user.guest : true;
+  const isGuest = useUserStateStore((state) => state.isGuest);
 
   return (
     <BasicContentFrame backButtonLabel='뒤로'>

@@ -1,15 +1,16 @@
 import BasicContentFrame from '@/components/BasicContentFrame/WithButtons';
 import * as styles from './index.css';
 import SettingTextButton from '@/components/button/SettingTextButton';
-import { useUserStateStore } from '@/states/user';
 import { useState } from 'react';
 import Skin from '@/pages/collection/Skin';
 import Label from '@/pages/collection/Label';
 import Achievement from '@/pages/collection/Achievement';
+import { useLoaderData } from 'react-router-dom';
+import { User } from '@/types/auth';
 
 const Collection = () => {
-  const [selectedCategory, setSelectedCategory] = useState('skin');
-  const user = useUserStateStore((state) => state.user);
+  const [selectedCategory, setSelectedCategory] = useState<string>('skin');
+  const user = useLoaderData() as User;
 
   const renderComponent = () => {
     switch (selectedCategory) {
@@ -19,8 +20,6 @@ const Collection = () => {
         return <Label />;
       case 'achievement':
         return <Achievement />;
-      default:
-        return <Skin />;
     }
   };
 
@@ -50,17 +49,17 @@ const Collection = () => {
         </SettingTextButton>
       </div>
       <div className={styles.componentWrapper}>
-        <div>
+        <div className={styles.firstComponentStyle}>
           <div
             style={{
               backgroundImage: `url(${user?.skin})`,
             }}
             className={styles.CharacterBox}
           >
-            <span className={styles.titleText}>{`< ${user?.title} >`}</span>
+            <span className={styles.titleText}>{`< ${user?.label} >`}</span>
           </div>
         </div>
-        {renderComponent()}
+        <div className={styles.secondComponentStyle}>{renderComponent()}</div>
       </div>
     </BasicContentFrame>
   );

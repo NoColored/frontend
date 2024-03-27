@@ -5,9 +5,23 @@ import * as constants from '@/pages/home/constants';
 
 export const componentWrapper = style([
   flexOptions({ option: 'rowCenter' }),
-  sprinkles({
-    justifyContent: 'spaceAround',
-  }),
+  sprinkles({}),
+  {
+    height: '40vh', // 뷰포트 높이의 100%로 설정하여 전체 화면을 차지하게 함
+  },
+]);
+
+export const firstComponentStyle = style({
+  flex: 4,
+});
+
+export const secondComponentStyle = style([
+  {
+    backgroundColor: 'rgba(0,0,0,0.7)',
+    flex: 6,
+    maxHeight: '350px',
+    overflowY: 'auto',
+  },
 ]);
 
 export const categoryButton = style([
@@ -45,5 +59,14 @@ export const CharacterBox = style([
     maxWidth: constants.CHARACTER_SIZE_HEGITH.MAX,
     flexGrow: 1,
     minWidth: constants.CHARACTER_SIZE_HEGITH.MIN,
+  },
+]);
+
+export const imageBoxWrapper = style([
+  sprinkles({ padding: '3x' }),
+  {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(4, 1fr)',
+    gap: '8px',
   },
 ]);
