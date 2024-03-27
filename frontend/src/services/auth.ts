@@ -1,3 +1,5 @@
+import { redirect } from 'react-router-dom';
+
 import {
   LogInInfo,
   NicknameInfo,
@@ -7,7 +9,6 @@ import {
 } from '@/types/auth';
 
 import { api } from '@/services/index';
-import { redirect } from 'react-router-dom';
 
 export const getGuestLogin = async () => {
   try {
@@ -62,17 +63,15 @@ export const getIdCheck = async (id: string) => {
   }
 };
 
-export const postGuestSignUp = async (
-  signUpInfo: SignUpInfo,
-  onSuccessSignUp: () => void,
-) => {
-  await api
+export const postGuestSignUp = async (signUpInfo: SignUpInfo) => {
+  return api
     .post<string, SignUpInfo>(true, '/user/guest', signUpInfo)
     .then(() => {
-      onSuccessSignUp();
+      return true;
     })
     .catch((error) => {
       console.log(error);
+      return false;
     });
 };
 

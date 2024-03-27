@@ -19,16 +19,14 @@ const Home = () => {
   const navigate = useNavigate();
   const { isGuest, setGuest, setMember } = useUserStateStore.getState();
 
-  const checkGuest = () => {
+  (() => {
     if (user.guest === isGuest) return;
     if (user.guest) {
       setGuest();
     } else {
       setMember();
     }
-  };
-
-  checkGuest();
+  })();
 
   const goCollection = () => {
     navigate('/collection');
