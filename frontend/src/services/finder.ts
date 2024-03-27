@@ -30,15 +30,13 @@ export const postCreateRoom = async (roomRequest: CreateRoom) => {
 };
 
 export const postEnterRoom = async (roomInfo: CodeRoom) => {
-  try {
-    const response = await api.post<string, CodeRoom>(
-      true,
-      'play/friendly/enter',
-      roomInfo,
-    );
-    return response.data;
-  } catch (error) {
-    console.log(error);
-    return null;
-  }
+  return await api
+    .post<string, CodeRoom>(true, 'play/friendly/enter', roomInfo)
+    .then((res) => {
+      return res.data;
+    })
+    .catch((error) => {
+      console.log(error);
+      return '';
+    });
 };

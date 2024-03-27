@@ -17,13 +17,13 @@ interface Props {
 }
 
 const PasswordModal = ({ room, closeModal, isMessage }: Props) => {
+  const navigate = useNavigate();
   const [roomInfo, setRoomInfo] = useState<CodeRoom>({
     roomCode: room.roomCode,
     roomTitle: room.roomTitle,
     mapId: room.mapId,
     roomPassword: '',
   });
-  const navigate = useNavigate();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -32,15 +32,11 @@ const PasswordModal = ({ room, closeModal, isMessage }: Props) => {
   };
 
   const handleClickButton = async () => {
-    isMessage();
-
     const roomId = await postEnterRoom(roomInfo);
-    if (roomId) {
-      navigate(`/play/lobby/${roomId}`);
-      closeModal();
-    } else {
-      console.log('방 정보가 없습니다.');
+    if (!roomId) {
+      isMessage();
     }
+    navigate(`/play/lobby/${roomId}`);
   };
 
   return (
