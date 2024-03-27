@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { Socket } from '@/services/websocket/Socket';
@@ -7,11 +7,10 @@ import { useWebSocketStore } from '@/states/websocket';
 
 import { ROUTE } from '@/router/constants';
 
-export const useWebSocket = () => {
+export const useWebSocket = (
+  handleWebSocketMessage: (message: WebSocketMessage<actionType>) => void,
+) => {
   const navigate = useNavigate();
-  const [message, setMessage] = useState<WebSocketMessage<actionType>>(
-    {} as WebSocketMessage<actionType>,
-  );
 
   const client = useWebSocketStore((state) => state.webSocket) as Socket;
   if (!client.isConnected()) {
@@ -19,14 +18,17 @@ export const useWebSocket = () => {
   }
 
   useEffect(() => {
-    client.onMessage(setMessage);
+    console.log('onMessage');
+    client.onMessage((message) => {
+      if (message.action === 'invalidToken') {
+        navigate(`${ROUTE.error}/401`, { replace: true });
+        return;
+      }
+      handleWebSocketMessage(message);
+    }, []);
+
+    return () => {
+      client.unmount();
+    };
   }, []);
-
-  useEffect(() => {
-    if (message.action === 'invalidToken') {
-      navigate(`${ROUTE.error}/401`, { replace: true });
-    }
-  }, [message]);
-
-  return message;
 };

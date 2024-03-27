@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import ColoredButton from '@/components/button/ColoredButton';
@@ -16,15 +15,17 @@ import { ROUTE } from '@/router/constants';
 const MatchingButton = () => {
   const navigate = useNavigate();
   const { Modal, openModal, closeModal } = useModal();
-  const webSocketMessage = useWebSocket();
 
-  useEffect(() => {
-    if (webSocketMessage.action === 'matching') {
+  const handleWebSocketMessage = (message: WebSocketMessage<actionType>) => {
+    if (message.action === 'matching') {
       navigate(ROUTE.game);
-    } else if (webSocketMessage.action === 'matchingCancel') {
+      return;
+    }
+    if (message.action === 'matchingCancel') {
       closeModal();
     }
-  }, [webSocketMessage]);
+  };
+  useWebSocket(handleWebSocketMessage);
 
   const startMatching = async () => {
     const matchingSuccess = await getMatching();
