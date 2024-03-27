@@ -15,11 +15,11 @@ import {
 
 import { useWebSocketStore } from '@/states/websocket';
 
-import { Character } from '@/game/character/Character';
 import * as constants from '@/game/constants';
 import { Background } from '@/game/map/Background';
 import { Map } from '@/game/map/Map';
 import { PhysicsMap } from '@/game/map/PhysicsMap';
+import { Character } from '@/game/object/Character';
 import { BgmManager } from '@/game/sound/Bgm';
 
 export default class GameScene extends Phaser.Scene {
@@ -77,7 +77,7 @@ export default class GameScene extends Phaser.Scene {
     this.load.audio('bgm', '/music/8-bit-game.mp3');
     this.load.audio('bgm2', '/music/ready-to-play.mp3');
 
-    // npc character
+    // npc object
     this.load.spritesheet(
       'npc',
       '/images/character/character-default-none-clone-h240w240.png',
@@ -108,7 +108,7 @@ export default class GameScene extends Phaser.Scene {
       'tileTransparent',
     );
 
-    // character
+    // object
 
     // 임시로
     const tempPlayerData: characterInfo = {
@@ -132,23 +132,23 @@ export default class GameScene extends Phaser.Scene {
 
     //  temp
     // 10000ms(10초) 후에 실행될 함수를 예약합니다.
-    // this.time.delayedCall(3000, () => {
-    //   // 여기에 원하는 로직을 작성합니다.
-    //   console.log('10초가 지났습니다!');
-    //   // 예를 들어, 플레이어
-    //   this.characters[0].showSkin('npc');
-    //   this.characters[0].changePosition(100, 6, -180);
-    //   this.characters[1].showSkin('npc');
-    //   this.characters[1].changePosition(150, 200, -180);
-    //   this.characters[2].showSkin('npc');
-    //   this.characters[2].changePosition(100, 100, 180);
-    // });
+    this.time.delayedCall(3000, () => {
+      // 여기에 원하는 로직을 작성합니다.
+      console.log('10초가 지났습니다!');
+      // 예를 들어, 플레이어
+      this.characters[0].setSkinState('npc');
+      this.characters[0].changePosition(100, 6, -180);
+      this.characters[1].setSkinState('npc');
+      this.characters[1].changePosition(150, 200, -180);
+      this.characters[2].setSkinState('npc');
+      this.characters[2].changePosition(100, 100, 180);
+    });
   }
 
   // 1
   private userCharacterIndexUpdate(view: DataView) {
     const data = userCharacterIndex(view);
-    this.characters[data].showSkin(this.gameData?.skins[data] ?? 'npc');
+    this.characters[data].setSkinState(this.gameData?.skins[data] ?? 'npc');
   }
 
   private timeLeftUpdate(view: DataView) {
@@ -183,7 +183,7 @@ export default class GameScene extends Phaser.Scene {
     this.charactersNowSkin.fill(false);
     // 지금 받은 데이터로 업데이트
     data.forEach((index) => {
-      this.characters[index[0]].showSkin(
+      this.characters[index[0]].setSkinState(
         this.gameData?.skins[index[1]] ?? 'npc',
       );
       this.charactersNowSkin[index[0]] = true;
@@ -191,7 +191,7 @@ export default class GameScene extends Phaser.Scene {
     // 이전에 skin but 이번엔 skin이 없는 경우
     this.charactersPrevSkin.forEach((isShow, index) => {
       if (!this.charactersNowSkin[index] && isShow) {
-        this.characters[index].showSkin('npc');
+        this.characters[index].setSkinState('npc');
       }
     });
   }

@@ -20,10 +20,10 @@ export class Character extends Phaser.Physics.Arcade.Sprite {
     scene.physics.add.existing(this);
     scene.physics.add.collider(this, physicsMap);
 
-    this.currentSkin = texture;
+    this.currentSkin = '';
     this.velX = 0;
 
-    this.showSkin(texture);
+    this.setSkinState(texture);
     this.changePosition(
       characterInfoData.x,
       characterInfoData.y,
@@ -68,7 +68,8 @@ export class Character extends Phaser.Physics.Arcade.Sprite {
     this.play(animKey, true);
   }
 
-  showSkin(skin: string) {
+  setSkinState(skin: string) {
+    if (this.currentSkin === skin) return;
     this.currentSkin = skin;
     this.createAnimations(skin);
   }
