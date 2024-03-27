@@ -38,10 +38,10 @@ const ModalContent = ({ defaultMapId, closeModal }: Props) => {
 
   const handleClickCreateButton = async () => {
     if (createRoomInfo.roomTitle && createRoomInfo.roomPassword.length === 4) {
-      const lobbyInfo = await postCreateRoom(createRoomInfo);
-      if (lobbyInfo) {
-        navigate(`/play/lobby/${lobbyInfo.roomUuid}`, { state: lobbyInfo });
-        console.log(lobbyInfo);
+      const roomId = await postCreateRoom(createRoomInfo);
+      if (roomId) {
+        navigate(`/play/lobby/${roomId}`);
+        console.log(roomId);
         closeModal();
       } else {
         console.log('생성된 방 정보를 가져오는 데 실패했습니다.');

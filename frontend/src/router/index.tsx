@@ -46,7 +46,7 @@ const router = createBrowserRouter([
         element: <Mode />,
       },
       {
-        path: 'lobby',
+        path: 'lobby/:roomId',
         element: <Lobby />,
       },
       {
