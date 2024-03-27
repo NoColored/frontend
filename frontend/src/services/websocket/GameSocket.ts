@@ -28,11 +28,7 @@ export class GameSocket extends Socket {
   }
 }
 
-const gameStartMessage = (view: DataView) => {
-  return 'gameStart';
-};
-
-const characterInfoList = (view: DataView): characterInfoIndex[] => {
+export const characterInfoList = (view: DataView): characterInfoIndex[] => {
   let p = 1;
   const characterInfoData: characterInfoIndex[] = [];
   const length = view.getUint8(p++);
@@ -51,15 +47,15 @@ const characterInfoList = (view: DataView): characterInfoIndex[] => {
   }
   return characterInfoData;
 };
-const userCharacterIndex = (view: DataView) => {
+export const userCharacterIndex = (view: DataView) => {
   return view.getUint8(1);
 };
 
-const timeLeft = (view: DataView) => {
+export const timeLeft = (view: DataView) => {
   return view.getUint8(1);
 };
 
-const currentScore = (view: DataView) => {
+export const currentScore = (view: DataView) => {
   let p = 1;
   const scoreList: number[] = [];
   const length = view.getUint8(p++);
@@ -70,21 +66,28 @@ const currentScore = (view: DataView) => {
   }
   return scoreList;
 };
-export const parsingMessage = (
-  messageType: number,
-  view: DataView,
-): number | characterInfoIndex[] | string | number[] => {
-  const parsingAction: {
-    [key: number]: number | characterInfoIndex[] | string | number[];
-  } = {
-    0: 'not yet',
-    1: userCharacterIndex(view),
-    2: timeLeft(view),
-    10: 'gameEnd',
-    100: characterInfoList(view),
-    101: 'step',
-    102: currentScore(view),
-    200: 'test_map',
-  };
-  return parsingAction[messageType] ?? 'wrongType';
+
+export const showRealSkin = (view: DataView) => {
+  const showSkinList: number[][] = [];
+  let p = 1;
+  const length = view.getUint8(p++);
+  for (let i = 0; i < length; i++) {
+    showSkinList.push([view.getUint8(p++), view.getUint8(p++)]);
+  }
+  return showSkinList;
+};
+
+export const effectList = (view: DataView) => {
+  const showEffectList: number[][] = [];
+  let p = 1;
+  const length = view.getUint8(p++);
+  for (let i = 0; i < length; i++) {
+    showEffectList.push([
+      view.getUint8(p + 1),
+      view.getUint8(p + 4),
+      view.getUint8(p + 4),
+    ]);
+    p += 9;
+  }
+  return showEffectList;
 };

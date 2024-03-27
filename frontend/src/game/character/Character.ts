@@ -1,7 +1,8 @@
 import { characterInfo } from '@/types/ingame';
 
 export class Character extends Phaser.Physics.Arcade.Sprite {
-  private textureFile: string;
+  private currentSkin: string;
+
   private velX: number;
 
   constructor(
@@ -12,26 +13,33 @@ export class Character extends Phaser.Physics.Arcade.Sprite {
   ) {
     super(scene, characterInfoData.x, characterInfoData.y, texture);
 
-    this.textureFile = texture;
-    scene.add.existing(this);
-    this.animations();
-
     // 사이즈 결정 필요
-    this.scale = 7 / 32;
+    this.scale = 6 / 32;
 
     // 충돌 관련 로직
     scene.physics.add.existing(this);
     scene.physics.add.collider(this, physicsMap);
 
-    // 기본 dir 설정
-    this.changeDir(characterInfoData.velX);
-    this.velX = characterInfoData.velX;
+    this.currentSkin = texture;
+    this.velX = 0;
+
+    this.showSkin(texture);
+    this.changePosition(
+      characterInfoData.x,
+      characterInfoData.y,
+      characterInfoData.velX,
+    );
+    scene.add.existing(this);
   }
 
-  animations() {
+  // 애니메이션 설정
+  createAnimations(texture: string) {
+    const leftKey = `walk-left-${texture}`;
+    const rightKey = `walk-right-${texture}`;
+    if (this.anims.animationManager.exists(leftKey)) return;
     this.anims.create({
-      key: 'walk-left',
-      frames: this.anims.generateFrameNumbers(this.textureFile, {
+      key: leftKey,
+      frames: this.anims.generateFrameNumbers(texture, {
         start: 0,
         end: 3,
       }),
@@ -39,8 +47,8 @@ export class Character extends Phaser.Physics.Arcade.Sprite {
       repeat: -1,
     });
     this.anims.create({
-      key: 'walk-right',
-      frames: this.anims.generateFrameNumbers(this.textureFile, {
+      key: rightKey,
+      frames: this.anims.generateFrameNumbers(texture, {
         start: 5,
         end: 8,
       }),
@@ -50,8 +58,19 @@ export class Character extends Phaser.Physics.Arcade.Sprite {
   }
 
   changeDir(velX: number) {
-    if (velX > 0) this.anims.play('walk-right', true);
-    else this.anims.play('walk-left', true);
+    if (this.velX === velX) return;
+    this.velX = velX;
+  }
+
+  changeAnims() {
+    const direction = this.velX > 0 ? 'right' : 'left';
+    const animKey = `walk-${direction}-${this.currentSkin}`;
+    this.play(animKey, true);
+  }
+
+  showSkin(skin: string) {
+    this.currentSkin = skin;
+    this.createAnimations(skin);
   }
 
   // 아이템 등으로 인한 멈춤일때
@@ -68,5 +87,6 @@ export class Character extends Phaser.Physics.Arcade.Sprite {
     this.setY(y);
     this.velX = velX;
     this.changeDir(velX);
+    this.changeAnims();
   }
 }

@@ -5,10 +5,13 @@ export const MAP_TYPE_MATCH = new Map([
   [2, 'foodmap'],
 ]);
 
-export const GAMESOCKET_MESSAGE_TYPE = new Map([
-  [0, 'START'],
-  [1, 'SET_CHARACTER'],
-  [2, 'TIMER'],
+export const GAMESOCKET_MESSAGE_TYPE: Map<string, number> = new Map([
+  ['USER_CHARACTER_INDEX', 1],
+  ['TIME_LEFT', 2],
+  ['CHARACTER_INFO_LIST', 100],
+  ['CURRENT_SCORE', 101],
+  ['SHOW_REAL_SKIN', 102],
+  ['EFFECT', 103],
 ]);
 
 export const CHARACTER_COUNT = 10;
