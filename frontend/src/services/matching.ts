@@ -1,11 +1,27 @@
 import { api } from '@/services/index';
 
 export const getMatching = async () => {
-  const response = await api.get<string>(true, '/play/ranking');
-  return response.status === 200;
+  return api
+    .get<string>(true, '/play/ranking')
+    .then((response) => {
+      console.log('매칭 요청 성공');
+      return response.status === 200;
+    })
+    .catch((error) => {
+      console.error(error);
+      return false;
+    });
 };
 
 export const deleteMatching = async () => {
-  const response = await api.delete<string>(true, '/play/ranking');
-  return response.status === 200;
+  return api
+    .delete<string>(true, '/play/ranking')
+    .then((response) => {
+      console.log('매칭 취소 요청 성공');
+      return response.status === 200;
+    })
+    .catch((error) => {
+      console.error(error);
+      return false;
+    });
 };
