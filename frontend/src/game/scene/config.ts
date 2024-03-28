@@ -1,10 +1,11 @@
-import Sample from '@/game/scene/Sample';
+import GameScene from '@/game/scene/GameScene';
+import LoadPreLoadingScene from '@/game/scene/LoadPreLoadingScene';
 
 export const config: Phaser.Types.Core.GameConfig = {
   type: Phaser.AUTO,
   parent: 'game-container',
-  width: 800,
-  height: 600,
+  width: 594,
+  height: 342,
   physics: {
     default: 'arcade',
     arcade: {
@@ -12,5 +13,5 @@ export const config: Phaser.Types.Core.GameConfig = {
       debug: true,
     },
   },
-  scene: [Sample],
+  scene: [LoadPreLoadingScene, GameScene],
 };
