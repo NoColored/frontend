@@ -6,11 +6,13 @@ interface ActionDataTypeMap {
   invalidToken: null;
   loginFailed: null;
 
-  // matching
+  // 경쟁전
   matching: string;
   matchingCancel: null;
 
+  // 친선전
   roomInfo: Lobby;
+  gameStart: null;
 }
 
 type actionType = keyof ActionDataTypeMap;

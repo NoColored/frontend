@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useNavigate } from 'react-router-dom';
 
 import * as constants from './constants';
 import * as styles from './index.css';
@@ -18,6 +18,8 @@ import SettingButton from '@/pages/play/lobby/SettingButton';
 
 import { getOut } from '@/services/lobby';
 
+import { ROUTE } from '@/router/constants';
+
 const getLobbyInfo = (lobby: Lobby) => {
   lobby.players.forEach((player, index) => {
     player.color = player.userCode
@@ -30,12 +32,16 @@ const getLobbyInfo = (lobby: Lobby) => {
 };
 
 const Lobby = () => {
+  const navigate = useNavigate();
   const lobbyData = useLoaderData() as Lobby;
   const [lobbyInfo, setLobbyInfo] = useState(getLobbyInfo(lobbyData));
 
   useWebSocket((message) => {
     if (message.action === 'roomInfo') {
       setLobbyInfo(getLobbyInfo(message.data as ActionDataTypeMap['roomInfo']));
+    }
+    if (message.action === 'gameStart') {
+      navigate(ROUTE.game);
     }
   });
 
