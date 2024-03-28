@@ -200,8 +200,10 @@ export default class GameScene extends Phaser.Scene {
   private currentScoreUpdate(view: DataView) {
     const [data, length] = currentScore(view, this.p + 1);
     //  현재 점수 update 설정하기
-    this.gameData;
-    data;
+    for (let i = 0; i < data.length; i++) {
+      this.topUi?.updateScore(data);
+    }
+
     return length;
   }
 
