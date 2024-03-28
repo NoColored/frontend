@@ -277,7 +277,7 @@ export default class GameScene extends Phaser.Scene {
     // 지금 받은 데이터로 업데이트
     data.forEach((index) => {
       this.characters[index[1]].setSkinState(`player${index[0]}` ?? 'npc');
-      this.charactersNowSkin[index[0]] = true;
+      this.charactersNowSkin[index[1]] = true;
     });
     // 이전에 skin but 이번엔 skin이 없는 경우
     this.charactersPrevSkin.forEach((isShow, index) => {
@@ -321,6 +321,8 @@ export default class GameScene extends Phaser.Scene {
 
       default:
         console.log('messageError', messageType);
+        console.log(this.p);
+        console.log(view);
         return 2;
     }
   }

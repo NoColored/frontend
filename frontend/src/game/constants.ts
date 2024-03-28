@@ -13,7 +13,7 @@ export const GAMESOCKET_MESSAGE_TYPE: Map<string, number> = new Map([
   ['CHARACTER_INFO_LIST', 100],
   ['CURRENT_SCORE', 101],
   ['SHOW_REAL_SKIN', 110],
-  ['EFFECT', 103],
+  ['EFFECT', 102],
 ]);
 
 export const INGAME_DEPTH = {
