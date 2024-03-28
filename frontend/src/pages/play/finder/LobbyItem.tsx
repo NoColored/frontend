@@ -1,5 +1,7 @@
 import * as constants from './constants';
 
+import type { RoomListItem } from '@/types/play';
+
 import ColoredButton from '@/components/button/ColoredButton';
 import RoundCornerImageBox from '@/components/imagebox/RoundCornerImageBox';
 
@@ -11,22 +13,21 @@ import MessageModalContent from '@/pages/play/finder/Modal/MessageModalContent';
 import PasswordModal from '@/pages/play/finder/Modal/PasswordModal';
 
 interface Props {
-  userNumber: number;
-  mapId: number;
-  roomTitle: string;
-  roomCode: string;
+  roomInfo: RoomListItem;
 }
 
-const LobbyItem = ({ mapId, roomTitle, roomCode, userNumber }: Props) => {
+const LobbyItem = ({ roomInfo }: Props) => {
   const { Modal, openModal, closeModal } = useModal();
 
   const getImgSrc = () => {
-    const mapItem = constants.MAPS.find((item) => item.mapId === mapId);
+    const mapItem = constants.MAPS.find(
+      (item) => item.mapId === roomInfo.mapId,
+    );
     return mapItem ? mapItem.imgSrc : undefined;
   };
 
   const renderModalContent = () => {
-    if (userNumber === 4) {
+    if (roomInfo.userNumber === 4) {
       return (
         <div
           className={`${modalStyles.modalWrapper} ${modalStyles.messageModalWrapper}`}
@@ -41,7 +42,9 @@ const LobbyItem = ({ mapId, roomTitle, roomCode, userNumber }: Props) => {
         </div>
       );
     }
-    return <PasswordModal closeModal={closeModal} roomCode={roomCode} />;
+    return (
+      <PasswordModal closeModal={closeModal} roomCode={roomInfo.roomCode} />
+    );
   };
 
   return (
@@ -54,8 +57,10 @@ const LobbyItem = ({ mapId, roomTitle, roomCode, userNumber }: Props) => {
       >
         <RoundCornerImageBox size='full' imgSrc={getImgSrc()} />
         <div className={styles.textsWrapper}>
-          <div className={styles.lobbyTitleText}>{roomTitle}</div>
-          <div className={styles.playerCountText}>{`${userNumber}/4`}</div>
+          <div className={styles.lobbyTitleText}>{roomInfo.roomTitle}</div>
+          <div
+            className={styles.playerCountText}
+          >{`${roomInfo.userNumber}/4`}</div>
         </div>
       </div>
       <Modal>{renderModalContent()}</Modal>
