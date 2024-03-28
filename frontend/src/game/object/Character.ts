@@ -7,6 +7,8 @@ export class Character extends Phaser.Physics.Arcade.Sprite {
   private dirChanged: boolean;
   private skinChanged: boolean;
 
+  isUser: boolean;
+
   constructor(
     scene: Phaser.Scene,
     texture: string,
@@ -17,6 +19,7 @@ export class Character extends Phaser.Physics.Arcade.Sprite {
 
     // 사이즈 결정 필요
     this.scale = 6 / 32;
+    this.isUser = false;
 
     // 충돌 관련 로직
     scene.physics.add.existing(this);
@@ -92,6 +95,9 @@ export class Character extends Phaser.Physics.Arcade.Sprite {
   }
 
   setSkinState(skin: string) {
+    if (this.isUser) return;
+
+    console.log('setSkinState', skin);
     if (this.currentSkin === skin) return;
     this.currentSkin = skin;
     this.skinChanged = true;
@@ -107,5 +113,10 @@ export class Character extends Phaser.Physics.Arcade.Sprite {
 
     // 방향 변경
     this.changeDir(characterData.velX);
+  }
+
+  setUser() {
+    if (this.isUser) return;
+    this.isUser = true;
   }
 }

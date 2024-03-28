@@ -12,11 +12,14 @@ export const GAMESOCKET_MESSAGE_TYPE: Map<string, number> = new Map([
   ['COUNTDOWN', 3],
   ['CHARACTER_INFO_LIST', 100],
   ['CURRENT_SCORE', 101],
-  ['SHOW_REAL_SKIN', 102],
+  ['SHOW_REAL_SKIN', 110],
   ['EFFECT', 103],
 ]);
 
 export const INGAME_DEPTH = {
+  TIMER: 3,
+  SCORE: 3,
+  CHARACTER: 1,
   PHYSICS_MAP: 1,
   MAP: 1,
   BACKGROUND: 0,
@@ -24,6 +27,8 @@ export const INGAME_DEPTH = {
   LOADING_BACKGROUND: 500,
   LOADING_SPRITE: 501,
 } as const;
+
+export const ICON_COLOR = ['#EB4180', '#4CA732', '#F2B705', '#04B1D9'] as const;
 
 export const CHARACTER_COUNT = 10;
 

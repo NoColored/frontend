@@ -22,6 +22,7 @@ import { PhysicsMap } from '@/game/map/PhysicsMap';
 import { Character } from '@/game/object/Character';
 import LoadingUtils from '@/game/scene/LoadingUtils';
 import { BgmManager } from '@/game/sound/Bgm';
+import { TopUi } from '@/game/UI/TopUi';
 
 export default class GameScene extends Phaser.Scene {
   private gameData: IngameReady | null;
@@ -33,9 +34,13 @@ export default class GameScene extends Phaser.Scene {
     'loading';
   private loadingManager;
 
+  private icons: string[] = [];
+  private topUi: TopUi | null = null;
+
   constructor() {
     super({ key: 'GameScene' });
 
+    this.topUi = null;
     this.gameData = null;
     const { webSocket } = useWebSocketStore.getState();
     this.socket = webSocket;
@@ -93,6 +98,13 @@ export default class GameScene extends Phaser.Scene {
         frameHeight: 240,
       },
     );
+    for (let i = 0; i < 4; i++) {
+      this.load.image(
+        `player${i}Icon`,
+        `/images/ui/icon/shape/icon-shape-big-player${i}-h32w32.png`,
+      );
+      this.icons.push(`player${i}Icon`);
+    }
   }
 
   create() {
@@ -135,6 +147,9 @@ export default class GameScene extends Phaser.Scene {
       );
     }
 
+    this.topUi = new TopUi(this, 4, this.icons);
+    this.add.existing(this.topUi);
+
     //  임시
     this.time.addEvent({
       delay: 2000, // 3000밀리초 후에 실행
@@ -154,22 +169,22 @@ export default class GameScene extends Phaser.Scene {
   // 1
   private userCharacterIndexUpdate(view: DataView) {
     const data = userCharacterIndex(view, this.p + 1);
-    this.characters[data].setSkinState(this.gameData?.skins[data] ?? 'npc');
-    return 2;
+    this.characters[data[1]].setSkinState(
+      this.gameData?.skins[data[0]] ?? 'npc',
+    );
+    this.characters[data[1]].setUser();
+    return 3;
   }
 
   private timeLeftUpdate(view: DataView) {
     const data = timeLeft(view, this.p + 1);
-    // 화면에 남은 시간 노출 필요
-    this.gameData;
-    data;
+    if (this.topUi === null) return 2;
+    this.topUi.updateTimer(data);
     return 2;
   }
 
   private countDownUpdate(view: DataView) {
     const data = timeLeft(view, this.p + 1);
-    // 화면에 남은 시간 노출 필요
-    this.gameData;
     data;
     return 2;
   }
@@ -204,7 +219,11 @@ export default class GameScene extends Phaser.Scene {
     });
     // 이전에 skin but 이번엔 skin이 없는 경우
     this.charactersPrevSkin.forEach((isShow, index) => {
-      if (!this.charactersNowSkin[index] && isShow) {
+      if (
+        !this.characters[index].isUser &&
+        !this.charactersNowSkin[index] &&
+        isShow
+      ) {
         this.characters[index].setSkinState('npc');
       }
     });
@@ -239,7 +258,7 @@ export default class GameScene extends Phaser.Scene {
         return this.effectUpdate(view);
 
       default:
-        console.log('messageError');
+        console.log('messageError', messageType);
         return 2;
     }
   }
@@ -249,19 +268,16 @@ export default class GameScene extends Phaser.Scene {
   getSocketData = () => {
     if (!this.socket) return null;
 
-    console.log('socket', this.socket.isMessageEmpty());
     while (!this.socket.isMessageEmpty()) {
       const message = this.socket.pollMessage();
       if (!message) {
         return null;
       }
-      console.log('message', message);
       const view = new DataView(message);
       this.p = 0;
       while (this.p < view.byteLength) {
-        console.log('p', this.p);
         const messageType = view.getUint8(this.p);
-        console.log('messageType', messageType);
+
         const length = this.upDateFrame(messageType, view);
         this.p += length;
       }

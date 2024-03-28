@@ -52,7 +52,7 @@ export const characterInfoList = (
   return [characterInfoData, 2 + 16 * length];
 };
 export const userCharacterIndex = (view: DataView, point: number) => {
-  return view.getUint8(point);
+  return [view.getUint8(point), view.getUint8(point + 1)];
 };
 
 export const timeLeft = (view: DataView, point: number) => {
