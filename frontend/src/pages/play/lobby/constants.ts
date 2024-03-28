@@ -4,6 +4,8 @@ import { vars } from '@/styles/vars.css';
 
 export const PLAYER_COLORS = ['pink', 'green', 'yellow', 'blue'] as const;
 
+export const EMPTY_PLAYER_COLOR = 'gray300' as const;
+
 export const PLAYER_ICON = {
   pink: '/images/ui/icon/shape/icon-shape-white-small-player0-h16w16.png',
   green: '/images/ui/icon/shape/icon-shape-white-small-player1-h16w16.png',
@@ -16,6 +18,7 @@ export const PLAYER_ICON_LARGE = {
   green: '/images/ui/icon/shape/icon-shape-white-big-player1-h48w48.png',
   yellow: '/images/ui/icon/shape/icon-shape-white-big-player2-h48w48.png',
   blue: '/images/ui/icon/shape/icon-shape-white-big-player3-h48w48.png',
+  gray300: '',
 };
 
 export const TITLE_MARGIN_BOTTOM = '1x';

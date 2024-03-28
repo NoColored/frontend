@@ -1,17 +1,11 @@
 import { style } from '@vanilla-extract/css';
 
-import * as constants from '@/pages/home/constants';
+import * as constants from './constatns';
 
 import { flexOptions } from '@/styles/common.css';
 import { sprinkles } from '@/styles/sprinkles.css';
 
-export const componentWrapper = style([
-  flexOptions({ option: 'rowCenter' }),
-  sprinkles({}),
-  {
-    height: '40vh', // 뷰포트 높이의 100%로 설정하여 전체 화면을 차지하게 함
-  },
-]);
+export const componentWrapper = style([flexOptions({ option: 'rowCenter' })]);
 
 export const firstComponentStyle = style({
   flex: 4,
@@ -21,7 +15,7 @@ export const secondComponentStyle = style([
   {
     backgroundColor: 'rgba(0,0,0,0.7)',
     flex: 6,
-    maxHeight: '350px',
+    maxHeight: constants.SECOND_COMPONENT_MAX_HEIGHT,
     overflowY: 'auto',
   },
 ]);
@@ -29,7 +23,7 @@ export const secondComponentStyle = style([
 export const categoryButton = style([
   flexOptions({ option: 'rowCenter' }),
   {
-    gap: '16px',
+    gap: constants.CATEGORY_BUTTON_GAP,
   },
 ]);
 
@@ -51,6 +45,7 @@ export const CharacterBox = style([
     alignItems: 'center',
   }),
   {
+    position: 'relative',
     overflow: 'hidden',
     aspectRatio: '1 / 1',
     backgroundRepeat: 'no-repeat',
@@ -58,9 +53,19 @@ export const CharacterBox = style([
     backgroundSize: 'cover',
     backgroundPosition: 'center',
 
-    maxWidth: constants.CHARACTER_SIZE_HEGITH.MAX,
+    top: '-20px',
+    right: '-10px',
+    maxWidth: constants.CHARACTER_SIZE_HEGIHT.MAX,
     flexGrow: 1,
-    minWidth: constants.CHARACTER_SIZE_HEGITH.MIN,
+    minWidth: constants.CHARACTER_SIZE_HEGIHT.MIN,
+  },
+]);
+
+export const submitButtonWrapper = style([
+  flexOptions({ option: 'columnCenter' }),
+  {
+    position: 'relative',
+    right: constants.SUBMIT_BUTTON_RIGHT,
   },
 ]);
 
@@ -69,11 +74,68 @@ export const imageBoxWrapper = style([
   {
     display: 'grid',
     gridTemplateColumns: 'repeat(4, 1fr)',
-    gap: '8px',
+    gap: constants.EIGHT_GAP,
   },
 ]);
 
+export const achieveBoxWrapper = style([
+  sprinkles({ padding: '4x' }),
+  {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(2, 1fr)',
+    gap: constants.EIGHT_GAP,
+  },
+]);
+
+export const boxStyle = style({
+  boxSizing: 'border-box',
+  width: constants.BOX_STYLE.WIDTH,
+  height: constants.BOX_STYLE.HEIGHT,
+  border: constants.BOX_STYLE.BORDER,
+  borderRadius: constants.BOX_STYLE.BORDER_RADIUS,
+});
+
+export const achievedBox = style({
+  background: 'rgba(26, 130, 153, 0.5)',
+});
+
+export const notAchievedBox = style({
+  background: 'gray',
+});
+
+export const labelBoxStyle = style([
+  flexOptions({ option: 'columnCenter' }),
+  {
+    boxSizing: 'border-box',
+    width: constants.LABEL_BOX_STYLE.WIDTH,
+    height: constants.LABEL_BOX_STYLE.HEIGHT,
+    background: 'rgba(26, 130, 153, 0.5)',
+    border: constants.LABEL_BOX_STYLE.BORDER,
+    borderRadius: constants.LABEL_BOX_STYLE.BORDER_RADIUS,
+  },
+]);
+
+export const nameSize = style([
+  sprinkles({
+    padding: '3x',
+  }),
+  {
+    color: 'white',
+    textAlign: 'center',
+    fontSize: constants.NAME_SIZE.FONT_SIZE,
+    wordSpacing: constants.NAME_SIZE.WORD_SPACING,
+  },
+]);
+
+export const rewardSize = style({
+  color: 'white',
+  textAlign: 'center',
+  fontSize: constants.REWARD_SIZE.FONT_SIZE,
+  wordSpacing: constants.REWARD_SIZE.WORD_SPACING,
+  lineHeight: constants.REWARD_SIZE.LINE_HEIGHT,
+});
+
 export const disabled = style({
-  pointerEvents: 'none', // 클릭 이벤트 무시
-  filter: 'blur(8px)', // 블러 효과 적용
+  pointerEvents: 'none',
+  filter: 'blur(8px)',
 });

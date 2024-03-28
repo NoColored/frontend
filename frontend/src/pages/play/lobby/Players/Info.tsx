@@ -1,24 +1,24 @@
 import * as styles from './index.css';
 
+import type { Player } from '@/types/play';
+
 import TierIconBox from '@/components/imagebox/TierIconBox';
 
-import type { playerColorType } from '@/pages/play/lobby/types';
-
 interface Props {
-  color: playerColorType;
+  player: Player;
 }
 
-const PlayerInfo = ({ color }: Props) => {
-  if (color === 'green') {
+const PlayerInfo = ({ player }: Props) => {
+  if (!player.userCode) {
     return <div className={styles.playerInfoGray}>?</div>;
   }
 
   return (
-    <div className={styles.playerInfoColored({ color })}>
+    <div className={styles.playerInfoColored({ color: player.color })}>
       <TierIconBox tier='origin' size='full' />
       <div className={styles.titleAndName}>
-        <div className={styles.title}>칭호</div>
-        <div className={styles.name}>닉네임</div>
+        <div className={styles.title}>{player.label}</div>
+        <div className={styles.name}>{player.nickname}</div>
       </div>
     </div>
   );

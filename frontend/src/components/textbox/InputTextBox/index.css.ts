@@ -56,6 +56,12 @@ const inputTextBoxVariants = {
         backgroundColor: 'gray300',
       }),
       {
+        '@media': {
+          'screen and (max-height: 365px)': {
+            width: constants.INPUT_TEXT_BOX_SIZE.small.width,
+            height: constants.INPUT_TEXT_BOX_SIZE.small.height,
+          },
+        },
         width: constants.INPUT_TEXT_BOX_SIZE.medium.width,
         height: constants.INPUT_TEXT_BOX_SIZE.medium.height,
       },

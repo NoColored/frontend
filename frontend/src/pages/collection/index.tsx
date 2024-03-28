@@ -1,14 +1,23 @@
-import BasicContentFrame from '@/components/BasicContentFrame/WithButtons';
-import * as styles from './index.css';
-import SettingTextButton from '@/components/button/SettingTextButton';
 import { useState } from 'react';
-import Skin from '@/pages/collection/Skin';
-import Label from '@/pages/collection/Label';
-import Achievement from '@/pages/collection/Achievement';
 import { useLoaderData } from 'react-router-dom';
+
+import * as styles from './index.css';
+
 import { User } from '@/types/auth';
 
+import BasicContentFrame from '@/components/BasicContentFrame/WithButtons';
+import SettingTextButton from '@/components/button/SettingTextButton';
+
+import Achievement from '@/pages/collection/Achievement';
+import Label from '@/pages/collection/Label';
+import Skin from '@/pages/collection/Skin';
+
+import { patchLabelChange, patchSkinChange } from '@/services/collections';
+
+import { useCollectionStateStore } from '@/states/collection';
+
 const Collection = () => {
+  const { skinId, skinUrl, labelId } = useCollectionStateStore();
   const [selectedCategory, setSelectedCategory] = useState<string>('skin');
   const user = useLoaderData() as User;
 
@@ -20,6 +29,17 @@ const Collection = () => {
         return <Label />;
       case 'achievement':
         return <Achievement />;
+      default:
+        return <Skin />;
+    }
+  };
+
+  const categorySubmit = async () => {
+    if (selectedCategory === 'skin') {
+      await patchSkinChange(skinId);
+    }
+    if (selectedCategory === 'label') {
+      await patchLabelChange(labelId);
     }
   };
 
@@ -52,11 +72,22 @@ const Collection = () => {
         <div className={styles.firstComponentStyle}>
           <div
             style={{
-              backgroundImage: `url(${user?.skin})`,
+              backgroundImage: `url(${skinUrl})`,
             }}
             className={styles.CharacterBox}
           >
             <span className={styles.titleText}>{`< ${user?.label} >`}</span>
+          </div>
+          <div className={styles.submitButtonWrapper}>
+            {selectedCategory !== 'achievement' && (
+              <SettingTextButton
+                onClick={categorySubmit}
+                size='small'
+                colorStyle='black'
+              >
+                저장
+              </SettingTextButton>
+            )}
           </div>
         </div>
         <div className={styles.secondComponentStyle}>{renderComponent()}</div>

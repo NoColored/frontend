@@ -1,54 +1,57 @@
-import {useEffect, useState} from 'react';
+import { useEffect, useState } from 'react';
 
 import * as styles from './index.css';
 
 import { Skins } from '@/types/collections';
 
-import SettingTextButton from "@/components/button/SettingTextButton";
 import RoundCornerImageBox from '@/components/imagebox/RoundCornerImageBox';
 
 import { getCollections } from '@/services/collections';
 
+import { useCollectionStateStore } from '@/states/collection';
+
 const Skin = () => {
+  const { skinId, setSkinId, setSkinUrl } = useCollectionStateStore();
   const [skins, setSkins] = useState<Skins[]>([]);
 
   useEffect(() => {
     getCollections().then((collections) => {
       if (collections && collections.skins) {
         setSkins(collections.skins);
+        console.log(collections.skins);
       }
     });
   }, []);
 
+  console.log(skinId);
   return (
-      <div>
-        <div className={styles.imageBoxWrapper}>
-          {skins.map((skin) => (
-              <div
-                  key={skin.id}
-                  onClick={() => {
-                    if (!skin.own) {
-                      console.log("이 스킨은 소유하지 않았습니다.");
-                    }
-                  }}
-                  className={`${!skin.own ? styles.disabled : ''}`}
-              >
-                <RoundCornerImageBox
-                    imgSrc={skin.link}
-                    size="medium"
-                    borderColor="black"
-                    borderSize="1x"
-                    backgroundColor='white'
-                  />
-              </div>
-          ))}
-        </div>
-        <SettingTextButton onClick={() => {}} size="small" colorStyle="black">
-          저장
-        </SettingTextButton>
+    <div>
+      <div className={styles.imageBoxWrapper}>
+        {skins.map((skin) => (
+          <div
+            role='button'
+            tabIndex={-1}
+            key={skin.id}
+            onClick={() => {
+              if (skin.own) {
+                setSkinId(skin.id);
+                setSkinUrl(skin.link);
+              }
+            }}
+            className={`${!skin.own ? styles.disabled : ''}`}
+          >
+            <RoundCornerImageBox
+              imgSrc={skin.link}
+              size='medium'
+              borderColor={skinId === skin.id ? 'blue' : 'black'}
+              borderSize={skinId === skin.id ? '5x' : '1x'}
+              backgroundColor='white'
+            />
+          </div>
+        ))}
       </div>
+    </div>
   );
 };
 
 export default Skin;
-

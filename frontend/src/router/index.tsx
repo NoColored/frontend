@@ -2,6 +2,7 @@ import { createBrowserRouter, Navigate } from 'react-router-dom';
 
 import { ROUTE } from './constants';
 
+import Collection from '@/pages/collection';
 import Error from '@/pages/error';
 import Example from '@/pages/example';
 import Home from '@/pages/home';
@@ -18,7 +19,8 @@ import Result from '@/pages/result';
 import Settings from '@/pages/settings';
 
 import { getUser } from '@/services/auth';
-import Collection from '@/pages/collection';
+import { getRoomList } from '@/services/finder';
+import { getLobbyInfo } from '@/services/lobby';
 
 const router = createBrowserRouter([
   {
@@ -48,12 +50,14 @@ const router = createBrowserRouter([
         loader: getUser,
       },
       {
-        path: 'lobby/:roomId',
+        path: `${ROUTE.lobby}/:roomId`,
         element: <Lobby />,
+        loader: ({ params }) => getLobbyInfo(params.roomId),
       },
       {
         path: `${ROUTE.finder}`,
         element: <Finder />,
+        loader: () => getRoomList(1),
       },
       {
         path: `${ROUTE.game}`,

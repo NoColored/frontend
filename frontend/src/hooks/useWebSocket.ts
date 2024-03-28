@@ -10,6 +10,7 @@ import { ROUTE } from '@/router/constants';
 export const useWebSocket = (
   handleWebSocketMessage: (message: WebSocketMessage<actionType>) => void,
 ) => {
+  console.log('useWebSocket');
   const navigate = useNavigate();
 
   const client = useWebSocketStore((state) => state.webSocket) as Socket;
@@ -25,7 +26,7 @@ export const useWebSocket = (
         return;
       }
       handleWebSocketMessage(message);
-    }, []);
+    });
 
     return () => {
       client.unmount();

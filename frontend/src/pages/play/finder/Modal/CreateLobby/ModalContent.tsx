@@ -10,19 +10,28 @@ import * as constants from '@/pages/play/finder/constants';
 import MapItem from '@/pages/play/finder/Modal/CreateLobby/MapItem';
 import * as styles from '@/pages/play/finder/Modal/index.css';
 
-import { postCreateRoom } from '@/services/finder';
-
 interface Props {
-  defaultMapId: number;
+  roomTitle: string;
+  roomPassword: string;
+  mapId: number;
   closeModal: () => void;
+  api: (roomRequest: CreateRoom) => Promise<string>;
+  buttonText: string;
 }
 
-const ModalContent = ({ defaultMapId, closeModal }: Props) => {
+const ModalContent = ({
+  roomTitle,
+  roomPassword,
+  mapId,
+  closeModal,
+  api,
+  buttonText,
+}: Props) => {
   const navigate = useNavigate();
   const [createRoomInfo, setCreateRoomInfo] = useState<CreateRoom>({
-    roomTitle: '',
-    roomPassword: '',
-    mapId: defaultMapId,
+    roomTitle,
+    roomPassword,
+    mapId,
   });
   const [isValidInfo, setIsValidInfo] = useState<boolean>(true);
 
@@ -42,11 +51,12 @@ const ModalContent = ({ defaultMapId, closeModal }: Props) => {
       return;
     }
 
-    const roomId = await postCreateRoom(createRoomInfo);
-    if (roomId) {
-      navigate(`/play/lobby/${roomId}`);
+    await api(createRoomInfo).then((roomId) => {
       closeModal();
-    }
+      if (roomId) {
+        navigate(`/play/lobby/${roomId}`);
+      }
+    });
   };
 
   return (
@@ -93,14 +103,14 @@ const ModalContent = ({ defaultMapId, closeModal }: Props) => {
 
       <div className={styles.modalTwoButtonWrapper}>
         <ColoredButton
-          size='xsmall'
+          size='medium'
           text='취소'
           color='red'
           onClick={closeModal}
         />
         <ColoredButton
           size='medium'
-          text='고고 !'
+          text={buttonText}
           color='green'
           onClick={handleClickCreateButton}
         />

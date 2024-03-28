@@ -1,11 +1,8 @@
-import {useEffect, useState} from 'react';
+import { useEffect, useState } from 'react';
 
 import * as styles from './index.css';
 
 import { Achievements } from '@/types/collections';
-
-import SettingTextButton from "@/components/button/SettingTextButton";
-import RoundCornerImageBox from '@/components/imagebox/RoundCornerImageBox';
 
 import { getCollections } from '@/services/collections';
 
@@ -16,38 +13,32 @@ const Achievement = () => {
     getCollections().then((collections) => {
       if (collections && collections.achievements) {
         setAchievement(collections.achievements);
+        console.log(collections.achievements);
       }
     });
   }, []);
 
   return (
-      <div>
-        <div className={styles.imageBoxWrapper}>
-          {achievements.map((achievement) => (
-              <div
-                  key={achievement.id}
-                  onClick={() => {
-                    if (!achievement.achieved) {
-                      console.log("이 스킨은 소유하지 않았습니다.");
-                    }
-                  }}
-                  className={`${!achievement.achieved ? styles.disabled : ''}`}
-              >
-                <RoundCornerImageBox
-                    size="medium"
-                    borderColor="black"
-                    borderSize="1x"
-                    backgroundColor='white'
-                />
-              </div>
-          ))}
-        </div>
-        <SettingTextButton onClick={() => {}} size="small" colorStyle="black">
-          저장
-        </SettingTextButton>
+    <div>
+      <div className={styles.achieveBoxWrapper}>
+        {achievements.map((achievement) => (
+          <div
+            role='button'
+            tabIndex={-1}
+            key={achievement.id}
+            className={`${styles.boxStyle} ${
+              achievement.achieved ? styles.achievedBox : styles.notAchievedBox
+            }`}
+          >
+            <div className={styles.boxStyle}>
+              <div className={styles.nameSize}>{achievement.name}</div>
+              <div className={styles.rewardSize}>{achievement.reward}</div>
+            </div>
+          </div>
+        ))}
       </div>
+    </div>
   );
 };
 
 export default Achievement;
-

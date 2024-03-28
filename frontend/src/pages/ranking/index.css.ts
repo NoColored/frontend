@@ -60,7 +60,6 @@ export const myRankingWrapper = style([
   sprinkles({
     backgroundColor: 'navy',
     borderRadius: '2x',
-    marginY: '3x',
   }),
   {
     height: constants.RANKINGITEMBOX_HEIGHT,
