@@ -24,6 +24,7 @@ const CreateLobby = () => {
           mapId={0}
           closeModal={closeModal}
           api={postCreateRoom}
+          buttonText='방 만들기'
         />
       </Modal>
     </>

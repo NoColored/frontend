@@ -16,6 +16,7 @@ interface Props {
   mapId: number;
   closeModal: () => void;
   api: (roomRequest: CreateRoom) => Promise<string>;
+  buttonText: string;
 }
 
 const ModalContent = ({
@@ -24,6 +25,7 @@ const ModalContent = ({
   mapId,
   closeModal,
   api,
+  buttonText,
 }: Props) => {
   const navigate = useNavigate();
   const [createRoomInfo, setCreateRoomInfo] = useState<CreateRoom>({
@@ -101,14 +103,14 @@ const ModalContent = ({
 
       <div className={styles.modalTwoButtonWrapper}>
         <ColoredButton
-          size='xsmall'
+          size='medium'
           text='취소'
           color='red'
           onClick={closeModal}
         />
         <ColoredButton
           size='medium'
-          text='고고 !'
+          text={buttonText}
           color='green'
           onClick={handleClickCreateButton}
         />

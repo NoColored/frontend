@@ -37,6 +37,7 @@ const SettingButton = ({ lobby }: Props) => {
           roomPassword={lobby.roomPassword}
           closeModal={closeModal}
           api={updateRoom}
+          buttonText='설정 변경'
         />
       </Modal>
     </>
