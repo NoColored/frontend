@@ -1,6 +1,6 @@
 import { calc } from '@vanilla-extract/css-utils';
 
-import type { Map } from './types';
+import type { GameMap } from './types';
 
 export const FINDER_WRAPPER_HEIGHT = calc.subtract(
   calc.subtract(calc.subtract('100%', '48px'), '16px'),
@@ -26,7 +26,7 @@ export const FAIL_MESSAGE_MODAL = {
   },
 } as const;
 
-export const MAPS: Map[] = [
+export const MAPS: GameMap[] = [
   {
     mapId: 0,
     imgSrc: '/images/map/background/basicmap.png',

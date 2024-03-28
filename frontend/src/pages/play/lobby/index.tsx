@@ -12,6 +12,7 @@ import ColoredTextBox from '@/components/textbox/ColoredTextBox';
 
 import { useWebSocket } from '@/hooks/useWebSocket';
 
+import { MAPS } from '@/pages/play/finder/constants';
 import MapInfo from '@/pages/play/lobby/MapInfo';
 import Players from '@/pages/play/lobby/Players';
 import SettingButton from '@/pages/play/lobby/SettingButton';
@@ -36,6 +37,8 @@ const Lobby = () => {
   const lobbyData = useLoaderData() as Lobby;
   const [lobbyInfo, setLobbyInfo] = useState(getLobbyInfo(lobbyData));
 
+  const mapInfo = MAPS.find((map) => map.mapId === lobbyInfo.mapId);
+
   useWebSocket((message) => {
     if (message.action === 'roomInfo') {
       setLobbyInfo(getLobbyInfo(message.data as ActionDataTypeMap['roomInfo']));
@@ -50,7 +53,7 @@ const Lobby = () => {
       <div className={styles.lobby}>
         <div className={styles.settings}>
           <SettingButton lobby={lobbyInfo} />
-          <MapInfo mapId={lobbyInfo.mapId} />
+          {mapInfo && <MapInfo map={mapInfo} />}
           <div className={styles.code}>{lobbyInfo.roomCode}</div>
           <ColoredTextBox size='small' color='red' text='코드번호' />
           <div className={styles.code}>{lobbyInfo.roomPassword}</div>
