@@ -16,7 +16,7 @@ const MatchingButton = () => {
   const navigate = useNavigate();
   const { Modal, openModal, closeModal } = useModal();
 
-  const handleWebSocketMessage = (message: WebSocketMessage<actionType>) => {
+  useWebSocket((message) => {
     if (message.action === 'matching') {
       navigate(ROUTE.game);
       return;
@@ -24,8 +24,7 @@ const MatchingButton = () => {
     if (message.action === 'matchingCancel') {
       closeModal();
     }
-  };
-  useWebSocket(handleWebSocketMessage);
+  });
 
   const startMatching = async () => {
     const matchingSuccess = await getMatching();

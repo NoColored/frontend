@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import { actionType, WebSocketMessage } from '@/types/websocket';
+
 import { Socket } from '@/services/websocket/Socket';
 
 import { useWebSocketStore } from '@/states/websocket';
@@ -10,6 +12,7 @@ import { ROUTE } from '@/router/constants';
 export const useWebSocket = (
   handleWebSocketMessage: (message: WebSocketMessage<actionType>) => void,
 ) => {
+  console.log('useWebSocket');
   const navigate = useNavigate();
 
   const client = useWebSocketStore((state) => state.webSocket) as Socket;
