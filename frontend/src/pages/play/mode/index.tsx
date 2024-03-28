@@ -29,7 +29,7 @@ const Mode = () => {
             navigate(`${ROUTE.finder}`);
           }}
         />
-        <MatchingButton />
+        <MatchingButton imgSrc={user.skin} />
         <div className={styles.myRank}>
           <RankingItemBox user={user} myRank />
         </div>

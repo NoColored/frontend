@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import * as styles from './index.css';
@@ -12,14 +11,16 @@ import { useWebSocket } from '@/hooks/useWebSocket';
 
 import * as constants from '@/pages/play/mode/constants';
 
-import { getUser } from '@/services/auth';
 import { deleteMatching, getMatching } from '@/services/matching';
 
 import { ROUTE } from '@/router/constants';
 
-const MatchingButton = () => {
+interface Props {
+  imgSrc: string;
+}
+
+const MatchingButton = ({ imgSrc }: Props) => {
   const navigate = useNavigate();
-  const [skin, setSkin] = useState<string>();
   const { Modal, openModal, closeModal } = useModal();
 
   const handleWebSocketMessage = (message: WebSocketMessage<actionType>) => {
@@ -34,13 +35,6 @@ const MatchingButton = () => {
   useWebSocket(handleWebSocketMessage);
 
   const startMatching = async () => {
-    const userInfo = await getUser();
-    if (!userInfo) {
-      setSkin(undefined);
-    } else {
-      setSkin(userInfo.skin);
-    }
-
     const matchingSuccess = await getMatching();
     if (matchingSuccess) {
       openModal();
@@ -67,7 +61,7 @@ const MatchingButton = () => {
           <div className={styles.matchingImageWrapper}>
             <RoundCornerImageBox
               size='large'
-              imgSrc={skin}
+              imgSrc={imgSrc}
               borderColor='black'
               borderSize='5x'
             />
