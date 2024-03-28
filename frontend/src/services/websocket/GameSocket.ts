@@ -27,6 +27,11 @@ export class GameSocket extends Socket {
   pollMessage(): ArrayBuffer | undefined {
     return this.messageQueue.shift();
   }
+
+  sendInputMesssage(number: number) {
+    const { buffer } = new Uint8Array([number]);
+    this.webSocket.send(buffer);
+  }
 }
 
 export const characterInfoList = (
