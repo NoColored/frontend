@@ -8,25 +8,12 @@ import * as styles from '@/pages/play/lobby/Players/index.css';
 
 interface Props {
   player: Player;
+  state: string;
 }
 
-const State = ({ player }: Props) => {
+const State = ({ player, state }: Props) => {
   if (player.color === EMPTY_PLAYER_COLOR) {
     return <div className={styles.empty}>?</div>;
-  }
-
-  const state = ((player: Player) => {
-    if (player.isMaster) {
-      return '방장';
-    }
-    if (player.ready) {
-      return 'READY';
-    }
-    return '';
-  })(player);
-
-  if (!state) {
-    return <></>;
   }
 
   return (
