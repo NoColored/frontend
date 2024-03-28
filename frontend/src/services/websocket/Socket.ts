@@ -1,5 +1,3 @@
-import { Dispatch, SetStateAction } from 'react';
-
 import { WEBSOCKET_URL } from '@/services/constants';
 
 export class Socket {
@@ -25,11 +23,18 @@ export class Socket {
   }
 
   onMessage(
-    setMessage: Dispatch<SetStateAction<WebSocketMessage<actionType>>>,
+    handleWebSocketMessage: (message: WebSocketMessage<actionType>) => void,
   ) {
     this.webSocket.onmessage = (event) => {
-      setMessage(JSON.parse(event.data));
+      const message = JSON.parse(event.data) as WebSocketMessage<actionType>;
+      console.log(message);
+      handleWebSocketMessage(message);
     };
+  }
+
+  unmount() {
+    console.log('unmount');
+    this.webSocket.onmessage = () => {};
   }
 
   private sendToken() {

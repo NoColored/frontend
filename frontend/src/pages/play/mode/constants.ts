@@ -11,3 +11,5 @@ export const RANKING = {
   label: '랭킹전',
   color: 'yellow' as colorType,
 };
+
+export const matchingMessage = '매칭중...';
