@@ -23,7 +23,7 @@ const GuestUser = () => {
         </SettingTextButton>
       ))}
       <Modal>
-        <SignUp closeModal={closeModal} isGuest />
+        <SignUp closeModal={closeModal} />
       </Modal>
     </div>
   );
