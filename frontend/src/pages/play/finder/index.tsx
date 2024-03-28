@@ -31,13 +31,7 @@ const Finder = () => {
   };
 
   useEffect(() => {
-    if (roomList.length !== 0) {
-      setMaxIndex(Math.ceil(roomList.length / itemPerPage));
-    } else {
-      setMaxIndex(1);
-    }
-
-    const list = async () => {
+    const fetchRoomList = async () => {
       const data = await getRoomList(offset + 1);
       if (data) {
         setRoomList(data);
@@ -46,9 +40,14 @@ const Finder = () => {
       }
     };
 
-    console.log(roomList);
-    list();
-  }, [index]);
+    if (roomList.length !== 0) {
+      setMaxIndex(Math.ceil(roomList.length / itemPerPage));
+    } else {
+      setMaxIndex(1);
+    }
+
+    fetchRoomList();
+  }, [roomList.length]);
 
   const currentItems = roomList.slice(offset, offset + itemPerPage);
 
@@ -66,6 +65,7 @@ const Finder = () => {
             color='blue'
             onClick={() => {
               setIndex(1);
+              window.location.replace('/play/finder');
             }}
           />
         </div>
