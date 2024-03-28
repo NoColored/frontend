@@ -18,6 +18,9 @@ import Result from '@/pages/result';
 import Settings from '@/pages/settings';
 
 import { getUser } from '@/services/auth';
+import { getLobbyInfo } from '@/services/lobby';
+import { getRoomList } from '@/services/finder';
+
 
 const router = createBrowserRouter([
   {
@@ -49,10 +52,12 @@ const router = createBrowserRouter([
       {
         path: 'lobby/:roomId',
         element: <Lobby />,
+        loader: ({ params }) => getLobbyInfo(params.roomId),
       },
       {
         path: 'finder',
         element: <Finder />,
+        loader: () => getRoomList(1),
       },
       {
         path: 'game',

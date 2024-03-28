@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 
 import BasicContentFrame from '@/components/BasicContentFrame';
 
-import { config } from '@/game/config';
+import { config } from '@/game/scene/config';
 
 const Game = () => {
   useEffect(() => {

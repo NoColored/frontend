@@ -77,3 +77,14 @@ export const text = style([
     overflow: 'hidden',
   },
 ]);
+
+// MapInfo.tsx
+export const mapInfo = style([
+  sprinkles({
+    marginTop: '4x',
+  }),
+  {
+    height: '90px',
+    aspectRatio: '1 / 1',
+  },
+]);

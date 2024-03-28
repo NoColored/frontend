@@ -1,3 +1,5 @@
+import type { actionType, WebSocketMessage } from '@/types/websocket';
+
 import { WEBSOCKET_URL } from '@/services/constants';
 
 export class Socket {
@@ -12,6 +14,10 @@ export class Socket {
 
     this.webSocket.onopen = () => {
       this.sendToken();
+    };
+
+    this.webSocket.onclose = () => {
+      console.log('close');
     };
   }
 

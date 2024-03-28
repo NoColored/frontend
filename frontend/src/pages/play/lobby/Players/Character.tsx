@@ -1,30 +1,36 @@
 import * as styles from './index.css';
 
-import RoundCornerImageBox from '@/components/imagebox/RoundCornerImageBox';
-import ColoredTextBox from '@/components/textbox/ColoredTextBox';
+import type { Player } from '@/types/play';
 
-import * as constants from '@/pages/play/lobby/constants';
-import type { playerColorType } from '@/pages/play/lobby/types';
+import RoundCornerImageBox from '@/components/imagebox/RoundCornerImageBox';
+
+import State from '@/pages/play/lobby/Players/State';
+
+const getState = (player: Player) => {
+  if (player.isMaster) {
+    return '방장';
+  }
+  if (player.ready) {
+    return 'READY';
+  }
+  return '';
+};
 
 interface Props {
-  color: playerColorType;
+  player: Player;
 }
 
-const Character = ({ color }: Props) => {
-  const label = 'READY';
+const Character = ({ player }: Props) => {
+  const state = getState(player);
+
   return (
-    <div className={styles.character({ color })}>
+    <div className={styles.character({ color: player.color })}>
       <RoundCornerImageBox
         size='full'
-        imgSrc='/images/character/default-none/character-default-none-blue-h240w240.png'
+        imgSrc={player.skin}
         backgroundColor='white'
       >
-        <ColoredTextBox
-          size='medium'
-          color={color}
-          text={label}
-          icon={constants.PLAYER_ICON[color]}
-        />
+        {state && <State player={player} state={state} />}
       </RoundCornerImageBox>
     </div>
   );
