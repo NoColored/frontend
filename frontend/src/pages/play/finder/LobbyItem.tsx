@@ -55,7 +55,6 @@ const LobbyItem = ({ mapId, roomTitle, roomCode, userNumber }: Props) => {
         <RoundCornerImageBox size='full' imgSrc={getImgSrc()} />
         <div className={styles.textsWrapper}>
           <div className={styles.lobbyTitleText}>{roomTitle}</div>
-          {/* // 이거 숫자가 안예뻐서 그냥 도형 텍스트 같은거 가능하지 않을까 싶기도 */}
           <div className={styles.playerCountText}>{`${userNumber}/4`}</div>
         </div>
       </div>

@@ -16,7 +16,7 @@ const SearchLobby = () => {
         onClick={openModal}
       />
       <Modal>
-        <SearchModalContent closeModal={closeModal} />)
+        <SearchModalContent closeModal={closeModal} />
       </Modal>
     </>
   );

@@ -6,8 +6,8 @@ import type { RequestEnterRoom } from '@/types/play';
 import ColoredButton from '@/components/button/ColoredButton';
 import InputTextBox from '@/components/textbox/InputTextBox';
 
-import * as constants from '@/pages/play/finder/constants';
 import * as styles from '@/pages/play/finder/Modal/index.css';
+import MessageModalContent from '@/pages/play/finder/Modal/MessageModalContent';
 
 import { postEnterRoom } from '@/services/finder';
 
@@ -34,13 +34,29 @@ const PasswordModal = ({ roomCode, closeModal }: Props) => {
     const roomId = await postEnterRoom(roomInfo);
     if (!roomId || roomInfo.roomPassword.length !== 4) {
       setIsValid(false);
-      console.log('비밀번호가 틀렸다.');
     } else {
       setIsValid(true);
       navigate(`/play/lobby/${roomId}`);
     }
   };
 
+  if (!isValid) {
+    return (
+      <>
+        <MessageModalContent failed='PASSWORD' />
+        <div className={styles.modalTwoButtonWrapper}>
+          <ColoredButton
+            size='small'
+            text='확인'
+            color='green'
+            onClick={() => {
+              setIsValid(true);
+            }}
+          />
+        </div>
+      </>
+    );
+  }
   return (
     <div className={styles.modalWrapper}>
       <div className={styles.contentBox}>
@@ -68,11 +84,6 @@ const PasswordModal = ({ roomCode, closeModal }: Props) => {
             onClick={handleClickButton}
           />
         </div>
-        {!isValid && (
-          <div className={styles.alertMessage}>
-            {constants.INVALID_INPUTVALUE}
-          </div>
-        )}
       </div>
     </div>
   );

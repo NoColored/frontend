@@ -42,5 +42,3 @@ export const MAPS: Map[] = [
 export const MAP_ITEM_HEIGHT = '100px';
 
 export const ALERT_MESSAGE = ' 정보를 모두 입력해주세요.';
-
-export const INVALID_INPUTVALUE = '잘못된 값이 입력되었습니다.';
