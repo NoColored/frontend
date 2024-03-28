@@ -115,8 +115,12 @@ export class Character extends Phaser.Physics.Arcade.Sprite {
     this.changeDir(characterData.velX);
   }
 
-  setUser() {
+  setAsUser() {
     if (this.isUser) return;
     this.isUser = true;
+  }
+
+  setAsNoUser() {
+    this.isUser = false;
   }
 }
