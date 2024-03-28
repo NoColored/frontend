@@ -42,11 +42,11 @@ const ModalContent = ({ defaultMapId, closeModal }: Props) => {
       return;
     }
 
-    const roomId = await postCreateRoom(createRoomInfo);
-    if (roomId) {
-      navigate(`/play/lobby/${roomId}`);
+    await postCreateRoom(createRoomInfo).then((roomId) => {
+      console.log(roomId);
       closeModal();
-    }
+      navigate(`/play/lobby/${roomId}`);
+    });
   };
 
   return (
