@@ -76,7 +76,10 @@ const MatchingButton = () => {
             size='small'
             text='취소'
             color='navy'
-            onClick={deleteMatching}
+            onClick={() => {
+              deleteMatching();
+              closeModal();
+            }}
           />
         </div>
       </Modal>
