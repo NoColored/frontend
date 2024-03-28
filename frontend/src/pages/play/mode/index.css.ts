@@ -4,6 +4,9 @@ import { COLOREDICONBUTTON_SIZE_PIXEL } from '@/components/button/constants';
 
 import { MYRANKINGITEMBOX_HEIGHT } from '@/pages/ranking/constants';
 
+import { flexOptions } from '@/styles/common.css';
+import { sprinkles } from '@/styles/sprinkles.css';
+
 export const wrapper = style([
   {
     display: 'grid',
@@ -23,4 +26,20 @@ export const myRank = style([
   {
     gridColumn: '1 / 3',
   },
+]);
+
+export const matchingModalWrapper = style([
+  flexOptions({ option: 'columnCenter' }),
+]);
+
+export const matchingMessage = style([
+  sprinkles({
+    textSize: '2x',
+  }),
+]);
+
+export const matchingImageWrapper = style([
+  sprinkles({
+    marginY: '2x',
+  }),
 ]);

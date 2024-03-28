@@ -36,3 +36,8 @@ interface Lobby extends CodeRoom {
   readyState: boolean[];
   players: Player[];
 }
+
+interface RequestEnterRoom {
+  roomCode: string;
+  roomPassword: string;
+}

@@ -39,8 +39,6 @@ export const MAPS: GameMap[] = [
   },
 ] as const;
 
-export const MAPS_WRAPPER_HEIGHT = '110px';
-
 export const MAP_ITEM_HEIGHT = '100px';
 
 export const ALERT_MESSAGE = ' 정보를 모두 입력해주세요.';
