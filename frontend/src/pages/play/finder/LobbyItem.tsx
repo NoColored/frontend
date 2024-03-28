@@ -53,7 +53,7 @@ const LobbyItem = ({ roomInfo }: Props) => {
         tabIndex={0}
         role='button'
         className={styles.lobbyItemWrapper}
-        onClick={() => openModal()}
+        onClick={openModal}
       >
         <RoundCornerImageBox size='full' imgSrc={getImgSrc()} />
         <div className={styles.textsWrapper}>
