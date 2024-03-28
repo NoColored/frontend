@@ -24,6 +24,7 @@ export class Score extends Phaser.GameObjects.Container {
     this.scoreText.setStroke('#000000', 6);
     icon.setDepth(constants.INGAME_DEPTH.SCORE);
     this.scoreText.setDepth(constants.INGAME_DEPTH.SCORE);
+    this.add([icon, this.scoreText]);
   }
 
   setScore(score: number) {

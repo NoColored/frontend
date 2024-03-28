@@ -2,7 +2,7 @@ import * as constants from '@/game/constants';
 
 export class Timer extends Phaser.GameObjects.Text {
   constructor(scene: Phaser.Scene) {
-    super(scene, 500, 5, `0`, {
+    super(scene, 480, 5, `0`, {
       fontFamily: 'Chonkly',
       fontSize: '40px',
       color: '#ffffff',

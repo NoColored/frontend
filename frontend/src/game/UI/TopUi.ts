@@ -9,7 +9,7 @@ export class TopUi extends Phaser.GameObjects.Container {
   private scoreUiContainers: Score[];
 
   constructor(scene: Phaser.Scene, playerCnt: number, icons: string[]) {
-    super(scene, 0, 10);
+    super(scene, 0, 5);
     this.scene = scene;
 
     this.scores = Array(playerCnt).fill(0);
@@ -26,14 +26,22 @@ export class TopUi extends Phaser.GameObjects.Container {
         this.icons[index],
         index,
         //   const로 변경
-        80 + 90 * index,
-        15,
+        40 + 50 * index,
+        5,
         score,
       );
       this.scoreUiContainers.push(scoreUiContainer);
     });
     this.add(this.scoreUiContainers);
     this.scene.add.existing(this).setDepth(constants.INGAME_DEPTH.SCORE);
+  }
+
+  hideUi() {
+    this.setVisible(false);
+  }
+
+  showUi() {
+    this.setVisible(true);
   }
 
   updateTimer(time: number) {
