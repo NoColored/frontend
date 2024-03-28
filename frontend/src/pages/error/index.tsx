@@ -13,10 +13,10 @@ const Error = () => {
   const code = useParams().code as errorCode;
 
   const goBack = () => {
-    if (code === '500') {
-      navigate(-1);
+    if (code === '401') {
+      navigate('/');
     }
-    navigate('/');
+    navigate(-1);
   };
 
   return (
