@@ -142,7 +142,10 @@ export const playerInfoGray = style([
 ]);
 
 // Chraracter.tsx
-const outlineColorVariants = constants.PLAYER_COLORS.reduce(
+const outlineColorVariants = [
+  ...constants.PLAYER_COLORS,
+  constants.EMPTY_PLAYER_COLOR,
+].reduce(
   (variants, color) => {
     variants[color] = style([sprinkles({ outlineColor: color })]);
     return variants;
@@ -166,3 +169,13 @@ export const character = recipe({
     color: outlineColorVariants,
   },
 });
+
+// State.tsx
+export const empty = style([
+  flexOptions({ option: 'center' }),
+  sprinkles({
+    textSize: '2x',
+    height: 'full',
+    color: 'gray300',
+  }),
+]);

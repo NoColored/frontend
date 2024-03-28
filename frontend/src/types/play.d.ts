@@ -1,9 +1,15 @@
+import { playerColorType } from '@/pages/play/lobby/types';
+
 interface Player {
   userCode: string;
-  nickName: string;
+  nickname: string;
   tier: string;
   skin: string;
-  title: string;
+  label: string;
+  ready: boolean;
+  isMaster: boolean;
+  color: playerColorType;
+  key: string;
 }
 
 interface Room {

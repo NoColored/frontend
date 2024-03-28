@@ -1,3 +1,5 @@
+import type { Lobby } from '@/types/play';
+
 interface ActionDataTypeMap {
   // auth
   authorization: null;
@@ -7,6 +9,8 @@ interface ActionDataTypeMap {
   // matching
   matching: string;
   matchingCancel: null;
+
+  roomInfo: Lobby;
 }
 
 type actionType = keyof ActionDataTypeMap;
