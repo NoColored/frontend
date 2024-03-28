@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import { useLoaderData } from 'react-router-dom';
 
 import * as styles from './index.css';
 import SearchLobby from './Modal/SearchLobby/index';
@@ -15,9 +16,12 @@ import CreateLobby from '@/pages/play/finder/Modal/CreateLobby';
 import { getRoomList } from '@/services/finder';
 
 const Finder = () => {
-  const [roomList, setRoomList] = useState<RoomListItem[]>([]);
+  const roomListData = useLoaderData() as RoomListItem[];
+  const [roomList, setRoomList] = useState<RoomListItem[]>(roomListData);
   const [index, setIndex] = useState<number>(1);
-  const [maxIndex, setMaxIndex] = useState<number>(1);
+  const [maxIndex, setMaxIndex] = useState<number>(
+    Math.ceil(roomList.length / 6),
+  );
 
   const itemPerPage = 6;
   const offset = (index - 1) * itemPerPage;
@@ -30,24 +34,15 @@ const Finder = () => {
     setIndex(index - 1);
   };
 
-  useEffect(() => {
-    const fetchRoomList = async () => {
-      const data = await getRoomList(offset + 1);
-      if (data) {
-        setRoomList(data);
-      } else {
-        console.log('방 정보를 가져오는 데 실패했습니다.');
-      }
-    };
+  const refreshRoomList = async () => {
+    setIndex(1);
 
-    if (roomList.length !== 0) {
+    const list = await getRoomList(1);
+    if (list) {
+      setRoomList(list);
       setMaxIndex(Math.ceil(roomList.length / itemPerPage));
-    } else {
-      setMaxIndex(1);
     }
-
-    fetchRoomList();
-  }, [roomList.length]);
+  };
 
   const currentItems = roomList.slice(offset, offset + itemPerPage);
 
@@ -63,10 +58,7 @@ const Finder = () => {
             size='xsmall'
             text='새로고침'
             color='blue'
-            onClick={() => {
-              setIndex(1);
-              window.location.replace('/play/finder');
-            }}
+            onClick={refreshRoomList}
           />
         </div>
         <div className={styles.partyListWrapper}>
