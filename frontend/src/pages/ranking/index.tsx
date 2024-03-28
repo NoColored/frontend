@@ -36,6 +36,7 @@ const Ranking = () => {
   useEffect(() => {
     getRankingInfo();
     getMyRank();
+    console.log(rankList);
 
     if (refreshTime) {
       const currentTime = new Date().getTime();
