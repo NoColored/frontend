@@ -11,7 +11,6 @@ export const boxWrapper = style([flexOptions({ option: 'columnCenter' })]);
 export const centerBoxWrapper = style([
   flexOptions({ option: 'columnCenter' }),
   {
-    position: 'fixed',
     top: CENTER_PLACE.top,
     left: CENTER_PLACE.left,
     width: CENTER_PLACE.width,
