@@ -4,6 +4,8 @@ import useModal from '@/hooks/useModal';
 
 import ModalContent from '@/pages/play/finder/Modal/CreateLobby/ModalContent';
 
+import { postCreateRoom } from '@/services/finder';
+
 const CreateLobby = () => {
   const { Modal, openModal, closeModal } = useModal();
 
@@ -16,7 +18,13 @@ const CreateLobby = () => {
         onClick={openModal}
       />
       <Modal>
-        <ModalContent defaultMapId={0} closeModal={closeModal} />
+        <ModalContent
+          roomTitle=''
+          roomPassword=''
+          mapId={0}
+          closeModal={closeModal}
+          api={postCreateRoom}
+        />
       </Modal>
     </>
   );

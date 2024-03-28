@@ -12,6 +12,7 @@ import ColoredTextBox from '@/components/textbox/ColoredTextBox';
 
 import { useWebSocket } from '@/hooks/useWebSocket';
 
+import MapInfo from '@/pages/play/lobby/MapInfo';
 import Players from '@/pages/play/lobby/Players';
 import SettingButton from '@/pages/play/lobby/SettingButton';
 
@@ -42,7 +43,8 @@ const Lobby = () => {
     <BasicContentFrame backButtonLabel='나가기' onBeforeButtonClick={getOut}>
       <div className={styles.lobby}>
         <div className={styles.settings}>
-          <SettingButton />
+          <SettingButton lobby={lobbyInfo} />
+          <MapInfo mapId={lobbyInfo.mapId} />
           <div className={styles.code}>{lobbyInfo.roomCode}</div>
           <ColoredTextBox size='small' color='red' text='코드번호' />
           <div className={styles.code}>{lobbyInfo.roomPassword}</div>

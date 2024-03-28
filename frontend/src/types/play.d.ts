@@ -23,7 +23,7 @@ export interface CreateRoom extends Room {
 
 interface CodeRoom extends Room {
   roomCode: string;
-  roomPassword?: string;
+  roomPassword: string;
 }
 
 interface RoomListItem extends CodeRoom {
