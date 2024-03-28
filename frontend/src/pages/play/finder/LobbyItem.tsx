@@ -1,4 +1,6 @@
-import { useState } from 'react';
+import * as constants from './constants';
+
+import type { RoomListItem } from '@/types/play';
 
 import ColoredButton from '@/components/button/ColoredButton';
 import RoundCornerImageBox from '@/components/imagebox/RoundCornerImageBox';
@@ -11,17 +13,21 @@ import MessageModalContent from '@/pages/play/finder/Modal/MessageModalContent';
 import PasswordModal from '@/pages/play/finder/Modal/PasswordModal';
 
 interface Props {
-  imgSrc: string;
-  lobbyTitle: string;
-  playerCount: number;
+  roomInfo: RoomListItem;
 }
 
-const LobbyItem = ({ imgSrc, lobbyTitle, playerCount }: Props) => {
+const LobbyItem = ({ roomInfo }: Props) => {
   const { Modal, openModal, closeModal } = useModal();
-  const [isMessage, setIsMessage] = useState(false);
+
+  const getImgSrc = () => {
+    const mapItem = constants.MAPS.find(
+      (item) => item.mapId === roomInfo.mapId,
+    );
+    return mapItem ? mapItem.imgSrc : undefined;
+  };
 
   const renderModalContent = () => {
-    if (playerCount === 4) {
+    if (roomInfo.userNumber === 4) {
       return (
         <div
           className={`${modalStyles.modalWrapper} ${modalStyles.messageModalWrapper}`}
@@ -36,28 +42,8 @@ const LobbyItem = ({ imgSrc, lobbyTitle, playerCount }: Props) => {
         </div>
       );
     }
-    if (isMessage) {
-      return (
-        <div
-          className={`${modalStyles.modalWrapper} ${modalStyles.messageModalWrapper}`}
-        >
-          <MessageModalContent failed='PASSWORD' />
-          <ColoredButton
-            size='small'
-            text='재시도'
-            color='green'
-            onClick={() => setIsMessage(false)}
-          />
-        </div>
-      );
-    }
     return (
-      <PasswordModal
-        buttonLeft={closeModal}
-        buttonRight={() => {
-          setIsMessage(true);
-        }}
-      />
+      <PasswordModal closeModal={closeModal} roomCode={roomInfo.roomCode} />
     );
   };
 
@@ -69,11 +55,12 @@ const LobbyItem = ({ imgSrc, lobbyTitle, playerCount }: Props) => {
         className={styles.lobbyItemWrapper}
         onClick={openModal}
       >
-        <RoundCornerImageBox size='full' imgSrc={imgSrc} />
+        <RoundCornerImageBox size='full' imgSrc={getImgSrc()} />
         <div className={styles.textsWrapper}>
-          <div className={styles.lobbyTitleText}>{lobbyTitle}</div>
-          {/* // 이거 숫자가 안예뻐서 그냥 도형 텍스트 같은거 가능하지 않을까 싶기도 */}
-          <div className={styles.playerCountText}>{`${playerCount}/4`}</div>
+          <div className={styles.lobbyTitleText}>{roomInfo.roomTitle}</div>
+          <div
+            className={styles.playerCountText}
+          >{`${roomInfo.userNumber}/4`}</div>
         </div>
       </div>
       <Modal>{renderModalContent()}</Modal>

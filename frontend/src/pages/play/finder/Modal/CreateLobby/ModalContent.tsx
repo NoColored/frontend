@@ -1,4 +1,7 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+import type { CreateRoom } from '@/types/play';
 
 import ColoredButton from '@/components/button/ColoredButton';
 import InputTextBox from '@/components/textbox/InputTextBox';
@@ -7,13 +10,44 @@ import * as constants from '@/pages/play/finder/constants';
 import MapItem from '@/pages/play/finder/Modal/CreateLobby/MapItem';
 import * as styles from '@/pages/play/finder/Modal/index.css';
 
+import { postCreateRoom } from '@/services/finder';
+
 interface Props {
-  map: string; // TODO: mapType으로 변경
+  defaultMapId: number;
   closeModal: () => void;
 }
 
-const ModalContent = ({ map, closeModal }: Props) => {
-  const [isSelected, setIsSelected] = useState(map);
+const ModalContent = ({ defaultMapId, closeModal }: Props) => {
+  const navigate = useNavigate();
+  const [createRoomInfo, setCreateRoomInfo] = useState<CreateRoom>({
+    roomTitle: '',
+    roomPassword: '',
+    mapId: defaultMapId,
+  });
+  const [isValidInfo, setIsValidInfo] = useState<boolean>(true);
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    if (name === 'roomTitle' && value.length > 9) return;
+    if (name === 'roomPassword' && value.length > 4) return;
+    setCreateRoomInfo((info) => ({
+      ...info,
+      [name]: value,
+    }));
+  };
+
+  const handleClickCreateButton = async () => {
+    if (!createRoomInfo.roomTitle || createRoomInfo.roomPassword.length !== 4) {
+      setIsValidInfo(false);
+      return;
+    }
+
+    await postCreateRoom(createRoomInfo).then((roomId) => {
+      console.log(roomId);
+      closeModal();
+      navigate(`/play/lobby/${roomId}`);
+    });
+  };
 
   return (
     <>
@@ -21,17 +55,21 @@ const ModalContent = ({ map, closeModal }: Props) => {
         <div className={styles.createLobbyText}>방 제목</div>
         <div className={styles.createLobbyText}>비밀번호</div>
         <InputTextBox
+          name='roomTitle'
           placeholder='몇글자가능할까요?'
           size='widthFull'
           type='text'
-          onChange={() => {}}
+          value={createRoomInfo.roomTitle}
+          onChange={handleChange}
         />
 
         <InputTextBox
+          name='roomPassword'
           placeholder='숫자4자리'
           size='widthFull'
           type='text'
-          onChange={() => {}}
+          value={createRoomInfo.roomPassword}
+          onChange={handleChange}
         />
       </div>
 
@@ -39,12 +77,15 @@ const ModalContent = ({ map, closeModal }: Props) => {
         <legend className={styles.createLobbyText}>맵</legend>
         {constants.MAPS.map((item) => (
           <MapItem
-            key={item.imgSrc}
+            key={item.mapId}
             mapName={item.mapName}
             imgSrc={item.imgSrc}
-            isSelected={isSelected === item.mapType}
+            isSelected={item.mapId === createRoomInfo.mapId}
             onClick={() => {
-              setIsSelected(item.mapType);
+              setCreateRoomInfo((prev) => ({
+                ...prev,
+                mapId: item.mapId,
+              }));
             }}
           />
         ))}
@@ -61,10 +102,12 @@ const ModalContent = ({ map, closeModal }: Props) => {
           size='medium'
           text='고고 !'
           color='green'
-          // 여기에 방생성하는 함수
-          onClick={() => {}}
+          onClick={handleClickCreateButton}
         />
       </div>
+      {!isValidInfo && (
+        <div className={styles.alertMessage}>{constants.ALERT_MESSAGE}</div>
+      )}
     </>
   );
 };

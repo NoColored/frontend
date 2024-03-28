@@ -30,6 +30,7 @@ export const vars = createGlobalTheme(':root', {
     block: 'block',
     inlineBlock: 'inline-block',
     inline: 'inline',
+    grid: 'grid',
   },
   position: {
     relative: 'relative',

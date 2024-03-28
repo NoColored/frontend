@@ -1,23 +1,29 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import * as constants from './constants';
 import * as styles from './index.css';
 
-import BasicContentFrame from '@/components/BasicContentFrame/index';
-import ColoredButton from '@/components/button/ColoredButton/index';
+import BasicContentFrame from '@/components/BasicContentFrame/WithButtons';
+import ColoredButton from '@/components/button/ColoredButton';
+
+import type { errorCode } from '@/pages/error/type';
 
 const Error = () => {
   const navigate = useNavigate();
+  const code = useParams().code as errorCode;
 
   const goBack = () => {
-    navigate('/');
+    if (code === '401') {
+      navigate('/');
+    }
+    navigate(-1);
   };
 
   return (
-    <BasicContentFrame>
+    <BasicContentFrame disableButton>
       <div className={styles.errorWrapper}>
         <pre className={styles.errorMessage}>
-          {constants.SERVER_ERROR_MESSAGE}
+          {constants.ERROR_MESSAGE[code]}
         </pre>
         <ColoredButton
           text='확인'

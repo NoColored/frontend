@@ -1,5 +1,4 @@
 import { useNavigate } from 'react-router-dom';
-import { useRecoilState } from 'recoil';
 
 import * as styles from './index.css';
 
@@ -7,19 +6,13 @@ import ColoredButton from '@/components/button/ColoredButton/index';
 
 import { getGuestLogin } from '@/services/auth';
 
-import { userState } from '@/states/auth';
-
 const Landing = () => {
   const navigate = useNavigate();
-  const [user, setUser] = useRecoilState(userState);
 
   const clickGuestLogin = async () => {
-    const data = await getGuestLogin();
-    if (data) {
-      setUser(data);
+    const isSuccess = await getGuestLogin();
+    if (isSuccess) {
       navigate('/home');
-      // 추후 수정 요망
-      console.log(user);
     } else {
       console.log('Guest 로그인 실패');
       navigate('/*');

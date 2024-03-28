@@ -1,43 +1,35 @@
 import * as styles from './index.css';
 
+import type { User } from '@/types/auth';
+
 import TierBox from '@/components/imagebox/TierIconBox';
 import PlayerInfoBox from '@/components/PlayerInfoBox';
 
-import type { tierRange } from '@/pages/ranking/types';
-
-export interface RankingItemBoxProps {
-  rank: number | string;
-  imgSrc: string;
-  label: string;
-  nickname: string;
-  tier: tierRange;
-  score: number;
+interface RankingItemBoxProps {
+  user: User;
   myRank?: boolean;
 }
 
-const RankingItemBox = ({
-  rank,
-  imgSrc,
-  label,
-  nickname,
-  tier,
-  score,
-  myRank,
-}: RankingItemBoxProps) => {
+const RankingItemBox = ({ user, myRank }: RankingItemBoxProps) => {
+  const rankTextWrapper =
+    user.rank < 1000 ? styles.rankTextWrapper : styles.rankLongTextWrapper;
+
+  const rank = user.guest ? '??' : `${user.rank}`;
+
   return (
     <div className={styles.rankingItemBox({ myRank })}>
-      {typeof rank === 'string' || (typeof rank === 'number' && rank <= 999) ? (
-        <span className={styles.rankTextWrapper}>{rank}</span>
-      ) : (
-        <span className={styles.rankLongTextWrapper}>{rank}</span>
-      )}
+      <span className={rankTextWrapper}>{rank}</span>
 
       <span className={styles.playerInfoBoxFixWidthWrapper}>
-        <PlayerInfoBox label={label} nickname={nickname} imgSrc={imgSrc} />
+        <PlayerInfoBox
+          label={user.label}
+          nickname={user.nickname}
+          imgSrc={user.skin}
+        />
       </span>
       <span className={styles.tierAndScoreWrapper}>
-        <TierBox tier={tier} size='xsmall' />
-        <span>{score}</span>
+        <TierBox tier={user.tier} size='xsmall' />
+        <span>{user.rating}</span>
       </span>
     </div>
   );
