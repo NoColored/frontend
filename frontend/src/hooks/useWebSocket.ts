@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import type { actionType, WebSocketMessage } from '@/types/websocket';
+
 import { Socket } from '@/services/websocket/Socket';
 
 import { useWebSocketStore } from '@/states/websocket';
