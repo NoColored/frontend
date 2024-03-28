@@ -13,19 +13,14 @@ interface Props {
 }
 
 const SettingButton = ({ lobby }: Props) => {
-  const myCode = localStorage.getItem('userCode');
-  const isMaster = lobby.players[lobby.masterIndex].userCode === myCode;
-  if (!isMaster) {
-    return <></>;
-  }
-
   const { Modal, openModal, closeModal } = useModal();
 
   return (
     <>
-      <button onClick={openModal} className={styles.button}>
+      <button type='button' onClick={openModal} className={styles.button}>
         <img
           src='/images/ui/icon/button/icon-button-lobbysetting-h50w50.png'
+          alt='lobby-setting'
           className={styles.icon}
         />
         <div className={styles.text}>설정 변경</div>

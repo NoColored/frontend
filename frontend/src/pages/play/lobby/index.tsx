@@ -32,12 +32,17 @@ const getLobbyInfo = (lobby: Lobby) => {
   return lobby;
 };
 
+const myUserCode = localStorage.getItem('userCode');
+
 const Lobby = () => {
   const navigate = useNavigate();
   const lobbyData = useLoaderData() as Lobby;
   const [lobbyInfo, setLobbyInfo] = useState(getLobbyInfo(lobbyData));
 
   const mapInfo = MAPS.find((map) => map.mapId === lobbyInfo.mapId);
+
+  const isMaster =
+    lobbyInfo.players[lobbyInfo.masterIndex].userCode === myUserCode;
 
   useWebSocket((message) => {
     if (message.action === 'roomInfo') {
@@ -52,7 +57,7 @@ const Lobby = () => {
     <BasicContentFrame backButtonLabel='나가기' onBeforeButtonClick={getOut}>
       <div className={styles.lobby}>
         <div className={styles.settings}>
-          <SettingButton lobby={lobbyInfo} />
+          {isMaster && <SettingButton lobby={lobbyInfo} />}
           {mapInfo && <MapInfo map={mapInfo} />}
           <div className={styles.code}>{lobbyInfo.roomCode}</div>
           <ColoredTextBox size='small' color='red' text='코드번호' />
