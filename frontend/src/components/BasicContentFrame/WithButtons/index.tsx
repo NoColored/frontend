@@ -12,12 +12,14 @@ interface Props {
   children: ReactNode;
   backButtonLabel?: string;
   onBeforeButtonClick?: () => void;
+  disableButton?: boolean;
 }
 
 const BasicContentFrame = ({
   children,
   backButtonLabel,
   onBeforeButtonClick,
+  disableButton,
 }: Props) => {
   const navigate = useNavigate();
 
@@ -37,15 +39,17 @@ const BasicContentFrame = ({
 
   return (
     <div className={styles.frame}>
-      <div className={styles.iconButtons}>
-        <InfoButton />
-        <SettingIconButton
-          src='/images/ui/icon/button/icon-button-home-h50w50.png'
-          alt='home'
-          onClick={handleHomeButtonClick}
-        />
-        <SettingButton />
-      </div>
+      {!disableButton && (
+        <div className={styles.iconButtons}>
+          <InfoButton />
+          <SettingIconButton
+            src='/images/ui/icon/button/icon-button-home-h50w50.png'
+            alt='home'
+            onClick={handleHomeButtonClick}
+          />
+          <SettingButton />
+        </div>
+      )}
       <main className={styles.main}>
         {backButtonLabel && (
           <div className={styles.navigation}>
