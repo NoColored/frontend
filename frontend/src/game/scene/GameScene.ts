@@ -20,48 +20,76 @@ import { Background } from '@/game/map/Background';
 import { Map } from '@/game/map/Map';
 import { PhysicsMap } from '@/game/map/PhysicsMap';
 import { Character } from '@/game/object/Character';
+import CountDown from '@/game/scene/CountDown';
 import LoadingUtils from '@/game/scene/LoadingUtils';
 import { BgmManager } from '@/game/sound/Bgm';
+import ChangeDirButton from '@/game/UI/ChangeDirButton';
+import JumpButton from '@/game/UI/JumpButton';
 import { TopUi } from '@/game/UI/TopUi';
 
 export default class GameScene extends Phaser.Scene {
-  private gameData: IngameReady | null;
-  private characters: Character[] = [];
   private socket: GameSocket;
-  private charactersPrevSkin: boolean[] = [];
-  private charactersNowSkin: boolean[] = [];
+
+  private gameData: IngameReady | null;
   private gameState: 'loading' | 'ready' | 'countDown' | 'playing' | 'end' =
     'loading';
-  private loadingManager;
 
+  private loadingManager;
+  private countDownManager: CountDown;
+
+  // GameObject들
+  private characters: Character[] = [];
+  private charactersPrevSkin: boolean[] = [];
+  private charactersNowSkin: boolean[] = [];
   private icons: string[] = [];
   private topUi: TopUi | null = null;
+  private changeDirButton: ChangeDirButton | null = null;
+  private jumpButton: JumpButton | null = null;
+
+  // nowUSerIndex
+
+  private nowUserIndex: number = 0;
 
   constructor() {
     super({ key: 'GameScene' });
 
-    this.topUi = null;
-    this.gameData = null;
+    // WebSocket
     const { webSocket } = useWebSocketStore.getState();
     this.socket = webSocket;
     this.socket.useMessageQueue();
+
+    // api 데이터 초기화
+    this.gameData = null;
+
+    // GameObject 초기화
+    this.topUi = null;
+    this.jumpButton = null;
+    this.changeDirButton = null;
+
+    // NowSkin만 먼저 초기화 / prev는 작동 중 자동 세팅
     this.charactersNowSkin = new Array(constants.CHARACTER_COUNT).fill(false);
+
+    // 로딩 화면 인스턴스 생성
     this.loadingManager = new LoadingUtils(this);
+    this.countDownManager = new CountDown(this);
   }
 
+  // 게임 초기 데이터 콜 로직
   private setGameReady = async () => {
     this.gameData = await getIngameReady();
+
+    // 게임 데이터 없을 시 오류
     if (this.gameData === null) {
       console.error('gameData is null');
       return;
     }
 
     // api 값에 따른 배경 설정
+    // api 값에 따른 asset 로드
     let mapName = constants.MAP_TYPE_MATCH.get(this.gameData.mapId);
     if (mapName === undefined) {
       mapName = 'basicmap';
     }
-
     this.load.image(
       `background`,
       `/images/map/background/${mapName}-background.png`,
@@ -105,6 +133,24 @@ export default class GameScene extends Phaser.Scene {
       );
       this.icons.push(`player${i}Icon`);
     }
+
+    // 버튼 asset
+    this.load.image(
+      'clickedDirButton',
+      '/images/ui/controller/icon-controller-click-change.svg',
+    );
+    this.load.image(
+      'dirButton',
+      '/images/ui/controller/icon-controller-change.svg',
+    );
+    this.load.image(
+      'clickedJumpButton',
+      '/images/ui/controller/icon-controller-click-jump.svg',
+    );
+    this.load.image(
+      'jumpButton',
+      '/images/ui/controller/icon-controller-jump.svg',
+    );
   }
 
   create() {
@@ -127,7 +173,10 @@ export default class GameScene extends Phaser.Scene {
       'tileTransparent',
     );
 
-    this.gameState = 'ready';
+    // 버튼 증록 - 비활성화 상태
+
+    this.changeDirButton = new ChangeDirButton(this, this.socket);
+    this.jumpButton = new JumpButton(this, this.socket);
 
     // character
     const initialPlayerData: characterInfo = {
@@ -147,32 +196,40 @@ export default class GameScene extends Phaser.Scene {
       );
     }
 
-    this.topUi = new TopUi(this, 4, this.icons);
-    this.add.existing(this.topUi);
+    this.countDownManager.createCountDown();
 
-    //  임시
-    this.time.addEvent({
-      delay: 2000, // 3000밀리초 후에 실행
-      callback: () => {
-        this.gameState = 'countDown';
-      }, // 실행할 콜백 함수
-      callbackScope: this, // 콜백 함수의 this 컨텍스트
-      loop: false, // 이벤트를 반복할지 여부 (false면 한 번만 실행)
-    });
+    this.topUi = new TopUi(this, 2, this.icons);
+    this.topUi.hideUi();
+
+    //  TODO 삭제 하기
+    this.topUi.showUi();
+
+    // 이벤트 핸들러 등록
+    this.events.on('gameStateChange', this.handleGameStateChange, this);
+
+    // 각종 세팅 완료
+    this.changeGameState('ready');
   }
 
   private gameStartUpdate() {
-    this.gameState = 'playing';
+    this.changeGameState('playing');
+    if (this.changeDirButton === null || this.jumpButton === null) {
+      console.log('button is null');
+      return 1;
+    }
+
     return 1;
   }
 
   // 1
   private userCharacterIndexUpdate(view: DataView) {
     const data = userCharacterIndex(view, this.p + 1);
-    this.characters[data[1]].setSkinState(
-      this.gameData?.skins[data[0]] ?? 'npc',
-    );
-    this.characters[data[1]].setUser();
+    if (this.nowUserIndex === data[1]) return 3;
+    this.characters[this.nowUserIndex].setSkinState('npc');
+    this.characters[this.nowUserIndex].setAsNoUser();
+    this.nowUserIndex = data[1];
+    this.characters[data[1]].setSkinState(`player${data[0]}` ?? 'npc');
+    this.characters[data[1]].setAsUser();
     return 3;
   }
 
@@ -184,8 +241,13 @@ export default class GameScene extends Phaser.Scene {
   }
 
   private countDownUpdate(view: DataView) {
+    // TODO: countDownUpdate 다시 체크
     const data = timeLeft(view, this.p + 1);
-    data;
+    if (this.gameState === 'ready') {
+      this.changeGameState('countDown');
+    }
+    if (this.gameState === 'playing') return 2;
+    this.countDownManager.changeCountDownText(data);
     return 2;
   }
 
@@ -214,9 +276,7 @@ export default class GameScene extends Phaser.Scene {
     this.charactersNowSkin.fill(false);
     // 지금 받은 데이터로 업데이트
     data.forEach((index) => {
-      this.characters[index[0]].setSkinState(
-        this.gameData?.skins[index[1]] ?? 'npc',
-      );
+      this.characters[index[1]].setSkinState(`player${index[0]}` ?? 'npc');
       this.charactersNowSkin[index[0]] = true;
     });
     // 이전에 skin but 이번엔 skin이 없는 경우
@@ -267,6 +327,8 @@ export default class GameScene extends Phaser.Scene {
 
   private p: number = 0;
 
+  // ToDO 삭제
+  private tempBolean = 0;
   getSocketData = () => {
     if (!this.socket) return null;
 
@@ -274,6 +336,10 @@ export default class GameScene extends Phaser.Scene {
       const message = this.socket.pollMessage();
       if (!message) {
         return null;
+      }
+      if (this.tempBolean < 6) {
+        console.log(message);
+        this.tempBolean++;
       }
       const view = new DataView(message);
       this.p = 0;
@@ -290,15 +356,44 @@ export default class GameScene extends Phaser.Scene {
   update() {
     // socket 데이터 다 처리
     this.getSocketData();
-    if (this.gameState === 'countDown') {
-      this.loadingManager.destroyLoadingScreen();
-    }
-    if (this.gameState === 'end') {
-      return;
-    }
+
     // 처리가 다 된 상태에서 character보이는 것 변경
     this.characters.forEach((character) => {
       character.playAnims();
     });
+  }
+
+  // GameStateController
+
+  changeGameState(
+    newState: 'loading' | 'ready' | 'countDown' | 'playing' | 'end',
+  ) {
+    this.gameState = newState;
+    // 게임 상태 변경 이벤트 발생
+    this.events.emit('gameStateChange', newState);
+  }
+
+  handleGameStateChange(
+    newState: 'loading' | 'ready' | 'countDown' | 'playing' | 'end',
+  ) {
+    switch (newState) {
+      case 'ready':
+        this.getSocketData();
+        this.countDownManager.showCountDown();
+        break;
+      case 'countDown':
+        this.loadingManager.destroyLoadingScreen();
+        this.topUi?.showUi();
+        break;
+      case 'playing':
+        this.countDownManager.destroyCountDown();
+        break;
+      case 'end':
+        // TODO 게임 종료 로직
+
+        break;
+      default:
+        break;
+    }
   }
 }
