@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import * as styles from './index.css';
@@ -22,6 +23,7 @@ interface Props {
 const MatchingButton = ({ imgSrc }: Props) => {
   const navigate = useNavigate();
   const { Modal, openModal, closeModal } = useModal();
+  const [matchingMessage, setMatchingMessage] = useState<string>();
 
   useWebSocket((message) => {
     if (message.action === 'matching') {
@@ -31,6 +33,21 @@ const MatchingButton = ({ imgSrc }: Props) => {
     if (message.action === 'matchingCancel') {
       closeModal();
     }
+  });
+
+  useEffect(() => {
+    let messageIndex = 0;
+
+    const interval = setInterval(() => {
+      setMatchingMessage(
+        constants.MATCHING_MESSAGES[
+          messageIndex % constants.MATCHING_MESSAGES.length
+        ],
+      );
+      messageIndex++;
+    }, 1000);
+
+    return () => clearInterval(interval);
   });
 
   const startMatching = async () => {
@@ -54,9 +71,7 @@ const MatchingButton = ({ imgSrc }: Props) => {
 
       <Modal>
         <div className={styles.matchingModalWrapper}>
-          <div className={styles.matchingMessage}>
-            {constants.matchingMessage}
-          </div>
+          <div className={styles.matchingMessage}>{matchingMessage}</div>
           <div className={styles.matchingImageWrapper}>
             <RoundCornerImageBox
               size='large'

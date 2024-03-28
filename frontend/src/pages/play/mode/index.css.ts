@@ -35,6 +35,7 @@ export const matchingModalWrapper = style([
 export const matchingMessage = style([
   sprinkles({
     textSize: '2x',
+    justifyContent: 'flexStart',
   }),
 ]);
 
