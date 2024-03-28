@@ -31,7 +31,7 @@ const Finder = () => {
   };
 
   useEffect(() => {
-    if (roomList.length != 0) {
+    if (roomList.length !== 0) {
       setMaxIndex(Math.ceil(roomList.length / itemPerPage));
     } else {
       setMaxIndex(1);
