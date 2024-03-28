@@ -15,6 +15,7 @@ const Error = () => {
   const goBack = () => {
     if (code === '401') {
       navigate('/');
+      return;
     }
     navigate(-1);
   };
