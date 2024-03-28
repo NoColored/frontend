@@ -62,7 +62,11 @@ const Ranking = () => {
             <RankingItemBox key={item.rank} user={item} />
           ))}
         </div>
-        {myRank && <RankingItemBox user={myRank} myRank />}
+        {myRank && (
+          <div className={styles.myRankingWrapper}>
+            <RankingItemBox user={myRank} myRank />
+          </div>
+        )}
       </div>
     </BasicContentFrame>
   );
