@@ -3,7 +3,7 @@ import { useLoaderData } from 'react-router-dom';
 import * as styles from './index.css';
 
 import type { User } from '@/types/auth';
-import { RankPlayer } from '@/types/rank';
+import type { RankPlayer } from '@/types/rank';
 
 import BasicContentFrame from '@/components/BasicContentFrame/WithButtons/index';
 

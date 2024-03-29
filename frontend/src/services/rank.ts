@@ -17,13 +17,8 @@ const requestRankList = async () => {
 };
 
 export const getRank = async () => {
-  try {
-    const rankList = await requestRankList();
-    const myRank = await getUser();
+  const rankList = await requestRankList();
+  const myRank = await getUser();
 
-    return { rankList, myRank };
-  } catch (error) {
-    console.log(error);
-    return '';
-  }
+  return { rankList, myRank };
 };
