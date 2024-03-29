@@ -45,7 +45,7 @@ const sizeVariants = Object.keys(constants.IMAGEBOX_SIZE).reduce(
 
 const backgroundColorVariants = constants.BACKGROUND_COLOR.reduce(
   (variants, color) => {
-    variants[color] = style({ backgroundColor: color });
+    variants[color] = sprinkles({ backgroundColor: color });
     return variants;
   },
   {} as Record<imageboxBackgroundColorType, ReturnType<typeof style>>,
