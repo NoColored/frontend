@@ -206,6 +206,15 @@ export const rewardListWrapper = style([
   }),
   {
     width: '85%',
+    overflowX: 'auto',
+    whiteSpace: 'nowrap',
+  },
+]);
+
+export const rewardScrollItem = style([
+  {
+    flex: '0 0 auto',
+    marginRight: '10px',
   },
 ]);
 

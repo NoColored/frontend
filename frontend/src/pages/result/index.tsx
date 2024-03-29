@@ -1,4 +1,6 @@
-import { useLoaderData } from 'react-router-dom';
+// import { useLoaderData } from 'react-router-dom';
+
+import { useNavigate } from 'react-router-dom';
 
 import * as constants from './constants';
 import * as styles from './index.css';
@@ -11,16 +13,68 @@ import ColoredButton from '@/components/button/ColoredButton';
 import useModal from '@/hooks/useModal';
 
 import ResultInfoBox from '@/pages/result/ResultInfoBox';
-import Rewards from '@/pages/result/Rewards';
-import TierUpgrade from '@/pages/result/TierUpgrade';
+import { RewardsModal } from '@/pages/result/RewardsModal';
 
 const Result = () => {
-  const gameResult = useLoaderData() as GameResult;
-  const { Modal, openModal, closeModal } = useModal();
-
-  const handleClickButtons = () => {
-    openModal();
+  // const gameResult = useLoaderData() as GameResult;
+  const gameResult: GameResult = {
+    players: [
+      {
+        rank: 1,
+        skin: 'images/character/default-magichat/character-default-magichat-blue-h240w240.png',
+        label: '칭호인데요제발요칭호라고요열네자?',
+        nickname: '닉네임은아홉글자일',
+        index: 2,
+        step: 67,
+      },
+      {
+        rank: 2,
+        skin: 'images/character/default-magichat/character-default-magichat-blue-h240w240.png',
+        label: '칭호인데요제발요칭호라고요열네자?',
+        nickname: '닉네임은아홉글자일',
+        index: 0,
+        step: 28,
+      },
+      {
+        rank: 3,
+        skin: 'images/character/default-magichat/character-default-magichat-blue-h240w240.png',
+        label: '칭호인데요제발요칭호라고요열네자?',
+        nickname: '닉네임은아홉글자일',
+        index: 1,
+        step: 7,
+      },
+    ],
+    reward: {
+      tier: {
+        oldtier: 'bronze',
+        newtier: 'gold',
+        upgrade: true,
+      },
+      skin: [
+        'images/character/default-magichat/character-default-magichat-blue-h240w240.png',
+        'images/character/default-magichat/character-default-magichat-blue-h240w240.png',
+        'images/character/default-magichat/character-default-magichat-blue-h240w240.png',
+        'images/character/default-magichat/character-default-magichat-blue-h240w240.png',
+        'images/character/default-magichat/character-default-magichat-blue-h240w240.png',
+        'images/character/default-magichat/character-default-magichat-blue-h240w240.png',
+        'images/character/default-magichat/character-default-magichat-blue-h240w240.png',
+        'images/character/default-magichat/character-default-magichat-blue-h240w240.png',
+      ],
+    },
   };
+
+  const { Modal, openModal, closeModal } = useModal();
+  const navigate = useNavigate();
+
+  const handleClickExit = () => {
+    if (gameResult.reward?.tier || gameResult.reward?.skin) {
+      openModal();
+    } else {
+      navigate('/home');
+    }
+  };
+
+  // const handleClickMore = () => {};
 
   return (
     <BasicContentFrame>
@@ -34,7 +88,7 @@ const Result = () => {
               imgSrc={item.skin}
               label={item.label}
               nickname={item.nickname}
-              colorStyle={item.index}
+              colorStyle={constants.COLOR_STYLES[item.index]}
               gameScore={item.step}
               firstResult={item.rank === 1}
             />
@@ -45,7 +99,7 @@ const Result = () => {
             text='나가기'
             color='gray300'
             size='small'
-            onClick={handleClickButtons}
+            onClick={handleClickExit}
           />
           <ColoredButton
             text='더하기'
@@ -55,13 +109,13 @@ const Result = () => {
           />
         </div>
       </div>
+
       <Modal>
-        {gameResult.reward.tier && (
-          <TierUpgrade tier={gameResult.reward.tier} closeModal={closeModal} />
-        )}
-        {gameResult.reward.skin && (
-          <Rewards skin={gameResult.reward.skin} closeModal={closeModal} />
-        )}
+        <RewardsModal
+          tier={gameResult.reward.tier}
+          skin={gameResult.reward.skin}
+          closeModal={closeModal}
+        />
       </Modal>
     </BasicContentFrame>
   );

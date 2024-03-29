@@ -9,7 +9,7 @@ interface Props {
   skin: string[];
 }
 
-const Rewards = ({ closeModal, skin }: Props) => {
+const SkinReward = ({ closeModal, skin }: Props) => {
   return (
     <div className={styles.modalWrapper}>
       <div className={styles.ribbonWrapper}>
@@ -30,7 +30,7 @@ const Rewards = ({ closeModal, skin }: Props) => {
       </div>
       <div className={styles.rewardListWrapper}>
         {skin.map((item) => (
-          <div key={item}>
+          <div className={styles.rewardScrollItem} key={item}>
             <RoundCornerImageBox
               size='medium'
               imgSrc={item}
@@ -52,4 +52,4 @@ const Rewards = ({ closeModal, skin }: Props) => {
   );
 };
 
-export default Rewards;
+export default SkinReward;
