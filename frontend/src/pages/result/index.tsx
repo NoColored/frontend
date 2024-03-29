@@ -27,7 +27,7 @@ const Result = () => {
         'images/character/default-magichat/character-default-magichat-blue-h240w240.png',
       label: '칭호인데요제발요칭호라고요열네자?',
       nickname: '닉네임은아홉글자일',
-      colorStyle: 'pink',
+      colorStyle: 'yellow',
       gameScore: 67,
     },
     {
@@ -36,11 +36,11 @@ const Result = () => {
         'images/character/default-magichat/character-default-magichat-blue-h240w240.png',
       label: '칭호인데요제발요칭호라고요열네자?',
       nickname: '닉네임은아홉글자일',
-      colorStyle: 'yellow',
+      colorStyle: 'pink',
       gameScore: 56,
     },
     {
-      rank: 3,
+      rank: 4,
       imgSrc:
         'images/character/default-magichat/character-default-magichat-blue-h240w240.png',
       label: '칭호인데요제발요칭호라고요열네자?',
@@ -65,7 +65,7 @@ const Result = () => {
         <div className={styles.resultTextWrapper}>{constants.RESULTTEXT}</div>
 
         {resultExample.map((item) => (
-          <div>
+          <div key={`${item.nickname}${item.rank}`}>
             {item.rank === 1 ? (
               <ResultInfoBox
                 rank={item.rank}
@@ -78,6 +78,7 @@ const Result = () => {
               />
             ) : (
               <ResultInfoBox
+                key={`${item.nickname}${item.rank}`}
                 rank={item.rank}
                 imgSrc={item.imgSrc}
                 label={item.label}
