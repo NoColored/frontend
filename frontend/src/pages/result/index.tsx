@@ -79,6 +79,7 @@ const Result = () => {
               />
             ) : (
               <ResultInfoBox
+                key={`${item.nickname}${item.rank}`}
                 rank={item.rank}
                 imgSrc={item.imgSrc}
                 label={item.label}
