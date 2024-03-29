@@ -21,6 +21,7 @@ export const getReady = async () => {
     })
     .catch((err) => {
       console.log(err);
+      throw err;
     });
 };
 
