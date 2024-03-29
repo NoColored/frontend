@@ -40,7 +40,8 @@ const Result = () => {
       gameScore: 56,
     },
     {
-      rank: 4,
+      rank: 2,
+
       imgSrc:
         'images/character/default-magichat/character-default-magichat-blue-h240w240.png',
       label: '칭호인데요제발요칭호라고요열네자?',
@@ -49,7 +50,7 @@ const Result = () => {
       gameScore: 23,
     },
     {
-      rank: 4,
+      rank: 2,
       imgSrc:
         'images/character/default-magichat/character-default-magichat-blue-h240w240.png',
       label: '칭호인데요제발요칭호라고요열네자?',
