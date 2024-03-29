@@ -1,10 +1,10 @@
-export const SECOND_COMPONENT = {
+export const COLLECTIONS = {
   MAX_HEIGHT: '350px',
 };
 
 export const CATEGORY_BUTTON_GAP = '16px';
 
-export const EIGHT_GAP = '8px';
+export const GRID_GAP = '8px';
 
 export const SUBMIT_BUTTON_MARGIN = '8px';
 

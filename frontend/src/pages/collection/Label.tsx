@@ -35,7 +35,7 @@ const Label = () => {
                 setLabel(labelId);
               }
             }}
-            className={`${label.own ? styles.achievedBox : styles.notAchievedBox}`}
+            className={label.own ? styles.achievedBox : styles.notAchievedBox}
           >
             <div className={styles.labelBoxStyle}>
               <div className={styles.nameSize}>{label.name}</div>

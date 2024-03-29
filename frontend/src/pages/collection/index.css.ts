@@ -39,7 +39,7 @@ export const collections = style([
     gridArea: 'c',
     backgroundColor: 'rgba(0,0,0,0.7)',
     overflowY: 'auto',
-    maxHeight: constants.SECOND_COMPONENT.MAX_HEIGHT,
+    maxHeight: constants.COLLECTIONS.MAX_HEIGHT,
   },
 ]);
 
@@ -92,7 +92,7 @@ export const skinWrapper = style([
   {
     display: 'grid',
     gridTemplateColumns: 'repeat(4, 1fr)',
-    gap: constants.EIGHT_GAP,
+    gap: constants.GRID_GAP,
     maxHeight: '350px',
     '@media': {
       'screen and (max-height: 450px)': {
@@ -107,7 +107,7 @@ export const achieveBoxWrapper = style([
   {
     display: 'grid',
     gridTemplateColumns: 'repeat(2, 1fr)',
-    gap: constants.EIGHT_GAP,
+    gap: constants.GRID_GAP,
   },
 ]);
 
@@ -154,7 +154,7 @@ export const nameSize = style([
     fontSize: constants.NAME_SIZE.FONT_SIZE,
     wordSpacing: constants.NAME_SIZE.WORD_SPACING,
     '@media': {
-      'screen and (max-width: 768px)': {
+      'screen and (max-height: 450px)': {
         fontSize: constants.NAME_SIZE.SMALL_FONT_SIZE,
         lineHeight: constants.NAME_SIZE.SMALL_LINE_HEIGHT,
       },
@@ -169,7 +169,7 @@ export const rewardSize = style({
   wordSpacing: constants.REWARD_SIZE.WORD_SPACING,
   lineHeight: constants.REWARD_SIZE.LINE_HEIGHT,
   '@media': {
-    'screen and (max-width: 768px)': {
+    'screen and (max-height: 450px)': {
       fontSize: constants.REWARD_SIZE.SMALL_FONT_SIZE,
       lineHeight: constants.REWARD_SIZE.SMALL_LINE_HEIGHT,
     },
