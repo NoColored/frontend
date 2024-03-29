@@ -5,44 +5,68 @@ import * as constants from './constatns';
 import { flexOptions } from '@/styles/common.css';
 import { sprinkles } from '@/styles/sprinkles.css';
 
-export const componentWrapper = style([flexOptions({ option: 'rowCenter' })]);
-
-export const firstComponentStyle = style({
-  flex: 4,
+export const gridBox = style({
+  display: 'grid',
+  gridTemplateColumns: '35% 65%',
+  gridTemplateRows: '15% 1fr',
+  gridTemplateAreas: `
+    ". a"
+    "b c"
+  `,
+  height: '100%',
+  overflow: 'hidden',
 });
 
-export const secondComponentStyle = style([
+export const characterWrapper = style({
+  gridArea: 'b',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  justifyContent: 'flex-end',
+});
+
+export const character = style([
+  sprinkles({
+    width: 'full',
+  }),
+]);
+
+export const collections = style([
+  sprinkles({
+    borderRadius: '2x',
+  }),
   {
+    gridArea: 'c',
     backgroundColor: 'rgba(0,0,0,0.7)',
-    flex: 6,
-    maxHeight: constants.SECOND_COMPONENT_MAX_HEIGHT,
     overflowY: 'auto',
+    maxHeight: constants.COLLECTIONS.MAX_HEIGHT,
   },
 ]);
 
 export const categoryButton = style([
-  flexOptions({ option: 'rowCenter' }),
   {
+    gridArea: 'a',
     gap: constants.CATEGORY_BUTTON_GAP,
   },
 ]);
 
-export const titleText = style([
+export const label = style([
   sprinkles({
     fontWeight: 'accent',
     textSize: '1x',
+    width: 'full',
   }),
   {
+    position: 'absolute',
     textAlign: 'center',
-    // backgroundImage: `linear-gradient(to right, ${vars.colors.red}, ${vars.colors.yellow}, ${vars.colors.green}, ${vars.colors.blue}, ${vars.colors.pink})`,
+    top: '15%',
   },
 ]);
 
-export const CharacterBox = style([
+export const mySkin = style([
   flexOptions({ option: 'column' }),
   sprinkles({
-    paddingY: '2x',
-    alignItems: 'center',
+    width: 'full',
   }),
   {
     position: 'relative',
@@ -52,12 +76,6 @@ export const CharacterBox = style([
     backgroundClip: 'border-box',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
-
-    top: '-20px',
-    right: '-10px',
-    maxWidth: constants.CHARACTER_SIZE_HEGIHT.MAX,
-    flexGrow: 1,
-    minWidth: constants.CHARACTER_SIZE_HEGIHT.MIN,
   },
 ]);
 
@@ -65,16 +83,22 @@ export const submitButtonWrapper = style([
   flexOptions({ option: 'columnCenter' }),
   {
     position: 'relative',
-    right: constants.SUBMIT_BUTTON_RIGHT,
+    marginTop: constants.SUBMIT_BUTTON_MARGIN,
   },
 ]);
 
-export const imageBoxWrapper = style([
+export const skinWrapper = style([
   sprinkles({ padding: '3x' }),
   {
     display: 'grid',
     gridTemplateColumns: 'repeat(4, 1fr)',
-    gap: constants.EIGHT_GAP,
+    gap: constants.GRID_GAP,
+    maxHeight: '350px',
+    '@media': {
+      'screen and (max-height: 450px)': {
+        gridTemplateColumns: 'repeat(3, 1fr)',
+      },
+    },
   },
 ]);
 
@@ -83,17 +107,21 @@ export const achieveBoxWrapper = style([
   {
     display: 'grid',
     gridTemplateColumns: 'repeat(2, 1fr)',
-    gap: constants.EIGHT_GAP,
+    gap: constants.GRID_GAP,
   },
 ]);
 
-export const boxStyle = style({
-  boxSizing: 'border-box',
-  width: constants.BOX_STYLE.WIDTH,
-  height: constants.BOX_STYLE.HEIGHT,
-  border: constants.BOX_STYLE.BORDER,
-  borderRadius: constants.BOX_STYLE.BORDER_RADIUS,
-});
+export const boxStyle = style([
+  sprinkles({
+    width: 'full',
+  }),
+  {
+    boxSizing: 'border-box',
+    height: constants.BOX_STYLE.HEIGHT,
+    border: constants.BOX_STYLE.BORDER,
+    borderRadius: constants.BOX_STYLE.BORDER_RADIUS,
+  },
+]);
 
 export const achievedBox = style({
   background: 'rgba(26, 130, 153, 0.5)',
@@ -105,11 +133,12 @@ export const notAchievedBox = style({
 
 export const labelBoxStyle = style([
   flexOptions({ option: 'columnCenter' }),
+  sprinkles({
+    width: 'full',
+  }),
   {
     boxSizing: 'border-box',
-    width: constants.LABEL_BOX_STYLE.WIDTH,
     height: constants.LABEL_BOX_STYLE.HEIGHT,
-    background: 'rgba(26, 130, 153, 0.5)',
     border: constants.LABEL_BOX_STYLE.BORDER,
     borderRadius: constants.LABEL_BOX_STYLE.BORDER_RADIUS,
   },
@@ -124,6 +153,12 @@ export const nameSize = style([
     textAlign: 'center',
     fontSize: constants.NAME_SIZE.FONT_SIZE,
     wordSpacing: constants.NAME_SIZE.WORD_SPACING,
+    '@media': {
+      'screen and (max-height: 450px)': {
+        fontSize: constants.NAME_SIZE.SMALL_FONT_SIZE,
+        lineHeight: constants.NAME_SIZE.SMALL_LINE_HEIGHT,
+      },
+    },
   },
 ]);
 
@@ -133,9 +168,24 @@ export const rewardSize = style({
   fontSize: constants.REWARD_SIZE.FONT_SIZE,
   wordSpacing: constants.REWARD_SIZE.WORD_SPACING,
   lineHeight: constants.REWARD_SIZE.LINE_HEIGHT,
+  '@media': {
+    'screen and (max-height: 450px)': {
+      fontSize: constants.REWARD_SIZE.SMALL_FONT_SIZE,
+      lineHeight: constants.REWARD_SIZE.SMALL_LINE_HEIGHT,
+    },
+  },
 });
 
-export const disabled = style({
-  pointerEvents: 'none',
-  filter: 'blur(8px)',
+export const mosaicBox = style([
+  flexOptions({ option: 'columnCenter' }),
+  sprinkles({
+    width: 'full',
+    height: 'full',
+  }),
+]);
+
+export const mosaic = style({
+  backgroundColor: 'black',
+  width: '65%',
+  height: '20%',
 });

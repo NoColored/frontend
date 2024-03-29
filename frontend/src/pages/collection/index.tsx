@@ -45,52 +45,56 @@ const Collection = () => {
 
   return (
     <BasicContentFrame backButtonLabel='뒤로'>
-      <div className={styles.categoryButton}>
-        <SettingTextButton
-          onClick={() => setSelectedCategory('skin')}
-          size='small'
-          colorStyle={selectedCategory === 'skin' ? 'black' : 'realDark'}
-        >
-          스킨
-        </SettingTextButton>
-        <SettingTextButton
-          onClick={() => setSelectedCategory('label')}
-          size='small'
-          colorStyle={selectedCategory === 'label' ? 'black' : 'realDark'}
-        >
-          칭호
-        </SettingTextButton>
-        <SettingTextButton
-          onClick={() => setSelectedCategory('achievement')}
-          size='small'
-          colorStyle={selectedCategory === 'achievement' ? 'black' : 'realDark'}
-        >
-          업적
-        </SettingTextButton>
-      </div>
-      <div className={styles.componentWrapper}>
-        <div className={styles.firstComponentStyle}>
-          <div
-            style={{
-              backgroundImage: `url(${skinUrl})`,
-            }}
-            className={styles.CharacterBox}
+      <div className={styles.gridBox}>
+        <div className={styles.categoryButton}>
+          <SettingTextButton
+            onClick={() => setSelectedCategory('skin')}
+            size='small'
+            colorStyle={selectedCategory === 'skin' ? 'black' : 'realDark'}
           >
-            <span className={styles.titleText}>{`< ${user?.label} >`}</span>
-          </div>
-          <div className={styles.submitButtonWrapper}>
-            {selectedCategory !== 'achievement' && (
-              <SettingTextButton
-                onClick={categorySubmit}
-                size='small'
-                colorStyle='black'
-              >
-                저장
-              </SettingTextButton>
-            )}
+            스킨
+          </SettingTextButton>
+          <SettingTextButton
+            onClick={() => setSelectedCategory('label')}
+            size='small'
+            colorStyle={selectedCategory === 'label' ? 'black' : 'realDark'}
+          >
+            칭호
+          </SettingTextButton>
+          <SettingTextButton
+            onClick={() => setSelectedCategory('achievement')}
+            size='small'
+            colorStyle={
+              selectedCategory === 'achievement' ? 'black' : 'realDark'
+            }
+          >
+            업적
+          </SettingTextButton>
+        </div>
+        <div className={styles.characterWrapper}>
+          <div className={styles.character}>
+            <div
+              style={{
+                backgroundImage: `url(${skinUrl})`,
+              }}
+              className={styles.mySkin}
+            >
+              <span className={styles.label}>{`< ${user?.label} >`}</span>
+            </div>
+            <div className={styles.submitButtonWrapper}>
+              {selectedCategory !== 'achievement' && (
+                <SettingTextButton
+                  onClick={categorySubmit}
+                  size='small'
+                  colorStyle='black'
+                >
+                  저장
+                </SettingTextButton>
+              )}
+            </div>
           </div>
         </div>
-        <div className={styles.secondComponentStyle}>{renderComponent()}</div>
+        <div className={styles.collections}>{renderComponent()}</div>
       </div>
     </BasicContentFrame>
   );
