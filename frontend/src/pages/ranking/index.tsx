@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import * as styles from './index.css';
 
 import type { User } from '@/types/auth';
+import type { RankPlayer } from '@/types/rank';
 
 import BasicContentFrame from '@/components/BasicContentFrame/WithButtons/index';
 
@@ -12,17 +13,9 @@ import { getUser } from '@/services/auth';
 import { getRankList } from '@/services/rank';
 
 const Ranking = () => {
-  const [rankList, setRankList] = useState<User[]>([]);
+  const [rankList, setRankList] = useState<RankPlayer[]>([]);
   const [myRank, setMyRank] = useState<User>();
-  const [refreshTime, setRefreshTime] = useState<Date>();
-
-  const getRankingInfo = async () => {
-    const rankData = await getRankList();
-    if (typeof rankData !== 'string') {
-      setRefreshTime(new Date(rankData.refreshTime));
-      setRankList(rankData.players || []);
-    }
-  };
+  // const [refreshTime, setRefreshTime] = useState<Date>();
 
   const getMyRank = async () => {
     const myData = await getUser();
@@ -31,24 +24,33 @@ const Ranking = () => {
     }
   };
 
+  const getRanking = async () => {
+    const data = await getRankList();
+    if (typeof data !== 'string') {
+      setRankList(data.players);
+      // setRefreshTime(new Date(data.refreshTime));
+    }
+    console.log(rankList);
+  };
+
   // refreshTime에 대해 백엔드 측에서 원만하게 해결이 된다면 okay, 수정할 필요는 없음.
   // 기본 delay 시간은 5분으로 설정함.
+  // 일단, 랭킹 페이지 들어올 때만 갱신할 수 있도록 설정해놓음.
   useEffect(() => {
-    getRankingInfo();
     getMyRank();
-    console.log(rankList);
+    getRanking();
 
-    if (refreshTime) {
-      const currentTime = new Date().getTime();
-      let delay = refreshTime.getTime() - currentTime;
-      delay = delay > 0 ? delay : 5 * 60 * 1000;
-
-      const timer = setTimeout(() => {
-        getRankingInfo();
-        getMyRank();
-      }, delay);
-      return () => clearTimeout(timer);
-    }
+    // if (refreshTime) {
+    //   const currentTime = new Date().getTime();
+    //   let delay = refreshTime.getTime() - currentTime;
+    //   delay = delay > 0 ? delay : 5 * 60 * 1000;
+    //
+    //   const timer = setTimeout(() => {
+    //     getMyRank();
+    //     getRanking();
+    //   }, delay);
+    //   return () => clearTimeout(timer);
+    // }
   }, []);
 
   return (
@@ -60,12 +62,12 @@ const Ranking = () => {
 
         <div className={styles.rankingWrapper}>
           {rankList.map((item) => (
-            <RankingItemBox key={item.rank} user={item} />
+            <RankingItemBox key={item.rank} player={item} />
           ))}
         </div>
         {myRank && (
           <div className={styles.myRankingWrapper}>
-            <RankingItemBox user={myRank} myRank />
+            <RankingItemBox player={myRank} guest={myRank.guest} myRank />
           </div>
         )}
       </div>
