@@ -29,27 +29,15 @@ const Result = () => {
 
         {gameResult.players.map((item) => (
           <div key={`${item.nickname}${item.rank}`}>
-            {item.rank === 1 ? (
-              <ResultInfoBox
-                rank={item.rank}
-                imgSrc={item.skin}
-                label={item.label}
-                nickname={item.nickname}
-                colorStyle={item.index}
-                gameScore={item.step}
-                firstResult
-              />
-            ) : (
-              <ResultInfoBox
-                key={`${item.nickname}${item.rank}`}
-                rank={item.rank}
-                imgSrc={item.skin}
-                label={item.label}
-                nickname={item.nickname}
-                colorStyle={item.index}
-                gameScore={item.step}
-              />
-            )}
+            <ResultInfoBox
+              rank={item.rank}
+              imgSrc={item.skin}
+              label={item.label}
+              nickname={item.nickname}
+              colorStyle={item.index}
+              gameScore={item.step}
+              firstResult={item.rank === 1}
+            />
           </div>
         ))}
         <div className={styles.buttonWrapper}>
@@ -67,16 +55,14 @@ const Result = () => {
           />
         </div>
       </div>
-      {gameResult.reward.tier && (
-        <Modal>
-          <TierUpgrade closeModal={closeModal} />
-        </Modal>
-      )}
-      {gameResult.reward.skin && (
-        <Modal>
-          <Rewards closeModal={closeModal} />
-        </Modal>
-      )}
+      <Modal>
+        {gameResult.reward.tier && (
+          <TierUpgrade tier={gameResult.reward.tier} closeModal={closeModal} />
+        )}
+        {gameResult.reward.skin && (
+          <Rewards skin={gameResult.reward.skin} closeModal={closeModal} />
+        )}
+      </Modal>
     </BasicContentFrame>
   );
 };

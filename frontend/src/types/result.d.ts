@@ -1,9 +1,10 @@
 import type { tierRange } from '@/pages/ranking/types';
+import type { colorStyles } from '@/pages/result/types';
 
 interface ResultPlayer {
   nickname: string;
   label: string;
-  index: number;
+  index: colorStyles;
   skin: string;
   rank: number;
   step: number;

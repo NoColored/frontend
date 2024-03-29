@@ -6,21 +6,10 @@ import RoundCornerImageBox from '@/components/imagebox/RoundCornerImageBox';
 
 interface Props {
   closeModal: () => void;
+  skin: string[];
 }
 
-const Rewards = ({ closeModal }: Props) => {
-  // data 받아온 후 변경할 내용
-  const rewardExample = [
-    {
-      imgSrc:
-        'images/character/default-magichat/character-default-magichat-blue-h240w240.png',
-    },
-    {
-      imgSrc:
-        'images/character/default-magichat/character-default-magichat-blue-h240w240.png',
-    },
-  ];
-
+const Rewards = ({ closeModal, skin }: Props) => {
   return (
     <div className={styles.modalWrapper}>
       <div className={styles.ribbonWrapper}>
@@ -40,11 +29,11 @@ const Rewards = ({ closeModal }: Props) => {
         </div>
       </div>
       <div className={styles.rewardListWrapper}>
-        {rewardExample.map((item) => (
-          <div>
+        {skin.map((item) => (
+          <div key={item}>
             <RoundCornerImageBox
               size='medium'
-              imgSrc={item.imgSrc}
+              imgSrc={item}
               backgroundColor='white'
               borderColor='black'
               borderSize='1x'

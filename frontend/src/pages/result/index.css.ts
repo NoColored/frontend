@@ -96,11 +96,9 @@ export const resultInfoBox = recipe({
       ],
     },
     colorStyle: {
-      pink: [
-        sprinkles({
-          borderColor: 'pink',
-        }),
-      ],
+      pink: sprinkles({
+        borderColor: 'pink',
+      }),
       yellow: sprinkles({
         borderColor: 'yellow',
       }),
