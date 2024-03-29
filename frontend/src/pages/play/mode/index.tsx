@@ -31,7 +31,7 @@ const Mode = () => {
         />
         <MatchingButton imgSrc={user.skin} />
         <div className={styles.myRank}>
-          <RankingItemBox user={user} myRank />
+          <RankingItemBox player={user} guest={user.guest} myRank />
         </div>
       </div>
     </BasicContentFrame>

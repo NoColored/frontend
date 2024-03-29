@@ -12,4 +12,4 @@ export const RANKING = {
   color: 'yellow' as colorType,
 };
 
-export const matchingMessage = '매칭중...';
+export const MATCHING_MESSAGES = ['매칭중', '매칭중.', '매칭중..', '매칭중...'];
