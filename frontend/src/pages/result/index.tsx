@@ -68,6 +68,7 @@ const Result = () => {
           <div>
             {item.rank === 1 ? (
               <ResultInfoBox
+                key={`${item.nickname}${item.rank}`}
                 rank={item.rank}
                 imgSrc={item.imgSrc}
                 label={item.label}
