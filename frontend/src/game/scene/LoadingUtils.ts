@@ -9,6 +9,8 @@ export default class LoadingUtils {
   private loadingText: Phaser.GameObjects.Text | undefined;
   private loadingNum: Phaser.GameObjects.Text | undefined;
 
+  private loadingEvent: Phaser.Time.TimerEvent | undefined;
+
   constructor(scene: Phaser.Scene) {
     this.scene = scene;
   }
@@ -88,7 +90,7 @@ export default class LoadingUtils {
 
     this.setLoadingTextEvent();
 
-    this.scene.time.addEvent({
+    this.loadingEvent = this.scene.time.addEvent({
       delay: 3000, // ms 단위로 지연 시간 설정
       callback: this.setLoadingTextEvent, // 실행될 콜백 함수
       callbackScope: this, // 콜백 함수의 this 컨텍스트
@@ -117,9 +119,12 @@ export default class LoadingUtils {
   }
 
   destroyLoadingScreen() {
+    this.loadingEvent?.remove();
+    this.loadingLogo?.destroy();
     this.loadingBack?.destroy();
     this.loadingSprite?.destroy();
     this.loadingNum?.destroy();
     this.loadingText?.destroy();
   }
 }
+
