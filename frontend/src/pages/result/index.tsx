@@ -65,10 +65,9 @@ const Result = () => {
         <div className={styles.resultTextWrapper}>{constants.RESULTTEXT}</div>
 
         {resultExample.map((item) => (
-          <div>
+          <div key={`${item.nickname}${item.rank}`}>
             {item.rank === 1 ? (
               <ResultInfoBox
-                key={`${item.nickname}${item.rank}`}
                 rank={item.rank}
                 imgSrc={item.imgSrc}
                 label={item.label}
