@@ -1,3 +1,5 @@
+import type { User } from '@/types/auth';
+
 import type { tierRange } from '@/pages/ranking/types';
 
 export interface RankPlayer {
@@ -12,4 +14,9 @@ export interface RankPlayer {
 export interface RankInfo {
   refreshTime: string;
   players: RankPlayer[];
+}
+
+export interface Rank {
+  players: RankPlayer[];
+  user: User;
 }
