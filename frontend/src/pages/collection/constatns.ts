@@ -1,15 +1,12 @@
-export const CHARACTER_SIZE_HEGIHT = {
-  MAX: '240px',
-  MIN: '180px',
+export const COLLECTIONS = {
+  MAX_HEIGHT: '350px',
 };
-
-export const SECOND_COMPONENT_MAX_HEIGHT = '350px';
 
 export const CATEGORY_BUTTON_GAP = '16px';
 
-export const EIGHT_GAP = '8px';
+export const GRID_GAP = '8px';
 
-export const SUBMIT_BUTTON_RIGHT = '13px';
+export const SUBMIT_BUTTON_MARGIN = '8px';
 
 export const BOX_STYLE = {
   WIDTH: '200px',
@@ -28,10 +25,14 @@ export const LABEL_BOX_STYLE = {
 export const NAME_SIZE = {
   FONT_SIZE: '16px',
   WORD_SPACING: '2px',
+  SMALL_FONT_SIZE: '12px',
+  SMALL_LINE_HEIGHT: '24px',
 };
 
 export const REWARD_SIZE = {
   FONT_SIZE: '24px',
   WORD_SPACING: '10px',
   LINE_HEIGHT: '32px',
+  SMALL_FONT_SIZE: '16px',
+  SMALL_LINE_HEIGHT: '24px',
 };

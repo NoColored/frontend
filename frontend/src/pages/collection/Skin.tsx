@@ -26,7 +26,7 @@ const Skin = () => {
   console.log(skinId);
   return (
     <div>
-      <div className={styles.imageBoxWrapper}>
+      <div className={styles.skinWrapper}>
         {skins.map((skin) => (
           <div
             role='button'
@@ -38,15 +38,20 @@ const Skin = () => {
                 setSkinUrl(skin.link);
               }
             }}
-            className={`${!skin.own ? styles.disabled : ''}`}
           >
             <RoundCornerImageBox
               imgSrc={skin.link}
-              size='medium'
+              size='full'
               borderColor={skinId === skin.id ? 'blue' : 'black'}
               borderSize={skinId === skin.id ? '5x' : '1x'}
-              backgroundColor='white'
-            />
+              backgroundColor={`${skin.own ? 'white' : 'gray200'}`}
+            >
+              {!skin.own && (
+                <div className={styles.mosaicBox}>
+                  <div className={styles.mosaic} />
+                </div>
+              )}
+            </RoundCornerImageBox>
           </div>
         ))}
       </div>

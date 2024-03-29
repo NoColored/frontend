@@ -197,6 +197,7 @@ export default class GameScene extends Phaser.Scene {
 
     this.countDownManager.createCountDown();
 
+    console.log(this.gameData);
     this.topUi = new TopUi(this, this.gameData?.skins.length ?? 0, this.icons);
     this.topUi.hideUi();
 
