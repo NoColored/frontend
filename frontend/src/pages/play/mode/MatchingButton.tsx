@@ -10,6 +10,7 @@ import useModal from '@/hooks/useModal';
 import { useWebSocket } from '@/hooks/useWebSocket';
 
 import * as constants from '@/pages/play/mode/constants';
+import { MatchingText } from '@/pages/play/mode/MatchingText';
 
 import { deleteMatching, getMatching } from '@/services/matching';
 
@@ -21,7 +22,7 @@ interface Props {
 
 const MatchingButton = ({ imgSrc }: Props) => {
   const navigate = useNavigate();
-  const { Modal, openModal, closeModal } = useModal();
+  const { Modal, openModal, closeModal, isOpen } = useModal();
 
   useWebSocket((message) => {
     if (message.action === 'matching') {
@@ -54,9 +55,7 @@ const MatchingButton = ({ imgSrc }: Props) => {
 
       <Modal>
         <div className={styles.matchingModalWrapper}>
-          <div className={styles.matchingMessage}>
-            {constants.matchingMessage}
-          </div>
+          <MatchingText isModalOpen={isOpen} />
           <div className={styles.matchingImageWrapper}>
             <RoundCornerImageBox
               size='large'

@@ -99,7 +99,6 @@ export const resultInfoBox = recipe({
       pink: [
         sprinkles({
           borderColor: 'pink',
-          backgroundColor: 'pink',
         }),
       ],
       yellow: sprinkles({
@@ -113,6 +112,32 @@ export const resultInfoBox = recipe({
       }),
     },
   },
+  compoundVariants: [
+    {
+      variants: { firstResult: true, colorStyle: 'pink' },
+      style: sprinkles({
+        backgroundColor: 'pink',
+      }),
+    },
+    {
+      variants: { firstResult: true, colorStyle: 'yellow' },
+      style: sprinkles({
+        backgroundColor: 'yellow',
+      }),
+    },
+    {
+      variants: { firstResult: true, colorStyle: 'green' },
+      style: sprinkles({
+        backgroundColor: 'green',
+      }),
+    },
+    {
+      variants: { firstResult: true, colorStyle: 'blue' },
+      style: sprinkles({
+        backgroundColor: 'blue',
+      }),
+    },
+  ],
 });
 
 export const modalWrapper = style([

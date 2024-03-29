@@ -21,6 +21,7 @@ import Settings from '@/pages/settings';
 import { getUser } from '@/services/auth';
 import { getRoomList } from '@/services/finder';
 import { getLobbyInfo } from '@/services/lobby';
+import { getRank } from '@/services/rank';
 
 const router = createBrowserRouter([
   {
@@ -76,6 +77,7 @@ const router = createBrowserRouter([
   {
     path: `${ROUTE.ranking}`,
     element: <Ranking />,
+    loader: getRank,
   },
   {
     path: `${ROUTE.home}`,
