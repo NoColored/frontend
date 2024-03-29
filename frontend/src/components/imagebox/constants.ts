@@ -16,7 +16,7 @@ export const BORDER_COLOR = [
   'black',
 ] as const;
 
-export const BACKGROUND_COLOR = ['white'] as const;
+export const BACKGROUND_COLOR = ['white', 'gray200'] as const;
 export const BORDER_WEIGHT = ['1x', '3x', '5x'] as const;
 
 export const TIER_RANGE = [
