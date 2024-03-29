@@ -45,10 +45,10 @@ const MatchingButton = ({ imgSrc }: Props) => {
         ],
       );
       messageIndex++;
-    }, 1000);
+    }, 500);
 
     return () => clearInterval(interval);
-  });
+  }, []);
 
   const startMatching = async () => {
     const matchingSuccess = await getMatching();
