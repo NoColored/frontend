@@ -17,6 +17,7 @@ export const GAMESOCKET_MESSAGE_TYPE: Map<string, number> = new Map([
 ]);
 
 export const INGAME_DEPTH = {
+  BUTTON: 5,
   TIMER: 3,
   SCORE: 3,
   CHARACTER: 1,
@@ -27,6 +28,17 @@ export const INGAME_DEPTH = {
   LOADING_BACKGROUND: 500,
   LOADING_SPRITE: 501,
 } as const;
+
+export const SEND_WOBSOCKT_MESSAGE_TYPE = {
+  LOAD_COMPLETE: 0,
+  DIRECTION_CHANGE: 1,
+  JUMP: 2,
+};
+
+export const BUTTON_POSITION = {
+  JUMP: { x: 490, y: 300 },
+  CHANGE_DIR: { x: 105, y: 300 },
+};
 
 export const ICON_COLOR = ['#EB4180', '#4CA732', '#F2B705', '#04B1D9'] as const;
 

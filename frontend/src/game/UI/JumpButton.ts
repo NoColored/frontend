@@ -1,20 +1,80 @@
 import { GameSocket } from '@/services/websocket/GameSocket';
 
+import * as constants from '@/game/constants';
+
 export default class JumpButton extends Phaser.GameObjects.GameObject {
+  private button;
+  private socket: GameSocket;
+  private keys: Phaser.Input.Keyboard.Key[] = [];
+
   constructor(scene: Phaser.Scene, socket: GameSocket) {
     super(scene, 'jumpButton');
     // TODO DEPTH -> constants로 변경
-    const button = this.scene.add.image(490, 300, 'jumpButton').setDepth(5);
+    this.button = this.scene.add
+      .image(
+        constants.BUTTON_POSITION.JUMP.x,
+        constants.BUTTON_POSITION.JUMP.y,
+        'jumpButton',
+      )
+      .setDepth(constants.INGAME_DEPTH.BUTTON);
+    this.socket = socket;
 
-    button.setInteractive();
-    button.on('pointerdown', () => {
-      button.setTexture('clickedJumpButton');
-      // TODO constant로 2번 값 넘기기
-    });
-    button.on('pointerup', () => {
-      button.setTexture('jumpButton');
-      socket.sendInputMesssage(2);
-    });
+    this.setJumpButton();
+    this.setupSpacebarInput();
+
     this.scene.add.existing(this);
+
+    this.setButtonAndKeyInputEnabled(false);
+  }
+
+  setJumpButton() {
+    this.button.on('pointerdown', () => {
+      this.button.setTexture('clickedJumpButton');
+      this.socket.sendInputMesssage(constants.SEND_WOBSOCKT_MESSAGE_TYPE.JUMP);
+    });
+
+    this.button.on('pointerup', () => {
+      this.button.setTexture('jumpButton');
+    });
+  }
+
+  setupSpacebarInput() {
+    //  @ts-expect-error - spacebar가 Phaser에서 지원하지 않는 속성이라고 나옴
+    const spacebar = this.scene.input.keyboard.addKey(
+      Phaser.Input.Keyboard.KeyCodes.SPACE,
+    );
+    spacebar.on('down', () => {
+      this.button.setTexture('clickedJumpButton');
+      this.socket.sendInputMesssage(constants.SEND_WOBSOCKT_MESSAGE_TYPE.JUMP);
+    });
+    spacebar.on('up', () => {
+      this.button.setTexture('jumpButton');
+    });
+    this.keys.push(spacebar);
+  }
+
+  setButtonAndKeyInputEnabled(enabled: boolean) {
+    this.button.setInteractive({ useHandCursor: enabled });
+    if (!enabled) {
+      this.button.disableInteractive();
+    }
+
+    this.keys.forEach((key) => {
+      key.enabled = enabled;
+    });
+  }
+
+  changeButtonItem() {
+    this.button.setPosition(
+      constants.BUTTON_POSITION.CHANGE_DIR.x,
+      constants.BUTTON_POSITION.CHANGE_DIR.y,
+    );
+
+    this.scene.time.delayedCall(5000, () => {
+      this.button.setPosition(
+        constants.BUTTON_POSITION.JUMP.x,
+        constants.BUTTON_POSITION.JUMP.y,
+      );
+    });
   }
 }

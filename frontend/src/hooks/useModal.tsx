@@ -25,7 +25,7 @@ const useModal = () => {
     );
   };
 
-  return { Modal, openModal, closeModal };
+  return { Modal, openModal, closeModal, isOpen };
 };
 
 export default useModal;

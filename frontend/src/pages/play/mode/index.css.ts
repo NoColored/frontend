@@ -33,8 +33,13 @@ export const matchingModalWrapper = style([
 ]);
 
 export const matchingMessage = style([
+  flexOptions({ option: 'row' }),
   sprinkles({
     textSize: '2x',
+    justifyContent: 'flexStart',
+    width: 'full',
+    marginBottom: '1x',
+    paddingLeft: '4x',
   }),
 ]);
 
