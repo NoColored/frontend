@@ -44,7 +44,7 @@ export default class LoadingUtils {
       this.scene.cameras.main.height / 4,
       'Loading...',
       {
-        fontFamily: 'PixelAEBold',
+        fontFamily: 'Chonkly',
         fontSize: '24px',
         color: '#ffffff',
       },
@@ -119,5 +119,7 @@ export default class LoadingUtils {
   destroyLoadingScreen() {
     this.loadingBack?.destroy();
     this.loadingSprite?.destroy();
+    this.loadingNum?.destroy();
+    this.loadingText?.destroy();
   }
 }
