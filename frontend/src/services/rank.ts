@@ -1,4 +1,4 @@
-import type { RankInfo } from '@/types/rank';
+import type { RankInfo, RankPlayer } from '@/types/rank';
 
 import { getUser } from '@/services/auth';
 import { api } from '@/services/index';
@@ -12,20 +12,13 @@ const requestRankList = async () => {
     })
     .catch((error) => {
       console.log(error);
-      return '';
+      return [] as RankPlayer[];
     });
 };
 
 export const getRank = async () => {
-  try {
-    const ranking = await requestRankList();
-    const myRank = await getUser();
+  const rankList = await requestRankList();
+  const myRank = await getUser();
 
-    const rankingList = { players: ranking, user: myRank };
-
-    return rankingList;
-  } catch (error) {
-    console.log(error);
-    return '';
-  }
+  return { rankList, myRank };
 };

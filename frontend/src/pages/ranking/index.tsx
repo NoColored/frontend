@@ -2,16 +2,18 @@ import { useLoaderData } from 'react-router-dom';
 
 import * as styles from './index.css';
 
-import type { Rank } from '@/types/rank';
+import type { User } from '@/types/auth';
+import type { RankPlayer } from '@/types/rank';
 
 import BasicContentFrame from '@/components/BasicContentFrame/WithButtons/index';
 
 import RankingItemBox from '@/pages/ranking/RankingItemBox';
 
 const Ranking = () => {
-  const rankData = useLoaderData() as Rank;
-  const rankList = rankData.players;
-  const myRank = rankData.user;
+  const { rankList, myRank } = useLoaderData() as {
+    rankList: RankPlayer[];
+    myRank: User;
+  };
 
   return (
     <BasicContentFrame backButtonLabel='뒤로'>
