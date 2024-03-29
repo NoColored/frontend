@@ -1,22 +1,15 @@
-import type { tierRange } from '@/pages/ranking/types';
+import type { GameResult } from '@/types/result';
 
-interface ResultPlayer {
-  nickname: string;
-  label: string;
-  index: number;
-  skin: string;
-  rank: number;
-  step: number;
-}
+import { api } from '@/services/index';
 
-interface TierReward {
-  oldtier: tierRange;
-  newtier: tierRange;
-  upgrade: boolean;
-}
-
-interface GameResult {
-  players: ResultPlayer[];
-  tierreward?: TierReward[];
-  skinreward?: string[];
-}
+export const getGameResult = async () => {
+  return api
+    .get<GameResult>(true, '/ingame')
+    .then((res) => {
+      return res.data;
+    })
+    .catch((error) => {
+      console.log(error);
+      return '';
+    });
+};
