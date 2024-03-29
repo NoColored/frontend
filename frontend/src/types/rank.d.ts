@@ -16,8 +16,3 @@ export interface RankInfo {
   refreshTime: string;
   players: RankPlayer[];
 }
-
-export interface Rank {
-  players: RankPlayer[];
-  user: User;
-}
