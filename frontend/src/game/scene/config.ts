@@ -13,5 +13,9 @@ export const config: Phaser.Types.Core.GameConfig = {
       debug: true,
     },
   },
-  scene: [LoadPreLoadingScene, GameScene],
+  // scene: [LoadPreLoadingScene, GameScene],
+};
+
+export const scenesConfig = (setIsActive: (isActive: boolean) => void) => {
+  return [LoadPreLoadingScene, new GameScene(setIsActive)];
 };

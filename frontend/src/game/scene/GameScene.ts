@@ -21,6 +21,7 @@ import { Map } from '@/game/map/Map';
 import { PhysicsMap } from '@/game/map/PhysicsMap';
 import { Character } from '@/game/object/Character';
 import CountDown from '@/game/scene/CountDown';
+import GameOver from '@/game/scene/GameOver';
 import LoadingUtils from '@/game/scene/LoadingUtils';
 import { BgmManager } from '@/game/sound/Bgm';
 import ChangeDirButton from '@/game/UI/ChangeDirButton';
@@ -50,9 +51,11 @@ export default class GameScene extends Phaser.Scene {
 
   private nowUserIndex: number = 0;
 
-  constructor() {
-    super({ key: 'GameScene' });
+  private setIsActive: (isActive: boolean) => void;
 
+  constructor(setIsActive: (isActive: boolean) => void) {
+    super({ key: 'GameScene' });
+    this.setIsActive = setIsActive;
     // WebSocket
     const { webSocket } = useWebSocketStore.getState();
     this.socket = webSocket;
@@ -209,6 +212,12 @@ export default class GameScene extends Phaser.Scene {
 
     // 각종 세팅 완료
     this.changeGameState('ready');
+
+    // this.time.delayedCall(3000, () => {
+    //   // 여기에 3초 후 실행하고 싶은 코드를 작성합니다.
+    //   this.changeGameState('end');
+    //   console.log('3초가 지났습니다!');
+    // });
   }
 
   private gameStartUpdate() {
@@ -249,6 +258,11 @@ export default class GameScene extends Phaser.Scene {
     if (this.gameState === 'playing') return 2;
     this.countDownManager.changeCountDownText(data);
     return 2;
+  }
+
+  private gameOverUpdate() {
+    this.changeGameState('end');
+    return 1;
   }
 
   private characterInfoListUpdate(view: DataView) {
@@ -310,6 +324,8 @@ export default class GameScene extends Phaser.Scene {
         return this.timeLeftUpdate(view);
       case constants.GAMESOCKET_MESSAGE_TYPE.get('COUNTDOWN'):
         return this.countDownUpdate(view);
+      case constants.GAMESOCKET_MESSAGE_TYPE.get('GAME_OVER'):
+        return this.gameOverUpdate();
       case constants.GAMESOCKET_MESSAGE_TYPE.get('CHARACTER_INFO_LIST'):
         return this.characterInfoListUpdate(view);
       case constants.GAMESOCKET_MESSAGE_TYPE.get('CURRENT_SCORE'):
@@ -391,7 +407,10 @@ export default class GameScene extends Phaser.Scene {
         this.countDownManager.destroyCountDown();
         break;
       case 'end':
-        // TODO 게임 종료 로직
+        // eslint-disable-next-line no-new
+        new GameOver(this);
+        this.setIsActive(false);
+        this.scene.pause(this);
 
         break;
       default:
