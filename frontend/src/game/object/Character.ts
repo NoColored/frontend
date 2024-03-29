@@ -18,7 +18,7 @@ export class Character extends Phaser.Physics.Arcade.Sprite {
     super(scene, characterInfoData.x, characterInfoData.y, texture);
 
     // 사이즈 결정 필요
-    this.scale = 6 / 32;
+    this.scale = 9 / 80;
     this.isUser = false;
 
     // 충돌 관련 로직
