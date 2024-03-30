@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router-dom';
 
 import type { TierReward } from '@/types/result';
 
-import SkinReward from '@/pages/result/SkinReward';
-import TierUpgrade from '@/pages/result/TierUpgrade';
+import SkinReward from '@/pages/result/RewardsModal/SkinReward';
+import TierUpgrade from '@/pages/result/RewardsModal/TierUpgrade';
 
 interface Props {
   tier?: TierReward;

@@ -1,6 +1,4 @@
-// import { useLoaderData } from 'react-router-dom';
-
-import { useNavigate } from 'react-router-dom';
+import { useLoaderData, useNavigate } from 'react-router-dom';
 
 import * as constants from './constants';
 import * as styles from './index.css';
@@ -16,52 +14,7 @@ import ResultInfoBox from '@/pages/result/ResultInfoBox';
 import { RewardsModal } from '@/pages/result/RewardsModal';
 
 const Result = () => {
-  // const gameResult = useLoaderData() as GameResult;
-  const gameResult: GameResult = {
-    players: [
-      {
-        rank: 1,
-        skin: 'images/character/default-magichat/character-default-magichat-blue-h240w240.png',
-        label: '칭호인데요제발요칭호라고요열네자?',
-        nickname: '닉네임은아홉글자일',
-        index: 2,
-        step: 67,
-      },
-      {
-        rank: 2,
-        skin: 'images/character/default-magichat/character-default-magichat-blue-h240w240.png',
-        label: '칭호인데요제발요칭호라고요열네자?',
-        nickname: '닉네임은아홉글자일',
-        index: 0,
-        step: 28,
-      },
-      {
-        rank: 3,
-        skin: 'images/character/default-magichat/character-default-magichat-blue-h240w240.png',
-        label: '칭호인데요제발요칭호라고요열네자?',
-        nickname: '닉네임은아홉글자일',
-        index: 1,
-        step: 7,
-      },
-    ],
-    reward: {
-      tier: {
-        oldtier: 'bronze',
-        newtier: 'gold',
-        upgrade: true,
-      },
-      skin: [
-        'images/character/default-magichat/character-default-magichat-blue-h240w240.png',
-        'images/character/default-magichat/character-default-magichat-blue-h240w240.png',
-        'images/character/default-magichat/character-default-magichat-blue-h240w240.png',
-        'images/character/default-magichat/character-default-magichat-blue-h240w240.png',
-        'images/character/default-magichat/character-default-magichat-blue-h240w240.png',
-        'images/character/default-magichat/character-default-magichat-blue-h240w240.png',
-        'images/character/default-magichat/character-default-magichat-blue-h240w240.png',
-        'images/character/default-magichat/character-default-magichat-blue-h240w240.png',
-      ],
-    },
-  };
+  const gameResult = useLoaderData() as GameResult;
 
   const { Modal, openModal, closeModal } = useModal();
   const navigate = useNavigate();
