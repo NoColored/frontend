@@ -2,6 +2,7 @@ import { createBrowserRouter, Navigate } from 'react-router-dom';
 
 import { ROUTE } from './constants';
 
+import Collection from '@/pages/collection';
 import Error from '@/pages/error';
 import Example from '@/pages/example';
 import Home from '@/pages/home';
@@ -18,13 +19,13 @@ import Result from '@/pages/result';
 import Settings from '@/pages/settings';
 
 import { getUser } from '@/services/auth';
-import { getLobbyInfo } from '@/services/lobby';
 import { getRoomList } from '@/services/finder';
-
+import { getLobbyInfo } from '@/services/lobby';
+import { getRank } from '@/services/rank';
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: `${ROUTE.main}`,
     element: <LandingLayout />,
     children: [
       {
@@ -32,17 +33,17 @@ const router = createBrowserRouter([
         element: <Landing />,
       },
       {
-        path: 'login',
+        path: `${ROUTE.login}`,
         element: <LogIn />,
       },
     ],
   },
   {
-    path: '/loading',
+    path: `${ROUTE.loading}`,
     element: <Loading />,
   },
   {
-    path: 'play',
+    path: `${ROUTE.play}`,
     children: [
       {
         index: true,
@@ -50,23 +51,23 @@ const router = createBrowserRouter([
         loader: getUser,
       },
       {
-        path: 'lobby/:roomId',
+        path: `${ROUTE.lobby}/:roomId`,
         element: <Lobby />,
         loader: ({ params }) => getLobbyInfo(params.roomId),
       },
       {
-        path: 'finder',
+        path: `${ROUTE.finder}`,
         element: <Finder />,
         loader: () => getRoomList(1),
       },
       {
-        path: 'game',
+        path: `${ROUTE.game}`,
         element: <Game />,
       },
     ],
   },
   {
-    path: '/example',
+    path: `${ROUTE.example}`,
     element: <Example />,
   },
   {
@@ -74,21 +75,27 @@ const router = createBrowserRouter([
     element: <Navigate to={`${ROUTE.error}/404`} replace />,
   },
   {
-    path: '/ranking',
+    path: `${ROUTE.ranking}`,
     element: <Ranking />,
+    loader: getRank,
   },
   {
-    path: '/home',
+    path: `${ROUTE.home}`,
     element: <Home />,
     loader: getUser,
   },
   {
-    path: '/result',
+    path: `${ROUTE.result}`,
     element: <Result />,
   },
   {
-    path: '/settings',
+    path: `${ROUTE.setting}`,
     element: <Settings />,
+  },
+  {
+    path: `${ROUTE.collection}`,
+    element: <Collection />,
+    loader: getUser,
   },
   {
     path: `${ROUTE.error}/:code`,

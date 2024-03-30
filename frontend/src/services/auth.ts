@@ -50,7 +50,7 @@ export const getUser = async () => {
     return response.data;
   } catch (e) {
     console.log(e);
-    return false;
+    return { userCode: '' } as User;
   }
 };
 

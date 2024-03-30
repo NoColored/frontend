@@ -30,6 +30,7 @@ export const CharacterBox = style([
   flexOptions({ option: 'column' }),
   sprinkles({
     paddingY: '2x',
+    position: 'relative',
     alignItems: 'center',
   }),
   {
@@ -121,7 +122,9 @@ export const titleText = style([
     textSize: '1x',
   }),
   {
+    width: '100%',
+    position: 'absolute',
     textAlign: 'center',
-    // backgroundImage: `linear-gradient(to right, ${vars.colors.red}, ${vars.colors.yellow}, ${vars.colors.green}, ${vars.colors.blue}, ${vars.colors.pink})`,
+    top: '15%',
   },
 ]);

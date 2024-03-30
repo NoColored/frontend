@@ -177,7 +177,6 @@ export default class GameScene extends Phaser.Scene {
     );
 
     // 버튼 증록 - 비활성화 상태
-
     this.changeDirButton = new ChangeDirButton(this, this.socket);
     this.jumpButton = new JumpButton(this, this.socket);
 
@@ -201,7 +200,8 @@ export default class GameScene extends Phaser.Scene {
 
     this.countDownManager.createCountDown();
 
-    this.topUi = new TopUi(this, 2, this.icons);
+    console.log(this.gameData);
+    this.topUi = new TopUi(this, this.gameData?.skins.length ?? 0, this.icons);
     this.topUi.hideUi();
 
     //  TODO 삭제 하기
@@ -346,7 +346,6 @@ export default class GameScene extends Phaser.Scene {
   private p: number = 0;
 
   // ToDO 삭제
-  private tempBolean = 0;
   getSocketData = () => {
     if (!this.socket) return null;
 
@@ -355,10 +354,7 @@ export default class GameScene extends Phaser.Scene {
       if (!message) {
         return null;
       }
-      if (this.tempBolean < 6) {
-        console.log(message);
-        this.tempBolean++;
-      }
+
       const view = new DataView(message);
       this.p = 0;
       while (this.p < view.byteLength) {
@@ -404,13 +400,20 @@ export default class GameScene extends Phaser.Scene {
         this.topUi?.showUi();
         break;
       case 'playing':
+        this.jumpButton?.setButtonAndKeyInputEnabled(true);
+        this.changeDirButton?.setButtonAndKeyInputEnabled(true);
         this.countDownManager.destroyCountDown();
         break;
       case 'end':
+
         // eslint-disable-next-line no-new
         new GameOver(this);
         this.setIsActive(false);
         this.scene.pause(this);
+
+        this.jumpButton?.setButtonAndKeyInputEnabled(false);
+        this.changeDirButton?.setButtonAndKeyInputEnabled(false);
+
 
         break;
       default:
