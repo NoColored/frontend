@@ -1,4 +1,5 @@
 import React from 'react';
+import { createPortal } from 'react-dom';
 
 import * as styles from './index.css';
 
@@ -15,7 +16,7 @@ class FullscreenPrompt extends React.Component {
   }
 
   handleResize = () => {
-    if (window.innerHeight > window.innerWidth) {
+    if (window.innerWidth < 780 && window.innerHeight > window.innerWidth) {
       // 세로 모드일 때
       this.showPrompt();
     } else {
@@ -36,15 +37,20 @@ class FullscreenPrompt extends React.Component {
     }
   };
 
-    render() {
-    return (
+  render() {
+    return createPortal(
       <div
-        ref={(ref) => { this.prompt = ref; }}
+        ref={(ref) => {
+          this.prompt = ref;
+        }}
         className={styles.fullscreenPromptStyle}
       >
-        <p>노컬러랜드는 세로 모드를 지원하지 않는다냥.</p>
+        <pre className={styles.fullscreenPromptText}>
+          {`노컬러랜드는 세로 모드를\n지원하지 않는다냥.`}
+        </pre>
         {/* <button type="button" onClick={this.goFullScreen}>전체 화면 시작</button> */}
-      </div>
+      </div>,
+      document.getElementById('prompt') as HTMLDivElement,
     );
   }
 }

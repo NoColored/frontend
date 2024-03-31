@@ -1,24 +1,22 @@
 import { useNavigate } from 'react-router-dom';
 
-import * as constants from "./constants";
+import * as constants from './constants';
 import * as styles from './index.css';
 
 import ColoredButton from '@/components/button/ColoredButton/index';
 
-import FullscreenPrompt from "@/pages/landing/FullScreenPrompt";
-
 import { getGuestLogin } from '@/services/auth';
 import { setFullScreen } from '@/services/landing';
 
-import useEffectSoundStore from "@/states/effect";
-import useAudioStore from "@/states/music";
+import useEffectSoundStore from '@/states/effect';
+import useAudioStore from '@/states/music';
 
 import { ROUTE } from '@/router/constants';
 
 const Landing = () => {
   const navigate = useNavigate();
   const { isPlaying, play, stop } = useAudioStore();
-  const playEffectSound = useEffectSoundStore(state => state.playEffectSound);
+  const playEffectSound = useEffectSoundStore((state) => state.playEffectSound);
   const clickGuestLogin = async () => {
     return getGuestLogin().then((isSuccess) => {
       playEffectSound();
@@ -34,7 +32,7 @@ const Landing = () => {
   };
 
   const clickLogIn = () => {
-    playEffectSound()
+    playEffectSound();
     isPlaying ? play() : stop();
     navigate('/login');
   };
@@ -42,7 +40,6 @@ const Landing = () => {
   const landingLogo: string = constants.LANDING_LOGO_URL;
   return (
     <div className={styles.contentWrapper}>
-      <FullscreenPrompt />
       <img
         className={styles.logoImage}
         src={landingLogo}
