@@ -10,16 +10,18 @@ import FullscreenPrompt from "@/pages/landing/FullScreenPrompt";
 import { getGuestLogin } from '@/services/auth';
 import { setFullScreen } from '@/services/landing';
 
-import { ROUTE } from '@/router/constants';
-
+import useEffectSoundStore from "@/states/effect";
 import useAudioStore from "@/states/music";
+
+import { ROUTE } from '@/router/constants';
 
 const Landing = () => {
   const navigate = useNavigate();
   const { isPlaying, play, stop } = useAudioStore();
-
+  const playEffectSound = useEffectSoundStore(state => state.playEffectSound);
   const clickGuestLogin = async () => {
     return getGuestLogin().then((isSuccess) => {
+      playEffectSound();
       if (isSuccess) {
         isPlaying ? play() : stop();
         navigate(ROUTE.home);
@@ -32,6 +34,7 @@ const Landing = () => {
   };
 
   const clickLogIn = () => {
+    playEffectSound()
     isPlaying ? play() : stop();
     navigate('/login');
   };

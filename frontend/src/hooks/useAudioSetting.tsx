@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+import useEffectSoundStore from "@/states/effect";
 import useAudioStore from "@/states/music";
 
 interface AudioSettings {
@@ -24,7 +25,8 @@ export const useAudioSetting = (): AudioSettings => {
     setEffectSound(efSound);
 
     setIsPlaying(bgSound);
-
+    useEffectSoundStore.getState().setEffectSound(efSound);
+    setEffectSound(efSound);
   };
 
   return { backgroundSound, effectSound, saveSettings };
