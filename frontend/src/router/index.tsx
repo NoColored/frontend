@@ -22,6 +22,7 @@ import { getUser } from '@/services/auth';
 import { getRoomList } from '@/services/finder';
 import { getLobbyInfo } from '@/services/lobby';
 import { getRank } from '@/services/rank';
+import { getGameResult } from '@/services/result';
 
 const router = createBrowserRouter([
   {
@@ -87,6 +88,7 @@ const router = createBrowserRouter([
   {
     path: `${ROUTE.result}`,
     element: <Result />,
+    loader: getGameResult,
   },
   {
     path: `${ROUTE.setting}`,

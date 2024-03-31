@@ -1,26 +1,15 @@
-import * as constants from './constants';
-import * as styles from './index.css';
+import * as constants from '../constants';
+import * as styles from '../index.css';
 
 import ColoredButton from '@/components/button/ColoredButton';
 import RoundCornerImageBox from '@/components/imagebox/RoundCornerImageBox';
 
 interface Props {
   closeModal: () => void;
+  skin: string[];
 }
 
-const Rewards = ({ closeModal }: Props) => {
-  // data 받아온 후 변경할 내용
-  const rewardExample = [
-    {
-      imgSrc:
-        'images/character/default-magichat/character-default-magichat-blue-h240w240.png',
-    },
-    {
-      imgSrc:
-        'images/character/default-magichat/character-default-magichat-blue-h240w240.png',
-    },
-  ];
-
+const SkinReward = ({ closeModal, skin }: Props) => {
   return (
     <div className={styles.modalWrapper}>
       <div className={styles.ribbonWrapper}>
@@ -40,11 +29,11 @@ const Rewards = ({ closeModal }: Props) => {
         </div>
       </div>
       <div className={styles.rewardListWrapper}>
-        {rewardExample.map((item) => (
-          <div>
+        {skin.map((item) => (
+          <div className={styles.rewardScrollItem} key={item}>
             <RoundCornerImageBox
               size='medium'
-              imgSrc={item.imgSrc}
+              imgSrc={item}
               backgroundColor='white'
               borderColor='black'
               borderSize='1x'
@@ -63,4 +52,4 @@ const Rewards = ({ closeModal }: Props) => {
   );
 };
 
-export default Rewards;
+export default SkinReward;

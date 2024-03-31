@@ -408,11 +408,17 @@ export default class GameScene extends Phaser.Scene {
 
         // eslint-disable-next-line no-new
         new GameOver(this);
-        this.setIsActive(false);
-        this.scene.pause(this);
-
         this.jumpButton?.setButtonAndKeyInputEnabled(false);
         this.changeDirButton?.setButtonAndKeyInputEnabled(false);
+
+        this.time.delayedCall(3000, () => {
+          this.setIsActive(false);
+        }, [], this);
+
+
+
+
+
 
 
         break;
