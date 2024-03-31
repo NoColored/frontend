@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useLoaderData, useNavigate } from 'react-router-dom';
 
 import * as constants from './constants';
@@ -10,13 +11,17 @@ import ColoredButton from '@/components/button/ColoredButton';
 
 import useModal from '@/hooks/useModal';
 
+import MatchingButton from '@/pages/play/mode/MatchingButton';
 import ResultInfoBox from '@/pages/result/ResultInfoBox';
 import { RewardsModal } from '@/pages/result/RewardsModal';
+
+import { getUser } from '@/services/auth';
 
 import { ROUTE } from '@/router/constants';
 
 const Result = () => {
   const gameResult = useLoaderData() as GameResult;
+  const [skin, setSkin] = useState<string>();
 
   const { Modal, openModal, closeModal } = useModal();
   const navigate = useNavigate();
@@ -30,11 +35,12 @@ const Result = () => {
     console.log(gameResult);
   };
 
-  const handleClickMore = () => {
+  const handleClickMore = async () => {
     if (gameResult.roomUuid) {
       navigate(`${ROUTE.lobby}/${gameResult.roomUuid}`);
     } else {
-      // 매칭알고리즘
+      const imgSrc = await getUser();
+      setSkin(imgSrc.skin);
     }
   };
 
@@ -79,6 +85,7 @@ const Result = () => {
           closeModal={closeModal}
         />
       </Modal>
+      {skin && <MatchingButton imgSrc={skin} isMore />}
     </BasicContentFrame>
   );
 };

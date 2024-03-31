@@ -18,9 +18,10 @@ import { ROUTE } from '@/router/constants';
 
 interface Props {
   imgSrc: string;
+  isMore?: boolean;
 }
 
-const MatchingButton = ({ imgSrc }: Props) => {
+const MatchingButton = ({ imgSrc, isMore }: Props) => {
   const navigate = useNavigate();
   const { Modal, openModal, closeModal, isOpen } = useModal();
 
@@ -45,13 +46,15 @@ const MatchingButton = ({ imgSrc }: Props) => {
 
   return (
     <>
-      <ColoredIconButton
-        icon={constants.RANKING.icon}
-        size='xlarge'
-        text={constants.RANKING.label}
-        color={constants.RANKING.color}
-        onClick={startMatching}
-      />
+      {!isMore && (
+        <ColoredIconButton
+          icon={constants.RANKING.icon}
+          size='xlarge'
+          text={constants.RANKING.label}
+          color={constants.RANKING.color}
+          onClick={startMatching}
+        />
+      )}
 
       <Modal>
         <div className={styles.matchingModalWrapper}>
