@@ -1,20 +1,27 @@
 import { useNavigate } from 'react-router-dom';
 
+import * as constants from "./constants";
 import * as styles from './index.css';
 
 import ColoredButton from '@/components/button/ColoredButton/index';
+
+import FullscreenPrompt from "@/pages/landing/FullScreenPrompt";
 
 import { getGuestLogin } from '@/services/auth';
 import { setFullScreen } from '@/services/landing';
 
 import { ROUTE } from '@/router/constants';
 
+import useAudioStore from "@/states/music";
+
 const Landing = () => {
   const navigate = useNavigate();
+  const { isPlaying, play, stop } = useAudioStore();
 
   const clickGuestLogin = async () => {
     return getGuestLogin().then((isSuccess) => {
       if (isSuccess) {
+        isPlaying ? play() : stop();
         navigate(ROUTE.home);
         setFullScreen();
         return;
@@ -25,12 +32,14 @@ const Landing = () => {
   };
 
   const clickLogIn = () => {
+    isPlaying ? play() : stop();
     navigate('/login');
   };
 
-  const landingLogo: string = '/images/landing-logo-whiteborder-h800w1280.png';
+  const landingLogo: string = constants.LANDING_LOGO_URL;
   return (
     <div className={styles.contentWrapper}>
+      <FullscreenPrompt />
       <img
         className={styles.logoImage}
         src={landingLogo}

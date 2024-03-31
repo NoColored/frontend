@@ -65,3 +65,21 @@ export const logInFailMessage = style([
     lineHeight: '32px',
   },
 ]);
+
+export const fullscreenPromptStyle = style([
+  sprinkles({
+    width: 'full',
+    height: 'full',
+    backgroundColor: 'black',
+    color: 'white',
+    zIndex: "alert-content"
+  }),
+  {
+  position: 'fixed',
+  top: 0,
+  left: 0,
+  justifyContent: 'center',
+  alignItems: 'center',
+  flexDirection: 'column',
+}]);
+

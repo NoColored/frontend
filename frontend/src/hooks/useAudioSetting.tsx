@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+import useAudioStore from "@/states/music";
+
 interface AudioSettings {
   backgroundSound: boolean;
   effectSound: boolean;
@@ -10,6 +12,7 @@ export const useAudioSetting = (): AudioSettings => {
   const savedBackgroundSound =
     localStorage.getItem('backgroundSound') === 'true';
   const savedEffectSound = localStorage.getItem('effectSound') === 'true';
+  const { setIsPlaying } = useAudioStore();
 
   const [backgroundSound, setBackgroundSound] = useState(savedBackgroundSound);
   const [effectSound, setEffectSound] = useState(savedEffectSound);
@@ -19,6 +22,9 @@ export const useAudioSetting = (): AudioSettings => {
     localStorage.setItem('effectSound', efSound.toString());
     setBackgroundSound(bgSound);
     setEffectSound(efSound);
+
+    setIsPlaying(bgSound);
+
   };
 
   return { backgroundSound, effectSound, saveSettings };
