@@ -65,13 +65,17 @@ export default class GameScene extends Phaser.Scene {
 
   private setIsActive: (isActive: boolean) => void;
 
-  constructor(setIsActive: (isActive: boolean) => void) {
+  constructor(
+    setIsActive: (isActive: boolean) => void,
+    onDisconnect: () => void,
+  ) {
     super({ key: 'GameScene' });
     this.setIsActive = setIsActive;
     // WebSocket
     const { webSocket } = useWebSocketStore.getState();
     this.socket = webSocket;
     this.socket.useMessageQueue();
+    this.socket.inGameUnconnected(onDisconnect);
 
     // api 데이터 초기화
     this.gameData = null;
@@ -137,7 +141,7 @@ export default class GameScene extends Phaser.Scene {
     this.load.audio('bgm', '/music/8-bit-game.mp3');
     this.load.audio('bgm2', '/music/ready-to-play.mp3');
     this.load.audio('blowupSound', '/music/blowupSound.mp3');
-    this.load.audio('obtainSound', '/music/obtainSound.mp3');
+    this.load.audio('obtainSound', '/music/obtainSound.wav');
 
     // npc object
     this.load.spritesheet(
@@ -251,9 +255,9 @@ export default class GameScene extends Phaser.Scene {
 
     // character
     const initialPlayerData: characterInfo = {
-      x: 300,
-      y: 10,
-      velX: -1,
+      x: 500,
+      y: 500,
+      velX: 0,
       velY: 0,
     };
 
@@ -444,7 +448,6 @@ export default class GameScene extends Phaser.Scene {
       if (!message) {
         return null;
       }
-
       const view = new DataView(message);
       this.p = 0;
       while (this.p < view.byteLength) {
