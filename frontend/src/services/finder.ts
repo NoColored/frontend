@@ -11,7 +11,7 @@ export const getRoomList = async (offset: number) => {
     return response.data;
   } catch (error) {
     console.log(error);
-    return null;
+    return [] as RoomListItem[];
   }
 };
 
