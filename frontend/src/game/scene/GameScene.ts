@@ -255,8 +255,8 @@ export default class GameScene extends Phaser.Scene {
 
     // character
     const initialPlayerData: characterInfo = {
-      x: 500,
-      y: 500,
+      x: 1000,
+      y: 1000,
       velX: 0,
       velY: 0,
     };
@@ -285,9 +285,6 @@ export default class GameScene extends Phaser.Scene {
 
     this.topUi = new TopUi(this, this.gameData?.skins.length ?? 0, this.icons);
     this.topUi.hideUi();
-
-    //  TODO 삭제 하기
-    this.topUi.showUi();
 
     // 이벤트 핸들러 등록
     this.events.on('gameStateChange', this.handleGameStateChange, this);
@@ -494,25 +491,10 @@ export default class GameScene extends Phaser.Scene {
 
         break;
       case 'playing':
-        // TODO : 삭제
-
         this.jumpButton?.setButtonAndKeyInputEnabled(true);
         this.changeDirButton?.setButtonAndKeyInputEnabled(true);
         this.countDownManager.destroyCountDown();
         this.backgroundMusic?.playBackgroundMusic();
-
-        // TODO : 삭제
-        // this.time.addEvent({
-        //   delay: 3000, // 3000 밀리초 = 3초
-        //   callback: () => {
-        //     new Blowup(this, 100, 100);
-        //     new StopLoading(this, 200, 100);
-        //     new Shuffle(this);
-        //     new Disappear(this, 300, 100);
-        //   },
-        //   callbackScope: this,
-        //   loop: true,
-        // });
 
         break;
       case 'end':
