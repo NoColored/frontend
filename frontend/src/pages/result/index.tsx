@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useLoaderData, useNavigate } from 'react-router-dom';
 
 import * as constants from './constants';
@@ -10,15 +11,20 @@ import ColoredButton from '@/components/button/ColoredButton';
 
 import useModal from '@/hooks/useModal';
 
+import MatchingButton from '@/pages/play/mode/MatchingButton';
 import ResultInfoBox from '@/pages/result/ResultInfoBox';
 import { RewardsModal } from '@/pages/result/RewardsModal';
+
+import { getUser } from '@/services/auth';
 
 import { ROUTE } from '@/router/constants';
 
 const Result = () => {
   const gameResult = useLoaderData() as GameResult;
+  const [skin, setSkin] = useState<string>();
+  const [isMore, setIsMore] = useState<boolean>(false);
 
-  const { Modal, openModal, closeModal } = useModal();
+  const { Modal, openModal, closeModal, isOpen } = useModal();
   const navigate = useNavigate();
 
   const handleClickExit = () => {
@@ -30,11 +36,14 @@ const Result = () => {
     console.log(gameResult);
   };
 
-  const handleClickMore = () => {
+  const handleClickMore = async () => {
     if (gameResult.roomUuid) {
       navigate(`${ROUTE.lobby}/${gameResult.roomUuid}`);
     } else {
-      // 매칭알고리즘
+      openModal();
+      setIsMore(true);
+      const imgSrc = await getUser();
+      setSkin(imgSrc.skin);
     }
   };
 
@@ -73,11 +82,21 @@ const Result = () => {
       </div>
 
       <Modal>
-        <RewardsModal
-          tier={gameResult.reward.tier}
-          skin={gameResult.reward.skins}
-          closeModal={closeModal}
-        />
+        {!isMore && (
+          <RewardsModal
+            tier={gameResult.reward.tier}
+            skin={gameResult.reward.skins}
+            closeModal={closeModal}
+          />
+        )}
+
+        {isMore && skin && (
+          <MatchingButton
+            imgSrc={skin}
+            closeModal={closeModal}
+            isOpen={isOpen}
+          />
+        )}
       </Modal>
     </BasicContentFrame>
   );

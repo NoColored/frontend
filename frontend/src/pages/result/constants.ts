@@ -33,17 +33,14 @@ export const MEDIA_RESULTTEXT_MARGIN_TOP = '16px';
 
 export const MEDIA_RESULTTEXT_MARGIN_HEIGHT = '4px';
 
-export const MODAL_RIBBON =
-  'public/images/ui/result/ui-result-ribbon-h108w204.png';
+export const MODAL_RIBBON = '/images/ui/result/ui-result-ribbon-h108w204.png';
 
-export const MODAL_DIAMOND =
-  'public/images/ui/result/ui-result-rankup-h96w96.gif';
+export const MODAL_DIAMOND = '/images/ui/result/ui-result-rankup-h96w96.gif';
 
-export const MODAL_ARROW =
-  'public/images/ui/result/ui-result-arrowRight-h66w66.png';
+export const MODAL_ARROW = '/images/ui/result/ui-result-arrowRight-h66w66.png';
 
 export const MODAL_REWARDBOX =
-  'public/images/ui/result/ui-result-reward-h108w108.gif';
+  '/images/ui/result/ui-result-reward-h108w108.gif';
 
 export const TIER_UPGRADE_MESSAGE = 'Origin에 한 발자국 더 나아갔습니다!';
 
