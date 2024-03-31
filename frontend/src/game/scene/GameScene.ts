@@ -518,6 +518,7 @@ export default class GameScene extends Phaser.Scene {
       case 'end':
         // eslint-disable-next-line no-new
         new GameOver(this);
+        this.socket.inGameUnconnected(() => {});
         this.jumpButton?.setButtonAndKeyInputEnabled(false);
         this.changeDirButton?.setButtonAndKeyInputEnabled(false);
 
