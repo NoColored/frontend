@@ -19,6 +19,8 @@ import SettingButton from '@/pages/play/lobby/SettingButton';
 
 import { getOut } from '@/services/lobby';
 
+import { useUserStateStore } from '@/states/user';
+
 import { ROUTE } from '@/router/constants';
 
 const getLobbyInfo = (lobby: Lobby) => {
@@ -32,9 +34,8 @@ const getLobbyInfo = (lobby: Lobby) => {
   return lobby;
 };
 
-const myUserCode = localStorage.getItem('userCode');
-
 const Lobby = () => {
+  const myUserCode = useUserStateStore((state) => state.userCode);
   const navigate = useNavigate();
   const lobbyData = useLoaderData() as Lobby;
   const [lobbyInfo, setLobbyInfo] = useState(getLobbyInfo(lobbyData));
