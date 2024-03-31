@@ -293,6 +293,9 @@ export default class GameScene extends Phaser.Scene {
 
     // 각종 세팅 완료
     this.changeGameState('ready');
+    this.socket.sendInputMesssage(
+      constants.SEND_WOBSOCKT_MESSAGE_TYPE.LOAD_COMPLETE,
+    );
   }
 
   private gameStartUpdate() {

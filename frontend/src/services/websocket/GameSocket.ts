@@ -105,9 +105,9 @@ export const effectList = (
   const length = view.getUint8(p++);
   for (let i = 0; i < length; i++) {
     showEffectList.push([
-      view.getUint8(p + 1),
-      view.getFloat32(p + 2, false),
-      view.getFloat32(p + 6, false),
+      view.getUint8(p),
+      view.getFloat32(p + 1, false),
+      view.getFloat32(p + 5, false),
     ]);
     p += 9;
   }
