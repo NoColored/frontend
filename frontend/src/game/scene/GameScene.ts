@@ -7,7 +7,7 @@ import {
   characterInfoList,
   currentScore,
   effectList,
-  GameSocket,
+  GameSocket, showItem,
   showRealSkin,
   timeLeft,
   userCharacterIndex,
@@ -29,6 +29,7 @@ import ChangeDirButton from '@/game/UI/ChangeDirButton';
 import JumpButton from '@/game/UI/JumpButton';
 import { TopUi } from '@/game/UI/TopUi';
 import { CharacterAnimation } from '@/game/object/CharacterAnimation';
+import { Item } from '@/game/object/Item';
 
 export default class GameScene extends Phaser.Scene {
   private socket: GameSocket;
@@ -46,13 +47,17 @@ export default class GameScene extends Phaser.Scene {
   private characterIconKeys: string[];
   private charactersPrevSkin: boolean[] = [];
   private charactersNowSkin: boolean[] = [];
+
   private icons: string[] = [];
+  private item: Item | null = null;
+
   private topUi: TopUi | null = null;
   private changeDirButton: ChangeDirButton | null = null;
   private jumpButton: JumpButton | null = null;
 
-  // nowUSerIndex
+  private backgroundMusic: BgmManager | null = null;
 
+  // nowUSerIndex
   private nowUserIndex: number = 0;
 
   private setIsActive: (isActive: boolean) => void;
@@ -72,8 +77,12 @@ export default class GameScene extends Phaser.Scene {
     this.topUi = null;
     this.jumpButton = null;
     this.changeDirButton = null;
+
     this.characterIcons = [];
     this.characterIconKeys = [];
+
+    this.item = null;
+
 
     // NowSkin만 먼저 초기화 / prev는 작동 중 자동 세팅
     this.charactersNowSkin = new Array(constants.CHARACTER_COUNT).fill(false);
@@ -167,12 +176,17 @@ export default class GameScene extends Phaser.Scene {
       'jumpButton',
       '/images/ui/controller/icon-controller-jump.svg',
     );
+
+    // 아이템 asset
+    Object.values(constants.ITEM_TYPE).forEach((itemType) => {
+      this.load.image(itemType, `/images/items/item-${itemType}-h32w32.png`);
+    });
   }
 
   create() {
     // bgm 삽입 -> Bgm.ts에서 구현한 SoundManager 사용
     // eslint-disable-next-line no-new
-    new BgmManager(this, 'bgm', true);
+    this.backgroundMusic = new BgmManager(this, 'bgm', true);
 
     // eslint-disable-next-line no-new
     new Background(this, 'background');
@@ -213,11 +227,15 @@ export default class GameScene extends Phaser.Scene {
       );
     }
 
+
     for (let i = 0; i < 4; i++) {
       this.characterIcons.push(
         new CharacterIcon(this, this.characterIconKeys[i]),
       );
     }
+
+    this.item = new Item(this);
+
 
     this.countDownManager.createCountDown();
 
@@ -278,6 +296,17 @@ export default class GameScene extends Phaser.Scene {
     if (this.gameState === 'playing') return 2;
     this.countDownManager.changeCountDownText(data);
     return 2;
+  }
+
+  private itemUpdate(view: DataView) {
+    const [data, length] = showItem(view, this.p + 1);
+    const [itemNum, x,y] = data;
+    if(itemNum === 0){
+      this.item?.itemShift();
+    }else{
+      this.item?.itemPop(itemNum, x, y);
+    }
+    return length;
   }
 
   private gameOverUpdate() {
@@ -346,6 +375,8 @@ export default class GameScene extends Phaser.Scene {
         return this.timeLeftUpdate(view);
       case constants.GAMESOCKET_MESSAGE_TYPE.get('COUNTDOWN'):
         return this.countDownUpdate(view);
+      case constants.GAMESOCKET_MESSAGE_TYPE.get('ITEM'):
+        return this.itemUpdate(view);
       case constants.GAMESOCKET_MESSAGE_TYPE.get('GAME_OVER'):
         return this.gameOverUpdate();
       case constants.GAMESOCKET_MESSAGE_TYPE.get('CHARACTER_INFO_LIST'):
@@ -367,7 +398,6 @@ export default class GameScene extends Phaser.Scene {
 
   private p: number = 0;
 
-  // ToDO 삭제
   getSocketData = () => {
     if (!this.socket) return null;
 
@@ -425,6 +455,7 @@ export default class GameScene extends Phaser.Scene {
         this.jumpButton?.setButtonAndKeyInputEnabled(true);
         this.changeDirButton?.setButtonAndKeyInputEnabled(true);
         this.countDownManager.destroyCountDown();
+        this.backgroundMusic?.playBackgroundMusic();
         break;
       case 'end':
         // eslint-disable-next-line no-new

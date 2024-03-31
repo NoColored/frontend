@@ -10,6 +10,7 @@ export const GAMESOCKET_MESSAGE_TYPE: Map<string, number> = new Map([
   ['USER_CHARACTER_INDEX', 1],
   ['TIME_LEFT', 2],
   ['COUNTDOWN', 3],
+  ['ITEM_TYPE', 10],
   ['GAME_OVER', 20],
   ['CHARACTER_INFO_LIST', 100],
   ['CURRENT_SCORE', 101],
@@ -45,6 +46,14 @@ export const BUTTON_POSITION = {
 export const ICON_COLOR = ['#EB4180', '#4CA732', '#F2B705', '#04B1D9'] as const;
 
 export const CHARACTER_COUNT = 10;
+
+export const ITEM_TYPE : {[key: number]: string} = {
+  1 : 'lightupall',
+  2 : 'stopnpc',
+  3 : 'randombox',
+  4 : 'rebel',
+  5 : 'stopplayer'
+}
 
 export const LOADING_MESSAGE = [
   {
