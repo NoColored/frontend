@@ -344,7 +344,7 @@ export default class GameScene extends Phaser.Scene {
     } else {
       this.item?.itemPop(itemNum, x, y);
     }
-    console.log('itemUpdate', data, length);
+
     return length;
   }
 
