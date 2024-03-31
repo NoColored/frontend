@@ -55,6 +55,15 @@ export const ITEM_TYPE : {[key: number]: string} = {
   5 : 'stopplayer'
 }
 
+export const EFFECT_TYPE : {[key: number]: string} = {
+  1 : 'blowup',
+  2 : 'loading',
+  3 : 'shuffle',
+  4 : 'itemTimeout',
+  5 : 'itemObtain'
+
+}
+
 export const LOADING_MESSAGE = [
   {
     messageId: '608',

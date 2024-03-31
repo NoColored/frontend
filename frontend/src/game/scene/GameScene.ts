@@ -7,7 +7,8 @@ import {
   characterInfoList,
   currentScore,
   effectList,
-  GameSocket, showItem,
+  GameSocket,
+  showItem,
   showRealSkin,
   timeLeft,
   userCharacterIndex,
@@ -20,7 +21,9 @@ import { Background } from '@/game/map/Background';
 import { Map } from '@/game/map/Map';
 import { PhysicsMap } from '@/game/map/PhysicsMap';
 import { Character } from '@/game/object/Character';
+import { CharacterAnimation } from '@/game/object/CharacterAnimation';
 import { CharacterIcon } from '@/game/object/CharacterIcon';
+import { Item } from '@/game/object/Item';
 import CountDown from '@/game/scene/CountDown';
 import GameOver from '@/game/scene/GameOver';
 import LoadingUtils from '@/game/scene/LoadingUtils';
@@ -28,8 +31,6 @@ import { BgmManager } from '@/game/sound/Bgm';
 import ChangeDirButton from '@/game/UI/ChangeDirButton';
 import JumpButton from '@/game/UI/JumpButton';
 import { TopUi } from '@/game/UI/TopUi';
-import { CharacterAnimation } from '@/game/object/CharacterAnimation';
-import { Item } from '@/game/object/Item';
 
 export default class GameScene extends Phaser.Scene {
   private socket: GameSocket;
@@ -82,7 +83,6 @@ export default class GameScene extends Phaser.Scene {
     this.characterIconKeys = [];
 
     this.item = null;
-
 
     // NowSkin만 먼저 초기화 / prev는 작동 중 자동 세팅
     this.charactersNowSkin = new Array(constants.CHARACTER_COUNT).fill(false);
@@ -181,6 +181,24 @@ export default class GameScene extends Phaser.Scene {
     Object.values(constants.ITEM_TYPE).forEach((itemType) => {
       this.load.image(itemType, `/images/items/item-${itemType}-h32w32.png`);
     });
+
+    // 이펙트 asset
+    this.load.spritesheet(
+      'blowup',
+      '/images/effect/effect-play-blowup-h16w128.png',
+      {
+        frameWidth: 16,
+        frameHeight: 16,
+      },
+    );
+    this.load.spritesheet(
+      'loading',
+      '/images/effect/effect-item-loading-h16w128.png',
+      {
+        frameWidth: 16,
+        frameHeight: 16,
+      },
+    );
   }
 
   create() {
@@ -227,7 +245,6 @@ export default class GameScene extends Phaser.Scene {
       );
     }
 
-
     for (let i = 0; i < 4; i++) {
       this.characterIcons.push(
         new CharacterIcon(this, this.characterIconKeys[i]),
@@ -236,9 +253,7 @@ export default class GameScene extends Phaser.Scene {
 
     this.item = new Item(this);
 
-
     this.countDownManager.createCountDown();
-
 
     this.topUi = new TopUi(this, this.gameData?.skins.length ?? 0, this.icons);
     this.topUi.hideUi();
@@ -251,8 +266,6 @@ export default class GameScene extends Phaser.Scene {
 
     // 각종 세팅 완료
     this.changeGameState('ready');
-
-
   }
 
   private gameStartUpdate() {
@@ -301,10 +314,10 @@ export default class GameScene extends Phaser.Scene {
 
   private itemUpdate(view: DataView) {
     const [data, length] = showItem(view, this.p + 1);
-    const [itemNum, x,y] = data;
-    if(itemNum === 0){
+    const [itemNum, x, y] = data;
+    if (itemNum === 0) {
       this.item?.itemShift();
-    }else{
+    } else {
       this.item?.itemPop(itemNum, x, y);
     }
     return length;
@@ -332,7 +345,6 @@ export default class GameScene extends Phaser.Scene {
 
     return length;
   }
-
 
   // 알고리즘 생각해보기
   private showRealSkinUpdate(view: DataView) {
@@ -451,8 +463,12 @@ export default class GameScene extends Phaser.Scene {
       case 'countDown':
         this.loadingManager.destroyLoadingScreen();
         this.topUi?.showUi();
+
         break;
       case 'playing':
+        // TODO : 삭제
+        // new EffectAnimations(this.game);
+        // new Blowup(this, 100, 100);
         this.jumpButton?.setButtonAndKeyInputEnabled(true);
         this.changeDirButton?.setButtonAndKeyInputEnabled(true);
         this.countDownManager.destroyCountDown();
@@ -464,15 +480,14 @@ export default class GameScene extends Phaser.Scene {
         this.jumpButton?.setButtonAndKeyInputEnabled(false);
         this.changeDirButton?.setButtonAndKeyInputEnabled(false);
 
-        this.time.delayedCall(3000, () => {
-          this.setIsActive(false);
-        }, [], this);
-
-
-
-
-
-
+        this.time.delayedCall(
+          3000,
+          () => {
+            this.setIsActive(false);
+          },
+          [],
+          this,
+        );
 
         break;
       default:
