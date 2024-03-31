@@ -142,7 +142,8 @@ export default class GameScene extends Phaser.Scene {
     this.load.audio('bgm', '/music/8-bit-game.mp3');
     this.load.audio('bgm2', '/music/ready-to-play.mp3');
     this.load.audio('blowupSound', '/music/blowupSound.mp3');
-    this.load.audio('obtainSound', '/music/obtainSound.wav');
+    this.load.audio('obtainSound', '/music/obtainSound.mp3');
+    this.load.audio('countdownSound', '/music/countdownSound.mp3');
 
     // npc object
     this.load.spritesheet(
@@ -326,7 +327,6 @@ export default class GameScene extends Phaser.Scene {
   }
 
   private countDownUpdate(view: DataView) {
-    // TODO: countDownUpdate 다시 체크
     const data = timeLeft(view, this.p + 1);
     if (this.gameState === 'ready') {
       this.changeGameState('countDown');
