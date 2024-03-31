@@ -8,6 +8,8 @@ import {
 
 import { api } from '@/services/index';
 
+import { useUserStateStore } from '@/states/user';
+
 export const getGuestLogin = async () => {
   return api
     .get<string>(false, '/user/guest')
@@ -35,13 +37,19 @@ export const postMemberLogin = async (logInInfo: LogInInfo) => {
 };
 
 export const getUser = async () => {
-  try {
-    const response = await api.get<User>(true, `/user`);
-    return response.data;
-  } catch (e) {
-    console.log(e);
-    return { userCode: '' } as User;
-  }
+  return api
+    .get<User>(true, `/user`)
+    .then((response) => {
+      const user = response.data;
+      const { setIsGuest, setUserCode } = useUserStateStore.getState();
+      setIsGuest(user.guest);
+      setUserCode(user.userCode);
+      return user;
+    })
+    .catch((e) => {
+      console.log(e);
+      return { userCode: '' } as User;
+    });
 };
 
 export const getIdCheck = async (id: string) => {
