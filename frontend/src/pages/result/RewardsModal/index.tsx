@@ -1,12 +1,9 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 import type { TierReward } from '@/types/result';
 
 import SkinReward from '@/pages/result/RewardsModal/SkinReward';
 import TierUpgrade from '@/pages/result/RewardsModal/TierUpgrade';
-
-import { ROUTE } from '@/router/constants';
 
 interface Props {
   tier?: TierReward;
@@ -17,7 +14,6 @@ interface Props {
 export const RewardsModal = ({ tier, skin, closeModal }: Props) => {
   const [showTier, setShowTier] = useState<boolean>(false);
   const [showSkin, setShowSkin] = useState<boolean>(false);
-  const navigate = useNavigate();
 
   useEffect(() => {
     if (tier) {
@@ -31,7 +27,6 @@ export const RewardsModal = ({ tier, skin, closeModal }: Props) => {
     if (skin) {
       setShowSkin(true);
     } else {
-      navigate(ROUTE.home);
       closeModal();
     }
     setShowTier(false);
@@ -39,7 +34,6 @@ export const RewardsModal = ({ tier, skin, closeModal }: Props) => {
 
   const handleSkinClose = () => {
     setShowSkin(false);
-    navigate(ROUTE.home);
     closeModal();
   };
 
