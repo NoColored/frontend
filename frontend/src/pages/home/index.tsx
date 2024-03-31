@@ -12,26 +12,12 @@ import type { tierType } from '@/components/imagebox/types';
 import Error from '@/pages/error';
 import UserDashboard from '@/pages/home/UserDashboard';
 
-import { useUserStateStore } from '@/states/user';
-
 import { ROUTE } from '@/router/constants';
 
 const Home = () => {
   const user = useLoaderData() as User;
-  localStorage.setItem('userCode', user.userCode);
-
   console.log(user);
   const navigate = useNavigate();
-  const { isGuest, setGuest, setMember } = useUserStateStore.getState();
-
-  (() => {
-    if (user.guest === isGuest) return;
-    if (user.guest) {
-      setGuest();
-    } else {
-      setMember();
-    }
-  })();
 
   const goCollection = () => {
     navigate(ROUTE.collection);

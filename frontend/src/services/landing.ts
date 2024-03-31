@@ -4,9 +4,15 @@ interface FullscreenableElement extends HTMLElement {
   msRequestFullscreen?: () => Promise<void>;
 }
 
+const isMobile = () => {
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+    navigator.userAgent,
+  );
+};
+
 export const setFullScreen = () => {
   const element = document.documentElement as FullscreenableElement;
-  if (!element) {
+  if (!element || !isMobile()) {
     return;
   }
   if (element.requestFullscreen) {

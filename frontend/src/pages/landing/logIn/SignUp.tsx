@@ -54,11 +54,12 @@ const SignUp = ({ closeModal }: Props) => {
     }
 
     if (isGuest) {
-      await postGuestSignUp(signUpInfo).then(() => {
-        closeModal();
-        navigate('/home');
+      await postGuestSignUp(signUpInfo).then((isSuccess) => {
+        if (isSuccess) {
+          closeModal();
+          navigate('/home');
+        }
       });
-
       return;
     }
 
