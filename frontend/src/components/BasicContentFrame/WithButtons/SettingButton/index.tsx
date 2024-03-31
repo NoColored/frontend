@@ -7,6 +7,8 @@ import useModal from '@/hooks/useModal';
 
 import AudioSetting from '@/pages/settings/AudioSetting';
 
+import { ROUTE } from '@/router/constants';
+
 const SettingButton = () => {
   const { Modal, openModal, closeModal } = useModal();
 
@@ -23,7 +25,7 @@ const SettingButton = () => {
       openModal();
       return;
     }
-    navigate('/settings');
+    navigate(ROUTE.setting);
   };
 
   return (

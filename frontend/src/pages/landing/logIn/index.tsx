@@ -14,6 +14,8 @@ import SignUp from '@/pages/landing/logIn/SignUp';
 
 import { postMemberLogin } from '@/services/auth';
 
+import { ROUTE } from '@/router/constants';
+
 const LogIn = () => {
   const [isClicked, setIsClicked] = useState(false);
   const [logInInfo, setLogInInfo] = useState<LogInInfo>({
@@ -38,7 +40,7 @@ const LogIn = () => {
       setIsClicked(false);
       openModal();
     } else {
-      navigate('/home');
+      navigate(ROUTE.home);
     }
   };
 

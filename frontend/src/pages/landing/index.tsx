@@ -6,21 +6,23 @@ import ColoredButton from '@/components/button/ColoredButton/index';
 
 import { getGuestLogin } from '@/services/auth';
 
+import { ROUTE } from '@/router/constants';
+
 const Landing = () => {
   const navigate = useNavigate();
 
   const clickGuestLogin = async () => {
     const isSuccess = await getGuestLogin();
     if (isSuccess) {
-      navigate('/home');
+      navigate(ROUTE.home);
     } else {
-      console.log('Guest 로그인 실패');
-      navigate('/*');
+      // console.log('Guest 로그인 실패');
+      navigate(ROUTE.error);
     }
   };
 
   const clickLogIn = () => {
-    navigate('/login');
+    navigate(ROUTE.login);
   };
 
   const landingLogo: string = '/images/landing-logo-whiteborder-h800w1280.png';

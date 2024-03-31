@@ -10,38 +10,38 @@ import {
 
 import { api } from '@/services/index';
 
+import { ROUTE } from '@/router/constants';
+
 export const getGuestLogin = async () => {
   try {
     const response = await api.get<string>(false, '/user/guest');
     localStorage.setItem('token', response.data);
     return true;
   } catch (e) {
-    console.log(e);
+    redirect(`${ROUTE.error}/${500}`);
     return false;
   }
 };
 
 export const postMemberLogin = async (logInInfo: LogInInfo) => {
-  try {
-    const response = await api.post<string, LogInInfo>(
-      false,
-      `/user/login`,
-      logInInfo,
-    );
-    if (response.status === 200) {
-      localStorage.setItem('token', response.data);
-      return true;
-    }
-    if (response.status === 401) {
-      redirect('/error/401');
+  return await api
+    .post<string, LogInInfo>(false, `/user/login`, logInInfo)
+    .then((response) => {
+      // console.log(response.data);
+      if (response.status === 200) {
+        localStorage.setItem('token', response.data);
+        return true;
+      }
+      if (response.status === 401) {
+        redirect(`${ROUTE.error}/${401}`);
+        return false;
+      }
+    })
+    .catch((e) => {
+      redirect(`${ROUTE.error}/${500}`);
+      console.log(e);
       return false;
-    }
-    console.log(response.data);
-    return false;
-  } catch (e) {
-    console.log(e);
-    return false;
-  }
+    });
 };
 
 export const getUser = async () => {
@@ -49,7 +49,7 @@ export const getUser = async () => {
     const response = await api.get<User>(true, `/user`);
     return response.data;
   } catch (e) {
-    console.log(e);
+    // console.log(e);
     return { userCode: '' } as User;
   }
 };
@@ -64,15 +64,18 @@ export const getIdCheck = async (id: string) => {
 };
 
 export const postGuestSignUp = async (signUpInfo: SignUpInfo) => {
-  return api
-    .post<string, SignUpInfo>(true, '/user/guest', signUpInfo)
-    .then(() => {
-      return true;
-    })
-    .catch((error) => {
-      console.log(error);
-      return false;
-    });
+  return (
+    api
+      .post<string, SignUpInfo>(true, '/user/guest', signUpInfo)
+      .then(() => {
+        return true;
+      })
+      // eslint-disable-next-line
+      .catch((error) => {
+        // console.log(error);
+        return false;
+      })
+  );
 };
 
 export const postSignUp = async (signUpInfo: SignUpInfo) => {
@@ -141,7 +144,8 @@ export const deleteUserInfo = async () => {
     .then(() => {
       window.location.href = '/';
     })
+    // eslint-disable-next-line
     .catch((e) => {
-      console.log(e);
+      // console.log(e);
     });
 };

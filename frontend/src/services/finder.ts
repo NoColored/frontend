@@ -11,22 +11,25 @@ export const getRoomList = async (offset: number) => {
     console.log(response.data);
     return response.data;
   } catch (error) {
-    console.log(error);
+    // console.log(error);
     return [] as RoomListItem[];
   }
 };
 
 export const postCreateRoom = async (roomRequest: CreateRoom) => {
-  return api
-    .post<string, CreateRoom>(true, 'play/friendly', roomRequest)
-    .then((res) => {
-      console.log('방 생성 요청 성공');
-      return res.data;
-    })
-    .catch((error) => {
-      console.log(error);
-      return '';
-    });
+  return (
+    api
+      .post<string, CreateRoom>(true, 'play/friendly', roomRequest)
+      .then((res) => {
+        console.log('방 생성 요청 성공');
+        return res.data;
+      })
+      // eslint-disable-next-line
+      .catch((error) => {
+        // console.log(error);
+        return '';
+      })
+  );
 };
 
 export const postEnterRoom = async (roomInfo: RequestEnterRoom) => {
@@ -35,8 +38,9 @@ export const postEnterRoom = async (roomInfo: RequestEnterRoom) => {
     .then((res) => {
       return res.data;
     })
+    // eslint-disable-next-line
     .catch((error) => {
-      console.log(error);
+      // console.log(error);
       return '';
     });
 };
