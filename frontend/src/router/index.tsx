@@ -42,6 +42,11 @@ const router = createBrowserRouter([
     ],
   },
   {
+    path: `${ROUTE.home}`,
+    element: <Home />,
+    loader: getUser,
+  },
+  {
     element: <PrivateRoute />,
     children: [
       {
@@ -84,11 +89,6 @@ const router = createBrowserRouter([
         path: `${ROUTE.ranking}`,
         element: <Ranking />,
         loader: getRank,
-      },
-      {
-        path: `${ROUTE.home}`,
-        element: <Home />,
-        loader: getUser,
       },
       {
         path: `${ROUTE.result}`,
