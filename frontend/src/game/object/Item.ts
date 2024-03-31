@@ -20,6 +20,7 @@ export class Item extends Phaser.GameObjects.Image {
 
     itemShift(){
       if(!this.visible)return;
+
       this.visible = false;
     }
 }
