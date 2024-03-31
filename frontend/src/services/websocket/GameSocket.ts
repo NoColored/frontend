@@ -110,14 +110,13 @@ export const effectList = (
   return [showEffectList, 2 + 9 * length];
 };
 
-
-export const showItem = (
-  view : DataView,
-  point : number,
-) : [number[],number ]=> {
-
-  return [[view.getUint8(point),
-    view.getFloat32(point + 4),
-    view.getFloat32(point + 8),
-  ], 10];
-}
+export const showItem = (view: DataView, point: number): [number[], number] => {
+  return [
+    [
+      view.getUint8(point),
+      view.getFloat32(point + 1),
+      view.getFloat32(point + 5),
+    ],
+    10,
+  ];
+};

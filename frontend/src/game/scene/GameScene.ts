@@ -23,8 +23,10 @@ import { PhysicsMap } from '@/game/map/PhysicsMap';
 import { Character } from '@/game/object/Character';
 import { CharacterAnimation } from '@/game/object/CharacterAnimation';
 import { CharacterIcon } from '@/game/object/CharacterIcon';
+import { EffectAnimations } from '@/game/object/effect/EffectAnimations';
 import { Item } from '@/game/object/Item';
 import CountDown from '@/game/scene/CountDown';
+import { EffectUtils } from '@/game/scene/EffectUtils';
 import GameOver from '@/game/scene/GameOver';
 import LoadingUtils from '@/game/scene/LoadingUtils';
 import { BgmManager } from '@/game/sound/Bgm';
@@ -134,6 +136,8 @@ export default class GameScene extends Phaser.Scene {
     // music
     this.load.audio('bgm', '/music/8-bit-game.mp3');
     this.load.audio('bgm2', '/music/ready-to-play.mp3');
+    this.load.audio('blowupSound', '/music/blowupSound.mp3');
+    this.load.audio('obtainSound', '/music/obtainSound.mp3');
 
     // npc object
     this.load.spritesheet(
@@ -192,11 +196,27 @@ export default class GameScene extends Phaser.Scene {
       },
     );
     this.load.spritesheet(
-      'loading',
-      '/images/effect/effect-item-loading-h16w128.png',
+      'stopLoading',
+      '/images/effect/effect-item-stop-h50w600.png',
       {
-        frameWidth: 16,
-        frameHeight: 16,
+        frameWidth: 50,
+        frameHeight: 50,
+      },
+    );
+    this.load.spritesheet(
+      'shuffle',
+      '/images/effect/effect-item-arrowrotate-h128w768.png',
+      {
+        frameWidth: 128,
+        frameHeight: 128,
+      },
+    );
+    this.load.spritesheet(
+      'disappear',
+      '/images/effect/effect-item-firework-h32w32.png',
+      {
+        frameWidth: 32,
+        frameHeight: 32,
       },
     );
   }
@@ -213,6 +233,10 @@ export default class GameScene extends Phaser.Scene {
     // eslint-disable-next-line no-new
     new Map(this, 'mapType');
 
+    // Effect 생성
+    // eslint-disable-next-line no-new
+    new EffectAnimations(this.game);
+
     // 물리 맵 구현
     const physicsMapInst = new PhysicsMap(
       this,
@@ -222,8 +246,8 @@ export default class GameScene extends Phaser.Scene {
     );
 
     // 버튼 증록 - 비활성화 상태
-    this.changeDirButton = new ChangeDirButton(this, this.socket);
-    this.jumpButton = new JumpButton(this, this.socket);
+    this.changeDirButton = ChangeDirButton.getInstance(this, this.socket);
+    this.jumpButton = JumpButton.getInstance(this, this.socket);
 
     // character
     const initialPlayerData: characterInfo = {
@@ -320,6 +344,7 @@ export default class GameScene extends Phaser.Scene {
     } else {
       this.item?.itemPop(itemNum, x, y);
     }
+    console.log('itemUpdate', data, length);
     return length;
   }
 
@@ -372,9 +397,9 @@ export default class GameScene extends Phaser.Scene {
 
   private effectUpdate(view: DataView) {
     const [data, length] = effectList(view, this.p + 1);
-    // 이펙트 처리
-    this.gameData;
-    data;
+    data.forEach((effect) => {
+      EffectUtils(this, this.socket, effect[0], effect[1], effect[2]);
+    });
     return length;
   }
 
@@ -388,7 +413,7 @@ export default class GameScene extends Phaser.Scene {
         return this.timeLeftUpdate(view);
       case constants.GAMESOCKET_MESSAGE_TYPE.get('COUNTDOWN'):
         return this.countDownUpdate(view);
-      case constants.GAMESOCKET_MESSAGE_TYPE.get('ITEM'):
+      case constants.GAMESOCKET_MESSAGE_TYPE.get('ITEM_TYPE'):
         return this.itemUpdate(view);
       case constants.GAMESOCKET_MESSAGE_TYPE.get('GAME_OVER'):
         return this.gameOverUpdate();
@@ -467,12 +492,25 @@ export default class GameScene extends Phaser.Scene {
         break;
       case 'playing':
         // TODO : 삭제
-        // new EffectAnimations(this.game);
-        // new Blowup(this, 100, 100);
+
         this.jumpButton?.setButtonAndKeyInputEnabled(true);
         this.changeDirButton?.setButtonAndKeyInputEnabled(true);
         this.countDownManager.destroyCountDown();
         this.backgroundMusic?.playBackgroundMusic();
+
+        // TODO : 삭제
+        // this.time.addEvent({
+        //   delay: 3000, // 3000 밀리초 = 3초
+        //   callback: () => {
+        //     new Blowup(this, 100, 100);
+        //     new StopLoading(this, 200, 100);
+        //     new Shuffle(this);
+        //     new Disappear(this, 300, 100);
+        //   },
+        //   callbackScope: this,
+        //   loop: true,
+        // });
+
         break;
       case 'end':
         // eslint-disable-next-line no-new

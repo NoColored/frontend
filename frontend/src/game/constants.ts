@@ -20,10 +20,13 @@ export const GAMESOCKET_MESSAGE_TYPE: Map<string, number> = new Map([
 
 export const INGAME_DEPTH = {
   BUTTON: 5,
-  TIMER: 3,
-  SCORE: 3,
-  CHARACTER: 1,
+  TIMER: 5,
+  SCORE: 5,
+
+  EFFECT: 3,
+
   CHARACTER_ICON: 2,
+  CHARACTER: 1,
   PHYSICS_MAP: 1,
   MAP: 1,
   BACKGROUND: 0,
@@ -47,22 +50,21 @@ export const ICON_COLOR = ['#EB4180', '#4CA732', '#F2B705', '#04B1D9'] as const;
 
 export const CHARACTER_COUNT = 10;
 
-export const ITEM_TYPE : {[key: number]: string} = {
-  1 : 'lightupall',
-  2 : 'stopnpc',
-  3 : 'randombox',
-  4 : 'rebel',
-  5 : 'stopplayer'
-}
+export const ITEM_TYPE: { [key: number]: string } = {
+  1: 'lightupall',
+  2: 'stopnpc',
+  3: 'randombox',
+  4: 'rebel',
+  5: 'stopplayer',
+};
 
-export const EFFECT_TYPE : {[key: number]: string} = {
-  1 : 'blowup',
-  2 : 'loading',
-  3 : 'shuffle',
-  4 : 'itemTimeout',
-  5 : 'itemObtain'
-
-}
+export const EFFECT_TYPE: { [key: number]: string } = {
+  1: 'blowup',
+  2: 'stopLoading',
+  3: 'shuffle',
+  4: 'itemTimeout',
+  5: 'itemObtain',
+};
 
 export const LOADING_MESSAGE = [
   {
