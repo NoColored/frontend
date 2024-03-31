@@ -6,6 +6,8 @@ import type { TierReward } from '@/types/result';
 import SkinReward from '@/pages/result/RewardsModal/SkinReward';
 import TierUpgrade from '@/pages/result/RewardsModal/TierUpgrade';
 
+import { ROUTE } from '@/router/constants';
+
 interface Props {
   tier?: TierReward;
   skin?: string[];
@@ -29,7 +31,7 @@ export const RewardsModal = ({ tier, skin, closeModal }: Props) => {
     if (skin) {
       setShowSkin(true);
     } else {
-      navigate('/home');
+      navigate(ROUTE.home);
       closeModal();
     }
     setShowTier(false);
@@ -37,7 +39,7 @@ export const RewardsModal = ({ tier, skin, closeModal }: Props) => {
 
   const handleSkinClose = () => {
     setShowSkin(false);
-    navigate('/home');
+    navigate(ROUTE.home);
     closeModal();
   };
 

@@ -13,6 +13,8 @@ import useModal from '@/hooks/useModal';
 import ResultInfoBox from '@/pages/result/ResultInfoBox';
 import { RewardsModal } from '@/pages/result/RewardsModal';
 
+import { ROUTE } from '@/router/constants';
+
 const Result = () => {
   const gameResult = useLoaderData() as GameResult;
 
@@ -20,14 +22,21 @@ const Result = () => {
   const navigate = useNavigate();
 
   const handleClickExit = () => {
-    if (gameResult.reward?.tier || gameResult.reward?.skin) {
+    if (gameResult.reward.tier || gameResult.reward.skins) {
       openModal();
     } else {
-      navigate('/home');
+      navigate(ROUTE.home);
     }
+    console.log(gameResult);
   };
 
-  // const handleClickMore = () => {};
+  const handleClickMore = () => {
+    if (gameResult.roomUuid) {
+      navigate(`${ROUTE.lobby}/${gameResult.roomUuid}`);
+    } else {
+      // 매칭알고리즘
+    }
+  };
 
   return (
     <BasicContentFrame>
@@ -42,7 +51,7 @@ const Result = () => {
               label={item.label}
               nickname={item.nickname}
               colorStyle={constants.COLOR_STYLES[item.index]}
-              gameScore={item.step}
+              gameScore={item.score}
               firstResult={item.rank === 1}
             />
           </div>
@@ -58,7 +67,7 @@ const Result = () => {
             text='더하기'
             color='navy'
             size='small'
-            onClick={() => {}}
+            onClick={handleClickMore}
           />
         </div>
       </div>
@@ -66,7 +75,7 @@ const Result = () => {
       <Modal>
         <RewardsModal
           tier={gameResult.reward.tier}
-          skin={gameResult.reward.skin}
+          skin={gameResult.reward.skins}
           closeModal={closeModal}
         />
       </Modal>

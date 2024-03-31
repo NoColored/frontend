@@ -6,7 +6,7 @@ interface ResultPlayer {
   index: number;
   skin: string;
   rank: number;
-  step: number;
+  score: number;
 }
 
 interface TierReward {
@@ -16,9 +16,10 @@ interface TierReward {
 }
 
 export interface GameResult {
+  roomUuid?: string;
   players: ResultPlayer[];
   reward: {
     tier?: TierReward;
-    skin?: string[];
+    skins?: string[];
   };
 }

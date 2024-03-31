@@ -181,7 +181,7 @@ export const tierDiamondImage = style([
 export const tierUpgradeWrapper = style([
   flexOptions({ option: 'rowCenter' }),
   sprinkles({ marginTop: '4x', marginBottom: '1x' }),
-  { width: '24%' },
+  { width: '60%' },
 ]);
 
 export const modalMessage = style([
@@ -198,23 +198,25 @@ export const rewardRibbon = style([
 ]);
 
 export const rewardListWrapper = style([
-  flexOptions({ option: 'row' }),
+  flexOptions({ option: 'rowCenter' }),
   sprinkles({
     marginTop: '4x',
     marginBottom: '1.5x',
     justifyContent: 'spaceAround',
   }),
   {
-    width: '85%',
+    width: '90%',
     overflowX: 'auto',
     whiteSpace: 'nowrap',
   },
 ]);
 
 export const rewardScrollItem = style([
+  sprinkles({
+    marginX: '1x',
+  }),
   {
     flex: '0 0 auto',
-    marginRight: '10px',
   },
 ]);
 

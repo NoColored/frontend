@@ -4,6 +4,7 @@ import * as styles from '../index.css';
 import type { TierReward } from '@/types/result';
 
 import ColoredButton from '@/components/button/ColoredButton';
+import TierBox from '@/components/imagebox/TierIconBox';
 
 interface Props {
   closeModal: () => void;
@@ -30,9 +31,9 @@ const TierUpgrade = ({ closeModal, tier }: Props) => {
         </div>
       </div>
       <div className={styles.tierUpgradeWrapper}>
-        <img src={tier.oldtier} alt='previous tier' />
+        <TierBox tier={tier.oldtier} size='medium' />
         <img src={constants.MODAL_ARROW} alt='arrow' />
-        <img src={tier.newtier} alt='temp tier' />
+        <TierBox tier={tier.newtier} size='medium' />
       </div>
       <span className={styles.modalMessage}>
         {tier.upgrade ? constants.TIER_UPGRADE_MESSAGE : ''}
