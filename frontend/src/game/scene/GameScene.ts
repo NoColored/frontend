@@ -252,8 +252,7 @@ export default class GameScene extends Phaser.Scene {
     // 각종 세팅 완료
     this.changeGameState('ready');
 
-    // TODO : item 삭제하기
-    this.item.itemPop(1, 100, 100);
+
   }
 
   private gameStartUpdate() {
