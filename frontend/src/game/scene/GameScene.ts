@@ -20,6 +20,7 @@ import { Background } from '@/game/map/Background';
 import { Map } from '@/game/map/Map';
 import { PhysicsMap } from '@/game/map/PhysicsMap';
 import { Character } from '@/game/object/Character';
+import { CharacterAnimation } from '@/game/object/CharacterAnimation';
 import { CharacterIcon } from '@/game/object/CharacterIcon';
 import CountDown from '@/game/scene/CountDown';
 import GameOver from '@/game/scene/GameOver';
@@ -28,7 +29,6 @@ import { BgmManager } from '@/game/sound/Bgm';
 import ChangeDirButton from '@/game/UI/ChangeDirButton';
 import JumpButton from '@/game/UI/JumpButton';
 import { TopUi } from '@/game/UI/TopUi';
-import { CharacterAnimation } from '@/game/object/CharacterAnimation';
 
 export default class GameScene extends Phaser.Scene {
   private socket: GameSocket;
@@ -44,8 +44,8 @@ export default class GameScene extends Phaser.Scene {
   private characters: Character[] = [];
   private characterIcons: CharacterIcon[];
   private characterIconKeys: string[];
-  private charactersPrevSkin: boolean[] = [];
-  private charactersNowSkin: boolean[] = [];
+  private charactersPrevSkin: number[] = [];
+  private charactersNowSkin: number[] = [];
   private icons: string[] = [];
   private topUi: TopUi | null = null;
   private changeDirButton: ChangeDirButton | null = null;
@@ -76,7 +76,7 @@ export default class GameScene extends Phaser.Scene {
     this.characterIconKeys = [];
 
     // NowSkin만 먼저 초기화 / prev는 작동 중 자동 세팅
-    this.charactersNowSkin = new Array(constants.CHARACTER_COUNT).fill(false);
+    this.charactersNowSkin = new Array(constants.CHARACTER_COUNT).fill(-1);
 
     // 로딩 화면 인스턴스 생성
     this.loadingManager = new LoadingUtils(this);
@@ -215,12 +215,11 @@ export default class GameScene extends Phaser.Scene {
 
     for (let i = 0; i < 4; i++) {
       this.characterIcons.push(
-        new CharacterIcon(this, this.characterIconKeys[i]),
+        new CharacterIcon(this, this.characterIconKeys[i], this.characters),
       );
     }
 
     this.countDownManager.createCountDown();
-
 
     this.topUi = new TopUi(this, this.gameData?.skins.length ?? 0, this.icons);
     this.topUi.hideUi();
@@ -233,7 +232,6 @@ export default class GameScene extends Phaser.Scene {
 
     // 각종 세팅 완료
     this.changeGameState('ready');
-
   }
 
   private gameStartUpdate() {
@@ -256,9 +254,7 @@ export default class GameScene extends Phaser.Scene {
     this.nowUserIndex = characterIdx;
     this.characters[characterIdx].setSkinState(`player${colorIdx}` ?? 'npc');
     this.characters[characterIdx].setAsUser();
-    this.characterIcons[colorIdx].followCharacter(
-      this.characters[characterIdx],
-    );
+    this.characterIcons[colorIdx].followCharacter(characterIdx);
     return 3;
   }
 
@@ -303,26 +299,28 @@ export default class GameScene extends Phaser.Scene {
     return length;
   }
 
-
   // 알고리즘 생각해보기
   private showRealSkinUpdate(view: DataView) {
     const [data, length] = showRealSkin(view, this.p + 1);
     this.charactersPrevSkin = [...this.charactersNowSkin];
-    this.charactersNowSkin.fill(false);
+    this.charactersNowSkin.fill(-1);
 
     // 지금 받은 데이터로 업데이트
     data.forEach((index) => {
-      this.characters[index[1]].setSkinState(`player${index[0]}` ?? 'npc');
-      this.charactersNowSkin[index[1]] = true;
+      const [colorIdx, characterIdx] = index;
+      this.characters[characterIdx].setSkinState(`player${colorIdx}` ?? 'npc');
+      this.charactersNowSkin[characterIdx] = colorIdx;
+      this.characterIcons[colorIdx].followCharacter(characterIdx);
     });
     // 이전에 skin but 이번엔 skin이 없는 경우
-    this.charactersPrevSkin.forEach((isShow, index) => {
+    this.charactersPrevSkin.forEach((colorIdx, characterIdx) => {
       if (
-        !this.characters[index].isUser &&
-        !this.charactersNowSkin[index] &&
-        isShow
+        !this.characters[characterIdx].isUser &&
+        this.charactersNowSkin[characterIdx] == -1 &&
+        colorIdx != -1
       ) {
-        this.characters[index].setSkinState('npc');
+        this.characters[characterIdx].setSkinState('npc');
+        this.characterIcons[colorIdx].stopFollowing(characterIdx);
       }
     });
     return length;
@@ -432,15 +430,14 @@ export default class GameScene extends Phaser.Scene {
         this.jumpButton?.setButtonAndKeyInputEnabled(false);
         this.changeDirButton?.setButtonAndKeyInputEnabled(false);
 
-        this.time.delayedCall(3000, () => {
-          this.setIsActive(false);
-        }, [], this);
-
-
-
-
-
-
+        this.time.delayedCall(
+          3000,
+          () => {
+            this.setIsActive(false);
+          },
+          [],
+          this,
+        );
 
         break;
       default:
