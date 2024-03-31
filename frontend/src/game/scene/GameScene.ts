@@ -27,6 +27,7 @@ import { BgmManager } from '@/game/sound/Bgm';
 import ChangeDirButton from '@/game/UI/ChangeDirButton';
 import JumpButton from '@/game/UI/JumpButton';
 import { TopUi } from '@/game/UI/TopUi';
+import { CharacterAnimation } from '@/game/object/CharacterAnimation';
 
 export default class GameScene extends Phaser.Scene {
   private socket: GameSocket;
@@ -188,6 +189,8 @@ export default class GameScene extends Phaser.Scene {
       velY: 0,
     };
 
+    // eslint-disable-next-line no-new
+    new CharacterAnimation(this.game, this.gameData?.skins.length ?? 0);
     // 캐릭터 배열 생성
     for (let i = 0; i < constants.CHARACTER_COUNT; i++) {
       this.characters[i] = new Character(
