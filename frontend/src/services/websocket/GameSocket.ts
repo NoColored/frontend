@@ -32,6 +32,10 @@ export class GameSocket extends Socket {
     const { buffer } = new Uint8Array([number]);
     this.webSocket.send(buffer);
   }
+
+  inGameUnconnected(onCloseEvent: () => void) {
+    this.webSocket.onclose = onCloseEvent;
+  }
 }
 
 export const characterInfoList = (

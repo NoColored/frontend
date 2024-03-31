@@ -10,6 +10,9 @@ import { config, scenesConfig } from '@/game/scene/config';
 const Game = () => {
   const navigate = useNavigate();
   const { isActive, setIsActive } = useGameControl();
+  const inGameDisconnect = () => {
+    navigate('/error', { replace: true });
+  };
   useEffect(() => {
     if (!isActive) {
       navigate('/result', { replace: true });
@@ -18,14 +21,14 @@ const Game = () => {
 
     const game = new Phaser.Game({
       ...config,
-      scene: scenesConfig(setIsActive),
+      scene: scenesConfig(setIsActive, inGameDisconnect),
     });
 
     return () => {
       setIsActive(true);
       game.destroy(true);
     };
-  }, [isActive, setIsActive, navigate]);
+  }, [isActive]);
 
   return (
     <BasicContentFrame>
