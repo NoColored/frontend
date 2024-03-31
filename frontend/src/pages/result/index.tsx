@@ -30,7 +30,7 @@ const Result = () => {
 
   const handleCloseModal = async () => {
     await getOut();
-    navigate(ROUTE.home);
+    navigate(ROUTE.home, { replace: true });
     closeModal();
   };
 
@@ -40,14 +40,14 @@ const Result = () => {
       openModal();
     } else {
       await getOut();
-      navigate(ROUTE.home);
+      navigate(ROUTE.home, { replace: true });
     }
   };
 
   const handleClickMore = async () => {
     setIsMore(true);
     if (gameResult.roomUuid) {
-      navigate(`${ROUTE.lobby}/${gameResult.roomUuid}`);
+      navigate(`${ROUTE.lobby}/${gameResult.roomUuid}`, { replace: true });
     } else {
       openModal();
       const imgSrc = await getUser();
