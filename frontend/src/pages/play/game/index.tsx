@@ -22,6 +22,7 @@ const Game = () => {
     });
 
     return () => {
+      setIsActive(true);
       game.destroy(true);
     };
   }, [isActive, setIsActive, navigate]);
