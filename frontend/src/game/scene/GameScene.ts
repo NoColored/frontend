@@ -20,6 +20,7 @@ import { Background } from '@/game/map/Background';
 import { Map } from '@/game/map/Map';
 import { PhysicsMap } from '@/game/map/PhysicsMap';
 import { Character } from '@/game/object/Character';
+import { CharacterIcon } from '@/game/object/CharacterIcon';
 import CountDown from '@/game/scene/CountDown';
 import GameOver from '@/game/scene/GameOver';
 import LoadingUtils from '@/game/scene/LoadingUtils';
@@ -41,6 +42,8 @@ export default class GameScene extends Phaser.Scene {
 
   // GameObject들
   private characters: Character[] = [];
+  private characterIcons: CharacterIcon[];
+  private characterIconKeys: string[];
   private charactersPrevSkin: boolean[] = [];
   private charactersNowSkin: boolean[] = [];
   private icons: string[] = [];
@@ -69,6 +72,8 @@ export default class GameScene extends Phaser.Scene {
     this.topUi = null;
     this.jumpButton = null;
     this.changeDirButton = null;
+    this.characterIcons = [];
+    this.characterIconKeys = [];
 
     // NowSkin만 먼저 초기화 / prev는 작동 중 자동 세팅
     this.charactersNowSkin = new Array(constants.CHARACTER_COUNT).fill(false);
@@ -136,6 +141,13 @@ export default class GameScene extends Phaser.Scene {
         `/images/ui/icon/shape/icon-shape-big-player${i}-h32w32.png`,
       );
       this.icons.push(`player${i}Icon`);
+
+      const characterIconKey = `player${i}SmallIcon`;
+      this.load.image(
+        characterIconKey,
+        `/images/ui/icon/shape/icon-shape-small-player${i}-h16w16.png`,
+      );
+      this.characterIconKeys.push(characterIconKey);
     }
 
     // 버튼 asset
@@ -201,6 +213,12 @@ export default class GameScene extends Phaser.Scene {
       );
     }
 
+    for (let i = 0; i < 4; i++) {
+      this.characterIcons.push(
+        new CharacterIcon(this, this.characterIconKeys[i]),
+      );
+    }
+
     this.countDownManager.createCountDown();
 
 
@@ -231,12 +249,16 @@ export default class GameScene extends Phaser.Scene {
   // 1
   private userCharacterIndexUpdate(view: DataView) {
     const data = userCharacterIndex(view, this.p + 1);
-    if (this.nowUserIndex === data[1]) return 3;
+    const [colorIdx, characterIdx] = data;
+    if (this.nowUserIndex === characterIdx) return 3;
     this.characters[this.nowUserIndex].setSkinState('npc');
     this.characters[this.nowUserIndex].setAsNoUser();
-    this.nowUserIndex = data[1];
-    this.characters[data[1]].setSkinState(`player${data[0]}` ?? 'npc');
-    this.characters[data[1]].setAsUser();
+    this.nowUserIndex = characterIdx;
+    this.characters[characterIdx].setSkinState(`player${colorIdx}` ?? 'npc');
+    this.characters[characterIdx].setAsUser();
+    this.characterIcons[colorIdx].followCharacter(
+      this.characters[characterIdx],
+    );
     return 3;
   }
 
@@ -405,7 +427,6 @@ export default class GameScene extends Phaser.Scene {
         this.countDownManager.destroyCountDown();
         break;
       case 'end':
-
         // eslint-disable-next-line no-new
         new GameOver(this);
         this.jumpButton?.setButtonAndKeyInputEnabled(false);

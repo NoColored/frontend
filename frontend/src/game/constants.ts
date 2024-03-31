@@ -22,6 +22,7 @@ export const INGAME_DEPTH = {
   TIMER: 3,
   SCORE: 3,
   CHARACTER: 1,
+  CHARACTER_ICON: 2,
   PHYSICS_MAP: 1,
   MAP: 1,
   BACKGROUND: 0,
