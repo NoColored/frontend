@@ -316,8 +316,8 @@ export default class GameScene extends Phaser.Scene {
     this.charactersPrevSkin.forEach((colorIdx, characterIdx) => {
       if (
         !this.characters[characterIdx].isUser &&
-        this.charactersNowSkin[characterIdx] == -1 &&
-        colorIdx != -1
+        this.charactersNowSkin[characterIdx] === -1 &&
+        colorIdx !== -1
       ) {
         this.characters[characterIdx].setSkinState('npc');
         this.characterIcons[colorIdx].stopFollowing(characterIdx);
