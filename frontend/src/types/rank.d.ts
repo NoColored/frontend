@@ -1,5 +1,3 @@
-import type { User } from '@/types/auth';
-
 import type { tierRange } from '@/pages/ranking/types';
 
 export interface RankPlayer {

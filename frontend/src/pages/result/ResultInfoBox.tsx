@@ -1,6 +1,7 @@
 import PlayerInfoBox from '@/components/PlayerInfoBox';
 
 import * as styles from '@/pages/result/index.css';
+import type { colorStyles } from '@/pages/result/types';
 
 export interface ResultInfoBoxProps {
   rank: number | string;
@@ -9,7 +10,7 @@ export interface ResultInfoBoxProps {
   nickname: string;
   gameScore: number;
   firstResult?: boolean;
-  colorStyle: 'pink' | 'yellow' | 'green' | 'blue';
+  colorStyle: colorStyles;
 }
 
 const ResultInfoBox = ({
