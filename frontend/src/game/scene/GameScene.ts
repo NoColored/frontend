@@ -48,8 +48,9 @@ export default class GameScene extends Phaser.Scene {
   private characters: Character[] = [];
   private characterIcons: CharacterIcon[];
   private characterIconKeys: string[];
-  private charactersPrevSkin: boolean[] = [];
-  private charactersNowSkin: boolean[] = [];
+
+  private charactersPrevSkin: number[] = [];
+  private charactersNowSkin: number[] = [];
 
   private icons: string[] = [];
   private item: Item | null = null;
@@ -91,7 +92,7 @@ export default class GameScene extends Phaser.Scene {
     this.item = null;
 
     // NowSkin만 먼저 초기화 / prev는 작동 중 자동 세팅
-    this.charactersNowSkin = new Array(constants.CHARACTER_COUNT).fill(false);
+    this.charactersNowSkin = new Array(constants.CHARACTER_COUNT).fill(-1);
 
     // 로딩 화면 인스턴스 생성
     this.loadingManager = new LoadingUtils(this);
@@ -275,7 +276,7 @@ export default class GameScene extends Phaser.Scene {
 
     for (let i = 0; i < 4; i++) {
       this.characterIcons.push(
-        new CharacterIcon(this, this.characterIconKeys[i]),
+        new CharacterIcon(this, this.characterIconKeys[i], this.characters),
       );
     }
 
@@ -313,9 +314,7 @@ export default class GameScene extends Phaser.Scene {
     this.nowUserIndex = characterIdx;
     this.characters[characterIdx].setSkinState(`player${colorIdx}` ?? 'npc');
     this.characters[characterIdx].setAsUser();
-    this.characterIcons[colorIdx].followCharacter(
-      this.characters[characterIdx],
-    );
+    this.characterIcons[colorIdx].followCharacter(characterIdx);
     return 3;
   }
 
@@ -376,21 +375,24 @@ export default class GameScene extends Phaser.Scene {
   private showRealSkinUpdate(view: DataView) {
     const [data, length] = showRealSkin(view, this.p + 1);
     this.charactersPrevSkin = [...this.charactersNowSkin];
-    this.charactersNowSkin.fill(false);
+    this.charactersNowSkin.fill(-1);
 
     // 지금 받은 데이터로 업데이트
     data.forEach((index) => {
-      this.characters[index[1]].setSkinState(`player${index[0]}` ?? 'npc');
-      this.charactersNowSkin[index[1]] = true;
+      const [colorIdx, characterIdx] = index;
+      this.characters[characterIdx].setSkinState(`player${colorIdx}` ?? 'npc');
+      this.charactersNowSkin[characterIdx] = colorIdx;
+      this.characterIcons[colorIdx].followCharacter(characterIdx);
     });
     // 이전에 skin but 이번엔 skin이 없는 경우
-    this.charactersPrevSkin.forEach((isShow, index) => {
+    this.charactersPrevSkin.forEach((colorIdx, characterIdx) => {
       if (
-        !this.characters[index].isUser &&
-        !this.charactersNowSkin[index] &&
-        isShow
+        !this.characters[characterIdx].isUser &&
+        this.charactersNowSkin[characterIdx] === -1 &&
+        colorIdx !== -1
       ) {
-        this.characters[index].setSkinState('npc');
+        this.characters[characterIdx].setSkinState('npc');
+        this.characterIcons[colorIdx].stopFollowing(characterIdx);
       }
     });
     return length;

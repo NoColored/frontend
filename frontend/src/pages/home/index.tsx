@@ -14,6 +14,8 @@ import UserDashboard from '@/pages/home/UserDashboard';
 
 import { useUserStateStore } from '@/states/user';
 
+import { ROUTE } from '@/router/constants';
+
 const Home = () => {
   const user = useLoaderData() as User;
   localStorage.setItem('userCode', user.userCode);
@@ -32,13 +34,13 @@ const Home = () => {
   })();
 
   const goCollection = () => {
-    navigate('/collection');
+    navigate(ROUTE.collection);
   };
   const goRanking = () => {
-    navigate('/ranking');
+    navigate(ROUTE.ranking);
   };
   const goPlay = () => {
-    navigate('/play');
+    navigate(ROUTE.play);
   };
 
   if (!user) {

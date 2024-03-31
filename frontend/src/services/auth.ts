@@ -1,5 +1,3 @@
-import { redirect } from 'react-router-dom';
-
 import {
   LogInInfo,
   NicknameInfo,
@@ -11,37 +9,29 @@ import {
 import { api } from '@/services/index';
 
 export const getGuestLogin = async () => {
-  try {
-    const response = await api.get<string>(false, '/user/guest');
-    localStorage.setItem('token', response.data);
-    return true;
-  } catch (e) {
-    console.log(e);
-    return false;
-  }
+  return api
+    .get<string>(false, '/user/guest')
+    .then((response) => {
+      localStorage.setItem('token', response.data);
+      return true;
+    })
+    .catch((e) => {
+      console.log(e);
+      return false;
+    });
 };
 
 export const postMemberLogin = async (logInInfo: LogInInfo) => {
-  try {
-    const response = await api.post<string, LogInInfo>(
-      false,
-      `/user/login`,
-      logInInfo,
-    );
-    if (response.status === 200) {
+  return api
+    .post<string, LogInInfo>(false, `/user/login`, logInInfo)
+    .then((response) => {
       localStorage.setItem('token', response.data);
       return true;
-    }
-    if (response.status === 401) {
-      redirect('/error/401');
+    })
+    .catch((e) => {
+      console.log(e);
       return false;
-    }
-    console.log(response.data);
-    return false;
-  } catch (e) {
-    console.log(e);
-    return false;
-  }
+    });
 };
 
 export const getUser = async () => {

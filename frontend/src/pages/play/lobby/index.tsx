@@ -55,7 +55,7 @@ const Lobby = () => {
 
   const handleClickGetOut = async () => {
     await getOut();
-    navigate(ROUTE.finder);
+    navigate(ROUTE.finder, { replace: true });
   };
 
   return (
