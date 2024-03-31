@@ -17,6 +17,10 @@ export class CharacterAnimation extends Phaser.Animations.AnimationManager {
       repeat: -1,
     });
     this.game.anims.create({
+      key: `walk-stop-${texture}`,
+      frames: [{ key: texture, frame: 4 }],
+    });
+    this.game.anims.create({
 
       key: `walk-right-${texture}`,
       frames: this.game.anims.generateFrameNumbers(texture, {
@@ -37,6 +41,10 @@ export class CharacterAnimation extends Phaser.Animations.AnimationManager {
         }),
         frameRate: 10,
         repeat: -1,
+      });
+      this.game.anims.create({
+        key: `walk-stop-${texture}`,
+        frames: [{ key: texture, frame: 4 }],
       });
       this.game.anims.create({
 

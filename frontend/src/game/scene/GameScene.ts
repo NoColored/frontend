@@ -203,7 +203,7 @@ export default class GameScene extends Phaser.Scene {
 
     this.countDownManager.createCountDown();
 
-    console.log(this.gameData);
+
     this.topUi = new TopUi(this, this.gameData?.skins.length ?? 0, this.icons);
     this.topUi.hideUi();
 
@@ -216,11 +216,6 @@ export default class GameScene extends Phaser.Scene {
     // 각종 세팅 완료
     this.changeGameState('ready');
 
-    // this.time.delayedCall(3000, () => {
-    //   // 여기에 3초 후 실행하고 싶은 코드를 작성합니다.
-    //   this.changeGameState('end');
-    //   console.log('3초가 지났습니다!');
-    // });
   }
 
   private gameStartUpdate() {
@@ -286,11 +281,13 @@ export default class GameScene extends Phaser.Scene {
     return length;
   }
 
+
   // 알고리즘 생각해보기
   private showRealSkinUpdate(view: DataView) {
     const [data, length] = showRealSkin(view, this.p + 1);
     this.charactersPrevSkin = [...this.charactersNowSkin];
     this.charactersNowSkin.fill(false);
+
     // 지금 받은 데이터로 업데이트
     data.forEach((index) => {
       this.characters[index[1]].setSkinState(`player${index[0]}` ?? 'npc');
