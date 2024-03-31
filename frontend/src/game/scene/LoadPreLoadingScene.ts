@@ -18,5 +18,6 @@ export default class LoadPreLoadingScene extends Phaser.Scene {
 
   create() {
     this.scene.start('GameScene');
+    this.scene.remove('LoadPreLoadingScene');
   }
 }

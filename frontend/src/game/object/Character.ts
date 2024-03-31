@@ -41,7 +41,7 @@ export class Character extends Phaser.Physics.Arcade.Sprite {
   createAnimations(texture: string) {
     const leftKey = `walk-left-${texture}`;
     const rightKey = `walk-right-${texture}`;
-    if (this.anims.animationManager.exists(leftKey)) return;
+    if (this.scene.anims.exists(leftKey)) return;
     this.anims.create({
       key: leftKey,
       frames: this.anims.generateFrameNumbers(texture, {

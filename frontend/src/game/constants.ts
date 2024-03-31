@@ -10,6 +10,7 @@ export const GAMESOCKET_MESSAGE_TYPE: Map<string, number> = new Map([
   ['USER_CHARACTER_INDEX', 1],
   ['TIME_LEFT', 2],
   ['COUNTDOWN', 3],
+  ['GAME_OVER', 20],
   ['CHARACTER_INFO_LIST', 100],
   ['CURRENT_SCORE', 101],
   ['SHOW_REAL_SKIN', 110],
