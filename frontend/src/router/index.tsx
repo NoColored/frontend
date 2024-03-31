@@ -24,6 +24,8 @@ import { getLobbyInfo } from '@/services/lobby';
 import { getRank } from '@/services/rank';
 import { getGameResult } from '@/services/result';
 
+// import PrivateRoute from '@/router/PrivateRoute';
+
 const router = createBrowserRouter([
   {
     path: `${ROUTE.main}`,
@@ -39,6 +41,14 @@ const router = createBrowserRouter([
       },
     ],
   },
+  {
+    path: `${ROUTE.home}`,
+    element: <Home />,
+    loader: getUser,
+  },
+  // {
+  //   element: <PrivateRoute />,
+  //   children: [
   {
     path: `${ROUTE.loading}`,
     element: <Loading />,
@@ -81,11 +91,6 @@ const router = createBrowserRouter([
     loader: getRank,
   },
   {
-    path: `${ROUTE.home}`,
-    element: <Home />,
-    loader: getUser,
-  },
-  {
     path: `${ROUTE.result}`,
     element: <Result />,
     loader: getGameResult,
@@ -103,6 +108,8 @@ const router = createBrowserRouter([
     path: `${ROUTE.error}/:code`,
     element: <Error />,
   },
+  //   ],
+  // },
 ]);
 
 export default router;

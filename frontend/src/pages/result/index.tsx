@@ -13,9 +13,10 @@ import useModal from '@/hooks/useModal';
 
 import MatchingButton from '@/pages/play/mode/MatchingButton';
 import ResultInfoBox from '@/pages/result/ResultInfoBox';
-import { RewardsModal } from '@/pages/result/RewardsModal';
+import { RewardsModal } from '@/pages/result/RewardsModal/index';
 
 import { getUser } from '@/services/auth';
+import { getOut } from '@/services/lobby';
 
 import { ROUTE } from '@/router/constants';
 
@@ -27,21 +28,28 @@ const Result = () => {
   const { Modal, openModal, closeModal, isOpen } = useModal();
   const navigate = useNavigate();
 
-  const handleClickExit = () => {
+  const handleCloseModal = async () => {
+    await getOut();
+    navigate(ROUTE.home, { replace: true });
+    closeModal();
+  };
+
+  const handleClickExit = async () => {
+    setIsMore(false);
     if (gameResult.reward.tier || gameResult.reward.skins) {
       openModal();
     } else {
-      navigate(ROUTE.home);
+      await getOut();
+      navigate(ROUTE.home, { replace: true });
     }
-    console.log(gameResult);
   };
 
   const handleClickMore = async () => {
+    setIsMore(true);
     if (gameResult.roomUuid) {
-      navigate(`${ROUTE.lobby}/${gameResult.roomUuid}`);
+      navigate(`${ROUTE.lobby}/${gameResult.roomUuid}`, { replace: true });
     } else {
       openModal();
-      setIsMore(true);
       const imgSrc = await getUser();
       setSkin(imgSrc.skin);
     }
@@ -86,7 +94,7 @@ const Result = () => {
           <RewardsModal
             tier={gameResult.reward.tier}
             skin={gameResult.reward.skins}
-            closeModal={closeModal}
+            closeModal={handleCloseModal}
           />
         )}
 
