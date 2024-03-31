@@ -1,13 +1,17 @@
-import * as constants from './constants';
-import * as styles from './index.css';
+import * as constants from '../constants';
+import * as styles from '../index.css';
+
+import type { TierReward } from '@/types/result';
 
 import ColoredButton from '@/components/button/ColoredButton';
+import TierBox from '@/components/imagebox/TierIconBox';
 
 interface Props {
   closeModal: () => void;
+  tier: TierReward;
 }
 
-const TierUpgrade = ({ closeModal }: Props) => {
+const TierUpgrade = ({ closeModal, tier }: Props) => {
   return (
     <div className={styles.modalWrapper}>
       <div className={styles.ribbonWrapper}>
@@ -27,19 +31,12 @@ const TierUpgrade = ({ closeModal }: Props) => {
         </div>
       </div>
       <div className={styles.tierUpgradeWrapper}>
-        {/* 티어 이미지는 임시 데이터이므로 추후 코드 변경 예정 (백에서 데이터 가져와야 함) */}
-        <img
-          src='public/images/ui/icon/tier/icon-tier-bronze.svg'
-          alt='previous tier'
-        />
+        <TierBox tier={tier.oldtier} size='medium' />
         <img src={constants.MODAL_ARROW} alt='arrow' />
-        <img
-          src='public/images/ui/icon/tier/icon-tier-silver.svg'
-          alt='temp tier'
-        />
+        <TierBox tier={tier.newtier} size='medium' />
       </div>
       <span className={styles.modalMessage}>
-        {constants.TIER_UPGRADE_MESSAGE}
+        {tier.upgrade ? constants.TIER_UPGRADE_MESSAGE : ''}
       </span>
       <ColoredButton
         size='small'

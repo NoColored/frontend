@@ -53,8 +53,16 @@ const Lobby = () => {
     }
   });
 
+  const handleClickGetOut = async () => {
+    await getOut();
+    navigate(ROUTE.finder);
+  };
+
   return (
-    <BasicContentFrame backButtonLabel='나가기' onBeforeButtonClick={getOut}>
+    <BasicContentFrame
+      backButtonLabel='나가기'
+      onBeforeButtonClick={handleClickGetOut}
+    >
       <div className={styles.lobby}>
         <div className={styles.settings}>
           {isMaster && <SettingButton lobby={lobbyInfo} />}

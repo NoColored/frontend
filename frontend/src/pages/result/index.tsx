@@ -1,93 +1,68 @@
+import { useState } from 'react';
+import { useLoaderData, useNavigate } from 'react-router-dom';
+
 import * as constants from './constants';
 import * as styles from './index.css';
+
+import type { GameResult } from '@/types/result';
 
 import BasicContentFrame from '@/components/BasicContentFrame/WithButtons';
 import ColoredButton from '@/components/button/ColoredButton';
 
 import useModal from '@/hooks/useModal';
 
-import ResultInfoBox, {
-  ResultInfoBoxProps,
-} from '@/pages/result/ResultInfoBox';
-import Rewards from '@/pages/result/Rewards';
-// import TierUpgrade from '@/pages/result/TierUpgrade';
+import MatchingButton from '@/pages/play/mode/MatchingButton';
+import ResultInfoBox from '@/pages/result/ResultInfoBox';
+import { RewardsModal } from '@/pages/result/RewardsModal';
+
+import { getUser } from '@/services/auth';
+
+import { ROUTE } from '@/router/constants';
 
 const Result = () => {
-  const { Modal, openModal, closeModal } = useModal();
+  const gameResult = useLoaderData() as GameResult;
+  const [skin, setSkin] = useState<string>();
+  const [isMore, setIsMore] = useState<boolean>(false);
 
-  const handleClickButtons = () => {
-    openModal();
+  const { Modal, openModal, closeModal, isOpen } = useModal();
+  const navigate = useNavigate();
+
+  const handleClickExit = () => {
+    if (gameResult.reward.tier || gameResult.reward.skins) {
+      openModal();
+    } else {
+      navigate(ROUTE.home);
+    }
+    console.log(gameResult);
   };
 
-  // test data 입니다. 이것은 추후에 수정되어야 함.
-  const resultExample: ResultInfoBoxProps[] = [
-    {
-      rank: 1,
-      imgSrc:
-        'images/character/default-magichat/character-default-magichat-blue-h240w240.png',
-      label: '칭호인데요제발요칭호라고요열네자?',
-      nickname: '닉네임은아홉글자일',
-      colorStyle: 'yellow',
-      gameScore: 67,
-    },
-    {
-      rank: 2,
-      imgSrc:
-        'images/character/default-magichat/character-default-magichat-blue-h240w240.png',
-      label: '칭호인데요제발요칭호라고요열네자?',
-      nickname: '닉네임은아홉글자일',
-      colorStyle: 'pink',
-      gameScore: 56,
-    },
-    {
-      rank: 2,
-
-      imgSrc:
-        'images/character/default-magichat/character-default-magichat-blue-h240w240.png',
-      label: '칭호인데요제발요칭호라고요열네자?',
-      nickname: '닉네임은아홉글자일',
-      colorStyle: 'green',
-      gameScore: 23,
-    },
-    {
-      rank: 2,
-      imgSrc:
-        'images/character/default-magichat/character-default-magichat-blue-h240w240.png',
-      label: '칭호인데요제발요칭호라고요열네자?',
-      nickname: '닉네임은아홉글자일',
-      colorStyle: 'blue',
-      gameScore: 12,
-    },
-  ];
+  const handleClickMore = async () => {
+    if (gameResult.roomUuid) {
+      navigate(`${ROUTE.lobby}/${gameResult.roomUuid}`);
+    } else {
+      openModal();
+      setIsMore(true);
+      const imgSrc = await getUser();
+      setSkin(imgSrc.skin);
+    }
+  };
 
   return (
     <BasicContentFrame>
       <div className={styles.gameResultWrapper}>
         <div className={styles.resultTextWrapper}>{constants.RESULTTEXT}</div>
 
-        {resultExample.map((item) => (
+        {gameResult.players.map((item) => (
           <div key={`${item.nickname}${item.rank}`}>
-            {item.rank === 1 ? (
-              <ResultInfoBox
-                rank={item.rank}
-                imgSrc={item.imgSrc}
-                label={item.label}
-                nickname={item.nickname}
-                colorStyle={item.colorStyle}
-                gameScore={item.gameScore}
-                firstResult
-              />
-            ) : (
-              <ResultInfoBox
-                key={`${item.nickname}${item.rank}`}
-                rank={item.rank}
-                imgSrc={item.imgSrc}
-                label={item.label}
-                nickname={item.nickname}
-                colorStyle={item.colorStyle}
-                gameScore={item.gameScore}
-              />
-            )}
+            <ResultInfoBox
+              rank={item.rank}
+              imgSrc={item.skin}
+              label={item.label}
+              nickname={item.nickname}
+              colorStyle={constants.COLOR_STYLES[item.index]}
+              gameScore={item.score}
+              firstResult={item.rank === 1}
+            />
           </div>
         ))}
         <div className={styles.buttonWrapper}>
@@ -95,22 +70,33 @@ const Result = () => {
             text='나가기'
             color='gray300'
             size='small'
-            onClick={handleClickButtons}
+            onClick={handleClickExit}
           />
           <ColoredButton
             text='더하기'
             color='navy'
             size='small'
-            onClick={() => {}}
+            onClick={handleClickMore}
           />
         </div>
       </div>
-      {/* 이 아래 부분은 모달 선언 부분으로 데이터를 받아 온 후 로직을 새로 짜야 합니다. */}
-      {/* <Modal> */}
-      {/*  <TierUpgrade closeModal={closeModal} /> */}
-      {/* </Modal> */}
+
       <Modal>
-        <Rewards closeModal={closeModal} />
+        {!isMore && (
+          <RewardsModal
+            tier={gameResult.reward.tier}
+            skin={gameResult.reward.skins}
+            closeModal={closeModal}
+          />
+        )}
+
+        {isMore && skin && (
+          <MatchingButton
+            imgSrc={skin}
+            closeModal={closeModal}
+            isOpen={isOpen}
+          />
+        )}
       </Modal>
     </BasicContentFrame>
   );
