@@ -37,9 +37,10 @@ export const postMemberLogin = async (logInInfo: LogInInfo) => {
         return false;
       }
     })
+    // eslint-disable-next-line
     .catch((e) => {
       redirect(`${ROUTE.error}/${500}`);
-      console.log(e);
+      // console.log(e);
       return false;
     });
 };
@@ -131,7 +132,7 @@ export const postConfirmPassword = async (password: string) => {
       '/user/confirm',
       { password },
     );
-    console.log(response.data);
+    // console.log(response.data);
     return response.data;
   } catch (e) {
     return false;

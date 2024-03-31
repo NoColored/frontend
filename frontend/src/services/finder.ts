@@ -8,7 +8,7 @@ export const getRoomList = async (offset: number) => {
       true,
       `play/friendly/list/${offset}`,
     );
-    console.log(response.data);
+    // console.log(response.data);
     return response.data;
   } catch (error) {
     // console.log(error);
@@ -21,7 +21,7 @@ export const postCreateRoom = async (roomRequest: CreateRoom) => {
     api
       .post<string, CreateRoom>(true, 'play/friendly', roomRequest)
       .then((res) => {
-        console.log('방 생성 요청 성공');
+        // console.log('방 생성 요청 성공');
         return res.data;
       })
       // eslint-disable-next-line

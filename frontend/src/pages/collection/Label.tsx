@@ -31,7 +31,7 @@ const Label = () => {
             key={label.id}
             onClick={() => {
               if (label.own) {
-                console.log(labelId);
+                // console.log(labelId);
                 setLabel(labelId);
               }
             }}

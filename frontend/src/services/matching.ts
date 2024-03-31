@@ -5,7 +5,7 @@ export const getMatching = async () => {
     api
       .get<string>(true, '/play/ranking')
       .then((response) => {
-        console.log('매칭 요청 성공');
+        // console.log('매칭 요청 성공');
         return response.status === 200;
       })
       // eslint-disable-next-line
@@ -21,7 +21,7 @@ export const deleteMatching = async () => {
     api
       .delete<string>(true, '/play/ranking')
       .then((response) => {
-        console.log('매칭 취소 요청 성공');
+        // console.log('매칭 취소 요청 성공');
         return response.status === 200;
       })
       // eslint-disable-next-line

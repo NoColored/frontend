@@ -8,7 +8,7 @@ const requestRankList = async () => {
     api
       .get<RankInfo>(true, 'rank/list')
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         return res.data.players;
       })
       // eslint-disable-next-line
