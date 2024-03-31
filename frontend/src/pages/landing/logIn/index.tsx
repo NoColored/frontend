@@ -13,6 +13,7 @@ import LogInFail from '@/pages/landing/logIn/LogInFail';
 import SignUp from '@/pages/landing/logIn/SignUp';
 
 import { postMemberLogin } from '@/services/auth';
+import { setFullScreen } from '@/services/landing';
 
 import { ROUTE } from '@/router/constants';
 
@@ -35,13 +36,15 @@ const LogIn = () => {
   };
 
   const handleLogInClick = async () => {
-    const data = await postMemberLogin(logInInfo);
-    if (!data) {
-      setIsClicked(false);
-      openModal();
-    } else {
+    return postMemberLogin(logInInfo).then((isLoginSuccess) => {
+      if (!isLoginSuccess) {
+        setIsClicked(false);
+        openModal();
+        return;
+      }
       navigate(ROUTE.home);
-    }
+      setFullScreen();
+    });
   };
 
   const handleSignUpClick = () => {

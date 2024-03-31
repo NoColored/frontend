@@ -5,6 +5,7 @@ import * as styles from './index.css';
 import ColoredButton from '@/components/button/ColoredButton/index';
 
 import { getGuestLogin } from '@/services/auth';
+import { setFullScreen } from '@/services/landing';
 
 import { ROUTE } from '@/router/constants';
 
@@ -12,13 +13,15 @@ const Landing = () => {
   const navigate = useNavigate();
 
   const clickGuestLogin = async () => {
-    const isSuccess = await getGuestLogin();
-    if (isSuccess) {
-      navigate(ROUTE.home);
-    } else {
-      // console.log('Guest 로그인 실패');
-      navigate(ROUTE.error);
-    }
+    return getGuestLogin().then((isSuccess) => {
+      if (isSuccess) {
+        navigate(ROUTE.home);
+        setFullScreen();
+        return;
+      }
+      console.log('Guest 로그인 실패');
+      navigate(`${ROUTE.error}/500`);
+    });
   };
 
   const clickLogIn = () => {

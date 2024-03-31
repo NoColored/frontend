@@ -13,14 +13,17 @@ import { api } from '@/services/index';
 import { ROUTE } from '@/router/constants';
 
 export const getGuestLogin = async () => {
-  try {
-    const response = await api.get<string>(false, '/user/guest');
-    localStorage.setItem('token', response.data);
-    return true;
-  } catch (e) {
-    redirect(`${ROUTE.error}/${500}`);
-    return false;
-  }
+  return await api
+    .get<string>(false, '/user/guest')
+    .then((response) => {
+      localStorage.setItem('token', response.data);
+      return true;
+    })
+    // eslint-disable-next-line
+    .catch((e) => {
+      redirect(`${ROUTE.error}/${500}`);
+      return false;
+    });
 };
 
 export const postMemberLogin = async (logInInfo: LogInInfo) => {
@@ -50,7 +53,7 @@ export const getUser = async () => {
     const response = await api.get<User>(true, `/user`);
     return response.data;
   } catch (e) {
-    // console.log(e);
+    console.log(e);
     return { userCode: '' } as User;
   }
 };
