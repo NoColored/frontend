@@ -248,7 +248,8 @@ export default class GameScene extends Phaser.Scene {
 
   // 1
   private userCharacterIndexUpdate(view: DataView) {
-    const [colorIdx, characterIdx] = userCharacterIndex(view, this.p + 1);
+    const data = userCharacterIndex(view, this.p + 1);
+    const [colorIdx, characterIdx] = data;
     if (this.nowUserIndex === characterIdx) return 3;
     this.characters[this.nowUserIndex].setSkinState('npc');
     this.characters[this.nowUserIndex].setAsNoUser();
