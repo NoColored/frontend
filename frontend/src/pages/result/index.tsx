@@ -22,8 +22,9 @@ import { ROUTE } from '@/router/constants';
 const Result = () => {
   const gameResult = useLoaderData() as GameResult;
   const [skin, setSkin] = useState<string>();
+  const [isMore, setIsMore] = useState<boolean>(false);
 
-  const { Modal, openModal, closeModal } = useModal();
+  const { Modal, openModal, closeModal, isOpen } = useModal();
   const navigate = useNavigate();
 
   const handleClickExit = () => {
@@ -39,6 +40,8 @@ const Result = () => {
     if (gameResult.roomUuid) {
       navigate(`${ROUTE.lobby}/${gameResult.roomUuid}`);
     } else {
+      openModal();
+      setIsMore(true);
       const imgSrc = await getUser();
       setSkin(imgSrc.skin);
     }
@@ -79,13 +82,22 @@ const Result = () => {
       </div>
 
       <Modal>
-        <RewardsModal
-          tier={gameResult.reward.tier}
-          skin={gameResult.reward.skins}
-          closeModal={closeModal}
-        />
+        {!isMore && (
+          <RewardsModal
+            tier={gameResult.reward.tier}
+            skin={gameResult.reward.skins}
+            closeModal={closeModal}
+          />
+        )}
+
+        {isMore && skin && (
+          <MatchingButton
+            imgSrc={skin}
+            closeModal={closeModal}
+            isOpen={isOpen}
+          />
+        )}
       </Modal>
-      {skin && <MatchingButton imgSrc={skin} isMore />}
     </BasicContentFrame>
   );
 };
