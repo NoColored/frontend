@@ -50,7 +50,7 @@ const Lobby = () => {
       setLobbyInfo(getLobbyInfo(message.data as ActionDataTypeMap['roomInfo']));
     }
     if (message.action === 'gameStart') {
-      navigate(ROUTE.game);
+      navigate(ROUTE.game, { replace: true });
     }
   });
 
