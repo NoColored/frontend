@@ -94,6 +94,7 @@ const router = createBrowserRouter([
       {
         path: `${ROUTE.result}`,
         element: <Result />,
+        errorElement: <Navigate to={ROUTE.home} />,
         loader: getGameResult,
       },
       {
