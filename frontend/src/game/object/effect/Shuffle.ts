@@ -9,7 +9,8 @@ export class Shuffle extends Phaser.GameObjects.Sprite {
     this.play('shuffleAnim').setSize(350, 350);
     const back = this.scene.add
       .image(width / 2, height / 2, 'gradient')
-      .setDepth(constants.INGAME_DEPTH.EFFECT - 1);
+      .setDepth(constants.INGAME_DEPTH.EFFECT - 1)
+      .setOrigin(0.5);
 
     const maskGraphics = this.scene.make.graphics({ x: 0, y: 0 });
     maskGraphics.fillRoundedRect(width / 2, height / 2, 350, 350, 50);
@@ -21,7 +22,11 @@ export class Shuffle extends Phaser.GameObjects.Sprite {
 
     this.scene.time.addEvent({
       delay: 1500,
-      callback: () => this.destroy(),
+      callback: () => {
+        this.destroy();
+        maskGraphics.destroy();
+        back.destroy();
+      },
       loop: false,
     });
   }
