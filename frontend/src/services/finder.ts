@@ -26,7 +26,7 @@ export const postCreateRoom = async (roomRequest: CreateRoom) => {
       })
       // eslint-disable-next-line
       .catch((error) => {
-        // console.log(error);
+        console.log(error);
         return '';
       })
   );
@@ -40,7 +40,7 @@ export const postEnterRoom = async (roomInfo: RequestEnterRoom) => {
     })
     // eslint-disable-next-line
     .catch((error) => {
-      // console.log(error);
+      console.log(error);
       return '';
     });
 };

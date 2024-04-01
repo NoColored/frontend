@@ -11,7 +11,7 @@ export const getCollections = async (): Promise<Collections | void> => {
       })
       // eslint-disable-next-line
       .catch((err) => {
-        // console.log(err)
+        console.log(err);
       })
   );
 };
@@ -25,7 +25,7 @@ export const patchSkinChange = async (skinId: number) => {
       })
       // eslint-disable-next-line
       .catch((error) => {
-        // console.log(error);
+        console.log(error);
         return false;
       })
   );
@@ -42,7 +42,7 @@ export const patchLabelChange = async (labelId: number) => {
       })
       // eslint-disable-next-line
       .catch((error) => {
-        // console.log(error);
+        console.log(error);
         return false;
       })
   );

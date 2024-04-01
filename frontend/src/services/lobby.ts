@@ -10,7 +10,7 @@ export const getLobbyInfo = async (roodId: string | undefined) => {
       .then((res) => res.data)
       // eslint-disable-next-line
       .catch((err) => {
-        // console.log(err);
+        console.log(err);
         return { masterIndex: -1 } as Lobby;
       })
   );
@@ -20,10 +20,10 @@ export const getReady = async () => {
   return api
     .get<string>(true, '/play/friendly/ready')
     .then((res) => {
-      // console.log(res.data);
+      console.log(res.data);
     })
     .catch((err) => {
-      // console.log(err);
+      console.log(err);
       throw err;
     });
 };
@@ -37,7 +37,7 @@ export const getOut = async () => {
       })
       // eslint-disable-next-line
       .catch((err) => {
-        // console.log(err);
+        console.log(err);
       })
   );
 };
@@ -52,7 +52,7 @@ export const updateRoom = async (room: CreateRoom) => {
       })
       // eslint-disable-next-line
       .catch((err) => {
-        // console.log(err);
+        console.log(err);
         return '';
       })
   );
