@@ -93,7 +93,7 @@ export const postGuestSignUp = async (signUpInfo: SignUpInfo) => {
 
 export const postSignUp = async (signUpInfo: SignUpInfo) => {
   return api
-    .post<string, SignUpInfo>(false, '/user/signup`', signUpInfo)
+    .post<string, SignUpInfo>(false, '/user/signup', signUpInfo)
     .then((res) => {
       localStorage.setItem('token', res.data);
       return true;
