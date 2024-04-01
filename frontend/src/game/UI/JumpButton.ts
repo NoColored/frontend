@@ -4,13 +4,12 @@ import * as constants from '@/game/constants';
 
 export default class JumpButton extends Phaser.GameObjects.GameObject {
   // eslint-disable-next-line no-use-before-define
-  private static instance: JumpButton;
   private button;
   private socket: GameSocket;
   private keys: Phaser.Input.Keyboard.Key[] = [];
+  private sendMessages: number = -1;
 
-  // 생성자를 private으로 변경
-  private constructor(scene: Phaser.Scene, socket: GameSocket) {
+  constructor(scene: Phaser.Scene, socket: GameSocket) {
     super(scene, 'jumpButton');
     this.button = this.scene.add
       .image(
@@ -19,6 +18,7 @@ export default class JumpButton extends Phaser.GameObjects.GameObject {
         'jumpButton',
       )
       .setDepth(constants.INGAME_DEPTH.BUTTON);
+    this.sendMessages = constants.SEND_WOBSOCKT_MESSAGE_TYPE.JUMP;
     this.socket = socket;
 
     this.setJumpButton();
@@ -29,21 +29,10 @@ export default class JumpButton extends Phaser.GameObjects.GameObject {
     this.setButtonAndKeyInputEnabled(false);
   }
 
-  // getInstance 메서드를 통해 인스턴스에 접근
-  public static getInstance(
-    scene: Phaser.Scene,
-    socket: GameSocket,
-  ): JumpButton {
-    if (!JumpButton.instance) {
-      JumpButton.instance = new JumpButton(scene, socket);
-    }
-    return JumpButton.instance;
-  }
-
   setJumpButton() {
     this.button.on('pointerdown', () => {
       this.button.setTexture('clickedJumpButton');
-      this.socket.sendInputMesssage(constants.SEND_WOBSOCKT_MESSAGE_TYPE.JUMP);
+      this.socket.sendInputMesssage(this.sendMessages);
     });
 
     this.button.on('pointerup', () => {
@@ -82,12 +71,5 @@ export default class JumpButton extends Phaser.GameObjects.GameObject {
       constants.BUTTON_POSITION.CHANGE_DIR.x,
       constants.BUTTON_POSITION.CHANGE_DIR.y,
     );
-
-    this.scene.time.delayedCall(5000, () => {
-      this.button.setPosition(
-        constants.BUTTON_POSITION.JUMP.x,
-        constants.BUTTON_POSITION.JUMP.y,
-      );
-    });
   }
 }
