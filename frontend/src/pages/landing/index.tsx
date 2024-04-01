@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 
+import * as constants from './constants';
 import * as styles from './index.css';
 
 import ColoredButton from '@/components/button/ColoredButton/index';
@@ -7,14 +8,20 @@ import ColoredButton from '@/components/button/ColoredButton/index';
 import { getGuestLogin } from '@/services/auth';
 import { setFullScreen } from '@/services/landing';
 
+import useEffectSoundStore from '@/states/effect';
+import useAudioStore from '@/states/music';
+
 import { ROUTE } from '@/router/constants';
 
 const Landing = () => {
   const navigate = useNavigate();
-
+  const { isPlaying, play, stop } = useAudioStore();
+  const playEffectSound = useEffectSoundStore((state) => state.playEffectSound);
   const clickGuestLogin = async () => {
     return getGuestLogin().then((isSuccess) => {
+      playEffectSound();
       if (isSuccess) {
+        isPlaying ? play() : stop();
         navigate(ROUTE.home);
         setFullScreen();
         return;
@@ -25,10 +32,12 @@ const Landing = () => {
   };
 
   const clickLogIn = () => {
-    navigate(ROUTE.login);
+    playEffectSound();
+    isPlaying ? play() : stop();
+    navigate('/login');
   };
 
-  const landingLogo: string = '/images/landing-logo-whiteborder-h800w1280.png';
+  const landingLogo: string = constants.LANDING_LOGO_URL;
   return (
     <div className={styles.contentWrapper}>
       <img

@@ -10,12 +10,15 @@ export const config: Phaser.Types.Core.GameConfig = {
     default: 'arcade',
     arcade: {
       gravity: { x: 0, y: 200 },
-      debug: true,
+      debug: false,
     },
   },
   // scene: [LoadPreLoadingScene, GameScene],
 };
 
-export const scenesConfig = (setIsActive: (isActive: boolean) => void) => {
-  return [LoadPreLoadingScene, new GameScene(setIsActive)];
+export const scenesConfig = (
+  setIsActive: (isActive: boolean) => void,
+  onDisconnect: () => void,
+) => {
+  return [LoadPreLoadingScene, new GameScene(setIsActive, onDisconnect)];
 };
