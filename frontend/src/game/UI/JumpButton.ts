@@ -30,7 +30,6 @@ export default class JumpButton extends Phaser.GameObjects.GameObject {
   }
 
   setJumpButton() {
-    this.scene.input.keyboard?.destroy();
     this.button.on('pointerdown', () => {
       this.button.setTexture('clickedJumpButton');
       this.socket.sendInputMesssage(this.sendMessages);
@@ -68,20 +67,9 @@ export default class JumpButton extends Phaser.GameObjects.GameObject {
   }
 
   changeButtonItem() {
-    this.sendMessages = constants.SEND_WOBSOCKT_MESSAGE_TYPE.DIRECTION_CHANGE;
-    this.setJumpButton();
     this.button.setPosition(
       constants.BUTTON_POSITION.CHANGE_DIR.x,
       constants.BUTTON_POSITION.CHANGE_DIR.y,
-    );
-  }
-
-  resetButtonItem() {
-    this.sendMessages = constants.SEND_WOBSOCKT_MESSAGE_TYPE.JUMP;
-    this.setJumpButton();
-    this.button.setPosition(
-      constants.BUTTON_POSITION.JUMP.x,
-      constants.BUTTON_POSITION.JUMP.y,
     );
   }
 }

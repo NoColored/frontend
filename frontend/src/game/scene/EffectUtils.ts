@@ -5,16 +5,12 @@ import { Disappear } from '@/game/object/effect/Disappear';
 import { Obtain } from '@/game/object/effect/Obtain';
 import { Shuffle } from '@/game/object/effect/Shuffle';
 import { StopLoading } from '@/game/object/effect/StopLoading';
-import ChangeDirButton from '@/game/UI/ChangeDirButton';
-import JumpButton from '@/game/UI/JumpButton';
 
 export const EffectUtils = (
   scene: Phaser.Scene,
   effectType: number,
   x: number,
   y: number,
-  changeDirbuttonsInst?: ChangeDirButton | null,
-  changeJumpbuttonsInst?: JumpButton | null,
 ): void => {
   // eslint-disable-next-line default-case
   switch (effectType) {
@@ -29,14 +25,6 @@ export const EffectUtils = (
     case 2:
       // eslint-disable-next-line no-new
       new Shuffle(scene);
-      // 키보드 변경
-      scene.input.keyboard?.removeAllListeners();
-      changeDirbuttonsInst?.changeButtonItem();
-      changeJumpbuttonsInst?.changeButtonItem();
-      scene.time.delayedCall(5000, () => {
-        changeDirbuttonsInst?.resetButtonItem();
-        changeJumpbuttonsInst?.resetButtonItem();
-      });
       return;
     case 3:
       // eslint-disable-next-line no-new

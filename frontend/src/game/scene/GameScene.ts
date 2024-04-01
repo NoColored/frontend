@@ -409,14 +409,7 @@ export default class GameScene extends Phaser.Scene {
     const [data, length] = effectList(view, this.p + 1);
 
     data.forEach((effect) => {
-      EffectUtils(
-        this,
-        effect[0],
-        effect[1],
-        effect[2],
-        this.changeDirButton,
-        this.jumpButton,
-      );
+      EffectUtils(this, effect[0], effect[1], effect[2]);
     });
     return length;
   }

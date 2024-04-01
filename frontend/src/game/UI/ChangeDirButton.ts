@@ -43,7 +43,6 @@ export default class ChangeDirButton extends Phaser.GameObjects.GameObject {
   }
 
   setupDirKeyInput() {
-    this.scene.input.keyboard?.removeAllListeners();
     // 방향키 코드 배열
     const keysCode = [
       Phaser.Input.Keyboard.KeyCodes.LEFT,
@@ -78,20 +77,9 @@ export default class ChangeDirButton extends Phaser.GameObjects.GameObject {
   }
 
   changeButtonItem() {
-    this.sendMessages = constants.SEND_WOBSOCKT_MESSAGE_TYPE.JUMP;
-    this.setChangeDirButton();
     this.button.setPosition(
       constants.BUTTON_POSITION.JUMP.x,
       constants.BUTTON_POSITION.JUMP.y,
-    );
-  }
-
-  resetButtonItem() {
-    this.sendMessages = constants.SEND_WOBSOCKT_MESSAGE_TYPE.DIRECTION_CHANGE;
-    this.setChangeDirButton();
-    this.button.setPosition(
-      constants.BUTTON_POSITION.CHANGE_DIR.x,
-      constants.BUTTON_POSITION.CHANGE_DIR.y,
     );
   }
 }
