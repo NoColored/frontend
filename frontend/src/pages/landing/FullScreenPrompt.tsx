@@ -46,7 +46,7 @@ class FullscreenPrompt extends React.Component {
         className={styles.fullscreenPromptStyle}
       >
         <pre className={styles.fullscreenPromptText}>
-          {`노컬러랜드는 세로 모드를\n지원하지 않는다냥.`}
+          {`!! 주의 !!\n<가로 모드>를\n장착하세요!`}
         </pre>
         {/* <button type="button" onClick={this.goFullScreen}>전체 화면 시작</button> */}
       </div>,
