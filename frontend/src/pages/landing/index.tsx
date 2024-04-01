@@ -14,12 +14,14 @@ import { ROUTE } from '@/router/constants';
 
 const Landing = () => {
   const navigate = useNavigate();
-  const { isPlaying, playBackgroundSound, stopBackgroundSound } =
-    useAudioStore();
+  const { isPlaying, setIsPlaying, playBackgroundSound } = useAudioStore();
+
   const clickGuestLogin = async () => {
     return getGuestLogin().then((isSuccess) => {
       if (isSuccess) {
-        isPlaying ? playBackgroundSound() : stopBackgroundSound();
+        setIsPlaying(isPlaying);
+        const playMusic = localStorage.getItem('backgroundSound') === 'true';
+        if (playMusic) playBackgroundSound();
         navigate(ROUTE.home);
         setFullScreen();
         return;
@@ -29,7 +31,9 @@ const Landing = () => {
   };
 
   const clickLogIn = () => {
-    isPlaying ? playBackgroundSound() : stopBackgroundSound();
+    setIsPlaying(isPlaying);
+    const playMusic = localStorage.getItem('backgroundSound') === 'true';
+    if (playMusic) playBackgroundSound();
     navigate(ROUTE.login);
   };
 
