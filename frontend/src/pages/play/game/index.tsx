@@ -12,7 +12,7 @@ const Game = () => {
   const navigate = useNavigate();
   const { isActive, setIsActive } = useGameControl();
   const inGameDisconnect = () => {
-    navigate(ROUTE.error, { replace: true }); // TODO: error code
+    navigate(`${ROUTE.error}/400`, { replace: true });
   };
   useEffect(() => {
     if (!isActive) {

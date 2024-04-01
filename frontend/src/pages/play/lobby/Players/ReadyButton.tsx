@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+import * as styles from './index.css';
+
 import type { Player } from '@/types/play';
 
 import ColoredButton from '@/components/button/ColoredButton';
@@ -55,9 +57,9 @@ const ReadyButton = ({ myInfo }: Props) => {
   const startGame = async () => {
     return getReady().catch((err) => {
       if (err.response.status === 400) {
-        setErrorMessage('error: 400');
+        setErrorMessage(constants.LONELY_MASTER_MESSAGE);
       } else if (err.response.status === 406) {
-        setErrorMessage('error: 406');
+        setErrorMessage(constants.SOMEBODY_NOT_READY_MESSAGE);
       }
       openModal();
     });
@@ -70,13 +72,17 @@ const ReadyButton = ({ myInfo }: Props) => {
       <ColoredIconButton {...buttonProps} />
 
       <Modal>
-        <pre>{errorMessage}</pre>
-        <ColoredButton
-          size='small'
-          text='확인'
-          color='navy'
-          onClick={closeModal}
-        />
+        <div className={styles.readyWrapper}>
+          <pre className={styles.errorMessage}>{errorMessage}</pre>
+          <div className={styles.errorButtonWrapper}>
+            <ColoredButton
+              size='small'
+              text='확인'
+              color='navy'
+              onClick={closeModal}
+            />
+          </div>
+        </div>
       </Modal>
     </>
   );

@@ -51,3 +51,9 @@ export const PLAYER_INFO_HEIGHT = (size: keyof typeof PLAYER_INFO) =>
     .add(PLAYER_INFO[size].padding)
     .add(PLAYER_INFO[size].padding)
     .toString();
+
+export const LONELY_MASTER_MESSAGE: string =
+  '혼자서 싸울 수는 없습니다. \n 혹시 친구가 없나요?';
+
+export const SOMEBODY_NOT_READY_MESSAGE: string =
+  '싸움을 두려워하는 겁쟁이가 있나본데요?';
