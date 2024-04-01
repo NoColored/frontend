@@ -4,10 +4,11 @@ import * as constants from '@/game/constants';
 
 export default class JumpButton extends Phaser.GameObjects.GameObject {
   // eslint-disable-next-line no-use-before-define
-  private static instance: JumpButton;
+  private static instance: JumpButton | null;
   private button;
   private socket: GameSocket;
   private keys: Phaser.Input.Keyboard.Key[] = [];
+  private sendMessages: number = -1;
 
   // 생성자를 private으로 변경
   private constructor(scene: Phaser.Scene, socket: GameSocket) {
@@ -19,6 +20,7 @@ export default class JumpButton extends Phaser.GameObjects.GameObject {
         'jumpButton',
       )
       .setDepth(constants.INGAME_DEPTH.BUTTON);
+    this.sendMessages = constants.SEND_WOBSOCKT_MESSAGE_TYPE.JUMP;
     this.socket = socket;
 
     this.setJumpButton();
@@ -43,7 +45,7 @@ export default class JumpButton extends Phaser.GameObjects.GameObject {
   setJumpButton() {
     this.button.on('pointerdown', () => {
       this.button.setTexture('clickedJumpButton');
-      this.socket.sendInputMesssage(constants.SEND_WOBSOCKT_MESSAGE_TYPE.JUMP);
+      this.socket.sendInputMesssage(this.sendMessages);
     });
 
     this.button.on('pointerup', () => {
@@ -78,16 +80,22 @@ export default class JumpButton extends Phaser.GameObjects.GameObject {
   }
 
   changeButtonItem() {
+    this.sendMessages = constants.SEND_WOBSOCKT_MESSAGE_TYPE.DIRECTION_CHANGE;
     this.button.setPosition(
       constants.BUTTON_POSITION.CHANGE_DIR.x,
       constants.BUTTON_POSITION.CHANGE_DIR.y,
     );
 
     this.scene.time.delayedCall(5000, () => {
+      this.sendMessages = constants.SEND_WOBSOCKT_MESSAGE_TYPE.JUMP;
       this.button.setPosition(
         constants.BUTTON_POSITION.JUMP.x,
         constants.BUTTON_POSITION.JUMP.y,
       );
     });
+  }
+
+  public static destroyInstance() {
+    JumpButton.instance = null;
   }
 }

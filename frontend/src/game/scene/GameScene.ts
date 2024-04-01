@@ -520,6 +520,8 @@ export default class GameScene extends Phaser.Scene {
         this.socket.inGameUnconnected(() => {});
         this.jumpButton?.setButtonAndKeyInputEnabled(false);
         this.changeDirButton?.setButtonAndKeyInputEnabled(false);
+        this.jumpButton?.destroy();
+        this.changeDirButton?.destroy();
 
         this.time.delayedCall(
           3000,
