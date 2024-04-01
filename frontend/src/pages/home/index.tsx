@@ -16,8 +16,6 @@ import { ROUTE } from '@/router/constants';
 
 const Home = () => {
   const user = useLoaderData() as User;
-  localStorage.setItem('userCode', user.userCode);
-
   const navigate = useNavigate();
 
   const goCollection = () => {

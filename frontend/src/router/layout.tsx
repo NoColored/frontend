@@ -1,11 +1,16 @@
-import { Navigate, Outlet } from 'react-router-dom';
+import { Navigate, Outlet, useLoaderData } from 'react-router-dom';
 
 import { ROUTE } from '@/router/constants';
 
 const TokenLayout = () => {
-  const isLogin = !!localStorage.getItem('token');
+  const isTokenValid = useLoaderData() as boolean;
 
-  return isLogin ? <Outlet /> : <Navigate to={ROUTE.main} />;
+  if (isTokenValid) {
+    return <Outlet />;
+  }
+
+  localStorage.removeItem('token');
+  return <Navigate to={ROUTE.main} replace />;
 };
 
 export default TokenLayout;
