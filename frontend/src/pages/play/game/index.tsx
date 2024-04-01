@@ -16,7 +16,7 @@ const Game = () => {
   };
   useEffect(() => {
     if (!isActive) {
-      navigate('/result', { replace: true });
+      navigate(ROUTE.result, { replace: true });
       return () => {};
     }
 
