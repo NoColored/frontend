@@ -12,7 +12,7 @@ import * as constants from '@/pages/landing/logIn/constants';
 import { getIdCheck, postGuestSignUp, postSignUp } from '@/services/auth';
 import { setFullScreen } from '@/services/landing';
 
-import { useUserStateStore } from '@/states/user';
+import { GUEST, NOT_LOGIN, useUserStateStore } from '@/states/user';
 
 import { checkSignUpInfo } from '@/utils/useSignUp';
 
@@ -23,7 +23,7 @@ interface Props {
 }
 
 const SignUp = ({ closeModal }: Props) => {
-  const { isGuest } = useUserStateStore.getState();
+  const { loginStatus } = useUserStateStore.getState();
   const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = useState(
     constants.ERROR_MESSAGE.welcome,
@@ -56,22 +56,22 @@ const SignUp = ({ closeModal }: Props) => {
       return;
     }
 
-    if (isGuest) {
+    if (loginStatus === GUEST) {
       await postGuestSignUp(signUpInfo).then((isSuccess) => {
         if (isSuccess) {
           closeModal();
           navigate(ROUTE.home);
-          setFullScreen();
         }
       });
-
       return;
     }
 
-    if (!isGuest) {
+    if (loginStatus === NOT_LOGIN) {
       await postSignUp(signUpInfo).then((isSuccess) => {
         if (isSuccess) {
           closeModal();
+          navigate(ROUTE.home);
+          setFullScreen();
         }
       });
     }
