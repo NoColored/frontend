@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import * as styles from './index.css';
 
 import { settingsProps } from '@/components/BasicContentFrame/WithButtons/InfoButton/types';
 import ColoredButton from '@/components/button/ColoredButton';
 import InputTextBox from '@/components/textbox/InputTextBox';
-import { patchNicknameChange } from '@/services/auth';
+
 import * as constants from '@/pages/landing/logIn/constants';
-import { useNavigate } from 'react-router-dom';
+
+import { patchNicknameChange } from '@/services/auth';
+
+import { ROUTE } from '@/router/constants';
 
 const NicknameChange = ({ onClose }: settingsProps) => {
   const navigate = useNavigate();
@@ -26,7 +30,7 @@ const NicknameChange = ({ onClose }: settingsProps) => {
     const confirmNickname = await patchNicknameChange(nickname);
     if (confirmNickname) {
       onClose();
-      navigate('/home');
+      navigate(ROUTE.home);
     }
   };
 

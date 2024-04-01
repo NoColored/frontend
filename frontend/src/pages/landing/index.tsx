@@ -31,6 +31,7 @@ const Landing = () => {
   const clickLogIn = () => {
     isPlaying ? playBackgroundSound() : stopBackgroundSound();
     navigate('/login');
+    navigate(ROUTE.login);
   };
 
   const landingLogo: string = constants.LANDING_LOGO_URL;

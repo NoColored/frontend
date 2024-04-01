@@ -12,11 +12,14 @@ import type { tierType } from '@/components/imagebox/types';
 import Error from '@/pages/error';
 import UserDashboard from '@/pages/home/UserDashboard';
 
+
 import { ROUTE } from '@/router/constants';
 
 const Home = () => {
   const user = useLoaderData() as User;
-  console.log(user);
+  localStorage.setItem('userCode', user.userCode);
+
+  // console.log(user);
   const navigate = useNavigate();
 
   const goCollection = () => {

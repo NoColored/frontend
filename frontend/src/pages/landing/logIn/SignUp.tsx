@@ -15,6 +15,8 @@ import { useUserStateStore } from '@/states/user';
 
 import { checkSignUpInfo } from '@/utils/useSignUp';
 
+import { ROUTE } from '@/router/constants';
+
 interface Props {
   closeModal: () => void;
 }
@@ -57,9 +59,10 @@ const SignUp = ({ closeModal }: Props) => {
       await postGuestSignUp(signUpInfo).then((isSuccess) => {
         if (isSuccess) {
           closeModal();
-          navigate('/home');
+          navigate(ROUTE.home);
         }
       });
+
       return;
     }
 

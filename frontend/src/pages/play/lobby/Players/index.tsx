@@ -8,6 +8,8 @@ import Character from '@/pages/play/lobby/Players/Character';
 import PlayerInfo from '@/pages/play/lobby/Players/Info';
 import ReadyButton from '@/pages/play/lobby/Players/ReadyButton';
 
+import { ROUTE } from '@/router/constants';
+
 interface Props {
   players: Player[];
 }
@@ -18,7 +20,7 @@ const Players = ({ players }: Props) => {
   const myInfo = players.find((player) => player.userCode === myCode);
 
   if (!myInfo) {
-    navigate('/error/401');
+    navigate(`${ROUTE.error}/401`);
     return null;
   }
 
