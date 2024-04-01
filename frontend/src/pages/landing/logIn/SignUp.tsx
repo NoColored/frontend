@@ -61,10 +61,8 @@ const SignUp = ({ closeModal }: Props) => {
         if (isSuccess) {
           closeModal();
           navigate(ROUTE.home);
-          setFullScreen();
         }
       });
-
       return;
     }
 
@@ -72,6 +70,8 @@ const SignUp = ({ closeModal }: Props) => {
       await postSignUp(signUpInfo).then((isSuccess) => {
         if (isSuccess) {
           closeModal();
+          navigate(ROUTE.home);
+          setFullScreen();
         }
       });
     }
