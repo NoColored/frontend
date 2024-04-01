@@ -24,7 +24,7 @@ import { getLobbyInfo } from '@/services/lobby';
 import { getRank } from '@/services/rank';
 import { getGameResult } from '@/services/result';
 
-import PrivateRoute from '@/router/PrivateRoute';
+import TokenLayout from '@/router/layout';
 
 const router = createBrowserRouter([
   {
@@ -42,7 +42,7 @@ const router = createBrowserRouter([
     ],
   },
   {
-    element: <PrivateRoute />,
+    element: <TokenLayout />,
     children: [
       {
         path: `${ROUTE.loading}`,
