@@ -30,7 +30,6 @@ const Landing = () => {
 
   const clickLogIn = () => {
     isPlaying ? playBackgroundSound() : stopBackgroundSound();
-    navigate('/login');
     navigate(ROUTE.login);
   };
 
