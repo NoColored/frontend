@@ -56,8 +56,8 @@ export const getUser = async () => {
     .get<User>(true, `/user`)
     .then((response) => {
       const user = response.data;
-      const { setIsGuest, setUserCode } = useUserStateStore.getState();
-      setIsGuest(user.guest);
+      const { setLogin, setUserCode } = useUserStateStore.getState();
+      setLogin(user.guest);
       setUserCode(user.userCode);
       return user;
     })
