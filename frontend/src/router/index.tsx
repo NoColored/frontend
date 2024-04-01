@@ -24,7 +24,7 @@ import { getLobbyInfo } from '@/services/lobby';
 import { getRank } from '@/services/rank';
 import { getGameResult } from '@/services/result';
 
-// import PrivateRoute from '@/router/PrivateRoute';
+import TokenLayout from '@/router/layout';
 
 const router = createBrowserRouter([
   {
@@ -42,74 +42,74 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: `${ROUTE.home}`,
-    element: <Home />,
-    loader: getUser,
-  },
-  // {
-  //   element: <PrivateRoute />,
-  //   children: [
-  {
-    path: `${ROUTE.loading}`,
-    element: <Loading />,
-  },
-  {
-    path: `${ROUTE.play}`,
+    element: <TokenLayout />,
     children: [
       {
-        index: true,
-        element: <Mode />,
+        path: `${ROUTE.loading}`,
+        element: <Loading />,
+      },
+      {
+        path: `${ROUTE.home}`,
+        element: <Home />,
         loader: getUser,
       },
       {
-        path: `${ROUTE.lobby}/:roomId`,
-        element: <Lobby />,
-        loader: ({ params }) => getLobbyInfo(params.roomId),
+        path: `${ROUTE.play}`,
+        children: [
+          {
+            index: true,
+            element: <Mode />,
+            loader: getUser,
+          },
+          {
+            path: `${ROUTE.lobby}/:roomId`,
+            element: <Lobby />,
+            loader: ({ params }) => getLobbyInfo(params.roomId),
+          },
+          {
+            path: `${ROUTE.finder}`,
+            element: <Finder />,
+            loader: () => getRoomList(1),
+          },
+          {
+            path: `${ROUTE.game}`,
+            element: <Game />,
+          },
+        ],
       },
       {
-        path: `${ROUTE.finder}`,
-        element: <Finder />,
-        loader: () => getRoomList(1),
+        path: `${ROUTE.example}`,
+        element: <Example />,
       },
       {
-        path: `${ROUTE.game}`,
-        element: <Game />,
+        path: '/*',
+        element: <Navigate to={`${ROUTE.error}/404`} replace />,
+      },
+      {
+        path: `${ROUTE.ranking}`,
+        element: <Ranking />,
+        loader: getRank,
+      },
+      {
+        path: `${ROUTE.result}`,
+        element: <Result />,
+        loader: getGameResult,
+      },
+      {
+        path: `${ROUTE.setting}`,
+        element: <Settings />,
+      },
+      {
+        path: `${ROUTE.collection}`,
+        element: <Collection />,
+        loader: getUser,
+      },
+      {
+        path: `${ROUTE.error}/:code`,
+        element: <Error />,
       },
     ],
   },
-  {
-    path: `${ROUTE.example}`,
-    element: <Example />,
-  },
-  {
-    path: '/*',
-    element: <Navigate to={`${ROUTE.error}/404`} replace />,
-  },
-  {
-    path: `${ROUTE.ranking}`,
-    element: <Ranking />,
-    loader: getRank,
-  },
-  {
-    path: `${ROUTE.result}`,
-    element: <Result />,
-    loader: getGameResult,
-  },
-  {
-    path: `${ROUTE.setting}`,
-    element: <Settings />,
-  },
-  {
-    path: `${ROUTE.collection}`,
-    element: <Collection />,
-    loader: getUser,
-  },
-  {
-    path: `${ROUTE.error}/:code`,
-    element: <Error />,
-  },
-  //   ],
-  // },
 ]);
 
 export default router;

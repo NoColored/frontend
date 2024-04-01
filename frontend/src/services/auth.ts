@@ -1,3 +1,5 @@
+import { redirect } from 'react-router-dom';
+
 import {
   LogInInfo,
   NicknameInfo,
@@ -10,27 +12,40 @@ import { api } from '@/services/index';
 
 import { useUserStateStore } from '@/states/user';
 
+import { ROUTE } from '@/router/constants';
+
 export const getGuestLogin = async () => {
-  return api
+  return await api
     .get<string>(false, '/user/guest')
     .then((response) => {
       localStorage.setItem('token', response.data);
       return true;
     })
+    // eslint-disable-next-line
     .catch((e) => {
-      console.log(e);
+      e;
+      redirect(`${ROUTE.error}/${500}`);
       return false;
     });
 };
 
 export const postMemberLogin = async (logInInfo: LogInInfo) => {
-  return api
+  return await api
     .post<string, LogInInfo>(false, `/user/login`, logInInfo)
     .then((response) => {
-      localStorage.setItem('token', response.data);
-      return true;
+      // console.log(response.data);
+      if (response.status === 200) {
+        localStorage.setItem('token', response.data);
+        return true;
+      }
+      if (response.status === 401) {
+        redirect(`${ROUTE.error}/${401}`);
+        return false;
+      }
     })
+    // eslint-disable-next-line
     .catch((e) => {
+      redirect(`${ROUTE.error}/${500}`);
       console.log(e);
       return false;
     });
@@ -62,15 +77,18 @@ export const getIdCheck = async (id: string) => {
 };
 
 export const postGuestSignUp = async (signUpInfo: SignUpInfo) => {
-  return api
-    .post<string, SignUpInfo>(true, '/user/guest', signUpInfo)
-    .then(() => {
-      return true;
-    })
-    .catch((error) => {
-      console.log(error);
-      return false;
-    });
+  return (
+    api
+      .post<string, SignUpInfo>(true, '/user/guest', signUpInfo)
+      .then(() => {
+        return true;
+      })
+      // eslint-disable-next-line
+      .catch((error) => {
+        console.log(error);
+        return false;
+      })
+  );
 };
 
 export const postSignUp = async (signUpInfo: SignUpInfo) => {
@@ -126,7 +144,7 @@ export const postConfirmPassword = async (password: string) => {
       '/user/confirm',
       { password },
     );
-    console.log(response.data);
+    // console.log(response.data);
     return response.data;
   } catch (e) {
     return false;
@@ -139,6 +157,7 @@ export const deleteUserInfo = async () => {
     .then(() => {
       window.location.href = '/';
     })
+    // eslint-disable-next-line
     .catch((e) => {
       console.log(e);
     });

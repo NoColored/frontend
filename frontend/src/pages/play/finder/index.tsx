@@ -20,7 +20,7 @@ const Finder = () => {
   const [roomList, setRoomList] = useState<RoomListItem[]>(roomListData);
   const [index, setIndex] = useState<number>(1);
   const [maxIndex, setMaxIndex] = useState<number>(
-    Math.ceil(roomList.length / 6),
+    roomList.length ? Math.ceil(roomList.length / 6) : 1,
   );
 
   const itemPerPage = 6;
@@ -38,9 +38,11 @@ const Finder = () => {
     setIndex(1);
 
     const list = await getRoomList(1);
-    if (list) {
+    if (list.length > 0) {
       setRoomList(list);
       setMaxIndex(Math.ceil(roomList.length / itemPerPage));
+    } else {
+      setMaxIndex(1);
     }
   };
 

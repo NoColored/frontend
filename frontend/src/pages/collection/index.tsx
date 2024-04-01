@@ -1,9 +1,6 @@
 import { useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
 
 import * as styles from './index.css';
-
-import { User } from '@/types/auth';
 
 import BasicContentFrame from '@/components/BasicContentFrame/WithButtons';
 import SettingTextButton from '@/components/button/SettingTextButton';
@@ -17,9 +14,8 @@ import { patchLabelChange, patchSkinChange } from '@/services/collections';
 import { useCollectionStateStore } from '@/states/collection';
 
 const Collection = () => {
-  const { skinId, skinUrl, labelId } = useCollectionStateStore();
+  const { skinId, skinUrl, labelId, labelName } = useCollectionStateStore();
   const [selectedCategory, setSelectedCategory] = useState<string>('skin');
-  const user = useLoaderData() as User;
 
   const renderComponent = () => {
     switch (selectedCategory) {
@@ -79,7 +75,7 @@ const Collection = () => {
               }}
               className={styles.mySkin}
             >
-              <span className={styles.label}>{`< ${user?.label} >`}</span>
+              <span className={styles.label}>{`< ${labelName} >`}</span>
             </div>
             <div className={styles.submitButtonWrapper}>
               {selectedCategory !== 'achievement' && (

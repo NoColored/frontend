@@ -9,17 +9,23 @@ import { getCollections } from '@/services/collections';
 import { useCollectionStateStore } from '@/states/collection';
 
 const Label = () => {
-  const { labelId, setLabel } = useCollectionStateStore();
+  const { setLabel, setLabelName } = useCollectionStateStore();
   const [labels, setLabels] = useState<Labels[]>([]);
 
   useEffect(() => {
     getCollections().then((collections) => {
       if (collections && collections.labels) {
         setLabels(collections.labels);
-        console.log(collections.labels);
       }
     });
   }, []);
+
+  const labelClick = (label: Labels) => {
+    if (label.own) {
+      setLabel(label.id);
+      setLabelName(label.name);
+    }
+  };
 
   return (
     <div>
@@ -29,12 +35,7 @@ const Label = () => {
             role='button'
             tabIndex={-1}
             key={label.id}
-            onClick={() => {
-              if (label.own) {
-                console.log(labelId);
-                setLabel(labelId);
-              }
-            }}
+            onClick={() => labelClick(label)}
             className={label.own ? styles.achievedBox : styles.notAchievedBox}
           >
             <div className={styles.labelBoxStyle}>

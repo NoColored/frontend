@@ -3,21 +3,21 @@ import { create } from 'zustand';
 interface AudioStoreState {
   isPlaying: boolean;
   audio: HTMLAudioElement;
-  play: () => void;
-  stop: () => void;
+  playBackgroundSound: () => void;
+  stopBackgroundSound: () => void;
   setIsPlaying: (isPlaying: boolean) => void;
 }
 
 const useAudioStore = create<AudioStoreState>((set) => ({
   isPlaying: localStorage.getItem('backgroundSound') === 'true',
   audio: new Audio('/music/8-bit-game.mp3'),
-  play: () => {
+  playBackgroundSound: () => {
     set((state) => {
       state.audio.play().catch((error) => console.error('음악 없음', error));
       return { isPlaying: true };
     });
   },
-  stop: () => {
+  stopBackgroundSound: () => {
     set((state) => {
       state.audio.pause();
       state.audio.currentTime = 0;

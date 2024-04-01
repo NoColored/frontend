@@ -125,6 +125,5 @@ export const titleText = style([
     width: '100%',
     position: 'absolute',
     textAlign: 'center',
-    top: '15%',
   },
 ]);
