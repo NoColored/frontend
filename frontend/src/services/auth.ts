@@ -163,3 +163,12 @@ export const deleteUserInfo = async () => {
       console.log(e);
     });
 };
+
+export const checkToken = async () => {
+  return api
+    .get<boolean>(true, '/user/token')
+    .then((response) => {
+      return response.data;
+    })
+    .catch(() => false);
+};

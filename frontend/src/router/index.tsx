@@ -18,7 +18,7 @@ import Ranking from '@/pages/ranking';
 import Result from '@/pages/result';
 import Settings from '@/pages/settings';
 
-import { getUser } from '@/services/auth';
+import { checkToken, getUser } from '@/services/auth';
 import { getRoomList } from '@/services/finder';
 import { getLobbyInfo } from '@/services/lobby';
 import { getRank } from '@/services/rank';
@@ -43,6 +43,7 @@ const router = createBrowserRouter([
   },
   {
     element: <TokenLayout />,
+    loader: checkToken,
     children: [
       {
         path: `${ROUTE.loading}`,
