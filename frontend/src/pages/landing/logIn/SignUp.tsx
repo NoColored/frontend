@@ -10,6 +10,7 @@ import { buttonWrapper } from '@/pages/landing/index.css';
 import * as constants from '@/pages/landing/logIn/constants';
 
 import { getIdCheck, postGuestSignUp, postSignUp } from '@/services/auth';
+import { setFullScreen } from '@/services/landing';
 
 import { useUserStateStore } from '@/states/user';
 
@@ -60,6 +61,7 @@ const SignUp = ({ closeModal }: Props) => {
         if (isSuccess) {
           closeModal();
           navigate(ROUTE.home);
+          setFullScreen();
         }
       });
 

@@ -190,3 +190,25 @@ export const empty = style([
     color: 'gray300',
   }),
 ]);
+
+export const readyWrapper = style([
+  flexOptions({ option: 'columnCenter' }),
+  sprinkles({
+    marginTop: '8x',
+  }),
+]);
+
+export const errorMessage = style([
+  sprinkles({
+    textSize: '1.5x',
+  }),
+  {
+    textAlign: 'center',
+  },
+]);
+
+export const errorButtonWrapper = style([
+  sprinkles({
+    padding: '4x',
+  }),
+]);

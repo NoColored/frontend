@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect } from 'react';
 import { useLoaderData, useNavigate } from 'react-router-dom';
 
 import * as constants from './constants';
@@ -11,68 +11,61 @@ import ColoredButton from '@/components/button/ColoredButton';
 
 import useModal from '@/hooks/useModal';
 
-import MatchingButton from '@/pages/play/mode/MatchingButton';
 import ResultInfoBox from '@/pages/result/ResultInfoBox';
 import { RewardsModal } from '@/pages/result/RewardsModal/index';
 
-import { getUser } from '@/services/auth';
 import { getOut } from '@/services/lobby';
 
 import { ROUTE } from '@/router/constants';
 
 const Result = () => {
-  const gameResult = useLoaderData() as GameResult;
-  const [skin, setSkin] = useState<string>();
-  const [isMore, setIsMore] = useState<boolean>(false);
-
-  const { Modal, openModal, closeModal, isOpen } = useModal();
   const navigate = useNavigate();
+  const { roomUuid, players, reward } = useLoaderData() as GameResult;
+  const { Modal, openModal, closeModal } = useModal();
+  const noReward = !reward.tier && !reward.skins;
 
-  const handleCloseModal = async () => {
-    await getOut();
-    navigate(ROUTE.home, { replace: true });
-    closeModal();
-  };
+  useEffect(() => {
+    if (!noReward) {
+      openModal();
+    }
+  }, []);
 
   const handleClickExit = async () => {
-    setIsMore(false);
-    if (gameResult.reward.tier || gameResult.reward.skins) {
-      openModal();
-    } else {
+    if (roomUuid) {
       await getOut();
-      navigate(ROUTE.home, { replace: true });
     }
+    navigate(ROUTE.home, { replace: true });
   };
 
   const handleClickMore = async () => {
-    setIsMore(true);
-    if (gameResult.roomUuid) {
-      navigate(`${ROUTE.lobby}/${gameResult.roomUuid}`, { replace: true });
+    if (roomUuid) {
+      navigate(`${ROUTE.lobby}/${roomUuid}`, { replace: true });
     } else {
-      openModal();
-      const imgSrc = await getUser();
-      setSkin(imgSrc.skin);
+      navigate(ROUTE.play, { replace: true });
     }
   };
 
   return (
-    <BasicContentFrame>
+    <BasicContentFrame disableButton>
       <div className={styles.gameResultWrapper}>
-        <div className={styles.resultTextWrapper}>{constants.RESULTTEXT}</div>
+        <div className={styles.result}>
+          <div className={styles.resultTitle}>{constants.RESULTTEXT}</div>
 
-        {gameResult.players.map((item) => (
-          <div key={`${item.nickname}${item.rank}`}>
-            <ResultInfoBox
-              rank={item.rank}
-              imgSrc={item.skin}
-              label={item.label}
-              nickname={item.nickname}
-              colorStyle={constants.COLOR_STYLES[item.index]}
-              gameScore={item.score}
-              firstResult={item.rank === 1}
-            />
-          </div>
-        ))}
+          {players.map((item) => (
+            <div key={`${item.nickname}${item.rank}`}>
+              <ResultInfoBox
+                rank={item.rank}
+                imgSrc={item.skin}
+                label={item.label}
+                nickname={item.nickname}
+                colorStyle={constants.COLOR_STYLES[item.index]}
+                gameScore={item.score}
+                firstResult={item.rank === 1}
+              />
+            </div>
+          ))}
+        </div>
+
         <div className={styles.buttonWrapper}>
           <ColoredButton
             text='나가기'
@@ -89,23 +82,15 @@ const Result = () => {
         </div>
       </div>
 
-      <Modal>
-        {!isMore && (
+      {!noReward && (
+        <Modal>
           <RewardsModal
-            tier={gameResult.reward.tier}
-            skin={gameResult.reward.skins}
-            closeModal={handleCloseModal}
-          />
-        )}
-
-        {isMore && skin && (
-          <MatchingButton
-            imgSrc={skin}
+            tier={reward.tier}
+            skin={reward.skins}
             closeModal={closeModal}
-            isOpen={isOpen}
           />
-        )}
-      </Modal>
+        </Modal>
+      )}
     </BasicContentFrame>
   );
 };

@@ -6,16 +6,17 @@ import BasicContentFrame from '@/components/BasicContentFrame';
 import { useGameControl } from '@/states/game';
 
 import { config, scenesConfig } from '@/game/scene/config';
+import { ROUTE } from '@/router/constants';
 
 const Game = () => {
   const navigate = useNavigate();
   const { isActive, setIsActive } = useGameControl();
   const inGameDisconnect = () => {
-    navigate('/error', { replace: true });
+    navigate(`${ROUTE.error}/400`, { replace: true });
   };
   useEffect(() => {
     if (!isActive) {
-      navigate('/result', { replace: true });
+      navigate(ROUTE.result, { replace: true });
       return () => {};
     }
 

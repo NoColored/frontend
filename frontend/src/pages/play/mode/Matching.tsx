@@ -19,7 +19,7 @@ interface Props {
   isOpen: boolean;
 }
 
-const MatchingButton = ({ imgSrc, closeModal, isOpen }: Props) => {
+const Matching = ({ imgSrc, closeModal, isOpen }: Props) => {
   const navigate = useNavigate();
 
   useWebSocket((message) => {
@@ -56,4 +56,4 @@ const MatchingButton = ({ imgSrc, closeModal, isOpen }: Props) => {
   );
 };
 
-export default MatchingButton;
+export default Matching;

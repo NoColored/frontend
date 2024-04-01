@@ -1,5 +1,6 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 
+import * as styles from '@/components/BasicContentFrame/WithButtons/index.css';
 import ColoredButton from '@/components/button/ColoredButton';
 import SettingIconButton from '@/components/button/SettingIconButton';
 
@@ -15,7 +16,7 @@ const SettingButton = () => {
   const navigate = useNavigate();
 
   const location = useLocation();
-  const isPlaying = location.pathname === '/play/lobby';
+  const isPlaying = location.pathname.includes('/play/lobby');
 
   const handleClick = () => {
     if (location.pathname === '/settings') {
@@ -37,14 +38,16 @@ const SettingButton = () => {
       />
       {isPlaying && (
         <Modal>
-          <div>설정</div>
-          <AudioSetting />
-          <ColoredButton
-            text='닫기'
-            color='green'
-            size='small'
-            onClick={closeModal}
-          />
+          <div className={styles.wrapper}>
+            <div className={styles.title}>설정</div>
+            <AudioSetting />
+            <ColoredButton
+              text='닫기'
+              color='green'
+              size='small'
+              onClick={closeModal}
+            />
+          </div>
         </Modal>
       )}
     </>
