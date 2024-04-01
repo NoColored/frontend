@@ -66,6 +66,11 @@ export const EFFECT_TYPE: { [key: number]: string } = {
   5: 'itemObtain',
 };
 
+export const WALL_MAP = [
+  [0, 0, 3, 19],
+  [31, 0, 3, 19],
+];
+
 export const LOADING_MESSAGE = [
   {
     messageId: '608',

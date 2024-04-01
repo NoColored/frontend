@@ -14,7 +14,7 @@ export class Item extends Phaser.GameObjects.Image {
     const itemType = constants.ITEM_TYPE[item];
     this.setTexture(itemType);
     this.setX(x);
-    this.setY(y);
+    this.setY(y + 10);
     this.visible = true;
   }
 
