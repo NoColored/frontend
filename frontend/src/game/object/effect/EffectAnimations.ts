@@ -23,23 +23,13 @@ export class EffectAnimations extends Phaser.Animations.AnimationManager {
     });
 
     this.game.anims.create({
-      key: 'shuffleAnim',
-      frames: this.game.anims.generateFrameNumbers('shuffle', {
-        start: 0,
-        end: 5,
-      }),
-      frameRate: 6,
-      repeat: -1,
-    });
-
-    this.game.anims.create({
       key: 'disappearAnim',
       frames: this.game.anims.generateFrameNumbers('disappear', {
         start: 0,
-        end: 4,
+        end: 3,
       }),
       frameRate: 20,
-      repeat: -1,
+      repeat: 0,
     });
   }
 }

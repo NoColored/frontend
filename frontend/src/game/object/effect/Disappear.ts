@@ -5,11 +5,12 @@ export class Disappear extends Phaser.GameObjects.Sprite {
     super(scene, x, y, 'disappear');
     scene.add.existing(this);
     this.play('disappearAnim').setDepth(constants.INGAME_DEPTH.EFFECT);
+    this.once('animationcomplete', () => this.destroy());
 
-    this.scene.time.addEvent({
-      delay: 1000,
-      callback: () => this.destroy(),
-      loop: false,
-    });
+    // this.scene.time.addEvent({
+    //   delay: 1000,
+    //   callback: () => this.destroy(),
+    //   loop: false,
+    // });
   }
 }

@@ -217,12 +217,21 @@ export default class GameScene extends Phaser.Scene {
         frameHeight: 128,
       },
     );
+    // this.load.spritesheet(
+    //   'disappear',
+    //   '/images/effect/effect-item-firework-h32w32.png',
+    //   {
+    //     frameWidth: 32,
+    //     frameHeight: 32,
+    //   },
+    // );
+
     this.load.spritesheet(
       'disappear',
-      '/images/effect/effect-item-firework-h32w32.png',
+      '/images/effect/effect-item-firework-h47w47.png',
       {
-        frameWidth: 32,
-        frameHeight: 32,
+        frameWidth: 47,
+        frameHeight: 47,
       },
     );
   }
