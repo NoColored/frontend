@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import {ReactNode, useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import * as styles from './index.css';
@@ -7,6 +7,10 @@ import InfoButton from '@/components/BasicContentFrame/WithButtons/InfoButton';
 import SettingButton from '@/components/BasicContentFrame/WithButtons/SettingButton/index';
 import SettingIconButton from '@/components/button/SettingIconButton/index';
 import SettingNavigationButton from '@/components/button/SettingNavigationButton/index';
+
+import FullScreenPrompt from "@/pages/landing/FullScreenPrompt";
+
+import useAudioStore from "@/states/music";
 
 interface Props {
   children: ReactNode;
@@ -22,6 +26,7 @@ const BasicContentFrame = ({
   disableButton,
 }: Props) => {
   const navigate = useNavigate();
+  const { isPlaying, play, stop } = useAudioStore();
 
   const handleHomeButtonClick = () => {
     if (onBeforeButtonClick) {
@@ -37,8 +42,14 @@ const BasicContentFrame = ({
     navigate(-1);
   };
 
+  useEffect(() => {
+    // 자동으로 음악 재생 상태를 설정합니다.
+    isPlaying ? play() : stop();
+  }, [isPlaying, play, stop]);
+
   return (
     <div className={styles.frame}>
+      <FullScreenPrompt/>
       {!disableButton && (
         <div className={styles.iconButtons}>
           <InfoButton />
