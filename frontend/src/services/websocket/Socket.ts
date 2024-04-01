@@ -17,7 +17,7 @@ export class Socket {
     };
 
     this.webSocket.onclose = () => {
-      console.log('close');
+      // console.log('close');
     };
   }
 
@@ -33,13 +33,13 @@ export class Socket {
   ) {
     this.webSocket.onmessage = (event) => {
       const message = JSON.parse(event.data) as WebSocketMessage<actionType>;
-      console.log(message);
+      // console.log(message);
       handleWebSocketMessage(message);
     };
   }
 
   unmount() {
-    console.log('unmount');
+    // console.log('unmount');
     this.webSocket.onmessage = () => {};
   }
 

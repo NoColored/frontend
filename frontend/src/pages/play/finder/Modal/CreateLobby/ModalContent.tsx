@@ -10,6 +10,8 @@ import * as constants from '@/pages/play/finder/constants';
 import MapItem from '@/pages/play/finder/Modal/CreateLobby/MapItem';
 import * as styles from '@/pages/play/finder/Modal/index.css';
 
+import { ROUTE } from '@/router/constants';
+
 interface Props {
   roomTitle: string;
   roomPassword: string;
@@ -54,7 +56,7 @@ const ModalContent = ({
     await api(createRoomInfo).then((roomId) => {
       closeModal();
       if (roomId) {
-        navigate(`/play/lobby/${roomId}`);
+        navigate(`${ROUTE.lobby}/${roomId}`);
       }
     });
   };

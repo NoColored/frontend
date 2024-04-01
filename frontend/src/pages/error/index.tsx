@@ -8,13 +8,15 @@ import ColoredButton from '@/components/button/ColoredButton';
 
 import type { errorCode } from '@/pages/error/type';
 
+import { ROUTE } from '@/router/constants';
+
 const Error = () => {
   const navigate = useNavigate();
   const code = useParams().code as errorCode;
 
   const goBack = () => {
     if (code === '401') {
-      navigate('/', { replace: true });
+      navigate(ROUTE.main, { replace: true });
       return;
     }
     navigate(-1);

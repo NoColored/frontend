@@ -12,6 +12,8 @@ import MessageModalContent from '@/pages/play/finder/Modal/MessageModalContent';
 
 import { postEnterRoom } from '@/services/finder';
 
+import { ROUTE } from '@/router/constants';
+
 interface Props {
   closeModal: () => void;
 }
@@ -40,7 +42,7 @@ const SearchModalContent = ({ closeModal }: Props) => {
       setIsValid(false);
     } else {
       setIsValid(true);
-      navigate(`/play/lobby/${roomId}`);
+      navigate(`${ROUTE.lobby}/${roomId}`);
     }
   };
 
