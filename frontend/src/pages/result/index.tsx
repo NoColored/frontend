@@ -22,10 +22,10 @@ const Result = () => {
   const navigate = useNavigate();
   const { roomUuid, players, reward } = useLoaderData() as GameResult;
   const { Modal, openModal, closeModal } = useModal();
-  const hasReward = reward.tier || reward.skins;
+  const noReward = !reward.tier && !reward.skins;
 
   useEffect(() => {
-    if (hasReward) {
+    if (!noReward) {
       openModal();
     }
   }, []);
@@ -79,7 +79,7 @@ const Result = () => {
         </div>
       </div>
 
-      {hasReward && (
+      {!noReward && (
         <Modal>
           <RewardsModal
             tier={reward.tier}
