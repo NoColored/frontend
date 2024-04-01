@@ -4,7 +4,7 @@ import { calc } from '@vanilla-extract/css-utils';
 import * as constants from '@/components/BasicContentFrame/constants';
 import { basicFrame } from '@/components/BasicContentFrame/index.css';
 
-import { borderDarkOptions } from '@/styles/common.css';
+import { borderDarkOptions, flexOptions } from '@/styles/common.css';
 import { sprinkles } from '@/styles/sprinkles.css';
 
 export const frame = style([
@@ -81,5 +81,19 @@ export const navigation = style([
         left: '-16px',
       },
     },
+  },
+]);
+
+// SettingButton.tsx
+export const title = style([
+  sprinkles({
+    textSize: '2x',
+  }),
+]);
+
+export const wrapper = style([
+  flexOptions({ option: 'columnCenter' }),
+  {
+    justifyContent: 'space-between',
   },
 ]);
