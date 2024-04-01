@@ -217,14 +217,6 @@ export default class GameScene extends Phaser.Scene {
         frameHeight: 128,
       },
     );
-    // this.load.spritesheet(
-    //   'disappear',
-    //   '/images/effect/effect-item-firework-h32w32.png',
-    //   {
-    //     frameWidth: 32,
-    //     frameHeight: 32,
-    //   },
-    // );
 
     this.load.spritesheet(
       'disappear',
@@ -261,8 +253,8 @@ export default class GameScene extends Phaser.Scene {
     );
 
     // 버튼 증록 - 비활성화 상태
-    this.changeDirButton = ChangeDirButton.getInstance(this, this.socket);
-    this.jumpButton = JumpButton.getInstance(this, this.socket);
+    this.changeDirButton = new ChangeDirButton(this, this.socket);
+    this.jumpButton = new JumpButton(this, this.socket);
 
     // character
     const initialPlayerData: characterInfo = {
@@ -415,8 +407,16 @@ export default class GameScene extends Phaser.Scene {
 
   private effectUpdate(view: DataView) {
     const [data, length] = effectList(view, this.p + 1);
+
     data.forEach((effect) => {
-      EffectUtils(this, this.socket, effect[0], effect[1], effect[2]);
+      EffectUtils(
+        this,
+        effect[0],
+        effect[1],
+        effect[2],
+        this.changeDirButton,
+        this.jumpButton,
+      );
     });
     return length;
   }

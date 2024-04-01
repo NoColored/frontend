@@ -4,14 +4,12 @@ import * as constants from '@/game/constants';
 
 export default class ChangeDirButton extends Phaser.GameObjects.GameObject {
   // eslint-disable-next-line no-use-before-define
-  private static instance: ChangeDirButton | null;
   private button;
   private socket: GameSocket;
   private keys: Phaser.Input.Keyboard.Key[] = [];
   private sendMessages: number = -1;
 
-  // 생성자를 private으로 변경
-  private constructor(scene: Phaser.Scene, socket: GameSocket) {
+  constructor(scene: Phaser.Scene, socket: GameSocket) {
     super(scene, 'dirButton');
     this.button = this.scene.add
       .image(
@@ -31,17 +29,6 @@ export default class ChangeDirButton extends Phaser.GameObjects.GameObject {
     this.setButtonAndKeyInputEnabled(false);
   }
 
-  // getInstance 메서드 구현
-  public static getInstance(
-    scene: Phaser.Scene,
-    socket: GameSocket,
-  ): ChangeDirButton {
-    if (!ChangeDirButton.instance) {
-      ChangeDirButton.instance = new ChangeDirButton(scene, socket);
-    }
-    return ChangeDirButton.instance;
-  }
-
   setChangeDirButton() {
     this.button.on('pointerdown', () => {
       this.button.setTexture('clickedDirButton');
@@ -56,6 +43,7 @@ export default class ChangeDirButton extends Phaser.GameObjects.GameObject {
   }
 
   setupDirKeyInput() {
+    this.scene.input.keyboard?.removeAllListeners();
     // 방향키 코드 배열
     const keysCode = [
       Phaser.Input.Keyboard.KeyCodes.LEFT,
@@ -91,20 +79,19 @@ export default class ChangeDirButton extends Phaser.GameObjects.GameObject {
 
   changeButtonItem() {
     this.sendMessages = constants.SEND_WOBSOCKT_MESSAGE_TYPE.JUMP;
+    this.setChangeDirButton();
     this.button.setPosition(
       constants.BUTTON_POSITION.JUMP.x,
       constants.BUTTON_POSITION.JUMP.y,
     );
-    this.scene.time.delayedCall(5000, () => {
-      this.sendMessages = constants.SEND_WOBSOCKT_MESSAGE_TYPE.DIRECTION_CHANGE;
-      this.button.setPosition(
-        constants.BUTTON_POSITION.CHANGE_DIR.x,
-        constants.BUTTON_POSITION.CHANGE_DIR.y,
-      );
-    });
   }
 
-  public static destroyInstance() {
-    ChangeDirButton.instance = null;
+  resetButtonItem() {
+    this.sendMessages = constants.SEND_WOBSOCKT_MESSAGE_TYPE.DIRECTION_CHANGE;
+    this.setChangeDirButton();
+    this.button.setPosition(
+      constants.BUTTON_POSITION.CHANGE_DIR.x,
+      constants.BUTTON_POSITION.CHANGE_DIR.y,
+    );
   }
 }
