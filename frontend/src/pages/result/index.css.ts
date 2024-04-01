@@ -72,13 +72,12 @@ export const resultInfoBox = recipe({
     },
   ],
   variants: {
-    firstResult: {
+    myResult: {
       true: [
         sprinkles({
           color: 'white',
-          fontSize: '2x',
-          marginTop: '0.5x',
-          marginBottom: '2x',
+          textSize: '2x',
+          marginY: '2x',
         }),
         {
           paddingLeft: '5%',
@@ -112,25 +111,25 @@ export const resultInfoBox = recipe({
   },
   compoundVariants: [
     {
-      variants: { firstResult: true, colorStyle: 'pink' },
+      variants: { myResult: true, colorStyle: 'pink' },
       style: sprinkles({
         backgroundColor: 'pink',
       }),
     },
     {
-      variants: { firstResult: true, colorStyle: 'yellow' },
+      variants: { myResult: true, colorStyle: 'yellow' },
       style: sprinkles({
         backgroundColor: 'yellow',
       }),
     },
     {
-      variants: { firstResult: true, colorStyle: 'green' },
+      variants: { myResult: true, colorStyle: 'green' },
       style: sprinkles({
         backgroundColor: 'green',
       }),
     },
     {
-      variants: { firstResult: true, colorStyle: 'blue' },
+      variants: { myResult: true, colorStyle: 'blue' },
       style: sprinkles({
         backgroundColor: 'blue',
       }),

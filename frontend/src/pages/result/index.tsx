@@ -16,11 +16,14 @@ import { RewardsModal } from '@/pages/result/RewardsModal/index';
 
 import { getOut } from '@/services/lobby';
 
+import { useUserStateStore } from '@/states/user';
+
 import { ROUTE } from '@/router/constants';
 
 const Result = () => {
   const navigate = useNavigate();
   const { roomUuid, players, reward } = useLoaderData() as GameResult;
+  const myCode = useUserStateStore.getState().userCode;
   const { Modal, openModal, closeModal } = useModal();
   const noReward = !reward.tier && !reward.skins;
 
@@ -60,7 +63,7 @@ const Result = () => {
                 nickname={item.nickname}
                 colorStyle={constants.COLOR_STYLES[item.index]}
                 gameScore={item.score}
-                firstResult={item.rank === 1}
+                myResult={item.userCode === myCode}
               />
             </div>
           ))}

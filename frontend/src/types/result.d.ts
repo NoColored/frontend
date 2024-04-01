@@ -7,6 +7,7 @@ interface ResultPlayer {
   skin: string;
   rank: number;
   score: number;
+  userCode: string;
 }
 
 interface TierReward {
