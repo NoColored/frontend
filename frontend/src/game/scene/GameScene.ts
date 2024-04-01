@@ -62,7 +62,7 @@ export default class GameScene extends Phaser.Scene {
   private backgroundMusic: BgmManager | null = null;
 
   // nowUSerIndex
-  private nowUserIndex: number = 0;
+  private nowUserIndex: number = -1;
 
   private setIsActive: (isActive: boolean) => void;
 
@@ -322,8 +322,11 @@ export default class GameScene extends Phaser.Scene {
     const data = userCharacterIndex(view, this.p + 1);
     const [colorIdx, characterIdx] = data;
     if (this.nowUserIndex === characterIdx) return 3;
-    this.characters[this.nowUserIndex].setSkinState('npc');
-    this.characters[this.nowUserIndex].setAsNoUser();
+    if (this.nowUserIndex !== -1) {
+      this.characters[this.nowUserIndex].setSkinState('npc');
+      this.characters[this.nowUserIndex].setAsNoUser();
+    }
+
     this.nowUserIndex = characterIdx;
     this.characters[characterIdx].setSkinState(`player${colorIdx}` ?? 'npc');
     this.characters[characterIdx].setAsUser();
