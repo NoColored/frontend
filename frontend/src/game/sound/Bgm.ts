@@ -7,13 +7,17 @@ export class BgmManager extends Phaser.Sound.BaseSound {
     super(scene.sound, key);
 
     this.backgroundMusic = scene.sound.add(key, { loop, volume: 0.4 });
+    this.backgroundMusic.stop();
+  }
+
+  playBackgroundMusic(): void {
     const backgroundSound = localStorage.getItem('backgroundSound');
     if (backgroundSound === 'true') {
       this.backgroundMusic.play();
     }
   }
 
-  public stopBackgroundMusic(): void {
+  stopBackgroundMusic(): void {
     if (this.backgroundMusic && this.backgroundMusic.isPlaying) {
       this.backgroundMusic.stop();
     }
