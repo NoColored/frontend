@@ -48,21 +48,24 @@ const Result = () => {
   return (
     <BasicContentFrame disableButton>
       <div className={styles.gameResultWrapper}>
-        <div className={styles.resultTextWrapper}>{constants.RESULTTEXT}</div>
+        <div className={styles.result}>
+          <div className={styles.resultTitle}>{constants.RESULTTEXT}</div>
 
-        {players.map((item) => (
-          <div key={`${item.nickname}${item.rank}`}>
-            <ResultInfoBox
-              rank={item.rank}
-              imgSrc={item.skin}
-              label={item.label}
-              nickname={item.nickname}
-              colorStyle={constants.COLOR_STYLES[item.index]}
-              gameScore={item.score}
-              firstResult={item.rank === 1}
-            />
-          </div>
-        ))}
+          {players.map((item) => (
+            <div key={`${item.nickname}${item.rank}`}>
+              <ResultInfoBox
+                rank={item.rank}
+                imgSrc={item.skin}
+                label={item.label}
+                nickname={item.nickname}
+                colorStyle={constants.COLOR_STYLES[item.index]}
+                gameScore={item.score}
+                firstResult={item.rank === 1}
+              />
+            </div>
+          ))}
+        </div>
+
         <div className={styles.buttonWrapper}>
           <ColoredButton
             text='나가기'

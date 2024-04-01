@@ -10,6 +10,8 @@ export const MEDIA_FIRSTRANKINGINFOBOX_MARGIN = '1px';
 
 export const RANKINGINFOBOX_HEIGHT = '52px';
 
+export const PLAYERINFOBOX_WIDTH = '212px';
+
 export const RANKINGINFOBOX_WIDTH = '430px';
 
 export const MEDIA_RANKINGINFOBOX_HEIGHT = '46px';
