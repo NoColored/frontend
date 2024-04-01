@@ -86,6 +86,14 @@ export const submitButtonWrapper = style([
   },
 ]);
 
+export const submitSuccessMessage = style([
+  sprinkles({
+    color: 'blue',
+    textSize: '1.5x',
+    marginBottom: '2x',
+  }),
+]);
+
 export const skinWrapper = style([
   sprinkles({ padding: '3x' }),
   {

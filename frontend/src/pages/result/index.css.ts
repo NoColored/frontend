@@ -9,15 +9,15 @@ import { sprinkles } from '@/styles/sprinkles.css';
 export const gameResultWrapper = style([
   flexOptions({ option: 'columnCenter' }),
   sprinkles({
-    justifyContent: 'spaceAround',
+    justifyContent: 'spaceBetween',
+    height: 'full',
+    paddingY: '4x',
   }),
-  {
-    width: '100%',
-    height: '100%',
-  },
 ]);
 
-export const resultTextWrapper = style([
+export const result = style([flexOptions({ option: 'columnCenter' })]);
+
+export const resultTitle = style([
   sprinkles({
     marginTop: '4x',
     fontFamily: 'numFont',
@@ -50,12 +50,12 @@ export const resultInfoBox = recipe({
     sprinkles({
       backgroundColor: 'white',
       fontSize: '1.5x',
-      justifyContent: 'spaceAround',
+      justifyContent: 'spaceBetween',
       borderStyle: 'solid',
       borderWidth: '3x',
       borderRadius: '2x',
       paddingX: '4x',
-      marginY: '0.5x',
+      marginY: '1x',
     }),
     {
       height: constants.RANKINGINFOBOX_HEIGHT,
@@ -221,3 +221,20 @@ export const rewardScrollItem = style([
 ]);
 
 export const rewardBoxImage = style([{ width: '32%' }]);
+
+export const playerInfoBoxWrapper = style([
+  sprinkles({
+    display: 'flex',
+    justifyContent: 'flexStart',
+  }),
+  {
+    width: constants.PLAYERINFOBOX_WIDTH,
+  },
+]);
+
+export const score = style([
+  {
+    width: '80px',
+    textAlign: 'center',
+  },
+]);

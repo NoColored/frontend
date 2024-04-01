@@ -25,6 +25,14 @@ const useAudioStore = create<AudioStoreState>((set) => ({
     });
   },
   setIsPlaying: (isPlaying: boolean) => {
+    if (
+      localStorage.getItem('backgroundSound') === null &&
+      localStorage.getItem('effectSound') === null
+    ) {
+      localStorage.setItem('backgroundSound', 'true');
+      localStorage.setItem('effectSound', 'true');
+    }
+
     set(() => ({ isPlaying }));
     if (isPlaying) {
       set((state) => {

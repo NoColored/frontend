@@ -25,8 +25,10 @@ const ResultInfoBox = ({
   return (
     <div className={styles.resultInfoBox({ firstResult, colorStyle })}>
       <span>{rank}</span>
-      <PlayerInfoBox label={label} imgSrc={imgSrc} nickname={nickname} />
-      <span>{gameScore}</span>
+      <div className={styles.playerInfoBoxWrapper}>
+        <PlayerInfoBox label={label} imgSrc={imgSrc} nickname={nickname} />
+      </div>
+      <span className={styles.score}>{gameScore}</span>
     </div>
   );
 };
