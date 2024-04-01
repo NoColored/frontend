@@ -135,8 +135,8 @@ export default class GameScene extends Phaser.Scene {
     this.loadingManager.createLoadingScreen();
     this.setGameReady();
     // Map 투명 타일
-    // this.load.image('tileTransparent', '/images/map/transparent-tile.png');
-    this.load.image('tileTransparent', '/images/map/transTile-Test.png');
+    this.load.image('tileTransparent', '/images/map/transparent-tile.png');
+    // this.load.image('tileTransparent', '/images/map/transTile-Test.png');
 
     // music
     this.load.audio('bgm', '/music/8-bit-game.mp3');

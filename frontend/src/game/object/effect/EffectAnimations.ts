@@ -39,7 +39,7 @@ export class EffectAnimations extends Phaser.Animations.AnimationManager {
         end: 4,
       }),
       frameRate: 20,
-      repeat: 40,
+      repeat: -1,
     });
   }
 }
