@@ -1,16 +1,16 @@
-import create from 'zustand';
+import { create } from 'zustand';
 
 interface AudioStoreState {
   isPlaying: boolean;
   audio: HTMLAudioElement;
   play: () => void;
   stop: () => void;
-  setIsPlaying: (isPlaying: boolean) => void; // 추가된 부분
+  setIsPlaying: (isPlaying: boolean) => void;
 }
 
 const useAudioStore = create<AudioStoreState>((set) => ({
   isPlaying: localStorage.getItem('backgroundSound') === 'true',
-  audio: new Audio('/music/123.mp3'),
+  audio: new Audio('/music/8-bit-game.mp3'),
   play: () => {
     set((state) => {
       state.audio.play().catch((error) => console.error('음악 없음', error));
