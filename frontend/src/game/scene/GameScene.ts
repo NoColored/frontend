@@ -231,7 +231,7 @@ export default class GameScene extends Phaser.Scene {
   create() {
     // bgm 삽입 -> Bgm.ts에서 구현한 SoundManager 사용
     // eslint-disable-next-line no-new
-    this.backgroundMusic = new BgmManager(this, 'bgm', true);
+    // this.backgroundMusic = new BgmManager(this, 'bgm', true);
 
     // eslint-disable-next-line no-new
     new Background(this, 'background');
