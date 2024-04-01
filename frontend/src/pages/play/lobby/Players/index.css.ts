@@ -19,6 +19,17 @@ export const playerWrapper = style([
   },
 ]);
 
+export const error = style([
+  flexOptions({ option: 'columnCenter' }),
+  playerWrapper,
+  {
+    color: 'white',
+    fontSize: '24px',
+    lineHeight: '32px',
+    textAlign: 'center',
+  },
+]);
+
 export const characterWrapper = style([
   {
     display: 'grid',
