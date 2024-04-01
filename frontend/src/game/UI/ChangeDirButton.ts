@@ -3,11 +3,14 @@ import { GameSocket } from '@/services/websocket/GameSocket';
 import * as constants from '@/game/constants';
 
 export default class ChangeDirButton extends Phaser.GameObjects.GameObject {
+  // eslint-disable-next-line no-use-before-define
+  private static instance: ChangeDirButton;
   private button;
   private socket: GameSocket;
   private keys: Phaser.Input.Keyboard.Key[] = [];
 
-  constructor(scene: Phaser.Scene, socket: GameSocket) {
+  // 생성자를 private으로 변경
+  private constructor(scene: Phaser.Scene, socket: GameSocket) {
     super(scene, 'dirButton');
     this.button = this.scene.add
       .image(
@@ -24,6 +27,17 @@ export default class ChangeDirButton extends Phaser.GameObjects.GameObject {
     this.scene.add.existing(this);
 
     this.setButtonAndKeyInputEnabled(false);
+  }
+
+  // getInstance 메서드 구현
+  public static getInstance(
+    scene: Phaser.Scene,
+    socket: GameSocket,
+  ): ChangeDirButton {
+    if (!ChangeDirButton.instance) {
+      ChangeDirButton.instance = new ChangeDirButton(scene, socket);
+    }
+    return ChangeDirButton.instance;
   }
 
   setChangeDirButton() {

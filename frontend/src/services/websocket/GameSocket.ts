@@ -32,6 +32,10 @@ export class GameSocket extends Socket {
     const { buffer } = new Uint8Array([number]);
     this.webSocket.send(buffer);
   }
+
+  inGameUnconnected(onCloseEvent: () => void) {
+    this.webSocket.onclose = onCloseEvent;
+  }
 }
 
 export const characterInfoList = (
@@ -101,11 +105,22 @@ export const effectList = (
   const length = view.getUint8(p++);
   for (let i = 0; i < length; i++) {
     showEffectList.push([
-      view.getUint8(p + 1),
-      view.getFloat32(p + 2, false),
-      view.getFloat32(p + 6, false),
+      view.getUint8(p),
+      view.getFloat32(p + 1, false),
+      view.getFloat32(p + 5, false),
     ]);
     p += 9;
   }
   return [showEffectList, 2 + 9 * length];
+};
+
+export const showItem = (view: DataView, point: number): [number[], number] => {
+  return [
+    [
+      view.getUint8(point),
+      view.getFloat32(point + 1),
+      view.getFloat32(point + 5),
+    ],
+    10,
+  ];
 };

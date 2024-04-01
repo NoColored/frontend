@@ -1,6 +1,7 @@
 export default class CountDown {
   private scene: Phaser.Scene;
   private countDownText: Phaser.GameObjects.Text | null;
+  private countDownSound: Phaser.Sound.BaseSound | null | undefined;
 
   constructor(scene: Phaser.Scene) {
     this.scene = scene;
@@ -18,6 +19,8 @@ export default class CountDown {
     this.countDownText.setStroke('#000000', 6);
     this.countDownText.setDepth(300);
     this.countDownText.visible = false;
+
+    this.countDownSound = this.scene.sound.add('countdownSound');
   }
 
   showCountDown() {
@@ -32,7 +35,11 @@ export default class CountDown {
       return;
     }
 
-    console.log('changeCountDownText', number);
+    const EffectSoundOnOff = localStorage.getItem('effectSound');
+    if (EffectSoundOnOff === 'true' || EffectSoundOnOff === null) {
+      this.countDownSound?.play();
+    }
+
     this.countDownText.setText(`${number}`);
   }
 
