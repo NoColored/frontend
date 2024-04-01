@@ -9,7 +9,7 @@ export interface ResultInfoBoxProps {
   label: string;
   nickname: string;
   gameScore: number;
-  firstResult?: boolean;
+  myResult: boolean;
   colorStyle: colorStyles;
 }
 
@@ -19,11 +19,11 @@ const ResultInfoBox = ({
   label,
   nickname,
   gameScore,
-  firstResult,
+  myResult,
   colorStyle,
 }: ResultInfoBoxProps) => {
   return (
-    <div className={styles.resultInfoBox({ firstResult, colorStyle })}>
+    <div className={styles.resultInfoBox({ myResult, colorStyle })}>
       <span>{rank}</span>
       <div className={styles.playerInfoBoxWrapper}>
         <PlayerInfoBox label={label} imgSrc={imgSrc} nickname={nickname} />
