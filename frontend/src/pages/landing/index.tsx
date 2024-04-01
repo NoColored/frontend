@@ -8,32 +8,28 @@ import ColoredButton from '@/components/button/ColoredButton/index';
 import { getGuestLogin } from '@/services/auth';
 import { setFullScreen } from '@/services/landing';
 
-import useEffectSoundStore from '@/states/effect';
 import useAudioStore from '@/states/music';
 
 import { ROUTE } from '@/router/constants';
 
 const Landing = () => {
   const navigate = useNavigate();
-  const { isPlaying, play, stop } = useAudioStore();
-  const playEffectSound = useEffectSoundStore((state) => state.playEffectSound);
+  const { isPlaying, playBackgroundSound, stopBackgroundSound } =
+    useAudioStore();
   const clickGuestLogin = async () => {
     return getGuestLogin().then((isSuccess) => {
-      playEffectSound();
       if (isSuccess) {
-        isPlaying ? play() : stop();
+        isPlaying ? playBackgroundSound() : stopBackgroundSound();
         navigate(ROUTE.home);
         setFullScreen();
         return;
       }
-      console.log('Guest 로그인 실패');
       navigate(`${ROUTE.error}/500`);
     });
   };
 
   const clickLogIn = () => {
-    playEffectSound();
-    isPlaying ? play() : stop();
+    isPlaying ? playBackgroundSound() : stopBackgroundSound();
     navigate(ROUTE.login);
   };
 

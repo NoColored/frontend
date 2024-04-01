@@ -16,7 +16,6 @@ import { useCollectionStateStore } from '@/states/collection';
 const Collection = () => {
   const { skinId, skinUrl, labelId, labelName } = useCollectionStateStore();
   const [selectedCategory, setSelectedCategory] = useState<string>('skin');
-  // const user = useLoaderData() as User;
 
   const renderComponent = () => {
     switch (selectedCategory) {

@@ -59,7 +59,6 @@ export const label = style([
   {
     position: 'absolute',
     textAlign: 'center',
-    top: '15%',
   },
 ]);
 

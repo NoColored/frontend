@@ -13,7 +13,6 @@ const Achievement = () => {
     getCollections().then((collections) => {
       if (collections && collections.achievements) {
         setAchievement(collections.achievements);
-        // console.log(collections.achievements);
       }
     });
   }, []);
