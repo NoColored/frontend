@@ -3,13 +3,15 @@ import { GameSocket } from '@/services/websocket/GameSocket';
 import * as constants from '@/game/constants';
 
 export default class JumpButton extends Phaser.GameObjects.GameObject {
+  // eslint-disable-next-line no-use-before-define
+  private static instance: JumpButton;
   private button;
   private socket: GameSocket;
   private keys: Phaser.Input.Keyboard.Key[] = [];
 
-  constructor(scene: Phaser.Scene, socket: GameSocket) {
+  // 생성자를 private으로 변경
+  private constructor(scene: Phaser.Scene, socket: GameSocket) {
     super(scene, 'jumpButton');
-    // TODO DEPTH -> constants로 변경
     this.button = this.scene.add
       .image(
         constants.BUTTON_POSITION.JUMP.x,
@@ -25,6 +27,17 @@ export default class JumpButton extends Phaser.GameObjects.GameObject {
     this.scene.add.existing(this);
 
     this.setButtonAndKeyInputEnabled(false);
+  }
+
+  // getInstance 메서드를 통해 인스턴스에 접근
+  public static getInstance(
+    scene: Phaser.Scene,
+    socket: GameSocket,
+  ): JumpButton {
+    if (!JumpButton.instance) {
+      JumpButton.instance = new JumpButton(scene, socket);
+    }
+    return JumpButton.instance;
   }
 
   setJumpButton() {

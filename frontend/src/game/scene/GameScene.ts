@@ -8,6 +8,7 @@ import {
   currentScore,
   effectList,
   GameSocket,
+  showItem,
   showRealSkin,
   timeLeft,
   userCharacterIndex,
@@ -22,7 +23,10 @@ import { PhysicsMap } from '@/game/map/PhysicsMap';
 import { Character } from '@/game/object/Character';
 import { CharacterAnimation } from '@/game/object/CharacterAnimation';
 import { CharacterIcon } from '@/game/object/CharacterIcon';
+import { EffectAnimations } from '@/game/object/effect/EffectAnimations';
+import { Item } from '@/game/object/Item';
 import CountDown from '@/game/scene/CountDown';
+import { EffectUtils } from '@/game/scene/EffectUtils';
 import GameOver from '@/game/scene/GameOver';
 import LoadingUtils from '@/game/scene/LoadingUtils';
 import { BgmManager } from '@/game/sound/Bgm';
@@ -44,26 +48,35 @@ export default class GameScene extends Phaser.Scene {
   private characters: Character[] = [];
   private characterIcons: CharacterIcon[];
   private characterIconKeys: string[];
+
   private charactersPrevSkin: number[] = [];
   private charactersNowSkin: number[] = [];
+
   private icons: string[] = [];
+  private item: Item | null = null;
+
   private topUi: TopUi | null = null;
   private changeDirButton: ChangeDirButton | null = null;
   private jumpButton: JumpButton | null = null;
 
-  // nowUSerIndex
+  private backgroundMusic: BgmManager | null = null;
 
-  private nowUserIndex: number = 0;
+  // nowUSerIndex
+  private nowUserIndex: number = -1;
 
   private setIsActive: (isActive: boolean) => void;
 
-  constructor(setIsActive: (isActive: boolean) => void) {
+  constructor(
+    setIsActive: (isActive: boolean) => void,
+    onDisconnect: () => void,
+  ) {
     super({ key: 'GameScene' });
     this.setIsActive = setIsActive;
     // WebSocket
     const { webSocket } = useWebSocketStore.getState();
     this.socket = webSocket;
     this.socket.useMessageQueue();
+    this.socket.inGameUnconnected(onDisconnect);
 
     // api 데이터 초기화
     this.gameData = null;
@@ -72,8 +85,11 @@ export default class GameScene extends Phaser.Scene {
     this.topUi = null;
     this.jumpButton = null;
     this.changeDirButton = null;
+
     this.characterIcons = [];
     this.characterIconKeys = [];
+
+    this.item = null;
 
     // NowSkin만 먼저 초기화 / prev는 작동 중 자동 세팅
     this.charactersNowSkin = new Array(constants.CHARACTER_COUNT).fill(-1);
@@ -119,12 +135,15 @@ export default class GameScene extends Phaser.Scene {
     this.loadingManager.createLoadingScreen();
     this.setGameReady();
     // Map 투명 타일
-    // this.load.image('tileTransparent', '/images/map/transparent-tile.png');
-    this.load.image('tileTransparent', '/images/map/transTile-Test.png');
+    this.load.image('tileTransparent', '/images/map/transparent-tile.png');
+    // this.load.image('tileTransparent', '/images/map/transTile-Test.png');
 
     // music
     this.load.audio('bgm', '/music/8-bit-game.mp3');
     this.load.audio('bgm2', '/music/ready-to-play.mp3');
+    this.load.audio('blowupSound', '/music/blowupSound.mp3');
+    this.load.audio('obtainSound', '/music/obtainSound.mp3');
+    this.load.audio('countdownSound', '/music/countdownSound.mp3');
 
     // npc object
     this.load.spritesheet(
@@ -167,12 +186,60 @@ export default class GameScene extends Phaser.Scene {
       'jumpButton',
       '/images/ui/controller/icon-controller-jump.svg',
     );
+
+    // 아이템 asset
+    Object.values(constants.ITEM_TYPE).forEach((itemType) => {
+      this.load.image(itemType, `/images/items/item-${itemType}-h32w32.png`);
+    });
+
+    // 이펙트 asset
+    this.load.spritesheet(
+      'blowup',
+      '/images/effect/effect-play-blowup-h16w128.png',
+      {
+        frameWidth: 16,
+        frameHeight: 16,
+      },
+    );
+    this.load.spritesheet(
+      'stopLoading',
+      '/images/effect/effect-item-stop-h50w600.png',
+      {
+        frameWidth: 50,
+        frameHeight: 50,
+      },
+    );
+    this.load.spritesheet(
+      'shuffle',
+      '/images/effect/effect-item-arrowrotate-h128w768.png',
+      {
+        frameWidth: 128,
+        frameHeight: 128,
+      },
+    );
+    // this.load.spritesheet(
+    //   'disappear',
+    //   '/images/effect/effect-item-firework-h32w32.png',
+    //   {
+    //     frameWidth: 32,
+    //     frameHeight: 32,
+    //   },
+    // );
+
+    this.load.spritesheet(
+      'disappear',
+      '/images/effect/effect-item-firework-h47w47.png',
+      {
+        frameWidth: 47,
+        frameHeight: 47,
+      },
+    );
   }
 
   create() {
     // bgm 삽입 -> Bgm.ts에서 구현한 SoundManager 사용
     // eslint-disable-next-line no-new
-    new BgmManager(this, 'bgm', true);
+    this.backgroundMusic = new BgmManager(this, 'bgm', true);
 
     // eslint-disable-next-line no-new
     new Background(this, 'background');
@@ -180,6 +247,10 @@ export default class GameScene extends Phaser.Scene {
     // Map 임시 - 그냥 이미지로 깔아둠
     // eslint-disable-next-line no-new
     new Map(this, 'mapType');
+
+    // Effect 생성
+    // eslint-disable-next-line no-new
+    new EffectAnimations(this.game);
 
     // 물리 맵 구현
     const physicsMapInst = new PhysicsMap(
@@ -190,14 +261,14 @@ export default class GameScene extends Phaser.Scene {
     );
 
     // 버튼 증록 - 비활성화 상태
-    this.changeDirButton = new ChangeDirButton(this, this.socket);
-    this.jumpButton = new JumpButton(this, this.socket);
+    this.changeDirButton = ChangeDirButton.getInstance(this, this.socket);
+    this.jumpButton = JumpButton.getInstance(this, this.socket);
 
     // character
     const initialPlayerData: characterInfo = {
-      x: 300,
-      y: 10,
-      velX: -1,
+      x: 1000,
+      y: 1000,
+      velX: 0,
       velY: 0,
     };
 
@@ -219,19 +290,21 @@ export default class GameScene extends Phaser.Scene {
       );
     }
 
+    this.item = new Item(this);
+
     this.countDownManager.createCountDown();
 
     this.topUi = new TopUi(this, this.gameData?.skins.length ?? 0, this.icons);
     this.topUi.hideUi();
-
-    //  TODO 삭제 하기
-    this.topUi.showUi();
 
     // 이벤트 핸들러 등록
     this.events.on('gameStateChange', this.handleGameStateChange, this);
 
     // 각종 세팅 완료
     this.changeGameState('ready');
+    this.socket.sendInputMesssage(
+      constants.SEND_WOBSOCKT_MESSAGE_TYPE.LOAD_COMPLETE,
+    );
   }
 
   private gameStartUpdate() {
@@ -249,8 +322,11 @@ export default class GameScene extends Phaser.Scene {
     const data = userCharacterIndex(view, this.p + 1);
     const [colorIdx, characterIdx] = data;
     if (this.nowUserIndex === characterIdx) return 3;
-    this.characters[this.nowUserIndex].setSkinState('npc');
-    this.characters[this.nowUserIndex].setAsNoUser();
+    if (this.nowUserIndex !== -1) {
+      this.characters[this.nowUserIndex].setSkinState('npc');
+      this.characters[this.nowUserIndex].setAsNoUser();
+    }
+
     this.nowUserIndex = characterIdx;
     this.characters[characterIdx].setSkinState(`player${colorIdx}` ?? 'npc');
     this.characters[characterIdx].setAsUser();
@@ -266,7 +342,6 @@ export default class GameScene extends Phaser.Scene {
   }
 
   private countDownUpdate(view: DataView) {
-    // TODO: countDownUpdate 다시 체크
     const data = timeLeft(view, this.p + 1);
     if (this.gameState === 'ready') {
       this.changeGameState('countDown');
@@ -274,6 +349,18 @@ export default class GameScene extends Phaser.Scene {
     if (this.gameState === 'playing') return 2;
     this.countDownManager.changeCountDownText(data);
     return 2;
+  }
+
+  private itemUpdate(view: DataView) {
+    const [data, length] = showItem(view, this.p + 1);
+    const [itemNum, x, y] = data;
+    if (itemNum === 0) {
+      this.item?.itemShift();
+    } else {
+      this.item?.itemPop(itemNum, x, y);
+    }
+
+    return length;
   }
 
   private gameOverUpdate() {
@@ -328,9 +415,9 @@ export default class GameScene extends Phaser.Scene {
 
   private effectUpdate(view: DataView) {
     const [data, length] = effectList(view, this.p + 1);
-    // 이펙트 처리
-    this.gameData;
-    data;
+    data.forEach((effect) => {
+      EffectUtils(this, this.socket, effect[0], effect[1], effect[2]);
+    });
     return length;
   }
 
@@ -344,6 +431,8 @@ export default class GameScene extends Phaser.Scene {
         return this.timeLeftUpdate(view);
       case constants.GAMESOCKET_MESSAGE_TYPE.get('COUNTDOWN'):
         return this.countDownUpdate(view);
+      case constants.GAMESOCKET_MESSAGE_TYPE.get('ITEM_TYPE'):
+        return this.itemUpdate(view);
       case constants.GAMESOCKET_MESSAGE_TYPE.get('GAME_OVER'):
         return this.gameOverUpdate();
       case constants.GAMESOCKET_MESSAGE_TYPE.get('CHARACTER_INFO_LIST'):
@@ -365,7 +454,6 @@ export default class GameScene extends Phaser.Scene {
 
   private p: number = 0;
 
-  // ToDO 삭제
   getSocketData = () => {
     if (!this.socket) return null;
 
@@ -374,7 +462,6 @@ export default class GameScene extends Phaser.Scene {
       if (!message) {
         return null;
       }
-
       const view = new DataView(message);
       this.p = 0;
       while (this.p < view.byteLength) {
@@ -418,15 +505,19 @@ export default class GameScene extends Phaser.Scene {
       case 'countDown':
         this.loadingManager.destroyLoadingScreen();
         this.topUi?.showUi();
+
         break;
       case 'playing':
         this.jumpButton?.setButtonAndKeyInputEnabled(true);
         this.changeDirButton?.setButtonAndKeyInputEnabled(true);
         this.countDownManager.destroyCountDown();
+        this.backgroundMusic?.playBackgroundMusic();
+
         break;
       case 'end':
         // eslint-disable-next-line no-new
         new GameOver(this);
+        this.socket.inGameUnconnected(() => {});
         this.jumpButton?.setButtonAndKeyInputEnabled(false);
         this.changeDirButton?.setButtonAndKeyInputEnabled(false);
 
