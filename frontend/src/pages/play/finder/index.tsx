@@ -49,7 +49,7 @@ const Finder = () => {
   const currentItems = roomList.slice(offset, offset + itemPerPage);
 
   return (
-    <BasicContentFrame>
+    <BasicContentFrame backButtonLabel='뒤로'>
       <div className={styles.contentWrapper}>
         <div className={styles.topButtonsWrapper}>
           <span className={styles.rightButtonsWrapper}>

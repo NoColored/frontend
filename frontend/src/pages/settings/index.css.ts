@@ -32,7 +32,6 @@ export const title = style([
   flexOptions({ option: 'center' }),
   sprinkles({
     textSize: '2x',
-    paddingBottom: '2x',
   }),
 ]);
 style([
@@ -54,6 +53,7 @@ export const fieldSetBorder = style([
   sprinkles({
     borderRadius: '2x',
     padding: '4x',
+    margin: '4x',
   }),
   {
     border: `3px solid ${vars.colors.gray700}`,
@@ -102,7 +102,6 @@ export const settingButtonWrapper = style([
   sprinkles({
     display: 'grid',
     columnGap: '2x',
-    marginTop: '4x',
   }),
   {
     gridTemplateColumns: '1fr 1fr',
