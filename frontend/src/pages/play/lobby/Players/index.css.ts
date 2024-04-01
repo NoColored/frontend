@@ -202,6 +202,9 @@ export const errorMessage = style([
   sprinkles({
     textSize: '1.5x',
   }),
+  {
+    textAlign: 'center',
+  },
 ]);
 
 export const errorButtonWrapper = style([
