@@ -15,6 +15,8 @@ import SignUp from '@/pages/landing/logIn/SignUp';
 import { postMemberLogin } from '@/services/auth';
 import { setFullScreen } from '@/services/landing';
 
+import { ROUTE } from '@/router/constants';
+
 const LogIn = () => {
   const [isClicked, setIsClicked] = useState(false);
   const [logInInfo, setLogInInfo] = useState<LogInInfo>({
@@ -40,7 +42,7 @@ const LogIn = () => {
         openModal();
         return;
       }
-      navigate('/home');
+      navigate(ROUTE.home);
       setFullScreen();
     });
   };
