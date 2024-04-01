@@ -92,12 +92,13 @@ export const postGuestSignUp = async (signUpInfo: SignUpInfo) => {
 };
 
 export const postSignUp = async (signUpInfo: SignUpInfo) => {
-  try {
-    await api.post<string, SignUpInfo>(false, '/user/signup', signUpInfo);
-    return true;
-  } catch (e) {
-    return false;
-  }
+  return api
+    .post<string, SignUpInfo>(false, '/user/signup`', signUpInfo)
+    .then((res) => {
+      localStorage.setItem('token', res.data);
+      return true;
+    })
+    .catch(() => false);
 };
 
 export const patchNicknameChange = async (nickname: string) => {
