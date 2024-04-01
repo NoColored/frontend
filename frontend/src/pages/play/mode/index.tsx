@@ -10,7 +10,7 @@ import ColoredIconButton from '@/components/button/ColoredIconButton';
 
 import useModal from '@/hooks/useModal';
 
-import MatchingButton from '@/pages/play/mode/MatchingButton';
+import Matching from '@/pages/play/mode/Matching';
 import RankingItemBox from '@/pages/ranking/RankingItemBox';
 
 import { getMatching } from '@/services/matching';
@@ -55,11 +55,7 @@ const Mode = () => {
         </div>
       </div>
       <Modal>
-        <MatchingButton
-          imgSrc={user.skin}
-          closeModal={closeModal}
-          isOpen={isOpen}
-        />
+        <Matching imgSrc={user.skin} closeModal={closeModal} isOpen={isOpen} />
       </Modal>
     </BasicContentFrame>
   );
