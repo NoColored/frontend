@@ -1,9 +1,10 @@
-import { playerColorType } from '@/pages/play/lobby/types';
+import type { playerColorType } from '@/pages/play/lobby/types';
+import type { tierRange } from '@/pages/ranking/types';
 
 interface Player {
   userCode: string;
   nickname: string;
-  tier: string;
+  tier: tierRange;
   skin: string;
   label: string;
   ready: boolean;

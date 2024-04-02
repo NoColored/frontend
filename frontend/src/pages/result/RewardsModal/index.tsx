@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import type { TierReward } from '@/types/result';
 
@@ -7,43 +7,28 @@ import TierUpgrade from '@/pages/result/RewardsModal/TierUpgrade';
 
 interface Props {
   tier?: TierReward;
-  skin?: string[];
+  skin: string[];
   closeModal: () => void;
 }
 
 export const RewardsModal = ({ tier, skin, closeModal }: Props) => {
-  const [showTier, setShowTier] = useState<boolean>(false);
-  const [showSkin, setShowSkin] = useState<boolean>(false);
-
-  useEffect(() => {
-    if (tier) {
-      setShowTier(true);
-    } else if (skin) {
-      setShowSkin(true);
-    }
-  }, []);
+  const hasTier = !!tier && tier.upgrade;
+  const hasSkin = skin.length > 0;
+  const [showTier, setShowTier] = useState<boolean>(hasTier);
 
   const handleTierClose = () => {
-    if (skin) {
-      setShowSkin(true);
-    } else {
+    if (!hasSkin) {
       closeModal();
+      return;
     }
     setShowTier(false);
   };
 
-  const handleSkinClose = () => {
-    setShowSkin(false);
-    closeModal();
-  };
-
   return (
     <>
-      {tier && showTier && (
-        <TierUpgrade closeModal={handleTierClose} tier={tier} />
-      )}
-      {skin && showSkin && !showTier && (
-        <SkinReward closeModal={handleSkinClose} skin={skin} />
+      {hasTier && <TierUpgrade closeModal={handleTierClose} tier={tier} />}
+      {hasSkin && !showTier && (
+        <SkinReward closeModal={closeModal} skin={skin} />
       )}
     </>
   );

@@ -15,7 +15,7 @@ const PlayerInfo = ({ player }: Props) => {
 
   return (
     <div className={styles.playerInfoColored({ color: player.color })}>
-      <TierIconBox tier='origin' size='full' />
+      <TierIconBox tier={player.tier} size='full' />
       <div className={styles.titleAndName}>
         <div className={styles.title}>{player.label}</div>
         <div className={styles.name}>{player.nickname}</div>

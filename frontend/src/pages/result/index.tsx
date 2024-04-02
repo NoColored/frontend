@@ -25,7 +25,8 @@ const Result = () => {
   const { roomUuid, players, reward } = useLoaderData() as GameResult;
   const myCode = useUserStateStore.getState().userCode;
   const { Modal, openModal, closeModal } = useModal();
-  const noReward = !reward.tier && !reward.skins;
+  const hasTier = !!reward.tier && reward.tier.upgrade;
+  const noReward = !hasTier && reward.skins.length === 0;
 
   useEffect(() => {
     if (!noReward) {
