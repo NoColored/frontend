@@ -9,14 +9,19 @@ const Info2 = () => {
         <img
           className={styles.gameImage}
           src={constants.FIGHT_URL.NO_COLORED}
-          alt='사진2'
+          alt='머리밟기'
         />
         <img
           className={styles.gameImage}
           src={constants.FIGHT_URL.HIDE_SEEK}
-          alt='사진2'
+          alt='스킨 드러남'
         />
       </div>
+      <pre className={styles.text}>
+        {constants.INFO2_DESC.HEAD}
+        <br/>
+        {constants.INFO2_DESC.ITEM}
+      </pre>
     </>
   );
 };
