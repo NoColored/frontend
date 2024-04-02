@@ -1,5 +1,8 @@
 import { style } from '@vanilla-extract/css';
 
+import * as constants from './constants';
+
+
 import { flexOptions } from '@/styles/common.css';
 import { sprinkles } from '@/styles/sprinkles.css';
 
@@ -61,8 +64,12 @@ export const button = style([sprinkles({ marginX: '1x' }), { height: '32px' }]);
 
 export const gameImage = style([
   sprinkles({
-    marginX: '4x',
+    margin: '4x',
   }),
+  {
+    width: constants.GAME_IMAGE.WIDTH,
+    height: constants.GAME_IMAGE.HEIGHT,
+  }
 ]);
 
 export const imgWrapper = style([flexOptions({ option: 'rowCenter' })]);

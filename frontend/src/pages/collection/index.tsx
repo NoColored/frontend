@@ -18,7 +18,7 @@ import { useCollectionStateStore } from '@/states/collection';
 
 const Collection = () => {
   const user = useLoaderData() as User;
-  const { skinId, skinUrl, labelId, labelName, setLabelName } =
+  const { skinId, skinUrl, labelId, labelName, setLabelName, setSkinUrl } =
     useCollectionStateStore();
   const [saveSuccess, setSaveSuccess] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<string>('skin');
@@ -50,8 +50,9 @@ const Collection = () => {
   };
 
   useEffect(() => {
-    if (user.label) {
+    if (user.label && user.skin) {
       setLabelName(user.label);
+      setSkinUrl(user.skin);
     }
   }, [setLabelName, user.label]);
 
