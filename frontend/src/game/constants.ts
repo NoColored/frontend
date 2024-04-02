@@ -21,15 +21,20 @@ export const GAMESOCKET_MESSAGE_TYPE: Map<string, number> = new Map([
 ]);
 
 export const INGAME_DEPTH = {
-  BUTTON: 5,
-  TIMER: 5,
-  SCORE: 5,
+  BUTTON: 10,
+  TIMER: 10,
+  SCORE: 10,
 
-  EFFECT: 3,
+  EFFECT: 5,
 
-  CHARACTER_ICON: 2,
-  CHARACTER: 1,
-  PHYSICS_MAP: 1,
+  CHARACTER_ICON: 4,
+  // 물리맵과 Depth차이 안나도록 (충돌 나야됨)
+  CHARACTER: 3,
+  PHYSICS_MAP: 3,
+  // 캐릭터 팔로우 효과
+  PARTICLE: 2,
+
+  // 뒷 배경
   MAP: 1,
   BACKGROUND: 0,
 
