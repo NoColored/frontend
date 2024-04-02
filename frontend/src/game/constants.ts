@@ -5,6 +5,8 @@ export const MAP_TYPE_MATCH = new Map([
   [2, 'foodmap'],
 ]);
 
+export const GRAVITY = 500;
+
 export const GAMESOCKET_MESSAGE_TYPE: Map<string, number> = new Map([
   ['GAME_START', 0],
   ['USER_CHARACTER_INDEX', 1],

@@ -230,6 +230,7 @@ export default class GameScene extends Phaser.Scene {
   }
 
   create() {
+    this.physics.world.gravity.y = 0;
     // bgm 삽입 -> Bgm.ts에서 구현한 SoundManager 사용
     // eslint-disable-next-line no-new
     // this.backgroundMusic = new BgmManager(this, 'bgm', true);
@@ -508,6 +509,7 @@ export default class GameScene extends Phaser.Scene {
         this.changeDirButton?.setButtonAndKeyInputEnabled(true);
         this.countDownManager.destroyCountDown();
         this.backgroundMusic?.playBackgroundMusic();
+        this.physics.world.gravity.y = constants.GRAVITY;
 
         break;
       case 'end':

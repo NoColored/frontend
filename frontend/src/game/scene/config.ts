@@ -1,3 +1,4 @@
+import * as constants from '@/game/constants';
 import GameScene from '@/game/scene/GameScene';
 import LoadPreLoadingScene from '@/game/scene/LoadPreLoadingScene';
 
@@ -9,7 +10,7 @@ export const config: Phaser.Types.Core.GameConfig = {
   physics: {
     default: 'arcade',
     arcade: {
-      gravity: { x: 0, y: 500 },
+      gravity: { x: 0, y: constants.GRAVITY },
       debug: false,
     },
   },
