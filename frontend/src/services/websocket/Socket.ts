@@ -14,10 +14,7 @@ export class Socket {
 
     this.webSocket.onopen = () => {
       this.sendToken();
-    };
-
-    this.webSocket.onclose = () => {
-      // console.log('close');
+      console.log('websocket open');
     };
   }
 
@@ -31,6 +28,11 @@ export class Socket {
   onMessage(
     handleWebSocketMessage: (message: WebSocketMessage<actionType>) => void,
   ) {
+    this.webSocket.onclose = () => {
+      console.log('websocket close');
+      this.connect();
+    };
+
     this.webSocket.onmessage = (event) => {
       const message = JSON.parse(event.data) as WebSocketMessage<actionType>;
       // console.log(message);
