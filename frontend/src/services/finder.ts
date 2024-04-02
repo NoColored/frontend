@@ -6,7 +6,6 @@ export const getRoomList = async (offset: number) => {
   return api
     .get<RoomListItem[]>(true, `play/friendly/list/${offset}`)
     .then((response) => {
-      console.log(response.data);
       return response.data;
     });
 };
