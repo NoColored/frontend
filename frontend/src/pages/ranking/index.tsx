@@ -1,5 +1,6 @@
 import { useLoaderData } from 'react-router-dom';
 
+import * as constants from './constants';
 import * as styles from './index.css';
 
 import type { User } from '@/types/auth';
@@ -19,9 +20,11 @@ const Ranking = () => {
     <BasicContentFrame backButtonLabel='뒤로'>
       <div className={styles.rankingFullWrapper}>
         <div className={styles.rankingTitleWrapper}>
-          <div className={styles.rankingTitleText}>RANKING</div>
+          <div className={styles.rankingTitleText}>
+            {constants.RANKING_TITLE}
+          </div>
+          <div className={styles.guestText}>{constants.GUEST_TEXT}</div>
         </div>
-
         <div className={styles.rankingWrapper}>
           {rankList.map((item) => (
             <RankingItemBox key={item.rank} player={item} />
