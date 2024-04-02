@@ -16,7 +16,6 @@ const Label = () => {
     getCollections().then((collections) => {
       if (collections && collections.labels) {
         setLabels(collections.labels);
-        // console.log(collections.labels);
       }
     });
   }, []);

@@ -43,6 +43,7 @@ const router = createBrowserRouter([
   },
   {
     element: <TokenLayout />,
+    loader: checkToken,
     children: [
       {
         path: `${ROUTE.loading}`,
@@ -93,6 +94,7 @@ const router = createBrowserRouter([
       {
         path: `${ROUTE.result}`,
         element: <Result />,
+        errorElement: <Navigate to={ROUTE.home} />,
         loader: getGameResult,
       },
       {

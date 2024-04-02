@@ -137,6 +137,7 @@ export default class GameScene extends Phaser.Scene {
     // Map 투명 타일
     this.load.image('tileTransparent', '/images/map/transparent-tile.png');
     // this.load.image('tileTransparent', '/images/map/transTile-Test.png');
+    this.load.image('gradient', '/images/map/gradient-h450-w450.png');
 
     // music
     this.load.audio('bgm', '/music/8-bit-game.mp3');
@@ -244,6 +245,8 @@ export default class GameScene extends Phaser.Scene {
     // eslint-disable-next-line no-new
     new EffectAnimations(this.game);
 
+    this.gameData?.floorList.push(constants.WALL_MAP[0]);
+    this.gameData?.floorList.push(constants.WALL_MAP[1]);
     // 물리 맵 구현
     const physicsMapInst = new PhysicsMap(
       this,

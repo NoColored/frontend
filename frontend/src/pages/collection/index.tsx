@@ -15,8 +15,8 @@ import { useCollectionStateStore } from '@/states/collection';
 
 const Collection = () => {
   const { skinId, skinUrl, labelId, labelName } = useCollectionStateStore();
+  const [saveSuccess, setSaveSuccess] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<string>('skin');
-  // const user = useLoaderData() as User;
 
   const renderComponent = () => {
     switch (selectedCategory) {
@@ -32,12 +32,16 @@ const Collection = () => {
   };
 
   const categorySubmit = async () => {
+    setSaveSuccess(false);
+
     if (selectedCategory === 'skin') {
       await patchSkinChange(skinId);
     }
     if (selectedCategory === 'label') {
       await patchLabelChange(labelId);
     }
+    setSaveSuccess(true);
+    setTimeout(() => setSaveSuccess(false), 2000);
   };
 
   return (
@@ -69,6 +73,9 @@ const Collection = () => {
           </SettingTextButton>
         </div>
         <div className={styles.characterWrapper}>
+          {saveSuccess && (
+            <div className={styles.submitSuccessMessage}>장착 완료!</div>
+          )}
           <div className={styles.character}>
             <div
               style={{

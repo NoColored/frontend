@@ -6,7 +6,11 @@ import BasicContentFrame from '@/components/BasicContentFrame/index';
 
 import FullscreenPrompt from '@/pages/landing/FullScreenPrompt';
 
+import { useUserStateStore } from '@/states/user';
+
 const LandingLayout = () => {
+  useUserStateStore.getState().setLogout();
+
   return (
     <>
       <FullscreenPrompt />

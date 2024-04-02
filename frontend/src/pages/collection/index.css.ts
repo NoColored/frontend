@@ -59,7 +59,6 @@ export const label = style([
   {
     position: 'absolute',
     textAlign: 'center',
-    top: '15%',
   },
 ]);
 
@@ -85,6 +84,14 @@ export const submitButtonWrapper = style([
     position: 'relative',
     marginTop: constants.SUBMIT_BUTTON_MARGIN,
   },
+]);
+
+export const submitSuccessMessage = style([
+  sprinkles({
+    color: 'blue',
+    textSize: '1.5x',
+    marginBottom: '2x',
+  }),
 ]);
 
 export const skinWrapper = style([

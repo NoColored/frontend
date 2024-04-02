@@ -56,8 +56,8 @@ export const getUser = async () => {
     .get<User>(true, `/user`)
     .then((response) => {
       const user = response.data;
-      const { setIsGuest, setUserCode } = useUserStateStore.getState();
-      setIsGuest(user.guest);
+      const { setLogin, setUserCode } = useUserStateStore.getState();
+      setLogin(user.guest);
       setUserCode(user.userCode);
       return user;
     })
@@ -92,12 +92,13 @@ export const postGuestSignUp = async (signUpInfo: SignUpInfo) => {
 };
 
 export const postSignUp = async (signUpInfo: SignUpInfo) => {
-  try {
-    await api.post<string, SignUpInfo>(false, '/user/signup', signUpInfo);
-    return true;
-  } catch (e) {
-    return false;
-  }
+  return api
+    .post<string, SignUpInfo>(false, '/user/signup', signUpInfo)
+    .then((res) => {
+      localStorage.setItem('token', res.data);
+      return true;
+    })
+    .catch(() => false);
 };
 
 export const patchNicknameChange = async (nickname: string) => {
@@ -161,4 +162,13 @@ export const deleteUserInfo = async () => {
     .catch((e) => {
       console.log(e);
     });
+};
+
+export const checkToken = async () => {
+  return api
+    .get<boolean>(true, '/user/token')
+    .then((response) => {
+      return response.data;
+    })
+    .catch(() => false);
 };

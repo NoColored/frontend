@@ -9,15 +9,15 @@ import { sprinkles } from '@/styles/sprinkles.css';
 export const gameResultWrapper = style([
   flexOptions({ option: 'columnCenter' }),
   sprinkles({
-    justifyContent: 'spaceAround',
+    justifyContent: 'spaceBetween',
+    height: 'full',
+    paddingY: '4x',
   }),
-  {
-    width: '100%',
-    height: '100%',
-  },
 ]);
 
-export const resultTextWrapper = style([
+export const result = style([flexOptions({ option: 'columnCenter' })]);
+
+export const resultTitle = style([
   sprinkles({
     marginTop: '4x',
     fontFamily: 'numFont',
@@ -50,14 +50,14 @@ export const resultInfoBox = recipe({
     sprinkles({
       backgroundColor: 'white',
       fontSize: '1.5x',
+      justifyContent: 'spaceBetween',
       borderStyle: 'solid',
       borderWidth: '3x',
       borderRadius: '2x',
       paddingX: '4x',
-      marginY: '0.5x',
+      marginY: '1x',
     }),
     {
-      justifyContent: 'space-evenly',
       height: constants.RANKINGINFOBOX_HEIGHT,
       width: constants.RANKINGINFOBOX_WIDTH,
       boxSizing: 'border-box',
@@ -72,13 +72,12 @@ export const resultInfoBox = recipe({
     },
   ],
   variants: {
-    firstResult: {
+    myResult: {
       true: [
         sprinkles({
           color: 'white',
-          fontSize: '2x',
-          marginTop: '0.5x',
-          marginBottom: '2x',
+          textSize: '2x',
+          marginY: '2x',
         }),
         {
           paddingLeft: '5%',
@@ -112,33 +111,31 @@ export const resultInfoBox = recipe({
   },
   compoundVariants: [
     {
-      variants: { firstResult: true, colorStyle: 'pink' },
+      variants: { myResult: true, colorStyle: 'pink' },
       style: sprinkles({
         backgroundColor: 'pink',
       }),
     },
     {
-      variants: { firstResult: true, colorStyle: 'yellow' },
+      variants: { myResult: true, colorStyle: 'yellow' },
       style: sprinkles({
         backgroundColor: 'yellow',
       }),
     },
     {
-      variants: { firstResult: true, colorStyle: 'green' },
+      variants: { myResult: true, colorStyle: 'green' },
       style: sprinkles({
         backgroundColor: 'green',
       }),
     },
     {
-      variants: { firstResult: true, colorStyle: 'blue' },
+      variants: { myResult: true, colorStyle: 'blue' },
       style: sprinkles({
         backgroundColor: 'blue',
       }),
     },
   ],
 });
-
-export const playerWrapper = style([sprinkles({ marginX: '8x' })]);
 
 export const modalWrapper = style([
   flexOptions({ option: 'columnCenter' }),
@@ -223,3 +220,20 @@ export const rewardScrollItem = style([
 ]);
 
 export const rewardBoxImage = style([{ width: '32%' }]);
+
+export const playerInfoBoxWrapper = style([
+  sprinkles({
+    display: 'flex',
+    justifyContent: 'flexStart',
+  }),
+  {
+    width: constants.PLAYERINFOBOX_WIDTH,
+  },
+]);
+
+export const score = style([
+  {
+    width: '80px',
+    textAlign: 'center',
+  },
+]);

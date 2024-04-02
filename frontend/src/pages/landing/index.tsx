@@ -8,20 +8,20 @@ import ColoredButton from '@/components/button/ColoredButton/index';
 import { getGuestLogin } from '@/services/auth';
 import { setFullScreen } from '@/services/landing';
 
-import useEffectSoundStore from '@/states/effect';
 import useAudioStore from '@/states/music';
 
 import { ROUTE } from '@/router/constants';
 
 const Landing = () => {
   const navigate = useNavigate();
-  const { isPlaying, play, stop } = useAudioStore();
-  const playEffectSound = useEffectSoundStore((state) => state.playEffectSound);
+  const { isPlaying, setIsPlaying, playBackgroundSound } = useAudioStore();
+
   const clickGuestLogin = async () => {
     return getGuestLogin().then((isSuccess) => {
-      playEffectSound();
       if (isSuccess) {
-        isPlaying ? play() : stop();
+        setIsPlaying(isPlaying);
+        const playMusic = localStorage.getItem('backgroundSound') === 'true';
+        if (playMusic) playBackgroundSound();
         navigate(ROUTE.home);
         setFullScreen();
         return;
@@ -32,8 +32,9 @@ const Landing = () => {
   };
 
   const clickLogIn = () => {
-    playEffectSound();
-    isPlaying ? play() : stop();
+    setIsPlaying(isPlaying);
+    const playMusic = localStorage.getItem('backgroundSound') === 'true';
+    if (playMusic) playBackgroundSound();
     navigate(ROUTE.login);
   };
 
