@@ -16,6 +16,7 @@ import Mode from '@/pages/play/mode';
 import Ranking from '@/pages/ranking';
 import Result from '@/pages/result';
 import Settings from '@/pages/settings';
+import Tutorial from '@/pages/tutorial';
 
 import { checkToken, getUser } from '@/services/auth';
 import { getRoomList } from '@/services/finder';
@@ -43,6 +44,10 @@ const router = createBrowserRouter([
     errorElement: <Navigate to={ROUTE.main} replace />,
     loader: checkToken,
     children: [
+      {
+        path: `${ROUTE.tutorial}`,
+        element: <Tutorial />,
+      },
       {
         path: `${ROUTE.home}`,
         element: <Home />,
