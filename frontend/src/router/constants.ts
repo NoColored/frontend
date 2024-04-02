@@ -1,7 +1,6 @@
 export const ROUTE = {
   main: '/',
   login: '/login',
-  loading: '/loading',
   play: '/play',
   finder: '/play/finder',
   game: '/play/game',

@@ -9,7 +9,6 @@ import Home from '@/pages/home';
 import Landing from '@/pages/landing';
 import LandingLayout from '@/pages/landing/layout';
 import LogIn from '@/pages/landing/logIn';
-import Loading from '@/pages/loading';
 import Finder from '@/pages/play/finder';
 import Game from '@/pages/play/game';
 import Lobby from '@/pages/play/lobby';
@@ -44,10 +43,6 @@ const router = createBrowserRouter([
     errorElement: <Navigate to={ROUTE.main} replace />,
     loader: checkToken,
     children: [
-      {
-        path: `${ROUTE.loading}`,
-        element: <Loading />,
-      },
       {
         path: `${ROUTE.home}`,
         element: <Home />,
