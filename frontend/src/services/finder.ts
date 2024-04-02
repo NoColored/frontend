@@ -3,17 +3,12 @@ import type { CreateRoom, RoomListItem, RequestEnterRoom } from '@/types/play';
 import { api } from '@/services/index';
 
 export const getRoomList = async (offset: number) => {
-  try {
-    const response = await api.get<RoomListItem[]>(
-      true,
-      `play/friendly/list/${offset}`,
-    );
-    // console.log(response.data);
-    return response.data;
-  } catch (error) {
-    // console.log(error);
-    return [] as RoomListItem[];
-  }
+  return api
+    .get<RoomListItem[]>(true, `play/friendly/list/${offset}`)
+    .then((response) => {
+      console.log(response.data);
+      return response.data;
+    });
 };
 
 export const postCreateRoom = async (roomRequest: CreateRoom) => {
