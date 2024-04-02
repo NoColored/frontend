@@ -42,9 +42,9 @@ const Home = () => {
             nickname={user.nickname}
             level={user.level}
             cp={user.exp}
-            maxCp={user.exp}
+            maxCp={user.expRequire}
             tier={user.tier as tierType}
-            rankScore={user.rating}
+            // rankScore={user.rating}
           />
         </div>
         <div className={styles.BottomContentsWrapper}>
