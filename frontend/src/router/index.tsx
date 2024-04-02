@@ -24,7 +24,7 @@ import { getLobbyInfo } from '@/services/lobby';
 import { getRank } from '@/services/rank';
 import { getGameResult } from '@/services/result';
 
-import TokenLayout from '@/router/TokenLayout';
+import TokenLayout from '@/router/layout';
 
 const router = createBrowserRouter([
   {

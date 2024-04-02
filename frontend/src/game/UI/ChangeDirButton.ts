@@ -4,13 +4,12 @@ import * as constants from '@/game/constants';
 
 export default class ChangeDirButton extends Phaser.GameObjects.GameObject {
   // eslint-disable-next-line no-use-before-define
-  private static instance: ChangeDirButton;
   private button;
   private socket: GameSocket;
   private keys: Phaser.Input.Keyboard.Key[] = [];
+  private sendMessages: number = -1;
 
-  // 생성자를 private으로 변경
-  private constructor(scene: Phaser.Scene, socket: GameSocket) {
+  constructor(scene: Phaser.Scene, socket: GameSocket) {
     super(scene, 'dirButton');
     this.button = this.scene.add
       .image(
@@ -21,23 +20,13 @@ export default class ChangeDirButton extends Phaser.GameObjects.GameObject {
       .setDepth(constants.INGAME_DEPTH.BUTTON);
     this.socket = socket;
 
+    this.sendMessages = constants.SEND_WOBSOCKT_MESSAGE_TYPE.DIRECTION_CHANGE;
     this.setChangeDirButton();
     this.setupDirKeyInput();
 
     this.scene.add.existing(this);
 
     this.setButtonAndKeyInputEnabled(false);
-  }
-
-  // getInstance 메서드 구현
-  public static getInstance(
-    scene: Phaser.Scene,
-    socket: GameSocket,
-  ): ChangeDirButton {
-    if (!ChangeDirButton.instance) {
-      ChangeDirButton.instance = new ChangeDirButton(scene, socket);
-    }
-    return ChangeDirButton.instance;
   }
 
   setChangeDirButton() {
@@ -67,9 +56,7 @@ export default class ChangeDirButton extends Phaser.GameObjects.GameObject {
       const key = this.scene.input.keyboard.addKey(keyCode);
       key.on('down', () => {
         this.button.setTexture('clickedDirButton');
-        this.socket.sendInputMesssage(
-          constants.SEND_WOBSOCKT_MESSAGE_TYPE.DIRECTION_CHANGE,
-        );
+        this.socket.sendInputMesssage(this.sendMessages);
       });
       key.on('up', () => {
         this.button.setTexture('dirButton');
@@ -94,11 +81,5 @@ export default class ChangeDirButton extends Phaser.GameObjects.GameObject {
       constants.BUTTON_POSITION.JUMP.x,
       constants.BUTTON_POSITION.JUMP.y,
     );
-    this.scene.time.delayedCall(5000, () => {
-      this.button.setPosition(
-        constants.BUTTON_POSITION.CHANGE_DIR.x,
-        constants.BUTTON_POSITION.CHANGE_DIR.y,
-      );
-    });
   }
 }

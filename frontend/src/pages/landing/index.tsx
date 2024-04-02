@@ -34,7 +34,7 @@ const Landing = () => {
   const clickLogIn = () => {
     playEffectSound();
     isPlaying ? play() : stop();
-    navigate('/login');
+    navigate(ROUTE.login);
   };
 
   const landingLogo: string = constants.LANDING_LOGO_URL;

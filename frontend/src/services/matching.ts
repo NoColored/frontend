@@ -10,7 +10,7 @@ export const getMatching = async () => {
       })
       // eslint-disable-next-line
       .catch((error) => {
-        // console.error(error);
+        console.error(error);
         return false;
       })
   );
@@ -26,7 +26,7 @@ export const deleteMatching = async () => {
       })
       // eslint-disable-next-line
       .catch((error) => {
-        // console.error(error);
+        console.error(error);
         return false;
       })
   );

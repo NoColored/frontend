@@ -50,7 +50,6 @@ export const resultInfoBox = recipe({
     sprinkles({
       backgroundColor: 'white',
       fontSize: '1.5x',
-      justifyContent: 'spaceAround',
       borderStyle: 'solid',
       borderWidth: '3x',
       borderRadius: '2x',
@@ -58,6 +57,7 @@ export const resultInfoBox = recipe({
       marginY: '0.5x',
     }),
     {
+      justifyContent: 'space-evenly',
       height: constants.RANKINGINFOBOX_HEIGHT,
       width: constants.RANKINGINFOBOX_WIDTH,
       boxSizing: 'border-box',
@@ -137,6 +137,8 @@ export const resultInfoBox = recipe({
     },
   ],
 });
+
+export const playerWrapper = style([sprinkles({ marginX: '8x' })]);
 
 export const modalWrapper = style([
   flexOptions({ option: 'columnCenter' }),

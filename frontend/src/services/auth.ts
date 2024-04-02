@@ -23,6 +23,7 @@ export const getGuestLogin = async () => {
     })
     // eslint-disable-next-line
     .catch((e) => {
+      e;
       redirect(`${ROUTE.error}/${500}`);
       return false;
     });
@@ -45,7 +46,7 @@ export const postMemberLogin = async (logInInfo: LogInInfo) => {
     // eslint-disable-next-line
     .catch((e) => {
       redirect(`${ROUTE.error}/${500}`);
-      // console.log(e);
+      console.log(e);
       return false;
     });
 };
@@ -84,7 +85,7 @@ export const postGuestSignUp = async (signUpInfo: SignUpInfo) => {
       })
       // eslint-disable-next-line
       .catch((error) => {
-        // console.log(error);
+        console.log(error);
         return false;
       })
   );
@@ -158,6 +159,6 @@ export const deleteUserInfo = async () => {
     })
     // eslint-disable-next-line
     .catch((e) => {
-      // console.log(e);
+      console.log(e);
     });
 };

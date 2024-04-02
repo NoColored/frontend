@@ -13,7 +13,7 @@ const requestRankList = async () => {
       })
       // eslint-disable-next-line
       .catch((error) => {
-        // console.log(error);
+        console.log(error);
         return [] as RankPlayer[];
       })
   );
