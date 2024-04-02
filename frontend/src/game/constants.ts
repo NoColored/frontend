@@ -27,12 +27,12 @@ export const INGAME_DEPTH = {
 
   EFFECT: 5,
 
-  CHARACTER_ICON: 4,
+  CHARACTER_TOP_ICON: 4,
   // 물리맵과 Depth차이 안나도록 (충돌 나야됨)
   CHARACTER: 3,
   PHYSICS_MAP: 3,
   // 캐릭터 팔로우 효과
-  PARTICLE: 2,
+  CHARACTER_PARTICLE: 2,
 
   // 뒷 배경
   MAP: 1,
