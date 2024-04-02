@@ -20,7 +20,7 @@ export class CharacterIcon extends Phaser.GameObjects.Particles
   }
 
   stopFollowing(characterIdx: number) {
-    if (this.followingCharacterIdx == characterIdx) {
+    if (this.followingCharacterIdx === characterIdx) {
       this.stopFollow();
     }
   }
