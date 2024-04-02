@@ -1,4 +1,4 @@
-import { createBrowserRouter, Navigate } from 'react-router-dom';
+import { createBrowserRouter, Navigate, Outlet } from 'react-router-dom';
 
 import { ROUTE } from './constants';
 
@@ -24,8 +24,6 @@ import { getLobbyInfo } from '@/services/lobby';
 import { getRank } from '@/services/rank';
 import { getGameResult } from '@/services/result';
 
-import TokenLayout from '@/router/layout';
-
 const router = createBrowserRouter([
   {
     path: `${ROUTE.main}`,
@@ -42,7 +40,8 @@ const router = createBrowserRouter([
     ],
   },
   {
-    element: <TokenLayout />,
+    element: <Outlet />,
+    errorElement: <Navigate to={ROUTE.main} replace />,
     loader: checkToken,
     children: [
       {
@@ -56,6 +55,7 @@ const router = createBrowserRouter([
       },
       {
         path: `${ROUTE.play}`,
+        errorElement: <Navigate to={`${ROUTE.error}/401`} replace />,
         children: [
           {
             index: true,
@@ -82,10 +82,7 @@ const router = createBrowserRouter([
         path: `${ROUTE.example}`,
         element: <Example />,
       },
-      {
-        path: '/*',
-        element: <Navigate to={`${ROUTE.error}/404`} replace />,
-      },
+
       {
         path: `${ROUTE.ranking}`,
         element: <Ranking />,
@@ -106,11 +103,15 @@ const router = createBrowserRouter([
         element: <Collection />,
         loader: getUser,
       },
-      {
-        path: `${ROUTE.error}/:code`,
-        element: <Error />,
-      },
     ],
+  },
+  {
+    path: `${ROUTE.error}/:code`,
+    element: <Error />,
+  },
+  {
+    path: '/*',
+    element: <Navigate to={`${ROUTE.error}/404`} replace />,
   },
 ]);
 

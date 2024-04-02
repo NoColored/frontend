@@ -14,11 +14,19 @@ export const TIERANDSORE_WIDTH = '140px';
 export const PLAYERINFOBOX_WIDTH = '212px';
 
 export const RANKINGWRAPPER_HEIGHT = calc.subtract(
-  '100%',
+  '92%',
   calc.add(
     calc.add(TITLE_TEXT_HEIGHT, vars.space['3x']),
     calc.add(MYRANKINGITEMBOX_HEIGHT, vars.space['3x']),
   ),
 );
+
+export const RANKING_TITLE = 'RANKING';
+
+export const GUEST_TEXT = '게스트는 티어가 부여되지 않아요';
+
+export const GUEST_TEXT_SIZE = '13px';
+
+export const GUEST_TEXT_WIDTH = '644px';
 
 export const RANKTEXT_WARRAPER_WIDTH = '63px';

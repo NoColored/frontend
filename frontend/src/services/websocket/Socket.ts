@@ -1,4 +1,8 @@
-import type { actionType, WebSocketMessage } from '@/types/websocket';
+import type {
+  actionType,
+  WebSocketMessage,
+  WebSocketMessageHandler,
+} from '@/types/websocket';
 
 import { WEBSOCKET_URL } from '@/services/constants';
 
@@ -15,10 +19,6 @@ export class Socket {
     this.webSocket.onopen = () => {
       this.sendToken();
     };
-
-    this.webSocket.onclose = () => {
-      // console.log('close');
-    };
   }
 
   isConnected() {
@@ -28,12 +28,16 @@ export class Socket {
     );
   }
 
-  onMessage(
-    handleWebSocketMessage: (message: WebSocketMessage<actionType>) => void,
-  ) {
+  onClose(handleWebSocketMessage: WebSocketMessageHandler) {
+    this.webSocket.onclose = () => {
+      this.connect();
+      this.onMessage(handleWebSocketMessage);
+    };
+  }
+
+  onMessage(handleWebSocketMessage: WebSocketMessageHandler) {
     this.webSocket.onmessage = (event) => {
       const message = JSON.parse(event.data) as WebSocketMessage<actionType>;
-      // console.log(message);
       handleWebSocketMessage(message);
     };
   }

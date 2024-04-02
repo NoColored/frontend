@@ -21,3 +21,5 @@ interface WebSocketMessage<T extends actionType> {
   action: T;
   data: ActionDataTypeMap[T];
 }
+
+type WebSocketMessageHandler = (message: WebSocketMessage<actionType>) => void;
