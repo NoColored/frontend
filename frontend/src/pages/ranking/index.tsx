@@ -23,7 +23,9 @@ const Ranking = () => {
           <div className={styles.rankingTitleText}>
             {constants.RANKING_TITLE}
           </div>
-          <div className={styles.guestText}>{constants.GUEST_TEXT}</div>
+          {myRank.guest && (
+            <div className={styles.guestText}>{constants.GUEST_TEXT}</div>
+          )}
         </div>
         <div className={styles.rankingWrapper}>
           {rankList.map((item) => (
