@@ -11,7 +11,7 @@ interface Props {
   cp: number;
   maxCp: number;
   tier: tierType;
-  rankScore: number;
+  // rankScore: number;
 }
 
 const UserDashboard = ({
