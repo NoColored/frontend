@@ -52,19 +52,13 @@ export const postMemberLogin = async (logInInfo: LogInInfo) => {
 };
 
 export const getUser = async () => {
-  return api
-    .get<User>(true, `/user`)
-    .then((response) => {
-      const user = response.data;
-      const { setLogin, setUserCode } = useUserStateStore.getState();
-      setLogin(user.guest);
-      setUserCode(user.userCode);
-      return user;
-    })
-    .catch((e) => {
-      console.log(e);
-      return { userCode: '' } as User;
-    });
+  return api.get<User>(true, `/user`).then((response) => {
+    const user = response.data;
+    const { setLogin, setUserCode } = useUserStateStore.getState();
+    setLogin(user.guest);
+    setUserCode(user.userCode);
+    return user;
+  });
 };
 
 export const getIdCheck = async (id: string) => {
@@ -168,7 +162,14 @@ export const checkToken = async () => {
   return api
     .get<boolean>(true, '/user/token')
     .then((response) => {
-      return response.data;
+      const isTokenValid = response.data;
+      if (!isTokenValid) {
+        throw new Error();
+      }
+      return isTokenValid;
     })
-    .catch(() => false);
+    .catch((err) => {
+      localStorage.removeItem('token');
+      throw err;
+    });
 };
