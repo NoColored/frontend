@@ -7,7 +7,7 @@ import SettingTextButton from '@/components/button/SettingTextButton';
 
 import Info from '@/pages/tutorial/Info';
 
-const MAX_PAGE = 1;
+const MAX_PAGE = 3;
 
 const Tutorial = () => {
   const [page, setPage] = useState<number>(0);

@@ -29,6 +29,7 @@ export const container = style([
 export const title = style([
   sprinkles({
     textSize: '2x',
+    marginY: '1x',
   }),
 ]);
 
@@ -37,6 +38,9 @@ export const text = style([
     textSize: '1.25x',
     marginY: '4x',
   }),
+  {
+    textAlign: 'center',
+  },
 ]);
 
 export const mapImage = style([
@@ -54,3 +58,11 @@ export const wrapper = style([
 ]);
 
 export const button = style([sprinkles({ marginX: '1x' }), { height: '32px' }]);
+
+export const gameImage = style([
+  sprinkles({
+    marginX: '4x',
+  }),
+]);
+
+export const imgWrapper = style([flexOptions({ option: 'rowCenter' })]);
