@@ -21,6 +21,6 @@ export interface GameResult {
   players: ResultPlayer[];
   reward: {
     tier?: TierReward;
-    skins?: string[];
+    skins: string[];
   };
 }
