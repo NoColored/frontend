@@ -12,7 +12,7 @@ interface Props {
 }
 
 export const RewardsModal = ({ tier, skin, closeModal }: Props) => {
-  const hasTier = !!tier;
+  const hasTier = !!tier && tier.upgrade;
   const hasSkin = skin.length > 0;
   const [showTier, setShowTier] = useState<boolean>(hasTier);
 
