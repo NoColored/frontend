@@ -16,14 +16,12 @@ export const rankingFullWrapper = style([
   },
 ]);
 export const rankingTitleWrapper = style([
+  flexOptions({ option: 'columnCenter' }),
   sprinkles({
     width: 'full',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
   }),
 ]);
+
 export const rankingTitleText = style([
   flexOptions({ option: 'center' }),
   sprinkles({
@@ -34,7 +32,7 @@ export const rankingTitleText = style([
     borderWidth: '3x',
     borderRadius: '2x',
     color: 'white',
-    marginBottom: '2x',
+    marginY: '1x',
   }),
   {
     width: constants.TITLE_TEXT_WIDTH,
@@ -42,10 +40,23 @@ export const rankingTitleText = style([
   },
 ]);
 
+export const guestText = style([
+  flexOptions({ option: 'row' }),
+  sprinkles({
+    marginTop: '1.5x',
+    color: 'gray300',
+    justifyContent: 'flexEnd',
+    paddingX: '1.5x',
+  }),
+  {
+    fontSize: constants.GUEST_TEXT_SIZE,
+    width: constants.GUEST_TEXT_WIDTH,
+  },
+]);
+
 export const rankingWrapper = style([
   sprinkles({
-    marginTop: '2x',
-    marginBottom: '2x',
+    marginY: '1.5x',
   }),
   {
     paddingLeft: '5%',
@@ -58,10 +69,12 @@ export const rankingWrapper = style([
 
 export const myRankingWrapper = style([
   sprinkles({
+    margin: 'auto',
     backgroundColor: 'navy',
     borderRadius: '2x',
   }),
   {
+    width: '98%',
     height: constants.RANKINGITEMBOX_HEIGHT,
   },
 ]);
