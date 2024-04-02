@@ -1,6 +1,6 @@
 import { characterInfo } from '@/types/ingame';
 
-import { INGAME_DEPTH } from '@/game/constants';
+import * as constants from '@/game/constants';
 
 export class Character extends Phaser.Physics.Arcade.Sprite {
   private currentSkin: string;
@@ -36,7 +36,7 @@ export class Character extends Phaser.Physics.Arcade.Sprite {
     this.setSkinState(texture);
     this.changePosition(characterInfoData);
     this.stopAnims();
-    scene.add.existing(this).setDepth(INGAME_DEPTH.CHARACTER);
+    scene.add.existing(this).setDepth(constants.INGAME_DEPTH.CHARACTER);
   }
 
   changeDir(velocityX: number) {

@@ -1,4 +1,4 @@
-import { INGAME_DEPTH } from '@/game/constants';
+import * as constants from '@/game/constants';
 
 export class CharacterParticle extends Phaser.GameObjects.Particles
   .ParticleEmitter {
@@ -16,7 +16,7 @@ export class CharacterParticle extends Phaser.GameObjects.Particles
     this.isTextureSetted = false;
     this.textures = textures;
     this.scene.add.existing(this);
-    this.setDepth(INGAME_DEPTH.CHARACTER_PARTICLE);
+    this.setDepth(constants.INGAME_DEPTH.CHARACTER_PARTICLE);
   }
 
   setColor(colorIdx: number) {

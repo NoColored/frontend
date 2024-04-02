@@ -1,4 +1,4 @@
-import { INGAME_DEPTH } from '@/game/constants';
+import * as constants from '@/game/constants';
 import { Character } from '@/game/object/Character';
 
 export class CharacterTopIcon extends Phaser.GameObjects.Particles
@@ -8,7 +8,7 @@ export class CharacterTopIcon extends Phaser.GameObjects.Particles
 
   constructor(scene: Phaser.Scene, texture: string, characters: Character[]) {
     super(scene, 0, -15, texture, { lifespan: 0 });
-    this.setDepth(INGAME_DEPTH.CHARACTER_TOP_ICON);
+    this.setDepth(constants.INGAME_DEPTH.CHARACTER_TOP_ICON);
     this.scene.add.existing(this);
     this.characters = characters;
     this.followingCharacterIdx = -1;
