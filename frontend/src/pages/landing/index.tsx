@@ -26,6 +26,7 @@ const Landing = () => {
         setFullScreen();
         return;
       }
+      console.log('Guest 로그인 실패');
       navigate(`${ROUTE.error}/500`);
     });
   };
