@@ -1,3 +1,4 @@
+import * as constants from './constants';
 import * as styles from './index.css';
 import { indexProps } from './types';
 
@@ -22,7 +23,10 @@ const GameInfo = ({ onBack, onClose }: indexProps) => {
           <div> 게임 방식</div>
         </div>
         <div className={styles.infoText}>
-          <div> 맵 하단에 있는 버튼을 클릭하면 조작할 수 있어요!</div>
+          <div> {constants.HOW_TO_PLAY.INFO}</div>
+        </div>
+        <div className={styles.infoText}>
+          <div> {constants.HOW_TO_PLAY.KEYBOARD}</div>
         </div>
         <div className={styles.mapBackground}>
           <img
@@ -38,7 +42,7 @@ const GameInfo = ({ onBack, onClose }: indexProps) => {
               alt='moveButton'
               src={IMAGE_URL.move}
             />
-            <div> : 좌/우 전환</div>
+            <div>{constants.HOW_TO_PLAY.MOVE}</div>
           </div>
           <div className={styles.buttonWrapper}>
             <img
@@ -46,7 +50,7 @@ const GameInfo = ({ onBack, onClose }: indexProps) => {
               alt='moveButton'
               src={IMAGE_URL.jump}
             />
-            <div> : 점프</div>
+            <div>{constants.HOW_TO_PLAY.JUMP}</div>
           </div>
         </div>
       </div>
