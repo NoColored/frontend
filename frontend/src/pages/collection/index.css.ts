@@ -132,10 +132,12 @@ export const boxStyle = style([
 
 export const achievedBox = style({
   background: 'rgba(26, 130, 153, 0.5)',
+  borderRadius: constants.LABEL_BOX_STYLE.BORDER_RADIUS,
 });
 
 export const notAchievedBox = style({
   background: 'gray',
+  borderRadius: constants.LABEL_BOX_STYLE.BORDER_RADIUS,
 });
 
 export const labelBoxStyle = style([
