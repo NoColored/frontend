@@ -15,18 +15,13 @@ import { useUserStateStore } from '@/states/user';
 import { ROUTE } from '@/router/constants';
 
 export const getGuestLogin = async () => {
-  return await api
+  return api
     .get<string>(false, '/user/guest')
     .then((response) => {
       localStorage.setItem('token', response.data);
       return true;
     })
-    // eslint-disable-next-line
-    .catch((e) => {
-      e;
-      redirect(`${ROUTE.error}/${500}`);
-      return false;
-    });
+    .catch(() => false);
 };
 
 export const postMemberLogin = async (logInInfo: LogInInfo) => {
