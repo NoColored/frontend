@@ -18,6 +18,7 @@ export default class CountDown {
     this.countDownText.setOrigin(0.5, 0.5);
     this.countDownText.setStroke('#000000', 6);
     this.countDownText.setDepth(300);
+    this.countDownText.alpha = 0.7;
     this.countDownText.visible = false;
 
     this.countDownSound = this.scene.sound.add('countdownSound');
