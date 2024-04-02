@@ -28,12 +28,12 @@ export const FAIL_MESSAGE_MODAL = {
 
 export const MAPS: GameMap[] = [
   {
-    mapId: 0,
+    mapId: 1,
     imgSrc: '/images/map/background/basicmap.png',
     mapName: '베이직',
   },
   {
-    mapId: 1,
+    mapId: 2,
     imgSrc: '/images/map/background/foodmap.png',
     mapName: '푸디',
   },
