@@ -13,6 +13,5 @@ export const ROUTE = {
   home: '/home',
   result: '/result',
   setting: '/settings',
-  example: '/example',
   error: '/error',
 };
