@@ -20,7 +20,7 @@ export const BOTTOM_CONTENTS_WRAPPER_HEIGHT = calc.subtract(
 );
 
 export const SIGNUP_BANNER_IMAGE =
-  '/images/character/default-sunglass/character-default-sunglass-yellow-h240w240.png';
+  'https://nocolored.s3.ap-northeast-2.amazonaws.com/character-240px-sheet-basicyellow-sunglass.png';
 
 export const SIGNUP_BANNER_TEXT = '★스킨★\n받는 법은?';
 export const SIGNUP_BANNER = {
