@@ -1,22 +1,5 @@
 export const INFO_TYPE = ['main', 'item', 'game', 'tier'] as const;
 
-export const IMAGE_URL = {
-  map: '/images/map/background/foodmap-controller.png',
-  move: '/images/ui/controller/icon-controller-change.svg',
-  jump: '/images/ui/controller/icon-controller-jump.svg',
-} as const;
-
-export const IMG_SIZE = {
-  background: {
-    width: '320px',
-    height: '160px',
-  },
-  button: {
-    width: '34px',
-    height: '25px',
-  },
-} as const;
-
 export const ITEMS = [
   {
     name: 'again',
@@ -73,10 +56,3 @@ export const ITEMS = [
       '아이템을 먹으면 나에게만 \n 다른 플레이어들의 스킨이 2초간 드러나게 한다.',
   },
 ] as const;
-
-export const HOW_TO_PLAY = {
-  INFO: '맵 하단에 있는 버튼을 터치하여 조작할 수 있어요!',
-  MOVE: ' : 좌/우 전환 (키보드)',
-  JUMP: ' : 점프 (스페이스 바)',
-  KEYBOARD: '키보드의 스페이스바, 방향키를 이동해서 조작할 수 있어요!',
-};

@@ -11,6 +11,11 @@ export const INFO_0_DESC = {
     '맵 하단에 있는 "버튼"을 클릭하면 조작할 수 있어요! \n 웹에서는 "스페이스바"와 "방향키"로 조작해요',
   MOVE: ': 좌/우 전환',
   JUMP: ': 점프',
+  image: {
+    MAP: '/images/map/background/foodmap-controller.png',
+    MOVE: '/images/ui/controller/icon-controller-change.svg',
+    JUMP: '/images/ui/controller/icon-controller-jump.svg',
+  },
 };
 
 export const INFO_1_DESC = {
