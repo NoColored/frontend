@@ -1,5 +1,5 @@
 import { ReactNode, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import * as styles from './index.css';
 
@@ -26,6 +26,7 @@ const BasicContentFrame = ({
   disableButton,
 }: Props) => {
   const navigate = useNavigate();
+  const location = useLocation();
   const { isPlaying, playBackgroundSound, stopBackgroundSound } =
     useAudioStore();
 
@@ -33,7 +34,9 @@ const BasicContentFrame = ({
     if (onBeforeButtonClick) {
       onBeforeButtonClick();
     }
-    navigate('/home', { replace: true });
+    if (location.pathname !== '/home') {
+      navigate('/home', { replace: true });
+    }
   };
 
   const handleBackButtonClick = () => {

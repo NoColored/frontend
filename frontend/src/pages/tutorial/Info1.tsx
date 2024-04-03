@@ -11,7 +11,7 @@ const Info1 = () => {
         alt='사진'
         src={INFO_1_DESC.image.GAME_START}
       />
-      <pre className={styles.textLong}>{INFO_1_DESC.NO_COLORED_YOU}</pre>
+      <pre className={styles.text}>{INFO_1_DESC.NO_COLORED_YOU}</pre>
     </>
   );
 };
