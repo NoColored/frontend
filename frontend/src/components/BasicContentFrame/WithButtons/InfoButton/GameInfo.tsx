@@ -1,11 +1,37 @@
-import * as constants from './constants';
+import { useState } from 'react';
+
 import * as styles from './index.css';
 import { indexProps } from './types';
 
-import { IMAGE_URL } from '@/components/BasicContentFrame/WithButtons/InfoButton/constants';
 import SettingNavigationButton from '@/components/button/SettingNavigationButton';
+import SettingTextButton from '@/components/button/SettingTextButton';
+
+import { MAX_PAGE_SIZE } from '@/pages/tutorial/constants';
+import Info from '@/pages/tutorial/Info';
+
+const $MAX_PAGE_SIZE = MAX_PAGE_SIZE - 1;
 
 const GameInfo = ({ onBack, onClose }: indexProps) => {
+  const [page, setPage] = useState<number>(0);
+
+  const prevPage = () => {
+    setPage((prev) => {
+      if (prev > 0) {
+        return prev - 1;
+      }
+      return prev;
+    });
+  };
+
+  const nextPage = () => {
+    setPage((prev) => {
+      if (prev < $MAX_PAGE_SIZE) {
+        return prev + 1;
+      }
+      return prev;
+    });
+  };
+
   return (
     <>
       <SettingNavigationButton
@@ -18,40 +44,25 @@ const GameInfo = ({ onBack, onClose }: indexProps) => {
         onClick={onClose}
         position='rightTop'
       />
-      <div className={styles.boxWrapper}>
-        <div className={styles.text}>
-          <div> 게임 방식</div>
+      <div className={styles.gameInfoWrapper}>
+        <Info page={page} />
+        <div className={styles.left}>
+          <SettingTextButton
+            size='xsmall'
+            colorStyle={page > 0 ? 'black' : 'gray'}
+            onClick={prevPage}
+          >
+            {`<`}
+          </SettingTextButton>
         </div>
-        <div className={styles.infoText}>
-          <div> {constants.HOW_TO_PLAY.INFO}</div>
-        </div>
-        <div className={styles.infoText}>
-          <div> {constants.HOW_TO_PLAY.KEYBOARD}</div>
-        </div>
-        <div className={styles.mapBackground}>
-          <img
-            className={styles.imageStyle}
-            alt='foodMap'
-            src={IMAGE_URL.map}
-          />
-        </div>
-        <div className={styles.buttonWrapper}>
-          <div className={styles.buttonWrapper}>
-            <img
-              className={styles.buttonStyle}
-              alt='moveButton'
-              src={IMAGE_URL.move}
-            />
-            <div>{constants.HOW_TO_PLAY.MOVE}</div>
-          </div>
-          <div className={styles.buttonWrapper}>
-            <img
-              className={styles.buttonStyle}
-              alt='moveButton'
-              src={IMAGE_URL.jump}
-            />
-            <div>{constants.HOW_TO_PLAY.JUMP}</div>
-          </div>
+        <div className={styles.right}>
+          <SettingTextButton
+            size='xsmall'
+            colorStyle={page < $MAX_PAGE_SIZE ? 'black' : 'gray'}
+            onClick={nextPage}
+          >
+            {`>`}
+          </SettingTextButton>
         </div>
       </div>
     </>

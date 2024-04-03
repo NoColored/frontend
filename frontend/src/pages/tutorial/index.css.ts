@@ -43,6 +43,16 @@ export const text = style([
   },
 ]);
 
+export const textLong = style([
+  sprinkles({
+    textSize: '1x',
+    marginY: '2x',
+  }),
+  {
+    textAlign: 'center',
+  },
+]);
+
 export const mapImage = style([
   sprinkles({
     marginY: '2x',
