@@ -152,7 +152,7 @@ export default class GameScene extends Phaser.Scene {
     // npc object
     this.load.spritesheet(
       'npc',
-      'https://nocolored.s3.ap-northeast-2.amazonaws.com/character-240px-sheet-npcWhite.png',
+      '/images/character/character-default-none-clone-h240w240.png',
       {
         frameWidth: 240,
         frameHeight: 240,
