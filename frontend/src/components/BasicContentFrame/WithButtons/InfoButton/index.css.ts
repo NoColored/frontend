@@ -30,7 +30,7 @@ export const gameInfoWrapper = style([
   }),
   {
     height: '300px',
-    width: '440px',
+    width: '450px',
   },
 ]);
 
