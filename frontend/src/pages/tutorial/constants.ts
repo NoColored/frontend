@@ -7,21 +7,21 @@ export const INFO_DESC = {
 
 export const INFO_0_DESC = {
   TITLE: '게임 방식',
-  HOW_TO_PLAY:
-    '맵 하단에 있는 "버튼"을 클릭하면 조작할 수 있어요! \n 웹에서는 "스페이스바"와 "방향키"로 조작해요',
-  MOVE: ': 좌/우 전환',
-  JUMP: ': 점프',
+  HOW_TO_PLAY: '캐릭터는 자동으로 움직이고 있어요!',
+  MOVE: '좌/우 전환 (아무방향키): 캐릭터가 뛰는 방향을 반전해요.',
+  JUMP: '점프 (스페이스바) : 캐릭터를 점프 시켜요!',
   image: {
-    MAP: '/images/map/background/foodmap-controller.png',
+    MAP: '/images/ui/tutorial/basicmap-controller.png',
     MOVE: '/images/ui/controller/icon-controller-change.svg',
     JUMP: '/images/ui/controller/icon-controller-jump.svg',
   },
 };
 
 export const INFO_1_DESC = {
-  TITLE: 'noColored 와 당신',
+  TITLE: '숨어있는 상대방을 찾으세요!',
   NO_COLORED_YOU:
-    '노컬러랜드에는 당신을 제외하고 전부 "복제품"입니다. \n 모두 동일한 모습으로 숨어있어요! \n 게다가 모든 참가자들은 "자동" 으로 움직입니다. 정신없이!',
+    '모두 똑같은 복제품 중 진짜 유저를 찾아보세요!\n' +
+    "Tip: 진짜 유저만 '점프'가 가능해요.",
   image: {
     GAME_START: '/images/ui/tutorial/gameStart.png',
   },

@@ -35,8 +35,9 @@ export const title = style([
 
 export const text = style([
   sprinkles({
-    textSize: '1.25x',
-    marginY: '2x',
+    fontSize: '1.25x',
+    lineHeight: '2x',
+    marginY: '1x',
   }),
   {
     textAlign: 'center',
@@ -66,7 +67,6 @@ export const wrapper = style([
   flexOptions({ option: 'rowCenter' }),
   sprinkles({
     marginTop: '1x',
-    marginX: '4x',
   }),
 ]);
 
