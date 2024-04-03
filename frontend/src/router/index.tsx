@@ -4,7 +4,6 @@ import { ROUTE } from './constants';
 
 import Collection from '@/pages/collection';
 import Error from '@/pages/error';
-import Example from '@/pages/example';
 import Home from '@/pages/home';
 import Landing from '@/pages/landing';
 import LandingLayout from '@/pages/landing/layout';
@@ -78,11 +77,6 @@ const router = createBrowserRouter([
           },
         ],
       },
-      {
-        path: `${ROUTE.example}`,
-        element: <Example />,
-      },
-
       {
         path: `${ROUTE.ranking}`,
         element: <Ranking />,
