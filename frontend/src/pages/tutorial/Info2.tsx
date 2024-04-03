@@ -1,26 +1,27 @@
-import * as constants from './constants';
 import * as styles from './index.css';
+
+import { INFO_2_DESC } from '@/pages/tutorial/constants';
 
 const Info2 = () => {
   return (
     <>
-      <div className={styles.title}>결투!</div>
+      <div className={styles.title}>{INFO_2_DESC.TITLE}</div>
       <div className={styles.imgWrapper}>
         <img
           className={styles.gameImage}
-          src={constants.FIGHT_URL.NO_COLORED}
+          src={INFO_2_DESC.image.NO_COLORED}
           alt='머리밟기'
         />
         <img
           className={styles.gameImage}
-          src={constants.FIGHT_URL.HIDE_SEEK}
+          src={INFO_2_DESC.image.HIDE_SEEK}
           alt='스킨 드러남'
         />
       </div>
       <pre className={styles.text}>
-        {constants.INFO2_DESC.HEAD}
-        <br/>
-        {constants.INFO2_DESC.ITEM}
+        {INFO_2_DESC.HEAD}
+        <br />
+        {INFO_2_DESC.ITEM}
       </pre>
     </>
   );

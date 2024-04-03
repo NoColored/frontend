@@ -1,8 +1,5 @@
 import { style } from '@vanilla-extract/css';
 
-import * as constants from './constants';
-
-
 import { flexOptions } from '@/styles/common.css';
 import { sprinkles } from '@/styles/sprinkles.css';
 
@@ -32,14 +29,14 @@ export const container = style([
 export const title = style([
   sprinkles({
     textSize: '2x',
-    marginY: '1x',
+    marginY: '2x',
   }),
 ]);
 
 export const text = style([
   sprinkles({
     textSize: '1.25x',
-    marginY: '4x',
+    marginY: '2x',
   }),
   {
     textAlign: 'center',
@@ -47,6 +44,9 @@ export const text = style([
 ]);
 
 export const mapImage = style([
+  sprinkles({
+    marginY: '2x',
+  }),
   {
     height: '50%',
   },
@@ -55,7 +55,7 @@ export const mapImage = style([
 export const wrapper = style([
   flexOptions({ option: 'rowCenter' }),
   sprinkles({
-    marginTop: '2x',
+    marginTop: '1x',
     marginX: '4x',
   }),
 ]);
@@ -64,12 +64,15 @@ export const button = style([sprinkles({ marginX: '1x' }), { height: '32px' }]);
 
 export const gameImage = style([
   sprinkles({
-    margin: '4x',
+    marginX: '4x',
+    height: 'full',
   }),
-  {
-    width: constants.GAME_IMAGE.WIDTH,
-    height: constants.GAME_IMAGE.HEIGHT,
-  }
 ]);
 
-export const imgWrapper = style([flexOptions({ option: 'rowCenter' })]);
+export const imgWrapper = style([
+  flexOptions({ option: 'rowCenter' }),
+  sprinkles({ marginY: '2x' }),
+  {
+    height: '50%',
+  },
+]);

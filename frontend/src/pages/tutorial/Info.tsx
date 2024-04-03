@@ -32,10 +32,10 @@ const Info = ({ page }: Props) => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.title}>{constants.TUTORIAL_TITLE.MAIN}</div>
+      <div className={styles.title}>{constants.INFO_DESC.TITLE}</div>
       <ColoredButton
         size='small'
-        text='접속'
+        text={constants.INFO_DESC.BUTTON}
         color='green'
         onClick={() => {
           navigate(ROUTE.home, { replace: true });

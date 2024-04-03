@@ -5,9 +5,8 @@ import * as styles from './index.css';
 import BasicContentFrame from '@/components/BasicContentFrame/WithButtons';
 import SettingTextButton from '@/components/button/SettingTextButton';
 
+import { MAX_PAGE_SIZE } from '@/pages/tutorial/constants';
 import Info from '@/pages/tutorial/Info';
-
-const MAX_PAGE = 3;
 
 const Tutorial = () => {
   const [page, setPage] = useState<number>(0);
@@ -23,7 +22,7 @@ const Tutorial = () => {
 
   const nextPage = () => {
     setPage((prev) => {
-      if (prev < MAX_PAGE) {
+      if (prev < MAX_PAGE_SIZE) {
         return prev + 1;
       }
       return prev;
@@ -46,7 +45,7 @@ const Tutorial = () => {
         <div className={styles.right}>
           <SettingTextButton
             size='xsmall'
-            colorStyle={page < MAX_PAGE ? 'black' : 'gray'}
+            colorStyle={page < MAX_PAGE_SIZE ? 'black' : 'gray'}
             onClick={nextPage}
           >
             {`>`}
