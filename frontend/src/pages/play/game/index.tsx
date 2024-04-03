@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import BasicContentFrame from '@/components/BasicContentFrame';
 
 import { useGameControl } from '@/states/game';
+import { useWebSocketStore } from '@/states/websocket';
 
 import { config, scenesConfig } from '@/game/scene/config';
 import { ROUTE } from '@/router/constants';
@@ -11,7 +12,10 @@ import { ROUTE } from '@/router/constants';
 const Game = () => {
   const navigate = useNavigate();
   const { isActive, setIsActive } = useGameControl();
+
+  const { webSocket } = useWebSocketStore.getState();
   const inGameDisconnect = () => {
+    webSocket.inGameUnconnected(() => {});
     navigate(`${ROUTE.error}/400`, { replace: true });
   };
   useEffect(() => {

@@ -17,15 +17,7 @@ export const getLobbyInfo = async (roodId: string | undefined) => {
 };
 
 export const getReady = async () => {
-  return api
-    .get<string>(true, '/play/friendly/ready')
-    .then((res) => {
-      console.log(res.data);
-    })
-    .catch((err) => {
-      console.log(err);
-      throw err;
-    });
+  return api.get<string>(true, '/play/friendly/ready');
 };
 
 export const getOut = async () => {
