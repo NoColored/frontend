@@ -421,7 +421,6 @@ export default class GameScene extends Phaser.Scene {
 
   private effectUpdate(view: DataView) {
     const [data, length] = effectList(view, this.p + 1);
-
     data.forEach((effect) => {
       EffectUtils(this, effect[0], effect[1], effect[2]);
     });
@@ -453,8 +452,7 @@ export default class GameScene extends Phaser.Scene {
 
       default:
         console.log('messageError', messageType);
-        console.log(this.p);
-        console.log(view);
+
         return 2;
     }
   }
@@ -525,7 +523,6 @@ export default class GameScene extends Phaser.Scene {
       case 'end':
         // eslint-disable-next-line no-new
         new GameOver(this);
-        this.socket.inGameUnconnected(() => {});
         this.jumpButton?.setButtonAndKeyInputEnabled(false);
         this.changeDirButton?.setButtonAndKeyInputEnabled(false);
         this.jumpButton?.destroy();

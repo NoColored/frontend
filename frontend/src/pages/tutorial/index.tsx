@@ -1,17 +1,14 @@
 import { useState } from 'react';
 
 import * as styles from './index.css';
-import { indexProps } from './types';
 
-import SettingNavigationButton from '@/components/button/SettingNavigationButton';
+import BasicContentFrame from '@/components/BasicContentFrame/WithButtons';
 import SettingTextButton from '@/components/button/SettingTextButton';
 
 import { MAX_PAGE_SIZE } from '@/pages/tutorial/constants';
 import Info from '@/pages/tutorial/Info';
 
-const $MAX_PAGE_SIZE = MAX_PAGE_SIZE - 1;
-
-const GameInfo = ({ onBack, onClose }: indexProps) => {
+const Tutorial = () => {
   const [page, setPage] = useState<number>(0);
 
   const prevPage = () => {
@@ -25,7 +22,7 @@ const GameInfo = ({ onBack, onClose }: indexProps) => {
 
   const nextPage = () => {
     setPage((prev) => {
-      if (prev < $MAX_PAGE_SIZE) {
+      if (prev < MAX_PAGE_SIZE) {
         return prev + 1;
       }
       return prev;
@@ -33,18 +30,8 @@ const GameInfo = ({ onBack, onClose }: indexProps) => {
   };
 
   return (
-    <>
-      <SettingNavigationButton
-        label='뒤로'
-        onClick={onBack}
-        position='leftTop'
-      />
-      <SettingNavigationButton
-        label='닫기'
-        onClick={onClose}
-        position='rightTop'
-      />
-      <div className={styles.gameInfoWrapper}>
+    <BasicContentFrame disableButton>
+      <div className={styles.container}>
         <Info page={page} />
         <div className={styles.left}>
           <SettingTextButton
@@ -58,15 +45,15 @@ const GameInfo = ({ onBack, onClose }: indexProps) => {
         <div className={styles.right}>
           <SettingTextButton
             size='xsmall'
-            colorStyle={page < $MAX_PAGE_SIZE ? 'black' : 'gray'}
+            colorStyle={page < MAX_PAGE_SIZE ? 'black' : 'gray'}
             onClick={nextPage}
           >
             {`>`}
           </SettingTextButton>
         </div>
       </div>
-    </>
+    </BasicContentFrame>
   );
 };
 
-export default GameInfo;
+export default Tutorial;

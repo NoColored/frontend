@@ -9,7 +9,8 @@ export const modal = style([
   sprinkles({
     margin: 'auto',
     borderRadius: '2x',
-    padding: constants.MODAL_PADDING,
+    paddingY: constants.MODAL_PADDING,
+    paddingX: '4x',
     position: 'relative',
   }),
   borderDarkOptions({ width: '1x', color: 'black' }),
@@ -34,6 +35,6 @@ export const content = style([
         marginTop: '16px',
       },
     },
-    width: constants.MODAL_INNER_WIDTH,
+    width: '100%',
   },
 ]);

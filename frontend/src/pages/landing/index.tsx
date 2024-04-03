@@ -18,16 +18,15 @@ const Landing = () => {
 
   const clickGuestLogin = async () => {
     return getGuestLogin().then((isSuccess) => {
-      if (isSuccess) {
-        setIsPlaying(isPlaying);
-        const playMusic = localStorage.getItem('backgroundSound') === 'true';
-        if (playMusic) playBackgroundSound();
-        navigate(ROUTE.home);
-        setFullScreen();
+      if (!isSuccess) {
+        navigate(`${ROUTE.error}/500`);
         return;
       }
-      console.log('Guest 로그인 실패');
-      navigate(`${ROUTE.error}/500`);
+      setIsPlaying(isPlaying);
+      const playMusic = localStorage.getItem('backgroundSound') === 'true';
+      if (playMusic) playBackgroundSound();
+      navigate(ROUTE.tutorial);
+      setFullScreen();
     });
   };
 
