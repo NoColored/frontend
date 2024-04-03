@@ -2,6 +2,7 @@ import ColoredButton from '@/components/button/ColoredButton';
 
 import useModal from '@/hooks/useModal';
 
+import { MAPS } from '@/pages/play/finder/constants';
 import ModalContent from '@/pages/play/finder/Modal/CreateLobby/ModalContent';
 
 import { postCreateRoom } from '@/services/finder';
@@ -21,7 +22,7 @@ const CreateLobby = () => {
         <ModalContent
           roomTitle=''
           roomPassword=''
-          mapId={0}
+          mapId={MAPS[0].mapId}
           closeModal={closeModal}
           api={postCreateRoom}
           buttonText='방 만들기'
