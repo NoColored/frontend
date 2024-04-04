@@ -42,6 +42,16 @@ export const MAPS: GameMap[] = [
     imgSrc: '/images/map/background/foodmap.png',
     mapName: '푸디',
   },
+  {
+    mapId: 3,
+    imgSrc: '/images/map/background/foodmap2.png',
+    mapName: '푸디2',
+  },
+  {
+    mapId: 4,
+    imgSrc: '/images/map/background/factorymap.png',
+    mapName: '팩토리',
+  },
 ] as const;
 
 export const MAP_ITEM_HEIGHT = '100px';
