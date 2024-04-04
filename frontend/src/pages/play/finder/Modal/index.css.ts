@@ -96,16 +96,6 @@ export const createLobbyMapPartWrapper = style([
   }),
 ]);
 
-export const createLobbyMap = style([
-  sprinkles({
-    display: 'flex',
-    flexDirection: 'row',
-    width: 'full',
-  }),
-  {
-    overflowX: 'scroll',
-  },
-]);
 export const mapItemWrapper = style([
   sprinkles({
     margin: '2x',
