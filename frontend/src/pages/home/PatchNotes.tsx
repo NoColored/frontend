@@ -12,7 +12,9 @@ export const PatchNotes = () => {
         NEW !
       </SettingTextButton>
       <Modal>
-        <pre style={{ lineHeight: '20px' }}>{`<잘 알겠다. 당신들의 수준>
+        <h1>패치노트</h1>
+        <pre style={{ lineHeight: '16px' }}>{`
+<잘 알겠다. 당신들의 수준>
 - 신규맵 Food2, Factory 추가!
 - 난이도 UP! 좁은 블럭에도 올라갈 수 있겠죠?
 
@@ -24,7 +26,7 @@ export const PatchNotes = () => {
 - 어제 브론즈였던 내가, 오늘은 골드?
 `}</pre>
         <ColoredButton
-          size='small'
+          size='xsmall'
           text='확인'
           color='green'
           onClick={closeModal}
