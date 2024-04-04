@@ -94,6 +94,9 @@ export const createLobbyMapPartWrapper = style([
     marginY: '2x',
     width: 'full',
   }),
+  {
+    overflowX: 'scroll',
+  },
 ]);
 export const mapItemWrapper = style([
   sprinkles({
