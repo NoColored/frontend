@@ -1,22 +1,5 @@
 export const INFO_TYPE = ['main', 'item', 'game', 'tier'] as const;
 
-export const IMAGE_URL = {
-  map: '/images/map/background/foodmap-controller.png',
-  move: '/images/ui/controller/icon-controller-change.svg',
-  jump: '/images/ui/controller/icon-controller-jump.svg',
-} as const;
-
-export const IMG_SIZE = {
-  background: {
-    width: '320px',
-    height: '160px',
-  },
-  button: {
-    width: '34px',
-    height: '25px',
-  },
-} as const;
-
 export const ITEMS = [
   {
     name: 'again',

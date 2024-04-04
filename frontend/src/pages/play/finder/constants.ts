@@ -28,6 +28,11 @@ export const FAIL_MESSAGE_MODAL = {
 
 export const MAPS: GameMap[] = [
   {
+    mapId: 0,
+    imgSrc: '/images/map/background/random-map-rainbow-h450w450.png',
+    mapName: '랜덤',
+  },
+  {
     mapId: 1,
     imgSrc: '/images/map/background/basicmap.png',
     mapName: '베이직',

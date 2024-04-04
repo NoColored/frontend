@@ -1,5 +1,7 @@
 import { characterInfo } from '@/types/ingame';
 
+import * as constants from '@/game/constants';
+
 export class Character extends Phaser.Physics.Arcade.Sprite {
   private currentSkin: string;
   private direction: 'left' | 'right' | 'stop';
@@ -34,9 +36,8 @@ export class Character extends Phaser.Physics.Arcade.Sprite {
     this.setSkinState(texture);
     this.changePosition(characterInfoData);
     this.stopAnims();
-    scene.add.existing(this).setDepth(2);
+    scene.add.existing(this).setDepth(constants.INGAME_DEPTH.CHARACTER);
   }
-
 
   changeDir(velocityX: number) {
     if (velocityX < 0 && this.direction !== 'left') {
@@ -62,7 +63,6 @@ export class Character extends Phaser.Physics.Arcade.Sprite {
     if (this.direction === 'stop') {
       this.anims.stop();
     }
-
   }
 
   // 아이템 등으로 인한 멈춤일때
@@ -76,7 +76,6 @@ export class Character extends Phaser.Physics.Arcade.Sprite {
     this.skinChanged = true;
     // this.createAnimations(skin);
   }
-
 
   changePosition(characterData: characterInfo) {
     // 정보값 변경

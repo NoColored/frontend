@@ -14,8 +14,7 @@ interface CollectionState {
 export const useCollectionStateStore = create<CollectionState>((set) => ({
   skinId: -1,
   labelId: -1,
-  skinUrl:
-    'https://nocolored.s3.ap-northeast-2.amazonaws.com/character-240px-sheet-basicblue.png',
+  skinUrl: '',
   labelName: '',
   setSkinId: (id: number) => {
     set({ skinId: id });

@@ -22,7 +22,8 @@ import { Map } from '@/game/map/Map';
 import { PhysicsMap } from '@/game/map/PhysicsMap';
 import { Character } from '@/game/object/Character';
 import { CharacterAnimation } from '@/game/object/CharacterAnimation';
-import { CharacterIcon } from '@/game/object/CharacterIcon';
+import { CharacterParticle } from '@/game/object/CharacterParticle';
+import { CharacterTopIcon } from '@/game/object/CharacterTopIcon';
 import { EffectAnimations } from '@/game/object/effect/EffectAnimations';
 import { Item } from '@/game/object/Item';
 import CountDown from '@/game/scene/CountDown';
@@ -46,7 +47,8 @@ export default class GameScene extends Phaser.Scene {
 
   // GameObject들
   private characters: Character[] = [];
-  private characterIcons: CharacterIcon[];
+  private characterIcons: CharacterTopIcon[];
+  private characterParticle: CharacterParticle;
   private characterIconKeys: string[];
 
   private charactersPrevSkin: number[] = [];
@@ -88,6 +90,7 @@ export default class GameScene extends Phaser.Scene {
 
     this.characterIcons = [];
     this.characterIconKeys = [];
+    this.characterParticle = {} as CharacterParticle;
 
     this.item = null;
 
@@ -282,9 +285,13 @@ export default class GameScene extends Phaser.Scene {
 
     for (let i = 0; i < 4; i++) {
       this.characterIcons.push(
-        new CharacterIcon(this, this.characterIconKeys[i], this.characters),
+        new CharacterTopIcon(this, this.characterIconKeys[i], this.characters),
       );
     }
+    this.characterParticle = new CharacterParticle(
+      this,
+      this.characterIconKeys,
+    );
 
     this.item = new Item(this);
 
@@ -327,6 +334,9 @@ export default class GameScene extends Phaser.Scene {
     this.characters[characterIdx].setSkinState(`player${colorIdx}` ?? 'npc');
     this.characters[characterIdx].setAsUser();
     this.characterIcons[colorIdx].followCharacter(characterIdx);
+
+    this.characterParticle.setColor(colorIdx);
+    this.characterParticle.followCharacter(this.characters[characterIdx]);
     return 3;
   }
 
@@ -411,7 +421,6 @@ export default class GameScene extends Phaser.Scene {
 
   private effectUpdate(view: DataView) {
     const [data, length] = effectList(view, this.p + 1);
-
     data.forEach((effect) => {
       EffectUtils(this, effect[0], effect[1], effect[2]);
     });
@@ -443,8 +452,7 @@ export default class GameScene extends Phaser.Scene {
 
       default:
         console.log('messageError', messageType);
-        console.log(this.p);
-        console.log(view);
+
         return 2;
     }
   }
@@ -515,7 +523,6 @@ export default class GameScene extends Phaser.Scene {
       case 'end':
         // eslint-disable-next-line no-new
         new GameOver(this);
-        this.socket.inGameUnconnected(() => {});
         this.jumpButton?.setButtonAndKeyInputEnabled(false);
         this.changeDirButton?.setButtonAndKeyInputEnabled(false);
         this.jumpButton?.destroy();

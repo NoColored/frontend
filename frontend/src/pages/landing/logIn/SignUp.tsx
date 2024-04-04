@@ -70,7 +70,7 @@ const SignUp = ({ closeModal }: Props) => {
       await postSignUp(signUpInfo).then((isSuccess) => {
         if (isSuccess) {
           closeModal();
-          navigate(ROUTE.home);
+          navigate(ROUTE.tutorial);
           setFullScreen();
         }
       });

@@ -20,7 +20,7 @@ export const BOTTOM_CONTENTS_WRAPPER_HEIGHT = calc.subtract(
 );
 
 export const SIGNUP_BANNER_IMAGE =
-  '/images/character/default-sunglass/character-default-sunglass-yellow-h240w240.png';
+  '/images/character/character-default-sunglass-yellow-h240w240.png';
 
 export const SIGNUP_BANNER_TEXT = '★스킨★\n받는 법은?';
 export const SIGNUP_BANNER = {

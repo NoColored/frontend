@@ -1,7 +1,5 @@
 import { style } from '@vanilla-extract/css';
 
-import * as constants from './constants';
-
 import { flexOptions } from '@/styles/common.css';
 import { sprinkles } from '@/styles/sprinkles.css';
 import { vars } from '@/styles/vars.css';
@@ -25,12 +23,33 @@ export const text = style([
   }),
 ]);
 
-export const infoText = style([
-  flexOptions({ option: 'center' }),
+export const gameInfoWrapper = style([
+  flexOptions({ option: 'columnCenter' }),
   sprinkles({
-    textSize: '1x',
-    marginBottom: '2x',
+    position: 'relative',
   }),
+  {
+    height: '300px',
+    width: '450px',
+  },
+]);
+
+export const left = style([
+  sprinkles({
+    position: 'absolute',
+  }),
+  {
+    left: '0',
+  },
+]);
+
+export const right = style([
+  sprinkles({
+    position: 'absolute',
+  }),
+  {
+    right: '0',
+  },
 ]);
 
 export const textMargin = style([
@@ -41,33 +60,6 @@ export const textMargin = style([
     textAlign: 'center',
   },
 ]);
-
-export const mapBackground = style([
-  flexOptions({ option: 'center' }),
-  sprinkles({
-    marginBottom: '1x',
-  }),
-  {
-    width: constants.IMG_SIZE.background.width,
-    height: constants.IMG_SIZE.background.height,
-    maxHeight: '100%',
-  },
-]);
-
-export const imageStyle = style([
-  sprinkles({
-    marginBottom: '1x',
-  }),
-  {
-    maxWidth: '100%',
-    maxHeight: '100%',
-  },
-]);
-
-export const buttonStyle = style({
-  width: constants.IMG_SIZE.button.width,
-  height: constants.IMG_SIZE.button.height,
-});
 
 export const lowTierStyle = style([
   flexOptions({ option: 'center' }),

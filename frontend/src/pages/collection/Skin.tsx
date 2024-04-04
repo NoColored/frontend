@@ -18,12 +18,11 @@ const Skin = () => {
     getCollections().then((collections) => {
       if (collections && collections.skins) {
         setSkins(collections.skins);
-        // console.log(collections.skins);
+        setSkinId(-1);
       }
     });
   }, []);
 
-  // console.log(skinId);
   return (
     <div>
       <div className={styles.skinWrapper}>
