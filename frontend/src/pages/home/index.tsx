@@ -10,6 +10,7 @@ import ColoredIconButton from '@/components/button/ColoredIconButton';
 import type { tierType } from '@/components/imagebox/types';
 
 import Error from '@/pages/error';
+import { PatchNotes } from '@/pages/home/PatchNotes';
 import UserDashboard from '@/pages/home/UserDashboard';
 
 import { ROUTE } from '@/router/constants';
@@ -71,13 +72,7 @@ const Home = () => {
           >
             <span className={styles.titleText}>{`< ${user.label} >`}</span>
           </div>
-          <ColoredIconButton
-            icon='/images/ui/icon/button/icon-button-ranking-h50w50.png'
-            size='medium'
-            text='Notice'
-            color='yellow'
-            onClick={goPlay}
-          />
+          <PatchNotes />
           <ColoredIconButton
             icon='/images/ui/icon/button/icon-button-ranking-h50w50.png'
             size='medium'
