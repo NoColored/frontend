@@ -74,6 +74,13 @@ const Home = () => {
           <ColoredIconButton
             icon='/images/ui/icon/button/icon-button-ranking-h50w50.png'
             size='medium'
+            text='Notice'
+            color='yellow'
+            onClick={goPlay}
+          />
+          <ColoredIconButton
+            icon='/images/ui/icon/button/icon-button-ranking-h50w50.png'
+            size='medium'
             text='Play'
             color='red'
             onClick={goPlay}
