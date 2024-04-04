@@ -87,20 +87,22 @@ const ModalContent = ({
 
       <fieldset className={styles.createLobbyMapPartWrapper}>
         <legend className={styles.createLobbyText}>맵</legend>
-        {constants.MAPS.map((item) => (
-          <MapItem
-            key={item.mapId}
-            mapName={item.mapName}
-            imgSrc={item.imgSrc}
-            isSelected={item.mapId === createRoomInfo.mapId}
-            onClick={() => {
-              setCreateRoomInfo((prev) => ({
-                ...prev,
-                mapId: item.mapId,
-              }));
-            }}
-          />
-        ))}
+        <div className={styles.createLobbyMap}>
+          {constants.MAPS.map((item) => (
+            <MapItem
+              key={item.mapId}
+              mapName={item.mapName}
+              imgSrc={item.imgSrc}
+              isSelected={item.mapId === createRoomInfo.mapId}
+              onClick={() => {
+                setCreateRoomInfo((prev) => ({
+                  ...prev,
+                  mapId: item.mapId,
+                }));
+              }}
+            />
+          ))}
+        </div>
       </fieldset>
 
       <div className={styles.modalTwoButtonWrapper}>
