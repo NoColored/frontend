@@ -3,6 +3,8 @@ export const MAP_TILE_SIZE = 18;
 export const MAP_TYPE_MATCH = new Map([
   [1, 'basicmap'],
   [2, 'foodmap'],
+  [3, 'foodmap2'],
+  [4, 'factorymap'],
 ]);
 
 export const GRAVITY = 500;
