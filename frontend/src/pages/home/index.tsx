@@ -17,6 +17,7 @@ import { ROUTE } from '@/router/constants';
 
 const Home = () => {
   const user = useLoaderData() as User;
+
   const navigate = useNavigate();
 
   const goCollection = () => {
@@ -72,14 +73,16 @@ const Home = () => {
           >
             <span className={styles.titleText}>{`< ${user.label} >`}</span>
           </div>
-          <PatchNotes />
-          <ColoredIconButton
-            icon='/images/ui/icon/button/icon-button-ranking-h50w50.png'
-            size='medium'
-            text='Play'
-            color='red'
-            onClick={goPlay}
-          />
+          <div className={styles.RightButtonsWrapper}>
+            <PatchNotes />
+            <ColoredIconButton
+              icon='/images/ui/icon/button/icon-button-ranking-h50w50.png'
+              size='medium'
+              text='Play'
+              color='red'
+              onClick={goPlay}
+            />
+          </div>
         </div>
       </div>
       {user.guest && <SignupBanner />}
