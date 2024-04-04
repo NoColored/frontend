@@ -26,6 +26,17 @@ export const LeftButtonsWrapper = style([
   },
 ]);
 
+export const RightButtonsWrapper = style([
+  sprinkles({
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'flexEnd',
+  }),
+  {
+    gap: constants.BUTTON_GAP,
+  },
+]);
+
 export const CharacterBox = style([
   flexOptions({ option: 'column' }),
   sprinkles({

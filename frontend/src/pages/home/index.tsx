@@ -9,8 +9,6 @@ import BasicContentFrame from '@/components/BasicContentFrame/WithButtons/index'
 import ColoredIconButton from '@/components/button/ColoredIconButton';
 import type { tierType } from '@/components/imagebox/types';
 
-import useModal from '@/hooks/useModal';
-
 import Error from '@/pages/error';
 import UserDashboard from '@/pages/home/UserDashboard';
 
@@ -19,7 +17,6 @@ import { ROUTE } from '@/router/constants';
 const Home = () => {
   const user = useLoaderData() as User;
   const navigate = useNavigate();
-  const [Modal, openModal, closeModal] = useModal();
 
   const goCollection = () => {
     navigate(ROUTE.collection);
@@ -29,10 +26,6 @@ const Home = () => {
   };
   const goPlay = () => {
     navigate(ROUTE.play);
-  };
-
-  const clickNotice = () => {
-    openModal();
   };
 
   if (!user) {
@@ -94,9 +87,6 @@ const Home = () => {
           />
         </div>
       </div>
-      <Modal>
-        <PatchNotes closeModal={closeModal} />
-      </Modal>
       {user.guest && <SignupBanner />}
     </BasicContentFrame>
   );
