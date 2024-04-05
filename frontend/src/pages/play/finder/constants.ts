@@ -33,6 +33,16 @@ export const MAPS: GameMap[] = [
     mapName: '랜덤',
   },
   {
+    mapId: 4,
+    imgSrc: '/images/map/background/factorymap.png',
+    mapName: '팩토리',
+  },
+  {
+    mapId: 3,
+    imgSrc: '/images/map/background/foodmap2.png',
+    mapName: '푸디2',
+  },
+  {
     mapId: 1,
     imgSrc: '/images/map/background/basicmap.png',
     mapName: '베이직',
@@ -41,16 +51,6 @@ export const MAPS: GameMap[] = [
     mapId: 2,
     imgSrc: '/images/map/background/foodmap.png',
     mapName: '푸디',
-  },
-  {
-    mapId: 3,
-    imgSrc: '/images/map/background/foodmap2.png',
-    mapName: '푸디2',
-  },
-  {
-    mapId: 4,
-    imgSrc: '/images/map/background/factorymap.png',
-    mapName: '팩토리',
   },
 ] as const;
 
