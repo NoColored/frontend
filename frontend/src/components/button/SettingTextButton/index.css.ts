@@ -46,7 +46,7 @@ export const buttonVariants = {
       }),
       {
         height: constants.SETTING_TEXT_BUTTON.small.height,
-        width: constants.SETTING_TEXT_BUTTON.small.width,
+        minWidth: constants.SETTING_TEXT_BUTTON.small.width,
       },
     ]),
     medium: style([
