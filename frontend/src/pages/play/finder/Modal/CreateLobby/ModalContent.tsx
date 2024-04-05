@@ -68,7 +68,7 @@ const ModalContent = ({
         <div className={styles.createLobbyText}>비밀번호</div>
         <InputTextBox
           name='roomTitle'
-          placeholder='몇글자가능할까요?'
+          placeholder='몇 글자 가능할까요?'
           size='widthFull'
           type='text'
           value={createRoomInfo.roomTitle}
@@ -77,7 +77,7 @@ const ModalContent = ({
 
         <InputTextBox
           name='roomPassword'
-          placeholder='숫자4자리'
+          placeholder='숫자 4자리'
           size='widthFull'
           type='text'
           value={createRoomInfo.roomPassword}
@@ -85,23 +85,24 @@ const ModalContent = ({
         />
       </div>
 
-      <fieldset className={styles.createLobbyMapPartWrapper}>
+      <fieldset className={styles.createLobbySelectMap}>
         <legend className={styles.createLobbyText}>맵</legend>
-
-        {constants.MAPS.map((item) => (
-          <MapItem
-            key={item.mapId}
-            mapName={item.mapName}
-            imgSrc={item.imgSrc}
-            isSelected={item.mapId === createRoomInfo.mapId}
-            onClick={() => {
-              setCreateRoomInfo((prev) => ({
-                ...prev,
-                mapId: item.mapId,
-              }));
-            }}
-          />
-        ))}
+        <div className={styles.createLobbyMapList}>
+          {constants.MAPS.map((item) => (
+            <MapItem
+              key={item.mapId}
+              mapName={item.mapName}
+              imgSrc={item.imgSrc}
+              isSelected={item.mapId === createRoomInfo.mapId}
+              onClick={() => {
+                setCreateRoomInfo((prev) => ({
+                  ...prev,
+                  mapId: item.mapId,
+                }));
+              }}
+            />
+          ))}
+        </div>
       </fieldset>
 
       <div className={styles.modalTwoButtonWrapper}>

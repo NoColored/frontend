@@ -85,8 +85,8 @@ export const createLobbyText = style([
   }),
 ]);
 
-export const createLobbyMapPartWrapper = style([
-  flexOptions({ option: 'row' }),
+export const createLobbySelectMap = style([
+  flexOptions({ option: 'rowCenter' }),
   borderLightOptions({ color: 'black', width: '2x' }),
   sprinkles({
     borderRadius: '2x',
@@ -96,12 +96,32 @@ export const createLobbyMapPartWrapper = style([
   }),
 ]);
 
-export const mapItemWrapper = style([
+export const createLobbyMapList = style([
   sprinkles({
-    margin: '2x',
+    gap: '3x',
   }),
   {
+    display: 'grid',
+    gridTemplateColumns: `repeat(${constants.MAPS.length}, ${constants.MAP_ITEM_HEIGHT})`,
+    gridTemplateRows: '1fr',
+    width: '400px',
+    overflowX: 'auto',
+    scrollbarWidth: 'thin',
+    scrollbarColor: 'transparent transparent',
+
+    ':hover': {
+      scrollbarColor: '#dddddd transparent',
+    },
+  },
+]);
+
+export const mapItemWrapper = style([
+  {
     height: constants.MAP_ITEM_HEIGHT,
+
+    ':hover': {
+      cursor: 'pointer',
+    },
   },
 ]);
 
