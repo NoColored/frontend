@@ -68,7 +68,7 @@ const ModalContent = ({
         <div className={styles.createLobbyText}>비밀번호</div>
         <InputTextBox
           name='roomTitle'
-          placeholder='몇글자가능할까요?'
+          placeholder='몇 글자 가능할까요?'
           size='widthFull'
           type='text'
           value={createRoomInfo.roomTitle}
@@ -77,7 +77,7 @@ const ModalContent = ({
 
         <InputTextBox
           name='roomPassword'
-          placeholder='숫자4자리'
+          placeholder='숫자 4자리'
           size='widthFull'
           type='text'
           value={createRoomInfo.roomPassword}
