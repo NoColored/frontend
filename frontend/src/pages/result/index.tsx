@@ -17,6 +17,7 @@ import { RewardsModal } from '@/pages/result/RewardsModal/index';
 import { getOut } from '@/services/lobby';
 
 import { useUserStateStore } from '@/states/user';
+import { useWebSocketStore } from '@/states/websocket';
 
 import { ROUTE } from '@/router/constants';
 
@@ -27,8 +28,10 @@ const Result = () => {
   const { Modal, openModal, closeModal } = useModal();
   const hasTier = !!reward.tier && reward.tier.upgrade;
   const noReward = !hasTier && reward.skins.length === 0;
+  const { webSocket } = useWebSocketStore.getState();
 
   useEffect(() => {
+    webSocket.inGameUnconnected(() => {});
     if (!noReward) {
       openModal();
     }
