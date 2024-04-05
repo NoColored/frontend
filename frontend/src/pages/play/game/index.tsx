@@ -15,11 +15,11 @@ const Game = () => {
 
   const { webSocket } = useWebSocketStore.getState();
   const inGameDisconnect = () => {
-    webSocket.inGameUnconnected(() => {});
     navigate(`${ROUTE.error}/400`, { replace: true });
   };
   useEffect(() => {
     if (!isActive) {
+      webSocket.inGameUnconnected(() => {});
       navigate(ROUTE.result, { replace: true });
       return () => {};
     }
