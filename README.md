@@ -103,12 +103,12 @@
 
 ## 🛠️ 기술 스택
 
-**React+Vite**<br>
-Language : **TypeScript**<br>
-Css : **Vanilla Extract Css**<br>
-State : **Zustand**<br>
-Game : **Phaser3** **Web-Socket**<br>
-Etc : **Node.js** **WebStorm**
+**React** 18.2.0 + **Vite** 5.1.4 <br>
+Language : **TypeScript** 5.2.2<br>
+Css : **Vanilla Extract Css** 1.14.0<br>
+State : **Zustand** 4.5.2<br>
+Game : **Phaser3** 3.80.0 **Web-Socket**<br>
+Etc : **Node.js** 20.11.20 **WebStorm**
 
 <p style="font-size: 0.8em; text-align: left">
   <a href="https://github.com/NoColored/NoColored-fe/wiki/%F0%9F%9B%A0%EF%B8%8F-%EA%B8%B0%EC%88%A0-%EC%8A%A4%ED%83%9D%EC%9D%84-%EC%84%A0%ED%83%9D%ED%95%9C-%EC%9D%B4%EC%9C%A0"><b>* 기술 별 선택 이유 확인하기</b></a>
