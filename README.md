@@ -110,18 +110,9 @@ State : **Zustand**<br>
 Game : **Phaser3** **Web-Socket**<br>
 Etc : **Node.js** **WebStorm**
 
-
-- Phaser3
-    - 웹 상에서의 뛰어난 랜더링 성능과 게임 개발 도구를 제공.
-    - 세밀한 애니메이션 제어, 물리엔진 통합, 다양한 Interactive Library 를 제공
-- Web-Socket
-    - 브라우저와 서버간 실시간 데이터 전송을 제공.
-    - 낮은 지연시간 통신을 통해 실시간 게임 상태를 동기화하고 멀티플레이 세션을 관리함.
-- Vanilla-Extract-Css
-    - Compile 과정에서 CSS 모듈을 생성 - Zero-Runtime 접근 방식으로 빠르게 실행 가능
-    - TypeScript 와의 연계로 스타일시트에 대한 타입 안정성과 코드 자동 완성 기능을 제공
-- Zustand
-    - React-Component가 아닌 게임 환경에서도, 상태 관리를 통해 Web-Socket 및 정보를 불러올 수 있어서 선택
+<p style="font-size: 0.8em; text-align: left">
+  <a href="https://github.com/NoColored/NoColored-fe/wiki/%F0%9F%9B%A0%EF%B8%8F-%EA%B8%B0%EC%88%A0-%EC%8A%A4%ED%83%9D%EC%9D%84-%EC%84%A0%ED%83%9D%ED%95%9C-%EC%9D%B4%EC%9C%A0"><b>* 기술 별 선택 이유 확인하기</b></a>
+</p>
 
 -----
 
