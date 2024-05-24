@@ -103,16 +103,12 @@
 
 ## 🛠️ 기술 스택
 
-<div style="border: 1px solid #ddd; padding: 20px; border-radius: 10px; background-color: #f9f9f9;">
-        <img src="https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB" alt="React">
-        <img src="https://img.shields.io/badge/Vite-646CFF.svg?style=for-the-badge&logo=Vite&logoColor=%2361DAFB" alt="Vite"><br><br>
-        <img src="https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript">
-        <img src="https://img.shields.io/badge/vanilla_extract_css-DB7093.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB" alt="Vanilla"/><br><br>
-        <img src="https://img.shields.io/badge/zustand-66595C.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB" alt="Zustand"/>
-        <img src="https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=Node.js&logoColor=white" alt="Node"/><br><br>
- <img src="https://img.shields.io/badge/webstorm-143?style=for-the-badge&logo=webstorm&logoColor=white&color=black" alt="WebStorm"><br>
-</div>
-
+**React+Vite**<br>
+Language : **TypeScript**<br>
+Css : **Vanilla Extract Css**<br>
+State : **Zustand**<br>
+Game : **Phaser3** **Web-Socket**<br>
+Etc : **Node.js** **WebStorm**
 
 
 - Phaser3
