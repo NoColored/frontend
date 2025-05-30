@@ -4,7 +4,7 @@ import type {
   WebSocketMessageHandler,
 } from '@/types/websocket';
 
-import { WEBSOCKET_URL } from '@/services/constants';
+import { WEBSOCKET_BASE_URL } from '@/constants/service';
 
 export class Socket {
   protected webSocket: WebSocket;
@@ -14,7 +14,7 @@ export class Socket {
   }
 
   connect() {
-    this.webSocket = new WebSocket(WEBSOCKET_URL);
+    this.webSocket = new WebSocket(WEBSOCKET_BASE_URL);
 
     this.webSocket.onopen = () => {
       this.sendToken();
