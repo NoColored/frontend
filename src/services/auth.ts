@@ -15,9 +15,6 @@ import { useUserStateStore } from '@/states/user';
 import { ROUTE } from '@/router/constants';
 
 export const getGuestLogin = async () => {
-  if (!(localStorage.getItem('presentation') === 'on')) {
-    return false;
-  }
   return api
     .get<string>(false, '/user/guest')
     .then((response) => {
