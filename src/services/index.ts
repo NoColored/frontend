@@ -1,28 +1,26 @@
-import axios, { AxiosResponse } from 'axios';
+import axios, { type AxiosResponse } from 'axios';
 
-import { API_URL } from '@/services/constants';
+import { API_BASE_URL } from '@/constants/service';
 
-const $axios = (requiredToken: boolean) => {
-  const client = axios.create({
-    baseURL: API_URL,
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    // withCredentials: true,
-  });
+const client = axios.create({
+  baseURL: API_BASE_URL,
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  // withCredentials: true,
+});
 
-  if (requiredToken) {
-    client.interceptors.request.use((config) => {
-      const token = localStorage.getItem('token');
-      if (token) {
-        config.headers.Authorization = token;
-      }
-      return config;
-    });
+client.interceptors.request.use((config) => {
+  if (config.headers['X-Bypass-Authorization']) {
+    return config;
   }
 
-  return client;
-};
+  const token = localStorage.getItem('token');
+  if (token) {
+    config.headers.Authorization = token;
+  }
+  return config;
+});
 
 const api = {
   post: async <T, P>(
@@ -30,14 +28,22 @@ const api = {
     url: string,
     data: P,
   ): Promise<AxiosResponse<T>> => {
-    return $axios(requiredToken).post<T>(url, data);
+    return client.post<T>(url, data, {
+      headers: {
+        'X-Bypass-Authorization': !requiredToken,
+      },
+    });
   },
 
   get: async <T>(
     requiredToken: boolean,
     url: string,
   ): Promise<AxiosResponse<T>> => {
-    return $axios(requiredToken).get<T>(url);
+    return client.get<T>(url, {
+      headers: {
+        'X-Bypass-Authorization': !requiredToken,
+      },
+    });
   },
 
   patch: async <T, P>(
@@ -45,14 +51,22 @@ const api = {
     url: string,
     data: P,
   ): Promise<AxiosResponse<T>> => {
-    return $axios(requiredToken).patch<T>(url, data);
+    return client.patch<T>(url, data, {
+      headers: {
+        'X-Bypass-Authorization': !requiredToken,
+      },
+    });
   },
 
   delete: async <T>(
     requiredToken: boolean,
     url: string,
   ): Promise<AxiosResponse<T>> => {
-    return $axios(requiredToken).delete<T>(url);
+    return client.delete<T>(url, {
+      headers: {
+        'X-Bypass-Authorization': !requiredToken,
+      },
+    });
   },
 };
 
