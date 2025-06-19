@@ -3,7 +3,8 @@ import { useState } from 'react';
 import * as styles from './index.css';
 
 import SettingTextButton from '@/components/button/SettingTextButton';
-import Modal from '@/components/Modal';
+
+import useModal from '@/hooks/useModal';
 
 import Logout from '@/pages/settings/Logout';
 import NicknameChange from '@/pages/settings/NicknameChange';
@@ -13,13 +14,13 @@ import type { settingType } from '@/pages/settings/types';
 
 const LoginUser = () => {
   const [view, setView] = useState<settingType>(null);
+  const { Modal, openModal, closeModal } = useModal({
+    onClose: () => setView(null),
+  });
 
   const handleOpenModal = (type: settingType) => {
     setView(type);
-  };
-
-  const handleCloseModal = () => {
-    setView(null);
+    openModal();
   };
 
   return (
@@ -56,16 +57,12 @@ const LoginUser = () => {
         회원 탈퇴
       </SettingTextButton>
 
-      {view && (
-        <Modal isOpen onClose={handleCloseModal}>
-          {view === 'nickname' && <NicknameChange onClose={handleCloseModal} />}
-          {view === 'logout' && <Logout onClose={handleCloseModal} />}
-          {view === 'pwdchange' && (
-            <PasswordChange onClose={handleCloseModal} />
-          )}
-          {view === 'signout' && <SignOut onClose={handleCloseModal} />}
-        </Modal>
-      )}
+      <Modal>
+        {view === 'nickname' && <NicknameChange onClose={closeModal} />}
+        {view === 'logout' && <Logout onClose={closeModal} />}
+        {view === 'pwdchange' && <PasswordChange onClose={closeModal} />}
+        {view === 'signout' && <SignOut onClose={closeModal} />}
+      </Modal>
     </div>
   );
 };
