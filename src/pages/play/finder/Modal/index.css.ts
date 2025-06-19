@@ -1,7 +1,6 @@
 import { style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
 
-import { MODAL_INNER_WIDTH } from '@/components/modal/constants';
 import { INPUT_TEXT_BOX_SIZE } from '@/components/textbox/InputTextBox/constants';
 
 import * as constants from '@/pages/play/finder/constants';
@@ -9,11 +8,6 @@ import * as constants from '@/pages/play/finder/constants';
 import { borderLightOptions, flexOptions } from '@/styles/common.css';
 import { sprinkles } from '@/styles/sprinkles.css';
 import { vars } from '@/styles/vars.css';
-
-export const modalWrapper = style({
-  width: MODAL_INNER_WIDTH,
-  height: constants.MODAL_WRAPPER_HEIGHT,
-});
 
 export const modalTwoButtonWrapper = style([
   flexOptions({
@@ -29,12 +23,14 @@ export const contentBox = style([
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'spaceBetween',
-    textSize: '1.5x',
   }),
-  {
-    height: '100%',
-  },
+]);
+
+export const text = style([
+  sprinkles({
+    textSize: '1.5x',
+    lineHeight: '2x',
+  }),
 ]);
 
 export const messageModalWrapper = sprinkles({
