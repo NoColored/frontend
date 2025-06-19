@@ -1,31 +1,39 @@
-import { ReactNode, useState } from 'react';
+import { ReactNode, useCallback, useRef } from 'react';
 
 import ModalComponent from '@/components/Modal/index';
 
-interface Props {
+interface ModalProps {
   children: ReactNode;
 }
 
-const useModal = () => {
-  const [isOpen, setIsOpen] = useState(false);
+const useModal = (
+  props: {
+    onOpen?: () => void;
+    onClose?: () => void;
+  } = {},
+) => {
+  const { onOpen, onClose } = props;
+  const ref = useRef<HTMLDialogElement>(null);
 
   const openModal = () => {
-    setIsOpen(true);
+    ref.current?.showModal();
+    if (onOpen) {
+      onOpen();
+    }
   };
 
   const closeModal = () => {
-    setIsOpen(false);
+    ref.current?.close();
+    if (onClose) {
+      onClose();
+    }
   };
 
-  const Modal = ({ children }: Props) => {
-    return (
-      <ModalComponent isOpen={isOpen} onClose={closeModal}>
-        {children}
-      </ModalComponent>
-    );
-  };
+  const Modal = useCallback(({ children }: ModalProps) => {
+    return <ModalComponent ref={ref}>{children}</ModalComponent>;
+  }, []);
 
-  return { Modal, openModal, closeModal, isOpen };
+  return { Modal, openModal, closeModal };
 };
 
 export default useModal;
