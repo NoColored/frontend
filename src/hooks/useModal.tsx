@@ -1,6 +1,6 @@
 import { ReactNode, useCallback, useRef } from 'react';
 
-import ModalComponent from '@/components/Modal/index';
+import ModalComponent from '@/components/modal';
 
 interface ModalProps {
   children: ReactNode;
