@@ -7,11 +7,10 @@ import { sprinkles } from '@/styles/sprinkles.css';
 
 export const modal = style([
   sprinkles({
-    margin: 'auto',
     borderRadius: '2x',
     paddingY: constants.MODAL_PADDING,
     paddingX: '4x',
-    position: 'relative',
+    position: 'fixed',
   }),
   borderDarkOptions({ width: '1x', color: 'black' }),
   {
@@ -20,21 +19,23 @@ export const modal = style([
         padding: '18px',
       },
     },
-    minHeight: constants.MIN_MODAL_HEIGHT,
     width: constants.MODAL_WIDTH,
     maxHeight: constants.MAX_MODAL_HEIGHT,
+    top: '50%',
+    left: '50%',
+    translate: '-50% -50%',
+
+    selectors: {
+      '&::backdrop': {
+        background: 'rgba(0, 0, 0, 0.4)',
+      },
+    },
   },
 ]);
 
 export const content = style([
   flexOptions({ option: 'columnCenter' }),
-  {
-    '@media': {
-      'screen and (max-height: 365px)': {
-        margin: 'auto',
-        marginTop: '16px',
-      },
-    },
-    width: '100%',
-  },
+  sprinkles({
+    width: 'full',
+  }),
 ]);
