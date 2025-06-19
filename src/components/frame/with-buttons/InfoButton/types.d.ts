@@ -1,4 +1,4 @@
-import { INFO_TYPE } from '@/components/BasicContentFrame/WithButtons/InfoButton/constants';
+import { INFO_TYPE } from '@/components/frame/with-buttons/InfoButton/constants';
 
 export interface indexProps {
   onClose: () => void;

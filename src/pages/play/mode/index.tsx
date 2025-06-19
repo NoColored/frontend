@@ -5,7 +5,7 @@ import * as styles from './index.css';
 
 import { User } from '@/types/auth';
 
-import BasicContentFrame from '@/components/BasicContentFrame/WithButtons';
+import BasicContentFrame from '@/components/frame/with-buttons';
 import ColoredIconButton from '@/components/button/ColoredIconButton';
 
 import useModal from '@/hooks/useModal';

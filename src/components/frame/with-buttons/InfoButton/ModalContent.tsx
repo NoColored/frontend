@@ -2,11 +2,11 @@ import { useState } from 'react';
 
 import { indexProps } from './types';
 
-import GameInfo from '@/components/BasicContentFrame/WithButtons/InfoButton/GameInfo';
-import ItemInfo from '@/components/BasicContentFrame/WithButtons/InfoButton/ItemInfo';
-import MainInfo from '@/components/BasicContentFrame/WithButtons/InfoButton/MainInfo';
-import TierInfo from '@/components/BasicContentFrame/WithButtons/InfoButton/TierInfo';
-import type { infoType } from '@/components/BasicContentFrame/WithButtons/InfoButton/types';
+import GameInfo from '@/components/frame/with-buttons/InfoButton/GameInfo';
+import ItemInfo from '@/components/frame/with-buttons/InfoButton/ItemInfo';
+import MainInfo from '@/components/frame/with-buttons/InfoButton/MainInfo';
+import TierInfo from '@/components/frame/with-buttons/InfoButton/TierInfo';
+import type { infoType } from '@/components/frame/with-buttons/InfoButton/types';
 
 const ModalContent = ({ onClose }: indexProps) => {
   const [currentView, setCurrentView] = useState<infoType>('main');
