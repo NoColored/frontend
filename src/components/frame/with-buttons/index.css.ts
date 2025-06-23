@@ -1,8 +1,8 @@
 import { style } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
 
-import * as constants from '@/components/BasicContentFrame/constants';
-import { basicFrame } from '@/components/BasicContentFrame/index.css';
+import * as constants from '@/components/frame/constants';
+import { basicFrame } from '@/components/frame/index.css';
 
 import { borderDarkOptions, flexOptions } from '@/styles/common.css';
 import { sprinkles } from '@/styles/sprinkles.css';

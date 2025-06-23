@@ -2,7 +2,7 @@ import { Outlet } from 'react-router-dom';
 
 import * as styles from './index.css';
 
-import BasicContentFrame from '@/components/BasicContentFrame/index';
+import BasicContentFrame from '@/components/frame/index';
 
 import FullscreenPrompt from '@/pages/landing/FullScreenPrompt';
 

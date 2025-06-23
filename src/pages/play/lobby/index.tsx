@@ -7,7 +7,7 @@ import * as styles from './index.css';
 import type { Lobby } from '@/types/play';
 import type { ActionDataTypeMap } from '@/types/websocket';
 
-import BasicContentFrame from '@/components/BasicContentFrame/WithButtons';
+import BasicContentFrame from '@/components/frame/with-buttons';
 import ColoredTextBox from '@/components/textbox/ColoredTextBox';
 
 import { useWebSocket } from '@/hooks/useWebSocket';

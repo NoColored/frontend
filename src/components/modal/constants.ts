@@ -1,6 +1,6 @@
 import { calc } from '@vanilla-extract/css-utils';
 
-import * as frameConstants from '@/components/BasicContentFrame/constants';
+import * as frameConstants from '@/components/frame/constants';
 
 import { vars } from '@/styles/vars.css';
 

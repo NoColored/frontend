@@ -6,7 +6,7 @@ import SearchLobby from './Modal/SearchLobby/index';
 
 import type { RoomListItem } from '@/types/play';
 
-import BasicContentFrame from '@/components/BasicContentFrame/WithButtons';
+import BasicContentFrame from '@/components/frame/with-buttons';
 import ColoredButton from '@/components/button/ColoredButton';
 import SettingTextButton from '@/components/button/SettingTextButton';
 

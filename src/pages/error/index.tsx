@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import * as constants from './constants';
 import * as styles from './index.css';
 
-import BasicContentFrame from '@/components/BasicContentFrame/WithButtons';
+import BasicContentFrame from '@/components/frame/with-buttons';
 import ColoredButton from '@/components/button/ColoredButton';
 
 import type { errorCode } from '@/pages/error/type';

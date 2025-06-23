@@ -1,6 +1,6 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 
-import * as styles from '@/components/BasicContentFrame/WithButtons/index.css';
+import * as styles from '@/components/frame/with-buttons/index.css';
 import ColoredButton from '@/components/button/ColoredButton';
 import SettingIconButton from '@/components/button/SettingIconButton';
 
