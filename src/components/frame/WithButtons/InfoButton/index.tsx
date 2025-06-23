@@ -1,4 +1,4 @@
-import ModalContent from '@/components/BasicContentFrame/WithButtons/InfoButton/ModalContent';
+import ModalContent from '@/components/frame/WithButtons/InfoButton/ModalContent';
 import SettingIconButton from '@/components/button/SettingIconButton';
 
 import useModal from '@/hooks/useModal';

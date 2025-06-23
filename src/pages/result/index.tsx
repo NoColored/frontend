@@ -6,7 +6,7 @@ import * as styles from './index.css';
 
 import type { GameResult } from '@/types/result';
 
-import BasicContentFrame from '@/components/BasicContentFrame/WithButtons';
+import BasicContentFrame from '@/components/frame/WithButtons';
 import ColoredButton from '@/components/button/ColoredButton';
 
 import useModal from '@/hooks/useModal';

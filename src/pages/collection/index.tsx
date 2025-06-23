@@ -5,7 +5,7 @@ import * as styles from './index.css';
 
 import { User } from '@/types/auth';
 
-import BasicContentFrame from '@/components/BasicContentFrame/WithButtons';
+import BasicContentFrame from '@/components/frame/WithButtons';
 import SettingTextButton from '@/components/button/SettingTextButton';
 
 import Achievement from '@/pages/collection/Achievement';

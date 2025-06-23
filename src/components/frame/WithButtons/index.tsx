@@ -3,8 +3,8 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 import * as styles from './index.css';
 
-import InfoButton from '@/components/BasicContentFrame/WithButtons/InfoButton';
-import SettingButton from '@/components/BasicContentFrame/WithButtons/SettingButton/index';
+import InfoButton from '@/components/frame/WithButtons/InfoButton';
+import SettingButton from '@/components/frame/WithButtons/SettingButton/index';
 import SettingIconButton from '@/components/button/SettingIconButton/index';
 import SettingNavigationButton from '@/components/button/SettingNavigationButton/index';
 

@@ -1,6 +1,6 @@
 import * as styles from './index.css';
 
-import { settingsProps } from '@/components/BasicContentFrame/WithButtons/InfoButton/types';
+import { settingsProps } from '@/components/frame/WithButtons/InfoButton/types';
 import ColoredButton from '@/components/button/ColoredButton';
 import { useNavigate } from 'react-router-dom';
 

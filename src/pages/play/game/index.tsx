@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import BasicContentFrame from '@/components/BasicContentFrame';
+import BasicContentFrame from '@/components/frame';
 
 import { useGameControl } from '@/states/game';
 import { useWebSocketStore } from '@/states/websocket';
