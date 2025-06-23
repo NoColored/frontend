@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useLoaderData, useNavigate } from 'react-router-dom';
 
 import * as constants from './constants';
@@ -18,7 +19,11 @@ import { getMatching } from '@/services/matching';
 import { ROUTE } from '@/router/constants';
 
 const Mode = () => {
-  const { Modal, openModal, closeModal, isOpen } = useModal();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const { Modal, openModal, closeModal } = useModal({
+    onOpen: () => setIsModalOpen(true),
+    onClose: () => setIsModalOpen(false),
+  });
   const navigate = useNavigate();
   const user = useLoaderData() as User;
 
@@ -55,7 +60,11 @@ const Mode = () => {
         </div>
       </div>
       <Modal>
-        <Matching imgSrc={user.skin} closeModal={closeModal} isOpen={isOpen} />
+        <Matching
+          imgSrc={user.skin}
+          closeModal={closeModal}
+          isOpen={isModalOpen}
+        />
       </Modal>
     </BasicContentFrame>
   );
