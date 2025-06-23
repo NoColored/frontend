@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import * as styles from './index.css';
 
 import ColoredButton from '@/components/button/ColoredButton';
-import { settingsProps } from '@/components/frame/WithButtons/InfoButton/types';
+import { settingsProps } from '@/components/frame/with-buttons/InfoButton/types';
 import InputTextBox from '@/components/textbox/InputTextBox';
 import { deleteUserInfo, postConfirmPassword } from '@/services/auth';
 import * as constants from '@/pages/landing/logIn/constants';

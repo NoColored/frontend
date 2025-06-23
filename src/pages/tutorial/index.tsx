@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import * as styles from './index.css';
 
-import BasicContentFrame from '@/components/frame/WithButtons';
+import BasicContentFrame from '@/components/frame/with-buttons';
 import SettingTextButton from '@/components/button/SettingTextButton';
 
 import { MAX_PAGE_SIZE } from '@/pages/tutorial/constants';

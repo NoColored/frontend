@@ -6,7 +6,7 @@ import * as styles from './index.css';
 import type { User } from '@/types/auth';
 import type { RankPlayer } from '@/types/rank';
 
-import BasicContentFrame from '@/components/frame/WithButtons/index';
+import BasicContentFrame from '@/components/frame/with-buttons/index';
 
 import RankingItemBox from '@/pages/ranking/RankingItemBox';
 

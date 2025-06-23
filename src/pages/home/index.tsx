@@ -5,7 +5,7 @@ import SignupBanner from './SignupBanner';
 
 import type { User } from '@/types/auth';
 
-import BasicContentFrame from '@/components/frame/WithButtons/index';
+import BasicContentFrame from '@/components/frame/with-buttons/index';
 import ColoredIconButton from '@/components/button/ColoredIconButton';
 import type { tierType } from '@/components/imagebox/types';
 

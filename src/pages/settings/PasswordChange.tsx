@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import * as styles from './index.css';
-import { settingsProps } from '@/components/frame/WithButtons/InfoButton/types';
+import { settingsProps } from '@/components/frame/with-buttons/InfoButton/types';
 import ColoredButton from '@/components/button/ColoredButton';
 import InputTextBox from '@/components/textbox/InputTextBox';
 

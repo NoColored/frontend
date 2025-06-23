@@ -1,6 +1,6 @@
 import * as styles from './index.css';
 
-import BasicContentFrame from '@/components/frame/WithButtons';
+import BasicContentFrame from '@/components/frame/with-buttons';
 
 import AudioSetting from '@/pages/settings/AudioSetting';
 import GuestUser from '@/pages/settings/GuestUser';
