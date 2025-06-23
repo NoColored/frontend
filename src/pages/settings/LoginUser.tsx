@@ -3,7 +3,7 @@ import { useState } from 'react';
 import * as styles from './index.css';
 
 import SettingTextButton from '@/components/button/SettingTextButton';
-import Modal from '@/components/Modal';
+import Modal from '@/components/modal';
 
 import Logout from '@/pages/settings/Logout';
 import NicknameChange from '@/pages/settings/NicknameChange';

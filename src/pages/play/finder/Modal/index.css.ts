@@ -1,7 +1,7 @@
 import { style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
 
-import { MODAL_INNER_WIDTH } from '@/components/Modal/constants';
+import { MODAL_INNER_WIDTH } from '@/components/modal/constants';
 import { INPUT_TEXT_BOX_SIZE } from '@/components/textbox/InputTextBox/constants';
 
 import * as constants from '@/pages/play/finder/constants';
