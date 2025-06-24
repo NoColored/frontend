@@ -11,6 +11,7 @@ import SettingNavigationButton from '@/components/button/SettingNavigationButton
 import FullScreenPrompt from '@/pages/landing/FullScreenPrompt';
 
 import useAudioStore from '@/states/music';
+import AudioButton from '@/components/frame/with-buttons/audio-button';
 
 interface Props {
   children: ReactNode;
@@ -57,6 +58,7 @@ const BasicContentFrame = ({
       {!disableButton && (
         <div className={styles.iconButtons}>
           <InfoButton />
+          <AudioButton />
           <SettingIconButton
             src='/images/ui/icon/button/icon-button-home-h50w50.png'
             alt='home'
