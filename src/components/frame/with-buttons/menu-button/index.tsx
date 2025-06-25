@@ -1,13 +1,13 @@
 import { Menu as MenuIcon } from 'lucide-react';
 
 import { button } from '../button.css';
+import GameInfo from '../game-info';
 import { MENU_ID } from './constants';
 import MenuItem from './menu-item';
 import { useMenuStore } from './store';
 
 import ColoredButton from '@/components/button/ColoredButton';
 import SettingTextButton from '@/components/button/SettingTextButton';
-import GameInfo from '@/components/frame/with-buttons/InfoButton/ModalContent';
 
 import useModal from '@/hooks/useModal';
 

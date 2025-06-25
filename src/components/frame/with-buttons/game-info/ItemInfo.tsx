@@ -3,8 +3,8 @@ import { useState } from 'react';
 import * as styles from './index.css';
 import { indexProps } from './types';
 
-import { ITEMS } from '@/components/frame/with-buttons/InfoButton/constants';
 import SettingNavigationButton from '@/components/button/SettingNavigationButton';
+import { ITEMS } from '@/components/frame/with-buttons/game-info/constants';
 import RoundCornerImageBox from '@/components/imagebox/RoundCornerImageBox';
 
 const ItemInfo = ({ onBack, onClose }: indexProps) => {

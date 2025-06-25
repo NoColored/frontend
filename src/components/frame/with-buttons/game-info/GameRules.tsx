@@ -11,7 +11,7 @@ import Info from '@/pages/tutorial/Info';
 
 const $MAX_PAGE_SIZE = MAX_PAGE_SIZE - 1;
 
-const GameInfo = ({ onBack, onClose }: indexProps) => {
+const GameRules = ({ onBack, onClose }: indexProps) => {
   const [page, setPage] = useState<number>(0);
 
   const prevPage = () => {
@@ -69,4 +69,4 @@ const GameInfo = ({ onBack, onClose }: indexProps) => {
   );
 };
 
-export default GameInfo;
+export default GameRules;
