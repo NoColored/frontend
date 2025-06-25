@@ -1,10 +1,10 @@
 import { useState } from 'react';
 
+import { ITEMS } from './constants';
 import * as styles from './index.css';
 import { indexProps } from './types';
 
 import SettingNavigationButton from '@/components/button/SettingNavigationButton';
-import { ITEMS } from '@/components/frame/with-buttons/game-info/constants';
 import RoundCornerImageBox from '@/components/imagebox/RoundCornerImageBox';
 
 const ItemInfo = ({ onBack, onClose }: indexProps) => {

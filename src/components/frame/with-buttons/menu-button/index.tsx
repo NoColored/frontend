@@ -1,9 +1,9 @@
 import { Menu as MenuIcon } from 'lucide-react';
 
 import { button } from '../button.css';
-import GameInfo from '../game-info';
 import AccountSettingButton from './account-setting-button';
 import { MENU_ID } from './constants';
+import GameInfo from './game-info';
 import MenuItem from './menu-item';
 import { useMenuStore } from './store';
 

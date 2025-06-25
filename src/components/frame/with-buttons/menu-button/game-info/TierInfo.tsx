@@ -1,7 +1,7 @@
+import * as styles from './index.css';
 import { indexProps } from './types';
 
 import SettingNavigationButton from '@/components/button/SettingNavigationButton';
-import * as styles from '@/components/frame/with-buttons/game-info/index.css';
 import { HIGH_TIER_INFO, LOW_TIER_INFO } from '@/components/imagebox/constants';
 import TierBox from '@/components/imagebox/TierIconBox';
 import { tierType } from '@/components/imagebox/types';
