@@ -1,17 +1,16 @@
 import { ReactNode, useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
+import AudioButton from './audio-button';
 import * as styles from './index.css';
+import MenuButton from './menu-button';
 
-import InfoButton from '@/components/frame/with-buttons/InfoButton';
-import SettingButton from '@/components/frame/with-buttons/SettingButton/index';
-import SettingIconButton from '@/components/button/SettingIconButton/index';
 import SettingNavigationButton from '@/components/button/SettingNavigationButton/index';
+import SettingButton from '@/components/frame/with-buttons/SettingButton/index';
 
 import FullScreenPrompt from '@/pages/landing/FullScreenPrompt';
 
 import useAudioStore from '@/states/music';
-import AudioButton from '@/components/frame/with-buttons/audio-button';
 
 interface Props {
   children: ReactNode;
@@ -27,18 +26,8 @@ const BasicContentFrame = ({
   disableButton,
 }: Props) => {
   const navigate = useNavigate();
-  const location = useLocation();
   const { isPlaying, playBackgroundSound, stopBackgroundSound } =
     useAudioStore();
-
-  const handleHomeButtonClick = () => {
-    if (onBeforeButtonClick) {
-      onBeforeButtonClick();
-    }
-    if (location.pathname !== '/home') {
-      navigate('/home', { replace: true });
-    }
-  };
 
   const handleBackButtonClick = () => {
     if (onBeforeButtonClick) {
@@ -57,13 +46,8 @@ const BasicContentFrame = ({
       <FullScreenPrompt />
       {!disableButton && (
         <div className={styles.iconButtons}>
-          <InfoButton />
           <AudioButton />
-          <SettingIconButton
-            src='/images/ui/icon/button/icon-button-home-h50w50.png'
-            alt='home'
-            onClick={handleHomeButtonClick}
-          />
+          <MenuButton />
           <SettingButton />
         </div>
       )}
