@@ -6,7 +6,6 @@ import * as styles from './index.css';
 import MenuButton from './menu-button';
 
 import SettingNavigationButton from '@/components/button/SettingNavigationButton/index';
-import SettingButton from '@/components/frame/with-buttons/SettingButton/index';
 
 import FullScreenPrompt from '@/pages/landing/FullScreenPrompt';
 
@@ -48,7 +47,6 @@ const BasicContentFrame = ({
         <div className={styles.iconButtons}>
           <AudioButton />
           <MenuButton />
-          <SettingButton />
         </div>
       )}
       <main className={styles.main}>
