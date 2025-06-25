@@ -2,6 +2,7 @@ import { Menu as MenuIcon } from 'lucide-react';
 
 import { button } from '../button.css';
 import GameInfo from '../game-info';
+import AccountSettingButton from './account-setting-button';
 import { MENU_ID } from './constants';
 import MenuItem from './menu-item';
 import { useMenuStore } from './store';
@@ -32,6 +33,7 @@ const MenuButton = () => {
           >
             게임 정보
           </SettingTextButton>
+          <AccountSettingButton onClick={closeModal} />
           <ColoredButton
             text='닫기'
             color='green'
