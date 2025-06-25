@@ -8,12 +8,16 @@ interface Props {
   onClick?: () => void;
 }
 
+const EXCLUDED_PATHS = [ROUTE.lobby, ROUTE.setting];
+
 const AccountSettingButton = ({ onClick }: Props) => {
   const navigate = useNavigate();
   const location = useLocation();
-  const isPlaying = location.pathname.includes('/play/lobby');
+  const disabled = EXCLUDED_PATHS.some((path) =>
+    location.pathname.startsWith(path),
+  );
 
-  if (isPlaying) {
+  if (disabled) {
     return null;
   }
 
