@@ -2,8 +2,8 @@ import { useState } from 'react';
 
 import * as styles from './index.css';
 
-import BasicContentFrame from '@/components/frame/with-buttons';
 import SettingTextButton from '@/components/button/SettingTextButton';
+import BasicContentFrame from '@/components/frame/with-buttons';
 
 import { MAX_PAGE_SIZE } from '@/pages/tutorial/constants';
 import Info from '@/pages/tutorial/Info';
@@ -30,7 +30,7 @@ const Tutorial = () => {
   };
 
   return (
-    <BasicContentFrame disableButton>
+    <BasicContentFrame disableMenu>
       <div className={styles.container}>
         <Info page={page} />
         <div className={styles.left}>

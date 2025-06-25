@@ -16,6 +16,7 @@ interface Props {
   backButtonLabel?: string;
   onBeforeButtonClick?: () => void;
   disableButton?: boolean;
+  disableMenu?: boolean;
 }
 
 const BasicContentFrame = ({
@@ -23,6 +24,7 @@ const BasicContentFrame = ({
   backButtonLabel,
   onBeforeButtonClick,
   disableButton,
+  disableMenu,
 }: Props) => {
   const navigate = useNavigate();
   const { isPlaying, playBackgroundSound, stopBackgroundSound } =
@@ -46,7 +48,7 @@ const BasicContentFrame = ({
       {!disableButton && (
         <div className={styles.iconButtons}>
           <AudioButton />
-          <MenuButton />
+          {!disableMenu && <MenuButton />}
         </div>
       )}
       <main className={styles.main}>
