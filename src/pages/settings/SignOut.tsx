@@ -3,12 +3,17 @@ import React, { useState } from 'react';
 import * as styles from './index.css';
 
 import ColoredButton from '@/components/button/ColoredButton';
-import { settingsProps } from '@/components/frame/with-buttons/InfoButton/types';
 import InputTextBox from '@/components/textbox/InputTextBox';
-import { deleteUserInfo, postConfirmPassword } from '@/services/auth';
+
 import * as constants from '@/pages/landing/logIn/constants';
 
-const SignOut = ({ onClose }: settingsProps) => {
+import { deleteUserInfo, postConfirmPassword } from '@/services/auth';
+
+interface Props {
+  onClose: () => void;
+}
+
+const SignOut = ({ onClose }: Props) => {
   const [check, setCheck] = useState(false);
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
@@ -18,11 +23,11 @@ const SignOut = ({ onClose }: settingsProps) => {
   };
 
   const confirmPassword = async () => {
-    const confirmPassword = await postConfirmPassword(password);
-    if (confirmPassword) {
+    const isConfirmed = await postConfirmPassword(password);
+    if (isConfirmed) {
       setCheck(true);
     }
-    if (!confirmPassword) {
+    if (!isConfirmed) {
       setErrorMessage(constants.ERROR_MESSAGE.inValidSignOut);
     }
   };

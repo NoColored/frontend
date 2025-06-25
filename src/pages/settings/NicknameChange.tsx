@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 
 import * as styles from './index.css';
 
-import { settingsProps } from '@/components/frame/with-buttons/InfoButton/types';
 import ColoredButton from '@/components/button/ColoredButton';
 import InputTextBox from '@/components/textbox/InputTextBox';
 
@@ -13,7 +12,11 @@ import { patchNicknameChange } from '@/services/auth';
 
 import { ROUTE } from '@/router/constants';
 
-const NicknameChange = ({ onClose }: settingsProps) => {
+interface Props {
+  onClose: () => void;
+}
+
+const NicknameChange = ({ onClose }: Props) => {
   const navigate = useNavigate();
   const [nickname, setNickname] = useState('');
   const [errorMessage, setErrorMessage] = useState('');

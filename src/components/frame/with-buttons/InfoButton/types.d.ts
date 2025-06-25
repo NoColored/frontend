@@ -5,8 +5,4 @@ export interface indexProps {
   onBack: () => void;
 }
 
-export interface settingsProps {
-  onClose: () => void;
-}
-
 type infoType = (typeof INFO_TYPE)[number];

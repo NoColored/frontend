@@ -1,14 +1,19 @@
 import React, { useState } from 'react';
 
 import * as styles from './index.css';
-import { settingsProps } from '@/components/frame/with-buttons/InfoButton/types';
+
 import ColoredButton from '@/components/button/ColoredButton';
 import InputTextBox from '@/components/textbox/InputTextBox';
 
 import * as constants from '@/pages/landing/logIn/constants';
+
 import { patchPasswordChange } from '@/services/auth';
 
-const PasswordChange = ({ onClose }: settingsProps) => {
+interface Props {
+  onClose: () => void;
+}
+
+const PasswordChange = ({ onClose }: Props) => {
   const [password, setPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
