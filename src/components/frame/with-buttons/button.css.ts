@@ -5,7 +5,6 @@ import { sprinkles } from '@/styles/sprinkles.css';
 import { vars } from '@/styles/vars.css';
 
 const BUTTON_SIZE = '24px';
-const IMG_SIZE = '20px';
 
 export const button = style([
   flexOptions({ option: 'center' }),
@@ -28,8 +27,3 @@ export const button = style([
     },
   },
 ]);
-
-export const img = style({
-  objectFit: 'contain',
-  height: `${IMG_SIZE}`,
-});

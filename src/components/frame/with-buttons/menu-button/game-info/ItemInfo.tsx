@@ -1,9 +1,9 @@
 import { useState } from 'react';
 
+import { ITEMS } from './constants';
 import * as styles from './index.css';
 import { indexProps } from './types';
 
-import { ITEMS } from '@/components/frame/with-buttons/InfoButton/constants';
 import SettingNavigationButton from '@/components/button/SettingNavigationButton';
 import RoundCornerImageBox from '@/components/imagebox/RoundCornerImageBox';
 
