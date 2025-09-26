@@ -26,3 +26,6 @@ dist-ssr
 
 # setting
 .env
+
+*storybook.log
+storybook-static

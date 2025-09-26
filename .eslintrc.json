@@ -15,7 +15,8 @@
     "plugin:import/recommended",
     "plugin:jsx-a11y/recommended",
     "plugin:@typescript-eslint/recommended",
-    "eslint-config-prettier"
+    "eslint-config-prettier",
+    "plugin:storybook/recommended"
   ],
   "plugins": [
     "@typescript-eslint",
@@ -26,8 +27,7 @@
       // Tells eslint-plugin-react to automatically detect the version of React to use.
       "version": "detect"
     },
-    "import/core-modules": [
-    ],
+    "import/core-modules": [],
     "import/extensions": [
       ".js",
       ".jsx",
