@@ -28,7 +28,7 @@ const colorVariants = constants.BUTTON_COLOR.reduce(
   {} as Record<colorType, ReturnType<typeof style>>,
 );
 
-const sizeVariants = {
+export const sizeVariants = {
   xsmall: style([
     sprinkles({
       textSize: '0.75x',
