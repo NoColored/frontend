@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 
 import * as styles from './index.css';
 
-import useEffectSoundStore from "@/states/effect";
+import useEffectSoundStore from '@/states/effect';
 
 interface Props {
   children: ReactNode;
@@ -10,10 +10,11 @@ interface Props {
 }
 
 const SettingTextButton = ({
-    children,
-    size,
-    colorStyle,
-    onClick,
+  children,
+  size,
+  colorStyle,
+  onClick,
+  disabled,
 }: Props & styles.ButtonVariantsProps) => {
   const { playEffectSound } = useEffectSoundStore();
 
@@ -24,9 +25,10 @@ const SettingTextButton = ({
 
   return (
     <button
-      type="button"
-      className={styles.settingButton({ size, colorStyle })}
+      type='button'
+      className={styles.settingButton({ size, colorStyle, disabled })}
       onClick={handleClick}
+      disabled={disabled}
     >
       {children}
     </button>

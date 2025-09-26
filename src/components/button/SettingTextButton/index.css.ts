@@ -16,18 +16,26 @@ export const button = style([
     backgroundColor: 'white',
     fontFamily: 'textFont',
   }),
-  {
-    ':hover': {
-      backgroundColor: vars.colors.gray100,
-    },
-
-    ':active': {
-      backgroundColor: vars.colors.gray200,
-    },
-  },
 ]);
 
 export const buttonVariants = {
+  disabled: {
+    false: style({
+      ':hover': {
+        backgroundColor: vars.colors.gray100,
+      },
+
+      ':active': {
+        backgroundColor: vars.colors.gray200,
+      },
+    }),
+    true: style({
+      opacity: 0.5,
+      ':hover': {
+        cursor: 'not-allowed',
+      },
+    }),
+  },
   size: {
     xsmall: style([
       sprinkles({
@@ -122,4 +130,5 @@ export const settingButton = recipe({
 export interface ButtonVariantsProps {
   size: keyof typeof buttonVariants.size;
   colorStyle: settingTextButtonColorType;
+  disabled?: boolean;
 }
