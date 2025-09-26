@@ -13,7 +13,10 @@ const dirname =
     : path.dirname(fileURLToPath(import.meta.url));
 
 // More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
+  esbuild: {
+    drop: mode === 'production' ? ['console'] : [],
+  },
   plugins: [
     react(),
     vanillaExtractPlugin({
@@ -56,4 +59,4 @@ export default defineConfig({
       },
     ],
   },
-});
+}));
