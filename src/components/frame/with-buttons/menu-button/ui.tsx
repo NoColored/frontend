@@ -10,28 +10,30 @@ import ColoredButton from '@/components/button/ColoredButton';
 import SettingTextButton from '@/components/button/SettingTextButton';
 import Modal, { useModal } from '@/components/modal';
 
+import SignUp from '@/features/sign-up';
+import { useUserStatus } from '@/features/user';
+
+const MenuItem = (props: {
+  onClick: () => void;
+  disabled?: boolean;
+  children: React.ReactNode;
+}) => <SettingTextButton {...props} size='medium' colorStyle='black' />;
+
 const Menu = ({ closeModal }: { closeModal: () => void }) => {
   const { setMenuId } = useMenuStore.getState();
+  const { isGuest, isUser } = useUserStatus();
 
   return (
     <>
       <h3>메뉴</h3>
-      <SettingTextButton
-        onClick={() => {}}
-        size='medium'
-        colorStyle='black'
-        disabled
-      >
+      <MenuItem onClick={() => {}} disabled>
         공지 사항
-      </SettingTextButton>
-      <SettingTextButton
-        onClick={() => setMenuId(MENU_ID.gameInfo)}
-        size='medium'
-        colorStyle='black'
-      >
-        게임 정보
-      </SettingTextButton>
-      <AccountSettingButton onClick={closeModal} />
+      </MenuItem>
+      <MenuItem onClick={() => setMenuId(MENU_ID.gameInfo)}>게임 정보</MenuItem>
+      {isUser && <AccountSettingButton onClick={closeModal} />}
+      {isGuest && (
+        <MenuItem onClick={() => setMenuId(MENU_ID.guest)}>회원 전환</MenuItem>
+      )}
       <ColoredButton
         text='닫기'
         color='green'
@@ -75,6 +77,9 @@ const MenuButton = () => {
         </ModalItem>
         <ModalItem id={MENU_ID.gameInfo}>
           <GameInfo onClose={closeModal} />
+        </ModalItem>
+        <ModalItem id={MENU_ID.guest}>
+          <SignUp closeModal={closeModal} />
         </ModalItem>
       </Modal>
     </>
