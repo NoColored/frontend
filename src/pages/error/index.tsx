@@ -3,8 +3,8 @@ import { useNavigate, useParams } from 'react-router-dom';
 import * as constants from './constants';
 import * as styles from './index.css';
 
-import BasicContentFrame from '@/components/frame/with-buttons';
 import ColoredButton from '@/components/button/ColoredButton';
+import BasicContentFrame from '@/components/frame/with-buttons';
 
 import type { errorCode } from '@/pages/error/type';
 
@@ -23,7 +23,7 @@ const Error = () => {
   };
 
   return (
-    <BasicContentFrame disableButton>
+    <BasicContentFrame rightButtonsDisabled>
       <div className={styles.errorWrapper}>
         <pre className={styles.errorMessage}>
           {constants.ERROR_MESSAGE[code]}

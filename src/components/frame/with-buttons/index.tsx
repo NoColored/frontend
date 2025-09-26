@@ -17,15 +17,15 @@ interface Props {
     label: string;
     navigateTo?: string;
   };
-  disableButton?: boolean;
-  disableMenu?: boolean;
+  rightButtonsDisabled?: boolean;
+  menuButtonDisabled?: boolean;
 }
 
 const BasicContentFrame = ({
   children,
   leftButton,
-  disableButton,
-  disableMenu,
+  rightButtonsDisabled,
+  menuButtonDisabled,
 }: Props) => {
   const navigate = useNavigate();
   const { isPlaying, playBackgroundSound, stopBackgroundSound } =
@@ -44,10 +44,10 @@ const BasicContentFrame = ({
   return (
     <div className={styles.frame}>
       <FullScreenPrompt />
-      {!disableButton && (
+      {!rightButtonsDisabled && (
         <div className={styles.iconButtons}>
           <AudioButton />
-          {!disableMenu && <MenuButton />}
+          {!menuButtonDisabled && <MenuButton />}
         </div>
       )}
       <main className={styles.main}>
