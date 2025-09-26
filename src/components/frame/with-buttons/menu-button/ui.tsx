@@ -8,8 +8,7 @@ import { useMenuStore } from './store';
 
 import ColoredButton from '@/components/button/ColoredButton';
 import SettingTextButton from '@/components/button/SettingTextButton';
-
-import useModal from '@/hooks/useModal';
+import Modal, { useModal } from '@/components/modal';
 
 const Menu = ({ closeModal }: { closeModal: () => void }) => {
   const { setMenuId } = useMenuStore.getState();
@@ -61,7 +60,7 @@ const ModalItem = ({
 
 const MenuButton = () => {
   const { setMenuId } = useMenuStore.getState();
-  const { Modal, openModal, closeModal } = useModal({
+  const { modalRef, openModal, closeModal } = useModal({
     onClose: () => setMenuId(MENU_ID.home),
   });
 
@@ -70,7 +69,7 @@ const MenuButton = () => {
       <button type='button' onClick={openModal} className={button}>
         <MenuIcon size={16} />
       </button>
-      <Modal>
+      <Modal ref={modalRef}>
         <ModalItem id={MENU_ID.home}>
           <Menu closeModal={closeModal} />
         </ModalItem>
