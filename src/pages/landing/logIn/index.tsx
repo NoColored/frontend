@@ -10,11 +10,11 @@ import useModal from '@/hooks/useModal';
 
 import * as styles from '@/pages/landing/index.css';
 import LogInFail from '@/pages/landing/logIn/LogInFail';
-import SignUp from '@/pages/landing/logIn/SignUp';
 
 import { postMemberLogin } from '@/services/auth';
 import { setFullScreen } from '@/services/landing';
 
+import SignUp from '@/features/sign-up';
 import { ROUTE } from '@/router/constants';
 
 const LogIn = () => {

@@ -4,8 +4,9 @@ import SettingTextButton from '@/components/button/SettingTextButton';
 
 import useModal from '@/hooks/useModal';
 
-import SignUp from '@/pages/landing/logIn/SignUp';
 import { SETTING_TEXT_BUTTON_COLORS } from '@/pages/settings/constants';
+
+import SignUp from '@/features/sign-up';
 
 const GuestUser = () => {
   const { Modal, openModal, closeModal } = useModal();
