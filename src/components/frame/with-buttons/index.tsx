@@ -13,8 +13,8 @@ import useAudioStore from '@/states/music';
 
 interface Props {
   children: ReactNode;
-  backButtonLabel?: string;
   leftButton?: {
+    label: string;
     navigateTo?: string;
   };
   disableButton?: boolean;
@@ -23,7 +23,6 @@ interface Props {
 
 const BasicContentFrame = ({
   children,
-  backButtonLabel,
   leftButton,
   disableButton,
   disableMenu,
@@ -52,10 +51,10 @@ const BasicContentFrame = ({
         </div>
       )}
       <main className={styles.main}>
-        {backButtonLabel && (
+        {leftButton && (
           <div className={styles.navigation}>
             <SettingNavigationButton
-              label={backButtonLabel}
+              label={leftButton.label}
               onClick={handleNavigate}
               position='leftTop'
             />

@@ -12,7 +12,7 @@ const Settings = () => {
   const { loginStatus } = useUserStore.getState();
 
   return (
-    <BasicContentFrame backButtonLabel='뒤로'>
+    <BasicContentFrame leftButton={{ label: '뒤로' }}>
       <div className={styles.centerBoxWrapper}>
         <div className={styles.title}>설정</div>
         <AudioSetting />

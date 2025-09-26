@@ -17,7 +17,7 @@ const Ranking = () => {
   };
 
   return (
-    <BasicContentFrame backButtonLabel='뒤로'>
+    <BasicContentFrame leftButton={{ label: '뒤로' }}>
       <div className={styles.rankingFullWrapper}>
         <div className={styles.rankingTitleWrapper}>
           <div className={styles.rankingTitleText}>

@@ -6,9 +6,9 @@ import SearchLobby from './Modal/SearchLobby/index';
 
 import type { RoomListItem } from '@/types/play';
 
-import BasicContentFrame from '@/components/frame/with-buttons';
 import ColoredButton from '@/components/button/ColoredButton';
 import SettingTextButton from '@/components/button/SettingTextButton';
+import BasicContentFrame from '@/components/frame/with-buttons';
 
 import LobbyItem from '@/pages/play/finder/LobbyItem';
 import CreateLobby from '@/pages/play/finder/Modal/CreateLobby';
@@ -49,7 +49,7 @@ const Finder = () => {
   const currentItems = roomList.slice(offset, offset + itemPerPage);
 
   return (
-    <BasicContentFrame backButtonLabel='뒤로'>
+    <BasicContentFrame leftButton={{ label: '뒤로' }}>
       <div className={styles.contentWrapper}>
         <div className={styles.topButtonsWrapper}>
           <span className={styles.rightButtonsWrapper}>

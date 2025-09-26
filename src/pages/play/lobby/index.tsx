@@ -62,8 +62,8 @@ const Lobby = () => {
 
   return (
     <BasicContentFrame
-      backButtonLabel='나가기'
       leftButton={{
+        label: '나가기',
         navigateTo: ROUTE.finder,
       }}
     >

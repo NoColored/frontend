@@ -6,8 +6,8 @@ import * as styles from './index.css';
 
 import { User } from '@/types/auth';
 
-import BasicContentFrame from '@/components/frame/with-buttons';
 import ColoredIconButton from '@/components/button/ColoredIconButton';
+import BasicContentFrame from '@/components/frame/with-buttons';
 
 import useModal from '@/hooks/useModal';
 
@@ -37,7 +37,7 @@ const Mode = () => {
   };
 
   return (
-    <BasicContentFrame backButtonLabel='뒤로'>
+    <BasicContentFrame leftButton={{ label: '뒤로' }}>
       <div className={styles.wrapper}>
         <ColoredIconButton
           icon={constants.FRIENDLY.icon}
