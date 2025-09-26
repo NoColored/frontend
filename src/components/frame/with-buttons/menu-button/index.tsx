@@ -12,6 +12,30 @@ import SettingTextButton from '@/components/button/SettingTextButton';
 
 import useModal from '@/hooks/useModal';
 
+const Menu = ({ closeModal }: { closeModal: () => void }) => {
+  const { setMenuId } = useMenuStore.getState();
+
+  return (
+    <>
+      <h3>메뉴</h3>
+      <SettingTextButton
+        onClick={() => setMenuId(MENU_ID.gameInfo)}
+        size='medium'
+        colorStyle='black'
+      >
+        게임 정보
+      </SettingTextButton>
+      <AccountSettingButton onClick={closeModal} />
+      <ColoredButton
+        text='닫기'
+        color='green'
+        size='small'
+        onClick={closeModal}
+      />
+    </>
+  );
+};
+
 const MenuButton = () => {
   const { setMenuId } = useMenuStore.getState();
   const { Modal, openModal, closeModal } = useModal({
@@ -25,21 +49,7 @@ const MenuButton = () => {
       </button>
       <Modal>
         <MenuItem id={MENU_ID.home}>
-          <h3>메뉴</h3>
-          <SettingTextButton
-            onClick={() => setMenuId(MENU_ID.gameInfo)}
-            size='medium'
-            colorStyle='black'
-          >
-            게임 정보
-          </SettingTextButton>
-          <AccountSettingButton onClick={closeModal} />
-          <ColoredButton
-            text='닫기'
-            color='green'
-            size='small'
-            onClick={closeModal}
-          />
+          <Menu closeModal={closeModal} />
         </MenuItem>
         <MenuItem id={MENU_ID.gameInfo}>
           <GameInfo onClose={closeModal} />
