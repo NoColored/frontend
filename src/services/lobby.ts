@@ -24,8 +24,8 @@ export const getOut = async () => {
   return (
     api
       .get<string>(true, '/play/friendly/out')
-      .then(() => {
-        // console.log('방 나가기 요청 성공');
+      .then((res) => {
+        console.debug('방 나가기 요청 성공', res.data);
       })
       // eslint-disable-next-line
       .catch((err) => {

@@ -14,7 +14,9 @@ import useAudioStore from '@/states/music';
 interface Props {
   children: ReactNode;
   backButtonLabel?: string;
-  onBeforeButtonClick?: () => void;
+  leftButton?: {
+    navigateTo?: string;
+  };
   disableButton?: boolean;
   disableMenu?: boolean;
 }
@@ -22,7 +24,7 @@ interface Props {
 const BasicContentFrame = ({
   children,
   backButtonLabel,
-  onBeforeButtonClick,
+  leftButton,
   disableButton,
   disableMenu,
 }: Props) => {
@@ -30,12 +32,10 @@ const BasicContentFrame = ({
   const { isPlaying, playBackgroundSound, stopBackgroundSound } =
     useAudioStore();
 
-  const handleBackButtonClick = () => {
-    if (onBeforeButtonClick) {
-      onBeforeButtonClick();
-    }
-    navigate(-1);
-  };
+  const handleNavigate = () =>
+    leftButton?.navigateTo
+      ? navigate(leftButton.navigateTo, { replace: true })
+      : navigate(-1);
 
   useEffect(() => {
     // 자동으로 음악 재생 상태를 설정합니다.
@@ -56,7 +56,7 @@ const BasicContentFrame = ({
           <div className={styles.navigation}>
             <SettingNavigationButton
               label={backButtonLabel}
-              onClick={handleBackButtonClick}
+              onClick={handleNavigate}
               position='leftTop'
             />
           </div>
