@@ -18,6 +18,14 @@ const Menu = ({ closeModal }: { closeModal: () => void }) => {
     <>
       <h3>메뉴</h3>
       <SettingTextButton
+        onClick={() => {}}
+        size='medium'
+        colorStyle='black'
+        disabled
+      >
+        공지 사항
+      </SettingTextButton>
+      <SettingTextButton
         onClick={() => setMenuId(MENU_ID.gameInfo)}
         size='medium'
         colorStyle='black'
