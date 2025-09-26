@@ -4,7 +4,6 @@ import { button } from '../button.css';
 import AccountSettingButton from './account-setting-button';
 import { MENU_ID } from './constants';
 import GameInfo from './game-info';
-import MenuItem from './menu-item';
 import { useMenuStore } from './store';
 
 import ColoredButton from '@/components/button/ColoredButton';
@@ -36,6 +35,22 @@ const Menu = ({ closeModal }: { closeModal: () => void }) => {
   );
 };
 
+const ModalItem = ({
+  id,
+  children,
+}: {
+  id: string;
+  children: React.ReactNode;
+}) => {
+  const openId = useMenuStore((state) => state.id);
+
+  if (id === openId) {
+    return children;
+  }
+
+  return null;
+};
+
 const MenuButton = () => {
   const { setMenuId } = useMenuStore.getState();
   const { Modal, openModal, closeModal } = useModal({
@@ -48,12 +63,12 @@ const MenuButton = () => {
         <MenuIcon size={16} />
       </button>
       <Modal>
-        <MenuItem id={MENU_ID.home}>
+        <ModalItem id={MENU_ID.home}>
           <Menu closeModal={closeModal} />
-        </MenuItem>
-        <MenuItem id={MENU_ID.gameInfo}>
+        </ModalItem>
+        <ModalItem id={MENU_ID.gameInfo}>
           <GameInfo onClose={closeModal} />
-        </MenuItem>
+        </ModalItem>
       </Modal>
     </>
   );
