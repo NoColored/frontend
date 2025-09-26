@@ -5,7 +5,7 @@ import ColoredButton from '@/components/button/ColoredButton';
 
 import useModal from '@/hooks/useModal';
 
-import SignUp from '@/pages/landing/logIn/SignUp';
+import SignUp from '@/features/sign-up';
 
 const SignupBanner = () => {
   const { Modal, openModal, closeModal } = useModal();

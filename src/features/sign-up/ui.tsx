@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import { checkSignUpInfo } from './utils';
+
 import { SignUpInfo } from '@/types/auth';
 
 import ColoredButton from '@/components/button/ColoredButton/index';
@@ -12,10 +14,8 @@ import * as constants from '@/pages/landing/logIn/constants';
 import { getIdCheck, postGuestSignUp, postSignUp } from '@/services/auth';
 import { setFullScreen } from '@/services/landing';
 
-import { GUEST, NOT_LOGIN, useUserStateStore } from '@/states/user';
 
-import { checkSignUpInfo } from '@/utils/useSignUp';
-
+import { USER_STATUS, useUserStore } from '@/features/user';
 import { ROUTE } from '@/router/constants';
 
 interface Props {
@@ -23,7 +23,7 @@ interface Props {
 }
 
 const SignUp = ({ closeModal }: Props) => {
-  const { loginStatus } = useUserStateStore.getState();
+  const { loginStatus } = useUserStore.getState();
   const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = useState(
     constants.ERROR_MESSAGE.welcome,
@@ -56,7 +56,7 @@ const SignUp = ({ closeModal }: Props) => {
       return;
     }
 
-    if (loginStatus === GUEST) {
+    if (loginStatus === USER_STATUS.guest) {
       await postGuestSignUp(signUpInfo).then((isSuccess) => {
         if (isSuccess) {
           closeModal();
@@ -66,7 +66,7 @@ const SignUp = ({ closeModal }: Props) => {
       return;
     }
 
-    if (loginStatus === NOT_LOGIN) {
+    if (loginStatus === USER_STATUS.notLoggedIn) {
       await postSignUp(signUpInfo).then((isSuccess) => {
         if (isSuccess) {
           closeModal();

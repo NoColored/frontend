@@ -6,18 +6,18 @@ import AudioSetting from '@/pages/settings/AudioSetting';
 import GuestUser from '@/pages/settings/GuestUser';
 import LoginUser from '@/pages/settings/LoginUser';
 
-import { GUEST, USER, useUserStateStore } from '@/states/user';
+import { USER_STATUS, useUserStore } from '@/features/user';
 
 const Settings = () => {
-  const { loginStatus } = useUserStateStore.getState();
+  const { loginStatus } = useUserStore.getState();
 
   return (
     <BasicContentFrame backButtonLabel='뒤로'>
       <div className={styles.centerBoxWrapper}>
         <div className={styles.title}>설정</div>
         <AudioSetting />
-        {loginStatus === GUEST && <GuestUser />}
-        {loginStatus === USER && <LoginUser />}
+        {loginStatus === USER_STATUS.guest && <GuestUser />}
+        {loginStatus === USER_STATUS.member && <LoginUser />}
       </div>
     </BasicContentFrame>
   );
