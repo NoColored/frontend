@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import { checkSignUpInfo } from './utils';
+
 import { SignUpInfo } from '@/types/auth';
 
 import ColoredButton from '@/components/button/ColoredButton/index';
@@ -12,7 +14,6 @@ import * as constants from '@/pages/landing/logIn/constants';
 import { getIdCheck, postGuestSignUp, postSignUp } from '@/services/auth';
 import { setFullScreen } from '@/services/landing';
 
-import { checkSignUpInfo } from '@/utils/useSignUp';
 
 import { USER_STATUS, useUserStore } from '@/features/user';
 import { ROUTE } from '@/router/constants';
