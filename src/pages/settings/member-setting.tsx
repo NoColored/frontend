@@ -1,16 +1,22 @@
 import { useState } from 'react';
 
+import DeleteAccount from './delete-account';
 import * as styles from './index.css';
+import Logout from './Logout';
+import NicknameChange from './NicknameChange';
+import PasswordChange from './PasswordChange';
 
 import SettingTextButton from '@/components/button/SettingTextButton';
 import Modal, { useModal } from '@/components/modal';
 
-import Logout from '@/pages/settings/Logout';
-import NicknameChange from '@/pages/settings/NicknameChange';
-import PasswordChange from '@/pages/settings/PasswordChange';
-import SignOut from '@/pages/settings/SignOut';
+const MODAL_ID = {
+  nickname: 'nickname-change',
+  logout: 'logout',
+  password: 'password-change',
+  delete: 'delete-account',
+};
 
-const LoginUser = () => {
+const MemberSetting = () => {
   const [view, setView] = useState<string | null>(null);
   const { modalRef, openModal, closeModal } = useModal({
     onClose: () => setView(null),
@@ -24,7 +30,7 @@ const LoginUser = () => {
   return (
     <div className={styles.settingButtonWrapper}>
       <SettingTextButton
-        onClick={() => handleOpenModal('nickname')}
+        onClick={() => handleOpenModal(MODAL_ID.nickname)}
         size='large'
         colorStyle='black'
       >
@@ -32,7 +38,7 @@ const LoginUser = () => {
       </SettingTextButton>
 
       <SettingTextButton
-        onClick={() => handleOpenModal('pwdchange')}
+        onClick={() => handleOpenModal(MODAL_ID.password)}
         size='large'
         colorStyle='black'
       >
@@ -40,7 +46,7 @@ const LoginUser = () => {
       </SettingTextButton>
 
       <SettingTextButton
-        onClick={() => handleOpenModal('logout')}
+        onClick={() => handleOpenModal(MODAL_ID.logout)}
         size='large'
         colorStyle='red'
       >
@@ -48,7 +54,7 @@ const LoginUser = () => {
       </SettingTextButton>
 
       <SettingTextButton
-        onClick={() => handleOpenModal('signout')}
+        onClick={() => handleOpenModal(MODAL_ID.delete)}
         size='large'
         colorStyle='gray'
       >
@@ -56,13 +62,13 @@ const LoginUser = () => {
       </SettingTextButton>
 
       <Modal ref={modalRef}>
-        {view === 'nickname' && <NicknameChange onClose={closeModal} />}
-        {view === 'logout' && <Logout onClose={closeModal} />}
-        {view === 'pwdchange' && <PasswordChange onClose={closeModal} />}
-        {view === 'signout' && <SignOut onClose={closeModal} />}
+        {view === MODAL_ID.nickname && <NicknameChange onClose={closeModal} />}
+        {view === MODAL_ID.logout && <Logout onClose={closeModal} />}
+        {view === MODAL_ID.password && <PasswordChange onClose={closeModal} />}
+        {view === MODAL_ID.delete && <DeleteAccount onClose={closeModal} />}
       </Modal>
     </div>
   );
 };
 
-export default LoginUser;
+export default MemberSetting;
