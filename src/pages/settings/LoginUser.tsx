@@ -3,22 +3,20 @@ import { useState } from 'react';
 import * as styles from './index.css';
 
 import SettingTextButton from '@/components/button/SettingTextButton';
-
-import useModal from '@/hooks/useModal';
+import Modal, { useModal } from '@/components/modal';
 
 import Logout from '@/pages/settings/Logout';
 import NicknameChange from '@/pages/settings/NicknameChange';
 import PasswordChange from '@/pages/settings/PasswordChange';
 import SignOut from '@/pages/settings/SignOut';
-import type { settingType } from '@/pages/settings/types';
 
 const LoginUser = () => {
-  const [view, setView] = useState<settingType>(null);
-  const { Modal, openModal, closeModal } = useModal({
+  const [view, setView] = useState<string | null>(null);
+  const { modalRef, openModal, closeModal } = useModal({
     onClose: () => setView(null),
   });
 
-  const handleOpenModal = (type: settingType) => {
+  const handleOpenModal = (type: string) => {
     setView(type);
     openModal();
   };
@@ -57,7 +55,7 @@ const LoginUser = () => {
         회원 탈퇴
       </SettingTextButton>
 
-      <Modal>
+      <Modal ref={modalRef}>
         {view === 'nickname' && <NicknameChange onClose={closeModal} />}
         {view === 'logout' && <Logout onClose={closeModal} />}
         {view === 'pwdchange' && <PasswordChange onClose={closeModal} />}
