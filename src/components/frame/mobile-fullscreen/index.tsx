@@ -2,7 +2,6 @@ import * as styles from './index.css';
 
 import type { ReactNode } from 'react';
 
-
 interface Props {
   children: ReactNode;
 }
