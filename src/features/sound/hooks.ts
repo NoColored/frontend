@@ -26,7 +26,8 @@ export const useSoundSetting = () => {
 };
 
 export const useSoundToggle = () => {
-  const [setting, setSetting] = useState(!useSoundSetting().isBgmMuted);
+  const { isBgmMuted } = useSoundSetting();
+  const [setting, setSetting] = useState(!isBgmMuted);
   const isBgmPlaying = useBgmStore((state) => state.isPlaying);
   const bgm = useBgmStore((state) => state.audio);
 
