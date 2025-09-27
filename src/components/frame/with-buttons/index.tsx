@@ -1,4 +1,4 @@
-import { ReactNode, useEffect } from 'react';
+import { ReactNode } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import AudioButton from './audio-button';
@@ -8,8 +8,6 @@ import MenuButton from './menu-button';
 import SettingNavigationButton from '@/components/button/SettingNavigationButton/index';
 
 import FullScreenPrompt from '@/pages/landing/FullScreenPrompt';
-
-import useAudioStore from '@/states/music';
 
 interface Props {
   children: ReactNode;
@@ -28,18 +26,11 @@ const BasicContentFrame = ({
   menuButtonDisabled,
 }: Props) => {
   const navigate = useNavigate();
-  const { isPlaying, playBackgroundSound, stopBackgroundSound } =
-    useAudioStore();
 
   const handleNavigate = () =>
     leftButton?.navigateTo
       ? navigate(leftButton.navigateTo, { replace: true })
       : navigate(-1);
-
-  useEffect(() => {
-    // 자동으로 음악 재생 상태를 설정합니다.
-    isPlaying ? playBackgroundSound() : stopBackgroundSound();
-  }, [isPlaying, playBackgroundSound, stopBackgroundSound]);
 
   return (
     <div className={styles.frame}>

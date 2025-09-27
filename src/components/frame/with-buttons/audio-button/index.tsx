@@ -3,17 +3,13 @@ import { Volume2, VolumeX } from 'lucide-react';
 import { button } from '../button.css';
 import * as styles from './index.css';
 
-import { useAudioSetting } from '@/hooks/useAudioSetting';
+import { useSoundToggle } from '@/features/sound';
 
 const AudioButton = () => {
-  const { backgroundSound, saveSettings } = useAudioSetting();
-
-  const handleClick = () => {
-    saveSettings(!backgroundSound, !backgroundSound);
-  };
+  const { backgroundSound, toggleSound } = useSoundToggle();
 
   return (
-    <button type='button' className={button} onClick={handleClick}>
+    <button type='button' className={button} onClick={toggleSound}>
       {backgroundSound ? (
         <Volume2 className={styles.svg} />
       ) : (
