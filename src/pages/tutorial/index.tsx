@@ -30,7 +30,7 @@ const Tutorial = () => {
   };
 
   return (
-    <BasicContentFrame disableMenu>
+    <BasicContentFrame menuButtonDisabled>
       <div className={styles.container}>
         <Info page={page} />
         <div className={styles.left}>

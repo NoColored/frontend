@@ -21,7 +21,7 @@ const MenuItem = (props: {
 
 const Menu = ({ closeModal }: { closeModal: () => void }) => {
   const { setMenuId } = useMenuStore.getState();
-  const { isGuest, isUser } = useUserStatus();
+  const { isGuest, isMember } = useUserStatus();
 
   return (
     <>
@@ -30,7 +30,7 @@ const Menu = ({ closeModal }: { closeModal: () => void }) => {
         공지 사항
       </MenuItem>
       <MenuItem onClick={() => setMenuId(MENU_ID.gameInfo)}>게임 정보</MenuItem>
-      {isUser && <AccountSettingButton onClick={closeModal} />}
+      {isMember && <AccountSettingButton onClick={closeModal} />}
       {isGuest && (
         <MenuItem onClick={() => setMenuId(MENU_ID.guest)}>회원 전환</MenuItem>
       )}

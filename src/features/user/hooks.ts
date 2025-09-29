@@ -6,6 +6,6 @@ export const useUserStatus = () => {
 
   return {
     isGuest: status === USER_STATUS.guest,
-    isUser: status === USER_STATUS.member,
+    isMember: status === USER_STATUS.member,
   };
 };

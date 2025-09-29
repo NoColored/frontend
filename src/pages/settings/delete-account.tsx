@@ -13,7 +13,7 @@ interface Props {
   onClose: () => void;
 }
 
-const SignOut = ({ onClose }: Props) => {
+const DeleteAccount = ({ onClose }: Props) => {
   const [check, setCheck] = useState(false);
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
@@ -91,4 +91,4 @@ const SignOut = ({ onClose }: Props) => {
   );
 };
 
-export default SignOut;
+export default DeleteAccount;

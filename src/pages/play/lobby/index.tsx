@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useLoaderData, useNavigate } from 'react-router-dom';
 
 import * as constants from './constants';
@@ -54,15 +54,18 @@ const Lobby = () => {
     }
   });
 
-  const handleClickGetOut = async () => {
-    await getOut();
-    navigate(ROUTE.finder, { replace: true });
-  };
+  useEffect(() => {
+    return () => {
+      getOut();
+    };
+  }, []);
 
   return (
     <BasicContentFrame
-      backButtonLabel='나가기'
-      onBeforeButtonClick={handleClickGetOut}
+      leftButton={{
+        label: '나가기',
+        navigateTo: ROUTE.finder,
+      }}
     >
       <div className={styles.lobby}>
         <div className={styles.settings}>

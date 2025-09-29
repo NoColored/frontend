@@ -1,4 +1,4 @@
-import { ReactNode, useEffect } from 'react';
+import { ReactNode } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import AudioButton from './audio-button';
@@ -9,54 +9,44 @@ import SettingNavigationButton from '@/components/button/SettingNavigationButton
 
 import FullScreenPrompt from '@/pages/landing/FullScreenPrompt';
 
-import useAudioStore from '@/states/music';
-
 interface Props {
   children: ReactNode;
-  backButtonLabel?: string;
-  onBeforeButtonClick?: () => void;
-  disableButton?: boolean;
-  disableMenu?: boolean;
+  leftButton?: {
+    label: string;
+    navigateTo?: string;
+  };
+  rightButtonsDisabled?: boolean;
+  menuButtonDisabled?: boolean;
 }
 
 const BasicContentFrame = ({
   children,
-  backButtonLabel,
-  onBeforeButtonClick,
-  disableButton,
-  disableMenu,
+  leftButton,
+  rightButtonsDisabled,
+  menuButtonDisabled,
 }: Props) => {
   const navigate = useNavigate();
-  const { isPlaying, playBackgroundSound, stopBackgroundSound } =
-    useAudioStore();
 
-  const handleBackButtonClick = () => {
-    if (onBeforeButtonClick) {
-      onBeforeButtonClick();
-    }
-    navigate(-1);
-  };
-
-  useEffect(() => {
-    // 자동으로 음악 재생 상태를 설정합니다.
-    isPlaying ? playBackgroundSound() : stopBackgroundSound();
-  }, [isPlaying, playBackgroundSound, stopBackgroundSound]);
+  const handleNavigate = () =>
+    leftButton?.navigateTo
+      ? navigate(leftButton.navigateTo, { replace: true })
+      : navigate(-1);
 
   return (
     <div className={styles.frame}>
       <FullScreenPrompt />
-      {!disableButton && (
+      {!rightButtonsDisabled && (
         <div className={styles.iconButtons}>
           <AudioButton />
-          {!disableMenu && <MenuButton />}
+          {!menuButtonDisabled && <MenuButton />}
         </div>
       )}
       <main className={styles.main}>
-        {backButtonLabel && (
+        {leftButton && (
           <div className={styles.navigation}>
             <SettingNavigationButton
-              label={backButtonLabel}
-              onClick={handleBackButtonClick}
+              label={leftButton.label}
+              onClick={handleNavigate}
               position='leftTop'
             />
           </div>

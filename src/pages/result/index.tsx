@@ -6,8 +6,8 @@ import * as styles from './index.css';
 
 import type { GameResult } from '@/types/result';
 
-import BasicContentFrame from '@/components/frame/with-buttons';
 import ColoredButton from '@/components/button/ColoredButton';
+import BasicContentFrame from '@/components/frame/with-buttons';
 
 import useModal from '@/hooks/useModal';
 
@@ -53,7 +53,7 @@ const Result = () => {
   };
 
   return (
-    <BasicContentFrame disableButton>
+    <BasicContentFrame rightButtonsDisabled>
       <div className={styles.gameResultWrapper}>
         <div className={styles.result}>
           <div className={styles.resultTitle}>{constants.RESULTTEXT}</div>

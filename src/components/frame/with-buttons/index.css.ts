@@ -1,19 +1,21 @@
 import { style } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
 
-import * as constants from '@/components/frame/constants';
-import { basicFrame } from '@/components/frame/index.css';
+import { FRAME_STYLE } from '../constants';
+import { base } from '../frame.css';
 
 import { borderDarkOptions, flexOptions } from '@/styles/common.css';
 import { sprinkles } from '@/styles/sprinkles.css';
 
 export const frame = style([
-  basicFrame,
+  base,
   sprinkles({
     padding: '4x',
   }),
   {
-    minHeight: constants.MIN_FRAME_HEIGHT_WITH_PADDING,
+    minHeight: calc
+      .subtract(FRAME_STYLE.height.min, calc.multiply(FRAME_STYLE.padding, 2))
+      .toString(),
     height: `${calc('100%').subtract('32px')}`,
     aspectRatio: '33 / 19',
     boxSizing: 'content-box',
@@ -21,7 +23,7 @@ export const frame = style([
     '@media': {
       'screen and (min-height: 463px)': {
         boxSizing: 'border-box',
-        height: constants.MAX_FRAME_HEIGHT,
+        height: FRAME_STYLE.height.max,
       },
     },
   },
