@@ -1,8 +1,8 @@
+import { HIGH_TIER_INFO, LOW_TIER_INFO } from './constants';
 import * as styles from './index.css';
 import { indexProps } from './types';
 
 import SettingNavigationButton from '@/components/button/SettingNavigationButton';
-import { HIGH_TIER_INFO, LOW_TIER_INFO } from '@/components/imagebox/constants';
 import TierBox from '@/components/tier';
 
 const TierInfo = ({ onBack, onClose }: indexProps) => {
