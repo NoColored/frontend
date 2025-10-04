@@ -23,7 +23,7 @@ const tier = variant([...TIER], (name) =>
   }),
 );
 
-const size = variant(
+export const size = variant(
   {
     xsmall: '32px',
     small: '48px',
