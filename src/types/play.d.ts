@@ -1,5 +1,4 @@
 import type { playerColorType } from '@/pages/play/lobby/types';
-import type { tierRange } from '@/pages/ranking/types';
 
 interface Player {
   userCode: string;

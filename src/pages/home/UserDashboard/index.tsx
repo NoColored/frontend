@@ -3,14 +3,13 @@ import { assignInlineVars } from '@vanilla-extract/dynamic';
 import * as styles from './index.css';
 
 import TierBox from '@/components/imagebox/TierIconBox';
-import type { tierType } from '@/components/imagebox/types';
 
 interface Props {
   nickname: string;
   level: number;
   cp: number;
   maxCp: number;
-  tier: tierType;
+  tier: tierRange;
   // rankScore: number;
 }
 

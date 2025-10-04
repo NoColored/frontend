@@ -4,7 +4,6 @@ import { indexProps } from './types';
 import SettingNavigationButton from '@/components/button/SettingNavigationButton';
 import { HIGH_TIER_INFO, LOW_TIER_INFO } from '@/components/imagebox/constants';
 import TierBox from '@/components/imagebox/TierIconBox';
-import { tierType } from '@/components/imagebox/types';
 
 const TierInfo = ({ onBack, onClose }: indexProps) => {
   return (
@@ -24,7 +23,7 @@ const TierInfo = ({ onBack, onClose }: indexProps) => {
         {Object.entries(LOW_TIER_INFO).map(([tier, { description, score }]) => (
           <div key={tier} className={styles.tierWrapper}>
             <div className={styles.boxWrapper}>
-              <TierBox size='small' tier={tier as tierType} />
+              <TierBox size='small' tier={tier as tierRange} />
               <div>{description}</div>
               <div>{score}</div>
             </div>
@@ -36,7 +35,7 @@ const TierInfo = ({ onBack, onClose }: indexProps) => {
           ([tier, { description, score }]) => (
             <div key={tier} className={styles.tierWrapper}>
               <div className={styles.boxWrapper}>
-                <TierBox size='small' tier={tier as tierType} />
+                <TierBox size='small' tier={tier as tierRange} />
                 <div>{description}</div>
                 <div>{score}</div>
               </div>

@@ -1,11 +1,8 @@
 import * as styles from './index.css';
 
-import type { tierSizeType, tierType } from '@/components/imagebox/types';
+import type { RecipeVariants } from '@vanilla-extract/recipes';
 
-interface Props {
-  tier: tierType;
-  size: tierSizeType;
-}
+type Props = Required<NonNullable<RecipeVariants<typeof styles.tierBox>>>;
 
 const TierBox = ({ tier, size }: Props) => {
   return <div className={styles.tierBox({ tier, size })} />;

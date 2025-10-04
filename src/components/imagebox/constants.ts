@@ -19,18 +19,6 @@ export const BORDER_COLOR = [
 export const BACKGROUND_COLOR = ['white', 'gray200'] as const;
 export const BORDER_WEIGHT = ['1x', '3x', '5x'] as const;
 
-export const TIER_RANGE = [
-  'nocolored',
-  'bronze',
-  'silver',
-  'gold',
-  'platinum',
-  'diamond',
-  'colored',
-  'rgb',
-  'origin',
-] as const;
-
 export const LOW_TIER_INFO = {
   nocolored: { description: '노컬러드', score: 'NPC' },
   bronze: { description: '브론즈', score: '~2100점' },
