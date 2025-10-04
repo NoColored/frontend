@@ -7,11 +7,11 @@ import type {
   imageboxBackgroundColorType,
   imageboxBorderColorType,
   immageboxBorderWeightType,
-  tierSizeType,
 } from '@/components/imagebox/types';
 
 import { borderLightOptions, flexOptions } from '@/styles/common.css';
 import { sprinkles } from '@/styles/sprinkles.css';
+import { variant } from '@/styles/utils';
 
 const imageBoxBase = style([
   flexOptions({ option: 'column' }),
@@ -30,17 +30,10 @@ const imageBoxBase = style([
   },
 ]);
 
-const sizeVariants = Object.keys(constants.IMAGEBOX_SIZE).reduce(
-  (variants, sizeKey) => {
-    const size = sizeKey as tierSizeType;
-    variants[size] = style([
-      {
-        height: constants.IMAGEBOX_SIZE[size],
-      },
-    ]);
-    return variants;
-  },
-  {} as Record<tierSizeType, ReturnType<typeof style>>,
+const size = variant(constants.IMAGEBOX_SIZE, ([_, height]) =>
+  style({
+    height,
+  }),
 );
 
 const backgroundColorVariants = constants.BACKGROUND_COLOR.reduce(
@@ -70,7 +63,7 @@ const borderSizeVariants = constants.BORDER_WEIGHT.reduce(
 export const roundCornerImageBox = recipe({
   base: imageBoxBase,
   variants: {
-    size: sizeVariants,
+    size,
     borderSize: borderSizeVariants,
     borderColor: borderColorVariants,
     backgroundColor: backgroundColorVariants,
