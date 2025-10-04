@@ -36,10 +36,14 @@ const size = variant(
     }),
 );
 
-export const tierBox = recipe({
+const tierBox = recipe({
   base,
   variants: {
     tier,
     size,
   },
 });
+
+export const styles = {
+  tierBox,
+};
