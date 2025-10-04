@@ -2,8 +2,8 @@ import * as styles from './index.css';
 
 import type { RankPlayer } from '@/types/rank';
 
-import TierBox from '@/components/imagebox/TierIconBox';
 import PlayerInfoBox from '@/components/PlayerInfoBox';
+import TierBox from '@/components/tier';
 
 interface RankingItemBoxProps {
   player: RankPlayer;
