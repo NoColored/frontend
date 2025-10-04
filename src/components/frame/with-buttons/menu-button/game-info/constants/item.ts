@@ -1,5 +1,3 @@
-export const INFO_TYPE = ['main', 'item', 'game', 'tier'] as const;
-
 export const ITEMS = [
   {
     name: 'again',
