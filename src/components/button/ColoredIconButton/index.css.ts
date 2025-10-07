@@ -50,7 +50,6 @@ export const sizeVariants = {
       width: 'full',
     }),
     {
-      minWidth: constants.COLORED_ICON_BUTTON_SIZE_PIXEL.large.width,
       height: constants.COLORED_ICON_BUTTON_SIZE_PIXEL.large.height,
 
       '@media': {
@@ -69,7 +68,6 @@ export const sizeVariants = {
       width: 'full',
     }),
     {
-      minWidth: constants.COLORED_ICON_BUTTON_SIZE_PIXEL.xlarge.width,
       height: constants.COLORED_ICON_BUTTON_SIZE_PIXEL.xlarge.height,
     },
   ]),

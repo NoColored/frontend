@@ -12,6 +12,20 @@ const meta = {
     layout: 'centered',
   },
   tags: ['autodocs'],
+  decorators: [
+    (Story) => (
+      <div
+        style={{
+          width: '320px',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
+        <Story />
+      </div>
+    ),
+  ],
   argTypes: {
     color: {
       control: 'radio',
