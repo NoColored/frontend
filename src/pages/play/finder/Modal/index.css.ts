@@ -1,13 +1,10 @@
 import { style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
 
-import { INPUT_TEXT_BOX_SIZE } from '@/components/input/constants';
-
 import * as constants from '@/pages/play/finder/constants';
 
 import { borderLightOptions, flexOptions } from '@/styles/common.css';
 import { sprinkles } from '@/styles/sprinkles.css';
-import { vars } from '@/styles/vars.css';
 
 export const modalTwoButtonWrapper = style([
   flexOptions({
@@ -69,7 +66,6 @@ export const createLobbyTextGrid = style([
   {
     display: 'grid',
     gridTemplateColumns: '65% 1fr',
-    gridTemplateRows: `${vars.fontSize[constants.CREATE_MODAL_FONT_SIZE]} ${INPUT_TEXT_BOX_SIZE.small.height}`,
     rowGap: '4px',
     columnGap: '12px',
   },
@@ -77,7 +73,7 @@ export const createLobbyTextGrid = style([
 
 export const createLobbyText = style([
   sprinkles({
-    paddingX: constants.CREATE_MODAL_FONT_SIZE,
+    paddingX: '1x',
   }),
 ]);
 

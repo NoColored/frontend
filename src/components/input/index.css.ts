@@ -1,7 +1,7 @@
 import { style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
 
-import * as constants from './constants';
+import { INPUT_STYLE } from './constants';
 
 import { borderDarkOptions } from '@/styles/common.css';
 import { sprinkles } from '@/styles/sprinkles.css';
@@ -31,7 +31,7 @@ export const size = {
     {
       textAlign: 'center',
       width: `100%`,
-      height: constants.INPUT_TEXT_BOX_SIZE.small.height,
+      height: INPUT_STYLE.small.height,
     },
   ]),
   small: style([
@@ -43,8 +43,8 @@ export const size = {
     }),
     {
       textAlign: 'center',
-      width: constants.INPUT_TEXT_BOX_SIZE.small.width,
-      height: constants.INPUT_TEXT_BOX_SIZE.small.height,
+      width: INPUT_STYLE.small.width,
+      height: INPUT_STYLE.small.height,
     },
   ]),
   medium: style([
@@ -58,12 +58,12 @@ export const size = {
     {
       '@media': {
         'screen and (max-height: 365px)': {
-          width: constants.INPUT_TEXT_BOX_SIZE.small.width,
-          height: constants.INPUT_TEXT_BOX_SIZE.small.height,
+          width: INPUT_STYLE.small.width,
+          height: INPUT_STYLE.small.height,
         },
       },
-      width: constants.INPUT_TEXT_BOX_SIZE.medium.width,
-      height: constants.INPUT_TEXT_BOX_SIZE.medium.height,
+      width: INPUT_STYLE.medium.width,
+      height: INPUT_STYLE.medium.height,
     },
   ]),
   large: style([
@@ -71,12 +71,12 @@ export const size = {
     sprinkles({
       fontSize: '2x',
       paddingX: '4x',
-      marginY: '2x',
+      marginY: INPUT_STYLE.large.marginY,
       backgroundColor: 'navy',
     }),
     {
-      width: constants.INPUT_TEXT_BOX_SIZE.large.width,
-      height: constants.INPUT_TEXT_BOX_SIZE.large.height,
+      width: INPUT_STYLE.large.width,
+      height: INPUT_STYLE.large.height,
     },
   ]),
 };

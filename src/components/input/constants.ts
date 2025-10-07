@@ -1,4 +1,4 @@
-export const INPUT_TEXT_BOX_SIZE = {
+export const INPUT_STYLE = {
   small: {
     width: '360px',
     height: '40px',
@@ -10,6 +10,6 @@ export const INPUT_TEXT_BOX_SIZE = {
   large: {
     width: '480px',
     height: '64px',
-    margin: '8px',
+    marginY: '2x',
   },
 } as const;
