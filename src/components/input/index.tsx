@@ -1,30 +1,19 @@
 import React from 'react';
 
-import { inputTextBox } from '@/components/textbox/InputTextBox/index.css';
-
-import {
-  inputSizeType,
-  inputType,
-} from '@/components/textbox/InputTextBox/types';
+import { input } from '@/components/input/index.css';
+import { inputSizeType } from '@/components/input/types';
 
 interface Props {
   name?: string;
   placeholder: string;
   size: inputSizeType;
-  type: inputType;
+  type: 'text' | 'password';
   value?: string | number;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const InputTextBox = ({
-  name,
-  placeholder,
-  size,
-  type,
-  value,
-  onChange,
-}: Props) => {
-  const sizeName = inputTextBox({ size });
+const Input = ({ name, placeholder, size, type, value, onChange }: Props) => {
+  const sizeName = input({ size });
   return (
     <input
       name={name}
@@ -37,4 +26,4 @@ const InputTextBox = ({
   );
 };
 
-export default InputTextBox;
+export default Input;

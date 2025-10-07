@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import * as styles from './index.css';
 
 import ColoredButton from '@/components/button/ColoredButton';
-import InputTextBox from '@/components/textbox/InputTextBox';
+import Input from '@/components/input';
 
 import * as constants from '@/pages/landing/logIn/constants';
 
@@ -64,7 +64,7 @@ const DeleteAccount = ({ onClose }: Props) => {
     <div className={styles.centerBoxWrapper}>
       <div className={styles.text}>버튼을 잘못 누르셨네요!</div>
       <div className={styles.text}>다시 뒤로 갑시다!</div>
-      <InputTextBox
+      <Input
         name='password'
         placeholder='실패작의 비밀번호 6자리를 입력하세요'
         size='small'

@@ -6,7 +6,7 @@ import * as styles from '../index.css';
 import type { RequestEnterRoom } from '@/types/play';
 
 import ColoredButton from '@/components/button/ColoredButton';
-import InputTextBox from '@/components/textbox/InputTextBox';
+import Input from '@/components/input';
 
 import MessageModalContent from '@/pages/play/finder/Modal/MessageModalContent';
 
@@ -65,39 +65,37 @@ const SearchModalContent = ({ closeModal }: Props) => {
   }
 
   return (
-    <div className={styles.modalWrapper}>
-      <div className={styles.contentBox}>
-        <span>방장한테 허락은 맡으셨죠?</span>
-        <InputTextBox
-          name='roomCode'
-          placeholder='대기실 코드 4자리를 입력하세요'
+    <div className={styles.contentBox}>
+      <span>방장한테 허락은 맡으셨죠?</span>
+      <Input
+        name='roomCode'
+        placeholder='대기실 코드 4자리를 입력하세요'
+        size='small'
+        type='text'
+        value={roomInfo.roomCode}
+        onChange={handleChange}
+      />
+      <Input
+        name='roomPassword'
+        placeholder='비밀번호 4자리를 입력하세요'
+        size='small'
+        type='text'
+        value={roomInfo.roomPassword}
+        onChange={handleChange}
+      />
+      <div className={styles.modalTwoButtonWrapper}>
+        <ColoredButton
           size='small'
-          type='text'
-          value={roomInfo.roomCode}
-          onChange={handleChange}
+          text='취소'
+          color='navy'
+          onClick={closeModal}
         />
-        <InputTextBox
-          name='roomPassword'
-          placeholder='비밀번호 4자리를 입력하세요'
+        <ColoredButton
           size='small'
-          type='text'
-          value={roomInfo.roomPassword}
-          onChange={handleChange}
+          text='확인'
+          color='green'
+          onClick={handleClickButton}
         />
-        <div className={styles.modalTwoButtonWrapper}>
-          <ColoredButton
-            size='small'
-            text='취소'
-            color='navy'
-            onClick={closeModal}
-          />
-          <ColoredButton
-            size='small'
-            text='확인'
-            color='green'
-            onClick={handleClickButton}
-          />
-        </div>
       </div>
     </div>
   );

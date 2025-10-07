@@ -15,5 +15,3 @@ export const INPUT_TEXT_BOX_SIZE = {
 } as const;
 
 export const INPUT_SIZE_TYPE = ['small', 'medium', 'large'] as const;
-
-export const INPUT_TYPE = ['text', 'number', 'password'] as const;

@@ -1,7 +1,7 @@
 import { style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
 
-import { INPUT_TEXT_BOX_SIZE } from '@/components/textbox/InputTextBox/constants';
+import { INPUT_TEXT_BOX_SIZE } from '@/components/input/constants';
 
 import * as constants from '@/pages/play/finder/constants';
 

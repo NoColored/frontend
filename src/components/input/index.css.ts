@@ -20,7 +20,7 @@ const inputTextBoxBase = style([
   },
 ]);
 
-const inputTextBoxVariants = {
+export const inputTextBoxVariants = {
   size: {
     widthFull: style([
       borderDarkOptions({ color: 'gray500', width: '3x' }),
@@ -82,8 +82,7 @@ const inputTextBoxVariants = {
   },
 };
 
-// <InputTextBox placeholder='보십쇼' size='medium' onChange={}/>
-export const inputTextBox = recipe({
+export const input = recipe({
   base: inputTextBoxBase,
   variants: inputTextBoxVariants,
 });

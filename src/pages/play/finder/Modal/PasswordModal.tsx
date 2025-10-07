@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import type { RequestEnterRoom } from '@/types/play';
 
 import ColoredButton from '@/components/button/ColoredButton';
-import InputTextBox from '@/components/textbox/InputTextBox';
+import Input from '@/components/input';
 
 import * as styles from '@/pages/play/finder/Modal/index.css';
 import MessageModalContent from '@/pages/play/finder/Modal/MessageModalContent';
@@ -63,7 +63,7 @@ const PasswordModal = ({ roomCode, closeModal }: Props) => {
     <div className={styles.contentBox}>
       <span className={styles.text}>이 방의 Colored들은 </span>
       <span className={styles.text}>아무하고나 쉽게 싸우지 않습니다 </span>
-      <InputTextBox
+      <Input
         name='roomPassword'
         placeholder='비밀번호 4자리를 입력하세요'
         size='small'
