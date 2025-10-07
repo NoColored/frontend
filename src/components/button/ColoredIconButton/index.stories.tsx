@@ -101,9 +101,12 @@ export const GameReady: Story = {
     size: 'large',
     color: 'gray300',
     icon: '/images/ui/icon/shape/icon-shape-white-big-player1-h48w48.png',
-    text: '게임준비',
+    text: '준비취소',
   },
   render: (args: Required<Story['args']>) => {
+    if (args.color !== 'gray300') {
+      args.text = '게임준비';
+    }
     return (
       <div style={{ width }}>
         <ColoredIconButton {...args} />
