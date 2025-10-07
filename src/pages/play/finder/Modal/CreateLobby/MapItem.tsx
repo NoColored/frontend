@@ -1,5 +1,5 @@
+import Chip from '@/components/chip';
 import RoundCornerImageBox from '@/components/image-box';
-import ColoredTextBox from '@/components/textbox/ColoredTextBox';
 
 import * as styles from '@/pages/play/finder/Modal/index.css';
 
@@ -19,7 +19,7 @@ const MapItem = ({ mapName, imgSrc, isSelected, onClick }: Props) => {
         borderSize={isSelected ? '5x' : '1x'}
         borderColor={isSelected ? 'yellow' : 'black'}
       >
-        <ColoredTextBox
+        <Chip
           size='small'
           color={isSelected ? 'yellow' : 'navy'}
           text={mapName}

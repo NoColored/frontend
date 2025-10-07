@@ -1,6 +1,6 @@
 import type { Player } from '@/types/play';
 
-import ColoredTextBox from '@/components/textbox/ColoredTextBox';
+import Chip from '@/components/chip';
 
 import * as constants from '@/pages/play/lobby/constants';
 import { EMPTY_PLAYER_COLOR } from '@/pages/play/lobby/constants';
@@ -17,7 +17,7 @@ const State = ({ player, state }: Props) => {
   }
 
   return (
-    <ColoredTextBox
+    <Chip
       size='medium'
       color={player.color}
       text={state}

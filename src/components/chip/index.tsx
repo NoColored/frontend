@@ -11,7 +11,8 @@ interface Props {
   text: string;
   icon?: string;
 }
-const ColoredTextBox = ({ color, icon, text, size }: Props) => {
+
+const Chip = ({ color, icon, text, size }: Props) => {
   return (
     <div className={styles.coloredTextBoxStyle({ color, size })}>
       {icon && <img className={styles.iconStyle} src={icon} alt='icon' />}
@@ -20,4 +21,4 @@ const ColoredTextBox = ({ color, icon, text, size }: Props) => {
   );
 };
 
-export default ColoredTextBox;
+export default Chip;

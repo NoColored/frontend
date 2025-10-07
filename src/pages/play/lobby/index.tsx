@@ -7,8 +7,8 @@ import * as styles from './index.css';
 import type { Lobby } from '@/types/play';
 import type { ActionDataTypeMap } from '@/types/websocket';
 
+import Chip from '@/components/chip';
 import BasicContentFrame from '@/components/frame/with-buttons';
-import ColoredTextBox from '@/components/textbox/ColoredTextBox';
 
 import { useWebSocket } from '@/hooks/useWebSocket';
 
@@ -72,9 +72,9 @@ const Lobby = () => {
           {isMaster && <SettingButton lobby={lobbyInfo} />}
           {mapInfo && <MapInfo map={mapInfo} />}
           <div className={styles.code}>{lobbyInfo.roomCode}</div>
-          <ColoredTextBox size='small' color='red' text='코드번호' />
+          <Chip size='small' color='red' text='코드번호' />
           <div className={styles.code}>{lobbyInfo.roomPassword}</div>
-          <ColoredTextBox size='small' color='red' text='비밀번호' />
+          <Chip size='small' color='red' text='비밀번호' />
         </div>
         <div className={styles.lobbyInfo}>
           <div className={styles.lobbyTitle}>{lobbyInfo.roomTitle}</div>

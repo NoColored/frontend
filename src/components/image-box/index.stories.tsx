@@ -4,7 +4,7 @@ import ImageBox from './index';
 
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import ColoredTextBox from '@/components/textbox/ColoredTextBox';
+import Chip from '@/components/chip';
 
 import { styles } from '@/pages/collection/index.css';
 
@@ -70,7 +70,7 @@ export const Map: Story = {
     imgSrc: '/images/map/background/factorymap.png',
     borderSize: '1x',
     borderColor: 'black',
-    children: <ColoredTextBox size='small' color='navy' text='팩토리' />,
+    children: <Chip size='small' color='navy' text='팩토리' />,
   },
 };
 
@@ -84,7 +84,7 @@ export const Player1 = {
   },
   render: (args: Story['args']) => (
     <ImageBox {...args}>
-      <ColoredTextBox
+      <Chip
         size='medium'
         color={args.borderColor ?? 'pink'}
         text='방장'
@@ -104,7 +104,7 @@ export const Player2 = {
   },
   render: (args: Story['args']) => (
     <ImageBox {...args}>
-      <ColoredTextBox
+      <Chip
         size='medium'
         color={args.borderColor ?? 'green'}
         text='READY'

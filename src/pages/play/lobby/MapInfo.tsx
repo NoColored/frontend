@@ -1,7 +1,7 @@
 import * as styles from './index.css';
 
+import Chip from '@/components/chip';
 import RoundCornerImageBox from '@/components/image-box';
-import ColoredTextBox from '@/components/textbox/ColoredTextBox';
 
 import type { GameMap } from '@/pages/play/finder/types';
 
@@ -13,7 +13,7 @@ const MapInfo = ({ map }: Props) => {
   return (
     <div className={styles.mapInfo}>
       <RoundCornerImageBox size='full' imgSrc={map.imgSrc} borderSize='1x'>
-        <ColoredTextBox size='small' color='navy' text={map.mapName} />
+        <Chip size='small' color='navy' text={map.mapName} />
       </RoundCornerImageBox>
     </div>
   );
