@@ -37,8 +37,8 @@ const size = variant(
     }),
 );
 
-const backgroundColor = variant(['white', 'gray200'] as const, (color) =>
-  style({
+export const backgroundColor = variant(['white', 'gray200'] as const, (color) =>
+  sprinkles({
     backgroundColor: color,
   }),
 );
