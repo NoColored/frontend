@@ -5,9 +5,8 @@ import SignupBanner from './SignupBanner';
 
 import type { User } from '@/types/auth';
 
-import BasicContentFrame from '@/components/frame/with-buttons/index';
 import ColoredIconButton from '@/components/button/ColoredIconButton';
-import type { tierType } from '@/components/imagebox/types';
+import BasicContentFrame from '@/components/frame/with-buttons';
 
 import Error from '@/pages/error';
 import { PatchNotes } from '@/pages/home/PatchNotes';
@@ -43,7 +42,7 @@ const Home = () => {
             level={user.level}
             cp={user.exp}
             maxCp={user.expRequire}
-            tier={user.tier as tierType}
+            tier={user.tier}
             // rankScore={user.rating}
           />
         </div>

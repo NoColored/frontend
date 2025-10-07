@@ -1,5 +1,3 @@
-import type { tierRange } from '@/pages/ranking/types';
-
 interface ResultPlayer {
   nickname: string;
   label: string;
