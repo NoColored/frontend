@@ -9,7 +9,7 @@ interface Props {
 
 export const MatchingText = ({ isModalOpen }: Props) => {
   const [matchingMessage, setMatchingMessage] = useState<string>();
-  const interval = useRef<number>();
+  const interval = useRef<ReturnType<typeof setInterval>>();
 
   useEffect(() => {
     if (isModalOpen) {
