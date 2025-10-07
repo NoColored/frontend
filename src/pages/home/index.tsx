@@ -75,7 +75,7 @@ const Home = () => {
           <div className={styles.RightButtonsWrapper}>
             <PatchNotes />
             <ColoredIconButton
-              icon='/images/ui/icon/button/icon-button-ranking-h50w50.png'
+              icon='/images/ui/icon/button/icon-button-play-h50w50.png'
               size='medium'
               text='Play'
               color='red'

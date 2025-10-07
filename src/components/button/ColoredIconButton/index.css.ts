@@ -27,14 +27,14 @@ const colorVariants = constants.BUTTON_COLOR.reduce(
   {} as Record<colorType, ReturnType<typeof style>>,
 );
 
-const sizeVariants = {
+export const sizeVariants = {
   medium: style([
     sprinkles({
       textSize: '1.5x',
     }),
     {
-      width: constants.COLOREDICONBUTTON_SIZE_PIXEL.medium.width,
-      height: constants.COLOREDICONBUTTON_SIZE_PIXEL.medium.height,
+      width: constants.COLORED_ICON_BUTTON_SIZE_PIXEL.medium.width,
+      height: constants.COLORED_ICON_BUTTON_SIZE_PIXEL.medium.height,
       paddingTop: '4x',
 
       '@media': {
@@ -50,7 +50,7 @@ const sizeVariants = {
       width: 'full',
     }),
     {
-      height: constants.COLOREDICONBUTTON_SIZE_PIXEL.large.height,
+      height: constants.COLORED_ICON_BUTTON_SIZE_PIXEL.large.height,
 
       '@media': {
         'screen and (max-height: 380px)': {
@@ -68,7 +68,7 @@ const sizeVariants = {
       width: 'full',
     }),
     {
-      height: constants.COLOREDICONBUTTON_SIZE_PIXEL.xlarge.height,
+      height: constants.COLORED_ICON_BUTTON_SIZE_PIXEL.xlarge.height,
     },
   ]),
 };
