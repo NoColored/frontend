@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { input } from '@/components/input/index.css';
+import { styles } from '@/components/input/index.css';
 import { inputSizeType } from '@/components/input/types';
 
 interface Props {
@@ -13,12 +13,11 @@ interface Props {
 }
 
 const Input = ({ name, placeholder, size, type, value, onChange }: Props) => {
-  const sizeName = input({ size });
   return (
     <input
       name={name}
       type={type}
-      className={sizeName}
+      className={styles.input({ size })}
       placeholder={placeholder}
       value={value}
       onChange={onChange}
