@@ -112,6 +112,9 @@ export const createLobbyMapList = style([
 ]);
 
 export const mapItemWrapper = style([
+  sprinkles({
+    backgroundColor: 'white',
+  }),
   {
     height: constants.MAP_ITEM_HEIGHT,
 
