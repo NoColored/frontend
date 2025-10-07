@@ -1,21 +1,16 @@
-import * as styles from './index.css';
+import { styles } from './index.css';
 
-import type {
-  backgroundColorType,
-  textSizeType,
-} from '@/components/textbox/types';
+import type { RecipeVariants } from '@vanilla-extract/recipes';
 
-interface Props {
-  size: textSizeType;
-  color: backgroundColorType;
+type Props = {
   text: string;
   icon?: string;
-}
+} & Required<NonNullable<RecipeVariants<typeof styles.chip>>>;
 
 const Chip = ({ color, icon, text, size }: Props) => {
   return (
-    <div className={styles.coloredTextBoxStyle({ color, size })}>
-      {icon && <img className={styles.iconStyle} src={icon} alt='icon' />}
+    <div className={styles.chip({ color, size })}>
+      {icon && <img className={styles.icon} src={icon} alt='icon' />}
       {text}
     </div>
   );

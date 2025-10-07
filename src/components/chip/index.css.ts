@@ -1,43 +1,39 @@
 import { style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
 
-import * as constants from '@/components/textbox/constants';
-
 import { flexOptions } from '@/styles/common.css';
 import { sprinkles } from '@/styles/sprinkles.css';
+import { variant } from '@/styles/utils';
 
-const colorVariants: {
-  [colorItem in (typeof constants.BACKGROUND_COLOR)[number]]?: ReturnType<
-    typeof style
-  >;
-} = {};
+const base = style([
+  flexOptions({
+    option: 'center',
+  }),
+  sprinkles({
+    fontFamily: 'textFont',
+    fontSize: '1x',
+    color: 'white',
+    borderRadius: '4x',
+  }),
+  {
+    width: 'fit-content',
+    height: 'fit-content',
+    objectFit: 'cover',
+  },
+]);
 
-constants.BACKGROUND_COLOR.forEach((colorItem) => {
-  colorVariants[colorItem] = style([
+const color = variant(
+  ['red', 'yellow', 'green', 'blue', 'pink', 'navy'] as const,
+  (backgroundColor) =>
     sprinkles({
-      backgroundColor: colorItem,
+      backgroundColor,
     }),
-  ]);
-});
+);
 
-export const coloredTextBoxStyle = recipe({
-  base: [
-    flexOptions({
-      option: 'center',
-    }),
-    sprinkles({
-      fontFamily: 'textFont',
-      fontSize: '1x',
-      color: 'white',
-      borderRadius: '4x',
-    }),
-    {
-      width: 'fit-content',
-      height: 'fit-content',
-      objectFit: 'cover',
-    },
-  ],
+const chip = recipe({
+  base,
   variants: {
+    color,
     size: {
       small: sprinkles({
         textSize: '0.75x',
@@ -61,11 +57,10 @@ export const coloredTextBoxStyle = recipe({
         },
       ]),
     },
-    color: colorVariants,
   },
 });
 
-export const iconStyle = style([
+const icon = style([
   flexOptions({
     option: 'center',
   }),
@@ -84,3 +79,8 @@ export const iconStyle = style([
     },
   },
 ]);
+
+export const styles = {
+  chip,
+  icon,
+};
