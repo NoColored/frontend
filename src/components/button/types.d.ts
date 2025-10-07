@@ -8,7 +8,7 @@ type colorType = (typeof constants.BUTTON_COLOR)[number];
 type coloredButtonSizeType = keyof typeof constants.COLORED_BUTTON_SIZE_PIXEL;
 
 type coloredIconButtonSizeType =
-  keyof typeof constants.COLOREDICONBUTTON_SIZE_PIXEL;
+  keyof typeof constants.COLORED_ICON_BUTTON_SIZE_PIXEL;
 
 type positionType = keyof typeof positionVariants;
 
