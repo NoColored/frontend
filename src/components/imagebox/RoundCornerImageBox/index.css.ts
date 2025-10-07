@@ -1,19 +1,11 @@
 import { style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
 
-import * as constants from '../constants';
-
-import type {
-  imageboxBackgroundColorType,
-  imageboxBorderColorType,
-  immageboxBorderWeightType,
-} from '@/components/imagebox/types';
-
 import { borderLightOptions, flexOptions } from '@/styles/common.css';
 import { sprinkles } from '@/styles/sprinkles.css';
 import { variant } from '@/styles/utils';
 
-const imageBoxBase = style([
+const base = style([
   flexOptions({ option: 'column' }),
   sprinkles({
     borderRadius: '2x',
@@ -30,42 +22,46 @@ const imageBoxBase = style([
   },
 ]);
 
-const size = variant(constants.IMAGEBOX_SIZE, ([_, height]) =>
+const size = variant(
+  {
+    // xsmall: '32px',
+    small: '48px',
+    medium: '96px',
+    large: '144px',
+    // xlarge: '240px',
+    full: '100%',
+  } as const,
+  ([_, height]) =>
+    style({
+      height,
+    }),
+);
+
+const backgroundColor = variant(['white', 'gray200'] as const, (color) =>
   style({
-    height,
+    backgroundColor: color,
   }),
 );
 
-const backgroundColorVariants = constants.BACKGROUND_COLOR.reduce(
-  (variants, color) => {
-    variants[color] = sprinkles({ backgroundColor: color });
-    return variants;
-  },
-  {} as Record<imageboxBackgroundColorType, ReturnType<typeof style>>,
+const borderColor = variant(
+  ['red', 'yellow', 'green', 'blue', 'pink', 'black'] as const,
+  (color) => style([borderLightOptions({ color })]),
 );
 
-const borderColorVariants = constants.BORDER_COLOR.reduce(
-  (variants, color) => {
-    variants[color] = style([borderLightOptions({ color })]);
-    return variants;
-  },
-  {} as Record<imageboxBorderColorType, ReturnType<typeof style>>,
+const borderSize = variant(['1x', '3x', '5x'] as const, (width) =>
+  style([borderLightOptions({ width })]),
 );
 
-const borderSizeVariants = constants.BORDER_WEIGHT.reduce(
-  (variants, size) => {
-    variants[size] = style([borderLightOptions({ width: size })]);
-    return variants;
-  },
-  {} as Record<immageboxBorderWeightType, ReturnType<typeof style>>,
-);
-
-export const roundCornerImageBox = recipe({
-  base: imageBoxBase,
+const roundCornerImageBox = recipe({
+  base,
   variants: {
     size,
-    borderSize: borderSizeVariants,
-    borderColor: borderColorVariants,
-    backgroundColor: backgroundColorVariants,
+    borderSize,
+    borderColor,
+    backgroundColor,
   },
 });
+
+export const styles = {
+  roundCornerImageBox,
+};

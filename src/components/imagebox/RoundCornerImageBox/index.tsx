@@ -1,22 +1,18 @@
 import React from 'react';
 
-import * as styles from './index.css';
+import { styles } from './index.css';
 
-import type {
-  imageboxBackgroundColorType,
-  imageboxBorderColorType,
-  imageboxSizeType,
-  immageboxBorderWeightType,
-} from '@/components/imagebox/types';
+import type { RecipeVariants } from '@vanilla-extract/recipes';
 
-export interface Props {
+type StyleProps = NonNullable<
+  RecipeVariants<typeof styles.roundCornerImageBox>
+>;
+
+type Props = {
   children?: React.ReactNode;
-  imgSrc?: string;
-  size: imageboxSizeType;
-  borderSize?: immageboxBorderWeightType;
-  borderColor?: imageboxBorderColorType;
-  backgroundColor?: imageboxBackgroundColorType;
-}
+  imgSrc: string;
+} & Required<Pick<StyleProps, 'size'>> &
+  Omit<StyleProps, 'size'>;
 
 const RoundCornerImageBox = ({
   children,
