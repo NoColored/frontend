@@ -1,9 +1,9 @@
 import * as styles from './index.css';
 
-import RoundCornerImageBox from '@/components/imagebox/RoundCornerImageBox';
+import RoundCornerImageBox from '@/components/image-box';
 import ColoredTextBox from '@/components/textbox/ColoredTextBox';
 
-import { GameMap } from '@/pages/play/finder/types';
+import type { GameMap } from '@/pages/play/finder/types';
 
 interface Props {
   map: GameMap;

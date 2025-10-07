@@ -1,6 +1,6 @@
 import * as styles from './index.css';
 
-import RoundCornerImageBox from '@/components/imagebox/RoundCornerImageBox';
+import RoundCornerImageBox from '@/components/image-box';
 import type { PlayerInfoBoxProps } from '@/components/PlayerInfoBox/types';
 import LabeledTextBox from '@/components/textbox/LabeledTextBox';
 

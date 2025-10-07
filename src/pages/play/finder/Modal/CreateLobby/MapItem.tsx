@@ -1,4 +1,4 @@
-import RoundCornerImageBox from '@/components/imagebox/RoundCornerImageBox';
+import RoundCornerImageBox from '@/components/image-box';
 import ColoredTextBox from '@/components/textbox/ColoredTextBox';
 
 import * as styles from '@/pages/play/finder/Modal/index.css';
@@ -12,7 +12,7 @@ interface Props {
 
 const MapItem = ({ mapName, imgSrc, isSelected, onClick }: Props) => {
   return (
-    <div className={styles.mapItemWrapper} onClick={onClick}>
+    <button type='button' className={styles.mapItemWrapper} onClick={onClick}>
       <RoundCornerImageBox
         size='full'
         imgSrc={imgSrc}
@@ -25,7 +25,7 @@ const MapItem = ({ mapName, imgSrc, isSelected, onClick }: Props) => {
           text={mapName}
         />
       </RoundCornerImageBox>
-    </div>
+    </button>
   );
 };
 export default MapItem;
