@@ -11,7 +11,9 @@ const base = style([
   }),
   sprinkles({
     fontFamily: 'textFont',
-    fontSize: '1x',
+    textSize: '1x',
+    paddingY: '1x',
+    paddingX: '3x',
     color: 'white',
     borderRadius: '4x',
   }),
@@ -22,7 +24,7 @@ const base = style([
   },
 ]);
 
-const color = variant(
+export const color = variant(
   ['red', 'yellow', 'green', 'blue', 'pink', 'navy'] as const,
   (backgroundColor) =>
     sprinkles({
@@ -30,33 +32,25 @@ const color = variant(
     }),
 );
 
+const responsive = {
+  true: style([
+    {
+      '@media': {
+        'screen and (max-height: 380px)': {
+          fontSize: '12px',
+          lineHeight: '12px',
+          padding: '4px 8px',
+        },
+      },
+    },
+  ]),
+};
+
 const chip = recipe({
   base,
   variants: {
     color,
-    size: {
-      small: sprinkles({
-        textSize: '0.75x',
-        paddingY: '1.5x',
-        paddingX: '3x',
-      }),
-      medium: style([
-        sprinkles({
-          textSize: '1x',
-          paddingY: '1x',
-          paddingX: '3x',
-        }),
-        {
-          '@media': {
-            'screen and (max-height: 380px)': {
-              fontSize: '12px',
-              lineHeight: '12px',
-              padding: '4px 8px',
-            },
-          },
-        },
-      ]),
-    },
+    responsive,
   },
 });
 

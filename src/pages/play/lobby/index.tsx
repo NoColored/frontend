@@ -72,9 +72,9 @@ const Lobby = () => {
           {isMaster && <SettingButton lobby={lobbyInfo} />}
           {mapInfo && <MapInfo map={mapInfo} />}
           <div className={styles.code}>{lobbyInfo.roomCode}</div>
-          <Chip size='small' color='red' text='코드번호' />
+          <Chip color='red' text='코드번호' />
           <div className={styles.code}>{lobbyInfo.roomPassword}</div>
-          <Chip size='small' color='red' text='비밀번호' />
+          <Chip color='red' text='비밀번호' />
         </div>
         <div className={styles.lobbyInfo}>
           <div className={styles.lobbyTitle}>{lobbyInfo.roomTitle}</div>

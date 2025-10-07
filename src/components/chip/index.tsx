@@ -2,14 +2,17 @@ import { styles } from './index.css';
 
 import type { RecipeVariants } from '@vanilla-extract/recipes';
 
+type StyleProps = NonNullable<RecipeVariants<typeof styles.chip>>;
+
 type Props = {
   text: string;
   icon?: string;
-} & Required<NonNullable<RecipeVariants<typeof styles.chip>>>;
+} & Omit<StyleProps, 'color'> &
+  Required<Pick<StyleProps, 'color'>>;
 
-const Chip = ({ color, icon, text, size }: Props) => {
+const Chip = ({ color, icon, text, responsive }: Props) => {
   return (
-    <div className={styles.chip({ color, size })}>
+    <div className={styles.chip({ color, responsive })}>
       {icon && <img className={styles.icon} src={icon} alt='icon' />}
       {text}
     </div>

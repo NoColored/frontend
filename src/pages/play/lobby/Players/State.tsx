@@ -18,7 +18,7 @@ const State = ({ player, state }: Props) => {
 
   return (
     <Chip
-      size='medium'
+      responsive
       color={player.color}
       text={state}
       icon={constants.PLAYER_ICON[player.color]}

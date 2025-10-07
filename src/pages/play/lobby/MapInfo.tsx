@@ -13,7 +13,7 @@ const MapInfo = ({ map }: Props) => {
   return (
     <div className={styles.mapInfo}>
       <RoundCornerImageBox size='full' imgSrc={map.imgSrc} borderSize='1x'>
-        <Chip size='small' color='navy' text={map.mapName} />
+        <Chip color='navy' text={map.mapName} />
       </RoundCornerImageBox>
     </div>
   );

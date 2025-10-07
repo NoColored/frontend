@@ -70,7 +70,7 @@ export const Map: Story = {
     imgSrc: '/images/map/background/factorymap.png',
     borderSize: '1x',
     borderColor: 'black',
-    children: <Chip size='small' color='navy' text='팩토리' />,
+    children: <Chip color='navy' text='팩토리' />,
   },
 };
 
@@ -94,7 +94,7 @@ export const Player1 = {
     return (
       <ImageBox {...args}>
         <Chip
-          size='medium'
+          responsive
           color={color}
           text='방장'
           icon='/images/ui/icon/shape/icon-shape-white-small-player0-h16w16.png'
@@ -122,7 +122,7 @@ export const Player2 = {
     return (
       <ImageBox {...args}>
         <Chip
-          size='medium'
+          responsive
           color={color}
           text='READY'
           icon='/images/ui/icon/shape/icon-shape-white-small-player1-h16w16.png'

@@ -19,11 +19,7 @@ const MapItem = ({ mapName, imgSrc, isSelected, onClick }: Props) => {
         borderSize={isSelected ? '5x' : '1x'}
         borderColor={isSelected ? 'yellow' : 'black'}
       >
-        <Chip
-          size='small'
-          color={isSelected ? 'yellow' : 'navy'}
-          text={mapName}
-        />
+        <Chip color={isSelected ? 'yellow' : 'navy'} text={mapName} />
       </RoundCornerImageBox>
     </button>
   );
