@@ -9,7 +9,7 @@ import Chip from '@/components/chip';
 import { styles } from '@/pages/collection/index.css';
 
 const meta = {
-  title: 'components/image',
+  title: 'components/ImageBox',
   component: ImageBox,
   parameters: {
     layout: 'centered',
@@ -74,6 +74,8 @@ export const Map: Story = {
   },
 };
 
+type ChipColor = Exclude<Story['args']['borderColor'], 'black' | undefined>;
+
 export const Player1 = {
   args: {
     size: 'large',
@@ -82,16 +84,24 @@ export const Player1 = {
     borderColor: 'pink',
     backgroundColor: 'white',
   },
-  render: (args: Story['args']) => (
-    <ImageBox {...args}>
-      <Chip
-        size='medium'
-        color={args.borderColor ?? 'pink'}
-        text='방장'
-        icon='/images/ui/icon/shape/icon-shape-white-small-player0-h16w16.png'
-      />
-    </ImageBox>
-  ),
+  argTypes: {
+    borderColor: {
+      options: Object.keys(borderColor).filter((key) => key !== 'black'),
+    },
+  },
+  render: (args: Story['args']) => {
+    const color = args.borderColor as ChipColor;
+    return (
+      <ImageBox {...args}>
+        <Chip
+          size='medium'
+          color={color}
+          text='방장'
+          icon='/images/ui/icon/shape/icon-shape-white-small-player0-h16w16.png'
+        />
+      </ImageBox>
+    );
+  },
 };
 
 export const Player2 = {
@@ -102,14 +112,22 @@ export const Player2 = {
     borderColor: 'green',
     backgroundColor: 'white',
   },
-  render: (args: Story['args']) => (
-    <ImageBox {...args}>
-      <Chip
-        size='medium'
-        color={args.borderColor ?? 'green'}
-        text='READY'
-        icon='/images/ui/icon/shape/icon-shape-white-small-player1-h16w16.png'
-      />
-    </ImageBox>
-  ),
+  argTypes: {
+    borderColor: {
+      options: Object.keys(borderColor).filter((key) => key !== 'black'),
+    },
+  },
+  render: (args: Story['args']) => {
+    const color = args.borderColor as ChipColor;
+    return (
+      <ImageBox {...args}>
+        <Chip
+          size='medium'
+          color={color}
+          text='READY'
+          icon='/images/ui/icon/shape/icon-shape-white-small-player1-h16w16.png'
+        />
+      </ImageBox>
+    );
+  },
 };
