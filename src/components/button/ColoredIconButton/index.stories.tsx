@@ -43,29 +43,38 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Medium: Story = {
+export const Color: Story = {
   args: {
     size: 'medium',
-    color: 'green',
+    color: 'red',
     icon: '/images/ui/icon/button/icon-button-play-h50w50.png',
     text: 'play',
   },
 };
 
-export const Large: Story = {
+export const Collection: Story = {
+  args: {
+    size: 'medium',
+    color: 'blue',
+    icon: '/images/ui/icon/button/icon-button-collection-h50w50.png',
+    text: 'Collection',
+  },
+};
+
+export const Play: Story = {
   args: {
     size: 'large',
-    color: 'gray300',
-    icon: '/images/ui/icon/button/icon-button-play-h50w50.png',
-    text: 'play',
+    color: 'pink',
+    icon: '/images/ui/icon/shape/icon-shape-white-big-player0-h48w48.png',
+    text: '게임시작',
   },
 };
 
-export const XLarge: Story = {
+export const Ranking: Story = {
   args: {
     size: 'xlarge',
-    color: 'pink',
-    icon: '/images/ui/icon/button/icon-button-play-h50w50.png',
-    text: 'play',
+    color: 'yellow',
+    icon: '/images/ui/icon/button/icon-button-moderank-h50w50.png',
+    text: '랭킹전',
   },
 };
