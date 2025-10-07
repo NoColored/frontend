@@ -3,7 +3,7 @@ import * as constants from './constants';
 import type { RoomListItem } from '@/types/play';
 
 import ColoredButton from '@/components/button/ColoredButton';
-import RoundCornerImageBox from '@/components/imagebox/RoundCornerImageBox';
+import RoundCornerImageBox from '@/components/image-box';
 
 import useModal from '@/hooks/useModal';
 

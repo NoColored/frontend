@@ -1,4 +1,4 @@
-import RoundCornerImageBox from '@/components/imagebox/RoundCornerImageBox';
+import RoundCornerImageBox from '@/components/image-box';
 import ColoredTextBox from '@/components/textbox/ColoredTextBox';
 
 import * as styles from '@/pages/play/finder/Modal/index.css';

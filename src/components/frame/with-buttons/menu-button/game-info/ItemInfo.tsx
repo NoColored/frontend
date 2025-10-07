@@ -5,7 +5,7 @@ import * as styles from './index.css';
 import { indexProps } from './types';
 
 import SettingNavigationButton from '@/components/button/SettingNavigationButton';
-import RoundCornerImageBox from '@/components/imagebox/RoundCornerImageBox';
+import RoundCornerImageBox from '@/components/image-box';
 
 const ItemInfo = ({ onBack, onClose }: indexProps) => {
   const [idx, setIdx] = useState(0);

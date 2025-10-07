@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import * as styles from './index.css';
 
 import ColoredButton from '@/components/button/ColoredButton';
-import RoundCornerImageBox from '@/components/imagebox/RoundCornerImageBox';
+import RoundCornerImageBox from '@/components/image-box';
 
 import { useWebSocket } from '@/hooks/useWebSocket';
 
