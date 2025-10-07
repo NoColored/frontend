@@ -13,5 +13,3 @@ export const INPUT_TEXT_BOX_SIZE = {
     margin: '8px',
   },
 } as const;
-
-export const INPUT_SIZE_TYPE = ['small', 'medium', 'large'] as const;

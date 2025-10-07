@@ -1,16 +1,15 @@
-import React from 'react';
+import { styles } from './index.css';
 
-import { styles } from '@/components/input/index.css';
-import { inputSizeType } from '@/components/input/types';
+import type { RecipeVariants } from '@vanilla-extract/recipes';
+import type { ChangeEvent } from 'react';
 
-interface Props {
+type Props = {
   name?: string;
   placeholder: string;
-  size: inputSizeType;
   type: 'text' | 'password';
   value?: string | number;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-}
+  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+} & Required<NonNullable<RecipeVariants<typeof styles.input>>>;
 
 const Input = ({ name, placeholder, size, type, value, onChange }: Props) => {
   return (
