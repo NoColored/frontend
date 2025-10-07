@@ -198,3 +198,8 @@ export const mosaic = style({
   width: '65%',
   height: '20%',
 });
+
+export const styles = {
+  mosaic,
+  mosaicBox,
+};

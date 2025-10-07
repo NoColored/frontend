@@ -13,6 +13,7 @@ const base = style([
     alignItems: 'center',
   }),
   {
+    boxSizing: 'border-box',
     overflow: 'hidden',
     aspectRatio: '1 / 1',
     backgroundRepeat: 'no-repeat',
@@ -22,7 +23,7 @@ const base = style([
   },
 ]);
 
-const size = variant(
+export const size = variant(
   {
     // xsmall: '32px',
     small: '48px',
@@ -43,12 +44,12 @@ export const backgroundColor = variant(['white', 'gray200'] as const, (color) =>
   }),
 );
 
-const borderColor = variant(
+export const borderColor = variant(
   ['red', 'yellow', 'green', 'blue', 'pink', 'black'] as const,
   (color) => style([borderLightOptions({ color })]),
 );
 
-const borderSize = variant(['1x', '3x', '5x'] as const, (width) =>
+export const borderSize = variant(['1x', '3x', '5x'] as const, (width) =>
   style([borderLightOptions({ width })]),
 );
 
