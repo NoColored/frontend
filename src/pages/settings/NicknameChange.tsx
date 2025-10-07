@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import * as styles from './index.css';
 
 import ColoredButton from '@/components/button/ColoredButton';
-import InputTextBox from '@/components/textbox/InputTextBox';
+import Input from '@/components/input';
 
 import * as constants from '@/pages/landing/logIn/constants';
 
@@ -41,7 +41,7 @@ const NicknameChange = ({ onClose }: Props) => {
     <div className={styles.centerBoxWrapper}>
       <div className={styles.text}>이름을 바꿔도 과거로부터</div>
       <div className={styles.text}>도망칠 수는 없지만 말이죠..</div>
-      <InputTextBox
+      <Input
         name='nickname'
         placeholder='수정할 닉네임을 입력하세요 (2~9자리)'
         size='small'

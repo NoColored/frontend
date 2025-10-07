@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import * as styles from './index.css';
 
 import ColoredButton from '@/components/button/ColoredButton';
-import InputTextBox from '@/components/textbox/InputTextBox';
+import Input from '@/components/input';
 
 import * as constants from '@/pages/landing/logIn/constants';
 
@@ -42,7 +42,7 @@ const PasswordChange = ({ onClose }: Props) => {
   return (
     <div className={styles.centerBoxWrapper}>
       <div className={styles.text}>혹시 생일로 바꾸시는거 아니죠?</div>
-      <InputTextBox
+      <Input
         name='password'
         placeholder='현재 비밀번호 숫자 6자리를 입력하세요'
         size='small'
@@ -50,7 +50,7 @@ const PasswordChange = ({ onClose }: Props) => {
         value={password}
         onChange={passwordChange}
       />
-      <InputTextBox
+      <Input
         name='newPassword'
         placeholder='수정할 비밀번호 숫자 6자리를 입력하세요'
         size='small'

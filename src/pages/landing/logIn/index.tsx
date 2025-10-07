@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import type { LogInInfo } from '@/types/auth';
 
 import ColoredButton from '@/components/button/ColoredButton/index';
-import InputTextBox from '@/components/textbox/InputTextBox/index';
+import Input from '@/components/input';
 
 import useModal from '@/hooks/useModal';
 
@@ -55,7 +55,7 @@ const LogIn = () => {
   return (
     <div className={styles.contentWrapper}>
       {/* onChange 임시 이벤트 익명 함수로 설정 했습니다. */}
-      <InputTextBox
+      <Input
         name='id'
         type='text'
         placeholder='아이디'
@@ -63,7 +63,7 @@ const LogIn = () => {
         value={logInInfo.id}
         onChange={handleChange}
       />
-      <InputTextBox
+      <Input
         name='password'
         type='password'
         placeholder='비밀번호'

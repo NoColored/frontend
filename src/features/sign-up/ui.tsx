@@ -6,14 +6,13 @@ import { checkSignUpInfo } from './utils';
 import { SignUpInfo } from '@/types/auth';
 
 import ColoredButton from '@/components/button/ColoredButton/index';
-import InputTextBox from '@/components/textbox/InputTextBox/index';
+import Input from '@/components/input';
 
 import { buttonWrapper } from '@/pages/landing/index.css';
 import * as constants from '@/pages/landing/logIn/constants';
 
 import { getIdCheck, postGuestSignUp, postSignUp } from '@/services/auth';
 import { setFullScreen } from '@/services/landing';
-
 
 import { USER_STATUS, useUserStore } from '@/features/user';
 import { ROUTE } from '@/router/constants';
@@ -79,7 +78,7 @@ const SignUp = ({ closeModal }: Props) => {
 
   return (
     <>
-      <InputTextBox
+      <Input
         name='id'
         type='text'
         placeholder='아이디 (최소 6 ~ 20자)'
@@ -87,7 +86,7 @@ const SignUp = ({ closeModal }: Props) => {
         value={signUpInfo.id}
         onChange={handleChange}
       />
-      <InputTextBox
+      <Input
         name='password'
         type='password'
         placeholder='비밀번호 (숫자 6자)'
@@ -95,7 +94,7 @@ const SignUp = ({ closeModal }: Props) => {
         value={signUpInfo.password}
         onChange={handleChange}
       />
-      <InputTextBox
+      <Input
         name='passwordConfirm'
         type='password'
         placeholder='비밀번호 확인'
@@ -103,7 +102,7 @@ const SignUp = ({ closeModal }: Props) => {
         value={signUpInfo.passwordConfirm}
         onChange={handleChange}
       />
-      <InputTextBox
+      <Input
         name='nickname'
         type='text'
         placeholder='닉네임 (최소 2 ~ 9자)'

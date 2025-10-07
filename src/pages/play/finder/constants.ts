@@ -7,10 +7,6 @@ export const FINDER_WRAPPER_HEIGHT = calc.subtract(
   '32px',
 );
 
-export const MODAL_WRAPPER_HEIGHT = '192px';
-export const MODAL_WRAPPER_WIDTH = '416px';
-export const CREATE_MODAL_FONT_SIZE = '1x';
-
 export const FAIL_MESSAGE_MODAL = {
   SEARCH: {
     message: '진짜로 방장이\n허락했나요?',
