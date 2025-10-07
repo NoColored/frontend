@@ -55,7 +55,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     placeholder: 'example',
-    size: 'medium',
+    size: 'small',
     type: 'text',
   },
   render: (args) => {
@@ -144,37 +144,6 @@ export const Signup: Story = {
           type='text'
           value={nickname}
           onChange={(e) => setNickname(e.target.value)}
-        />
-      </>
-    );
-  },
-};
-
-export const Account: Story = {
-  args: {
-    placeholder: 'account-input',
-    size: 'small',
-    type: 'text',
-  },
-  render: (args) => {
-    const [nickname, setNickname] = useState('');
-    const [password, setPassword] = useState('');
-
-    return (
-      <>
-        <Input
-          {...args}
-          placeholder='수정할 닉네임을 입력하세요 (2~9자리)'
-          type='text'
-          value={nickname}
-          onChange={(e) => setNickname(e.target.value)}
-        />
-        <Input
-          {...args}
-          placeholder='현재 비밀번호 숫자 6자리를 입력하세요'
-          type='password'
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
         />
       </>
     );
