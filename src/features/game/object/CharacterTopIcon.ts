@@ -1,5 +1,5 @@
-import * as constants from '@/game/constants';
-import { Character } from '@/game/object/Character';
+import * as constants from '@/features/game/constants';
+import { Character } from '@/features/game/object/Character';
 
 export class CharacterTopIcon extends Phaser.GameObjects.Particles
   .ParticleEmitter {

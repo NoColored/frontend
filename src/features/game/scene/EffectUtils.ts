@@ -1,10 +1,10 @@
 import Phaser from 'phaser';
 
-import { Blowup } from '@/game/object/effect/Blowup';
-import { Disappear } from '@/game/object/effect/Disappear';
-import { Obtain } from '@/game/object/effect/Obtain';
-import { Shuffle } from '@/game/object/effect/Shuffle';
-import { StopLoading } from '@/game/object/effect/StopLoading';
+import { Blowup } from '@/features/game/object/effect/Blowup';
+import { Disappear } from '@/features/game/object/effect/Disappear';
+import { Obtain } from '@/features/game/object/effect/Obtain';
+import { Shuffle } from '@/features/game/object/effect/Shuffle';
+import { StopLoading } from '@/features/game/object/effect/StopLoading';
 
 export const EffectUtils = (
   scene: Phaser.Scene,

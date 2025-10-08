@@ -16,24 +16,24 @@ import {
 
 import { useWebSocketStore } from '@/states/websocket';
 
-import * as constants from '@/game/constants';
-import { Background } from '@/game/map/Background';
-import { Map } from '@/game/map/Map';
-import { PhysicsMap } from '@/game/map/PhysicsMap';
-import { Character } from '@/game/object/Character';
-import { CharacterAnimation } from '@/game/object/CharacterAnimation';
-import { CharacterParticle } from '@/game/object/CharacterParticle';
-import { CharacterTopIcon } from '@/game/object/CharacterTopIcon';
-import { EffectAnimations } from '@/game/object/effect/EffectAnimations';
-import { Item } from '@/game/object/Item';
-import CountDown from '@/game/scene/CountDown';
-import { EffectUtils } from '@/game/scene/EffectUtils';
-import GameOver from '@/game/scene/GameOver';
-import LoadingUtils from '@/game/scene/LoadingUtils';
-import { BgmManager } from '@/game/sound/Bgm';
-import ChangeDirButton from '@/game/UI/ChangeDirButton';
-import JumpButton from '@/game/UI/JumpButton';
-import { TopUi } from '@/game/UI/TopUi';
+import * as constants from '@/features/game/constants';
+import { Background } from '@/features/game/map/Background';
+import { Map } from '@/features/game/map/Map';
+import { PhysicsMap } from '@/features/game/map/PhysicsMap';
+import { Character } from '@/features/game/object/Character';
+import { CharacterAnimation } from '@/features/game/object/CharacterAnimation';
+import { CharacterParticle } from '@/features/game/object/CharacterParticle';
+import { CharacterTopIcon } from '@/features/game/object/CharacterTopIcon';
+import { EffectAnimations } from '@/features/game/object/effect/EffectAnimations';
+import { Item } from '@/features/game/object/Item';
+import CountDown from '@/features/game/scene/CountDown';
+import { EffectUtils } from '@/features/game/scene/EffectUtils';
+import GameOver from '@/features/game/scene/GameOver';
+import LoadingUtils from '@/features/game/scene/LoadingUtils';
+import { BgmManager } from '@/features/game/sound/Bgm';
+import ChangeDirButton from '@/features/game/UI/ChangeDirButton';
+import JumpButton from '@/features/game/UI/JumpButton';
+import { TopUi } from '@/features/game/UI/TopUi';
 
 export default class GameScene extends Phaser.Scene {
   private socket: GameSocket;

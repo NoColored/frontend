@@ -1,9 +1,9 @@
-import * as constants from '@/game/constants';
+import * as constants from '@/features/game/constants';
 
 export default class GameOver {
   private scene: Phaser.Scene;
   private gameOverBack: Phaser.GameObjects.Graphics;
-  private gameOverText: Phaser.GameObjects.Text ;
+  private gameOverText: Phaser.GameObjects.Text;
 
   constructor(scene: Phaser.Scene) {
     this.scene = scene;

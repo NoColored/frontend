@@ -1,4 +1,4 @@
-import * as constants from '@/game/constants';
+import * as constants from '@/features/game/constants';
 
 export default class LoadingUtils {
   private scene: Phaser.Scene;
@@ -127,4 +127,3 @@ export default class LoadingUtils {
     this.loadingText?.destroy();
   }
 }
-

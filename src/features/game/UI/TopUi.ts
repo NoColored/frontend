@@ -1,6 +1,6 @@
-import * as constants from '@/game/constants';
-import { Score } from '@/game/UI/Score';
-import { Timer } from '@/game/UI/Timer';
+import * as constants from '@/features/game/constants';
+import { Score } from '@/features/game/UI/Score';
+import { Timer } from '@/features/game/UI/Timer';
 
 export class TopUi extends Phaser.GameObjects.Container {
   private scores: number[];

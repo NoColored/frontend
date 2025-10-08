@@ -1,4 +1,4 @@
-import * as constants from '@/game/constants';
+import * as constants from '@/features/game/constants';
 
 export class Item extends Phaser.GameObjects.Image {
   constructor(scene: Phaser.Scene) {

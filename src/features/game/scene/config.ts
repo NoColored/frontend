@@ -1,6 +1,6 @@
-import * as constants from '@/game/constants';
-import GameScene from '@/game/scene/GameScene';
-import LoadPreLoadingScene from '@/game/scene/LoadPreLoadingScene';
+import * as constants from '@/features/game/constants';
+import GameScene from '@/features/game/scene/GameScene';
+import LoadPreLoadingScene from '@/features/game/scene/LoadPreLoadingScene';
 
 export const config: Phaser.Types.Core.GameConfig = {
   type: Phaser.AUTO,

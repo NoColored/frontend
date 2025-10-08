@@ -1,4 +1,4 @@
-import * as constants from '@/game/constants';
+import * as constants from '@/features/game/constants';
 
 export class Shuffle extends Phaser.GameObjects.Sprite {
   constructor(scene: Phaser.Scene) {

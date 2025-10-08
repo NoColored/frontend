@@ -1,4 +1,4 @@
-import * as constants from '@/game/constants';
+import * as constants from '@/features/game/constants';
 
 export class Score extends Phaser.GameObjects.Container {
   private score: number = 0;
