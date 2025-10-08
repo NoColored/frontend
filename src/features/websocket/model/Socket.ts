@@ -1,50 +1,53 @@
-import type {
-  actionType,
-  WebSocketMessage,
-  WebSocketMessageHandler,
-} from '@/features/websocket/types';
-
 const WEBSOCKET_BASE_URL = import.meta.env.VITE_WEBSOCKET_BASE_URL;
 
 export class Socket {
   protected webSocket: WebSocket;
+  private reconnect: number;
 
   constructor() {
-    this.webSocket = { readyState: 3 } as WebSocket;
+    this.webSocket = { readyState: WebSocket.CLOSED } as WebSocket;
+    this.reconnect = 1;
   }
 
   connect() {
     this.webSocket = new WebSocket(WEBSOCKET_BASE_URL);
 
     this.webSocket.onopen = () => {
+      console.debug('websocket connected');
+      this.reconnect = 1;
       this.sendToken();
     };
   }
 
   isConnected() {
     return (
-      this.webSocket.readyState === this.webSocket.CONNECTING ||
-      this.webSocket.readyState === this.webSocket.OPEN
+      this.webSocket.readyState === WebSocket.CONNECTING ||
+      this.webSocket.readyState === WebSocket.OPEN
     );
   }
 
-  onClose(handleWebSocketMessage: WebSocketMessageHandler) {
+  onClose(callback: () => void) {
     this.webSocket.onclose = () => {
-      this.connect();
-      this.onMessage(handleWebSocketMessage);
+      console.debug('websocket disconnected', this.reconnect);
+      if (this.reconnect <= 5) {
+        setTimeout(() => {
+          callback();
+        }, this.reconnect++ * 250);
+      }
     };
   }
 
-  onMessage(handleWebSocketMessage: WebSocketMessageHandler) {
+  onMessage<T extends WebSocketMessage>(callback: (message: T) => void) {
     this.webSocket.onmessage = (event) => {
-      const message = JSON.parse(event.data) as WebSocketMessage<actionType>;
-      handleWebSocketMessage(message);
+      const message: T = JSON.parse(event.data);
+      console.debug('websocket message received', message);
+      callback(message);
     };
   }
 
-  unmount() {
-    // console.log('unmount');
+  onUnmount() {
     this.webSocket.onmessage = () => {};
+    this.webSocket.onclose = () => {};
   }
 
   private sendToken() {

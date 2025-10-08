@@ -1,35 +1,38 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import type { WebSocketMessageHandler } from '@/features/websocket/types';
-
 import { useWebSocketStore } from '@/states/websocket';
 
 import { ROUTE } from '@/constants/routes';
 import { Socket } from '@/features/websocket/model/Socket';
 
-export const useWebSocket = (
-  handleWebSocketMessage: WebSocketMessageHandler,
+export const useWebSocket = <T extends WebSocketMessage>(
+  onMessage: (message: T) => void,
 ) => {
   const navigate = useNavigate();
-  const $handleWebSocketMessage: WebSocketMessageHandler = (message) => {
+  const client = useWebSocketStore((state) => state.webSocket) as Socket;
+
+  const handleMessage = (message: T) => {
     if (message.action === 'invalidToken') {
       navigate(`${ROUTE.error}/401`, { replace: true });
       return;
     }
-    handleWebSocketMessage(message);
+    onMessage(message);
   };
 
-  const client = useWebSocketStore((state) => state.webSocket) as Socket;
-  if (!client.isConnected()) {
-    client.connect();
-  }
-
   useEffect(() => {
-    client.onMessage($handleWebSocketMessage);
-    client.onClose($handleWebSocketMessage);
+    if (!client.isConnected()) {
+      client.connect();
+    }
+    client.onMessage(handleMessage);
+
+    client.onClose(() => {
+      client.connect();
+      client.onMessage(handleMessage);
+    });
+
     return () => {
-      client.unmount();
+      client.onUnmount();
     };
   }, []);
 };

@@ -6,8 +6,6 @@ import * as styles from './index.css';
 
 import type { Lobby } from '@/types/play';
 
-import type { ActionDataTypeMap } from '@/features/websocket/types';
-
 import Chip from '@/components/chip';
 import BasicContentFrame from '@/components/frame/with-buttons';
 
@@ -46,9 +44,10 @@ const Lobby = () => {
   const isMaster =
     lobbyInfo.players[lobbyInfo.masterIndex].userCode === myUserCode;
 
-  useWebSocket((message) => {
+  useWebSocket((message: WebsocketMessageFriendlyMatch) => {
     if (message.action === 'roomInfo') {
-      setLobbyInfo(getLobbyInfo(message.data as ActionDataTypeMap['roomInfo']));
+      setLobbyInfo(getLobbyInfo(message.data));
+      return;
     }
     if (message.action === 'gameStart') {
       navigate(ROUTE.game, { replace: true });
