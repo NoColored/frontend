@@ -4,7 +4,7 @@ import type {
   WebSocketMessageHandler,
 } from '@/types/websocket';
 
-import { WEBSOCKET_BASE_URL } from '@/constants/service';
+import { WEBSOCKET_BASE_URL } from '@/features/api/constants';
 
 export class Socket {
   protected webSocket: WebSocket;

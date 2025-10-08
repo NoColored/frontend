@@ -1,7 +1,8 @@
 import type { RankInfo, RankPlayer } from '@/types/rank';
 
 import { getUser } from '@/services/auth';
-import { api } from '@/services/index';
+
+import { api } from '@/features/api';
 
 const requestRankList = async () => {
   return (

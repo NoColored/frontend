@@ -1,6 +1,6 @@
 import axios, { type AxiosResponse } from 'axios';
 
-import { API_BASE_URL } from '@/constants/service';
+import { API_BASE_URL } from '@/features/api/constants';
 
 const client = axios.create({
   baseURL: API_BASE_URL,

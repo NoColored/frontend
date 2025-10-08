@@ -1,6 +1,6 @@
-import type { CreateRoom, RoomListItem, RequestEnterRoom } from '@/types/play';
+import type { CreateRoom, RequestEnterRoom, RoomListItem } from '@/types/play';
 
-import { api } from '@/services/index';
+import { api } from '@/features/api';
 
 export const getRoomList = async (offset: number) => {
   return api

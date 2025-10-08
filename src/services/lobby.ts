@@ -1,6 +1,6 @@
 import type { CreateRoom, Lobby } from '@/types/play';
 
-import { api } from '@/services/index';
+import { api } from '@/features/api';
 
 export const getLobbyInfo = async (roodId: string | undefined) => {
   if (!roodId) return { masterIndex: -1 } as Lobby;
