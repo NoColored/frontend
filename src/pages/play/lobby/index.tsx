@@ -21,7 +21,7 @@ import { getOut } from '@/services/lobby';
 
 import { useUserStateStore } from '@/states/user';
 
-import { ROUTE } from '@/router/constants';
+import { ROUTE } from '@/constants/routes';
 
 const getLobbyInfo = (lobby: Lobby) => {
   lobby.players.forEach((player, index) => {

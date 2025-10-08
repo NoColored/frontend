@@ -1,6 +1,6 @@
 import { createBrowserRouter, Navigate, Outlet } from 'react-router-dom';
 
-import { ROUTE } from './constants';
+import { ROUTE } from '../constants/routes';
 
 import Collection from '@/pages/collection';
 import Error from '@/pages/error';

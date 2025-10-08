@@ -7,7 +7,7 @@ import { Socket } from '@/services/websocket/Socket';
 
 import { useWebSocketStore } from '@/states/websocket';
 
-import { ROUTE } from '@/router/constants';
+import { ROUTE } from '@/constants/routes';
 
 export const useWebSocket = (
   handleWebSocketMessage: WebSocketMessageHandler,

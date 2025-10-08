@@ -10,7 +10,7 @@ import * as constants from '@/pages/landing/logIn/constants';
 
 import { patchNicknameChange } from '@/services/auth';
 
-import { ROUTE } from '@/router/constants';
+import { ROUTE } from '@/constants/routes';
 
 interface Props {
   onClose: () => void;

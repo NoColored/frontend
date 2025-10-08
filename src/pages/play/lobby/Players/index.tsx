@@ -12,7 +12,7 @@ import ReadyButton from '@/pages/play/lobby/Players/ReadyButton';
 
 import { useUserStateStore } from '@/states/user';
 
-import { ROUTE } from '@/router/constants';
+import { ROUTE } from '@/constants/routes';
 
 interface Props {
   players: Player[];

@@ -12,7 +12,7 @@ import Error from '@/pages/error';
 import { PatchNotes } from '@/pages/home/PatchNotes';
 import UserDashboard from '@/pages/home/UserDashboard';
 
-import { ROUTE } from '@/router/constants';
+import { ROUTE } from '@/constants/routes';
 
 const Home = () => {
   const user = useLoaderData() as User;

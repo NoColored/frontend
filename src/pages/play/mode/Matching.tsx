@@ -11,7 +11,7 @@ import { MatchingText } from '@/pages/play/mode/MatchingText';
 
 import { deleteMatching } from '@/services/matching';
 
-import { ROUTE } from '@/router/constants';
+import { ROUTE } from '@/constants/routes';
 
 interface Props {
   imgSrc: string;

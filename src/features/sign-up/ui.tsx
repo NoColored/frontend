@@ -14,8 +14,8 @@ import * as constants from '@/pages/landing/logIn/constants';
 import { getIdCheck, postGuestSignUp, postSignUp } from '@/services/auth';
 import { setFullScreen } from '@/services/landing';
 
+import { ROUTE } from '@/constants/routes';
 import { USER_STATUS, useUserStore } from '@/features/user';
-import { ROUTE } from '@/router/constants';
 
 interface Props {
   closeModal: () => void;

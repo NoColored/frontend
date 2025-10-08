@@ -12,7 +12,7 @@ import { api } from '@/services/index';
 
 import { useUserStateStore } from '@/states/user';
 
-import { ROUTE } from '@/router/constants';
+import { ROUTE } from '@/constants/routes';
 
 export const getGuestLogin = async () => {
   return api

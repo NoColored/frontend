@@ -16,7 +16,7 @@ import RankingItemBox from '@/pages/ranking/RankingItemBox';
 
 import { getMatching } from '@/services/matching';
 
-import { ROUTE } from '@/router/constants';
+import { ROUTE } from '@/constants/routes';
 
 const Mode = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);

@@ -19,7 +19,7 @@ import { getOut } from '@/services/lobby';
 import { useUserStateStore } from '@/states/user';
 import { useWebSocketStore } from '@/states/websocket';
 
-import { ROUTE } from '@/router/constants';
+import { ROUTE } from '@/constants/routes';
 
 const Result = () => {
   const navigate = useNavigate();

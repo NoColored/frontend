@@ -6,8 +6,8 @@ import BasicContentFrame from '@/components/frame';
 import { useGameControl } from '@/states/game';
 import { useWebSocketStore } from '@/states/websocket';
 
+import { ROUTE } from '@/constants/routes';
 import { config, scenesConfig } from '@/game/scene/config';
-import { ROUTE } from '@/router/constants';
 
 const Game = () => {
   const navigate = useNavigate();
