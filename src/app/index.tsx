@@ -1,7 +1,8 @@
 import { RouterProvider } from 'react-router-dom';
 
+import router from './router';
+
 import { useSoundSetting } from '@/features/sound';
-import router from '@/router';
 
 const App = () => {
   const { playBgm } = useSoundSetting();

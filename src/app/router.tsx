@@ -1,6 +1,5 @@
 import { createBrowserRouter, Navigate, Outlet } from 'react-router-dom';
 
-import { ROUTE } from '../constants/routes';
 
 import Collection from '@/pages/collection';
 import Error from '@/pages/error';
@@ -22,6 +21,8 @@ import { getRoomList } from '@/services/finder';
 import { getLobbyInfo } from '@/services/lobby';
 import { getRank } from '@/services/rank';
 import { getGameResult } from '@/services/result';
+
+import { ROUTE } from '@/constants/routes';
 
 const router = createBrowserRouter([
   {
