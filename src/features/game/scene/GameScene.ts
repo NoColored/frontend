@@ -1,30 +1,29 @@
 import Phaser from 'phaser';
 
+import * as constants from '../constants';
+import { Background } from '../map/Background';
+import { Map } from '../map/Map';
+import { PhysicsMap } from '../map/PhysicsMap';
+import { Character } from '../object/Character';
+import { CharacterAnimation } from '../object/CharacterAnimation';
+import { CharacterParticle } from '../object/CharacterParticle';
+import { CharacterTopIcon } from '../object/CharacterTopIcon';
+import { EffectAnimations } from '../object/effect/EffectAnimations';
+import { Item } from '../object/Item';
+import { BgmManager } from '../sound/Bgm';
+import ChangeDirButton from '../UI/ChangeDirButton';
+import JumpButton from '../UI/JumpButton';
+import { TopUi } from '../UI/TopUi';
+import CountDown from './CountDown';
+import { EffectUtils } from './EffectUtils';
+import GameOver from './GameOver';
+import LoadingUtils from './LoadingUtils';
+
 import { characterInfo, IngameReady } from '@/types/ingame';
 
 import { getIngameReady } from '@/services/ingame';
 
-
-import { useWebSocketStore } from '@/states/websocket';
-
-import * as constants from '@/features/game/constants';
-import { Background } from '@/features/game/map/Background';
-import { Map } from '@/features/game/map/Map';
-import { PhysicsMap } from '@/features/game/map/PhysicsMap';
-import { Character } from '@/features/game/object/Character';
-import { CharacterAnimation } from '@/features/game/object/CharacterAnimation';
-import { CharacterParticle } from '@/features/game/object/CharacterParticle';
-import { CharacterTopIcon } from '@/features/game/object/CharacterTopIcon';
-import { EffectAnimations } from '@/features/game/object/effect/EffectAnimations';
-import { Item } from '@/features/game/object/Item';
-import CountDown from '@/features/game/scene/CountDown';
-import { EffectUtils } from '@/features/game/scene/EffectUtils';
-import GameOver from '@/features/game/scene/GameOver';
-import LoadingUtils from '@/features/game/scene/LoadingUtils';
-import { BgmManager } from '@/features/game/sound/Bgm';
-import ChangeDirButton from '@/features/game/UI/ChangeDirButton';
-import JumpButton from '@/features/game/UI/JumpButton';
-import { TopUi } from '@/features/game/UI/TopUi';
+import { useWebSocketStore } from '@/features/websocket';
 import {
   characterInfoList,
   currentScore,

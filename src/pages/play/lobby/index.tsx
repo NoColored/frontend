@@ -9,7 +9,6 @@ import type { Lobby } from '@/types/play';
 import Chip from '@/components/chip';
 import BasicContentFrame from '@/components/frame/with-buttons';
 
-import { useWebSocket } from '@/hooks/useWebSocket';
 
 import { MAPS } from '@/pages/play/finder/constants';
 import MapInfo from '@/pages/play/lobby/MapInfo';
@@ -21,6 +20,7 @@ import { getOut } from '@/services/lobby';
 import { useUserStateStore } from '@/states/user';
 
 import { ROUTE } from '@/constants/routes';
+import { useWebSocket } from '@/features/websocket';
 
 const getLobbyInfo = (lobby: Lobby) => {
   lobby.players.forEach((player, index) => {

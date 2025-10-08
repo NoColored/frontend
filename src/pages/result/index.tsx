@@ -17,9 +17,10 @@ import { RewardsModal } from '@/pages/result/RewardsModal/index';
 import { getOut } from '@/services/lobby';
 
 import { useUserStateStore } from '@/states/user';
-import { useWebSocketStore } from '@/states/websocket';
 
 import { ROUTE } from '@/constants/routes';
+import { useWebSocketStore } from '@/features/websocket';
+
 
 const Result = () => {
   const navigate = useNavigate();
