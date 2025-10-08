@@ -2,9 +2,9 @@ import type {
   actionType,
   WebSocketMessage,
   WebSocketMessageHandler,
-} from '@/types/websocket';
+} from '@/features/websocket/types';
 
-import { WEBSOCKET_BASE_URL } from '@/features/api/constants';
+const WEBSOCKET_BASE_URL = import.meta.env.VITE_WEBSOCKET_BASE_URL;
 
 export class Socket {
   protected webSocket: WebSocket;

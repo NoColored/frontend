@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 
-import { GameSocket } from '@/services/websocket/GameSocket';
+import { GameSocket } from '@/features/websocket/model/GameSocket';
 
 interface WebsocketStore {
   webSocket: GameSocket;

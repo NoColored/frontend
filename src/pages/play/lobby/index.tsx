@@ -5,7 +5,8 @@ import * as constants from './constants';
 import * as styles from './index.css';
 
 import type { Lobby } from '@/types/play';
-import type { ActionDataTypeMap } from '@/types/websocket';
+
+import type { ActionDataTypeMap } from '@/features/websocket/types';
 
 import Chip from '@/components/chip';
 import BasicContentFrame from '@/components/frame/with-buttons';

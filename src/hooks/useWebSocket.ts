@@ -1,13 +1,12 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import type { WebSocketMessageHandler } from '@/types/websocket';
-
-import { Socket } from '@/services/websocket/Socket';
+import type { WebSocketMessageHandler } from '@/features/websocket/types';
 
 import { useWebSocketStore } from '@/states/websocket';
 
 import { ROUTE } from '@/constants/routes';
+import { Socket } from '@/features/websocket/model/Socket';
 
 export const useWebSocket = (
   handleWebSocketMessage: WebSocketMessageHandler,

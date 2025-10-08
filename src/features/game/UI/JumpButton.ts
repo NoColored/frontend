@@ -1,6 +1,6 @@
-import { GameSocket } from '@/services/websocket/GameSocket';
+import * as constants from '../constants';
 
-import * as constants from '@/features/game/constants';
+import { GameSocket } from '@/features/websocket/model/GameSocket';
 
 export default class JumpButton extends Phaser.GameObjects.GameObject {
   // eslint-disable-next-line no-use-before-define

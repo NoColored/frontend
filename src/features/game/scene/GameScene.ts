@@ -3,16 +3,7 @@ import Phaser from 'phaser';
 import { characterInfo, IngameReady } from '@/types/ingame';
 
 import { getIngameReady } from '@/services/ingame';
-import {
-  characterInfoList,
-  currentScore,
-  effectList,
-  GameSocket,
-  showItem,
-  showRealSkin,
-  timeLeft,
-  userCharacterIndex,
-} from '@/services/websocket/GameSocket';
+
 
 import { useWebSocketStore } from '@/states/websocket';
 
@@ -34,6 +25,16 @@ import { BgmManager } from '@/features/game/sound/Bgm';
 import ChangeDirButton from '@/features/game/UI/ChangeDirButton';
 import JumpButton from '@/features/game/UI/JumpButton';
 import { TopUi } from '@/features/game/UI/TopUi';
+import {
+  characterInfoList,
+  currentScore,
+  effectList,
+  GameSocket,
+  showItem,
+  showRealSkin,
+  timeLeft,
+  userCharacterIndex,
+} from '@/features/websocket/model/GameSocket';
 
 export default class GameScene extends Phaser.Scene {
   private socket: GameSocket;
