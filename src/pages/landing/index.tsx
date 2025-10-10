@@ -7,7 +7,7 @@ import ColoredButton from '@/components/button/ColoredButton/index';
 import { getGuestLogin } from '@/services/auth';
 import { setFullScreen } from '@/services/landing';
 
-import { ROUTE } from '@/router/constants';
+import { ROUTE } from '@/constants/routes';
 
 const Landing = () => {
   const navigate = useNavigate();
@@ -26,7 +26,7 @@ const Landing = () => {
   const clickLogIn = () => {
     navigate(ROUTE.login);
   };
-  
+
   return (
     <div className={styles.contentWrapper}>
       <img

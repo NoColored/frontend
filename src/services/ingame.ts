@@ -1,6 +1,6 @@
 import { IngameReady } from '@/types/ingame';
 
-import { api } from '@/services/index';
+import { api } from '@/features/api';
 
 export const getIngameReady = async () => {
   try {

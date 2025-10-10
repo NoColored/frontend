@@ -8,11 +8,11 @@ import {
   User,
 } from '@/types/auth';
 
-import { api } from '@/services/index';
 
 import { useUserStateStore } from '@/states/user';
 
-import { ROUTE } from '@/router/constants';
+import { ROUTE } from '@/constants/routes';
+import { api } from '@/features/api';
 
 export const getGuestLogin = async () => {
   return api

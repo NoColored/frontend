@@ -11,7 +11,7 @@ import MessageModalContent from '@/pages/play/finder/Modal/MessageModalContent';
 
 import { postEnterRoom } from '@/services/finder';
 
-import { ROUTE } from '@/router/constants';
+import { ROUTE } from '@/constants/routes';
 
 interface Props {
   closeModal: () => void;

@@ -5,12 +5,10 @@ import * as constants from './constants';
 import * as styles from './index.css';
 
 import type { Lobby } from '@/types/play';
-import type { ActionDataTypeMap } from '@/types/websocket';
 
 import Chip from '@/components/chip';
 import BasicContentFrame from '@/components/frame/with-buttons';
 
-import { useWebSocket } from '@/hooks/useWebSocket';
 
 import { MAPS } from '@/pages/play/finder/constants';
 import MapInfo from '@/pages/play/lobby/MapInfo';
@@ -21,7 +19,8 @@ import { getOut } from '@/services/lobby';
 
 import { useUserStateStore } from '@/states/user';
 
-import { ROUTE } from '@/router/constants';
+import { ROUTE } from '@/constants/routes';
+import { useWebSocket } from '@/features/websocket';
 
 const getLobbyInfo = (lobby: Lobby) => {
   lobby.players.forEach((player, index) => {
@@ -45,9 +44,10 @@ const Lobby = () => {
   const isMaster =
     lobbyInfo.players[lobbyInfo.masterIndex].userCode === myUserCode;
 
-  useWebSocket((message) => {
+  useWebSocket((message: WebsocketMessageFriendlyMatch) => {
     if (message.action === 'roomInfo') {
-      setLobbyInfo(getLobbyInfo(message.data as ActionDataTypeMap['roomInfo']));
+      setLobbyInfo(getLobbyInfo(message.data));
+      return;
     }
     if (message.action === 'gameStart') {
       navigate(ROUTE.game, { replace: true });

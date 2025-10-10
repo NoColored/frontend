@@ -5,13 +5,12 @@ import * as styles from './index.css';
 import ColoredButton from '@/components/button/ColoredButton';
 import RoundCornerImageBox from '@/components/image-box';
 
-import { useWebSocket } from '@/hooks/useWebSocket';
-
 import { MatchingText } from '@/pages/play/mode/MatchingText';
 
 import { deleteMatching } from '@/services/matching';
 
-import { ROUTE } from '@/router/constants';
+import { ROUTE } from '@/constants/routes';
+import { useWebSocket } from '@/features/websocket';
 
 interface Props {
   imgSrc: string;
@@ -22,7 +21,7 @@ interface Props {
 const Matching = ({ imgSrc, closeModal, isOpen }: Props) => {
   const navigate = useNavigate();
 
-  useWebSocket((message) => {
+  useWebSocket((message: WebsocketMessageRankedMatch) => {
     if (message.action === 'matching') {
       navigate(ROUTE.game);
       return;

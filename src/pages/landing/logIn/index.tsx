@@ -14,8 +14,8 @@ import LogInFail from '@/pages/landing/logIn/LogInFail';
 import { postMemberLogin } from '@/services/auth';
 import { setFullScreen } from '@/services/landing';
 
+import { ROUTE } from '@/constants/routes';
 import SignUp from '@/features/sign-up';
-import { ROUTE } from '@/router/constants';
 
 const LogIn = () => {
   const [isClicked, setIsClicked] = useState(false);

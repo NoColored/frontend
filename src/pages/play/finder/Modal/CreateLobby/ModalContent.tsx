@@ -10,7 +10,7 @@ import * as constants from '@/pages/play/finder/constants';
 import MapItem from '@/pages/play/finder/Modal/CreateLobby/MapItem';
 import * as styles from '@/pages/play/finder/Modal/index.css';
 
-import { ROUTE } from '@/router/constants';
+import { ROUTE } from '@/constants/routes';
 
 interface Props {
   roomTitle: string;

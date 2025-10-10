@@ -8,7 +8,7 @@ import BasicContentFrame from '@/components/frame/with-buttons';
 
 import type { errorCode } from '@/pages/error/type';
 
-import { ROUTE } from '@/router/constants';
+import { ROUTE } from '@/constants/routes';
 
 const Error = () => {
   const navigate = useNavigate();
