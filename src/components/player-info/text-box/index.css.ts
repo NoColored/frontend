@@ -9,7 +9,7 @@ const colorVariants = variant(['white'] as const, (color) =>
   }),
 );
 
-const textStyle = recipe({
+export const textStyle = recipe({
   base: sprinkles({
     fontFamily: 'textFont',
   }),
@@ -25,7 +25,3 @@ const textStyle = recipe({
     color: colorVariants,
   },
 });
-
-export const styles = {
-  textStyle,
-};

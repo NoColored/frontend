@@ -1,4 +1,4 @@
-import PlayerInfoBox from '@/components/PlayerInfoBox';
+import PlayerInfo from '@/components/player-info';
 
 import * as styles from '@/pages/result/index.css';
 import type { colorStyles } from '@/pages/result/types';
@@ -26,7 +26,7 @@ const ResultInfoBox = ({
     <div className={styles.resultInfoBox({ myResult, colorStyle })}>
       <span>{rank}</span>
       <div className={styles.playerInfoBoxWrapper}>
-        <PlayerInfoBox label={label} imgSrc={imgSrc} nickname={nickname} />
+        <PlayerInfo label={label} imgSrc={imgSrc} nickname={nickname} />
       </div>
       <span className={styles.score}>{gameScore}</span>
     </div>

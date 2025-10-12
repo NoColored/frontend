@@ -2,7 +2,7 @@ import * as styles from './index.css';
 
 import type { RankPlayer } from '@/types/rank';
 
-import PlayerInfoBox from '@/components/PlayerInfoBox';
+import PlayerInfo from '@/components/player-info';
 import TierBox from '@/components/tier';
 
 interface RankingItemBoxProps {
@@ -22,7 +22,7 @@ const RankingItemBox = ({ player, guest, myRank }: RankingItemBoxProps) => {
       <span className={rankTextWrapper}>{rank}</span>
 
       <span className={styles.playerInfoBoxFixWidthWrapper}>
-        <PlayerInfoBox
+        <PlayerInfo
           label={player.label}
           nickname={player.nickname}
           imgSrc={player.skin}

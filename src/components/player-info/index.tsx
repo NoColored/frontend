@@ -2,12 +2,17 @@ import * as styles from './index.css';
 import TextBox from './text-box';
 
 import RoundCornerImageBox from '@/components/image-box';
-import type { PlayerInfoBoxProps } from '@/components/PlayerInfoBox/types';
 
-const PlayerInfoBox = ({ label, nickname, imgSrc }: PlayerInfoBoxProps) => {
+interface Props {
+  label: string;
+  nickname: string;
+  imgSrc: string;
+}
+
+const PlayerInfo = ({ label, nickname, imgSrc }: Props) => {
   return (
     <div className={styles.playerInfoWrapper}>
-      <div className={styles.imageboxWrapper}>
+      <div className={styles.imageWrapper}>
         <RoundCornerImageBox
           size='small'
           imgSrc={imgSrc}
@@ -19,4 +24,4 @@ const PlayerInfoBox = ({ label, nickname, imgSrc }: PlayerInfoBoxProps) => {
   );
 };
 
-export default PlayerInfoBox;
+export default PlayerInfo;

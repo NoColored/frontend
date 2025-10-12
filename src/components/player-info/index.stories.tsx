@@ -1,10 +1,10 @@
-import PlayerInfoBox from './index';
+import PlayerInfo from './index';
 
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta = {
   title: 'components/PlayerInfoBox',
-  component: PlayerInfoBox,
+  component: PlayerInfo,
   parameters: {
     layout: 'centered',
   },
@@ -14,7 +14,7 @@ const meta = {
     nickname: 'text',
     imgSrc: 'text',
   },
-} satisfies Meta<typeof PlayerInfoBox>;
+} satisfies Meta<typeof PlayerInfo>;
 
 export default meta;
 
