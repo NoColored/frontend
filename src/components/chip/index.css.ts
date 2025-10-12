@@ -1,9 +1,10 @@
 import { style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
 
+import { color } from './variants.css';
+
 import { flexOptions } from '@/styles/common.css';
 import { sprinkles } from '@/styles/sprinkles.css';
-import { variant } from '@/styles/utils';
 
 const base = style([
   flexOptions({
@@ -24,14 +25,6 @@ const base = style([
   },
 ]);
 
-export const color = variant(
-  ['red', 'yellow', 'green', 'blue', 'pink', 'navy'] as const,
-  (backgroundColor) =>
-    sprinkles({
-      backgroundColor,
-    }),
-);
-
 const responsive = {
   true: style([
     {
@@ -46,7 +39,7 @@ const responsive = {
   ]),
 };
 
-const chip = recipe({
+export const chip = recipe({
   base,
   variants: {
     color,
@@ -54,7 +47,7 @@ const chip = recipe({
   },
 });
 
-const icon = style([
+export const icon = style([
   flexOptions({
     option: 'center',
   }),
@@ -73,8 +66,3 @@ const icon = style([
     },
   },
 ]);
-
-export const styles = {
-  chip,
-  icon,
-};

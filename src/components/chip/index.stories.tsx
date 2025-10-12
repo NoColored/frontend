@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react-vite';
 
-import { color } from './index.css';
+import { color } from './variants.css';
 
 import Chip from '@/components/chip';
 import ImageBox from '@/components/image-box';
