@@ -1,9 +1,7 @@
-import { size } from './index.css';
 import Tier from './ui';
+import { size, tier } from './variants.css';
 
 import type { Meta, StoryObj } from '@storybook/react-vite';
-
-import { TIER } from '@/constants/tier';
 
 const meta = {
   title: 'components/Tier',
@@ -15,7 +13,7 @@ const meta = {
   argTypes: {
     tier: {
       control: 'radio',
-      options: TIER,
+      options: Object.keys(tier),
     },
     size: {
       control: 'radio',
