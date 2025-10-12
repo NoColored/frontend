@@ -5,17 +5,19 @@ import type { RankPlayer } from '@/types/rank';
 import PlayerInfo from '@/components/player-info';
 import TierBox from '@/components/tier';
 
-interface RankingItemBoxProps {
+interface Props {
   player: RankPlayer;
   guest?: boolean;
   myRank?: boolean;
 }
 
-const RankingItemBox = ({ player, guest, myRank }: RankingItemBoxProps) => {
+const Ranking = ({ player, guest, myRank }: Props) => {
   const rankTextWrapper =
-    player.rank < 1000 ? styles.rankTextWrapper : styles.rankLongTextWrapper;
+    guest || player.rank < 1000
+      ? styles.rankTextWrapper
+      : styles.rankLongTextWrapper;
 
-  const rank = guest ? '??' : `${player.rank}`;
+  const rank = guest ? '??' : String(player.rank);
 
   return (
     <div className={styles.rankingItemBox({ myRank })}>
@@ -36,4 +38,4 @@ const RankingItemBox = ({ player, guest, myRank }: RankingItemBoxProps) => {
   );
 };
 
-export default RankingItemBox;
+export default Ranking;
