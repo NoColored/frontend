@@ -8,6 +8,7 @@ export const rankingItemBox = recipe({
   base: [
     flexOptions({ option: 'rowCenter' }),
     sprinkles({
+      fontFamily: 'textFont',
       fontSize: '2x',
       justifyContent: 'spaceAround',
       borderStyle: 'solid',
