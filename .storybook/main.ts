@@ -12,5 +12,10 @@ const config: StorybookConfig = {
     name: '@storybook/react-vite',
     options: {},
   },
+  staticDirs: ['../public'],
+  viteFinal: async (config) => {
+    config.base = '/frontend/';
+    return config;
+  },
 };
 export default config;
