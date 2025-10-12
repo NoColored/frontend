@@ -1,4 +1,4 @@
-import { backgroundColor, borderColor, borderSize, size } from './index.css';
+import { backgroundColor, borderColor, borderSize, size } from './variants.css';
 
 import ImageBox from './index';
 
