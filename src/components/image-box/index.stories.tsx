@@ -6,7 +6,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import Chip from '@/components/chip';
 
-import { styles } from '@/pages/collection/index.css';
+import * as styles from '@/pages/collection/index.css';
 
 const meta = {
   title: 'components/ImageBox',
