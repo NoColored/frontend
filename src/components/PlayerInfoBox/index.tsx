@@ -1,8 +1,8 @@
 import * as styles from './index.css';
+import TextBox from './text-box';
 
 import RoundCornerImageBox from '@/components/image-box';
 import type { PlayerInfoBoxProps } from '@/components/PlayerInfoBox/types';
-import TextBox from '@/components/textbox/LabeledTextBox';
 
 const PlayerInfoBox = ({ label, nickname, imgSrc }: PlayerInfoBoxProps) => {
   return (
