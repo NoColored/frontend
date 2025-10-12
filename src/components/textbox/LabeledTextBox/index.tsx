@@ -1,40 +1,42 @@
-import * as styles from './index.css';
+import { styles } from './index.css';
 
-import type { textColorType } from '@/components/textbox/types';
+import type { RecipeVariants } from '@vanilla-extract/recipes';
+
+type TextColor = NonNullable<RecipeVariants<typeof styles.textStyle>>['color'];
 
 interface Props {
-  contentColor?: textColorType;
-  labelColor?: textColorType;
-  contentText: string;
-  labelText: string;
+  primaryColor?: TextColor;
+  secondaryColor?: TextColor;
+  primaryText: string;
+  secondaryText: string;
 }
 
-const LabeledTextBox = ({
-  labelColor,
-  contentColor,
-  labelText,
-  contentText,
+const TextBox = ({
+  secondaryColor,
+  primaryColor,
+  secondaryText,
+  primaryText,
 }: Props) => {
   return (
     <div>
       <div
         className={styles.textStyle({
           textPosition: 'label',
-          color: labelColor,
+          color: secondaryColor,
         })}
       >
-        {labelText}
+        {secondaryText}
       </div>
       <div
         className={styles.textStyle({
           textPosition: 'content',
-          color: contentColor,
+          color: primaryColor,
         })}
       >
-        {contentText}
+        {primaryText}
       </div>
     </div>
   );
 };
 
-export default LabeledTextBox;
+export default TextBox;

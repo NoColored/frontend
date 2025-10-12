@@ -2,7 +2,7 @@ import * as styles from './index.css';
 
 import RoundCornerImageBox from '@/components/image-box';
 import type { PlayerInfoBoxProps } from '@/components/PlayerInfoBox/types';
-import LabeledTextBox from '@/components/textbox/LabeledTextBox';
+import TextBox from '@/components/textbox/LabeledTextBox';
 
 const PlayerInfoBox = ({ label, nickname, imgSrc }: PlayerInfoBoxProps) => {
   return (
@@ -14,7 +14,7 @@ const PlayerInfoBox = ({ label, nickname, imgSrc }: PlayerInfoBoxProps) => {
           backgroundColor='white'
         />
       </div>
-      <LabeledTextBox contentText={nickname} labelText={label} />
+      <TextBox primaryText={nickname} secondaryText={label} />
     </div>
   );
 };
