@@ -89,8 +89,3 @@ export const mapInfo = style([
     aspectRatio: '1 / 1',
   },
 ]);
-
-export const styles = {
-  settings,
-  code,
-};

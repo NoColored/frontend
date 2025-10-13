@@ -8,11 +8,11 @@ import { User } from '@/types/auth';
 
 import ColoredIconButton from '@/components/button/ColoredIconButton';
 import BasicContentFrame from '@/components/frame/with-buttons';
+import RankingItemBox from '@/components/ranking';
 
 import useModal from '@/hooks/useModal';
 
 import Matching from '@/pages/play/mode/Matching';
-import RankingItemBox from '@/pages/ranking/RankingItemBox';
 
 import { getMatching } from '@/services/matching';
 

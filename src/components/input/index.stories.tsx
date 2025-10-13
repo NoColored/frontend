@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { fn } from 'storybook/test';
 
-import { size } from './index.css';
+import { size } from './variants.css';
 
 import Input from './index';
 

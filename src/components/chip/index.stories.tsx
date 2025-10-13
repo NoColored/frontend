@@ -1,11 +1,11 @@
 import { Meta, StoryObj } from '@storybook/react-vite';
 
-import { color } from './index.css';
+import { color } from './variants.css';
 
 import Chip from '@/components/chip';
 import ImageBox from '@/components/image-box';
 
-import { styles } from '@/pages/play/lobby/index.css';
+import * as styles from '@/pages/play/lobby/index.css';
 
 const meta = {
   title: 'components/Chip',

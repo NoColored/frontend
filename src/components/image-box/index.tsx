@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { styles } from './index.css';
+import * as styles from './index.css';
 
 import type { RecipeVariants } from '@vanilla-extract/recipes';
 

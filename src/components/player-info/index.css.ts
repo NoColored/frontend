@@ -11,7 +11,7 @@ export const playerInfoWrapper = style([
   }),
 ]);
 
-export const imageboxWrapper = style([
+export const imageWrapper = style([
   sprinkles({
     marginX: '2x',
   }),

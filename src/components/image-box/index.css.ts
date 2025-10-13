@@ -1,9 +1,10 @@
 import { style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
 
-import { borderLightOptions, flexOptions } from '@/styles/common.css';
+import { backgroundColor, borderColor, borderSize, size } from './variants.css';
+
+import { flexOptions } from '@/styles/common.css';
 import { sprinkles } from '@/styles/sprinkles.css';
-import { variant } from '@/styles/utils';
 
 const base = style([
   flexOptions({ option: 'column' }),
@@ -23,37 +24,7 @@ const base = style([
   },
 ]);
 
-export const size = variant(
-  {
-    // xsmall: '32px',
-    small: '48px',
-    medium: '96px',
-    large: '144px',
-    // xlarge: '240px',
-    full: '100%',
-  } as const,
-  ([_, height]) =>
-    style({
-      height,
-    }),
-);
-
-export const backgroundColor = variant(['white', 'gray200'] as const, (color) =>
-  sprinkles({
-    backgroundColor: color,
-  }),
-);
-
-export const borderColor = variant(
-  ['red', 'yellow', 'green', 'blue', 'pink', 'black'] as const,
-  (color) => style([borderLightOptions({ color })]),
-);
-
-export const borderSize = variant(['1x', '3x', '5x'] as const, (width) =>
-  style([borderLightOptions({ width })]),
-);
-
-const roundCornerImageBox = recipe({
+export const roundCornerImageBox = recipe({
   base,
   variants: {
     size,
@@ -62,7 +33,3 @@ const roundCornerImageBox = recipe({
     backgroundColor,
   },
 });
-
-export const styles = {
-  roundCornerImageBox,
-};

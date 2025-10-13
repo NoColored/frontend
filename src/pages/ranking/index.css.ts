@@ -1,5 +1,4 @@
 import { style } from '@vanilla-extract/css';
-import { recipe } from '@vanilla-extract/recipes';
 
 import * as constants from './constants';
 
@@ -10,6 +9,8 @@ export const rankingFullWrapper = style([
   sprinkles({
     width: 'full',
     height: 'full',
+    display: 'flex',
+    flexDirection: 'column',
   }),
   {
     overflow: 'hidden',
@@ -62,7 +63,7 @@ export const rankingWrapper = style([
     paddingLeft: '5%',
     paddingRight: '5%',
     backgroundColor: 'white',
-    height: constants.RANKINGWRAPPER_HEIGHT,
+    flexGrow: 1,
     overflow: 'scroll',
   },
 ]);
@@ -75,76 +76,5 @@ export const myRankingWrapper = style([
   }),
   {
     width: '98%',
-    height: constants.RANKINGITEMBOX_HEIGHT,
-  },
-]);
-
-export const rankingItemBox = recipe({
-  base: [
-    flexOptions({ option: 'rowCenter' }),
-    sprinkles({
-      fontSize: '2x',
-      justifyContent: 'spaceAround',
-      borderStyle: 'solid',
-      borderWidth: '2x',
-      borderRadius: '2x',
-      marginBottom: '1x',
-    }),
-    {
-      height: constants.RANKINGITEMBOX_HEIGHT,
-      boxSizing: 'border-box',
-      overflow: 'hidden',
-    },
-  ],
-  variants: {
-    myRank: {
-      true: [
-        sprinkles({
-          backgroundColor: 'navy',
-          color: 'white',
-        }),
-        {
-          paddingLeft: '5%',
-          paddingRight: '5%',
-          height: constants.MYRANKINGITEMBOX_HEIGHT,
-        },
-      ],
-    },
-  },
-});
-
-export const playerInfoBoxFixWidthWrapper = style([
-  sprinkles({
-    display: 'flex',
-    justifyContent: 'flexStart',
-  }),
-  {
-    width: constants.PLAYERINFOBOX_WIDTH,
-  },
-]);
-
-export const tierAndScoreWrapper = style([
-  flexOptions({ option: 'rowCenter' }),
-  sprinkles({
-    justifyContent: 'spaceBetween',
-  }),
-  {
-    width: constants.TIERANDSORE_WIDTH,
-  },
-]);
-export const rankTextWrapper = style([
-  flexOptions({ option: 'center' }),
-  {
-    width: constants.RANKTEXT_WARRAPER_WIDTH,
-  },
-]);
-
-export const rankLongTextWrapper = style([
-  flexOptions({ option: 'center' }),
-  sprinkles({
-    textSize: '1x',
-  }),
-  {
-    width: constants.RANKTEXT_WARRAPER_WIDTH,
   },
 ]);
