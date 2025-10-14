@@ -7,8 +7,6 @@ import MenuButton from './menu-button';
 
 import SettingNavigationButton from '@/components/button/SettingNavigationButton/index';
 
-import FullScreenPrompt from '@/pages/landing/FullScreenPrompt';
-
 interface Props {
   children: ReactNode;
   leftButton?: {
@@ -34,7 +32,6 @@ const BasicContentFrame = ({
 
   return (
     <div className={styles.frame}>
-      <FullScreenPrompt />
       {!rightButtonsDisabled && (
         <div className={styles.iconButtons}>
           <AudioButton />
