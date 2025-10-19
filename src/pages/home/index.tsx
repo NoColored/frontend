@@ -9,7 +9,6 @@ import ColoredIconButton from '@/components/button/ColoredIconButton';
 import BasicContentFrame from '@/components/frame/with-buttons';
 
 import Error from '@/pages/error';
-import { PatchNotes } from '@/pages/home/PatchNotes';
 import UserDashboard from '@/pages/home/UserDashboard';
 
 import { ROUTE } from '@/constants/routes';
@@ -73,7 +72,6 @@ const Home = () => {
             <span className={styles.titleText}>{`< ${user.label} >`}</span>
           </div>
           <div className={styles.RightButtonsWrapper}>
-            <PatchNotes />
             <ColoredIconButton
               icon='/images/ui/icon/button/icon-button-play-h50w50.png'
               size='medium'
