@@ -81,6 +81,9 @@ const sizeProperties = defineProperties({
   properties: {
     width: vars.size,
     height: vars.size,
+    aspectRatio: {
+      square: '1 / 1',
+    },
   },
   shorthands: {
     size: ['width', 'height'],
