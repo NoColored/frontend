@@ -7,20 +7,13 @@ import { flexOptions } from '@/styles/common.css';
 import { sprinkles } from '@/styles/sprinkles.css';
 
 const base = style([
-  flexOptions({ option: 'column' }),
   sprinkles({
     borderRadius: '2x',
-    paddingY: '2x',
-    alignItems: 'center',
+    aspectRatio: 'square',
+    position: 'relative',
   }),
   {
-    boxSizing: 'border-box',
     overflow: 'hidden',
-    aspectRatio: '1 / 1',
-    backgroundRepeat: 'no-repeat',
-    backgroundClip: 'border-box',
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
   },
 ]);
 
@@ -33,3 +26,34 @@ export const roundCornerImageBox = recipe({
     backgroundColor,
   },
 });
+
+export const image = style([
+  sprinkles({
+    position: 'absolute',
+    height: 'full',
+    zIndex: 'z-1',
+    aspectRatio: 'square',
+  }),
+  {
+    objectFit: 'cover',
+    objectPosition: 'center',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+  },
+]);
+
+export const contents = style([
+  flexOptions({ option: 'column' }),
+  sprinkles({
+    paddingY: '2x',
+    alignItems: 'center',
+    position: 'relative',
+    zIndex: 'z-2',
+    height: 'full',
+    aspectRatio: 'square',
+  }),
+  {
+    boxSizing: 'border-box',
+  },
+]);

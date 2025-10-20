@@ -27,7 +27,7 @@ const meta = {
   args: {
     label: '너 나보다 못하잖아.',
     nickname: '민돌멩이',
-    imgSrc: '/images/character/character-default-sunglass-yellow-h240w240.png',
+    imgSrc: './images/character/character-default-sunglass-yellow-h240w240.png',
   },
 } satisfies Meta<typeof PlayerInfo>;
 
@@ -65,7 +65,7 @@ export const GameResult: Story = {
   args: {
     label: '손님',
     nickname: '허스키한 자라',
-    imgSrc: '/images/character/character-default-none-clone-h240w240.png',
+    imgSrc: './images/character/character-default-none-clone-h240w240.png',
   },
   render: (args) => {
     return (

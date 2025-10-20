@@ -72,34 +72,3 @@ export const logInFailMessage = style([
     lineHeight: '32px',
   },
 ]);
-
-export const fullscreenPromptStyle = style([
-  sprinkles({
-    width: 'full',
-    height: 'full',
-    zIndex: 'alert-content',
-  }),
-  {
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'center',
-    backgroundSize: 'cover',
-    backgroundImage:
-      'url(/images/background/background-white-large-h991w1922.webp)',
-    overlay: 'auto',
-    position: 'fixed',
-    top: 0,
-    left: 0,
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexDirection: 'column',
-  },
-]);
-
-export const fullscreenPromptText = style([
-  {
-    textAlign: 'center',
-    fontSize: '40px',
-    lineHeight: '48px',
-    textShadow: '-3px 0px white, 0px 3px white, 3px 0px white, 0px -3px white',
-  },
-]);

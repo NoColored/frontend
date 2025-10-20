@@ -58,7 +58,7 @@ export const MapInfo: Story = {
         size='medium'
         borderSize='1x'
         borderColor='black'
-        imgSrc='/images/map/background/factorymap.png'
+        imgSrc='./images/map/background/factorymap.png'
       >
         <Chip {...args} />
       </ImageBox>
@@ -87,7 +87,7 @@ export const PlayerState: Story = {
     responsive: true,
     color: 'blue',
     text: 'READY',
-    icon: '/images/ui/icon/shape/icon-shape-white-small-player3-h16w16.png',
+    icon: './images/ui/icon/shape/icon-shape-white-small-player3-h16w16.png',
   },
   argTypes: {
     color: {
@@ -103,7 +103,7 @@ export const PlayerState: Story = {
         borderSize='5x'
         borderColor={borderColor}
         backgroundColor='white'
-        imgSrc='/images/character/character-default-sunglass-yellow-h240w240.png'
+        imgSrc='./images/character/character-default-sunglass-yellow-h240w240.png'
       >
         <Chip {...args} />
       </ImageBox>

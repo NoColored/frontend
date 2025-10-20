@@ -11,12 +11,14 @@ type StyleProps = NonNullable<
 type Props = {
   children?: React.ReactNode;
   imgSrc: string;
+  alt?: string;
 } & Required<Pick<StyleProps, 'size'>> &
   Omit<StyleProps, 'size'>;
 
 const RoundCornerImageBox = ({
   children,
   imgSrc,
+  alt,
   size,
   borderSize,
   borderColor,
@@ -24,9 +26,6 @@ const RoundCornerImageBox = ({
 }: Props) => {
   return (
     <div
-      style={{
-        backgroundImage: `url(${imgSrc})`,
-      }}
       className={styles.roundCornerImageBox({
         size,
         borderColor,
@@ -34,7 +33,8 @@ const RoundCornerImageBox = ({
         backgroundColor,
       })}
     >
-      {children}
+      <img className={styles.image} src={imgSrc} alt={alt} />
+      {children && <div className={styles.contents}>{children}</div>}
     </div>
   );
 };

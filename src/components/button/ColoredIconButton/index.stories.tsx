@@ -53,7 +53,7 @@ export const Play: Story = {
   args: {
     size: 'medium',
     color: 'red',
-    icon: '/images/ui/icon/button/icon-button-play-h50w50.png',
+    icon: './images/ui/icon/button/icon-button-play-h50w50.png',
     text: 'Play',
   },
 };
@@ -62,7 +62,7 @@ export const Collection: Story = {
   args: {
     size: 'medium',
     color: 'blue',
-    icon: '/images/ui/icon/button/icon-button-collection-h50w50.png',
+    icon: './images/ui/icon/button/icon-button-collection-h50w50.png',
     text: 'Collection',
   },
 };
@@ -71,7 +71,7 @@ export const Ranking: Story = {
   args: {
     size: 'medium',
     color: 'green',
-    icon: '/images/ui/icon/button/icon-button-ranking-h50w50.png',
+    icon: './images/ui/icon/button/icon-button-ranking-h50w50.png',
     text: 'Ranking',
   },
 };
@@ -80,7 +80,7 @@ export const FriendlyMatch: Story = {
   args: {
     size: 'xlarge',
     color: 'pink',
-    icon: '/images/ui/icon/button/icon-button-modemulti-h50w50.png',
+    icon: './images/ui/icon/button/icon-button-modemulti-h50w50.png',
     text: '친선전',
   },
 };
@@ -89,7 +89,7 @@ export const RankedMatch: Story = {
   args: {
     size: 'xlarge',
     color: 'yellow',
-    icon: '/images/ui/icon/button/icon-button-moderank-h50w50.png',
+    icon: './images/ui/icon/button/icon-button-moderank-h50w50.png',
     text: '랭킹전',
   },
 };
@@ -100,7 +100,7 @@ export const GameReady: Story = {
   args: {
     size: 'large',
     color: 'gray300',
-    icon: '/images/ui/icon/shape/icon-shape-white-big-player1-h48w48.png',
+    icon: './images/ui/icon/shape/icon-shape-white-big-player1-h48w48.png',
     text: '준비취소',
   },
   render: (args: Required<Story['args']>) => {
@@ -119,7 +119,7 @@ export const GameStart: Story = {
   args: {
     size: 'large',
     color: 'blue',
-    icon: '/images/ui/icon/shape/icon-shape-white-big-player3-h48w48.png',
+    icon: './images/ui/icon/shape/icon-shape-white-big-player3-h48w48.png',
     text: '게임시작',
   },
   render: (args: Required<Story['args']>) => {

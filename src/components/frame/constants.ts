@@ -1,13 +1,15 @@
 import { vars } from '@/styles/vars.css';
 
+import { IPHONE_14_PRO_MAX, IPHONE_SE } from '@/constants/screen';
+
 export const FRAME_STYLE = {
   width: {
-    max: '932px', // iphone 14 pro max
-    min: '667px', // iphone se
+    max: IPHONE_14_PRO_MAX.width,
+    min: IPHONE_SE.width,
   },
   height: {
-    max: '431px',
-    min: '320px',
+    max: IPHONE_14_PRO_MAX.height,
+    min: IPHONE_SE.height,
   },
   padding: vars.space['4x'],
 };
