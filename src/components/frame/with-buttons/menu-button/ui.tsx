@@ -2,7 +2,7 @@ import { Menu as MenuIcon } from 'lucide-react';
 
 import { button } from '../button.css';
 import AccountSettingButton from './account-setting-button';
-import { MENU_ID } from './constants';
+import { MENU_ID, NOTICE_URL } from './constants';
 import GameInfo from './game-info';
 import { useMenuStore } from './store';
 
@@ -26,7 +26,7 @@ const Menu = ({ closeModal }: { closeModal: () => void }) => {
   return (
     <>
       <h3>메뉴</h3>
-      <MenuItem onClick={() => {}} disabled>
+      <MenuItem onClick={() => window.open(NOTICE_URL, '_blank')}>
         공지 사항
       </MenuItem>
       <MenuItem onClick={() => setMenuId(MENU_ID.gameInfo)}>게임 정보</MenuItem>
