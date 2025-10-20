@@ -48,7 +48,7 @@ type Story = StoryObj<typeof meta>;
 export const Skin = {
   args: {
     size: 'medium',
-    imgSrc: '/images/character/character-default-sunglass-yellow-h240w240.png',
+    imgSrc: './images/character/character-default-sunglass-yellow-h240w240.png',
     borderSize: '1x',
     borderColor: 'black',
     backgroundColor: 'gray200',
@@ -67,7 +67,7 @@ export const Skin = {
 export const Map: Story = {
   args: {
     size: 'medium',
-    imgSrc: '/images/map/background/factorymap.png',
+    imgSrc: './images/map/background/factorymap.png',
     borderSize: '1x',
     borderColor: 'black',
     children: <Chip color='navy' text='팩토리' />,
@@ -79,7 +79,7 @@ type ChipColor = Exclude<Story['args']['borderColor'], 'black' | undefined>;
 export const Player1 = {
   args: {
     size: 'large',
-    imgSrc: '/images/character/character-default-none-clone-h240w240.png',
+    imgSrc: './images/character/character-default-none-clone-h240w240.png',
     borderSize: '5x',
     borderColor: 'pink',
     backgroundColor: 'white',
@@ -97,7 +97,7 @@ export const Player1 = {
           responsive
           color={color}
           text='방장'
-          icon='/images/ui/icon/shape/icon-shape-white-small-player0-h16w16.png'
+          icon='./images/ui/icon/shape/icon-shape-white-small-player0-h16w16.png'
         />
       </ImageBox>
     );
@@ -107,7 +107,7 @@ export const Player1 = {
 export const Player2 = {
   args: {
     size: 'large',
-    imgSrc: '/images/character/character-default-sunglass-yellow-h240w240.png',
+    imgSrc: './images/character/character-default-sunglass-yellow-h240w240.png',
     borderSize: '5x',
     borderColor: 'green',
     backgroundColor: 'white',
@@ -125,7 +125,7 @@ export const Player2 = {
           responsive
           color={color}
           text='READY'
-          icon='/images/ui/icon/shape/icon-shape-white-small-player1-h16w16.png'
+          icon='./images/ui/icon/shape/icon-shape-white-small-player1-h16w16.png'
         />
       </ImageBox>
     );
