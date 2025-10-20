@@ -1,10 +1,14 @@
-import * as styles from './index.css';
-
-import { settingsProps } from '@/components/BasicContentFrame/WithButtons/InfoButton/types';
-import ColoredButton from '@/components/button/ColoredButton';
 import { useNavigate } from 'react-router-dom';
 
-const Logout = ({ onClose }: settingsProps) => {
+import * as styles from './index.css';
+
+import ColoredButton from '@/components/button/ColoredButton';
+
+interface Props {
+  onClose: () => void;
+}
+
+const Logout = ({ onClose }: Props) => {
   const navigate = useNavigate();
 
   const removeToken = () => {

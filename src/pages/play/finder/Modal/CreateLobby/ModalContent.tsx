@@ -4,13 +4,13 @@ import { useNavigate } from 'react-router-dom';
 import type { CreateRoom } from '@/types/play';
 
 import ColoredButton from '@/components/button/ColoredButton';
-import InputTextBox from '@/components/textbox/InputTextBox';
+import Input from '@/components/input';
 
 import * as constants from '@/pages/play/finder/constants';
 import MapItem from '@/pages/play/finder/Modal/CreateLobby/MapItem';
 import * as styles from '@/pages/play/finder/Modal/index.css';
 
-import { ROUTE } from '@/router/constants';
+import { ROUTE } from '@/constants/routes';
 
 interface Props {
   roomTitle: string;
@@ -66,7 +66,7 @@ const ModalContent = ({
       <div className={styles.createLobbyTextGrid}>
         <div className={styles.createLobbyText}>방 제목</div>
         <div className={styles.createLobbyText}>비밀번호</div>
-        <InputTextBox
+        <Input
           name='roomTitle'
           placeholder='몇 글자 가능할까요?'
           size='widthFull'
@@ -75,7 +75,7 @@ const ModalContent = ({
           onChange={handleChange}
         />
 
-        <InputTextBox
+        <Input
           name='roomPassword'
           placeholder='숫자 4자리'
           size='widthFull'

@@ -2,7 +2,7 @@ import * as constants from '../constants';
 import * as styles from '../index.css';
 
 import ColoredButton from '@/components/button/ColoredButton';
-import RoundCornerImageBox from '@/components/imagebox/RoundCornerImageBox';
+import RoundCornerImageBox from '@/components/image-box';
 
 interface Props {
   closeModal: () => void;

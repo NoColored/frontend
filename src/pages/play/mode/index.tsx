@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useLoaderData, useNavigate } from 'react-router-dom';
 
 import * as constants from './constants';
@@ -5,20 +6,24 @@ import * as styles from './index.css';
 
 import { User } from '@/types/auth';
 
-import BasicContentFrame from '@/components/BasicContentFrame/WithButtons';
 import ColoredIconButton from '@/components/button/ColoredIconButton';
+import BasicContentFrame from '@/components/frame/with-buttons';
+import RankingItemBox from '@/components/ranking';
 
 import useModal from '@/hooks/useModal';
 
 import Matching from '@/pages/play/mode/Matching';
-import RankingItemBox from '@/pages/ranking/RankingItemBox';
 
 import { getMatching } from '@/services/matching';
 
-import { ROUTE } from '@/router/constants';
+import { ROUTE } from '@/constants/routes';
 
 const Mode = () => {
-  const { Modal, openModal, closeModal, isOpen } = useModal();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const { Modal, openModal, closeModal } = useModal({
+    onOpen: () => setIsModalOpen(true),
+    onClose: () => setIsModalOpen(false),
+  });
   const navigate = useNavigate();
   const user = useLoaderData() as User;
 
@@ -32,7 +37,7 @@ const Mode = () => {
   };
 
   return (
-    <BasicContentFrame backButtonLabel='뒤로'>
+    <BasicContentFrame leftButton={{ label: '뒤로' }}>
       <div className={styles.wrapper}>
         <ColoredIconButton
           icon={constants.FRIENDLY.icon}
@@ -55,7 +60,11 @@ const Mode = () => {
         </div>
       </div>
       <Modal>
-        <Matching imgSrc={user.skin} closeModal={closeModal} isOpen={isOpen} />
+        <Matching
+          imgSrc={user.skin}
+          closeModal={closeModal}
+          isOpen={isModalOpen}
+        />
       </Modal>
     </BasicContentFrame>
   );

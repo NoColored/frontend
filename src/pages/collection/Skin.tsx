@@ -4,7 +4,7 @@ import * as styles from './index.css';
 
 import { Skins } from '@/types/collections';
 
-import RoundCornerImageBox from '@/components/imagebox/RoundCornerImageBox';
+import RoundCornerImageBox from '@/components/image-box';
 
 import { getCollections } from '@/services/collections';
 

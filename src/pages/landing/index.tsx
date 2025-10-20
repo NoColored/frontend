@@ -1,6 +1,5 @@
 import { useNavigate } from 'react-router-dom';
 
-import * as constants from './constants';
 import * as styles from './index.css';
 
 import ColoredButton from '@/components/button/ColoredButton/index';
@@ -8,13 +7,10 @@ import ColoredButton from '@/components/button/ColoredButton/index';
 import { getGuestLogin } from '@/services/auth';
 import { setFullScreen } from '@/services/landing';
 
-import useAudioStore from '@/states/music';
-
-import { ROUTE } from '@/router/constants';
+import { ROUTE } from '@/constants/routes';
 
 const Landing = () => {
   const navigate = useNavigate();
-  const { isPlaying, setIsPlaying, playBackgroundSound } = useAudioStore();
 
   const clickGuestLogin = async () => {
     return getGuestLogin().then((isSuccess) => {
@@ -22,27 +18,20 @@ const Landing = () => {
         navigate(`${ROUTE.error}/500`);
         return;
       }
-      setIsPlaying(isPlaying);
-      const playMusic = localStorage.getItem('backgroundSound') === 'true';
-      if (playMusic) playBackgroundSound();
       navigate(ROUTE.tutorial);
       setFullScreen();
     });
   };
 
   const clickLogIn = () => {
-    setIsPlaying(isPlaying);
-    const playMusic = localStorage.getItem('backgroundSound') === 'true';
-    if (playMusic) playBackgroundSound();
     navigate(ROUTE.login);
   };
 
-  const landingLogo: string = constants.LANDING_LOGO_URL;
   return (
     <div className={styles.contentWrapper}>
       <img
         className={styles.logoImage}
-        src={landingLogo}
+        src='/images/landing-logo-whiteborder-h800w1280.png'
         alt='NoColored Logo'
       />
       <div className={styles.buttonWrapper}>

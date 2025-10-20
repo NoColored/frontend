@@ -5,8 +5,8 @@ import * as styles from './index.css';
 
 import { User } from '@/types/auth';
 
-import BasicContentFrame from '@/components/BasicContentFrame/WithButtons';
 import SettingTextButton from '@/components/button/SettingTextButton';
+import BasicContentFrame from '@/components/frame/with-buttons';
 
 import Achievement from '@/pages/collection/Achievement';
 import Label from '@/pages/collection/Label';
@@ -57,7 +57,7 @@ const Collection = () => {
   }, [setLabelName, user.label]);
 
   return (
-    <BasicContentFrame backButtonLabel='뒤로'>
+    <BasicContentFrame leftButton={{ label: '뒤로' }}>
       <div className={styles.gridBox}>
         <div className={styles.categoryButton}>
           <SettingTextButton

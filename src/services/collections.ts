@@ -1,6 +1,6 @@
 import { Collections } from '@/types/collections';
 
-import { api } from '@/services/index';
+import { api } from '@/features/api';
 
 export const getCollections = async (): Promise<Collections | void> => {
   return (

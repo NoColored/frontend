@@ -1,14 +1,19 @@
 import React, { useState } from 'react';
 
 import * as styles from './index.css';
-import { settingsProps } from '@/components/BasicContentFrame/WithButtons/InfoButton/types';
+
 import ColoredButton from '@/components/button/ColoredButton';
-import InputTextBox from '@/components/textbox/InputTextBox';
+import Input from '@/components/input';
 
 import * as constants from '@/pages/landing/logIn/constants';
+
 import { patchPasswordChange } from '@/services/auth';
 
-const PasswordChange = ({ onClose }: settingsProps) => {
+interface Props {
+  onClose: () => void;
+}
+
+const PasswordChange = ({ onClose }: Props) => {
   const [password, setPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
@@ -37,7 +42,7 @@ const PasswordChange = ({ onClose }: settingsProps) => {
   return (
     <div className={styles.centerBoxWrapper}>
       <div className={styles.text}>혹시 생일로 바꾸시는거 아니죠?</div>
-      <InputTextBox
+      <Input
         name='password'
         placeholder='현재 비밀번호 숫자 6자리를 입력하세요'
         size='small'
@@ -45,7 +50,7 @@ const PasswordChange = ({ onClose }: settingsProps) => {
         value={password}
         onChange={passwordChange}
       />
-      <InputTextBox
+      <Input
         name='newPassword'
         placeholder='수정할 비밀번호 숫자 6자리를 입력하세요'
         size='small'

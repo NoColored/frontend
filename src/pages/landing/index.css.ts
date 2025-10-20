@@ -1,9 +1,11 @@
 import { keyframes, style } from '@vanilla-extract/css';
+import { calc } from '@vanilla-extract/css-utils';
 
-import * as constants from '@/pages/landing/constants';
+import { INPUT_STYLE } from '@/components/input/constants';
 
 import { flexOptions } from '@/styles/common.css';
 import { sprinkles } from '@/styles/sprinkles.css';
+import { vars } from '@/styles/vars.css';
 
 export const landingWrapper = style([
   flexOptions({ option: 'columnCenter' }),
@@ -43,7 +45,12 @@ export const clickMessage = style([
 
 export const logoImage = style([
   {
-    height: constants.LOGOIMAGE_HEIGHT,
+    height: calc
+      .add(
+        calc.multiply(INPUT_STYLE.large.height, 2),
+        calc.multiply(vars.space[INPUT_STYLE.large.marginY], 4),
+      )
+      .toString(),
   },
 ]);
 

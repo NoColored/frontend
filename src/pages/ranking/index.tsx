@@ -6,9 +6,8 @@ import * as styles from './index.css';
 import type { User } from '@/types/auth';
 import type { RankPlayer } from '@/types/rank';
 
-import BasicContentFrame from '@/components/BasicContentFrame/WithButtons/index';
-
-import RankingItemBox from '@/pages/ranking/RankingItemBox';
+import BasicContentFrame from '@/components/frame/with-buttons';
+import RankingItemBox from '@/components/ranking';
 
 const Ranking = () => {
   const { rankList, myRank } = useLoaderData() as {
@@ -17,7 +16,7 @@ const Ranking = () => {
   };
 
   return (
-    <BasicContentFrame backButtonLabel='뒤로'>
+    <BasicContentFrame leftButton={{ label: '뒤로' }}>
       <div className={styles.rankingFullWrapper}>
         <div className={styles.rankingTitleWrapper}>
           <div className={styles.rankingTitleText}>

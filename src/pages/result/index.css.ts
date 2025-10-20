@@ -48,6 +48,7 @@ export const resultInfoBox = recipe({
   base: [
     flexOptions({ option: 'rowCenter' }),
     sprinkles({
+      fontFamily: 'textFont',
       backgroundColor: 'white',
       fontSize: '1.5x',
       justifyContent: 'spaceBetween',
@@ -76,7 +77,7 @@ export const resultInfoBox = recipe({
       true: [
         sprinkles({
           color: 'white',
-          textSize: '2x',
+          fontSize: '2x',
           marginY: '2x',
         }),
         {

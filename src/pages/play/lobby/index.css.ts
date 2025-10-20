@@ -27,6 +27,7 @@ export const settings = style([
 
 export const code = style([
   sprinkles({
+    fontFamily: 'textFont',
     textSize: '2x',
     marginTop: '4x',
     marginBottom: '2x',

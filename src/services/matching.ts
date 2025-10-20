@@ -1,4 +1,4 @@
-import { api } from '@/services/index';
+import { api } from '@/features/api';
 
 export const getMatching = async () => {
   return (

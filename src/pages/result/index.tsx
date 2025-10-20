@@ -6,8 +6,8 @@ import * as styles from './index.css';
 
 import type { GameResult } from '@/types/result';
 
-import BasicContentFrame from '@/components/BasicContentFrame/WithButtons';
 import ColoredButton from '@/components/button/ColoredButton';
+import BasicContentFrame from '@/components/frame/with-buttons';
 
 import useModal from '@/hooks/useModal';
 
@@ -17,9 +17,10 @@ import { RewardsModal } from '@/pages/result/RewardsModal/index';
 import { getOut } from '@/services/lobby';
 
 import { useUserStateStore } from '@/states/user';
-import { useWebSocketStore } from '@/states/websocket';
 
-import { ROUTE } from '@/router/constants';
+import { ROUTE } from '@/constants/routes';
+import { useWebSocketStore } from '@/features/websocket';
+
 
 const Result = () => {
   const navigate = useNavigate();
@@ -53,7 +54,7 @@ const Result = () => {
   };
 
   return (
-    <BasicContentFrame disableButton>
+    <BasicContentFrame rightButtonsDisabled>
       <div className={styles.gameResultWrapper}>
         <div className={styles.result}>
           <div className={styles.resultTitle}>{constants.RESULTTEXT}</div>

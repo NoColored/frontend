@@ -4,7 +4,7 @@ import * as styles from '../index.css';
 import type { TierReward } from '@/types/result';
 
 import ColoredButton from '@/components/button/ColoredButton';
-import TierBox from '@/components/imagebox/TierIconBox';
+import TierBox from '@/components/tier';
 
 interface Props {
   closeModal: () => void;

@@ -1,24 +1,21 @@
 import * as styles from './index.css';
+import MemberSetting from './member-setting';
 
-import BasicContentFrame from '@/components/BasicContentFrame/WithButtons';
+import BasicContentFrame from '@/components/frame/with-buttons';
 
-import AudioSetting from '@/pages/settings/AudioSetting';
-import GuestUser from '@/pages/settings/GuestUser';
-import LoginUser from '@/pages/settings/LoginUser';
-
-import { GUEST, USER, useUserStateStore } from '@/states/user';
+import { useUserStatus } from '@/features/user';
 
 const Settings = () => {
-  const { loginStatus } = useUserStateStore.getState();
+  const { isMember } = useUserStatus();
 
   return (
-    <BasicContentFrame backButtonLabel='뒤로'>
-      <div className={styles.centerBoxWrapper}>
-        <div className={styles.title}>설정</div>
-        <AudioSetting />
-        {loginStatus === GUEST && <GuestUser />}
-        {loginStatus === USER && <LoginUser />}
-      </div>
+    <BasicContentFrame leftButton={{ label: '뒤로' }}>
+      {isMember && (
+        <div className={styles.centerBoxWrapper}>
+          <div className={styles.title}>계정 설정</div>
+          <MemberSetting />
+        </div>
+      )}
     </BasicContentFrame>
   );
 };

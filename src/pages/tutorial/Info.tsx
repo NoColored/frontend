@@ -9,7 +9,7 @@ import Info0 from '@/pages/tutorial/Info0';
 import Info1 from '@/pages/tutorial/Info1';
 import Info2 from '@/pages/tutorial/Info2';
 
-import { ROUTE } from '@/router/constants';
+import { ROUTE } from '@/constants/routes';
 
 interface Props {
   page: number;

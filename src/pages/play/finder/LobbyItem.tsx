@@ -3,7 +3,7 @@ import * as constants from './constants';
 import type { RoomListItem } from '@/types/play';
 
 import ColoredButton from '@/components/button/ColoredButton';
-import RoundCornerImageBox from '@/components/imagebox/RoundCornerImageBox';
+import RoundCornerImageBox from '@/components/image-box';
 
 import useModal from '@/hooks/useModal';
 
@@ -23,15 +23,13 @@ const LobbyItem = ({ roomInfo }: Props) => {
     const mapItem = constants.MAPS.find(
       (item) => item.mapId === roomInfo.mapId,
     );
-    return mapItem ? mapItem.imgSrc : undefined;
+    return mapItem ? mapItem.imgSrc : constants.MAPS[0].imgSrc;
   };
 
   const renderModalContent = () => {
     if (roomInfo.userNumber === 4) {
       return (
-        <div
-          className={`${modalStyles.modalWrapper} ${modalStyles.messageModalWrapper}`}
-        >
+        <div className={modalStyles.messageModalWrapper}>
           <MessageModalContent failed='ENTER' />
           <ColoredButton
             size='small'

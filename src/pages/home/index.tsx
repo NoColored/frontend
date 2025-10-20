@@ -5,15 +5,13 @@ import SignupBanner from './SignupBanner';
 
 import type { User } from '@/types/auth';
 
-import BasicContentFrame from '@/components/BasicContentFrame/WithButtons/index';
 import ColoredIconButton from '@/components/button/ColoredIconButton';
-import type { tierType } from '@/components/imagebox/types';
+import BasicContentFrame from '@/components/frame/with-buttons';
 
 import Error from '@/pages/error';
-import { PatchNotes } from '@/pages/home/PatchNotes';
 import UserDashboard from '@/pages/home/UserDashboard';
 
-import { ROUTE } from '@/router/constants';
+import { ROUTE } from '@/constants/routes';
 
 const Home = () => {
   const user = useLoaderData() as User;
@@ -43,7 +41,7 @@ const Home = () => {
             level={user.level}
             cp={user.exp}
             maxCp={user.expRequire}
-            tier={user.tier as tierType}
+            tier={user.tier}
             // rankScore={user.rating}
           />
         </div>
@@ -74,9 +72,8 @@ const Home = () => {
             <span className={styles.titleText}>{`< ${user.label} >`}</span>
           </div>
           <div className={styles.RightButtonsWrapper}>
-            <PatchNotes />
             <ColoredIconButton
-              icon='/images/ui/icon/button/icon-button-ranking-h50w50.png'
+              icon='/images/ui/icon/button/icon-button-play-h50w50.png'
               size='medium'
               text='Play'
               color='red'

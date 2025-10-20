@@ -1,13 +1,13 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import BasicContentFrame from '@/components/BasicContentFrame';
+import BasicContentFrame from '@/components/frame';
 
 import { useGameControl } from '@/states/game';
-import { useWebSocketStore } from '@/states/websocket';
 
-import { config, scenesConfig } from '@/game/scene/config';
-import { ROUTE } from '@/router/constants';
+import { ROUTE } from '@/constants/routes';
+import { config, scenesConfig } from '@/features/game';
+import { useWebSocketStore } from '@/features/websocket';
 
 const Game = () => {
   const navigate = useNavigate();

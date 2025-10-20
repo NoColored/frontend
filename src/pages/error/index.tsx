@@ -3,12 +3,12 @@ import { useNavigate, useParams } from 'react-router-dom';
 import * as constants from './constants';
 import * as styles from './index.css';
 
-import BasicContentFrame from '@/components/BasicContentFrame/WithButtons';
 import ColoredButton from '@/components/button/ColoredButton';
+import BasicContentFrame from '@/components/frame/with-buttons';
 
 import type { errorCode } from '@/pages/error/type';
 
-import { ROUTE } from '@/router/constants';
+import { ROUTE } from '@/constants/routes';
 
 const Error = () => {
   const navigate = useNavigate();
@@ -23,7 +23,7 @@ const Error = () => {
   };
 
   return (
-    <BasicContentFrame disableButton>
+    <BasicContentFrame rightButtonsDisabled>
       <div className={styles.errorWrapper}>
         <pre className={styles.errorMessage}>
           {constants.ERROR_MESSAGE[code]}

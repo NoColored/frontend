@@ -18,7 +18,7 @@ export const BUTTON_COLOR_DARK = {
   gray300: 'gray500',
 } as const;
 
-export const COLOREDICONBUTTON_SIZE_PIXEL = {
+export const COLORED_ICON_BUTTON_SIZE_PIXEL = {
   medium: {
     width: '163px',
     height: '88px',
