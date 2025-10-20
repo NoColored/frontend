@@ -27,6 +27,7 @@ globalStyle('html, body, #root', {
 globalStyle('body', {
   backgroundRepeat: 'no-repeat',
   backgroundPosition: 'center',
+  backgroundSize: 'cover',
   backgroundImage:
     'url(/images/background/background-white-small-h450w873.webp)',
 
