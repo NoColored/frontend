@@ -12,6 +12,7 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.90.5",
     "axios": "^1.6.8",
     "lucide-react": "^0.522.0",
     "phaser": "^3.80.0",
