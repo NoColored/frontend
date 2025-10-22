@@ -1,16 +1,4 @@
-export interface User {
-  exp: number;
-  expRequire: number;
-  guest: boolean;
-  level: number;
-  nickname: string;
-  rating: number;
-  skin: string;
-  tier: tierRange;
-  label: string;
-  rank: number;
-  userCode: string;
-}
+export { User } from '@/features/user/type';
 
 export interface LogInInfo {
   id: string;
