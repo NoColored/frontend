@@ -1,5 +1,4 @@
-
-export interface Skins{
+interface Skins {
   id: number;
   name: string;
   link: string;
@@ -7,7 +6,7 @@ export interface Skins{
   equipped: boolean;
 }
 
-export interface Labels {
+interface Labels {
   id: number;
   name: string;
   condition: string;
@@ -15,13 +14,14 @@ export interface Labels {
   equipped: boolean;
 }
 
-export interface Achievements {
+interface Achievements {
   id: number;
   name: string;
   reward: string;
   achieved: boolean;
 }
-export interface Collections {
+
+interface Collections {
   skins: Skins[];
   labels: Labels[];
   achievements: Achievements[];

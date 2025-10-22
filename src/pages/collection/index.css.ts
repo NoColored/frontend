@@ -1,4 +1,5 @@
 import { style } from '@vanilla-extract/css';
+import { recipe } from '@vanilla-extract/recipes';
 
 import * as constants from './constatns';
 
@@ -6,19 +7,13 @@ import { flexOptions } from '@/styles/common.css';
 import { sprinkles } from '@/styles/sprinkles.css';
 
 export const gridBox = style({
-  display: 'grid',
-  gridTemplateColumns: '35% 65%',
-  gridTemplateRows: '15% 1fr',
-  gridTemplateAreas: `
-    ". a"
-    "b c"
-  `,
+  display: 'flex',
   height: '100%',
   overflow: 'hidden',
 });
 
 export const characterWrapper = style({
-  gridArea: 'b',
+  width: '35%',
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
@@ -48,6 +43,7 @@ export const categoryButton = style([
     gridArea: 'a',
     gap: constants.CATEGORY_BUTTON_GAP,
   },
+  sprinkles({ paddingBottom: '1x' }),
 ]);
 
 export const label = style([
@@ -57,24 +53,19 @@ export const label = style([
     width: 'full',
   }),
   {
-    position: 'absolute',
     textAlign: 'center',
   },
 ]);
 
 export const mySkin = style([
-  flexOptions({ option: 'column' }),
   sprinkles({
     width: 'full',
+    aspectRatio: 'square',
   }),
   {
     position: 'relative',
-    overflow: 'hidden',
-    aspectRatio: '1 / 1',
-    backgroundRepeat: 'no-repeat',
-    backgroundClip: 'border-box',
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
+    objectFit: 'cover',
+    objectPosition: 'center',
   },
 ]);
 
@@ -198,3 +189,25 @@ export const mosaic = style({
   width: '65%',
   height: '20%',
 });
+
+export const skinItem = recipe({
+  base: {
+    backgroundColor: 'transparent',
+  },
+  variants: {
+    owned: {
+      false: {
+        ':hover': {
+          cursor: 'not-allowed',
+        },
+      },
+    },
+  },
+});
+
+export const menu = style([
+  flexOptions({ option: 'column' }),
+  {
+    width: '65%',
+  },
+]);

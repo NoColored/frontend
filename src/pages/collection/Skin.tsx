@@ -1,59 +1,79 @@
-import { useEffect, useState } from 'react';
+import { memo, useState } from 'react';
 
+import { useCollectionActions } from './hooks';
 import * as styles from './index.css';
-
-import { Skins } from '@/types/collections';
 
 import RoundCornerImageBox from '@/components/image-box';
 
-import { getCollections } from '@/services/collections';
+const getBorderColor = (equipped: boolean, selected: boolean) => {
+  if (equipped) {
+    return 'blue';
+  }
+  if (selected) {
+    return 'yellow';
+  }
+  return 'black';
+};
 
-import { useCollectionStateStore } from '@/states/collection';
+const SkinItem = memo(
+  ({
+    skin,
+    onClick,
+    selected,
+  }: {
+    skin: Skins;
+    onClick: () => void;
+    selected: boolean;
+  }) => {
+    return (
+      <button
+        type='button'
+        className={styles.skinItem({ owned: skin.own })}
+        onClick={onClick}
+      >
+        <RoundCornerImageBox
+          imgSrc={skin.link}
+          size='full'
+          borderColor={getBorderColor(skin.equipped, selected)}
+          borderSize={skin.equipped || selected ? '5x' : '1x'}
+          backgroundColor={skin.own ? 'white' : 'gray200'}
+        >
+          {!skin.own && (
+            <div className={styles.mosaicBox}>
+              <div className={styles.mosaic} />
+            </div>
+          )}
+        </RoundCornerImageBox>
+      </button>
+    );
+  },
+  (prevProps, nextProps) => {
+    return (
+      prevProps.skin.equipped === nextProps.skin.equipped &&
+      prevProps.selected === nextProps.selected
+    );
+  },
+);
 
-const Skin = () => {
-  const { skinId, setSkinId, setSkinUrl } = useCollectionStateStore();
-  const [skins, setSkins] = useState<Skins[]>([]);
-
-  useEffect(() => {
-    getCollections().then((collections) => {
-      if (collections && collections.skins) {
-        setSkins(collections.skins);
-        setSkinId(-1);
-      }
-    });
-  }, []);
+const Skin = ({ skins }: { skins: Skins[] }) => {
+  const [selectedId, setSelectedId] = useState<Skins['id'] | null>(null);
+  const { setSelectedSkin } = useCollectionActions();
 
   return (
-    <div>
-      <div className={styles.skinWrapper}>
-        {skins.map((skin) => (
-          <div
-            role='button'
-            tabIndex={-1}
-            key={skin.id}
-            onClick={() => {
-              if (skin.own) {
-                setSkinId(skin.id);
-                setSkinUrl(skin.link);
-              }
-            }}
-          >
-            <RoundCornerImageBox
-              imgSrc={skin.link}
-              size='full'
-              borderColor={skinId === skin.id ? 'blue' : 'black'}
-              borderSize={skinId === skin.id ? '5x' : '1x'}
-              backgroundColor={`${skin.own ? 'white' : 'gray200'}`}
-            >
-              {!skin.own && (
-                <div className={styles.mosaicBox}>
-                  <div className={styles.mosaic} />
-                </div>
-              )}
-            </RoundCornerImageBox>
-          </div>
-        ))}
-      </div>
+    <div className={styles.skinWrapper}>
+      {skins.map((skin) => (
+        <SkinItem
+          key={skin.id}
+          skin={skin}
+          onClick={() => {
+            if (skin.own) {
+              setSelectedId(skin.id);
+              setSelectedSkin(skin);
+            }
+          }}
+          selected={skin.id === selectedId}
+        />
+      ))}
     </div>
   );
 };
