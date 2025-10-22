@@ -1,7 +1,7 @@
 import * as styles from './index.css';
 
 interface Props {
-  achievements: Achievements[];
+  achievements: Achievement[];
 }
 
 const AchievementMenu = ({ achievements }: Props) => {

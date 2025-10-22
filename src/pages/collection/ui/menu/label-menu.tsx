@@ -1,7 +1,7 @@
 import { useCollectionActions } from '../../hooks';
 import * as styles from './index.css';
 
-const LabelMenu = ({ labels }: { labels: Labels[] }) => {
+const LabelMenu = ({ labels }: { labels: Label[] }) => {
   const { setSelectedLabel } = useCollectionActions();
 
   return (

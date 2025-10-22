@@ -7,7 +7,7 @@ export const skin = atom(
     url: get(skinUrl),
     id: get(skinId),
   }),
-  (_, set, selected: Skins) => {
+  (_, set, selected: Skin) => {
     set(skinUrl, selected.link);
     set(skinId, selected.id);
   },
@@ -20,7 +20,7 @@ export const label = atom(
     name: get(labelName),
     id: get(labelId),
   }),
-  (_, set, selected: Labels) => {
+  (_, set, selected: Label) => {
     set(labelName, selected.name);
     set(labelId, selected.id);
   },

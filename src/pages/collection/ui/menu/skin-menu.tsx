@@ -21,7 +21,7 @@ const SkinItem = memo(
     onClick,
     selected,
   }: {
-    skin: Skins;
+    skin: Skin;
     onClick: () => void;
     selected: boolean;
   }) => {
@@ -55,8 +55,8 @@ const SkinItem = memo(
   },
 );
 
-const SkinMenu = ({ skins }: { skins: Skins[] }) => {
-  const [selectedId, setSelectedId] = useState<Skins['id'] | null>(null);
+const SkinMenu = ({ skins }: { skins: Skin[] }) => {
+  const [selectedId, setSelectedId] = useState<Skin['id'] | null>(null);
   const { setSelectedSkin } = useCollectionActions();
 
   return (

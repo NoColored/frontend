@@ -1,4 +1,4 @@
-interface Skins {
+interface Skin {
   id: number;
   name: string;
   link: string;
@@ -6,7 +6,7 @@ interface Skins {
   equipped: boolean;
 }
 
-interface Labels {
+interface Label {
   id: number;
   name: string;
   condition: string;
@@ -14,7 +14,7 @@ interface Labels {
   equipped: boolean;
 }
 
-interface Achievements {
+interface Achievement {
   id: number;
   name: string;
   reward: string;
@@ -22,7 +22,7 @@ interface Achievements {
 }
 
 interface Collections {
-  skins: Skins[];
-  labels: Labels[];
-  achievements: Achievements[];
+  skins: Skin[];
+  labels: Label[];
+  achievements: Achievement[];
 }
