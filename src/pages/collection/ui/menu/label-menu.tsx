@@ -1,7 +1,7 @@
 import { useCollectionActions } from '../../hooks';
 import * as styles from './index.css';
 
-const Label = ({ labels }: { labels: Labels[] }) => {
+const LabelMenu = ({ labels }: { labels: Labels[] }) => {
   const { setSelectedLabel } = useCollectionActions();
 
   return (
@@ -22,4 +22,4 @@ const Label = ({ labels }: { labels: Labels[] }) => {
   );
 };
 
-export default Label;
+export default LabelMenu;

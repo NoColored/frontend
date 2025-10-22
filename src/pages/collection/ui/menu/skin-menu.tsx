@@ -55,7 +55,7 @@ const SkinItem = memo(
   },
 );
 
-const Skin = ({ skins }: { skins: Skins[] }) => {
+const SkinMenu = ({ skins }: { skins: Skins[] }) => {
   const [selectedId, setSelectedId] = useState<Skins['id'] | null>(null);
   const { setSelectedSkin } = useCollectionActions();
 
@@ -78,4 +78,4 @@ const Skin = ({ skins }: { skins: Skins[] }) => {
   );
 };
 
-export default Skin;
+export default SkinMenu;

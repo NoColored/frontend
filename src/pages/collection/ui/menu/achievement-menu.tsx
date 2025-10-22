@@ -4,7 +4,7 @@ interface Props {
   achievements: Achievements[];
 }
 
-const Achievement = ({ achievements }: Props) => {
+const AchievementMenu = ({ achievements }: Props) => {
   return (
     <div className={styles.achieveBoxWrapper}>
       {achievements.map((achievement) => (
@@ -24,4 +24,4 @@ const Achievement = ({ achievements }: Props) => {
   );
 };
 
-export default Achievement;
+export default AchievementMenu;

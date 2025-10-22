@@ -2,10 +2,10 @@ import { useQuery } from '@tanstack/react-query';
 import { useMemo, useState } from 'react';
 
 import { getCollections } from '../../api';
-import Achievement from './Achievement';
+import AchievementMenu from './achievement-menu';
 import * as styles from './index.css';
-import Label from './Label';
-import Skin from './Skin';
+import LabelMenu from './label-menu';
+import SkinMenu from './skin-menu';
 
 import SettingTextButton from '@/components/button/SettingTextButton';
 
@@ -33,11 +33,11 @@ const CollectionMenu = () => {
 
     switch (selectedCategory) {
       case 'label':
-        return <Label labels={data.labels} />;
+        return <LabelMenu labels={data.labels} />;
       case 'achievement':
-        return <Achievement achievements={data.achievements} />;
+        return <AchievementMenu achievements={data.achievements} />;
       default:
-        return <Skin skins={data.skins} />;
+        return <SkinMenu skins={data.skins} />;
     }
   }, [data, selectedCategory]);
 
