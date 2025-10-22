@@ -1,13 +1,12 @@
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { QueryClientProvider } from '@tanstack/react-query';
 import { RouterProvider } from 'react-router-dom';
 
 import router from './router';
 
 import FullScreenPrompt from '@/components/prompt';
 
+import { queryClient } from '@/features/api';
 import { useSoundSetting } from '@/features/sound';
-
-const queryClient = new QueryClient();
 
 const App = () => {
   const { playBgm } = useSoundSetting();
