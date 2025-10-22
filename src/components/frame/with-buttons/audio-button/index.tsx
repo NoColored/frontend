@@ -1,11 +1,12 @@
 import { Volume2, VolumeX } from 'lucide-react';
+import { memo } from 'react';
 
 import { button } from '../button.css';
 import * as styles from './index.css';
 
 import { useSoundToggle } from '@/features/sound';
 
-const AudioButton = () => {
+const AudioButton = memo(() => {
   const { backgroundSound, toggleSound } = useSoundToggle();
 
   return (
@@ -17,6 +18,6 @@ const AudioButton = () => {
       )}
     </button>
   );
-};
+});
 
 export default AudioButton;
