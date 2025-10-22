@@ -1,6 +1,5 @@
 import { createBrowserRouter, Navigate, Outlet } from 'react-router-dom';
 
-
 import Collection from '@/pages/collection';
 import Error from '@/pages/error';
 import Home from '@/pages/home';
@@ -49,9 +48,8 @@ const router = createBrowserRouter([
         element: <Tutorial />,
       },
       {
-        path: `${ROUTE.home}`,
+        path: ROUTE.home,
         element: <Home />,
-        loader: getUser,
       },
       {
         path: `${ROUTE.play}`,

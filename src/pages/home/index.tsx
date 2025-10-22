@@ -1,9 +1,7 @@
-import { useLoaderData, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import * as styles from './index.css';
 import SignupBanner from './SignupBanner';
-
-import type { User } from '@/types/auth';
 
 import ColoredIconButton from '@/components/button/ColoredIconButton';
 import BasicContentFrame from '@/components/frame/with-buttons';
@@ -12,9 +10,10 @@ import Error from '@/pages/error';
 import UserDashboard from '@/pages/home/UserDashboard';
 
 import { ROUTE } from '@/constants/routes';
+import { useUserInfo } from '@/features/user';
 
 const Home = () => {
-  const user = useLoaderData() as User;
+  const { user } = useUserInfo();
 
   const navigate = useNavigate();
 
