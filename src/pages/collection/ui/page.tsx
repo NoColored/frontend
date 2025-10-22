@@ -6,9 +6,9 @@ import {
   useSelectedLabel,
   useSelectedSkin,
 } from '../hooks';
-import * as styles from '../index.css';
 import { CollectionProvider } from '../provider';
 import CollectionMenu from './menu';
+import * as styles from './page.css';
 
 import SettingTextButton from '@/components/button/SettingTextButton';
 import BasicContentFrame from '@/components/frame/with-buttons';

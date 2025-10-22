@@ -1,30 +1,10 @@
 import { style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
 
-import * as constants from './constatns';
+import * as constants from '../../constants';
 
 import { flexOptions } from '@/styles/common.css';
 import { sprinkles } from '@/styles/sprinkles.css';
-
-export const gridBox = style({
-  display: 'flex',
-  height: '100%',
-  overflow: 'hidden',
-});
-
-export const characterWrapper = style({
-  width: '35%',
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  justifyContent: 'flex-end',
-});
-
-export const character = style([
-  sprinkles({
-    width: 'full',
-  }),
-]);
 
 export const collections = style([
   sprinkles({
@@ -44,45 +24,6 @@ export const categoryButton = style([
     gap: constants.CATEGORY_BUTTON_GAP,
   },
   sprinkles({ paddingBottom: '1x' }),
-]);
-
-export const label = style([
-  sprinkles({
-    fontWeight: 'accent',
-    textSize: '1x',
-    width: 'full',
-  }),
-  {
-    textAlign: 'center',
-  },
-]);
-
-export const mySkin = style([
-  sprinkles({
-    width: 'full',
-    aspectRatio: 'square',
-  }),
-  {
-    position: 'relative',
-    objectFit: 'cover',
-    objectPosition: 'center',
-  },
-]);
-
-export const submitButtonWrapper = style([
-  flexOptions({ option: 'columnCenter' }),
-  {
-    position: 'relative',
-    marginTop: constants.SUBMIT_BUTTON_MARGIN,
-  },
-]);
-
-export const submitSuccessMessage = style([
-  sprinkles({
-    color: 'blue',
-    textSize: '1.5x',
-    marginBottom: '2x',
-  }),
 ]);
 
 export const skinWrapper = style([

@@ -6,8 +6,6 @@ export const CATEGORY_BUTTON_GAP = '16px';
 
 export const GRID_GAP = '8px';
 
-export const SUBMIT_BUTTON_MARGIN = '8px';
-
 export const BOX_STYLE = {
   WIDTH: '200px',
   HEIGHT: '130px',

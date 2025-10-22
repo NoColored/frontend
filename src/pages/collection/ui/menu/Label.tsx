@@ -1,4 +1,4 @@
-import { useCollectionActions } from './hooks';
+import { useCollectionActions } from '../../hooks';
 import * as styles from './index.css';
 
 const Label = ({ labels }: { labels: Labels[] }) => {

@@ -1,6 +1,6 @@
 import { memo, useState } from 'react';
 
-import { useCollectionActions } from './hooks';
+import { useCollectionActions } from '../../hooks';
 import * as styles from './index.css';
 
 import RoundCornerImageBox from '@/components/image-box';

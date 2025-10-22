@@ -1,11 +1,11 @@
 import { useQuery } from '@tanstack/react-query';
 import { useMemo, useState } from 'react';
 
-import Achievement from '../../Achievement';
 import { getCollections } from '../../api';
-import * as styles from '../../index.css';
-import Label from '../../Label';
-import Skin from '../../Skin';
+import Achievement from './Achievement';
+import * as styles from './index.css';
+import Label from './Label';
+import Skin from './Skin';
 
 import SettingTextButton from '@/components/button/SettingTextButton';
 
