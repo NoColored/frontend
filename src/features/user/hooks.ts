@@ -47,3 +47,15 @@ export const useUserStatus = () => {
 };
 
 export const useUserCode = () => useAtomValue(userCode);
+
+export const useLogout = () => {
+  const navigate = useNavigate();
+
+  const logout = () => {
+    window.localStorage.removeItem('token');
+    queryClient.removeQueries({ queryKey });
+    navigate('/');
+  };
+
+  return { logout };
+};

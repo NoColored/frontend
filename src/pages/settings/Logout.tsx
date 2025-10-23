@@ -1,20 +1,15 @@
-import { useNavigate } from 'react-router-dom';
-
 import * as styles from './index.css';
 
 import ColoredButton from '@/components/button/ColoredButton';
+
+import { useLogout } from '@/features/user';
 
 interface Props {
   onClose: () => void;
 }
 
 const Logout = ({ onClose }: Props) => {
-  const navigate = useNavigate();
-
-  const removeToken = () => {
-    window.localStorage.removeItem('token');
-    navigate('/');
-  };
+  const { logout } = useLogout();
 
   return (
     <div className={styles.centerBoxWrapper}>
@@ -24,12 +19,7 @@ const Logout = ({ onClose }: Props) => {
       <div className={styles.text}>영원히 기억됩니다.</div>
       <br />
       <div className={styles.buttonWrapper}>
-        <ColoredButton
-          size='small'
-          text='확인'
-          color='navy'
-          onClick={removeToken}
-        />
+        <ColoredButton size='small' text='확인' color='navy' onClick={logout} />
         <ColoredButton
           size='small'
           text='취소'
