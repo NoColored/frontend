@@ -1,1 +1,3 @@
-export { useUserStore as useUserStateStore } from '@/features/user';
+import { useUserStore } from '@/features/user';
+
+export const useUserStateStore = useUserStore;

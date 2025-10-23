@@ -1,40 +1,38 @@
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, type UseQueryOptions } from '@tanstack/react-query';
 
-import { USER_STATUS } from './constants';
-import { useUserStore } from './store';
+import { getUser } from './api';
 
-import { client, queryClient } from '@/features/api';
-
-export const useUserStatus = () => {
-  const status = useUserStore((state) => state.loginStatus);
-
-  return {
-    isGuest: status === USER_STATUS.guest,
-    isMember: status === USER_STATUS.member,
-  };
-};
-
-const getUser = async () => {
-  return client.get<User>(`/user`).then((response) => {
-    const { data } = response;
-    console.debug('user:', data);
-    return data;
-  });
-};
+import { queryClient } from '@/features/api';
 
 const queryKey = ['user'];
 
-export const useUserInfo = () => {
+const refetchUser = () =>
+  queryClient.invalidateQueries({
+    queryKey,
+  });
+
+export const useUserInfo = (
+  options?: Omit<UseQueryOptions<User>, 'queryKey' | 'queryFn'>,
+) => {
   const { data } = useQuery({
     queryKey,
     queryFn: getUser,
+    throwOnError: true,
     refetchOnMount: false,
+    ...options,
   });
 
-  const refetchUser = () =>
-    queryClient.invalidateQueries({
-      queryKey,
-    });
+  return {
+    user: data,
+    refetchUser,
+  };
+};
 
-  return { user: data, refetchUser };
+export const useUserStatus = () => {
+  const { user } = useUserInfo();
+
+  return {
+    isGuest: user && user.guest,
+    isMember: user && !user.guest,
+  };
 };
