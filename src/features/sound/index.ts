@@ -1,1 +1,1 @@
-export { useSoundSetting, useSoundToggle } from './hooks';
+export * from './hooks';

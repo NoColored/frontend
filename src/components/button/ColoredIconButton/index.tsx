@@ -5,7 +5,7 @@ import type {
   coloredIconButtonSizeType,
 } from '@/components/button/types';
 
-import useEffectSoundStore from "@/states/effect";
+import { useEffectSound } from '@/features/sound';
 
 export interface ColoredIconButtonProps extends ColorButtonProps {
   icon: string;
@@ -19,7 +19,7 @@ const ColoredIconButton = ({
   size,
   onClick,
 }: ColoredIconButtonProps) => {
-  const { playEffectSound } = useEffectSoundStore();
+  const { playEffectSound } = useEffectSound();
 
   const handleClick = () => {
     playEffectSound();

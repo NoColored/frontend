@@ -2,7 +2,7 @@ import { type RecipeVariants } from '@vanilla-extract/recipes';
 
 import * as styles from './index.css';
 
-import useEffectSoundStore from '@/states/effect';
+import { useEffectSound } from '@/features/sound';
 
 type Props = {
   label: string;
@@ -15,7 +15,7 @@ const SettingNavigationButton = ({
   position,
   usage = 'modal',
 }: Props) => {
-  const { playEffectSound } = useEffectSoundStore();
+  const { playEffectSound } = useEffectSound();
 
   const handleClick = () => {
     playEffectSound();

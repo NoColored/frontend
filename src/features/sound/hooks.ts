@@ -1,11 +1,9 @@
+import { useSetAtom, useStore } from 'jotai';
 import { useState } from 'react';
 
+import { SETTING_KEY } from './constants';
+import { sfxAudioAtom, sfxMutedAtom, updateSfxMutedAtom } from './store/effect';
 import { useBgmStore } from './store/music';
-
-const SETTING_KEY = {
-  bgm: 'backgroundSound',
-  sfx: 'effectSound',
-};
 
 export const useSoundSetting = () => {
   const isBgmMuted = localStorage.getItem(SETTING_KEY.bgm) === 'false';
@@ -30,10 +28,11 @@ export const useSoundToggle = () => {
   const [setting, setSetting] = useState(!isBgmMuted);
   const isBgmPlaying = useBgmStore((state) => state.isPlaying);
   const bgm = useBgmStore((state) => state.audio);
+  const setSfxMuted = useSetAtom(updateSfxMutedAtom);
 
   const toggleSound = () => {
     localStorage.setItem(SETTING_KEY.bgm, (!setting).toString());
-    localStorage.setItem(SETTING_KEY.sfx, (!setting).toString());
+    setSfxMuted(setting);
     setSetting((isSettingOn) => {
       if (isSettingOn) {
         // turn off sound
@@ -52,4 +51,18 @@ export const useSoundToggle = () => {
   };
 
   return { backgroundSound: setting, toggleSound };
+};
+
+export const useEffectSound = () => {
+  const store = useStore();
+
+  const playEffectSound = () => {
+    const isMuted = store.get(sfxMutedAtom);
+    if (!isMuted) {
+      const audio = store.get(sfxAudioAtom);
+      audio.play().catch((error) => console.error('SFX 오류', error));
+    }
+  };
+
+  return { playEffectSound };
 };
