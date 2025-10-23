@@ -5,12 +5,14 @@ import BasicContentFrame from '@/components/frame';
 
 import { ROUTE } from '@/constants/routes';
 import { config, scenesConfig } from '@/features/game';
+import { useUserStale } from '@/features/user';
 import { useWebSocketStore } from '@/features/websocket';
 
 const Game = () => {
   const navigate = useNavigate();
   const [isActive, setIsActive] = useState(true);
   const { webSocket } = useWebSocketStore.getState();
+  const { setUserStale } = useUserStale();
 
   const inGameDisconnect = () => {
     navigate(`${ROUTE.error}/400`, { replace: true });
@@ -25,6 +27,7 @@ const Game = () => {
     return () => {
       webSocket.inGameUnconnected(() => {});
       game.destroy(true);
+      setUserStale();
     };
   }, []);
 

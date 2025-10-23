@@ -1,10 +1,10 @@
 import { useQuery, type UseQueryOptions } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
-import { useAtomValue, useSetAtom } from 'jotai';
+import { useAtomValue, useSetAtom, useStore } from 'jotai';
 import { useNavigate } from 'react-router-dom';
 
 import { getUser, loginAsGuest, loginAsMember } from './api';
-import { userCode } from './store';
+import { updateUserCodeAtom, userCodeAtom, userStaleAtom } from './store';
 
 import { ROUTE } from '@/constants/routes';
 import { queryClient } from '@/features/api';
@@ -19,7 +19,9 @@ const refetchUser = () =>
 export const useUserInfo = (
   options?: Omit<UseQueryOptions<User>, 'queryKey' | 'queryFn'>,
 ) => {
-  const setUserCode = useSetAtom(userCode);
+  const setUserCode = useSetAtom(updateUserCodeAtom);
+  const isStale = useStore().get(userStaleAtom);
+
   const { data } = useQuery({
     queryKey,
     queryFn: async () => {
@@ -28,7 +30,7 @@ export const useUserInfo = (
       return user;
     },
     throwOnError: true,
-    refetchOnMount: false,
+    refetchOnMount: isStale,
     ...options,
   });
 
@@ -47,7 +49,7 @@ export const useUserStatus = () => {
   };
 };
 
-export const useUserCode = () => useAtomValue(userCode);
+export const useUserCode = () => useAtomValue(userCodeAtom);
 
 export const useLogout = () => {
   const navigate = useNavigate();
@@ -102,4 +104,12 @@ export const useGuestLogin = () => {
   };
 
   return { guestLogin: login };
+};
+
+export const useUserStale = () => {
+  const setIsStale = useSetAtom(userStaleAtom);
+
+  return {
+    setUserStale: () => setIsStale(true),
+  };
 };
