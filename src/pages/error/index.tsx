@@ -4,7 +4,6 @@ import * as constants from './constants';
 import * as styles from './index.css';
 
 import ColoredButton from '@/components/button/ColoredButton';
-import BasicContentFrame from '@/components/frame/with-buttons';
 
 import type { errorCode } from '@/pages/error/type';
 
@@ -23,8 +22,7 @@ const Error = () => {
   };
 
   return (
-    <BasicContentFrame rightButtonsDisabled>
-      <div className={styles.errorWrapper}>
+    <div className={styles.errorWrapper}>
         <pre className={styles.errorMessage}>
           {constants.ERROR_MESSAGE[code]}
         </pre>
@@ -35,7 +33,6 @@ const Error = () => {
           onClick={goBack}
         />
       </div>
-    </BasicContentFrame>
   );
 };
 

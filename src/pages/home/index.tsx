@@ -4,9 +4,7 @@ import * as styles from './index.css';
 import SignupBanner from './SignupBanner';
 
 import ColoredIconButton from '@/components/button/ColoredIconButton';
-import BasicContentFrame from '@/components/frame/with-buttons';
 
-import Error from '@/pages/error';
 import UserDashboard from '@/pages/home/UserDashboard';
 
 import { ROUTE } from '@/constants/routes';
@@ -28,11 +26,11 @@ const Home = () => {
   };
 
   if (!user) {
-    return <Error />;
+    return null;
   }
 
   return (
-    <BasicContentFrame>
+    <>
       <div className={styles.fullWrapper}>
         <div className={styles.TopContentsWrapper}>
           <UserDashboard
@@ -82,7 +80,7 @@ const Home = () => {
         </div>
       </div>
       {user.guest && <SignupBanner />}
-    </BasicContentFrame>
+    </>
   );
 };
 

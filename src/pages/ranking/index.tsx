@@ -6,7 +6,6 @@ import * as styles from './index.css';
 import type { User } from '@/types/auth';
 import type { RankPlayer } from '@/types/rank';
 
-import BasicContentFrame from '@/components/frame/with-buttons';
 import RankingItemBox from '@/components/ranking';
 
 const Ranking = () => {
@@ -16,8 +15,7 @@ const Ranking = () => {
   };
 
   return (
-    <BasicContentFrame leftButton={{ label: '뒤로' }}>
-      <div className={styles.rankingFullWrapper}>
+    <div className={styles.rankingFullWrapper}>
         <div className={styles.rankingTitleWrapper}>
           <div className={styles.rankingTitleText}>
             {constants.RANKING_TITLE}
@@ -37,7 +35,6 @@ const Ranking = () => {
           </div>
         )}
       </div>
-    </BasicContentFrame>
   );
 };
 

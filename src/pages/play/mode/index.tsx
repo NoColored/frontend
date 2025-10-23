@@ -7,7 +7,6 @@ import * as styles from './index.css';
 import { User } from '@/types/auth';
 
 import ColoredIconButton from '@/components/button/ColoredIconButton';
-import BasicContentFrame from '@/components/frame/with-buttons';
 import RankingItemBox from '@/components/ranking';
 
 import useModal from '@/hooks/useModal';
@@ -37,7 +36,7 @@ const Mode = () => {
   };
 
   return (
-    <BasicContentFrame leftButton={{ label: '뒤로' }}>
+    <>
       <div className={styles.wrapper}>
         <ColoredIconButton
           icon={constants.FRIENDLY.icon}
@@ -66,7 +65,7 @@ const Mode = () => {
           isOpen={isModalOpen}
         />
       </Modal>
-    </BasicContentFrame>
+    </>
   );
 };
 

@@ -1,5 +1,5 @@
-import { ReactNode } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { type ReactNode } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import AudioButton from './audio-button';
 import * as styles from './index.css';
@@ -7,28 +7,46 @@ import MenuButton from './menu-button';
 
 import SettingNavigationButton from '@/components/button/SettingNavigationButton/index';
 
-interface Props {
-  children: ReactNode;
-  leftButton?: {
-    label: string;
-    navigateTo?: string;
-  };
-  rightButtonsDisabled?: boolean;
-  menuButtonDisabled?: boolean;
-}
+import { ROUTE } from '@/constants/routes';
 
-const BasicContentFrame = ({
-  children,
-  leftButton,
-  rightButtonsDisabled,
-  menuButtonDisabled,
-}: Props) => {
+const ALLOWED_PATHS = new Set([
+  ROUTE.collection,
+  ROUTE.ranking,
+  ROUTE.play,
+  ROUTE.finder,
+  ROUTE.setting,
+]);
+
+const BackButton = ({ pathname }: { pathname: string }) => {
   const navigate = useNavigate();
 
-  const handleNavigate = () =>
-    leftButton?.navigateTo
-      ? navigate(leftButton.navigateTo, { replace: true })
-      : navigate(-1);
+  const allowed = ALLOWED_PATHS.has(pathname);
+
+  if (!allowed) {
+    return null;
+  }
+
+  return (
+    <SettingNavigationButton
+      usage='frame'
+      label='< 뒤로'
+      onClick={() => navigate(-1)}
+      position='leftTop'
+    />
+  );
+};
+
+const DISABLED = {
+  rightButtons: new Set([ROUTE.error, ROUTE.result]),
+  menuButton: new Set([ROUTE.tutorial]),
+};
+
+const BasicContentFrame = ({ children }: { children: ReactNode }) => {
+  const { pathname } = useLocation();
+
+  const rightButtonsDisabled = DISABLED.rightButtons.has(pathname);
+
+  const menuButtonDisabled = DISABLED.menuButton.has(pathname);
 
   return (
     <div className={styles.frame}>
@@ -39,16 +57,7 @@ const BasicContentFrame = ({
         </div>
       )}
       <main className={styles.main}>
-        {leftButton && (
-          <div className={styles.navigation}>
-            <SettingNavigationButton
-              label={leftButton.label}
-              onClick={handleNavigate}
-              position='leftTop'
-            />
-          </div>
-        )}
-
+        <BackButton pathname={pathname} />
         {children}
       </main>
     </div>

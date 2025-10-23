@@ -6,9 +6,8 @@ import * as styles from './index.css';
 
 import type { Lobby } from '@/types/play';
 
+import SettingNavigationButton from '@/components/button/SettingNavigationButton';
 import Chip from '@/components/chip';
-import BasicContentFrame from '@/components/frame/with-buttons';
-
 
 import { MAPS } from '@/pages/play/finder/constants';
 import MapInfo from '@/pages/play/lobby/MapInfo';
@@ -61,12 +60,13 @@ const Lobby = () => {
   }, []);
 
   return (
-    <BasicContentFrame
-      leftButton={{
-        label: '나가기',
-        navigateTo: ROUTE.finder,
-      }}
-    >
+    <>
+      <SettingNavigationButton
+        usage='frame'
+        label='< 나가기'
+        onClick={() => navigate(ROUTE.finder, { replace: true })}
+        position='leftTop'
+      />
       <div className={styles.lobby}>
         <div className={styles.settings}>
           {isMaster && <SettingButton lobby={lobbyInfo} />}
@@ -81,7 +81,7 @@ const Lobby = () => {
           <Players players={lobbyInfo.players} />
         </div>
       </div>
-    </BasicContentFrame>
+    </>
   );
 };
 

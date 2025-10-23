@@ -1,5 +1,3 @@
-import { useLoaderData } from 'react-router-dom';
-
 import { updateLabel, updateSkin } from '../api';
 import {
   useSelectedCollection,
@@ -11,7 +9,6 @@ import CollectionMenu from './menu';
 import * as styles from './page.css';
 
 import SettingTextButton from '@/components/button/SettingTextButton';
-import BasicContentFrame from '@/components/frame/with-buttons';
 
 import { queryClient } from '@/features/api';
 import { useUserInfo } from '@/features/user';
@@ -28,12 +25,20 @@ const SelectedLabel = () => {
   return <span className={styles.label}>{`< ${label} >`}</span>;
 };
 
-const SaveButton = () => {
-  const { user, refetchUser } = useUserInfo();
+const SaveButton = ({
+  equipped,
+  onSave,
+}: {
+  equipped: {
+    skin: string;
+    label: string;
+  };
+  onSave: () => Promise<void>;
+}) => {
   const { skin, label } = useSelectedCollection();
-  const isSkinChanged = user && user.skin !== skin.url;
-  const isLabelChanged = user && user.label !== label.name;
-  const isDisabled = !user || (!isSkinChanged && !isLabelChanged);
+  const isSkinChanged = equipped.skin !== skin.url;
+  const isLabelChanged = equipped.label !== label.name;
+  const isDisabled = !isSkinChanged && !isLabelChanged;
 
   const onClick = async () => {
     const promises = [];
@@ -51,7 +56,7 @@ const SaveButton = () => {
         queryClient.invalidateQueries({
           queryKey: ['collection'],
         }),
-        refetchUser(),
+        onSave(),
       ]);
     }
   };
@@ -69,22 +74,24 @@ const SaveButton = () => {
 };
 
 const CollectionPage = () => {
-  const user = useLoaderData() as User;
+  const { user, refetchUser } = useUserInfo();
+
+  if (!user) {
+    return null;
+  }
 
   return (
     <CollectionProvider equippedSkinUrl={user.skin} equippedLabel={user.label}>
-      <BasicContentFrame leftButton={{ label: '뒤로' }}>
-        <div className={styles.gridBox}>
-          <div className={styles.characterWrapper}>
-            <SelectedLabel />
-            <SelectedSkin />
-            <div className={styles.submitButtonWrapper}>
-              <SaveButton />
-            </div>
+      <div className={styles.gridBox}>
+        <div className={styles.characterWrapper}>
+          <SelectedLabel />
+          <SelectedSkin />
+          <div className={styles.submitButtonWrapper}>
+            <SaveButton onSave={refetchUser} equipped={user} />
           </div>
-          <CollectionMenu />
         </div>
-      </BasicContentFrame>
+        <CollectionMenu />
+      </div>
     </CollectionProvider>
   );
 };

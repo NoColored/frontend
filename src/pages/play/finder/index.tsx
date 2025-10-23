@@ -8,7 +8,6 @@ import type { RoomListItem } from '@/types/play';
 
 import ColoredButton from '@/components/button/ColoredButton';
 import SettingTextButton from '@/components/button/SettingTextButton';
-import BasicContentFrame from '@/components/frame/with-buttons';
 
 import LobbyItem from '@/pages/play/finder/LobbyItem';
 import CreateLobby from '@/pages/play/finder/Modal/CreateLobby';
@@ -49,8 +48,7 @@ const Finder = () => {
   const currentItems = roomList.slice(offset, offset + itemPerPage);
 
   return (
-    <BasicContentFrame leftButton={{ label: '뒤로' }}>
-      <div className={styles.contentWrapper}>
+    <div className={styles.contentWrapper}>
         <div className={styles.topButtonsWrapper}>
           <span className={styles.rightButtonsWrapper}>
             <SearchLobby />
@@ -92,7 +90,6 @@ const Finder = () => {
           </SettingTextButton>
         </div>
       </div>
-    </BasicContentFrame>
   );
 };
 export default Finder;

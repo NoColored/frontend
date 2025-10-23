@@ -1,5 +1,7 @@
 import { createBrowserRouter, Navigate, Outlet } from 'react-router-dom';
 
+import BasicContentFrame from '@/components/frame/with-buttons';
+
 import Collection from '@/pages/collection';
 import Error from '@/pages/error';
 import Home from '@/pages/home';
@@ -39,72 +41,81 @@ const router = createBrowserRouter([
     ],
   },
   {
-    element: <Outlet />,
-    errorElement: <Navigate to={ROUTE.main} replace />,
-    loader: checkToken,
+    element: (
+      <BasicContentFrame>
+        <Outlet />
+      </BasicContentFrame>
+    ),
     children: [
       {
-        path: `${ROUTE.tutorial}`,
-        element: <Tutorial />,
-      },
-      {
-        path: ROUTE.home,
-        element: <Home />,
-      },
-      {
-        path: `${ROUTE.play}`,
-        errorElement: <Navigate to={`${ROUTE.error}/401`} replace />,
+        element: <Outlet />,
+        errorElement: <Navigate to={ROUTE.main} replace />,
+        loader: checkToken,
         children: [
           {
-            index: true,
-            element: <Mode />,
+            path: ROUTE.tutorial,
+            element: <Tutorial />,
+          },
+          {
+            path: ROUTE.home,
+            element: <Home />,
+          },
+          {
+            path: ROUTE.play,
+            errorElement: <Navigate to={`${ROUTE.error}/401`} replace />,
+            children: [
+              {
+                index: true,
+                element: <Mode />,
+                loader: getUser,
+              },
+              {
+                path: `${ROUTE.lobby}/:roomId`,
+                element: <Lobby />,
+                loader: ({ params }) => getLobbyInfo(params.roomId),
+              },
+              {
+                path: ROUTE.finder,
+                element: <Finder />,
+                loader: () => getRoomList(1),
+              },
+            ],
+          },
+          {
+            path: ROUTE.ranking,
+            element: <Ranking />,
+            loader: getRank,
+          },
+          {
+            path: ROUTE.result,
+            element: <Result />,
+            errorElement: <Navigate to={ROUTE.home} />,
+            loader: getGameResult,
+          },
+          {
+            path: ROUTE.setting,
+            element: <Settings />,
+          },
+          {
+            path: ROUTE.collection,
+            element: <Collection />,
             loader: getUser,
-          },
-          {
-            path: `${ROUTE.lobby}/:roomId`,
-            element: <Lobby />,
-            loader: ({ params }) => getLobbyInfo(params.roomId),
-          },
-          {
-            path: `${ROUTE.finder}`,
-            element: <Finder />,
-            loader: () => getRoomList(1),
-          },
-          {
-            path: `${ROUTE.game}`,
-            element: <Game />,
           },
         ],
       },
       {
-        path: `${ROUTE.ranking}`,
-        element: <Ranking />,
-        loader: getRank,
+        path: `${ROUTE.error}/:code`,
+        element: <Error />,
       },
       {
-        path: `${ROUTE.result}`,
-        element: <Result />,
-        errorElement: <Navigate to={ROUTE.home} />,
-        loader: getGameResult,
-      },
-      {
-        path: `${ROUTE.setting}`,
-        element: <Settings />,
-      },
-      {
-        path: `${ROUTE.collection}`,
-        element: <Collection />,
-        loader: getUser,
+        path: '/*',
+        element: <Navigate to={`${ROUTE.error}/404`} replace />,
       },
     ],
   },
   {
-    path: `${ROUTE.error}/:code`,
-    element: <Error />,
-  },
-  {
-    path: '/*',
-    element: <Navigate to={`${ROUTE.error}/404`} replace />,
+    path: ROUTE.game,
+    element: <Game />,
   },
 ]);
 
