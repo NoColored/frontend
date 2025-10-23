@@ -33,7 +33,7 @@ const RoundCornerImageBox = ({
         backgroundColor,
       })}
     >
-      <img className={styles.image} src={imgSrc} alt={alt} />
+      {imgSrc && <img className={styles.image} src={imgSrc} alt={alt} />}
       {children && <div className={styles.contents}>{children}</div>}
     </div>
   );
