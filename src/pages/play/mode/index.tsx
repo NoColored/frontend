@@ -1,10 +1,8 @@
 import { useState } from 'react';
-import { useLoaderData, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import * as constants from './constants';
 import * as styles from './index.css';
-
-import { User } from '@/types/auth';
 
 import ColoredIconButton from '@/components/button/ColoredIconButton';
 import RankingItemBox from '@/components/ranking';
@@ -16,6 +14,7 @@ import Matching from '@/pages/play/mode/Matching';
 import { getMatching } from '@/services/matching';
 
 import { ROUTE } from '@/constants/routes';
+import { useUserInfo } from '@/features/user';
 
 const Mode = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -24,7 +23,7 @@ const Mode = () => {
     onClose: () => setIsModalOpen(false),
   });
   const navigate = useNavigate();
-  const user = useLoaderData() as User;
+  const { user } = useUserInfo();
 
   const startMatching = async () => {
     const matchingSuccess = await getMatching();
@@ -34,6 +33,10 @@ const Mode = () => {
       navigate(`${ROUTE.error}/500`);
     }
   };
+
+  if (!user) {
+    return null;
+  }
 
   return (
     <>

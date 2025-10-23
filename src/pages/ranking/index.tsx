@@ -3,38 +3,41 @@ import { useLoaderData } from 'react-router-dom';
 import * as constants from './constants';
 import * as styles from './index.css';
 
-import type { User } from '@/types/auth';
 import type { RankPlayer } from '@/types/rank';
 
 import RankingItemBox from '@/components/ranking';
 
+import { useUserInfo } from '@/features/user';
+
 const Ranking = () => {
-  const { rankList, myRank } = useLoaderData() as {
+  const { rankList } = useLoaderData() as {
     rankList: RankPlayer[];
-    myRank: User;
   };
+  const { user: myRank } = useUserInfo();
+
+  if (!myRank) {
+    return null;
+  }
 
   return (
     <div className={styles.rankingFullWrapper}>
-        <div className={styles.rankingTitleWrapper}>
-          <div className={styles.rankingTitleText}>
-            {constants.RANKING_TITLE}
-          </div>
-          {myRank.guest && (
-            <div className={styles.guestText}>{constants.GUEST_TEXT}</div>
-          )}
-        </div>
-        <div className={styles.rankingWrapper}>
-          {rankList.map((item) => (
-            <RankingItemBox key={item.rank} player={item} />
-          ))}
-        </div>
-        {myRank && (
-          <div className={styles.myRankingWrapper}>
-            <RankingItemBox player={myRank} guest={myRank.guest} myRank />
-          </div>
+      <div className={styles.rankingTitleWrapper}>
+        <div className={styles.rankingTitleText}>{constants.RANKING_TITLE}</div>
+        {myRank.guest && (
+          <div className={styles.guestText}>{constants.GUEST_TEXT}</div>
         )}
       </div>
+      <div className={styles.rankingWrapper}>
+        {rankList.map((item) => (
+          <RankingItemBox key={item.rank} player={item} />
+        ))}
+      </div>
+      {myRank && (
+        <div className={styles.myRankingWrapper}>
+          <RankingItemBox player={myRank} guest={myRank.guest} myRank />
+        </div>
+      )}
+    </div>
   );
 };
 

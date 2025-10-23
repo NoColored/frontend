@@ -1,13 +1,16 @@
-type User = {
+type Profile = {
+  rank: number;
+  nickname: string;
+  skin: string;
+  label: string;
+  rating: number;
+  tier: tierRange;
+};
+
+type User = Profile & {
   exp: number;
   expRequire: number;
   guest: boolean;
   level: number;
-  nickname: string;
-  rating: number;
-  skin: string;
-  tier: tierRange;
-  label: string;
-  rank: number;
   userCode: string;
 };

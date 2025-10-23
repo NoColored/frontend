@@ -5,11 +5,7 @@ import {
   NicknameInfo,
   PasswordInfo,
   SignUpInfo,
-  User,
 } from '@/types/auth';
-
-
-import { useUserStateStore } from '@/states/user';
 
 import { ROUTE } from '@/constants/routes';
 import { api } from '@/features/api';
@@ -25,35 +21,27 @@ export const getGuestLogin = async () => {
 };
 
 export const postMemberLogin = async (logInInfo: LogInInfo) => {
-  return await api
-    .post<string, LogInInfo>(false, `/user/login`, logInInfo)
-    .then((response) => {
-      // console.log(response.data);
-      if (response.status === 200) {
-        localStorage.setItem('token', response.data);
-        return true;
-      }
-      if (response.status === 401) {
-        redirect(`${ROUTE.error}/${401}`);
+  return (
+    api
+      .post<string, LogInInfo>(false, `/user/login`, logInInfo)
+      .then((response) => {
+        // console.log(response.data);
+        if (response.status === 200) {
+          localStorage.setItem('token', response.data);
+          return true;
+        }
+        if (response.status === 401) {
+          redirect(`${ROUTE.error}/${401}`);
+          return false;
+        }
+      })
+      // eslint-disable-next-line
+      .catch((e) => {
+        redirect(`${ROUTE.error}/${500}`);
+        console.log(e);
         return false;
-      }
-    })
-    // eslint-disable-next-line
-    .catch((e) => {
-      redirect(`${ROUTE.error}/${500}`);
-      console.log(e);
-      return false;
-    });
-};
-
-export const getUser = async () => {
-  return api.get<User>(true, `/user`).then((response) => {
-    const user = response.data;
-    const { setLogin, setUserCode } = useUserStateStore.getState();
-    setLogin(user.guest);
-    setUserCode(user.userCode);
-    return user;
-  });
+      })
+  );
 };
 
 export const getIdCheck = async (id: string) => {

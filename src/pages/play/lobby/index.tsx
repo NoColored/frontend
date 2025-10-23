@@ -16,9 +16,8 @@ import SettingButton from '@/pages/play/lobby/SettingButton';
 
 import { getOut } from '@/services/lobby';
 
-import { useUserStateStore } from '@/states/user';
-
 import { ROUTE } from '@/constants/routes';
+import { useUserCode } from '@/features/user';
 import { useWebSocket } from '@/features/websocket';
 
 const getLobbyInfo = (lobby: Lobby) => {
@@ -33,7 +32,7 @@ const getLobbyInfo = (lobby: Lobby) => {
 };
 
 const Lobby = () => {
-  const myUserCode = useUserStateStore((state) => state.userCode);
+  const myUserCode = useUserCode();
   const navigate = useNavigate();
   const lobbyData = useLoaderData() as Lobby;
   const [lobbyInfo, setLobbyInfo] = useState(getLobbyInfo(lobbyData));
@@ -78,7 +77,7 @@ const Lobby = () => {
         </div>
         <div className={styles.lobbyInfo}>
           <div className={styles.lobbyTitle}>{lobbyInfo.roomTitle}</div>
-          <Players players={lobbyInfo.players} />
+          <Players players={lobbyInfo.players} myCode={myUserCode} />
         </div>
       </div>
     </>

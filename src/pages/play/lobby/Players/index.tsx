@@ -10,17 +10,15 @@ import Character from '@/pages/play/lobby/Players/Character';
 import PlayerInfo from '@/pages/play/lobby/Players/Info';
 import ReadyButton from '@/pages/play/lobby/Players/ReadyButton';
 
-import { useUserStateStore } from '@/states/user';
-
 import { ROUTE } from '@/constants/routes';
 
 interface Props {
   players: Player[];
+  myCode: User['userCode'];
 }
 
-const Players = ({ players }: Props) => {
+const Players = ({ players, myCode }: Props) => {
   const navigate = useNavigate();
-  const myCode = useUserStateStore((state) => state.userCode);
   const myInfo = players.find((player) => player.userCode === myCode);
 
   if (!myInfo) {

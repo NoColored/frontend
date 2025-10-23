@@ -17,7 +17,7 @@ import Result from '@/pages/result';
 import Settings from '@/pages/settings';
 import Tutorial from '@/pages/tutorial';
 
-import { checkToken, getUser } from '@/services/auth';
+import { checkToken } from '@/services/auth';
 import { getRoomList } from '@/services/finder';
 import { getLobbyInfo } from '@/services/lobby';
 import { getRank } from '@/services/rank';
@@ -67,7 +67,6 @@ const router = createBrowserRouter([
               {
                 index: true,
                 element: <Mode />,
-                loader: getUser,
               },
               {
                 path: `${ROUTE.lobby}/:roomId`,
@@ -99,7 +98,6 @@ const router = createBrowserRouter([
           {
             path: ROUTE.collection,
             element: <Collection />,
-            loader: getUser,
           },
         ],
       },

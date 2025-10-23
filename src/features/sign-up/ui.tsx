@@ -15,14 +15,14 @@ import { setFullScreen } from '@/services/landing';
 
 import { ERROR_MESSAGE } from '@/constants/error-message';
 import { ROUTE } from '@/constants/routes';
-import { USER_STATUS, useUserStore } from '@/features/user';
+import { useUserStatus } from '@/features/user';
 
 interface Props {
   closeModal: () => void;
 }
 
 const SignUp = ({ closeModal }: Props) => {
-  const { loginStatus } = useUserStore.getState();
+  const { isGuest, notLoggedIn } = useUserStatus();
   const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = useState(ERROR_MESSAGE.welcome);
   const [signUpInfo, setSignUpInfo] = useState<SignUpInfo>({
@@ -53,7 +53,7 @@ const SignUp = ({ closeModal }: Props) => {
       return;
     }
 
-    if (loginStatus === USER_STATUS.guest) {
+    if (isGuest) {
       await postGuestSignUp(signUpInfo).then((isSuccess) => {
         if (isSuccess) {
           closeModal();
@@ -63,7 +63,7 @@ const SignUp = ({ closeModal }: Props) => {
       return;
     }
 
-    if (loginStatus === USER_STATUS.notLoggedIn) {
+    if (notLoggedIn) {
       await postSignUp(signUpInfo).then((isSuccess) => {
         if (isSuccess) {
           closeModal();

@@ -15,15 +15,14 @@ import { RewardsModal } from '@/pages/result/RewardsModal/index';
 
 import { getOut } from '@/services/lobby';
 
-import { useUserStateStore } from '@/states/user';
-
 import { ROUTE } from '@/constants/routes';
+import { useUserCode } from '@/features/user';
 import { useWebSocketStore } from '@/features/websocket';
 
 const Result = () => {
   const navigate = useNavigate();
   const { roomUuid, players, reward } = useLoaderData() as GameResult;
-  const myCode = useUserStateStore.getState().userCode;
+  const myCode = useUserCode();
   const { Modal, openModal, closeModal } = useModal();
   const hasTier = !!reward.tier && reward.tier.upgrade;
   const noReward = !hasTier && reward.skins.length === 0;
