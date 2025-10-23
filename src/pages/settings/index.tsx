@@ -1,6 +1,9 @@
+import { Navigate } from 'react-router-dom';
+
 import * as styles from './index.css';
 import MemberSetting from './member-setting';
 
+import { ROUTE } from '@/constants/routes';
 import { useUserStatus } from '@/features/user';
 
 const Settings = () => {
@@ -15,7 +18,7 @@ const Settings = () => {
     );
   }
 
-  return null;
+  return <Navigate to={`${ROUTE.error}/404`} replace />;
 };
 
 export default Settings;
