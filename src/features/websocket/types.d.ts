@@ -34,3 +34,5 @@ type WebSocketMessage =
   | WebsocketMessageAuth
   | WebsocketMessageRankedMatch
   | WebsocketMessageFriendlyMatch;
+
+type GameSocket = import('./model/GameSocket').GameSocket;

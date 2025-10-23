@@ -33,8 +33,13 @@ export class GameSocket extends Socket {
     this.webSocket.send(buffer);
   }
 
-  inGameUnconnected(onCloseEvent: () => void) {
-    this.webSocket.onclose = onCloseEvent;
+  onDisconnect(callback: () => void) {
+    this.webSocket.onclose = callback;
+  }
+
+  cleanUp() {
+    this.webSocket.onmessage = () => {};
+    this.webSocket.onclose = () => {};
   }
 }
 

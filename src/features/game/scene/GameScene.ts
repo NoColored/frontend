@@ -23,12 +23,11 @@ import { characterInfo, IngameReady } from '@/types/ingame';
 
 import { getIngameReady } from '@/services/ingame';
 
-import { useWebSocketStore } from '@/features/websocket';
 import {
   characterInfoList,
   currentScore,
   effectList,
-  GameSocket,
+  type GameSocket,
   showItem,
   showRealSkin,
   timeLeft,
@@ -68,17 +67,12 @@ export default class GameScene extends Phaser.Scene {
 
   private setIsActive: (isActive: boolean) => void;
 
-  constructor(
-    setIsActive: (isActive: boolean) => void,
-    onDisconnect: () => void,
-  ) {
+  constructor(setIsActive: (isActive: boolean) => void, webSocket: GameSocket) {
     super({ key: 'GameScene' });
     this.setIsActive = setIsActive;
     // WebSocket
-    const { webSocket } = useWebSocketStore.getState();
     this.socket = webSocket;
     this.socket.useMessageQueue();
-    this.socket.inGameUnconnected(onDisconnect);
 
     // api 데이터 초기화
     this.gameData = null;
