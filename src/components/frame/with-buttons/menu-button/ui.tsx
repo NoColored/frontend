@@ -70,7 +70,7 @@ const MenuButton = () => {
       case MENU_ID.gameInfo:
         return <GameInfo onClose={closeModal} />;
       case MENU_ID.guest:
-        return <SignUp closeModal={closeModal} />;
+        return <SignUp closeModal={closeModal} isGuest />;
       default:
         return <Menu closeModal={closeModal} setMenuId={setMenuId} />;
     }

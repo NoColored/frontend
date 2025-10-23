@@ -40,7 +40,6 @@ export const useUserStatus = () => {
   const { user } = useUserInfo();
 
   return {
-    notLoggedIn: !user,
     isGuest: user && user.guest,
     isMember: user && !user.guest,
   };

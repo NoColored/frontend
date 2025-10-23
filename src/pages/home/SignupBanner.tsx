@@ -28,7 +28,7 @@ const SignupBanner = () => {
         onClick={openModal}
       />
       <Modal>
-        <SignUp closeModal={closeModal} />
+        <SignUp closeModal={closeModal} isGuest />
       </Modal>
     </div>
   );

@@ -15,14 +15,13 @@ import { setFullScreen } from '@/services/landing';
 
 import { ERROR_MESSAGE } from '@/constants/error-message';
 import { ROUTE } from '@/constants/routes';
-import { useUserStatus } from '@/features/user';
 
 interface Props {
   closeModal: () => void;
+  isGuest?: boolean;
 }
 
-const SignUp = ({ closeModal }: Props) => {
-  const { isGuest, notLoggedIn } = useUserStatus();
+const SignUp = ({ closeModal, isGuest }: Props) => {
   const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = useState(ERROR_MESSAGE.welcome);
   const [signUpInfo, setSignUpInfo] = useState<SignUpInfo>({
@@ -53,24 +52,16 @@ const SignUp = ({ closeModal }: Props) => {
       return;
     }
 
-    if (isGuest) {
-      await postGuestSignUp(signUpInfo).then((isSuccess) => {
-        if (isSuccess) {
-          closeModal();
-          navigate(ROUTE.home);
-        }
-      });
+    const signUp = isGuest ? postGuestSignUp : postSignUp;
+    const isSuccess = await signUp(signUpInfo);
+    if (!isSuccess) {
       return;
     }
-
-    if (notLoggedIn) {
-      await postSignUp(signUpInfo).then((isSuccess) => {
-        if (isSuccess) {
-          closeModal();
-          navigate(ROUTE.tutorial);
-          setFullScreen();
-        }
-      });
+    closeModal();
+    const to = isGuest ? ROUTE.home : ROUTE.tutorial;
+    navigate(to);
+    if (!isGuest) {
+      setFullScreen();
     }
   };
 
