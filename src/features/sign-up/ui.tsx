@@ -9,11 +9,11 @@ import ColoredButton from '@/components/button/ColoredButton/index';
 import Input from '@/components/input';
 
 import { buttonWrapper } from '@/pages/landing/index.css';
-import * as constants from '@/pages/landing/logIn/constants';
 
 import { getIdCheck, postGuestSignUp, postSignUp } from '@/services/auth';
 import { setFullScreen } from '@/services/landing';
 
+import { ERROR_MESSAGE } from '@/constants/error-message';
 import { ROUTE } from '@/constants/routes';
 import { USER_STATUS, useUserStore } from '@/features/user';
 
@@ -24,9 +24,7 @@ interface Props {
 const SignUp = ({ closeModal }: Props) => {
   const { loginStatus } = useUserStore.getState();
   const navigate = useNavigate();
-  const [errorMessage, setErrorMessage] = useState(
-    constants.ERROR_MESSAGE.welcome,
-  );
+  const [errorMessage, setErrorMessage] = useState(ERROR_MESSAGE.welcome);
   const [signUpInfo, setSignUpInfo] = useState<SignUpInfo>({
     id: '',
     password: '',
@@ -46,7 +44,7 @@ const SignUp = ({ closeModal }: Props) => {
   const clickSignUp = async () => {
     const checkId = await getIdCheck(signUpInfo.id);
     if (checkId) {
-      setErrorMessage(constants.ERROR_MESSAGE.sameId);
+      setErrorMessage(ERROR_MESSAGE.sameId);
       return;
     }
     const errorInfo = checkSignUpInfo(signUpInfo);
@@ -112,8 +110,7 @@ const SignUp = ({ closeModal }: Props) => {
       />
       <div
         style={{
-          color:
-            errorMessage === constants.ERROR_MESSAGE.welcome ? 'blue' : 'red',
+          color: errorMessage === ERROR_MESSAGE.welcome ? 'blue' : 'red',
         }}
       >
         {errorMessage}

@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import * as styles from './index.css';
+
 import type { LogInInfo } from '@/types/auth';
 
-import ColoredButton from '@/components/button/ColoredButton/index';
+import ColoredButton from '@/components/button/ColoredButton';
 import Input from '@/components/input';
 
 import useModal from '@/hooks/useModal';
 
-import * as styles from '@/pages/landing/index.css';
-import LogInFail from '@/pages/landing/logIn/LogInFail';
+import LogInFail from '@/pages/logIn/LogInFail';
 
 import { postMemberLogin } from '@/services/auth';
 import { setFullScreen } from '@/services/landing';

@@ -6,10 +6,9 @@ import * as styles from './index.css';
 import ColoredButton from '@/components/button/ColoredButton';
 import Input from '@/components/input';
 
-import * as constants from '@/pages/landing/logIn/constants';
-
 import { patchNicknameChange } from '@/services/auth';
 
+import { ERROR_MESSAGE } from '@/constants/error-message';
 import { ROUTE } from '@/constants/routes';
 
 interface Props {
@@ -27,7 +26,7 @@ const NicknameChange = ({ onClose }: Props) => {
 
   const nicknameChange = async () => {
     if (nickname.length < 2 || nickname.length > 9) {
-      setErrorMessage(constants.ERROR_MESSAGE.inValidNickname);
+      setErrorMessage(ERROR_MESSAGE.inValidNickname);
       return;
     }
     const confirmNickname = await patchNicknameChange(nickname);

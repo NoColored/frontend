@@ -18,6 +18,7 @@ export const landingWrapper = style([
 ]);
 
 export const contentWrapper = style([flexOptions({ option: 'columnCenter' })]);
+
 export const buttonWrapper = style([
   flexOptions({ option: 'row' }),
   sprinkles({
@@ -51,24 +52,5 @@ export const logoImage = style([
         calc.multiply(vars.space[INPUT_STYLE.large.marginY], 4),
       )
       .toString(),
-  },
-]);
-
-export const logInFailMessageWrapper = style([
-  sprinkles({
-    marginY: '8x',
-  }),
-  {
-    textAlign: 'center',
-  },
-]);
-
-export const logInFailMessage = style([
-  sprinkles({
-    fontSize: '1.5x',
-    marginY: '2x',
-  }),
-  {
-    lineHeight: '32px',
   },
 ]);

@@ -7,7 +7,7 @@ import Error from '@/pages/error';
 import Home from '@/pages/home';
 import Landing from '@/pages/landing';
 import LandingLayout from '@/pages/landing/layout';
-import LogIn from '@/pages/landing/logIn';
+import LogIn from '@/pages/logIn';
 import Finder from '@/pages/play/finder';
 import Game from '@/pages/play/game';
 import Lobby from '@/pages/play/lobby';
