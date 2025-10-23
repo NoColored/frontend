@@ -2,16 +2,6 @@ import { NicknameInfo, PasswordInfo, SignUpInfo } from '@/types/auth';
 
 import { api } from '@/features/api';
 
-export const getGuestLogin = async () => {
-  return api
-    .get<string>(false, '/user/guest')
-    .then((response) => {
-      localStorage.setItem('token', response.data);
-      return true;
-    })
-    .catch(() => false);
-};
-
 export const getIdCheck = async (id: string) => {
   try {
     const response = await api.get<boolean>(false, `/user/dup/${id}`);

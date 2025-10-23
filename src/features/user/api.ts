@@ -8,15 +8,30 @@ export const getUser = async () => {
   });
 };
 
-export const loginMember = async (account: Account) => {
+const setToken = (token: string, status: number) => {
+  if (status === 200) {
+    localStorage.setItem('token', token);
+    return true;
+  }
+  return false;
+};
+
+export const loginAsMember = async (account: Account) => {
   const { data, status } = await client.post<string>(`/user/login`, account, {
     headers: {
       'X-Bypass-Authorization': true,
     },
   });
-  if (status === 200) {
-    localStorage.setItem('token', data);
-    return true;
-  }
-  return false;
+  return setToken(data, status);
+};
+
+export const loginAsGuest = async () => {
+  return client
+    .get<string>('/user/guest', {
+      headers: {
+        'X-Bypass-Authorization': true,
+      },
+    })
+    .then(({ data, status }) => setToken(data, status))
+    .catch(() => false);
 };

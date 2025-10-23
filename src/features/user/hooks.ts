@@ -3,7 +3,7 @@ import { AxiosError } from 'axios';
 import { useAtomValue, useSetAtom } from 'jotai';
 import { useNavigate } from 'react-router-dom';
 
-import { getUser, loginMember } from './api';
+import { getUser, loginAsGuest, loginAsMember } from './api';
 import { userCode } from './store';
 
 import { ROUTE } from '@/constants/routes';
@@ -67,7 +67,7 @@ export const useLogin = () => {
   const login = async (account: Account) => {
     queryClient.removeQueries({ queryKey });
 
-    return loginMember(account)
+    return loginAsMember(account)
       .then((isSuccess) => {
         if (isSuccess) {
           navigate(ROUTE.home, { replace: true });
@@ -85,4 +85,21 @@ export const useLogin = () => {
   };
 
   return { login };
+};
+
+export const useGuestLogin = () => {
+  const navigate = useNavigate();
+
+  const login = async () => {
+    queryClient.removeQueries({ queryKey });
+
+    const isSuccess = await loginAsGuest();
+    if (!isSuccess) {
+      return navigate(`${ROUTE.error}/500`);
+    }
+    // setFullScreen();
+    return navigate(ROUTE.tutorial);
+  };
+
+  return { guestLogin: login };
 };
