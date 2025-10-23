@@ -1,16 +1,20 @@
-import * as styles from './index.css';
+import { type RecipeVariants } from '@vanilla-extract/recipes';
 
-import type { positionType } from '@/components/button/types';
+import * as styles from './index.css';
 
 import useEffectSoundStore from '@/states/effect';
 
-interface Props {
+type Props = {
   label: string;
   onClick: () => void;
-  position: positionType;
-}
+} & RecipeVariants<typeof styles.button>;
 
-const SettingNavigationButton = ({ label, onClick, position }: Props) => {
+const SettingNavigationButton = ({
+  label,
+  onClick,
+  position,
+  usage = 'modal',
+}: Props) => {
   const { playEffectSound } = useEffectSoundStore();
 
   const handleClick = () => {
@@ -21,7 +25,7 @@ const SettingNavigationButton = ({ label, onClick, position }: Props) => {
   return (
     <button
       type='button'
-      className={styles.button({ position })}
+      className={styles.button({ position, usage })}
       onClick={handleClick}
     >
       {label}
