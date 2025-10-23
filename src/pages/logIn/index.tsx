@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 import * as styles from './index.css';
-
-import type { LogInInfo } from '@/types/auth';
 
 import ColoredButton from '@/components/button/ColoredButton';
 import Input from '@/components/input';
@@ -12,19 +9,16 @@ import useModal from '@/hooks/useModal';
 
 import LogInFail from '@/pages/logIn/LogInFail';
 
-import { postMemberLogin } from '@/services/auth';
-import { setFullScreen } from '@/services/landing';
-
-import { ROUTE } from '@/constants/routes';
 import SignUp from '@/features/sign-up';
+import { useLogin } from '@/features/user';
 
 const LogIn = () => {
   const [isClicked, setIsClicked] = useState(false);
-  const [logInInfo, setLogInInfo] = useState<LogInInfo>({
+  const [logInInfo, setLogInInfo] = useState<Account>({
     id: '',
     password: '',
   });
-  const navigate = useNavigate();
+  const { login } = useLogin();
 
   const { Modal, openModal, closeModal } = useModal();
 
@@ -37,15 +31,11 @@ const LogIn = () => {
   };
 
   const handleLogInClick = async () => {
-    return postMemberLogin(logInInfo).then((isLoginSuccess) => {
-      if (!isLoginSuccess) {
-        setIsClicked(false);
-        openModal();
-        return;
-      }
-      navigate(ROUTE.home);
-      setFullScreen();
-    });
+    const isLoginSuccess = await login(logInInfo);
+    if (!isLoginSuccess) {
+      setIsClicked(false);
+      openModal();
+    }
   };
 
   const handleSignUpClick = () => {

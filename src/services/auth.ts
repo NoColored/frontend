@@ -1,13 +1,5 @@
-import { redirect } from 'react-router-dom';
+import { NicknameInfo, PasswordInfo, SignUpInfo } from '@/types/auth';
 
-import {
-  LogInInfo,
-  NicknameInfo,
-  PasswordInfo,
-  SignUpInfo,
-} from '@/types/auth';
-
-import { ROUTE } from '@/constants/routes';
 import { api } from '@/features/api';
 
 export const getGuestLogin = async () => {
@@ -18,30 +10,6 @@ export const getGuestLogin = async () => {
       return true;
     })
     .catch(() => false);
-};
-
-export const postMemberLogin = async (logInInfo: LogInInfo) => {
-  return (
-    api
-      .post<string, LogInInfo>(false, `/user/login`, logInInfo)
-      .then((response) => {
-        // console.log(response.data);
-        if (response.status === 200) {
-          localStorage.setItem('token', response.data);
-          return true;
-        }
-        if (response.status === 401) {
-          redirect(`${ROUTE.error}/${401}`);
-          return false;
-        }
-      })
-      // eslint-disable-next-line
-      .catch((e) => {
-        redirect(`${ROUTE.error}/${500}`);
-        console.log(e);
-        return false;
-      })
-  );
 };
 
 export const getIdCheck = async (id: string) => {

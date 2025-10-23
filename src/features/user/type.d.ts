@@ -14,3 +14,8 @@ type User = Profile & {
   level: number;
   userCode: string;
 };
+
+type Account = {
+  id: string;
+  password: string;
+};

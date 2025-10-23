@@ -1,10 +1,5 @@
 export { User } from '@/features/user/type';
 
-export interface LogInInfo {
-  id: string;
-  password: string;
-}
-
 export interface SignUpInfo {
   id: string;
   password: string;

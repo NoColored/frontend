@@ -1,10 +1,12 @@
 import { useQuery, type UseQueryOptions } from '@tanstack/react-query';
+import { AxiosError } from 'axios';
 import { useAtomValue, useSetAtom } from 'jotai';
 import { useNavigate } from 'react-router-dom';
 
-import { getUser } from './api';
+import { getUser, loginMember } from './api';
 import { userCode } from './store';
 
+import { ROUTE } from '@/constants/routes';
 import { queryClient } from '@/features/api';
 
 const queryKey = ['user'];
@@ -57,4 +59,30 @@ export const useLogout = () => {
   };
 
   return { logout };
+};
+
+export const useLogin = () => {
+  const navigate = useNavigate();
+
+  const login = async (account: Account) => {
+    queryClient.removeQueries({ queryKey });
+
+    return loginMember(account)
+      .then((isSuccess) => {
+        if (isSuccess) {
+          navigate(ROUTE.home, { replace: true });
+          // setFullScreen();
+        }
+        return isSuccess;
+      })
+      .catch(({ response }: AxiosError) => {
+        console.debug('login error:', response);
+        if (!response || response.status >= 500) {
+          navigate(`${ROUTE.error}/500`);
+        }
+        return false;
+      });
+  };
+
+  return { login };
 };
