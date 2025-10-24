@@ -1,8 +1,8 @@
 import { updateLabel, updateSkin } from '../api';
 import {
   useSelectedCollection,
-  useSelectedLabel,
-  useSelectedSkin,
+  useSelectedLabelName,
+  useSelectedSkinUrl,
 } from '../hooks';
 import { CollectionProvider } from '../provider';
 import CollectionMenu from './menu';
@@ -14,13 +14,13 @@ import { queryClient } from '@/features/api';
 import { useUserInfo } from '@/features/user';
 
 const SelectedSkin = () => {
-  const skin = useSelectedSkin();
+  const skin = useSelectedSkinUrl();
 
   return <img src={skin} alt='selected-skin' className={styles.mySkin} />;
 };
 
 const SelectedLabel = () => {
-  const label = useSelectedLabel();
+  const label = useSelectedLabelName();
 
   return <span className={styles.label}>{`< ${label} >`}</span>;
 };

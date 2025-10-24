@@ -2,9 +2,9 @@ import { useAtomValue, useSetAtom } from 'jotai';
 
 import { label, labelName, skin, skinUrl } from './store';
 
-export const useSelectedSkin = () => useAtomValue(skinUrl);
+export const useSelectedSkinUrl = () => useAtomValue(skinUrl);
 
-export const useSelectedLabel = () => useAtomValue(labelName);
+export const useSelectedLabelName = () => useAtomValue(labelName);
 
 export const useSelectedCollection = () => {
   return {
