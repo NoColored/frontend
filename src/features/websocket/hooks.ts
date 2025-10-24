@@ -10,7 +10,7 @@ export const useWebSocket = <T extends WebSocketMessage>(
   onMessage: (message: T) => void,
 ) => {
   const navigate = useNavigate();
-  const client = useAtomValue(webSocketAtom);
+  const webSocket = useAtomValue(webSocketAtom);
 
   const handleMessage = (message: T) => {
     if (message.action === 'invalidToken') {
@@ -21,18 +21,18 @@ export const useWebSocket = <T extends WebSocketMessage>(
   };
 
   useEffect(() => {
-    if (!client.isConnected()) {
-      client.connect();
+    if (!webSocket.isConnected()) {
+      webSocket.connect();
     }
-    client.onMessage(handleMessage);
+    webSocket.onMessage(handleMessage);
 
-    client.onClose(() => {
-      client.connect();
-      client.onMessage(handleMessage);
+    webSocket.onClose(() => {
+      webSocket.connect();
+      webSocket.onMessage(handleMessage);
     });
 
     return () => {
-      client.cleanUp();
+      webSocket.cleanUp();
     };
   }, []);
 };
