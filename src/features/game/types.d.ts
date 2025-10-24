@@ -1,17 +1,17 @@
-export interface IngameReady {
+interface GameData {
   mapId: number;
   floorList: number[][];
   skins: string[];
 }
 
-export interface characterInfo {
+interface characterInfo {
   x: number;
   y: number;
   velX: number;
   velY: number;
 }
 
-export interface characterInfoIndex {
+interface characterInfoIndex {
   index: number;
   characterInfo: characterInfo;
 }

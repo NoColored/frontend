@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
 
+import { getGameReady } from '../api';
 import * as constants from '../constants';
 import { Background } from '../map/Background';
 import { Map } from '../map/Map';
@@ -19,10 +20,6 @@ import { EffectUtils } from './EffectUtils';
 import GameOver from './GameOver';
 import LoadingUtils from './LoadingUtils';
 
-import { characterInfo, IngameReady } from '@/types/ingame';
-
-import { getIngameReady } from '@/services/ingame';
-
 import {
   characterInfoList,
   currentScore,
@@ -37,7 +34,7 @@ import {
 export default class GameScene extends Phaser.Scene {
   private socket: GameSocket;
 
-  private gameData: IngameReady | null;
+  private gameData: GameData | null;
   private gameState: 'loading' | 'ready' | 'countDown' | 'playing' | 'end' =
     'loading';
 
@@ -98,7 +95,7 @@ export default class GameScene extends Phaser.Scene {
 
   // 게임 초기 데이터 콜 로직
   private setGameReady = async () => {
-    this.gameData = await getIngameReady();
+    this.gameData = await getGameReady();
 
     // 게임 데이터 없을 시 오류
     if (this.gameData === null) {

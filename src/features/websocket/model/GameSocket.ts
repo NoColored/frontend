@@ -1,7 +1,5 @@
 import { Socket } from './Socket';
 
-import { characterInfo, characterInfoIndex } from '@/types/ingame';
-
 export class GameSocket extends Socket {
   private messageQueue: ArrayBuffer[];
 
