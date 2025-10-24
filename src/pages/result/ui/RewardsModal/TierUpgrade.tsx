@@ -1,4 +1,4 @@
-import * as constants from '../constants';
+import * as constants from '../../constants';
 import * as styles from '../index.css';
 
 import ColoredButton from '@/components/button/ColoredButton';

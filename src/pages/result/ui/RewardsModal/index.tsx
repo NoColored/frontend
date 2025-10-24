@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
-import SkinReward from '@/pages/result/RewardsModal/SkinReward';
-import TierUpgrade from '@/pages/result/RewardsModal/TierUpgrade';
+import SkinReward from './SkinReward';
+import TierUpgrade from './TierUpgrade';
 
 interface Props {
   tier?: TierReward;

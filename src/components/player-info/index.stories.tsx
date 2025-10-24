@@ -4,7 +4,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import RankingComponent from '@/components/ranking';
 
-import ResultInfoBox from '@/pages/result/ResultInfoBox';
+import ResultInfoBox from '@/pages/result/ui/ResultInfoBox';
 
 const meta = {
   title: 'components/PlayerInfo',

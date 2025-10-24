@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useLoaderData, useNavigate } from 'react-router-dom';
 
-import * as constants from './constants';
+import * as constants from '../constants';
 import * as styles from './index.css';
 import ResultInfoBox from './ResultInfoBox';
 import { RewardsModal } from './RewardsModal';
