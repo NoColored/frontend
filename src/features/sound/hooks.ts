@@ -16,7 +16,7 @@ export const useBackgroundSound = () => {
 
 export const useSoundToggle = () => {
   const [isBgmSettingMuted, setBgmSettingMuted] = useAtom(bgmSettingMutedAtom);
-  const setSfxSettingMuted = useSetAtom(sfxSettingMutedAtom);
+  const [_, setSfxSettingMuted] = useAtom(sfxSettingMutedAtom);
   const setVolume = useSetAtom(updateBgmVolumeAtom);
 
   const toggleSound = () => {
