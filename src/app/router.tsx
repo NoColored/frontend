@@ -8,7 +8,7 @@ import Home from '@/pages/home';
 import Landing from '@/pages/landing';
 import LandingLayout from '@/pages/landing/layout';
 import LogIn from '@/pages/logIn';
-import Finder from '@/pages/play/finder';
+import Finder, { getRoomList } from '@/pages/play/finder';
 import Game from '@/pages/play/game';
 import Lobby from '@/pages/play/lobby';
 import Mode from '@/pages/play/mode';
@@ -18,7 +18,6 @@ import Settings from '@/pages/settings';
 import Tutorial from '@/pages/tutorial';
 
 import { checkToken } from '@/services/auth';
-import { getRoomList } from '@/services/finder';
 import { getLobbyInfo } from '@/services/lobby';
 import { getRank } from '@/services/rank';
 import { getGameResult } from '@/services/result';

@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import { postEnterRoom } from '../api';
+import * as styles from './index.css';
+import MessageModalContent from './MessageModalContent';
+
 import type { RequestEnterRoom } from '@/types/play';
 
 import ColoredButton from '@/components/button/ColoredButton';
 import Input from '@/components/input';
 
-import * as styles from '@/pages/play/finder/Modal/index.css';
-import MessageModalContent from '@/pages/play/finder/Modal/MessageModalContent';
-
-import { postEnterRoom } from '@/services/finder';
 
 import { ROUTE } from '@/constants/routes';
 

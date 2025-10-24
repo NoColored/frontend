@@ -1,14 +1,12 @@
+import { postCreateRoom } from '../../api';
+import { MAPS } from '../../constants';
+import ModalContent from './ModalContent';
+
 import ColoredButton from '@/components/button/ColoredButton';
-
-import useModal from '@/hooks/useModal';
-
-import { MAPS } from '@/pages/play/finder/constants';
-import ModalContent from '@/pages/play/finder/Modal/CreateLobby/ModalContent';
-
-import { postCreateRoom } from '@/services/finder';
+import Modal, { useModal } from '@/components/modal';
 
 const CreateLobby = () => {
-  const { Modal, openModal, closeModal } = useModal();
+  const { modalRef, openModal, closeModal } = useModal();
 
   return (
     <>
@@ -18,7 +16,7 @@ const CreateLobby = () => {
         color='red'
         onClick={openModal}
       />
-      <Modal>
+      <Modal ref={modalRef}>
         <ModalContent
           roomTitle=''
           roomPassword=''
