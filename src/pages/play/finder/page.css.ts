@@ -1,6 +1,5 @@
 import { style } from '@vanilla-extract/css';
-
-import * as constants from './constants';
+import { calc } from '@vanilla-extract/css-utils';
 
 import { flexOptions } from '@/styles/common.css';
 import { sprinkles } from '@/styles/sprinkles.css';
@@ -30,7 +29,10 @@ export const partyListWrapper = style([
     display: 'grid',
     gridTemplateRows: '33% 33% 33%',
     gridTemplateColumns: '50% 50%',
-    height: constants.FINDER_WRAPPER_HEIGHT,
+    height: calc.subtract(
+      calc.subtract(calc.subtract('100%', '48px'), '16px'),
+      '32px',
+    ),
     paddingLeft: '3%',
     paddingRight: '3%',
   },
