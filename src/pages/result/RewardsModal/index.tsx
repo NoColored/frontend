@@ -1,7 +1,5 @@
 import { useState } from 'react';
 
-import type { TierReward } from '@/types/result';
-
 import SkinReward from '@/pages/result/RewardsModal/SkinReward';
 import TierUpgrade from '@/pages/result/RewardsModal/TierUpgrade';
 

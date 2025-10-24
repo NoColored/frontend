@@ -70,13 +70,16 @@ export const GameResult: Story = {
   render: (args) => {
     return (
       <ResultInfoBox
-        rank='2nd'
-        imgSrc={args.imgSrc}
-        label={args.label}
-        nickname={args.nickname}
-        gameScore={7}
+        player={{
+          rank: 2,
+          label: args.label,
+          skin: args.imgSrc,
+          nickname: args.nickname,
+          score: 7,
+          index: 1,
+          userCode: '',
+        }}
         myResult={false}
-        colorStyle='pink'
       />
     );
   },
@@ -86,13 +89,16 @@ export const MyGameResult: Story = {
   render: (args) => {
     return (
       <ResultInfoBox
-        rank='1st'
-        imgSrc={args.imgSrc}
-        label={args.label}
-        nickname={args.nickname}
-        gameScore={13}
+        player={{
+          rank: 1,
+          label: args.label,
+          skin: args.imgSrc,
+          nickname: args.nickname,
+          score: 13,
+          index: 3,
+          userCode: '',
+        }}
         myResult
-        colorStyle='blue'
       />
     );
   },

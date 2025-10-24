@@ -1,8 +1,6 @@
 import * as constants from '../constants';
 import * as styles from '../index.css';
 
-import type { TierReward } from '@/types/result';
-
 import ColoredButton from '@/components/button/ColoredButton';
 import TierBox from '@/components/tier';
 

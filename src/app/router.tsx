@@ -13,14 +13,13 @@ import Game from '@/pages/play/game';
 import LobbyPage from '@/pages/play/lobby';
 import Mode from '@/pages/play/mode';
 import Ranking from '@/pages/ranking';
-import Result from '@/pages/result';
+import Result, { getGameResult } from '@/pages/result';
 import Settings from '@/pages/settings';
 import Tutorial from '@/pages/tutorial';
 
 import { checkToken } from '@/services/auth';
 import { getLobbyInfo } from '@/services/lobby';
 import { getRank } from '@/services/rank';
-import { getGameResult } from '@/services/result';
 
 import { ROUTE } from '@/constants/routes';
 

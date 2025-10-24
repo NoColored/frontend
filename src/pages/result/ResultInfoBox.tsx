@@ -1,32 +1,23 @@
+import * as styles from './index.css';
+
 import PlayerInfo from '@/components/player-info';
 
-import * as styles from '@/pages/result/index.css';
-import type { colorStyles } from '@/pages/result/types';
+import { PLAYER_COLORS } from '@/constants/player';
 
-export interface ResultInfoBoxProps {
-  rank: number | string;
-  imgSrc: string;
-  label: string;
-  nickname: string;
-  gameScore: number;
+interface Props {
+  player: PlayerRecord;
   myResult: boolean;
-  colorStyle: colorStyles;
 }
 
-const ResultInfoBox = ({
-  rank,
-  imgSrc,
-  label,
-  nickname,
-  gameScore,
-  myResult,
-  colorStyle,
-}: ResultInfoBoxProps) => {
+const ResultInfoBox = ({ player, myResult }: Props) => {
+  const { rank, label, skin, nickname, score, index } = player;
+  const colorStyle = PLAYER_COLORS[index];
+
   return (
     <div className={styles.resultInfoBox({ myResult, colorStyle })}>
       <span>{rank}</span>
-      <PlayerInfo label={label} imgSrc={imgSrc} nickname={nickname} />
-      <span className={styles.score}>{gameScore}</span>
+      <PlayerInfo label={label} imgSrc={skin} nickname={nickname} />
+      <span className={styles.score}>{score}</span>
     </div>
   );
 };
