@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import { createRoom, updateRoom } from './api';
 import * as styles from './index.css';
 
 import ColoredButton from '@/components/button/ColoredButton';
@@ -10,25 +11,31 @@ import Map from '@/components/map';
 import { MAP_ID_LIST } from '@/constants/map';
 import { ROUTE } from '@/constants/routes';
 
+const API_MAP = {
+  create: createRoom,
+  update: updateRoom,
+} as const;
+
 interface Props {
   roomTitle: string;
   roomPassword: string;
   mapId: MapId;
   closeModal: () => void;
-  api: (roomRequest: CreateRoom) => Promise<string>;
+  type: keyof typeof API_MAP;
   buttonText: string;
 }
 
-const RoomSetting = ({
+const RoomSettingForm = ({
   roomTitle,
   roomPassword,
   mapId,
   closeModal,
-  api,
+  type,
   buttonText,
 }: Props) => {
+  const api = API_MAP[type];
   const navigate = useNavigate();
-  const [createRoomInfo, setCreateRoomInfo] = useState<CreateRoom>({
+  const [roomSetting, setRoomSetting] = useState<RoomSetting>({
     roomTitle,
     roomPassword,
     mapId,
@@ -39,19 +46,19 @@ const RoomSetting = ({
     const { name, value } = event.target;
     if (name === 'roomTitle' && value.length > 9) return;
     if (name === 'roomPassword' && value.length > 4) return;
-    setCreateRoomInfo((info) => ({
+    setRoomSetting((info) => ({
       ...info,
       [name]: value,
     }));
   };
 
   const handleClickCreateButton = async () => {
-    if (!createRoomInfo.roomTitle || createRoomInfo.roomPassword.length !== 4) {
+    if (!roomSetting.roomTitle || roomSetting.roomPassword.length !== 4) {
       setIsValidInfo(false);
       return;
     }
 
-    await api(createRoomInfo).then((roomId) => {
+    await api(roomSetting).then((roomId) => {
       closeModal();
       if (roomId) {
         navigate(`${ROUTE.lobby}/${roomId}`);
@@ -69,7 +76,7 @@ const RoomSetting = ({
           placeholder='몇 글자 가능할까요?'
           size='widthFull'
           type='text'
-          value={createRoomInfo.roomTitle}
+          value={roomSetting.roomTitle}
           onChange={handleChange}
         />
 
@@ -78,7 +85,7 @@ const RoomSetting = ({
           placeholder='숫자 4자리'
           size='widthFull'
           type='text'
-          value={createRoomInfo.roomPassword}
+          value={roomSetting.roomPassword}
           onChange={handleChange}
         />
       </div>
@@ -91,11 +98,9 @@ const RoomSetting = ({
               key={id}
               type='button'
               className={styles.mapItemWrapper}
-              onClick={() =>
-                setCreateRoomInfo((prev) => ({ ...prev, mapId: id }))
-              }
+              onClick={() => setRoomSetting((prev) => ({ ...prev, mapId: id }))}
             >
-              <Map mapId={id} selected={id === createRoomInfo.mapId} />
+              <Map mapId={id} selected={id === roomSetting.mapId} />
             </button>
           ))}
         </div>
@@ -122,4 +127,4 @@ const RoomSetting = ({
   );
 };
 
-export default RoomSetting;
+export default RoomSettingForm;

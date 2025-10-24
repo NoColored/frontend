@@ -3,8 +3,6 @@ import * as styles from './index.css';
 import Modal, { useModal } from '@/components/modal';
 import RoomSetting from '@/components/room-setting';
 
-import { updateRoom } from '@/services/lobby';
-
 interface Props {
   lobby: Lobby;
 }
@@ -28,7 +26,7 @@ const SettingButton = ({ lobby }: Props) => {
           roomTitle={lobby.roomTitle}
           roomPassword={lobby.roomPassword}
           closeModal={closeModal}
-          api={updateRoom}
+          type='update'
           buttonText='설정 변경'
         />
       </Modal>

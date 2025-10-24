@@ -1,5 +1,3 @@
-import { postCreateRoom } from '../../api';
-
 import ColoredButton from '@/components/button/ColoredButton';
 import Modal, { useModal } from '@/components/modal';
 import RoomSetting from '@/components/room-setting';
@@ -21,7 +19,7 @@ const CreateLobby = () => {
           roomPassword=''
           mapId={0}
           closeModal={closeModal}
-          api={postCreateRoom}
+          type='create'
           buttonText='방 만들기'
         />
       </Modal>

@@ -10,7 +10,7 @@ import LandingLayout from '@/pages/landing/layout';
 import LogIn from '@/pages/logIn';
 import Finder, { getRoomList } from '@/pages/play/finder';
 import Game from '@/pages/play/game';
-import Lobby from '@/pages/play/lobby';
+import LobbyPage from '@/pages/play/lobby';
 import Mode from '@/pages/play/mode';
 import Ranking from '@/pages/ranking';
 import Result from '@/pages/result';
@@ -69,7 +69,7 @@ const router = createBrowserRouter([
               },
               {
                 path: `${ROUTE.lobby}/:roomId`,
-                element: <Lobby />,
+                element: <LobbyPage />,
                 loader: ({ params }) => getLobbyInfo(params.roomId),
               },
               {

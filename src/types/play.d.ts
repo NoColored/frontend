@@ -17,8 +17,6 @@ interface Room {
   roomPassword: string;
 }
 
-type CreateRoom = Omit<Room, 'roomCode'>;
-
 interface RoomListItem extends Room {
   userNumber: number;
 }

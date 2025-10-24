@@ -1,5 +1,3 @@
-import type { CreateRoom, Lobby } from '@/types/play';
-
 import { api } from '@/features/api';
 
 export const getLobbyInfo = async (roodId: string | undefined) => {
@@ -30,22 +28,6 @@ export const getOut = async () => {
       // eslint-disable-next-line
       .catch((err) => {
         console.log(err);
-      })
-  );
-};
-
-export const updateRoom = async (room: CreateRoom) => {
-  return (
-    api
-      .post<string, CreateRoom>(true, '/play/friendly/renew', room)
-      .then(() => {
-        // console.log('방 정보 수정 요청 성공');
-        return '';
-      })
-      // eslint-disable-next-line
-      .catch((err) => {
-        console.log(err);
-        return '';
       })
   );
 };

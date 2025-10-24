@@ -4,8 +4,6 @@ import { useLoaderData, useNavigate } from 'react-router-dom';
 import * as constants from './constants';
 import * as styles from './index.css';
 
-import type { Lobby } from '@/types/play';
-
 import SettingNavigationButton from '@/components/button/SettingNavigationButton';
 import Chip from '@/components/chip';
 import Map from '@/components/map';
