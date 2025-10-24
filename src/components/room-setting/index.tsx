@@ -1,14 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import type { CreateRoom } from '@/types/play';
+import * as styles from './index.css';
 
 import ColoredButton from '@/components/button/ColoredButton';
 import Input from '@/components/input';
 import Map from '@/components/map';
-
-import * as constants from '@/pages/play/finder/constants';
-import * as styles from '@/pages/play/finder/Modal/index.css';
 
 import { MAP_ID_LIST } from '@/constants/map';
 import { ROUTE } from '@/constants/routes';
@@ -22,7 +19,7 @@ interface Props {
   buttonText: string;
 }
 
-const ModalContent = ({
+const RoomSetting = ({
   roomTitle,
   roomPassword,
   mapId,
@@ -119,10 +116,10 @@ const ModalContent = ({
         />
       </div>
       {!isValidInfo && (
-        <div className={styles.alertMessage}>{constants.ALERT_MESSAGE}</div>
+        <div className={styles.alertMessage}>정보를 모두 입력해주세요.</div>
       )}
     </>
   );
 };
 
-export default ModalContent;
+export default RoomSetting;

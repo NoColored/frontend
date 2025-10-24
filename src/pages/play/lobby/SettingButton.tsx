@@ -1,10 +1,7 @@
 import * as styles from './index.css';
 
-import type { Lobby } from '@/types/play';
-
-import useModal from '@/hooks/useModal';
-
-import ModalContent from '@/pages/play/finder/Modal/CreateLobby/ModalContent';
+import Modal, { useModal } from '@/components/modal';
+import RoomSetting from '@/components/room-setting';
 
 import { updateRoom } from '@/services/lobby';
 
@@ -13,7 +10,7 @@ interface Props {
 }
 
 const SettingButton = ({ lobby }: Props) => {
-  const { Modal, openModal, closeModal } = useModal();
+  const { modalRef, openModal, closeModal } = useModal();
 
   return (
     <>
@@ -25,8 +22,8 @@ const SettingButton = ({ lobby }: Props) => {
         />
         <div className={styles.text}>설정 변경</div>
       </button>
-      <Modal>
-        <ModalContent
+      <Modal ref={modalRef}>
+        <RoomSetting
           mapId={lobby.mapId}
           roomTitle={lobby.roomTitle}
           roomPassword={lobby.roomPassword}

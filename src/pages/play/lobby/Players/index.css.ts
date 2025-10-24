@@ -2,7 +2,6 @@ import { style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
 
 import * as constants from '@/pages/play/lobby/constants';
-import type { playerColorType } from '@/pages/play/lobby/types';
 
 import { flexOptions } from '@/styles/common.css';
 import { sprinkles } from '@/styles/sprinkles.css';

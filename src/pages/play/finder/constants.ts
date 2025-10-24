@@ -19,7 +19,3 @@ export const FAIL_MESSAGE_MODAL = {
     subMessage: '플레이 가능 인원을 초과하였습니다',
   },
 } as const;
-
-export const MAP_ITEM_HEIGHT = '100px';
-
-export const ALERT_MESSAGE = ' 정보를 모두 입력해주세요.';

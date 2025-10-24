@@ -1,7 +1,5 @@
 import * as styles from './index.css';
 
-import type { Player } from '@/types/play';
-
 import TierIconBox from '@/components/tier';
 
 interface Props {

@@ -1,5 +1,3 @@
-import type { Player } from '@/types/play';
-
 import Chip from '@/components/chip';
 
 import * as constants from '@/pages/play/lobby/constants';

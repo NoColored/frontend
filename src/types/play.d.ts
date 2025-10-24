@@ -1,5 +1,3 @@
-import type { playerColorType } from '@/pages/play/lobby/types';
-
 interface Player {
   userCode: string;
   nickname: string;
@@ -15,22 +13,17 @@ interface Player {
 interface Room {
   roomTitle: string;
   mapId: MapId;
-}
-
-export interface CreateRoom extends Room {
-  roomPassword: string;
-}
-
-interface CodeRoom extends Room {
   roomCode: string;
   roomPassword: string;
 }
 
-interface RoomListItem extends CodeRoom {
+type CreateRoom = Omit<Room, 'roomCode'>;
+
+interface RoomListItem extends Room {
   userNumber: number;
 }
 
-interface Lobby extends CodeRoom {
+interface Lobby extends Room {
   roomUuid: string;
   masterIndex: number;
   readyState: boolean[];

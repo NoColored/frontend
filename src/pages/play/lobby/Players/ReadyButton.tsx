@@ -2,8 +2,6 @@ import { useState } from 'react';
 
 import * as styles from './index.css';
 
-import type { Player } from '@/types/play';
-
 import ColoredButton from '@/components/button/ColoredButton';
 import ColoredIconButton, {
   ColoredIconButtonProps,

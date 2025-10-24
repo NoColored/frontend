@@ -1,8 +1,8 @@
 import { postCreateRoom } from '../../api';
-import ModalContent from './ModalContent';
 
 import ColoredButton from '@/components/button/ColoredButton';
 import Modal, { useModal } from '@/components/modal';
+import RoomSetting from '@/components/room-setting';
 
 const CreateLobby = () => {
   const { modalRef, openModal, closeModal } = useModal();
@@ -16,7 +16,7 @@ const CreateLobby = () => {
         onClick={openModal}
       />
       <Modal ref={modalRef}>
-        <ModalContent
+        <RoomSetting
           roomTitle=''
           roomPassword=''
           mapId={0}

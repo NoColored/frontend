@@ -2,8 +2,6 @@ import { useNavigate } from 'react-router-dom';
 
 import * as styles from './index.css';
 
-import type { Player } from '@/types/play';
-
 import ColoredButton from '@/components/button/ColoredButton';
 
 import Character from '@/pages/play/lobby/Players/Character';

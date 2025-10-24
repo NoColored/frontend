@@ -1,7 +1,5 @@
 import * as styles from './index.css';
 
-import type { Player } from '@/types/play';
-
 import RoundCornerImageBox from '@/components/image-box';
 
 import State from '@/pages/play/lobby/Players/State';
