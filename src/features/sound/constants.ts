@@ -1,4 +1,6 @@
 export const SETTING_KEY = {
-  bgm: 'backgroundSound',
-  sfx: 'effectSound',
+  bgm: 'bgm-muted',
+  sfx: 'sfx-muted',
 };
+
+export const MUTED = true;

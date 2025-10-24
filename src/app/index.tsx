@@ -6,13 +6,13 @@ import router from './router';
 import FullScreenPrompt from '@/components/prompt';
 
 import { queryClient } from '@/features/api';
-import { useSoundSetting } from '@/features/sound';
+import { useBackgroundSound } from '@/features/sound';
 
 const App = () => {
-  const { playBgm } = useSoundSetting();
+  const { playBackgroundSound } = useBackgroundSound();
 
   return (
-    <div onClick={playBgm} role='presentation'>
+    <div onClick={playBackgroundSound} role='presentation'>
       <FullScreenPrompt />
       <QueryClientProvider client={queryClient}>
         <RouterProvider router={router} />
