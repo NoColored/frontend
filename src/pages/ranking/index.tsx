@@ -3,15 +3,13 @@ import { useLoaderData } from 'react-router-dom';
 import * as constants from './constants';
 import * as styles from './index.css';
 
-import type { RankPlayer } from '@/types/rank';
-
 import RankingItemBox from '@/components/ranking';
 
 import { useUserInfo } from '@/features/user';
 
 const Ranking = () => {
   const { rankList } = useLoaderData() as {
-    rankList: RankPlayer[];
+    rankList: Profile[];
   };
   const { user: myRank } = useUserInfo();
 

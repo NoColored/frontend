@@ -1,5 +1,3 @@
-export { User } from '@/features/user/type';
-
 export interface SignUpInfo {
   id: string;
   password: string;

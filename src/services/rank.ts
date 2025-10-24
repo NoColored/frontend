@@ -1,5 +1,3 @@
-import type { RankInfo } from '@/types/rank';
-
 import { api } from '@/features/api';
 
 const requestRankList = async () => {
