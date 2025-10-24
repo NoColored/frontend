@@ -1,6 +1,6 @@
 import { memo, useState } from 'react';
 
-import { useCollectionActions } from '../../hooks';
+import { useSetCollection } from '../../hooks';
 import * as styles from './index.css';
 
 import RoundCornerImageBox from '@/components/image-box';
@@ -57,7 +57,7 @@ const SkinItem = memo(
 
 const SkinMenu = ({ skins }: { skins: Skin[] }) => {
   const [selectedId, setSelectedId] = useState<Skin['id'] | null>(null);
-  const { setSelectedSkin } = useCollectionActions();
+  const { setSelectedSkin } = useSetCollection();
 
   return (
     <div className={styles.skinWrapper}>

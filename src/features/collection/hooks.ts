@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { getDefaultStore, useSetAtom } from 'jotai';
 
-import { getCollections } from './api';
+import { getCollection } from './api';
 import { COLLECTION_KEY } from './constants';
 import { collectionStaleAtom } from './store';
 
@@ -12,7 +12,7 @@ export const useCollection = () => {
   const { data } = useQuery({
     queryKey: [COLLECTION_KEY],
     queryFn: async () => {
-      const collection = await getCollections();
+      const collection = await getCollection();
       store.set(collectionStaleAtom, false);
       return collection;
     },

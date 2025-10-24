@@ -1,8 +1,8 @@
-import { useCollectionActions } from '../../hooks';
+import { useSetCollection } from '../../hooks';
 import * as styles from './index.css';
 
 const LabelMenu = ({ labels }: { labels: Label[] }) => {
-  const { setSelectedLabel } = useCollectionActions();
+  const { setSelectedLabel } = useSetCollection();
 
   return (
     <div className={styles.achieveBoxWrapper}>

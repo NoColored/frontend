@@ -13,7 +13,7 @@ export const useSelectedCollection = () => {
   };
 };
 
-export const useCollectionActions = () => {
+export const useSetCollection = () => {
   const setSelectedSkin = useSetAtom(skin);
   const setSelectedLabel = useSetAtom(label);
 
