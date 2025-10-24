@@ -1,6 +1,6 @@
 import { useQuery, type UseQueryOptions } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
-import { useAtomValue, useSetAtom, useStore } from 'jotai';
+import { getDefaultStore, useAtomValue, useSetAtom } from 'jotai';
 import { useNavigate } from 'react-router-dom';
 
 import { getUser, loginAsGuest, loginAsMember } from './api';
@@ -20,7 +20,8 @@ export const useUserInfo = (
   options?: Omit<UseQueryOptions<User>, 'queryKey' | 'queryFn'>,
 ) => {
   const setUserCode = useSetAtom(updateUserCodeAtom);
-  const isStale = useStore().get(userStaleAtom);
+  const store = getDefaultStore();
+  const isStale = store.get(userStaleAtom);
 
   const { data } = useQuery({
     queryKey,

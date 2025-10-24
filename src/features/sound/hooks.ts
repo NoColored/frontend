@@ -1,7 +1,7 @@
-import { useAtom, useSetAtom, useStore } from 'jotai';
+import { useAtom, useSetAtom } from 'jotai';
 
 import { MUTED } from './constants';
-import { sfxAudioAtom, sfxSettingMutedAtom } from './store/effect';
+import { playSfxAudioAtom, sfxSettingMutedAtom } from './store/effect';
 import {
   bgmSettingMutedAtom,
   playBgmAudioAtom,
@@ -30,15 +30,7 @@ export const useSoundToggle = () => {
 };
 
 export const useEffectSound = () => {
-  const store = useStore();
-
-  const playEffectSound = () => {
-    const isMuted = store.get(sfxSettingMutedAtom);
-    if (!isMuted) {
-      const audio = store.get(sfxAudioAtom);
-      audio.play().catch((error) => console.error('SFX 오류', error));
-    }
-  };
+  const playEffectSound = useSetAtom(playSfxAudioAtom);
 
   return { playEffectSound };
 };
