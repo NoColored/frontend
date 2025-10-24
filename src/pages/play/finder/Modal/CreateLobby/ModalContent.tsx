@@ -5,17 +5,18 @@ import type { CreateRoom } from '@/types/play';
 
 import ColoredButton from '@/components/button/ColoredButton';
 import Input from '@/components/input';
+import Map from '@/components/map';
 
 import * as constants from '@/pages/play/finder/constants';
-import MapItem from '@/pages/play/finder/Modal/CreateLobby/MapItem';
 import * as styles from '@/pages/play/finder/Modal/index.css';
 
+import { MAP_ID_LIST } from '@/constants/map';
 import { ROUTE } from '@/constants/routes';
 
 interface Props {
   roomTitle: string;
   roomPassword: string;
-  mapId: number;
+  mapId: MapId;
   closeModal: () => void;
   api: (roomRequest: CreateRoom) => Promise<string>;
   buttonText: string;
@@ -88,19 +89,17 @@ const ModalContent = ({
       <fieldset className={styles.createLobbySelectMap}>
         <legend className={styles.createLobbyText}>맵</legend>
         <div className={styles.createLobbyMapList}>
-          {constants.MAPS.map((item) => (
-            <MapItem
-              key={item.mapId}
-              mapName={item.mapName}
-              imgSrc={item.imgSrc}
-              isSelected={item.mapId === createRoomInfo.mapId}
-              onClick={() => {
-                setCreateRoomInfo((prev) => ({
-                  ...prev,
-                  mapId: item.mapId,
-                }));
-              }}
-            />
+          {MAP_ID_LIST.map((id) => (
+            <button
+              key={id}
+              type='button'
+              className={styles.mapItemWrapper}
+              onClick={() =>
+                setCreateRoomInfo((prev) => ({ ...prev, mapId: id }))
+              }
+            >
+              <Map mapId={id} selected={id === createRoomInfo.mapId} />
+            </button>
           ))}
         </div>
       </fieldset>

@@ -8,9 +8,8 @@ import type { Lobby } from '@/types/play';
 
 import SettingNavigationButton from '@/components/button/SettingNavigationButton';
 import Chip from '@/components/chip';
+import Map from '@/components/map';
 
-import { MAPS } from '@/pages/play/finder/constants';
-import MapInfo from '@/pages/play/lobby/MapInfo';
 import Players from '@/pages/play/lobby/Players';
 import SettingButton from '@/pages/play/lobby/SettingButton';
 
@@ -36,8 +35,6 @@ const Lobby = () => {
   const navigate = useNavigate();
   const lobbyData = useLoaderData() as Lobby;
   const [lobbyInfo, setLobbyInfo] = useState(getLobbyInfo(lobbyData));
-
-  const mapInfo = MAPS.find((map) => map.mapId === lobbyInfo.mapId);
 
   const isMaster =
     lobbyInfo.players[lobbyInfo.masterIndex].userCode === myUserCode;
@@ -69,7 +66,9 @@ const Lobby = () => {
       <div className={styles.lobby}>
         <div className={styles.settings}>
           {isMaster && <SettingButton lobby={lobbyInfo} />}
-          {mapInfo && <MapInfo map={mapInfo} />}
+          <div className={styles.mapInfo}>
+            <Map mapId={lobbyInfo.mapId} />
+          </div>
           <div className={styles.code}>{lobbyInfo.roomCode}</div>
           <Chip color='red' text='코드번호' />
           <div className={styles.code}>{lobbyInfo.roomPassword}</div>

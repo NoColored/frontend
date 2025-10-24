@@ -1,7 +1,5 @@
 import { calc } from '@vanilla-extract/css-utils';
 
-import type { GameMap } from './types';
-
 export const FINDER_WRAPPER_HEIGHT = calc.subtract(
   calc.subtract(calc.subtract('100%', '48px'), '16px'),
   '32px',
@@ -21,34 +19,6 @@ export const FAIL_MESSAGE_MODAL = {
     subMessage: '플레이 가능 인원을 초과하였습니다',
   },
 } as const;
-
-export const MAPS: GameMap[] = [
-  {
-    mapId: 0,
-    imgSrc: '/images/map/background/random-map-rainbow-h450w450.png',
-    mapName: '랜덤',
-  },
-  {
-    mapId: 4,
-    imgSrc: '/images/map/background/factorymap.png',
-    mapName: '팩토리',
-  },
-  {
-    mapId: 3,
-    imgSrc: '/images/map/background/foodmap2.png',
-    mapName: '푸디2',
-  },
-  {
-    mapId: 1,
-    imgSrc: '/images/map/background/basicmap.png',
-    mapName: '베이직',
-  },
-  {
-    mapId: 2,
-    imgSrc: '/images/map/background/foodmap.png',
-    mapName: '푸디',
-  },
-] as const;
 
 export const MAP_ITEM_HEIGHT = '100px';
 

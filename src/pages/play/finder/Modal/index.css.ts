@@ -6,6 +6,8 @@ import * as constants from '@/pages/play/finder/constants';
 import { borderLightOptions, flexOptions } from '@/styles/common.css';
 import { sprinkles } from '@/styles/sprinkles.css';
 
+import { MAP_ID_LIST } from '@/constants/map';
+
 export const modalTwoButtonWrapper = style([
   flexOptions({
     option: 'rowCenter',
@@ -94,7 +96,7 @@ export const createLobbyMapList = style([
   }),
   {
     display: 'grid',
-    gridTemplateColumns: `repeat(${constants.MAPS.length}, ${constants.MAP_ITEM_HEIGHT})`,
+    gridTemplateColumns: `repeat(${MAP_ID_LIST.length}, ${constants.MAP_ITEM_HEIGHT})`,
     gridTemplateRows: '1fr',
     width: '400px',
     overflowX: 'auto',

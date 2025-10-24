@@ -1,5 +1,4 @@
 import { postCreateRoom } from '../../api';
-import { MAPS } from '../../constants';
 import ModalContent from './ModalContent';
 
 import ColoredButton from '@/components/button/ColoredButton';
@@ -20,7 +19,7 @@ const CreateLobby = () => {
         <ModalContent
           roomTitle=''
           roomPassword=''
-          mapId={MAPS[0].mapId}
+          mapId={0}
           closeModal={closeModal}
           api={postCreateRoom}
           buttonText='방 만들기'

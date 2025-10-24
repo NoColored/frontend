@@ -1,5 +1,3 @@
-import * as constants from './constants';
-
 import type { RoomListItem } from '@/types/play';
 
 import ColoredButton from '@/components/button/ColoredButton';
@@ -12,19 +10,14 @@ import * as modalStyles from '@/pages/play/finder/Modal/index.css';
 import MessageModalContent from '@/pages/play/finder/Modal/MessageModalContent';
 import PasswordModal from '@/pages/play/finder/Modal/PasswordModal';
 
+import { MAPS } from '@/constants/map';
+
 interface Props {
   roomInfo: RoomListItem;
 }
 
 const LobbyItem = ({ roomInfo }: Props) => {
   const { Modal, openModal, closeModal } = useModal();
-
-  const getImgSrc = () => {
-    const mapItem = constants.MAPS.find(
-      (item) => item.mapId === roomInfo.mapId,
-    );
-    return mapItem ? mapItem.imgSrc : constants.MAPS[0].imgSrc;
-  };
 
   const renderModalContent = () => {
     if (roomInfo.userNumber === 4) {
@@ -53,7 +46,7 @@ const LobbyItem = ({ roomInfo }: Props) => {
         className={styles.lobbyItemWrapper}
         onClick={openModal}
       >
-        <RoundCornerImageBox size='full' imgSrc={getImgSrc()} />
+        <RoundCornerImageBox size='full' imgSrc={MAPS[roomInfo.mapId].imgSrc} />
         <div className={styles.textsWrapper}>
           <div className={styles.lobbyTitleText}>{roomInfo.roomTitle}</div>
           <div
