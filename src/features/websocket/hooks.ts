@@ -32,7 +32,7 @@ export const useWebSocket = <T extends WebSocketMessage>(
     });
 
     return () => {
-      client.onUnmount();
+      client.cleanUp();
     };
   }, []);
 };

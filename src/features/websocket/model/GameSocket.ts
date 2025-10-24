@@ -36,11 +36,6 @@ export class GameSocket extends Socket {
   onDisconnect(callback: () => void) {
     this.webSocket.onclose = callback;
   }
-
-  cleanUp() {
-    this.webSocket.onmessage = () => {};
-    this.webSocket.onclose = () => {};
-  }
 }
 
 export const characterInfoList = (

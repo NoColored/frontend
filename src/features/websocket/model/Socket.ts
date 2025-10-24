@@ -45,7 +45,7 @@ export class Socket {
     };
   }
 
-  onUnmount() {
+  cleanUp() {
     this.webSocket.onmessage = () => {};
     this.webSocket.onclose = () => {};
   }
