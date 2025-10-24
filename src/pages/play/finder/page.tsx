@@ -2,12 +2,10 @@ import { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 
 import { getRoomList } from './api';
-import * as styles from './index.css';
-import LobbyItem from './LobbyItem';
-import CreateLobby from './Modal/CreateLobby';
-import SearchLobby from './Modal/SearchLobby';
-
-import type { RoomListItem } from '@/types/play';
+import * as styles from './page.css';
+import CreateLobby from './ui/CreateLobby';
+import LobbyItem from './ui/LobbyItem';
+import SearchLobby from './ui/SearchLobby';
 
 import ColoredButton from '@/components/button/ColoredButton';
 import SettingTextButton from '@/components/button/SettingTextButton';

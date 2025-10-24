@@ -1,14 +1,11 @@
-import type { RoomListItem } from '@/types/play';
+import * as styles from './index.css';
+import MessageModalContent from './MessageModalContent';
+import PasswordModal from './PasswordModal';
 
 import ColoredButton from '@/components/button/ColoredButton';
 import RoundCornerImageBox from '@/components/image-box';
+import Modal, { useModal } from '@/components/modal';
 
-import useModal from '@/hooks/useModal';
-
-import * as styles from '@/pages/play/finder/index.css';
-import * as modalStyles from '@/pages/play/finder/Modal/index.css';
-import MessageModalContent from '@/pages/play/finder/Modal/MessageModalContent';
-import PasswordModal from '@/pages/play/finder/Modal/PasswordModal';
 
 import { MAPS } from '@/constants/map';
 
@@ -17,12 +14,12 @@ interface Props {
 }
 
 const LobbyItem = ({ roomInfo }: Props) => {
-  const { Modal, openModal, closeModal } = useModal();
+  const { modalRef, openModal, closeModal } = useModal();
 
   const renderModalContent = () => {
     if (roomInfo.userNumber === 4) {
       return (
-        <div className={modalStyles.messageModalWrapper}>
+        <div className={styles.messageModalWrapper}>
           <MessageModalContent failed='ENTER' />
           <ColoredButton
             size='small'
@@ -54,7 +51,7 @@ const LobbyItem = ({ roomInfo }: Props) => {
           >{`${roomInfo.userNumber}/4`}</div>
         </div>
       </div>
-      <Modal>{renderModalContent()}</Modal>
+      <Modal ref={modalRef}>{renderModalContent()}</Modal>
     </>
   );
 };

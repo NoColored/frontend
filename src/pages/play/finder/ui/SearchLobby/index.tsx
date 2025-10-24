@@ -1,11 +1,11 @@
+import SearchModalContent from './SearchModalContent';
+
 import ColoredButton from '@/components/button/ColoredButton';
+import Modal, { useModal } from '@/components/modal';
 
-import useModal from '@/hooks/useModal';
-
-import SearchModalContent from '@/pages/play/finder/Modal/SearchLobby/SearchModalContent';
 
 const SearchLobby = () => {
-  const { Modal, openModal, closeModal } = useModal();
+  const { modalRef, openModal, closeModal } = useModal();
 
   return (
     <>
@@ -15,7 +15,7 @@ const SearchLobby = () => {
         color='green'
         onClick={openModal}
       />
-      <Modal>
+      <Modal ref={modalRef}>
         <SearchModalContent closeModal={closeModal} />
       </Modal>
     </>

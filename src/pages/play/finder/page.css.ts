@@ -39,52 +39,6 @@ export const partyListWrapper = style([
   }),
 ]);
 
-export const lobbyItemWrapper = style([
-  sprinkles({
-    borderRadius: '2x',
-    margin: '1x',
-    backgroundColor: 'navy',
-  }),
-  {
-    display: 'flex',
-
-    padding: '3%',
-  },
-]);
-
-export const lobbyTitleText = style([
-  sprinkles({
-    textSize: '1.25x',
-    color: 'white',
-    alignItems: 'center',
-  }),
-  {
-    display: 'inline-flex',
-    whiteSpace: 'nowrap',
-    overflow: 'hidden',
-    textOverflow: 'ellipsis',
-    maxWidth: '100%',
-  },
-]);
-
-export const textsWrapper = style([
-  {
-    display: 'grid',
-    gridTemplateRows: '70% 30%',
-    paddingLeft: '5%',
-    maxWidth: '100%',
-  },
-]);
-export const playerCountText = style([
-  sprinkles({
-    textSize: '0.75x',
-    color: 'gray300',
-    display: 'flex',
-
-    alignItems: 'center',
-  }),
-]);
-
 export const bottomButtonsWrapper = style([
   flexOptions({ option: 'center' }),
   sprinkles({

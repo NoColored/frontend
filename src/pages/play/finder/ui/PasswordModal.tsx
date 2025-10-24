@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { postEnterRoom } from '../../api';
-import * as styles from '../index.css';
-import MessageModalContent from '../MessageModalContent';
-
-import type { RequestEnterRoom } from '@/types/play';
+import { postEnterRoom } from '../api';
+import * as styles from './index.css';
+import MessageModalContent from './MessageModalContent';
 
 import ColoredButton from '@/components/button/ColoredButton';
 import Input from '@/components/input';
@@ -14,29 +12,26 @@ import { ROUTE } from '@/constants/routes';
 
 interface Props {
   closeModal: () => void;
+  roomCode: string;
 }
 
-const SearchModalContent = ({ closeModal }: Props) => {
+const PasswordModal = ({ roomCode, closeModal }: Props) => {
   const navigate = useNavigate();
   const [isValid, setIsValid] = useState(true);
   const [roomInfo, setRoomInfo] = useState<RequestEnterRoom>({
-    roomCode: '',
+    roomCode,
     roomPassword: '',
   });
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
-    if (name === 'roomCode' && value.length > 4) return;
     if (name === 'roomPassword' && value.length > 4) return;
-    setRoomInfo((info) => ({
-      ...info,
-      [name]: value,
-    }));
+    setRoomInfo((info) => ({ ...info, [name]: value }));
   };
 
   const handleClickButton = async () => {
     const roomId = await postEnterRoom(roomInfo);
-    if (!roomId) {
+    if (!roomId || roomInfo.roomPassword.length !== 4) {
       setIsValid(false);
     } else {
       setIsValid(true);
@@ -47,7 +42,7 @@ const SearchModalContent = ({ closeModal }: Props) => {
   if (!isValid) {
     return (
       <>
-        <MessageModalContent failed='SEARCH' />
+        <MessageModalContent failed='PASSWORD' />
         <div className={styles.modalTwoButtonWrapper}>
           <ColoredButton
             size='small'
@@ -61,24 +56,16 @@ const SearchModalContent = ({ closeModal }: Props) => {
       </>
     );
   }
-
   return (
     <div className={styles.contentBox}>
-      <span>방장한테 허락은 맡으셨죠?</span>
-      <Input
-        name='roomCode'
-        placeholder='대기실 코드 4자리를 입력하세요'
-        size='small'
-        type='text'
-        value={roomInfo.roomCode}
-        onChange={handleChange}
-      />
+      <span className={styles.text}>이 방의 Colored들은 </span>
+      <span className={styles.text}>아무하고나 쉽게 싸우지 않습니다 </span>
       <Input
         name='roomPassword'
         placeholder='비밀번호 4자리를 입력하세요'
         size='small'
         type='text'
-        value={roomInfo.roomPassword}
+        value={roomInfo?.roomPassword}
         onChange={handleChange}
       />
       <div className={styles.modalTwoButtonWrapper}>
@@ -98,5 +85,4 @@ const SearchModalContent = ({ closeModal }: Props) => {
     </div>
   );
 };
-
-export default SearchModalContent;
+export default PasswordModal;
