@@ -1,13 +1,13 @@
-import { useQuery } from '@tanstack/react-query';
 import { useMemo, useState } from 'react';
 
-import { getCollections } from '../../api';
 import AchievementMenu from './achievement-menu';
 import * as styles from './index.css';
 import LabelMenu from './label-menu';
 import SkinMenu from './skin-menu';
 
 import SettingTextButton from '@/components/button/SettingTextButton';
+
+import { useCollection } from '@/features/collection';
 
 const menu = {
   skin: '스킨',
@@ -20,26 +20,22 @@ type Category = keyof typeof menu;
 const CollectionMenu = () => {
   const [selectedCategory, setSelectedCategory] = useState<Category>('skin');
 
-  const { data } = useQuery({
-    queryKey: ['collection'],
-    queryFn: getCollections,
-    staleTime: 1000 * 90,
-  });
+  const { collection } = useCollection();
 
-  const collections = useMemo(() => {
-    if (!data) {
+  const collectionMenu = useMemo(() => {
+    if (!collection) {
       return null;
     }
 
     switch (selectedCategory) {
       case 'label':
-        return <LabelMenu labels={data.labels} />;
+        return <LabelMenu labels={collection.labels} />;
       case 'achievement':
-        return <AchievementMenu achievements={data.achievements} />;
+        return <AchievementMenu achievements={collection.achievements} />;
       default:
-        return <SkinMenu skins={data.skins} />;
+        return <SkinMenu skins={collection.skins} />;
     }
-  }, [data, selectedCategory]);
+  }, [collection, selectedCategory]);
 
   return (
     <div className={styles.menu}>
@@ -55,7 +51,7 @@ const CollectionMenu = () => {
           </SettingTextButton>
         ))}
       </div>
-      <div className={styles.collections}>{collections}</div>
+      <div className={styles.collections}>{collectionMenu}</div>
     </div>
   );
 };

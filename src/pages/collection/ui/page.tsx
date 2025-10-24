@@ -10,7 +10,7 @@ import * as styles from './page.css';
 
 import SettingTextButton from '@/components/button/SettingTextButton';
 
-import { queryClient } from '@/features/api';
+import { refetchCollection } from '@/features/collection';
 import { useUserInfo } from '@/features/user';
 
 const SelectedSkin = () => {
@@ -52,12 +52,7 @@ const SaveButton = ({
 
     if (promises.length > 0) {
       await Promise.all(promises);
-      await Promise.all([
-        queryClient.invalidateQueries({
-          queryKey: ['collection'],
-        }),
-        onSave(),
-      ]);
+      await Promise.all([refetchCollection(), onSave()]);
     }
   };
 
