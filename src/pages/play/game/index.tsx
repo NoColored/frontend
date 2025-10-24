@@ -1,18 +1,19 @@
 import { useEffect, useState } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
 
+import { useDataStale } from './hooks';
+
 import BasicContentFrame from '@/components/frame';
 
 import { ROUTE } from '@/constants/routes';
 import { config, scenesConfig } from '@/features/game';
-import { useUserStale } from '@/features/user';
 import { useGameWebSocket } from '@/features/websocket';
 
 const Game = () => {
   const navigate = useNavigate();
   const [isActive, setIsActive] = useState(true);
   const { webSocket } = useGameWebSocket();
-  const { setUserStale } = useUserStale();
+  const { setDataStale } = useDataStale();
 
   useEffect(() => {
     webSocket.onDisconnect(() =>
@@ -27,7 +28,7 @@ const Game = () => {
     return () => {
       webSocket.cleanUp();
       game.destroy(true);
-      setUserStale();
+      setDataStale();
     };
   }, []);
 
