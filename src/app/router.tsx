@@ -10,7 +10,7 @@ import Landing from '@/pages/landing';
 import LandingLayout from '@/pages/landing/layout';
 import LogIn from '@/pages/logIn';
 import Game from '@/pages/play/game';
-import LobbyPage from '@/pages/play/lobby';
+import LobbyPage, { getLobbyInfo } from '@/pages/play/lobby';
 import Mode from '@/pages/play/mode';
 import Ranking from '@/pages/ranking';
 import Result, { getGameResult } from '@/pages/result';
@@ -18,7 +18,6 @@ import Settings from '@/pages/settings';
 import Tutorial from '@/pages/tutorial';
 
 import { checkToken } from '@/services/auth';
-import { getLobbyInfo } from '@/services/lobby';
 import { getRank } from '@/services/rank';
 
 import { ROUTE } from '@/shared/constants';

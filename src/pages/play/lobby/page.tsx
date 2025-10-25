@@ -2,21 +2,19 @@ import { useEffect, useState } from 'react';
 import { useLoaderData, useNavigate } from 'react-router-dom';
 
 import * as styles from './index.css';
+import Players from './Players';
+import SettingButton from './SettingButton';
 
 import SettingNavigationButton from '@/components/button/SettingNavigationButton';
 import Chip from '@/components/chip';
 
-import Players from '@/pages/play/lobby/Players';
-import SettingButton from '@/pages/play/lobby/SettingButton';
-
-import { getOut } from '@/services/lobby';
-
 import { useWebSocket } from '@/features/websocket';
 import Map from '@/models/map';
+import { leaveRoom } from '@/models/room';
 import { useUserCode } from '@/models/user';
 import { ROUTE } from '@/shared/constants';
 
-const getLobbyInfo = (lobby: Lobby) => {
+const getLobbyInfo = (lobby: EnteredRoom) => {
   lobby.players.forEach((player, index) => {
     player.isMaster = index === lobby.masterIndex;
     player.key = `${player.userCode}${index}`;
@@ -27,7 +25,7 @@ const getLobbyInfo = (lobby: Lobby) => {
 const Lobby = () => {
   const myUserCode = useUserCode();
   const navigate = useNavigate();
-  const lobbyData = useLoaderData() as Lobby;
+  const lobbyData = useLoaderData() as EnteredRoom;
   const [lobbyInfo, setLobbyInfo] = useState(getLobbyInfo(lobbyData));
 
   const isMaster =
@@ -45,7 +43,7 @@ const Lobby = () => {
 
   useEffect(() => {
     return () => {
-      getOut();
+      leaveRoom();
     };
   }, []);
 

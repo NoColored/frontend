@@ -9,8 +9,7 @@ import { RewardsModal } from './RewardsModal';
 import ColoredButton from '@/components/button/ColoredButton';
 import Modal, { useModal } from '@/components/modal';
 
-import { getOut } from '@/services/lobby';
-
+import { leaveRoom } from '@/models/room';
 import { useUserCode } from '@/models/user';
 import { ROUTE } from '@/shared/constants';
 
@@ -30,7 +29,7 @@ const Result = () => {
 
   const handleClickExit = async () => {
     if (roomUuid) {
-      await getOut();
+      await leaveRoom();
     }
     navigate(ROUTE.home, { replace: true });
   };

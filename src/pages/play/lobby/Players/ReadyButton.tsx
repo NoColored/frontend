@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+import { getReady } from '../api';
 import { EMPTY_PLAYER_COLOR, MESSAGE, PLAYER_COLORS } from '../constants';
 import * as styles from './index.css';
 
@@ -9,7 +10,6 @@ import ColoredButton from '@/components/button/ColoredButton';
 import ColoredIconButton from '@/components/button/ColoredIconButton';
 import Modal, { useModal } from '@/components/modal';
 
-import { getReady } from '@/services/lobby';
 
 const getText = (player: Player): string => {
   if (player.isMaster) {

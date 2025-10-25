@@ -5,7 +5,7 @@ import Modal, { useModal } from '@/components/modal';
 import RoomSetting from '@/features/room-setting';
 
 interface Props {
-  lobby: Lobby;
+  lobby: EnteredRoom;
 }
 
 const SettingButton = ({ lobby }: Props) => {

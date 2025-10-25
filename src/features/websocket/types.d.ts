@@ -11,7 +11,7 @@ type WebSocketMessageMap = {
   };
 
   friendlyMatch: {
-    roomInfo: Lobby;
+    roomInfo: EnteredRoom;
     gameStart: null;
   };
 };

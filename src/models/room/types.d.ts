@@ -5,7 +5,7 @@ interface Room {
   roomPassword: string;
 }
 
-interface Lobby extends Room {
+interface EnteredRoom extends Room {
   roomUuid: string;
   masterIndex: number;
   readyState: boolean[];
