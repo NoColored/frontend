@@ -1,2 +1,2 @@
-export { refetchCollection } from './utils';
+export { refetchCollection } from './api';
 export * from './hooks';

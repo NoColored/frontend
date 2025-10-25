@@ -1,4 +1,4 @@
-import { client } from '@/features/api';
+import { client } from '@/shared/api';
 
 export const getUser = async () => {
   return client.get<User>(`/user`).then((response) => {

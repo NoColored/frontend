@@ -1,6 +1,6 @@
 import type { AxiosError } from 'axios';
 
-import { client } from '@/features/api';
+import { client } from '@/shared/api';
 
 const axiosConfig = {
   headers: {

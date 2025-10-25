@@ -1,4 +1,4 @@
-import { api } from '@/features/api';
+import { api } from '@/shared/api';
 
 export const getLobbyInfo = async (roodId: string | undefined) => {
   if (!roodId) return { masterIndex: -1 } as Lobby;

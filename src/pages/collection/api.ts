@@ -1,4 +1,4 @@
-import { client } from '@/features/api';
+import { client } from '@/shared/api';
 
 export const updateSkin = async (skinId: number) => {
   return client

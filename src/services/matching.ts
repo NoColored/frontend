@@ -1,4 +1,4 @@
-import { api } from '@/features/api';
+import { api } from '@/shared/api';
 
 export const getMatching = async () => {
   return (

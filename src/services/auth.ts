@@ -1,6 +1,6 @@
 import { NicknameInfo, PasswordInfo } from '@/types/auth';
 
-import { api } from '@/features/api';
+import { api } from '@/shared/api';
 
 export const patchNicknameChange = async (nickname: string) => {
   try {

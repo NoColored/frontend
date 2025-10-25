@@ -1,4 +1,6 @@
-import { client } from '@/features/api';
+import { COLLECTION_KEY } from './constants';
+
+import { client, queryClient } from '@/shared/api';
 
 export const getCollection = async () => {
   return client.get<Collections>('/collection').then((response) => {
@@ -7,3 +9,8 @@ export const getCollection = async () => {
     return data;
   });
 };
+
+export const refetchCollection = () =>
+  queryClient.invalidateQueries({
+    queryKey: [COLLECTION_KEY],
+  });

@@ -1,4 +1,4 @@
-import { client } from '@/features/api';
+import { client } from '@/shared/api';
 
 export const getGameReady = async () => {
   return client

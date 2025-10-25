@@ -1,4 +1,4 @@
-import { api } from '@/features/api';
+import { api } from '@/shared/api';
 
 const requestRankList = async () => {
   return api.get<RankInfo>(true, 'rank/list').then((res) => {

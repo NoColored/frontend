@@ -7,7 +7,7 @@ import { getUser, loginAsGuest, loginAsMember } from './api';
 import { updateUserCodeAtom, userCodeAtom, userStaleAtom } from './store';
 
 import { ROUTE } from '@/constants/routes';
-import { queryClient } from '@/features/api';
+import { queryClient } from '@/shared/api';
 
 const queryKey = ['user'];
 

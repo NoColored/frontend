@@ -5,8 +5,8 @@ import router from './router';
 
 import FullScreenPrompt from '@/components/prompt';
 
-import { queryClient } from '@/features/api';
 import { useBackgroundSound } from '@/features/sound';
+import { queryClient } from '@/shared/api';
 
 const App = () => {
   const { playBackgroundSound } = useBackgroundSound();
