@@ -9,8 +9,8 @@ import useModal from '@/hooks/useModal';
 
 import LogInFail from '@/pages/logIn/LogInFail';
 
+import { useLogin } from '@/features/auth';
 import SignUp from '@/features/sign-up';
-import { useLogin } from '@/features/user';
 
 const LogIn = () => {
   const [isClicked, setIsClicked] = useState(false);

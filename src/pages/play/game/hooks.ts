@@ -1,5 +1,5 @@
-import { useUserStale } from '@/features/user';
 import { useCollectionStale } from '@/models/collection';
+import { useUserStale } from '@/models/user';
 
 export const useDataStale = () => {
   const { setUserStale } = useUserStale();

@@ -5,7 +5,7 @@ import * as styles from './index.css';
 
 import RankingItemBox from '@/components/ranking';
 
-import { useUserInfo } from '@/features/user';
+import { useUserInfo } from '@/models/user';
 
 const Ranking = () => {
   const { rankList } = useLoaderData() as {

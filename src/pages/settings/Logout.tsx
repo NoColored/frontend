@@ -2,7 +2,7 @@ import * as styles from './index.css';
 
 import ColoredButton from '@/components/button/ColoredButton';
 
-import { useLogout } from '@/features/user';
+import { useLogout } from '@/features/auth';
 
 interface Props {
   onClose: () => void;

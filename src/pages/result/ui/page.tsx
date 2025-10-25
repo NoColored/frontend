@@ -12,7 +12,7 @@ import Modal, { useModal } from '@/components/modal';
 import { getOut } from '@/services/lobby';
 
 import { ROUTE } from '@/constants/routes';
-import { useUserCode } from '@/features/user';
+import { useUserCode } from '@/models/user';
 
 const Result = () => {
   const navigate = useNavigate();

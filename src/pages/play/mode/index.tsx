@@ -14,7 +14,7 @@ import Matching from '@/pages/play/mode/Matching';
 import { getMatching } from '@/services/matching';
 
 import { ROUTE } from '@/constants/routes';
-import { useUserInfo } from '@/features/user';
+import { useUserInfo } from '@/models/user';
 
 const Mode = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);

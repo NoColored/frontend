@@ -1,13 +1,5 @@
 import { client } from '@/shared/api';
 
-export const getUser = async () => {
-  return client.get<User>(`/user`).then((response) => {
-    const { data } = response;
-    console.debug('user:', data);
-    return data;
-  });
-};
-
 const setToken = (token: string, status: number) => {
   if (status === 200) {
     localStorage.setItem('token', token);

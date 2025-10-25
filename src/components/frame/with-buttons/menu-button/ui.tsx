@@ -10,7 +10,7 @@ import SettingTextButton from '@/components/button/SettingTextButton';
 import Modal, { useModal } from '@/components/modal';
 
 import SignUp from '@/features/sign-up';
-import { useUserStatus } from '@/features/user';
+import { useUserStatus } from '@/models/user';
 
 const MENU_ID = {
   home: 'menu-home',
