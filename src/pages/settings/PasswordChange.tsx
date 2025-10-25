@@ -7,7 +7,7 @@ import Input from '@/components/input';
 
 import { patchPasswordChange } from '@/services/auth';
 
-import { ERROR_MESSAGE } from '@/constants';
+import { ERROR_MESSAGE } from '@/shared/constants';
 
 interface Props {
   onClose: () => void;

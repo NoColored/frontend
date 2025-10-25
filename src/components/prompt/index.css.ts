@@ -2,7 +2,7 @@ import { style } from '@vanilla-extract/css';
 
 import { sprinkles } from '@/styles/sprinkles.css';
 
-import { IPHONE_SE } from '@/constants/screen';
+import { IPHONE_SE } from '@/shared/constants';
 
 export const fullscreenPromptStyle = style([
   sprinkles({
