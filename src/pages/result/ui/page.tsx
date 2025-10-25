@@ -11,8 +11,8 @@ import Modal, { useModal } from '@/components/modal';
 
 import { getOut } from '@/services/lobby';
 
-import { ROUTE } from '@/constants/routes';
 import { useUserCode } from '@/models/user';
+import { ROUTE } from '@/shared/constants';
 
 const Result = () => {
   const navigate = useNavigate();

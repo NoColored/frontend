@@ -10,7 +10,7 @@ import Input from '@/components/input';
 import { buttonWrapper } from '@/pages/landing/index.css';
 
 import { ERROR_MESSAGE } from '@/constants';
-import { ROUTE } from '@/constants/routes';
+import { ROUTE } from '@/shared/constants';
 import { setFullScreen } from '@/shared/utils';
 
 interface Props {

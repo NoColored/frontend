@@ -8,7 +8,7 @@ import Character from '@/pages/play/lobby/Players/Character';
 import PlayerInfo from '@/pages/play/lobby/Players/Info';
 import ReadyButton from '@/pages/play/lobby/Players/ReadyButton';
 
-import { ROUTE } from '@/constants/routes';
+import { ROUTE } from '@/shared/constants';
 
 interface Props {
   players: Player[];

@@ -7,7 +7,7 @@ import MenuButton from './menu-button';
 
 import SettingNavigationButton from '@/components/button/SettingNavigationButton/index';
 
-import { ROUTE } from '@/constants/routes';
+import { ROUTE } from '@/shared/constants';
 
 const ALLOWED_PATHS = new Set([
   ROUTE.collection,

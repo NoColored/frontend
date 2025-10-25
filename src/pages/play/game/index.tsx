@@ -5,9 +5,9 @@ import { useDataStale } from './hooks';
 
 import BasicContentFrame from '@/components/frame';
 
-import { ROUTE } from '@/constants/routes';
 import { config, scenesConfig } from '@/features/game';
 import { useGameWebSocket } from '@/features/websocket';
+import { ROUTE } from '@/shared/constants';
 
 const Game = () => {
   const navigate = useNavigate();

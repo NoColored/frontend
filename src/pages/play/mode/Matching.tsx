@@ -9,8 +9,8 @@ import { MatchingText } from '@/pages/play/mode/MatchingText';
 
 import { deleteMatching } from '@/services/matching';
 
-import { ROUTE } from '@/constants/routes';
 import { useWebSocket } from '@/features/websocket';
+import { ROUTE } from '@/shared/constants';
 
 interface Props {
   imgSrc: string;

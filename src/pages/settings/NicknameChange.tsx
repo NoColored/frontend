@@ -9,7 +9,7 @@ import Input from '@/components/input';
 import { patchNicknameChange } from '@/services/auth';
 
 import { ERROR_MESSAGE } from '@/constants';
-import { ROUTE } from '@/constants/routes';
+import { ROUTE } from '@/shared/constants';
 
 interface Props {
   onClose: () => void;

@@ -4,8 +4,8 @@ import * as styles from './index.css';
 
 import ColoredButton from '@/components/button/ColoredButton/index';
 
-import { ROUTE } from '@/constants/routes';
 import { useGuestLogin } from '@/features/auth';
+import { ROUTE } from '@/shared/constants';
 
 const Landing = () => {
   const navigate = useNavigate();

@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { gameWebSocketAtom, webSocketAtom } from './store';
 
-import { ROUTE } from '@/constants/routes';
+import { ROUTE } from '@/shared/constants';
 
 export const useWebSocket = <T extends WebSocketMessage>(
   onMessage: (message: T) => void,

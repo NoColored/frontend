@@ -8,7 +8,7 @@ import MessageModalContent from './MessageModalContent';
 import ColoredButton from '@/components/button/ColoredButton';
 import Input from '@/components/input';
 
-import { ROUTE } from '@/constants/routes';
+import { ROUTE } from '@/shared/constants';
 
 interface Props {
   closeModal: () => void;

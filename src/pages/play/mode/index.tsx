@@ -13,8 +13,8 @@ import Matching from '@/pages/play/mode/Matching';
 
 import { getMatching } from '@/services/matching';
 
-import { ROUTE } from '@/constants/routes';
 import { useUserInfo } from '@/models/user';
+import { ROUTE } from '@/shared/constants';
 
 const Mode = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);

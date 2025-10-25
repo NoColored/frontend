@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router-dom';
 
 import { loginAsGuest, loginAsMember } from './api';
 
-import { ROUTE } from '@/constants/routes';
 import { removeUserQuery } from '@/models/user';
+import { ROUTE } from '@/shared/constants';
 import { setFullScreen } from '@/shared/utils';
 
 export const useLogout = () => {

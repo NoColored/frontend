@@ -7,7 +7,7 @@ import ColoredButton from '@/components/button/ColoredButton';
 
 import type { errorCode } from '@/pages/error/type';
 
-import { ROUTE } from '@/constants/routes';
+import { ROUTE } from '@/shared/constants';
 
 const Error = () => {
   const navigate = useNavigate();
@@ -23,16 +23,9 @@ const Error = () => {
 
   return (
     <div className={styles.errorWrapper}>
-        <pre className={styles.errorMessage}>
-          {constants.ERROR_MESSAGE[code]}
-        </pre>
-        <ColoredButton
-          text='확인'
-          color='green'
-          size='small'
-          onClick={goBack}
-        />
-      </div>
+      <pre className={styles.errorMessage}>{constants.ERROR_MESSAGE[code]}</pre>
+      <ColoredButton text='확인' color='green' size='small' onClick={goBack} />
+    </div>
   );
 };
 

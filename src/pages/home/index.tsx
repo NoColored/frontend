@@ -7,8 +7,8 @@ import ColoredIconButton from '@/components/button/ColoredIconButton';
 
 import UserDashboard from '@/pages/home/UserDashboard';
 
-import { ROUTE } from '@/constants/routes';
 import { useUserInfo } from '@/models/user';
+import { ROUTE } from '@/shared/constants';
 
 const Home = () => {
   const { user } = useUserInfo();

@@ -3,8 +3,8 @@ import { Navigate } from 'react-router-dom';
 import * as styles from './index.css';
 import MemberSetting from './member-setting';
 
-import { ROUTE } from '@/constants/routes';
 import { useUserStatus } from '@/models/user';
+import { ROUTE } from '@/shared/constants';
 
 const Settings = () => {
   const { isMember } = useUserStatus();

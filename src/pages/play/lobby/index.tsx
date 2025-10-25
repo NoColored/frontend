@@ -11,10 +11,10 @@ import SettingButton from '@/pages/play/lobby/SettingButton';
 
 import { getOut } from '@/services/lobby';
 
-import { ROUTE } from '@/constants/routes';
 import { useWebSocket } from '@/features/websocket';
 import Map from '@/models/map';
 import { useUserCode } from '@/models/user';
+import { ROUTE } from '@/shared/constants';
 
 const getLobbyInfo = (lobby: Lobby) => {
   lobby.players.forEach((player, index) => {
