@@ -17,7 +17,7 @@ interface Props {
 const SearchModalContent = ({ closeModal }: Props) => {
   const navigate = useNavigate();
   const [isValid, setIsValid] = useState(true);
-  const [roomInfo, setRoomInfo] = useState<RequestEnterRoom>({
+  const [roomInfo, setRoomInfo] = useState<EnterRoomRequest>({
     roomCode: '',
     roomPassword: '',
   });

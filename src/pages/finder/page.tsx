@@ -11,8 +11,8 @@ import ColoredButton from '@/components/button/ColoredButton';
 import SettingTextButton from '@/components/button/SettingTextButton';
 
 const Finder = () => {
-  const roomListData = useLoaderData() as RoomListItem[];
-  const [roomList, setRoomList] = useState<RoomListItem[]>(roomListData);
+  const roomListData = useLoaderData() as RoomPreview[];
+  const [roomList, setRoomList] = useState<RoomPreview[]>(roomListData);
   const [index, setIndex] = useState<number>(1);
   const [maxIndex, setMaxIndex] = useState<number>(
     roomList.length ? Math.ceil(roomList.length / 6) : 1,

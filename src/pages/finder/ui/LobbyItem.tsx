@@ -9,7 +9,7 @@ import Modal, { useModal } from '@/components/modal';
 import { MAPS } from '@/models/map';
 
 interface Props {
-  roomInfo: RoomListItem;
+  roomInfo: RoomPreview;
 }
 
 const LobbyItem = ({ roomInfo }: Props) => {
