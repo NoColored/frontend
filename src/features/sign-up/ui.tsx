@@ -1,16 +1,14 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import { getIdCheck, postGuestSignUp, postSignUp } from './api';
 import { checkSignUpInfo } from './utils';
-
-import { SignUpInfo } from '@/types/auth';
 
 import ColoredButton from '@/components/button/ColoredButton';
 import Input from '@/components/input';
 
 import { buttonWrapper } from '@/pages/landing/index.css';
 
-import { getIdCheck, postGuestSignUp, postSignUp } from '@/services/auth';
 import { setFullScreen } from '@/services/landing';
 
 import { ERROR_MESSAGE } from '@/constants';
@@ -24,7 +22,7 @@ interface Props {
 const SignUp = ({ closeModal, isGuest }: Props) => {
   const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = useState(ERROR_MESSAGE.welcome);
-  const [signUpInfo, setSignUpInfo] = useState<SignUpInfo>({
+  const [signUpInfo, setSignUpInfo] = useState<SignUpForm>({
     id: '',
     password: '',
     passwordConfirm: '',
