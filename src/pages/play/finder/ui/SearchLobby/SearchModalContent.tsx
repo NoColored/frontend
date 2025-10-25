@@ -38,7 +38,7 @@ const SearchModalContent = ({ closeModal }: Props) => {
       setIsValid(false);
     } else {
       setIsValid(true);
-      navigate(`${ROUTE.lobby}/${roomId}`);
+      navigate(`${ROUTE.lobby}/${roomId}`, { replace: true });
     }
   };
 

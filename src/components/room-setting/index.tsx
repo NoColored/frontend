@@ -61,7 +61,7 @@ const RoomSettingForm = ({
     await api(roomSetting).then((roomId) => {
       closeModal();
       if (roomId) {
-        navigate(`${ROUTE.lobby}/${roomId}`);
+        navigate(`${ROUTE.lobby}/${roomId}`, { replace: true });
       }
     });
   };
