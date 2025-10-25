@@ -2,7 +2,7 @@ import { calc } from '@vanilla-extract/css-utils';
 
 import { vars } from '@/styles/vars.css';
 
-export { PLAYER_COLORS } from '@/constants/player';
+export { PLAYER_COLORS } from '@/models/player';
 
 export const EMPTY_PLAYER_COLOR = 'gray300' as const;
 

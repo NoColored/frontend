@@ -4,7 +4,7 @@ import * as styles from './index.css';
 
 import TierIconBox from '@/components/tier';
 
-import { PLAYER_COLORS } from '@/constants/player';
+import { PLAYER_COLORS } from '@/models/player';
 
 interface Props {
   player: Player;

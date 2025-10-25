@@ -2,7 +2,7 @@ import * as styles from './index.css';
 
 import PlayerInfo from '@/components/player-info';
 
-import { PLAYER_COLORS } from '@/constants/player';
+import { PLAYER_COLORS } from '@/models/player';
 
 interface Props {
   player: PlayerRecord;

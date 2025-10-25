@@ -1,14 +1,3 @@
-interface Player {
-  userCode: string;
-  nickname: string;
-  tier: tierRange;
-  skin: string;
-  label: string;
-  ready: boolean;
-  isMaster: boolean;
-  key: string;
-}
-
 interface Room {
   roomTitle: string;
   mapId: MapId;
