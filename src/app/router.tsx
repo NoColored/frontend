@@ -4,11 +4,11 @@ import BasicContentFrame from '@/components/frame/with-buttons';
 
 import Collection from '@/pages/collection';
 import Error from '@/pages/error';
+import Finder, { getRoomList } from '@/pages/finder';
 import Home from '@/pages/home';
 import Landing from '@/pages/landing';
 import LandingLayout from '@/pages/landing/layout';
 import LogIn from '@/pages/logIn';
-import Finder, { getRoomList } from '@/pages/play/finder';
 import Game from '@/pages/play/game';
 import LobbyPage from '@/pages/play/lobby';
 import Mode from '@/pages/play/mode';
