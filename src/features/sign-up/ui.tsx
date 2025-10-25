@@ -9,10 +9,9 @@ import Input from '@/components/input';
 
 import { buttonWrapper } from '@/pages/landing/index.css';
 
-import { setFullScreen } from '@/services/landing';
-
 import { ERROR_MESSAGE } from '@/constants';
 import { ROUTE } from '@/constants/routes';
+import { setFullScreen } from '@/shared/utils';
 
 interface Props {
   closeModal: () => void;

@@ -5,6 +5,7 @@ import { loginAsGuest, loginAsMember } from './api';
 
 import { ROUTE } from '@/constants/routes';
 import { removeUserQuery } from '@/models/user';
+import { setFullScreen } from '@/shared/utils';
 
 export const useLogout = () => {
   const navigate = useNavigate();
@@ -28,7 +29,7 @@ export const useLogin = () => {
       .then((isSuccess) => {
         if (isSuccess) {
           navigate(ROUTE.home, { replace: true });
-          // setFullScreen();
+          setFullScreen();
         }
         return isSuccess;
       })
@@ -54,7 +55,7 @@ export const useGuestLogin = () => {
     if (!isSuccess) {
       return navigate(`${ROUTE.error}/500`);
     }
-    // setFullScreen();
+    setFullScreen();
     return navigate(ROUTE.tutorial, { replace: true });
   };
 
