@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { getIdCheck, postGuestSignUp, postSignUp } from './api';
-import { checkSignUpInfo } from './utils';
+import { checkIdDuplicate, registerMember, upgradeToMember } from './api';
+import { validateSignUpForm } from './utils';
 
 import ColoredButton from '@/components/button/ColoredButton';
 import Input from '@/components/input';
@@ -22,7 +22,7 @@ interface Props {
 const SignUp = ({ closeModal, isGuest }: Props) => {
   const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = useState(ERROR_MESSAGE.welcome);
-  const [signUpInfo, setSignUpInfo] = useState<SignUpForm>({
+  const [form, setForm] = useState<SignUpForm>({
     id: '',
     password: '',
     passwordConfirm: '',
@@ -31,27 +31,27 @@ const SignUp = ({ closeModal, isGuest }: Props) => {
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
-    setSignUpInfo((info) => ({
-      ...info,
+    setForm((data) => ({
+      ...data,
       [name]: value,
     }));
     setErrorMessage('');
   };
 
   const clickSignUp = async () => {
-    const checkId = await getIdCheck(signUpInfo.id);
-    if (checkId) {
+    const isDuplicate = await checkIdDuplicate(form.id);
+    if (isDuplicate) {
       setErrorMessage(ERROR_MESSAGE.sameId);
       return;
     }
-    const errorInfo = checkSignUpInfo(signUpInfo);
-    if (errorInfo.length >= 1) {
-      setErrorMessage(errorInfo);
+    const error = validateSignUpForm(form);
+    if (error) {
+      setErrorMessage(error);
       return;
     }
 
-    const signUp = isGuest ? postGuestSignUp : postSignUp;
-    const isSuccess = await signUp(signUpInfo);
+    const signUp = isGuest ? upgradeToMember : registerMember;
+    const isSuccess = await signUp(form);
     if (!isSuccess) {
       return;
     }
@@ -70,7 +70,7 @@ const SignUp = ({ closeModal, isGuest }: Props) => {
         type='text'
         placeholder='아이디 (최소 6 ~ 20자)'
         size='medium'
-        value={signUpInfo.id}
+        value={form.id}
         onChange={handleChange}
       />
       <Input
@@ -78,7 +78,7 @@ const SignUp = ({ closeModal, isGuest }: Props) => {
         type='password'
         placeholder='비밀번호 (숫자 6자)'
         size='medium'
-        value={signUpInfo.password}
+        value={form.password}
         onChange={handleChange}
       />
       <Input
@@ -86,7 +86,7 @@ const SignUp = ({ closeModal, isGuest }: Props) => {
         type='password'
         placeholder='비밀번호 확인'
         size='medium'
-        value={signUpInfo.passwordConfirm}
+        value={form.passwordConfirm}
         onChange={handleChange}
       />
       <Input
@@ -94,7 +94,7 @@ const SignUp = ({ closeModal, isGuest }: Props) => {
         type='text'
         placeholder='닉네임 (최소 2 ~ 9자)'
         size='medium'
-        value={signUpInfo.nickname}
+        value={form.nickname}
         onChange={handleChange}
       />
       <div

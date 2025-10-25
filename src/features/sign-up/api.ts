@@ -1,4 +1,4 @@
-import { AxiosError } from 'axios';
+import type { AxiosError } from 'axios';
 
 import { client } from '@/features/api';
 
@@ -8,7 +8,7 @@ const axiosConfig = {
   },
 };
 
-export const getIdCheck = async (id: SignUpForm['id']) => {
+export const checkIdDuplicate = async (id: SignUpForm['id']) => {
   // 중복이 안되면 false. true면 오류
   return client
     .get<boolean>(`/user/dup/${id}`, axiosConfig)
@@ -16,7 +16,7 @@ export const getIdCheck = async (id: SignUpForm['id']) => {
     .catch(() => true);
 };
 
-export const postGuestSignUp = async (formData: SignUpForm) => {
+export const upgradeToMember = async (formData: SignUpForm) => {
   return client
     .post<string>('/user/guest', formData, axiosConfig)
     .then(({ data }) => {
@@ -29,7 +29,7 @@ export const postGuestSignUp = async (formData: SignUpForm) => {
     });
 };
 
-export const postSignUp = async (formData: SignUpForm) => {
+export const registerMember = async (formData: SignUpForm) => {
   return client
     .post<string>('/user/signup', formData, axiosConfig)
     .then(({ data, status }) => {

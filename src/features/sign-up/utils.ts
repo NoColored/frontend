@@ -1,6 +1,6 @@
 import { ERROR_MESSAGE } from '@/constants';
 
-export const checkSignUpInfo = ({
+export const validateSignUpForm = ({
   id,
   password,
   passwordConfirm,
