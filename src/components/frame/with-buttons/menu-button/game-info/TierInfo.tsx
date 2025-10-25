@@ -1,7 +1,7 @@
 import { HIGH_TIER_INFO, LOW_TIER_INFO } from './constants';
 import * as styles from './index.css';
 
-import TierBox from '@/components/tier';
+import TierBox from '@/models/tier';
 
 const TierInfo = () => {
   return (

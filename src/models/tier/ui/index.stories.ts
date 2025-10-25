@@ -1,5 +1,6 @@
-import Tier from './ui';
 import { size, tier } from './variants.css';
+
+import Tier from './index';
 
 import type { Meta, StoryObj } from '@storybook/react-vite';
 

@@ -2,7 +2,7 @@ import { assignInlineVars } from '@vanilla-extract/dynamic';
 
 import * as styles from './index.css';
 
-import TierBox from '@/components/tier';
+import TierBox from '@/models/tier';
 
 interface Props {
   nickname: string;

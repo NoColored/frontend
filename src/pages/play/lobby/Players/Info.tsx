@@ -2,9 +2,9 @@ import { memo } from 'react';
 
 import * as styles from './index.css';
 
-import TierIconBox from '@/components/tier';
-
 import { PLAYER_COLORS } from '@/models/player';
+import TierIconBox from '@/models/tier';
+
 
 interface Props {
   player: Player;

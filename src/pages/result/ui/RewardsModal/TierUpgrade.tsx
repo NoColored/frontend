@@ -2,7 +2,8 @@ import * as constants from '../../constants';
 import * as styles from '../index.css';
 
 import ColoredButton from '@/components/button/ColoredButton';
-import TierBox from '@/components/tier';
+
+import TierBox from '@/models/tier';
 
 interface Props {
   closeModal: () => void;
