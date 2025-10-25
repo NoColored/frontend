@@ -5,9 +5,9 @@ import * as styles from './index.css';
 import ColoredButton from '@/components/button/ColoredButton';
 import Input from '@/components/input';
 
-import * as constants from '@/pages/landing/logIn/constants';
-
 import { deleteUserInfo, postConfirmPassword } from '@/services/auth';
+
+import { ERROR_MESSAGE } from '@/shared/constants';
 
 interface Props {
   onClose: () => void;
@@ -28,7 +28,7 @@ const DeleteAccount = ({ onClose }: Props) => {
       setCheck(true);
     }
     if (!isConfirmed) {
-      setErrorMessage(constants.ERROR_MESSAGE.inValidSignOut);
+      setErrorMessage(ERROR_MESSAGE.inValidSignOut);
     }
   };
 

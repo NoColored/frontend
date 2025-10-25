@@ -19,7 +19,7 @@ export const config: Phaser.Types.Core.GameConfig = {
 
 export const scenesConfig = (
   setIsActive: (isActive: boolean) => void,
-  onDisconnect: () => void,
+  webSocket: GameSocket,
 ) => {
-  return [LoadPreLoadingScene, new GameScene(setIsActive, onDisconnect)];
+  return [LoadPreLoadingScene, new GameScene(setIsActive, webSocket)];
 };

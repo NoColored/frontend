@@ -1,24 +1,21 @@
+import { type RecipeVariants } from '@vanilla-extract/recipes';
+
 import * as styles from './index.css';
 
-import type { positionType } from '@/components/button/types';
+import { useEffectSound } from '@/features/sound';
 
-import useEffectSoundStore from "@/states/effect";
-
-interface Props {
+type Props = {
   label: string;
   onClick: () => void;
-  position: positionType;
-}
+} & RecipeVariants<typeof styles.button>;
 
-const buttonLabel = (label: string, position: positionType) => {
-  if (position === 'leftTop') {
-    return `< ${label}`;
-  }
-  return `${label} X`;
-};
-
-const SettingNavigationButton = ({ label, onClick, position }: Props) => {
-  const { playEffectSound } = useEffectSoundStore();
+const SettingNavigationButton = ({
+  label,
+  onClick,
+  position,
+  usage = 'modal',
+}: Props) => {
+  const { playEffectSound } = useEffectSound();
 
   const handleClick = () => {
     playEffectSound();
@@ -28,10 +25,10 @@ const SettingNavigationButton = ({ label, onClick, position }: Props) => {
   return (
     <button
       type='button'
-      className={styles.button({ position })}
+      className={styles.button({ position, usage })}
       onClick={handleClick}
     >
-      {buttonLabel(label, position)}
+      {label}
     </button>
   );
 };

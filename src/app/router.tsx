@@ -1,28 +1,26 @@
 import { createBrowserRouter, Navigate, Outlet } from 'react-router-dom';
 
+import BasicContentFrame from '@/components/frame/with-buttons';
 
 import Collection from '@/pages/collection';
 import Error from '@/pages/error';
+import Finder, { getRoomList } from '@/pages/finder';
 import Home from '@/pages/home';
 import Landing from '@/pages/landing';
 import LandingLayout from '@/pages/landing/layout';
-import LogIn from '@/pages/landing/logIn';
-import Finder from '@/pages/play/finder';
+import LogIn from '@/pages/logIn';
 import Game from '@/pages/play/game';
-import Lobby from '@/pages/play/lobby';
+import LobbyPage, { getLobbyInfo } from '@/pages/play/lobby';
 import Mode from '@/pages/play/mode';
 import Ranking from '@/pages/ranking';
-import Result from '@/pages/result';
+import Result, { getGameResult } from '@/pages/result';
 import Settings from '@/pages/settings';
 import Tutorial from '@/pages/tutorial';
 
-import { checkToken, getUser } from '@/services/auth';
-import { getRoomList } from '@/services/finder';
-import { getLobbyInfo } from '@/services/lobby';
+import { checkToken } from '@/services/auth';
 import { getRank } from '@/services/rank';
-import { getGameResult } from '@/services/result';
 
-import { ROUTE } from '@/constants/routes';
+import { ROUTE } from '@/shared/constants';
 
 const router = createBrowserRouter([
   {
@@ -40,73 +38,79 @@ const router = createBrowserRouter([
     ],
   },
   {
-    element: <Outlet />,
-    errorElement: <Navigate to={ROUTE.main} replace />,
-    loader: checkToken,
+    element: (
+      <BasicContentFrame>
+        <Outlet />
+      </BasicContentFrame>
+    ),
     children: [
       {
-        path: `${ROUTE.tutorial}`,
-        element: <Tutorial />,
-      },
-      {
-        path: `${ROUTE.home}`,
-        element: <Home />,
-        loader: getUser,
-      },
-      {
-        path: `${ROUTE.play}`,
-        errorElement: <Navigate to={`${ROUTE.error}/401`} replace />,
+        element: <Outlet />,
+        errorElement: <Navigate to={ROUTE.main} replace />,
+        loader: checkToken,
         children: [
           {
-            index: true,
-            element: <Mode />,
-            loader: getUser,
+            path: ROUTE.tutorial,
+            element: <Tutorial />,
           },
           {
-            path: `${ROUTE.lobby}/:roomId`,
-            element: <Lobby />,
-            loader: ({ params }) => getLobbyInfo(params.roomId),
+            path: ROUTE.home,
+            element: <Home />,
           },
           {
-            path: `${ROUTE.finder}`,
-            element: <Finder />,
-            loader: () => getRoomList(1),
+            path: ROUTE.play,
+            errorElement: <Navigate to={`${ROUTE.error}/401`} replace />,
+            children: [
+              {
+                index: true,
+                element: <Mode />,
+              },
+              {
+                path: `${ROUTE.lobby}/:roomId`,
+                element: <LobbyPage />,
+                loader: ({ params }) => getLobbyInfo(params.roomId),
+              },
+              {
+                path: ROUTE.finder,
+                element: <Finder />,
+                loader: () => getRoomList(1),
+              },
+            ],
           },
           {
-            path: `${ROUTE.game}`,
-            element: <Game />,
+            path: ROUTE.ranking,
+            element: <Ranking />,
+            loader: getRank,
+          },
+          {
+            path: ROUTE.result,
+            element: <Result />,
+            errorElement: <Navigate to={ROUTE.home} />,
+            loader: getGameResult,
+          },
+          {
+            path: ROUTE.setting,
+            element: <Settings />,
+          },
+          {
+            path: ROUTE.collection,
+            element: <Collection />,
           },
         ],
       },
       {
-        path: `${ROUTE.ranking}`,
-        element: <Ranking />,
-        loader: getRank,
+        path: `${ROUTE.error}/:code`,
+        element: <Error />,
       },
       {
-        path: `${ROUTE.result}`,
-        element: <Result />,
-        errorElement: <Navigate to={ROUTE.home} />,
-        loader: getGameResult,
-      },
-      {
-        path: `${ROUTE.setting}`,
-        element: <Settings />,
-      },
-      {
-        path: `${ROUTE.collection}`,
-        element: <Collection />,
-        loader: getUser,
+        path: '/*',
+        element: <Navigate to={`${ROUTE.error}/404`} replace />,
       },
     ],
   },
   {
-    path: `${ROUTE.error}/:code`,
-    element: <Error />,
-  },
-  {
-    path: '/*',
-    element: <Navigate to={`${ROUTE.error}/404`} replace />,
+    path: ROUTE.game,
+    element: <Game />,
   },
 ]);
 

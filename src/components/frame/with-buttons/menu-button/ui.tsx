@@ -1,17 +1,22 @@
 import { Menu as MenuIcon } from 'lucide-react';
+import { useCallback, useMemo, useState } from 'react';
 
 import { button } from '../button.css';
 import AccountSettingButton from './account-setting-button';
-import { MENU_ID, NOTICE_URL } from './constants';
 import GameInfo from './game-info';
-import { useMenuStore } from './store';
 
 import ColoredButton from '@/components/button/ColoredButton';
 import SettingTextButton from '@/components/button/SettingTextButton';
 import Modal, { useModal } from '@/components/modal';
 
 import SignUp from '@/features/sign-up';
-import { useUserStatus } from '@/features/user';
+import { useUserStatus } from '@/models/user';
+
+const MENU_ID = {
+  home: 'menu-home',
+  gameInfo: 'game-info',
+  guest: 'become-member',
+};
 
 const MenuItem = (props: {
   onClick: () => void;
@@ -19,14 +24,21 @@ const MenuItem = (props: {
   children: React.ReactNode;
 }) => <SettingTextButton {...props} size='medium' colorStyle='black' />;
 
-const Menu = ({ closeModal }: { closeModal: () => void }) => {
-  const { setMenuId } = useMenuStore.getState();
+const Menu = ({
+  closeModal,
+  setMenuId,
+}: {
+  closeModal: () => void;
+  setMenuId: (id: string) => void;
+}) => {
   const { isGuest, isMember } = useUserStatus();
 
   return (
     <>
       <h3>메뉴</h3>
-      <MenuItem onClick={() => window.open(NOTICE_URL, '_blank')}>
+      <MenuItem
+        onClick={() => window.open('https://nocolored.notion.site/', '_blank')}
+      >
         공지 사항
       </MenuItem>
       <MenuItem onClick={() => setMenuId(MENU_ID.gameInfo)}>게임 정보</MenuItem>
@@ -44,44 +56,32 @@ const Menu = ({ closeModal }: { closeModal: () => void }) => {
   );
 };
 
-const ModalItem = ({
-  id,
-  children,
-}: {
-  id: string;
-  children: React.ReactNode;
-}) => {
-  const openId = useMenuStore((state) => state.id);
-
-  if (id === openId) {
-    return children;
-  }
-
-  return null;
-};
-
 const MenuButton = () => {
-  const { setMenuId } = useMenuStore.getState();
+  const [menuId, setMenuId] = useState<string>(MENU_ID.home);
+
+  const onClose = useCallback(() => setMenuId(MENU_ID.home), []);
+
   const { modalRef, openModal, closeModal } = useModal({
-    onClose: () => setMenuId(MENU_ID.home),
+    onClose,
   });
+
+  const ModalContent = useMemo(() => {
+    switch (menuId) {
+      case MENU_ID.gameInfo:
+        return <GameInfo onClose={closeModal} />;
+      case MENU_ID.guest:
+        return <SignUp closeModal={closeModal} isGuest />;
+      default:
+        return <Menu closeModal={closeModal} setMenuId={setMenuId} />;
+    }
+  }, [menuId]);
 
   return (
     <>
       <button type='button' onClick={openModal} className={button}>
         <MenuIcon size={16} />
       </button>
-      <Modal ref={modalRef}>
-        <ModalItem id={MENU_ID.home}>
-          <Menu closeModal={closeModal} />
-        </ModalItem>
-        <ModalItem id={MENU_ID.gameInfo}>
-          <GameInfo onClose={closeModal} />
-        </ModalItem>
-        <ModalItem id={MENU_ID.guest}>
-          <SignUp closeModal={closeModal} />
-        </ModalItem>
-      </Modal>
+      <Modal ref={modalRef}>{ModalContent}</Modal>
     </>
   );
 };

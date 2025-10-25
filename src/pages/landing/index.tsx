@@ -4,24 +4,12 @@ import * as styles from './index.css';
 
 import ColoredButton from '@/components/button/ColoredButton/index';
 
-import { getGuestLogin } from '@/services/auth';
-import { setFullScreen } from '@/services/landing';
-
-import { ROUTE } from '@/constants/routes';
+import { useGuestLogin } from '@/features/auth';
+import { ROUTE } from '@/shared/constants';
 
 const Landing = () => {
   const navigate = useNavigate();
-
-  const clickGuestLogin = async () => {
-    return getGuestLogin().then((isSuccess) => {
-      if (!isSuccess) {
-        navigate(`${ROUTE.error}/500`);
-        return;
-      }
-      navigate(ROUTE.tutorial);
-      setFullScreen();
-    });
-  };
+  const { guestLogin } = useGuestLogin();
 
   const clickLogIn = () => {
     navigate(ROUTE.login);
@@ -39,7 +27,7 @@ const Landing = () => {
           text='GUEST'
           color='gray300'
           size='large'
-          onClick={clickGuestLogin}
+          onClick={guestLogin}
         />
         <ColoredButton
           text='LOG IN'

@@ -5,9 +5,9 @@ import * as styles from './index.css';
 import ColoredButton from '@/components/button/ColoredButton';
 import Input from '@/components/input';
 
-import * as constants from '@/pages/landing/logIn/constants';
-
 import { patchPasswordChange } from '@/services/auth';
+
+import { ERROR_MESSAGE } from '@/shared/constants';
 
 interface Props {
   onClose: () => void;
@@ -28,12 +28,12 @@ const PasswordChange = ({ onClose }: Props) => {
 
   const passwordChangeClick = async () => {
     if (password.length !== 6 || newPassword.length !== 6) {
-      setErrorMessage(constants.ERROR_MESSAGE.inValidPasswordLength);
+      setErrorMessage(ERROR_MESSAGE.inValidPasswordLength);
       return;
     }
     const validPassword = await patchPasswordChange(password, newPassword);
     if (!validPassword) {
-      setErrorMessage(constants.ERROR_MESSAGE.inValidPassword);
+      setErrorMessage(ERROR_MESSAGE.inValidPassword);
       return;
     }
     onClose();

@@ -1,77 +1,66 @@
 import { useState } from 'react';
 
+import { getReady } from '../api';
+import { EMPTY_PLAYER_COLOR, MESSAGE, PLAYER_COLORS } from '../constants';
 import * as styles from './index.css';
 
-import type { Player } from '@/types/play';
+import type { AxiosError } from 'axios';
 
 import ColoredButton from '@/components/button/ColoredButton';
-import ColoredIconButton, {
-  ColoredIconButtonProps,
-} from '@/components/button/ColoredIconButton';
+import ColoredIconButton from '@/components/button/ColoredIconButton';
+import Modal, { useModal } from '@/components/modal';
 
-import useModal from '@/hooks/useModal';
 
-import * as constants from '@/pages/play/lobby/constants';
-import { EMPTY_PLAYER_COLOR } from '@/pages/play/lobby/constants';
-
-import { getReady } from '@/services/lobby';
-
-const getButtonProps = (
-  player: Player,
-  startGame: () => void,
-): ColoredIconButtonProps => {
-  const props = {
-    icon: constants.PLAYER_ICON_LARGE[player.color],
-    color: player.color,
-    size: 'large' as const,
-    onClick: getReady,
-  };
+const getText = (player: Player): string => {
   if (player.isMaster) {
-    return {
-      ...props,
-      text: '게임시작',
-      onClick: startGame,
-    };
+    return '게임시작';
   }
   if (player.ready) {
-    return {
-      ...props,
-      text: '준비취소',
-      color: EMPTY_PLAYER_COLOR,
-    };
+    return '준비취소';
   }
-  return {
-    ...props,
-    text: '게임준비',
-  };
+  return '게임준비';
 };
+
+const PLAYER_ICON_LARGE = Array.from(
+  { length: 4 },
+  (_, i) => `/images/ui/icon/shape/icon-shape-white-big-player${i}-h48w48.png`,
+);
 
 interface Props {
   myInfo: Player;
+  index: number;
 }
 
-const ReadyButton = ({ myInfo }: Props) => {
-  const { Modal, openModal, closeModal } = useModal();
+const ReadyButton = ({ myInfo, index }: Props) => {
+  const { modalRef, openModal, closeModal } = useModal();
   const [errorMessage, setErrorMessage] = useState('');
 
   const startGame = async () => {
-    return getReady().catch((err) => {
-      if (err.response.status === 400) {
-        setErrorMessage(constants.LONELY_MASTER_MESSAGE);
-      } else if (err.response.status === 406) {
-        setErrorMessage(constants.SOMEBODY_NOT_READY_MESSAGE);
+    return getReady().catch(({ response }: AxiosError) => {
+      if (response?.status === 400) {
+        setErrorMessage(MESSAGE.LONELY_MASTER);
+      } else if (response?.status === 406) {
+        setErrorMessage(MESSAGE.SOMEBODY_NOT_READY);
       }
       openModal();
     });
   };
 
-  const buttonProps = getButtonProps(myInfo, startGame);
+  const color =
+    !myInfo.isMaster && myInfo.ready
+      ? EMPTY_PLAYER_COLOR
+      : PLAYER_COLORS[index];
 
   return (
     <>
-      <ColoredIconButton {...buttonProps} />
-
-      <Modal>
+      <ColoredIconButton
+        size='large'
+        onClick={myInfo.isMaster ? startGame : getReady}
+        color={color}
+        icon={PLAYER_ICON_LARGE[index]}
+        text={getText(myInfo)}
+      />
+      <Modal ref={modalRef}>
         <div className={styles.readyWrapper}>
           <pre className={styles.errorMessage}>{errorMessage}</pre>
           <div className={styles.errorButtonWrapper}>

@@ -1,18 +1,22 @@
+import { QueryClientProvider } from '@tanstack/react-query';
 import { RouterProvider } from 'react-router-dom';
 
 import router from './router';
 
 import FullScreenPrompt from '@/components/prompt';
 
-import { useSoundSetting } from '@/features/sound';
+import { useBackgroundSound } from '@/features/sound';
+import { queryClient } from '@/shared/api';
 
 const App = () => {
-  const { playBgm } = useSoundSetting();
+  const { playBackgroundSound } = useBackgroundSound();
 
   return (
-    <div onClick={playBgm} role='presentation'>
+    <div onClick={playBackgroundSound} role='presentation'>
       <FullScreenPrompt />
-      <RouterProvider router={router} />
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router} />
+      </QueryClientProvider>
     </div>
   );
 };

@@ -1,39 +1,40 @@
-import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Navigate, useNavigate } from 'react-router-dom';
+
+import { useDataStale } from './hooks';
 
 import BasicContentFrame from '@/components/frame';
 
-import { useGameControl } from '@/states/game';
-
-import { ROUTE } from '@/constants/routes';
 import { config, scenesConfig } from '@/features/game';
-import { useWebSocketStore } from '@/features/websocket';
+import { useGameWebSocket } from '@/features/websocket';
+import { ROUTE } from '@/shared/constants';
 
 const Game = () => {
   const navigate = useNavigate();
-  const { isActive, setIsActive } = useGameControl();
+  const [isActive, setIsActive] = useState(true);
+  const { webSocket } = useGameWebSocket();
+  const { setDataStale } = useDataStale();
 
-  const { webSocket } = useWebSocketStore.getState();
-  const inGameDisconnect = () => {
-    navigate(`${ROUTE.error}/400`, { replace: true });
-  };
   useEffect(() => {
-    if (!isActive) {
-      webSocket.inGameUnconnected(() => {});
-      navigate(ROUTE.result, { replace: true });
-      return () => {};
-    }
+    webSocket.onDisconnect(() =>
+      navigate(`${ROUTE.error}/400`, { replace: true }),
+    );
 
     const game = new Phaser.Game({
       ...config,
-      scene: scenesConfig(setIsActive, inGameDisconnect),
+      scene: scenesConfig(setIsActive, webSocket),
     });
 
     return () => {
-      setIsActive(true);
+      webSocket.cleanUp();
       game.destroy(true);
+      setDataStale();
     };
-  }, [isActive]);
+  }, []);
+
+  if (!isActive) {
+    return <Navigate to={ROUTE.result} replace />;
+  }
 
   return (
     <BasicContentFrame>

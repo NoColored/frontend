@@ -1,0 +1,13 @@
+export const main = '/';
+export const login = '/login';
+export const tutorial = '/tutorial';
+export const play = '/play';
+export const finder = '/play/finder';
+export const game = '/play/game';
+export const lobby = '/play/lobby';
+export const ranking = '/ranking';
+export const collection = '/collection';
+export const home = '/home';
+export const result = '/result';
+export const setting = '/settings';
+export const error = '/error';

@@ -1,29 +1,17 @@
 import { HIGH_TIER_INFO, LOW_TIER_INFO } from './constants';
 import * as styles from './index.css';
-import { indexProps } from './types';
 
-import SettingNavigationButton from '@/components/button/SettingNavigationButton';
-import TierBox from '@/components/tier';
+import TierBox from '@/models/tier';
 
-const TierInfo = ({ onBack, onClose }: indexProps) => {
+const TierInfo = () => {
   return (
     <>
-      <SettingNavigationButton
-        label='뒤로'
-        onClick={onBack}
-        position='leftTop'
-      />
-      <SettingNavigationButton
-        label='닫기'
-        onClick={onClose}
-        position='rightTop'
-      />
       <div className={styles.text}>티어</div>
       <div className={styles.lowTierStyle}>
         {Object.entries(LOW_TIER_INFO).map(([tier, { description, score }]) => (
           <div key={tier} className={styles.tierWrapper}>
             <div className={styles.boxWrapper}>
-              <TierBox size='small' tier={tier as tierRange} />
+              <TierBox size='small' tier={tier as TierValue} />
               <div>{description}</div>
               <div>{score}</div>
             </div>
@@ -35,7 +23,7 @@ const TierInfo = ({ onBack, onClose }: indexProps) => {
           ([tier, { description, score }]) => (
             <div key={tier} className={styles.tierWrapper}>
               <div className={styles.boxWrapper}>
-                <TierBox size='small' tier={tier as tierRange} />
+                <TierBox size='small' tier={tier as TierValue} />
                 <div>{description}</div>
                 <div>{score}</div>
               </div>

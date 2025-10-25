@@ -1,7 +1,5 @@
 import { Socket } from './Socket';
 
-import { characterInfo, characterInfoIndex } from '@/types/ingame';
-
 export class GameSocket extends Socket {
   private messageQueue: ArrayBuffer[];
 
@@ -33,8 +31,8 @@ export class GameSocket extends Socket {
     this.webSocket.send(buffer);
   }
 
-  inGameUnconnected(onCloseEvent: () => void) {
-    this.webSocket.onclose = onCloseEvent;
+  onDisconnect(callback: () => void) {
+    this.webSocket.onclose = callback;
   }
 }
 

@@ -1,33 +1,26 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { checkSignUpInfo } from './utils';
+import { checkIdDuplicate, registerMember, upgradeToMember } from './api';
+import { validateSignUpForm } from './utils';
 
-import { SignUpInfo } from '@/types/auth';
-
-import ColoredButton from '@/components/button/ColoredButton/index';
+import ColoredButton from '@/components/button/ColoredButton';
 import Input from '@/components/input';
 
 import { buttonWrapper } from '@/pages/landing/index.css';
-import * as constants from '@/pages/landing/logIn/constants';
 
-import { getIdCheck, postGuestSignUp, postSignUp } from '@/services/auth';
-import { setFullScreen } from '@/services/landing';
-
-import { ROUTE } from '@/constants/routes';
-import { USER_STATUS, useUserStore } from '@/features/user';
+import { ERROR_MESSAGE, ROUTE } from '@/shared/constants';
+import { setFullScreen } from '@/shared/utils';
 
 interface Props {
   closeModal: () => void;
+  isGuest?: boolean;
 }
 
-const SignUp = ({ closeModal }: Props) => {
-  const { loginStatus } = useUserStore.getState();
+const SignUp = ({ closeModal, isGuest }: Props) => {
   const navigate = useNavigate();
-  const [errorMessage, setErrorMessage] = useState(
-    constants.ERROR_MESSAGE.welcome,
-  );
-  const [signUpInfo, setSignUpInfo] = useState<SignUpInfo>({
+  const [errorMessage, setErrorMessage] = useState(ERROR_MESSAGE.welcome);
+  const [form, setForm] = useState<SignUpForm>({
     id: '',
     password: '',
     passwordConfirm: '',
@@ -36,43 +29,35 @@ const SignUp = ({ closeModal }: Props) => {
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
-    setSignUpInfo((info) => ({
-      ...info,
+    setForm((data) => ({
+      ...data,
       [name]: value,
     }));
     setErrorMessage('');
   };
 
   const clickSignUp = async () => {
-    const checkId = await getIdCheck(signUpInfo.id);
-    if (checkId) {
-      setErrorMessage(constants.ERROR_MESSAGE.sameId);
+    const isDuplicate = await checkIdDuplicate(form.id);
+    if (isDuplicate) {
+      setErrorMessage(ERROR_MESSAGE.sameId);
       return;
     }
-    const errorInfo = checkSignUpInfo(signUpInfo);
-    if (errorInfo.length >= 1) {
-      setErrorMessage(errorInfo);
-      return;
-    }
-
-    if (loginStatus === USER_STATUS.guest) {
-      await postGuestSignUp(signUpInfo).then((isSuccess) => {
-        if (isSuccess) {
-          closeModal();
-          navigate(ROUTE.home);
-        }
-      });
+    const error = validateSignUpForm(form);
+    if (error) {
+      setErrorMessage(error);
       return;
     }
 
-    if (loginStatus === USER_STATUS.notLoggedIn) {
-      await postSignUp(signUpInfo).then((isSuccess) => {
-        if (isSuccess) {
-          closeModal();
-          navigate(ROUTE.tutorial);
-          setFullScreen();
-        }
-      });
+    const signUp = isGuest ? upgradeToMember : registerMember;
+    const isSuccess = await signUp(form);
+    if (!isSuccess) {
+      return;
+    }
+    closeModal();
+    const to = isGuest ? ROUTE.home : ROUTE.tutorial;
+    navigate(to, { replace: true });
+    if (!isGuest) {
+      setFullScreen();
     }
   };
 
@@ -83,7 +68,7 @@ const SignUp = ({ closeModal }: Props) => {
         type='text'
         placeholder='아이디 (최소 6 ~ 20자)'
         size='medium'
-        value={signUpInfo.id}
+        value={form.id}
         onChange={handleChange}
       />
       <Input
@@ -91,7 +76,7 @@ const SignUp = ({ closeModal }: Props) => {
         type='password'
         placeholder='비밀번호 (숫자 6자)'
         size='medium'
-        value={signUpInfo.password}
+        value={form.password}
         onChange={handleChange}
       />
       <Input
@@ -99,7 +84,7 @@ const SignUp = ({ closeModal }: Props) => {
         type='password'
         placeholder='비밀번호 확인'
         size='medium'
-        value={signUpInfo.passwordConfirm}
+        value={form.passwordConfirm}
         onChange={handleChange}
       />
       <Input
@@ -107,13 +92,12 @@ const SignUp = ({ closeModal }: Props) => {
         type='text'
         placeholder='닉네임 (최소 2 ~ 9자)'
         size='medium'
-        value={signUpInfo.nickname}
+        value={form.nickname}
         onChange={handleChange}
       />
       <div
         style={{
-          color:
-            errorMessage === constants.ERROR_MESSAGE.welcome ? 'blue' : 'red',
+          color: errorMessage === ERROR_MESSAGE.welcome ? 'blue' : 'red',
         }}
       >
         {errorMessage}

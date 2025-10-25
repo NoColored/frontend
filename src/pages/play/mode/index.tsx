@@ -1,31 +1,29 @@
 import { useState } from 'react';
-import { useLoaderData, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import * as constants from './constants';
 import * as styles from './index.css';
 
-import { User } from '@/types/auth';
-
 import ColoredIconButton from '@/components/button/ColoredIconButton';
-import BasicContentFrame from '@/components/frame/with-buttons';
+import Modal, { useModal } from '@/components/modal';
 import RankingItemBox from '@/components/ranking';
 
-import useModal from '@/hooks/useModal';
 
 import Matching from '@/pages/play/mode/Matching';
 
 import { getMatching } from '@/services/matching';
 
-import { ROUTE } from '@/constants/routes';
+import { useUserInfo } from '@/models/user';
+import { ROUTE } from '@/shared/constants';
 
 const Mode = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const { Modal, openModal, closeModal } = useModal({
+  const { modalRef, openModal, closeModal } = useModal({
     onOpen: () => setIsModalOpen(true),
     onClose: () => setIsModalOpen(false),
   });
   const navigate = useNavigate();
-  const user = useLoaderData() as User;
+  const { user } = useUserInfo();
 
   const startMatching = async () => {
     const matchingSuccess = await getMatching();
@@ -36,8 +34,12 @@ const Mode = () => {
     }
   };
 
+  if (!user) {
+    return null;
+  }
+
   return (
-    <BasicContentFrame leftButton={{ label: '뒤로' }}>
+    <>
       <div className={styles.wrapper}>
         <ColoredIconButton
           icon={constants.FRIENDLY.icon}
@@ -59,14 +61,14 @@ const Mode = () => {
           <RankingItemBox player={user} guest={user.guest} myRank />
         </div>
       </div>
-      <Modal>
+      <Modal ref={modalRef}>
         <Matching
           imgSrc={user.skin}
           closeModal={closeModal}
           isOpen={isModalOpen}
         />
       </Modal>
-    </BasicContentFrame>
+    </>
   );
 };
 

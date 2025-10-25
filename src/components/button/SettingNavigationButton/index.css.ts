@@ -4,7 +4,7 @@ import { recipe } from '@vanilla-extract/recipes';
 import { sprinkles } from '@/styles/sprinkles.css';
 import { vars } from '@/styles/vars.css';
 
-export const positionVariants = {
+const position = {
   leftTop: {
     top: 0,
     left: 0,
@@ -19,6 +19,11 @@ export const positionVariants = {
     borderLeft: '1px solid black',
     borderTopRightRadius: vars.borderRadius['2x'],
   },
+};
+
+const usage = {
+  frame: {},
+  modal: {},
 };
 
 export const button = recipe({
@@ -42,6 +47,23 @@ export const button = recipe({
     },
   ]),
   variants: {
-    position: positionVariants,
+    position,
+    usage,
   },
+  compoundVariants: [
+    {
+      variants: {
+        position: 'leftTop',
+        usage: 'frame',
+      },
+      style: style({
+        '@media': {
+          'screen and (min-height: 463px)': {
+            top: '-16px',
+            left: '-16px',
+          },
+        },
+      }),
+    },
+  ],
 });

@@ -1,12 +1,11 @@
 import * as styles from './index.css';
 
-import type { RankPlayer } from '@/types/rank';
-
 import PlayerInfo from '@/components/player-info';
-import TierBox from '@/components/tier';
+
+import TierBox from '@/models/tier';
 
 interface Props {
-  player: RankPlayer;
+  player: Profile;
   guest?: boolean;
   myRank?: boolean;
 }

@@ -4,11 +4,7 @@ import * as styles from './index.css';
 
 import BasicContentFrame from '@/components/frame/index';
 
-import { useUserStateStore } from '@/states/user';
-
 const LandingLayout = () => {
-  useUserStateStore.getState().setLogout();
-
   return (
     <BasicContentFrame>
       <div className={styles.landingWrapper}>

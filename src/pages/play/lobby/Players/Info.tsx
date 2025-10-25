@@ -1,27 +1,35 @@
+import { memo } from 'react';
+
 import * as styles from './index.css';
 
-import type { Player } from '@/types/play';
-
-import TierIconBox from '@/components/tier';
+import { PLAYER_COLORS } from '@/models/player';
+import TierIconBox from '@/models/tier';
 
 interface Props {
   player: Player;
+  index: number;
 }
 
-const PlayerInfo = ({ player }: Props) => {
-  if (!player.userCode) {
-    return <div className={styles.playerInfoGray}>?</div>;
-  }
+const PlayerInfo = memo(
+  ({ player, index }: Props) => {
+    if (!player.userCode) {
+      return <div className={styles.playerInfoGray}>?</div>;
+    }
 
-  return (
-    <div className={styles.playerInfoColored({ color: player.color })}>
-      <TierIconBox tier={player.tier} size='full' />
-      <div className={styles.titleAndName}>
-        <div className={styles.title}>{player.label}</div>
-        <div className={styles.name}>{player.nickname}</div>
+    return (
+      <div
+        className={styles.playerInfoColored({ color: PLAYER_COLORS[index] })}
+      >
+        <TierIconBox tier={player.tier} size='full' />
+        <div className={styles.titleAndName}>
+          <div className={styles.title}>{player.label}</div>
+          <div className={styles.name}>{player.nickname}</div>
+        </div>
       </div>
-    </div>
-  );
-};
+    );
+  },
+  (prevProps, nextProps) =>
+    prevProps.player.userCode === nextProps.player.userCode,
+);
 
 export default PlayerInfo;

@@ -1,11 +1,8 @@
-import { create } from 'zustand';
+import { atom } from 'jotai';
 
-import { GameSocket } from '@/features/websocket/model/GameSocket';
+import { GameSocket } from './model/GameSocket';
+import { type Socket } from './model/Socket';
 
-interface WebsocketStore {
-  webSocket: GameSocket;
-}
+export const gameWebSocketAtom = atom(new GameSocket());
 
-export const useWebSocketStore = create<WebsocketStore>(() => ({
-  webSocket: new GameSocket(),
-}));
+export const webSocketAtom = atom<Socket>((get) => get(gameWebSocketAtom));

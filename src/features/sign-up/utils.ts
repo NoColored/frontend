@@ -1,20 +1,22 @@
-import { SignUpInfo } from '@/types/auth';
-import * as constants from '@/pages/landing/logIn/constants';
+import { ERROR_MESSAGE } from '@/shared/constants';
 
-export const checkSignUpInfo = (signUpInfo: SignUpInfo) => {
-  const { id, password, passwordConfirm, nickname } = signUpInfo;
-
+export const validateSignUpForm = ({
+  id,
+  password,
+  passwordConfirm,
+  nickname,
+}: SignUpForm) => {
   if (
     id.trim() === '' ||
     password.trim() === '' ||
     passwordConfirm.trim() === '' ||
     nickname.trim() === ''
   ) {
-    return constants.ERROR_MESSAGE.blank;
+    return ERROR_MESSAGE.blank;
   }
 
   if (password !== passwordConfirm) {
-    return constants.ERROR_MESSAGE.notSamePassword;
+    return ERROR_MESSAGE.notSamePassword;
   }
 
   if (
@@ -25,7 +27,7 @@ export const checkSignUpInfo = (signUpInfo: SignUpInfo) => {
     nickname.length < 2 ||
     nickname.length > 9
   ) {
-    return constants.ERROR_MESSAGE.invalidInput;
+    return ERROR_MESSAGE.invalidInput;
   }
 
   return '';

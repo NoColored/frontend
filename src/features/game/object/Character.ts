@@ -1,5 +1,3 @@
-import { characterInfo } from '@/types/ingame';
-
 import * as constants from '@/features/game/constants';
 
 export class Character extends Phaser.Physics.Arcade.Sprite {

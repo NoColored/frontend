@@ -5,13 +5,14 @@ import type {
   coloredButtonSizeType,
 } from '@/components/button/types';
 
-import useEffectSoundStore from "@/states/effect";
+import { useEffectSound } from '@/features/sound';
 
 interface Props extends ColorButtonProps {
   size: coloredButtonSizeType;
 }
+
 const ColoredButton = ({ text, color, size, onClick }: Props) => {
-  const { playEffectSound } = useEffectSoundStore();
+  const { playEffectSound } = useEffectSound();
 
   const handleClick = () => {
     playEffectSound();

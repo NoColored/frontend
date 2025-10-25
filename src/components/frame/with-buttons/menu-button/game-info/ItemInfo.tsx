@@ -2,12 +2,10 @@ import { useState } from 'react';
 
 import { ITEMS } from './constants';
 import * as styles from './index.css';
-import { indexProps } from './types';
 
-import SettingNavigationButton from '@/components/button/SettingNavigationButton';
 import RoundCornerImageBox from '@/components/image-box';
 
-const ItemInfo = ({ onBack, onClose }: indexProps) => {
+const ItemInfo = () => {
   const [idx, setIdx] = useState(0);
 
   const imgUrl = `/images/items/item-${ITEMS[idx].name}-h32w32.png`;
@@ -22,16 +20,6 @@ const ItemInfo = ({ onBack, onClose }: indexProps) => {
 
   return (
     <>
-      <SettingNavigationButton
-        label='뒤로'
-        onClick={onBack}
-        position='leftTop'
-      />
-      <SettingNavigationButton
-        label='닫기'
-        onClick={onClose}
-        position='rightTop'
-      />
       <div className={styles.text}>아이템</div>
       <div className={styles.boxWrapper}>
         <div className={styles.textMargin}>{ITEMS[idx].title}</div>

@@ -3,7 +3,6 @@ import { useState } from 'react';
 import * as styles from './index.css';
 
 import SettingTextButton from '@/components/button/SettingTextButton';
-import BasicContentFrame from '@/components/frame/with-buttons';
 
 import { MAX_PAGE_SIZE } from '@/pages/tutorial/constants';
 import Info from '@/pages/tutorial/Info';
@@ -30,8 +29,7 @@ const Tutorial = () => {
   };
 
   return (
-    <BasicContentFrame menuButtonDisabled>
-      <div className={styles.container}>
+    <div className={styles.container}>
         <Info page={page} />
         <div className={styles.left}>
           <SettingTextButton
@@ -52,7 +50,6 @@ const Tutorial = () => {
           </SettingTextButton>
         </div>
       </div>
-    </BasicContentFrame>
   );
 };
 

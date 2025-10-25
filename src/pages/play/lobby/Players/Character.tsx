@@ -1,10 +1,8 @@
+import { EMPTY_PLAYER_COLOR, PLAYER_COLORS } from '../constants';
 import * as styles from './index.css';
 
-import type { Player } from '@/types/play';
-
+import Chip from '@/components/chip';
 import RoundCornerImageBox from '@/components/image-box';
-
-import State from '@/pages/play/lobby/Players/State';
 
 const getState = (player: Player) => {
   if (player.isMaster) {
@@ -16,21 +14,36 @@ const getState = (player: Player) => {
   return '';
 };
 
-interface Props {
-  player: Player;
-}
+const PLAYER_ICON = Array.from(
+  { length: 4 },
+  (_, i) =>
+    `/images/ui/icon/shape/icon-shape-white-small-player${i}-h16w16.png`,
+);
 
-const Character = ({ player }: Props) => {
+type Props = {
+  player: Player;
+  index: number;
+};
+
+const Character = ({ player, index }: Props) => {
   const state = getState(player);
+  const color = player.userCode ? PLAYER_COLORS[index] : EMPTY_PLAYER_COLOR;
 
   return (
-    <div className={styles.character({ color: player.color })}>
+    <div className={styles.character({ color })}>
       <RoundCornerImageBox
         size='full'
         imgSrc={player.skin}
         backgroundColor='white'
       >
-        {state && <State player={player} state={state} />}
+        {state && (
+          <Chip
+            responsive
+            color={PLAYER_COLORS[index]}
+            text={state}
+            icon={PLAYER_ICON[index]}
+          />
+        )}
       </RoundCornerImageBox>
     </div>
   );

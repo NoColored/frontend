@@ -79,7 +79,6 @@ export const text = style([
   },
 ]);
 
-// MapInfo.tsx
 export const mapInfo = style([
   sprinkles({
     marginTop: '4x',

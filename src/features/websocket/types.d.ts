@@ -11,7 +11,7 @@ type WebSocketMessageMap = {
   };
 
   friendlyMatch: {
-    roomInfo: Lobby;
+    roomInfo: EnteredRoom;
     gameStart: null;
   };
 };
@@ -34,3 +34,5 @@ type WebSocketMessage =
   | WebsocketMessageAuth
   | WebsocketMessageRankedMatch
   | WebsocketMessageFriendlyMatch;
+
+type GameSocket = import('./model/GameSocket').GameSocket;

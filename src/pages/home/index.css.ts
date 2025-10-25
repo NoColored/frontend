@@ -75,7 +75,6 @@ export const TopContentsWrapper = style([
   flexOptions({ option: 'row' }),
   sprinkles({
     justifyContent: 'spaceBetween',
-    paddingTop: '4x',
   }),
   {
     height: '50%',

@@ -1,16 +1,16 @@
+import { useAtomValue } from 'jotai';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { type Socket } from './model/Socket';
-import { useWebSocketStore } from './store';
+import { gameWebSocketAtom, webSocketAtom } from './store';
 
-import { ROUTE } from '@/constants/routes';
+import { ROUTE } from '@/shared/constants';
 
 export const useWebSocket = <T extends WebSocketMessage>(
   onMessage: (message: T) => void,
 ) => {
   const navigate = useNavigate();
-  const client = useWebSocketStore((state) => state.webSocket) as Socket;
+  const webSocket = useAtomValue(webSocketAtom);
 
   const handleMessage = (message: T) => {
     if (message.action === 'invalidToken') {
@@ -21,18 +21,24 @@ export const useWebSocket = <T extends WebSocketMessage>(
   };
 
   useEffect(() => {
-    if (!client.isConnected()) {
-      client.connect();
+    if (!webSocket.isConnected()) {
+      webSocket.connect();
     }
-    client.onMessage(handleMessage);
+    webSocket.onMessage(handleMessage);
 
-    client.onClose(() => {
-      client.connect();
-      client.onMessage(handleMessage);
+    webSocket.onClose(() => {
+      webSocket.connect();
+      webSocket.onMessage(handleMessage);
     });
 
     return () => {
-      client.onUnmount();
+      webSocket.cleanUp();
     };
   }, []);
+};
+
+export const useGameWebSocket = () => {
+  const webSocket = useAtomValue(gameWebSocketAtom);
+
+  return { webSocket };
 };
