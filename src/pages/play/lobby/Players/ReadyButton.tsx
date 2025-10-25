@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { EMPTY_PLAYER_COLOR, PLAYER_COLORS } from '../constants';
+import { EMPTY_PLAYER_COLOR, MESSAGE, PLAYER_COLORS } from '../constants';
 import * as styles from './index.css';
 
 import type { AxiosError } from 'axios';
@@ -21,11 +21,6 @@ const getText = (player: Player): string => {
   return '게임준비';
 };
 
-const LONELY_MASTER_MESSAGE =
-  '혼자서 싸울 수는 없습니다. \n 혹시 친구가 없나요?';
-
-const SOMEBODY_NOT_READY_MESSAGE = '싸움을 두려워하는 겁쟁이가 있나본데요?';
-
 const PLAYER_ICON_LARGE = Array.from(
   { length: 4 },
   (_, i) => `/images/ui/icon/shape/icon-shape-white-big-player${i}-h48w48.png`,
@@ -43,9 +38,9 @@ const ReadyButton = ({ myInfo, index }: Props) => {
   const startGame = async () => {
     return getReady().catch(({ response }: AxiosError) => {
       if (response?.status === 400) {
-        setErrorMessage(LONELY_MASTER_MESSAGE);
+        setErrorMessage(MESSAGE.LONELY_MASTER);
       } else if (response?.status === 406) {
-        setErrorMessage(SOMEBODY_NOT_READY_MESSAGE);
+        setErrorMessage(MESSAGE.SOMEBODY_NOT_READY);
       }
       openModal();
     });

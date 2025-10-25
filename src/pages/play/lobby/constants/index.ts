@@ -36,3 +36,5 @@ export const PLAYER_INFO_HEIGHT = (size: keyof typeof PLAYER_INFO) =>
     .add(PLAYER_INFO[size].padding)
     .add(PLAYER_INFO[size].padding)
     .toString();
+
+export * as MESSAGE from './messages';
