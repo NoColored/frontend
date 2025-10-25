@@ -4,13 +4,7 @@ import { getDefaultStore, useAtomValue, useSetAtom } from 'jotai';
 import { getUser } from './api';
 import { queryKey } from './constants';
 import { updateUserCodeAtom, userCodeAtom, userStaleAtom } from './store';
-
-import { queryClient } from '@/shared/api';
-
-const refetchUser = () =>
-  queryClient.invalidateQueries({
-    queryKey,
-  });
+import { invalidateUserQuery } from './utils';
 
 export const useUserInfo = () => {
   const setUserCode = useSetAtom(updateUserCodeAtom);
@@ -30,7 +24,7 @@ export const useUserInfo = () => {
 
   return {
     user: data,
-    refetchUser,
+    refetchUser: invalidateUserQuery,
   };
 };
 

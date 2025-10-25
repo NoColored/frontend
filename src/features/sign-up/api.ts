@@ -1,5 +1,6 @@
 import type { AxiosError } from 'axios';
 
+import { invalidateUserQuery } from '@/models/user';
 import { client } from '@/shared/api';
 
 const axiosConfig = {
@@ -18,9 +19,10 @@ export const checkIdDuplicate = async (id: SignUpForm['id']) => {
 
 export const upgradeToMember = async (formData: SignUpForm) => {
   return client
-    .post<string>('/user/guest', formData, axiosConfig)
+    .post<string>('/user/guest', formData)
     .then(({ data }) => {
       console.debug(data);
+      invalidateUserQuery();
       return true;
     })
     .catch(({ response }: AxiosError) => {
