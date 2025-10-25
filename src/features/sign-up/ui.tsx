@@ -59,7 +59,7 @@ const SignUp = ({ closeModal, isGuest }: Props) => {
     }
     closeModal();
     const to = isGuest ? ROUTE.home : ROUTE.tutorial;
-    navigate(to);
+    navigate(to, { replace: true });
     if (!isGuest) {
       setFullScreen();
     }

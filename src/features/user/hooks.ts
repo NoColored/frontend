@@ -101,7 +101,7 @@ export const useGuestLogin = () => {
       return navigate(`${ROUTE.error}/500`);
     }
     // setFullScreen();
-    return navigate(ROUTE.tutorial);
+    return navigate(ROUTE.tutorial, { replace: true });
   };
 
   return { guestLogin: login };

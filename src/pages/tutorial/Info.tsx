@@ -38,7 +38,7 @@ const Info = ({ page }: Props) => {
         text={constants.INFO_DESC.BUTTON}
         color='green'
         onClick={() => {
-          navigate(ROUTE.home, { replace: true });
+          navigate(ROUTE.home);
         }}
       />
     </div>
