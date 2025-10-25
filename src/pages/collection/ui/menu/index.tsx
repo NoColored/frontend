@@ -7,7 +7,7 @@ import SkinMenu from './skin-menu';
 
 import SettingTextButton from '@/components/button/SettingTextButton';
 
-import { useCollection } from '@/features/collection';
+import { useCollection } from '@/models/collection';
 
 const menu = {
   skin: '스킨',

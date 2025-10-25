@@ -10,8 +10,8 @@ import * as styles from './page.css';
 
 import SettingTextButton from '@/components/button/SettingTextButton';
 
-import { refetchCollection } from '@/features/collection';
 import { useUserInfo } from '@/features/user';
+import { refetchCollection } from '@/models/collection';
 
 const SelectedSkin = () => {
   const skin = useSelectedSkinUrl();
