@@ -1,7 +1,8 @@
 import * as styles from './index.css';
 
 import Modal, { useModal } from '@/components/modal';
-import RoomSetting from '@/components/room-setting';
+
+import RoomSetting from '@/features/room-setting';
 
 interface Props {
   lobby: Lobby;

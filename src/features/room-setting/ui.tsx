@@ -10,7 +10,6 @@ import Input from '@/components/input';
 import { ROUTE } from '@/constants/routes';
 import Map, { MAP_ID_LIST } from '@/models/map';
 
-
 const API_MAP = {
   create: createRoom,
   update: updateRoom,
