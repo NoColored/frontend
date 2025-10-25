@@ -5,6 +5,7 @@ import * as constants from '@/pages/play/lobby/constants';
 
 import { flexOptions } from '@/styles/common.css';
 import { sprinkles } from '@/styles/sprinkles.css';
+import { variant } from '@/styles/utils';
 
 export const playerWrapper = style([
   flexOptions({ option: 'row' }),
@@ -78,12 +79,9 @@ const playerInfo = style([
   },
 ]);
 
-const backgroudColorVariant = constants.PLAYER_COLORS.reduce(
-  (colorVariants, color) => {
-    colorVariants[color] = style([sprinkles({ backgroundColor: color })]);
-    return colorVariants;
-  },
-  {} as Record<playerColorType, ReturnType<typeof style>>,
+const backgroudColorVariant = variant(
+  [...constants.PLAYER_COLORS],
+  (backgroundColor) => sprinkles({ backgroundColor }),
 );
 
 export const playerInfoColored = recipe({
@@ -152,15 +150,9 @@ export const playerInfoGray = style([
 ]);
 
 // Chraracter.tsx
-const outlineColorVariants = [
-  ...constants.PLAYER_COLORS,
-  constants.EMPTY_PLAYER_COLOR,
-].reduce(
-  (variants, color) => {
-    variants[color] = style([sprinkles({ outlineColor: color })]);
-    return variants;
-  },
-  {} as Record<playerColorType, ReturnType<typeof style>>,
+const outlineColorVariants = variant(
+  [...constants.PLAYER_COLORS, constants.EMPTY_PLAYER_COLOR],
+  (outlineColor) => sprinkles({ outlineColor }),
 );
 
 export const character = recipe({
@@ -179,16 +171,6 @@ export const character = recipe({
     color: outlineColorVariants,
   },
 });
-
-// State.tsx
-export const empty = style([
-  flexOptions({ option: 'center' }),
-  sprinkles({
-    textSize: '2x',
-    height: 'full',
-    color: 'gray300',
-  }),
-]);
 
 export const readyWrapper = style([
   flexOptions({ option: 'columnCenter' }),

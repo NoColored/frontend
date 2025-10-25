@@ -6,21 +6,6 @@ export { PLAYER_COLORS } from '@/constants/player';
 
 export const EMPTY_PLAYER_COLOR = 'gray300' as const;
 
-export const PLAYER_ICON = {
-  pink: '/images/ui/icon/shape/icon-shape-white-small-player0-h16w16.png',
-  green: '/images/ui/icon/shape/icon-shape-white-small-player1-h16w16.png',
-  yellow: '/images/ui/icon/shape/icon-shape-white-small-player2-h16w16.png',
-  blue: '/images/ui/icon/shape/icon-shape-white-small-player3-h16w16.png',
-};
-
-export const PLAYER_ICON_LARGE = {
-  pink: '/images/ui/icon/shape/icon-shape-white-big-player0-h48w48.png',
-  green: '/images/ui/icon/shape/icon-shape-white-big-player1-h48w48.png',
-  yellow: '/images/ui/icon/shape/icon-shape-white-big-player2-h48w48.png',
-  blue: '/images/ui/icon/shape/icon-shape-white-big-player3-h48w48.png',
-  gray300: '',
-};
-
 export const TITLE_MARGIN_BOTTOM = '1x';
 
 export const TITLE_SIZE = '1.5x';
@@ -51,9 +36,3 @@ export const PLAYER_INFO_HEIGHT = (size: keyof typeof PLAYER_INFO) =>
     .add(PLAYER_INFO[size].padding)
     .add(PLAYER_INFO[size].padding)
     .toString();
-
-export const LONELY_MASTER_MESSAGE: string =
-  '혼자서 싸울 수는 없습니다. \n 혹시 친구가 없나요?';
-
-export const SOMEBODY_NOT_READY_MESSAGE: string =
-  '싸움을 두려워하는 겁쟁이가 있나본데요?';

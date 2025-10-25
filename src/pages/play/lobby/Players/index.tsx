@@ -17,7 +17,8 @@ interface Props {
 
 const Players = ({ players, myCode }: Props) => {
   const navigate = useNavigate();
-  const myInfo = players.find((player) => player.userCode === myCode);
+  const myIndex = players.findIndex((player) => player.userCode === myCode);
+  const myInfo = players[myIndex];
 
   if (!myInfo) {
     return (
@@ -38,17 +39,17 @@ const Players = ({ players, myCode }: Props) => {
   return (
     <div className={styles.playerWrapper}>
       <div className={styles.characterWrapper}>
-        {players.map((player) => (
-          <Character key={player.key} player={player} />
+        {players.map((player, index) => (
+          <Character key={player.key} player={player} index={index} />
         ))}
       </div>
       <div className={styles.infoAndButtonWrapper}>
         <div className={styles.playerInfoWrapper}>
-          {players.map((player) => (
-            <PlayerInfo key={player.key} player={player} />
+          {players.map((player, index) => (
+            <PlayerInfo key={player.key} player={player} index={index} />
           ))}
         </div>
-        <ReadyButton myInfo={myInfo} />
+        <ReadyButton myInfo={myInfo} index={myIndex} />
       </div>
     </div>
   );

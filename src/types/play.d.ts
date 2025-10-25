@@ -6,7 +6,6 @@ interface Player {
   label: string;
   ready: boolean;
   isMaster: boolean;
-  color: playerColorType;
   key: string;
 }
 

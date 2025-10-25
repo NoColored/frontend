@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useLoaderData, useNavigate } from 'react-router-dom';
 
-import * as constants from './constants';
 import * as styles from './index.css';
 
 import SettingNavigationButton from '@/components/button/SettingNavigationButton';
@@ -19,9 +18,6 @@ import { useWebSocket } from '@/features/websocket';
 
 const getLobbyInfo = (lobby: Lobby) => {
   lobby.players.forEach((player, index) => {
-    player.color = player.userCode
-      ? constants.PLAYER_COLORS[index]
-      : constants.EMPTY_PLAYER_COLOR;
     player.isMaster = index === lobby.masterIndex;
     player.key = `${player.userCode}${index}`;
   });
