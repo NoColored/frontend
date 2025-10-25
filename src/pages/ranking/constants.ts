@@ -1,6 +1,6 @@
 import { calc } from '@vanilla-extract/css-utils';
 
-import { vars } from '@/styles/vars.css';
+import { vars } from '@/shared/styles';
 
 export const TITLE_TEXT_WIDTH = '193px';
 export const TITLE_TEXT_HEIGHT = '56px';

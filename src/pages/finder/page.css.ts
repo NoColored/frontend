@@ -1,8 +1,7 @@
 import { style } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
 
-import { flexOptions } from '@/styles/common.css';
-import { sprinkles } from '@/styles/sprinkles.css';
+import { flexOptions, sprinkles } from '@/shared/styles';
 
 export const contentWrapper = sprinkles({
   width: 'full',

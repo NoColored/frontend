@@ -1,8 +1,6 @@
 import { style } from '@vanilla-extract/css';
 
-import { borderLightOptions } from '@/styles/common.css';
-import { sprinkles } from '@/styles/sprinkles.css';
-import { variant } from '@/styles/utils';
+import { borderLightOptions, sprinkles, variant } from '@/shared/styles';
 
 export const size = variant(
   {

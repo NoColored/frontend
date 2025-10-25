@@ -3,8 +3,7 @@ import { recipe } from '@vanilla-extract/recipes';
 
 import { color } from './variants.css';
 
-import { flexOptions } from '@/styles/common.css';
-import { sprinkles } from '@/styles/sprinkles.css';
+import { flexOptions, sprinkles } from '@/shared/styles';
 
 const base = style([
   flexOptions({

@@ -4,8 +4,7 @@ import { calc } from '@vanilla-extract/css-utils';
 import { FRAME_STYLE } from '../constants';
 import { base } from '../frame.css';
 
-import { borderDarkOptions, flexOptions } from '@/styles/common.css';
-import { sprinkles } from '@/styles/sprinkles.css';
+import { borderDarkOptions, flexOptions, sprinkles } from '@/shared/styles';
 
 export const frame = style([
   base,

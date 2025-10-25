@@ -1,6 +1,6 @@
 import { style } from '@vanilla-extract/css';
 
-import { sprinkles } from '@/styles/sprinkles.css';
+import { sprinkles } from '@/shared/styles';
 
 export { contentWrapper, buttonWrapper } from '@/pages/landing/index.css';
 

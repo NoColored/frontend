@@ -3,9 +3,7 @@ import { recipe } from '@vanilla-extract/recipes';
 
 import * as constants from '@/pages/play/lobby/constants';
 
-import { flexOptions } from '@/styles/common.css';
-import { sprinkles } from '@/styles/sprinkles.css';
-import { variant } from '@/styles/utils';
+import { flexOptions, sprinkles, variant } from '@/shared/styles';
 
 export const playerWrapper = style([
   flexOptions({ option: 'row' }),

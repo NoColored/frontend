@@ -1,6 +1,7 @@
 import { QueryClientProvider } from '@tanstack/react-query';
 import { RouterProvider } from 'react-router-dom';
 
+import './global.css';
 import router from './router';
 
 import FullScreenPrompt from '@/components/prompt';

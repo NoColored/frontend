@@ -3,8 +3,7 @@ import { recipe } from '@vanilla-extract/recipes';
 
 import { size } from './variants.css';
 
-import { sprinkles } from '@/styles/sprinkles.css';
-import { vars } from '@/styles/vars.css';
+import { sprinkles, vars } from '@/shared/styles';
 
 const base = style([
   sprinkles({

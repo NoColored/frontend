@@ -1,6 +1,6 @@
 import { createVar, style } from '@vanilla-extract/css';
 
-import { sprinkles } from '@/styles/sprinkles.css';
+import { sprinkles } from '@/shared/styles';
 
 export const dashboardWrapper = style([
   sprinkles({

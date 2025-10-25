@@ -1,6 +1,5 @@
-import { vars } from '@/styles/vars.css';
-
 import { IPHONE_14_PRO_MAX, IPHONE_SE } from '@/shared/constants';
+import { vars } from '@/shared/styles';
 
 export const FRAME_STYLE = {
   width: {

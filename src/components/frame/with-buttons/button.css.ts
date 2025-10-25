@@ -1,8 +1,11 @@
 import { style } from '@vanilla-extract/css';
 
-import { borderDarkOptions, flexOptions } from '@/styles/common.css';
-import { sprinkles } from '@/styles/sprinkles.css';
-import { vars } from '@/styles/vars.css';
+import {
+  borderDarkOptions,
+  flexOptions,
+  sprinkles,
+  vars,
+} from '@/shared/styles';
 
 const BUTTON_SIZE = '24px';
 

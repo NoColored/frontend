@@ -3,8 +3,7 @@ import { calc } from '@vanilla-extract/css-utils';
 
 import * as constants from './constants';
 
-import { borderDarkOptions, flexOptions } from '@/styles/common.css';
-import { sprinkles } from '@/styles/sprinkles.css';
+import { borderDarkOptions, flexOptions, sprinkles } from '@/shared/styles';
 
 export const lobby = style([
   {

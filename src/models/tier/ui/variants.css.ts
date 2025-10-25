@@ -2,8 +2,7 @@ import { style } from '@vanilla-extract/css';
 
 import { TIER } from '../constants';
 
-import { variant } from '@/styles/utils';
-
+import { variant } from '@/shared/styles';
 
 export const tier = variant([...TIER], (name) =>
   style({

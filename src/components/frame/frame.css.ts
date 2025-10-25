@@ -2,8 +2,7 @@ import { style } from '@vanilla-extract/css';
 
 import { FRAME_STYLE } from './constants';
 
-import { sprinkles } from '@/styles/sprinkles.css';
-import { vars } from '@/styles/vars.css';
+import { sprinkles, vars } from '@/shared/styles';
 
 export const base = style([
   sprinkles({
