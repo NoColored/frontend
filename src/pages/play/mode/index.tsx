@@ -5,9 +5,9 @@ import * as constants from './constants';
 import * as styles from './index.css';
 
 import ColoredIconButton from '@/components/button/ColoredIconButton';
+import Modal, { useModal } from '@/components/modal';
 import RankingItemBox from '@/components/ranking';
 
-import useModal from '@/hooks/useModal';
 
 import Matching from '@/pages/play/mode/Matching';
 
@@ -18,7 +18,7 @@ import { ROUTE } from '@/shared/constants';
 
 const Mode = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const { Modal, openModal, closeModal } = useModal({
+  const { modalRef, openModal, closeModal } = useModal({
     onOpen: () => setIsModalOpen(true),
     onClose: () => setIsModalOpen(false),
   });
@@ -61,7 +61,7 @@ const Mode = () => {
           <RankingItemBox player={user} guest={user.guest} myRank />
         </div>
       </div>
-      <Modal>
+      <Modal ref={modalRef}>
         <Matching
           imgSrc={user.skin}
           closeModal={closeModal}

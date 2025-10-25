@@ -4,8 +4,7 @@ import * as styles from './index.css';
 
 import ColoredButton from '@/components/button/ColoredButton';
 import Input from '@/components/input';
-
-import useModal from '@/hooks/useModal';
+import Modal, { useModal } from '@/components/modal';
 
 import LogInFail from '@/pages/logIn/LogInFail';
 
@@ -20,7 +19,7 @@ const LogIn = () => {
   });
   const { login } = useLogin();
 
-  const { Modal, openModal, closeModal } = useModal();
+  const { modalRef, openModal, closeModal } = useModal();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -76,7 +75,7 @@ const LogIn = () => {
           onClick={handleLogInClick}
         />
       </div>
-      <Modal>
+      <Modal ref={modalRef}>
         {isClicked ? (
           <SignUp closeModal={closeModal} />
         ) : (
