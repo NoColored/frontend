@@ -7,7 +7,7 @@ import Input from '@/components/input';
 
 import { deleteUserInfo, postConfirmPassword } from '@/services/auth';
 
-import { ERROR_MESSAGE } from '@/constants/error-message';
+import { ERROR_MESSAGE } from '@/constants';
 
 interface Props {
   onClose: () => void;

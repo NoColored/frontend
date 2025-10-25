@@ -8,7 +8,7 @@ import Input from '@/components/input';
 
 import { patchNicknameChange } from '@/services/auth';
 
-import { ERROR_MESSAGE } from '@/constants/error-message';
+import { ERROR_MESSAGE } from '@/constants';
 import { ROUTE } from '@/constants/routes';
 
 interface Props {

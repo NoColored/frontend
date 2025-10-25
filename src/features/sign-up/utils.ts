@@ -1,6 +1,7 @@
 import { SignUpInfo } from '@/types/auth';
 
-import { ERROR_MESSAGE } from '@/constants/error-message';
+import { ERROR_MESSAGE } from '@/constants';
+
 
 export const checkSignUpInfo = (signUpInfo: SignUpInfo) => {
   const { id, password, passwordConfirm, nickname } = signUpInfo;

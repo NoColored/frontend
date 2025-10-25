@@ -5,7 +5,7 @@ import { checkSignUpInfo } from './utils';
 
 import { SignUpInfo } from '@/types/auth';
 
-import ColoredButton from '@/components/button/ColoredButton/index';
+import ColoredButton from '@/components/button/ColoredButton';
 import Input from '@/components/input';
 
 import { buttonWrapper } from '@/pages/landing/index.css';
@@ -13,7 +13,7 @@ import { buttonWrapper } from '@/pages/landing/index.css';
 import { getIdCheck, postGuestSignUp, postSignUp } from '@/services/auth';
 import { setFullScreen } from '@/services/landing';
 
-import { ERROR_MESSAGE } from '@/constants/error-message';
+import { ERROR_MESSAGE } from '@/constants';
 import { ROUTE } from '@/constants/routes';
 
 interface Props {

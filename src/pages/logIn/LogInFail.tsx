@@ -2,7 +2,7 @@ import * as styles from './index.css';
 
 import ColoredButton from '@/components/button/ColoredButton';
 
-import { ERROR_MESSAGE } from '@/constants/error-message';
+import { ERROR_MESSAGE } from '@/constants';
 
 interface Props {
   closeModal: () => void;
