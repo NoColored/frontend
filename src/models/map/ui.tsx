@@ -1,7 +1,7 @@
+import { MAPS } from './constants';
+
 import Chip from '@/components/chip';
 import ImageBox from '@/components/image-box';
-
-import { MAPS } from '@/models/map';
 
 interface Props {
   mapId: MapId;

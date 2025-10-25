@@ -5,7 +5,6 @@ import * as styles from './index.css';
 
 import SettingNavigationButton from '@/components/button/SettingNavigationButton';
 import Chip from '@/components/chip';
-import Map from '@/components/map';
 
 import Players from '@/pages/play/lobby/Players';
 import SettingButton from '@/pages/play/lobby/SettingButton';
@@ -15,6 +14,7 @@ import { getOut } from '@/services/lobby';
 import { ROUTE } from '@/constants/routes';
 import { useUserCode } from '@/features/user';
 import { useWebSocket } from '@/features/websocket';
+import Map from '@/models/map';
 
 const getLobbyInfo = (lobby: Lobby) => {
   lobby.players.forEach((player, index) => {

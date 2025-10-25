@@ -6,10 +6,10 @@ import * as styles from './index.css';
 
 import ColoredButton from '@/components/button/ColoredButton';
 import Input from '@/components/input';
-import Map from '@/components/map';
 
 import { ROUTE } from '@/constants/routes';
-import { MAP_ID_LIST } from '@/models/map';
+import Map, { MAP_ID_LIST } from '@/models/map';
+
 
 const API_MAP = {
   create: createRoom,
