@@ -19,6 +19,7 @@ export const useUserInfo = () => {
       return user;
     },
     throwOnError: true,
+    refetchOnWindowFocus: false,
     refetchOnMount: isStale,
   });
 

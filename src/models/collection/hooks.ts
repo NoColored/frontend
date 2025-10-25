@@ -17,6 +17,7 @@ export const useCollection = () => {
       return collection;
     },
     refetchOnMount: isStale,
+    refetchOnWindowFocus: false,
   });
 
   return { collection: data };
