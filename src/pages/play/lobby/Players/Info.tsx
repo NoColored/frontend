@@ -5,7 +5,6 @@ import * as styles from './index.css';
 import { PLAYER_COLORS } from '@/models/player';
 import TierIconBox from '@/models/tier';
 
-
 interface Props {
   player: Player;
   index: number;
@@ -13,8 +12,6 @@ interface Props {
 
 const PlayerInfo = memo(
   ({ player, index }: Props) => {
-    console.log('render', index);
-
     if (!player.userCode) {
       return <div className={styles.playerInfoGray}>?</div>;
     }
