@@ -5,9 +5,7 @@ import * as constants from './constants';
 
 import type { settingTextButtonColorType } from '@/components/button/types';
 
-import { borderDarkOptions } from '@/styles/common.css';
-import { sprinkles } from '@/styles/sprinkles.css';
-import { vars } from '@/styles/vars.css';
+import { borderDarkOptions, sprinkles, vars } from '@/shared/styles';
 
 export const button = style([
   borderDarkOptions({ color: 'black', width: '2x' }),

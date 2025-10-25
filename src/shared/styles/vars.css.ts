@@ -1,11 +1,6 @@
 import { createGlobalTheme } from '@vanilla-extract/css';
 
-import {
-  loadingNumFont,
-  loadingTextFont,
-  numFont,
-  textFont,
-} from '@/styles/font.css';
+import { loadingNumFont, loadingTextFont, numFont, textFont } from './font.css';
 
 export const vars = createGlobalTheme(':root', {
   size: {

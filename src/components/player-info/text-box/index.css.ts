@@ -1,7 +1,6 @@
 import { recipe } from '@vanilla-extract/recipes';
 
-import { sprinkles } from '@/styles/sprinkles.css';
-import { variant } from '@/styles/utils';
+import { sprinkles, variant } from '@/shared/styles';
 
 const colorVariants = variant(['white'] as const, (color) =>
   sprinkles({

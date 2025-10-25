@@ -2,7 +2,7 @@ import { calc } from '@vanilla-extract/css-utils';
 
 import { FRAME_STYLE } from '@/components/frame';
 
-import { vars } from '@/styles/vars.css';
+import { vars } from '@/shared/styles';
 
 export const MIN_MODAL_HEIGHT = calc
   .subtract(FRAME_STYLE.height.min, calc.multiply(FRAME_STYLE.padding, 4))

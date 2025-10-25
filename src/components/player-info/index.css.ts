@@ -1,7 +1,6 @@
 import { style } from '@vanilla-extract/css';
 
-import { flexOptions } from '@/styles/common.css';
-import { sprinkles } from '@/styles/sprinkles.css';
+import { flexOptions, sprinkles } from '@/shared/styles';
 
 export const playerInfoWrapper = style([
   flexOptions({ option: 'rowCenter' }),

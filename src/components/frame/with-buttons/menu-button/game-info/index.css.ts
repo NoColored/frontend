@@ -1,8 +1,6 @@
 import { style } from '@vanilla-extract/css';
 
-import { flexOptions } from '@/styles/common.css';
-import { sprinkles } from '@/styles/sprinkles.css';
-import { vars } from '@/styles/vars.css';
+import { flexOptions, sprinkles, vars } from '@/shared/styles';
 
 export const boxWrapper = style([flexOptions({ option: 'columnCenter' })]);
 
