@@ -4,8 +4,8 @@ type PlayerRecord = {
 } & Pick<User, 'nickname' | 'label' | 'skin' | 'rank' | 'userCode'>;
 
 interface TierReward {
-  oldtier: tierRange;
-  newtier: tierRange;
+  oldtier: TierValue;
+  newtier: TierValue;
   upgrade: boolean;
 }
 

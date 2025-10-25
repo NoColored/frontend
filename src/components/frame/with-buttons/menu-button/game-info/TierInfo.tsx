@@ -11,7 +11,7 @@ const TierInfo = () => {
         {Object.entries(LOW_TIER_INFO).map(([tier, { description, score }]) => (
           <div key={tier} className={styles.tierWrapper}>
             <div className={styles.boxWrapper}>
-              <TierBox size='small' tier={tier as tierRange} />
+              <TierBox size='small' tier={tier as TierValue} />
               <div>{description}</div>
               <div>{score}</div>
             </div>
@@ -23,7 +23,7 @@ const TierInfo = () => {
           ([tier, { description, score }]) => (
             <div key={tier} className={styles.tierWrapper}>
               <div className={styles.boxWrapper}>
-                <TierBox size='small' tier={tier as tierRange} />
+                <TierBox size='small' tier={tier as TierValue} />
                 <div>{description}</div>
                 <div>{score}</div>
               </div>

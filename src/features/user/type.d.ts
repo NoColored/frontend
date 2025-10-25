@@ -4,7 +4,7 @@ type Profile = {
   skin: string;
   label: string;
   rating: number;
-  tier: tierRange;
+  tier: TierValue;
 };
 
 type User = Profile & {

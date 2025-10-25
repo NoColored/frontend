@@ -1,1 +1,1 @@
-type tierRange = (typeof import('./constants').TIER)[number];
+type TierValue = (typeof import('./constants').TIER)[number];

@@ -9,7 +9,7 @@ interface Props {
   level: number;
   cp: number;
   maxCp: number;
-  tier: tierRange;
+  tier: TierValue;
   // rankScore: number;
 }
 
