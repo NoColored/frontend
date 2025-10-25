@@ -3,7 +3,7 @@ import { style } from '@vanilla-extract/css';
 import { borderLightOptions, flexOptions } from '@/styles/common.css';
 import { sprinkles } from '@/styles/sprinkles.css';
 
-import { MAP_ID_LIST } from '@/constants/map';
+import { MAP_ID_LIST } from '@/models/map';
 
 export const modalTwoButtonWrapper = style([
   flexOptions({

@@ -8,8 +8,8 @@ import ColoredButton from '@/components/button/ColoredButton';
 import Input from '@/components/input';
 import Map from '@/components/map';
 
-import { MAP_ID_LIST } from '@/constants/map';
 import { ROUTE } from '@/constants/routes';
+import { MAP_ID_LIST } from '@/models/map';
 
 const API_MAP = {
   create: createRoom,

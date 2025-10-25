@@ -6,8 +6,7 @@ import ColoredButton from '@/components/button/ColoredButton';
 import RoundCornerImageBox from '@/components/image-box';
 import Modal, { useModal } from '@/components/modal';
 
-
-import { MAPS } from '@/constants/map';
+import { MAPS } from '@/models/map';
 
 interface Props {
   roomInfo: RoomListItem;
