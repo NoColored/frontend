@@ -1,6 +1,6 @@
 import { calc } from '@vanilla-extract/css-utils';
 
-import { vars } from '@/styles/vars.css';
+import { vars } from '@/shared/styles';
 
 export { PLAYER_COLORS } from '@/models/player';
 

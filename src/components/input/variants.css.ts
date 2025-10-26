@@ -2,8 +2,7 @@ import { style } from '@vanilla-extract/css';
 
 import { INPUT_STYLE } from './constants';
 
-import { borderDarkOptions } from '@/styles/common.css';
-import { sprinkles } from '@/styles/sprinkles.css';
+import { borderDarkOptions, sprinkles } from '@/shared/styles';
 
 export const size = {
   widthFull: style([

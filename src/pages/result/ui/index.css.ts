@@ -3,8 +3,7 @@ import { recipe } from '@vanilla-extract/recipes';
 
 import * as constants from '../constants';
 
-import { flexOptions } from '@/styles/common.css';
-import { sprinkles } from '@/styles/sprinkles.css';
+import { flexOptions, sprinkles } from '@/shared/styles';
 
 export const gameResultWrapper = style([
   flexOptions({ option: 'columnCenter' }),

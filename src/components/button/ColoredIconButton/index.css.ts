@@ -4,9 +4,7 @@ import { recipe } from '@vanilla-extract/recipes';
 import * as constants from '@/components/button/constants';
 import type { colorType } from '@/components/button/types';
 
-import { flexOptions } from '@/styles/common.css';
-import { sprinkles } from '@/styles/sprinkles.css';
-import { vars } from '@/styles/vars.css';
+import { flexOptions, sprinkles, vars } from '@/shared/styles';
 
 const colorVariants = constants.BUTTON_COLOR.reduce(
   (variants, color) => {

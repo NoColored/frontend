@@ -1,8 +1,7 @@
 import { style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
 
-import { sprinkles } from '@/styles/sprinkles.css';
-import { vars } from '@/styles/vars.css';
+import { sprinkles, vars } from '@/shared/styles';
 
 const position = {
   leftTop: {

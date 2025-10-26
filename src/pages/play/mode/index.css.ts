@@ -4,8 +4,7 @@ import { COLORED_ICON_BUTTON_SIZE_PIXEL } from '@/components/button/constants';
 
 import { MYRANKINGITEMBOX_HEIGHT } from '@/pages/ranking/constants';
 
-import { flexOptions } from '@/styles/common.css';
-import { sprinkles } from '@/styles/sprinkles.css';
+import { flexOptions, sprinkles } from '@/shared/styles';
 
 export const wrapper = style([
   {

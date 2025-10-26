@@ -2,8 +2,7 @@ import { style } from '@vanilla-extract/css';
 
 import * as constants from './constants';
 
-import { borderDarkOptions, flexOptions } from '@/styles/common.css';
-import { sprinkles } from '@/styles/sprinkles.css';
+import { borderDarkOptions, flexOptions, sprinkles } from '@/shared/styles';
 
 export const modal = style([
   sprinkles({
