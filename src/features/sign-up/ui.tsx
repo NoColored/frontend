@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { checkIdDuplicate, registerMember, upgradeToMember } from './api';
+import { checkIdDuplicate } from './api';
+import { useSignUp } from './hooks';
 import { validateSignUpForm } from './utils';
 
 import ColoredButton from '@/components/button/ColoredButton';
@@ -17,8 +18,9 @@ interface Props {
   isGuest?: boolean;
 }
 
-const SignUp = ({ closeModal, isGuest }: Props) => {
+const SignUp = ({ closeModal, isGuest = false }: Props) => {
   const navigate = useNavigate();
+  const signUp = useSignUp(isGuest);
   const [errorMessage, setErrorMessage] = useState(ERROR_MESSAGE.welcome);
   const [form, setForm] = useState<SignUpForm>({
     id: '',
@@ -48,7 +50,6 @@ const SignUp = ({ closeModal, isGuest }: Props) => {
       return;
     }
 
-    const signUp = isGuest ? upgradeToMember : registerMember;
     const isSuccess = await signUp(form);
     if (!isSuccess) {
       return;

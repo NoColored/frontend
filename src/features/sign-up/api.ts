@@ -1,6 +1,5 @@
 import type { AxiosError } from 'axios';
 
-import { invalidateUserQuery } from '@/models/user';
 import { client } from '@/shared/api';
 
 const axiosConfig = {
@@ -22,7 +21,6 @@ export const upgradeToMember = async (formData: SignUpForm) => {
     .post<string>('/user/guest', formData)
     .then(({ data }) => {
       console.debug(data);
-      invalidateUserQuery();
       return true;
     })
     .catch(({ response }: AxiosError) => {

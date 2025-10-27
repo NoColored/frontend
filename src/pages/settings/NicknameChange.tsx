@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import { patchNicknameChange } from './api';
 import * as styles from './index.css';
 
 import ColoredButton from '@/components/button/ColoredButton';
 import Input from '@/components/input';
 
-import { patchNicknameChange } from '@/services/auth';
 
 import { ERROR_MESSAGE, ROUTE } from '@/shared/constants';
 

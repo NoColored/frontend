@@ -17,7 +17,7 @@ const LogIn = () => {
     id: '',
     password: '',
   });
-  const { login } = useLogin();
+  const { memberLogin } = useLogin();
 
   const { modalRef, openModal, closeModal } = useModal();
 
@@ -30,7 +30,7 @@ const LogIn = () => {
   };
 
   const handleLogInClick = async () => {
-    const isLoginSuccess = await login(logInInfo);
+    const isLoginSuccess = await memberLogin(logInInfo);
     if (!isLoginSuccess) {
       setIsClicked(false);
       openModal();
