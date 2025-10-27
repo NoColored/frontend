@@ -1,9 +1,10 @@
+import { useQueryClient } from '@tanstack/react-query';
 import { type AxiosError } from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 import { loginAsGuest, loginAsMember } from './api';
 
-import { removeUserQuery } from '@/models/user';
+import { removeUserQuery, userQueryKey } from '@/models/user';
 import { ROUTE } from '@/shared/constants';
 import { setFullScreen } from '@/shared/utils';
 
@@ -21,9 +22,10 @@ export const useLogout = () => {
 
 export const useLogin = () => {
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
 
-  const login = async (account: Account) => {
-    removeUserQuery();
+  const memberLogin = async (account: Account) => {
+    queryClient.removeQueries({ queryKey: userQueryKey });
 
     return loginAsMember(account)
       .then((isSuccess) => {
@@ -42,7 +44,7 @@ export const useLogin = () => {
       });
   };
 
-  return { login };
+  return { memberLogin };
 };
 
 export const useGuestLogin = () => {
