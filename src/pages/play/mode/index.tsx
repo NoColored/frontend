@@ -1,17 +1,15 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import * as constants from './constants';
+import { getMatching } from './api';
 import * as styles from './index.css';
 
 import ColoredIconButton from '@/components/button/ColoredIconButton';
 import Modal, { useModal } from '@/components/modal';
 import RankingItemBox from '@/components/ranking';
 
-
+import * as constants from '@/pages/play/mode/constants';
 import Matching from '@/pages/play/mode/Matching';
-
-import { getMatching } from '@/services/matching';
 
 import { useUserInfo } from '@/models/user';
 import { ROUTE } from '@/shared/constants';
