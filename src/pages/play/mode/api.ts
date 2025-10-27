@@ -1,9 +1,9 @@
-import { api } from '@/shared/api';
+import { client } from '@/shared/api';
 
 export const getMatching = async () => {
   return (
-    api
-      .get<string>(true, '/play/ranking')
+    client
+      .get<string>('/play/ranking')
       .then((response) => {
         // console.log('매칭 요청 성공');
         return response.status === 200;
@@ -18,8 +18,8 @@ export const getMatching = async () => {
 
 export const deleteMatching = async () => {
   return (
-    api
-      .delete<string>(true, '/play/ranking')
+    client
+      .delete<string>('/play/ranking')
       .then((response) => {
         // console.log('매칭 취소 요청 성공');
         return response.status === 200;
