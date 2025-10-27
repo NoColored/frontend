@@ -8,7 +8,6 @@ import ColoredIconButton from '@/components/button/ColoredIconButton';
 import Modal, { useModal } from '@/components/modal';
 import RankingItemBox from '@/components/ranking';
 
-import * as constants from '@/pages/play/mode/constants';
 import Matching from '@/pages/play/mode/Matching';
 
 import { useUserInfo } from '@/models/user';
@@ -40,19 +39,19 @@ const Mode = () => {
     <>
       <div className={styles.wrapper}>
         <ColoredIconButton
-          icon={constants.FRIENDLY.icon}
+          icon='/images/ui/icon/button/icon-button-modemulti-h50w50.png'
           size='xlarge'
-          text={constants.FRIENDLY.label}
-          color={constants.FRIENDLY.color}
+          text='친선전'
+          color='pink'
           onClick={() => {
             navigate(`${ROUTE.finder}`);
           }}
         />
         <ColoredIconButton
-          icon={constants.RANKING.icon}
+          icon='/images/ui/icon/button/icon-button-moderank-h50w50.png'
           size='xlarge'
-          text={constants.RANKING.label}
-          color={constants.RANKING.color}
+          text='랭킹전'
+          color='yellow'
           onClick={startMatching}
         />
         <div className={styles.myRank}>

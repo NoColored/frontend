@@ -1,11 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
 
-import * as constants from '@/pages/play/mode/constants';
 import * as styles from '@/pages/play/mode/index.css';
 
 interface Props {
   isModalOpen: boolean;
 }
+
+export const MATCHING_MESSAGES = ['매칭중', '매칭중.', '매칭중..', '매칭중...'];
 
 export const MatchingText = ({ isModalOpen }: Props) => {
   const [matchingMessage, setMatchingMessage] = useState<string>();
@@ -17,9 +18,7 @@ export const MatchingText = ({ isModalOpen }: Props) => {
 
       interval.current = setInterval(() => {
         setMatchingMessage(
-          constants.MATCHING_MESSAGES[
-            messageIndex % constants.MATCHING_MESSAGES.length
-          ],
+          MATCHING_MESSAGES[messageIndex % MATCHING_MESSAGES.length],
         );
         messageIndex++;
       }, 500);
