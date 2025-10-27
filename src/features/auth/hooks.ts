@@ -4,16 +4,17 @@ import { useNavigate } from 'react-router-dom';
 
 import { loginAsGuest, loginAsMember } from './api';
 
-import { removeUserQuery, userQueryKey } from '@/models/user';
+import { userQueryKey } from '@/models/user';
 import { ROUTE } from '@/shared/constants';
 import { setFullScreen } from '@/shared/utils';
 
 export const useLogout = () => {
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
 
   const logout = () => {
     window.localStorage.removeItem('token');
-    removeUserQuery();
+    queryClient.removeQueries({ queryKey: userQueryKey });
     navigate('/');
   };
 
@@ -44,14 +45,8 @@ export const useLogin = () => {
       });
   };
 
-  return { memberLogin };
-};
-
-export const useGuestLogin = () => {
-  const navigate = useNavigate();
-
-  const login = async () => {
-    removeUserQuery();
+  const guestLogin = async () => {
+    queryClient.removeQueries({ queryKey: userQueryKey });
 
     const isSuccess = await loginAsGuest();
     if (!isSuccess) {
@@ -61,5 +56,5 @@ export const useGuestLogin = () => {
     return navigate(ROUTE.tutorial, { replace: true });
   };
 
-  return { guestLogin: login };
+  return { memberLogin, guestLogin };
 };
