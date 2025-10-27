@@ -1,17 +1,8 @@
-import { NicknameInfo, PasswordInfo } from '@/types/auth';
-
-import { api } from '@/shared/api';
+import { client } from '@/shared/api';
 
 export const patchNicknameChange = async (nickname: string) => {
   try {
-    const changeNickname: NicknameInfo = {
-      nickname,
-    };
-    await api.patch<string, NicknameInfo>(
-      true,
-      '/user/nickname',
-      changeNickname,
-    );
+    await client.patch<string>('/user/nickname', { nickname });
     return true;
   } catch (e) {
     return false;
@@ -23,16 +14,10 @@ export const patchPasswordChange = async (
   newPassword: string,
 ) => {
   try {
-    const changePassword: PasswordInfo = {
+    await client.patch<string>('/user/password', {
       prePassword,
       newPassword,
-    };
-
-    await api.patch<string, PasswordInfo>(
-      true,
-      '/user/password',
-      changePassword,
-    );
+    });
     return true;
   } catch (e) {
     return false;
@@ -41,11 +26,7 @@ export const patchPasswordChange = async (
 
 export const postConfirmPassword = async (password: string) => {
   try {
-    const response = await api.post<boolean, { password: string }>(
-      true,
-      '/user/confirm',
-      { password },
-    );
+    const response = await client.post<boolean>('/user/confirm', { password });
     // console.log(response.data);
     return response.data;
   } catch (e) {
@@ -54,8 +35,8 @@ export const postConfirmPassword = async (password: string) => {
 };
 
 export const deleteUserInfo = async () => {
-  await api
-    .delete<string>(true, '/user')
+  await client
+    .delete<string>('/user')
     .then(() => {
       window.location.href = '/';
     })

@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 
+import { deleteUserInfo, postConfirmPassword } from './api';
 import * as styles from './index.css';
 
 import ColoredButton from '@/components/button/ColoredButton';
 import Input from '@/components/input';
 
-import { deleteUserInfo, postConfirmPassword } from '@/services/auth';
 
 import { ERROR_MESSAGE } from '@/shared/constants';
 

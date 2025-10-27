@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 
+import { patchPasswordChange } from './api';
 import * as styles from './index.css';
 
 import ColoredButton from '@/components/button/ColoredButton';
 import Input from '@/components/input';
 
-import { patchPasswordChange } from '@/services/auth';
 
 import { ERROR_MESSAGE } from '@/shared/constants';
 
