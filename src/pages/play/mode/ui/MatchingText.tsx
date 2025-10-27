@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 
-import * as styles from '@/pages/play/mode/index.css';
+import * as styles from './index.css';
 
 interface Props {
   isModalOpen: boolean;
