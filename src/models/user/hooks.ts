@@ -18,7 +18,6 @@ export const useUserInfo = () => {
       setUserCode(user.userCode);
       return user;
     },
-    throwOnError: true,
     refetchOnWindowFocus: false,
     refetchOnMount: isStale,
   });

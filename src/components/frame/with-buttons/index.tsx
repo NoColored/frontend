@@ -38,7 +38,7 @@ const BackButton = ({ pathname }: { pathname: string }) => {
 
 const DISABLED = {
   rightButtons: new Set([ROUTE.error, ROUTE.result]),
-  menuButton: new Set([ROUTE.tutorial]),
+  menuButton: [ROUTE.tutorial, ROUTE.error],
 };
 
 const BasicContentFrame = ({ children }: { children: ReactNode }) => {
@@ -46,7 +46,9 @@ const BasicContentFrame = ({ children }: { children: ReactNode }) => {
 
   const rightButtonsDisabled = DISABLED.rightButtons.has(pathname);
 
-  const menuButtonDisabled = DISABLED.menuButton.has(pathname);
+  const menuButtonDisabled = DISABLED.menuButton.some((route) =>
+    pathname.startsWith(route),
+  );
 
   return (
     <div className={styles.frame}>

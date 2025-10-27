@@ -17,9 +17,9 @@ import Result, { getGameResult } from '@/pages/result';
 import Settings from '@/pages/settings';
 import Tutorial from '@/pages/tutorial';
 
-import { checkToken } from '@/services/auth';
 import { getRank } from '@/services/rank';
 
+import { checkToken } from '@/features/auth';
 import { ROUTE } from '@/shared/constants';
 
 const router = createBrowserRouter([
@@ -111,6 +111,8 @@ const router = createBrowserRouter([
   {
     path: ROUTE.game,
     element: <Game />,
+    loader: checkToken,
+    errorElement: <Navigate to={ROUTE.main} replace />,
   },
 ]);
 

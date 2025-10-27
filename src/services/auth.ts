@@ -64,19 +64,3 @@ export const deleteUserInfo = async () => {
       console.log(e);
     });
 };
-
-export const checkToken = async () => {
-  return api
-    .get<boolean>(true, '/user/token')
-    .then((response) => {
-      const isTokenValid = response.data;
-      if (!isTokenValid) {
-        throw new Error();
-      }
-      return isTokenValid;
-    })
-    .catch((err) => {
-      localStorage.removeItem('token');
-      throw err;
-    });
-};
