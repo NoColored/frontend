@@ -1,12 +1,11 @@
 import { useNavigate } from 'react-router-dom';
 
-import { deleteMatching } from './api';
+import { deleteMatching } from '../api';
 import * as styles from './index.css';
+import { MatchingText } from './MatchingText';
 
 import ColoredButton from '@/components/button/ColoredButton';
 import RoundCornerImageBox from '@/components/image-box';
-
-import { MatchingText } from '@/pages/play/mode/MatchingText';
 
 import { useWebSocket } from '@/features/websocket';
 import { ROUTE } from '@/shared/constants';
