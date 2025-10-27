@@ -1,12 +1,12 @@
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { getDefaultStore, useAtomValue, useSetAtom } from 'jotai';
 
 import { getUser } from './api';
 import { queryKey } from './constants';
 import { updateUserCodeAtom, userCodeAtom, userStaleAtom } from './store';
-import { invalidateUserQuery } from './utils';
 
 export const useUserInfo = () => {
+  const queryClient = useQueryClient();
   const setUserCode = useSetAtom(updateUserCodeAtom);
   const store = getDefaultStore();
   const isStale = store.get(userStaleAtom);
@@ -22,9 +22,11 @@ export const useUserInfo = () => {
     refetchOnMount: isStale,
   });
 
+  const refetchUser = () => queryClient.invalidateQueries({ queryKey });
+
   return {
     user: data,
-    refetchUser: invalidateUserQuery,
+    refetchUser,
   };
 };
 
