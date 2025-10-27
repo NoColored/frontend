@@ -1,17 +1,13 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import * as constants from './constants';
+import { getMatching } from './api';
 import * as styles from './index.css';
+import Matching from './Matching';
 
 import ColoredIconButton from '@/components/button/ColoredIconButton';
 import Modal, { useModal } from '@/components/modal';
 import RankingItemBox from '@/components/ranking';
-
-
-import Matching from '@/pages/play/mode/Matching';
-
-import { getMatching } from '@/services/matching';
 
 import { useUserInfo } from '@/models/user';
 import { ROUTE } from '@/shared/constants';
@@ -42,19 +38,19 @@ const Mode = () => {
     <>
       <div className={styles.wrapper}>
         <ColoredIconButton
-          icon={constants.FRIENDLY.icon}
+          icon='/images/ui/icon/button/icon-button-modemulti-h50w50.png'
           size='xlarge'
-          text={constants.FRIENDLY.label}
-          color={constants.FRIENDLY.color}
+          text='친선전'
+          color='pink'
           onClick={() => {
             navigate(`${ROUTE.finder}`);
           }}
         />
         <ColoredIconButton
-          icon={constants.RANKING.icon}
+          icon='/images/ui/icon/button/icon-button-moderank-h50w50.png'
           size='xlarge'
-          text={constants.RANKING.label}
-          color={constants.RANKING.color}
+          text='랭킹전'
+          color='yellow'
           onClick={startMatching}
         />
         <div className={styles.myRank}>
