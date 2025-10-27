@@ -1,7 +1,7 @@
-import { client } from '@/shared/api';
+import { api } from '@/shared/api';
 
 export const leaveRoom = async () => {
-  return client
+  return api
     .get('/play/friendly/out')
     .then(({ data }) => {
       console.debug('leave room:', data);

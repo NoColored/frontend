@@ -1,6 +1,6 @@
 import type { AxiosError } from 'axios';
 
-import { client } from '@/shared/api';
+import { api } from '@/shared/api';
 
 const axiosConfig = {
   headers: {
@@ -10,14 +10,14 @@ const axiosConfig = {
 
 export const checkIdDuplicate = async (id: SignUpForm['id']) => {
   // 중복이 안되면 false. true면 오류
-  return client
+  return api
     .get<boolean>(`/user/dup/${id}`, axiosConfig)
     .then(({ data }) => data)
     .catch(() => true);
 };
 
 export const upgradeToMember = async (formData: SignUpForm) => {
-  return client
+  return api
     .post<string>('/user/guest', formData)
     .then(({ data }) => {
       console.debug(data);
@@ -30,7 +30,7 @@ export const upgradeToMember = async (formData: SignUpForm) => {
 };
 
 export const registerMember = async (formData: SignUpForm) => {
-  return client
+  return api
     .post<string>('/user/signup', formData, axiosConfig)
     .then(({ data, status }) => {
       localStorage.setItem('token', data);

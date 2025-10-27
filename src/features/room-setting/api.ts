@@ -1,14 +1,12 @@
-import { client } from '@/shared/api';
+import { api } from '@/shared/api';
 
 export const createRoom = async (setting: RoomSetting) => {
-  return client.post<string>('play/friendly', setting).then(({ data }) => data);
+  return api.post<string>('play/friendly', setting).then(({ data }) => data);
 };
 
 export const updateRoom = async (setting: RoomSetting) => {
-  return client
-    .post<string>('/play/friendly/renew', setting)
-    .then(({ data }) => {
-      console.log('room update:', data);
-      return '';
-    });
+  return api.post<string>('/play/friendly/renew', setting).then(({ data }) => {
+    console.log('room update:', data);
+    return '';
+  });
 };

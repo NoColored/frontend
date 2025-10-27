@@ -1,7 +1,7 @@
-import { client } from '@/shared/api';
+import { api } from '@/shared/api';
 
 export const getMatching = async () => {
-  return client
+  return api
     .get<string>('/play/ranking')
     .then((response) => {
       return response.status === 200;
@@ -13,7 +13,7 @@ export const getMatching = async () => {
 };
 
 export const deleteMatching = async () => {
-  return client
+  return api
     .delete<string>('/play/ranking')
     .then((response) => {
       return response.status === 200;

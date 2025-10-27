@@ -1,4 +1,4 @@
-import { client } from '@/shared/api';
+import { api } from '@/shared/api';
 
 const setToken = (token: string, status: number) => {
   if (status === 200) {
@@ -15,7 +15,7 @@ const axiosConfig = {
 };
 
 export const loginAsMember = async (account: Account) => {
-  const { data, status } = await client.post<string>(
+  const { data, status } = await api.post<string>(
     `/user/login`,
     account,
     axiosConfig,
@@ -24,14 +24,14 @@ export const loginAsMember = async (account: Account) => {
 };
 
 export const loginAsGuest = async () => {
-  return client
+  return api
     .get<string>('/user/guest', axiosConfig)
     .then(({ data, status }) => setToken(data, status))
     .catch(() => false);
 };
 
 export const checkToken = async () => {
-  const isTokenValid = await client
+  const isTokenValid = await api
     .get<boolean>('/user/token')
     .then(({ data }) => data);
 

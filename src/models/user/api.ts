@@ -1,7 +1,7 @@
-import { client } from '@/shared/api';
+import { api } from '@/shared/api';
 
 export const getUser = async () => {
-  return client.get<User>(`/user`).then((response) => {
+  return api.get<User>(`/user`).then((response) => {
     const { data } = response;
     console.debug('user:', data);
     return data;
