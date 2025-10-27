@@ -1,7 +1,7 @@
-import { client } from '@/shared/api';
+import { api } from '@/shared/api';
 
 export const getGameReady = async () => {
-  return client
+  return api
     .get<GameData>('/ingame/ready')
     .then(({ data }) => data)
     .catch(() => null);

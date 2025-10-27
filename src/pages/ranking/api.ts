@@ -1,7 +1,7 @@
-import { client } from '@/shared/api';
+import { api } from '@/shared/api';
 
 export const getRank = async () => {
-  return client
+  return api
     .get<{
       refreshTime: string;
       players: Profile[];

@@ -1,4 +1,4 @@
-import axios, { type AxiosResponse } from 'axios';
+import axios from 'axios';
 
 const baseURL = import.meta.env.VITE_API_BASE_URL;
 
@@ -22,52 +22,4 @@ client.interceptors.request.use((config) => {
   return config;
 });
 
-const api = {
-  post: async <T, P>(
-    requiredToken: boolean,
-    url: string,
-    data: P,
-  ): Promise<AxiosResponse<T>> => {
-    return client.post<T>(url, data, {
-      headers: {
-        'X-Bypass-Authorization': !requiredToken,
-      },
-    });
-  },
-
-  get: async <T>(
-    requiredToken: boolean,
-    url: string,
-  ): Promise<AxiosResponse<T>> => {
-    return client.get<T>(url, {
-      headers: {
-        'X-Bypass-Authorization': !requiredToken,
-      },
-    });
-  },
-
-  patch: async <T, P>(
-    requiredToken: boolean,
-    url: string,
-    data: P,
-  ): Promise<AxiosResponse<T>> => {
-    return client.patch<T>(url, data, {
-      headers: {
-        'X-Bypass-Authorization': !requiredToken,
-      },
-    });
-  },
-
-  delete: async <T>(
-    requiredToken: boolean,
-    url: string,
-  ): Promise<AxiosResponse<T>> => {
-    return client.delete<T>(url, {
-      headers: {
-        'X-Bypass-Authorization': !requiredToken,
-      },
-    });
-  },
-};
-
-export { api, client };
+export { client as api };

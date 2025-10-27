@@ -1,9 +1,9 @@
 import { COLLECTION_KEY } from './constants';
 
-import { client, queryClient } from '@/shared/api';
+import { api, queryClient } from '@/shared/api';
 
 export const getCollection = async () => {
-  return client.get<Collections>('/collection').then((response) => {
+  return api.get<Collections>('/collection').then((response) => {
     const { data } = response;
     console.debug(data);
     return data;

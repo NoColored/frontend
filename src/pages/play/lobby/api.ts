@@ -1,11 +1,11 @@
-import { client } from '@/shared/api';
+import { api } from '@/shared/api';
 
 export const getLobbyInfo = async (roodId: string | undefined) => {
   if (!roodId) {
     return { masterIndex: -1 } as EnteredRoom;
   }
 
-  return client
+  return api
     .get<EnteredRoom>(`/play/friendly/lobby/${roodId}`)
     .then(({ data }) => data)
     .catch((err) => {
@@ -15,5 +15,5 @@ export const getLobbyInfo = async (roodId: string | undefined) => {
 };
 
 export const getReady = async () => {
-  return client.get<string>('/play/friendly/ready');
+  return api.get<string>('/play/friendly/ready');
 };

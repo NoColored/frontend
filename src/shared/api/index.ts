@@ -1,2 +1,2 @@
-export { api, client } from './axios';
+export { api } from './axios';
 export { queryClient } from './react-query';
