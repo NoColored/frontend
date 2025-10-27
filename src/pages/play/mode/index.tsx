@@ -3,12 +3,11 @@ import { useNavigate } from 'react-router-dom';
 
 import { getMatching } from './api';
 import * as styles from './index.css';
+import Matching from './Matching';
 
 import ColoredIconButton from '@/components/button/ColoredIconButton';
 import Modal, { useModal } from '@/components/modal';
 import RankingItemBox from '@/components/ranking';
-
-import Matching from '@/pages/play/mode/Matching';
 
 import { useUserInfo } from '@/models/user';
 import { ROUTE } from '@/shared/constants';

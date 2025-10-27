@@ -6,7 +6,7 @@ interface Props {
   isModalOpen: boolean;
 }
 
-export const MATCHING_MESSAGES = ['매칭중', '매칭중.', '매칭중..', '매칭중...'];
+const MATCHING_MESSAGES = ['매칭중', '매칭중.', '매칭중..', '매칭중...'];
 
 export const MatchingText = ({ isModalOpen }: Props) => {
   const [matchingMessage, setMatchingMessage] = useState<string>();
